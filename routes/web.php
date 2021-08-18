@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,21 +18,20 @@ Route::get('login/facebook', [LoginController::class, 'facebookRedirect']);
 
 Route::get('login/facebook/callback', [LoginController::class, 'loginWithFacebook']);
 
-
-
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-/* Route for admin panel Begin */
-Route::prefix('admin')->group(function () {
-    Route::get('/', function () {
-        return view('backend.main.index');
+Route::middleware(['auth','prevent-back-history','admin'])->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::get('/', function () {
+            return view('backend.main.index');
+        });
     });
-});
-/* Route for admin panel End */
+    
+});   
 
