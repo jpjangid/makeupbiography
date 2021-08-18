@@ -35,3 +35,8 @@ Route::middleware(['auth','prevent-back-history','admin'])->group(function () {
     
 });   
 
+/* Route for front end Begin */
+Route::get('/', function () {
+    return view('frontend.main.index');
+});
+/* Route for front end End */
