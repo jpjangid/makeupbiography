@@ -17,6 +17,8 @@ Route::get('login/facebook', [LoginController::class, 'facebookRedirect']);
 
 Route::get('login/facebook/callback', [LoginController::class, 'loginWithFacebook']);
 
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -24,3 +26,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+/* Route for admin panel Begin */
+Route::prefix('admin')->group(function () {
+    Route::get('/', function () {
+        return view('backend.main.index');
+    });
+});
+/* Route for admin panel End */
+
