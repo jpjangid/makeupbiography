@@ -26,6 +26,12 @@ Route::prefix('admin')->group(function () {
     Route::get('/', function () {
         return view('backend.main.index');
     });
+    Route::prefix('brand')->group(function () {
+        Route::get('/', function () {
+            return view('backend.brand.create');
+        });
+        
+    });    
 });
 /* Route for admin panel End */
 
