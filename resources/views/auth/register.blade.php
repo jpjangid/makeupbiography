@@ -90,8 +90,9 @@
                                         </div>
                                     </div>
 
-                                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                        <button type="submit" class="btn btn-primary btn-md">Register</button>
+                                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4 float-right">
+                                        <button type="submit" class="btn btn-primary btn-md mr-2">Register</button>
+                                        <a href="{{ url('login') }}" class="btn btn-primary btn-md">Login</a>
                                     </div>
                                 </form>
                             </div>
