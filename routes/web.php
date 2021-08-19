@@ -51,5 +51,6 @@ Route::view('wishlist/empty','frontend.wishlist.empty');
 Route::view('cart','frontend.cart.index');
 Route::view('cart/empty','frontend.cart.empty');
 Route::view('checkout','frontend.checkout.index');
+Route::view('myaccount','frontend.myaccount.myaccount');
 
 /* Route for front end End */
