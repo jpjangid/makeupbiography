@@ -18,7 +18,7 @@ Route::get('login/facebook', [LoginController::class, 'facebookRedirect']);
 
 Route::get('login/facebook/callback', [LoginController::class, 'loginWithFacebook']);
 
-Route::get('/', function () {
+Route::get('/admin', function () {
     return view('auth/login');
 });
 
