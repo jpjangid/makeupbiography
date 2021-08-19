@@ -16,7 +16,8 @@
   <!--end::Fonts-->
   <!--begin::Global Stylesheets Bundle(used by all pages)-->
   <link href="{{ asset('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
-  <link href="{{ asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />@yield('css')
+  <link href="{{ asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+  @yield('css')
   <!--end::Global Stylesheets Bundle-->
 </head>
 <!--end::Head-->
@@ -31,11 +32,14 @@
       <!--end::Aside-->
       <!--begin::Wrapper-->
       <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
-        <!--begin::Header-->@include('backend.layouts.header')
+        <!--begin::Header-->
+        @include('backend.layouts.header')
         <!--end::Header-->
-        <!--begin::Content-->@yield('content')
+        <!--begin::Content-->
+        @yield('content')
         <!--end::Content-->
-        <!--begin::Footer-->@include('backend.layouts.footer')
+        <!--begin::Footer-->
+        @include('backend.layouts.footer')
         <!--end::Footer-->
       </div>
       <!--end::Wrapper-->
@@ -55,7 +59,9 @@
   <!--begin::Page Custom Javascript(used by this page)-->
   <script src="{{ asset('assets/js/custom/widgets.js') }}"></script>
   <!--end::Page Custom Javascript-->
-  <!--end::Javascript-->@yield('js')</body>
+  <!--end::Javascript-->
+  @yield('js')
+</body>
 <!--end::Body-->
 
 </html>

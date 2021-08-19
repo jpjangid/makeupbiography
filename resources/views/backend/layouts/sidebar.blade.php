@@ -45,18 +45,18 @@
               </span>
               <!--end::Svg Icon-->
             </span>
-            <span class="menu-title">Pages</span>
+            <span class="menu-title">Masters</span>
             <span class="menu-arrow">
             </span>
           </span>
           <div class="menu-sub menu-sub-accordion">
             <div class="menu-item">
-              <a class="menu-link" href="general/about.html">
+              <a class="menu-link" href="{{ url('admin/blogs') }}">
                 <span class="menu-bullet">
                   <span class="bullet bullet-dot">
                   </span>
                 </span>
-                <span class="menu-title">About Us</span>
+                <span class="menu-title">Blogs</span>
               </a>
             </div>
             <div class="menu-item">
