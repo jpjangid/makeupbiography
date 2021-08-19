@@ -18,6 +18,10 @@ Route::get('login/facebook', [LoginController::class, 'facebookRedirect']);
 
 Route::get('login/facebook/callback', [LoginController::class, 'loginWithFacebook']);
 
+Route::get('unauthorized', function() {
+    return "unauthorized";
+});
+
 Route::get('/admin', function () {
     return view('auth/login');
 });
@@ -26,7 +30,7 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::middleware(['auth','prevent-back-history','admin'])->group(function () {
+Route::middleware(['auth','prevent-back-history','admin'])->prefix('admin')->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('/', function () {
             return view('backend.main.index');
@@ -39,4 +43,13 @@ Route::middleware(['auth','prevent-back-history','admin'])->group(function () {
 Route::get('/', function () {
     return view('frontend.main.index');
 });
+Route::view('product', 'frontend.product.detail');
+Route::view('category', 'frontend.product.category');
+Route::view('brand','frontend.brand.index');
+Route::view('wishlist','frontend.wishlist.index');
+Route::view('wishlist/empty','frontend.wishlist.empty');
+Route::view('cart','frontend.cart.index');
+Route::view('cart/empty','frontend.cart.empty');
+Route::view('checkout','frontend.checkout.index');
+
 /* Route for front end End */
