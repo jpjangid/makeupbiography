@@ -144,7 +144,7 @@ class BlogController extends Controller
     public function destroy($id)
     {
         $blog = Blog::find($id);
-        $blog->status   =   '1';
+        $blog->flag   =   '1';
         $blog->update();
 
         return redirect('admin/blogs')->with('danger', 'Blog Deleted');
