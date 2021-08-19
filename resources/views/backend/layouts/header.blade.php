@@ -820,22 +820,6 @@
         <!--end::Search-->
       </div>
       <!--end::Search-->
-      <!--begin::Activities-->
-      <div class="d-flex align-items-center ms-1 ms-lg-3">
-        <!--begin::drawer toggle-->
-        <div class="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px" id="kt_activities_toggle">
-          <!--begin::Svg Icon | path: icons/duotone/Design/Substract.svg-->
-          <span class="svg-icon svg-icon-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-              <path d="M6,9 L6,15 C6,16.6568542 7.34314575,18 9,18 L15,18 L15,18.8181818 C15,20.2324881 14.2324881,21 12.8181818,21 L5.18181818,21 C3.76751186,21 3,20.2324881 3,18.8181818 L3,11.1818182 C3,9.76751186 3.76751186,9 5.18181818,9 L6,9 Z" fill="#000000" fill-rule="nonzero" />
-              <path d="M10.1818182,4 L17.8181818,4 C19.2324881,4 20,4.76751186 20,6.18181818 L20,13.8181818 C20,15.2324881 19.2324881,16 17.8181818,16 L10.1818182,16 C8.76751186,16 8,15.2324881 8,13.8181818 L8,6.18181818 C8,4.76751186 8.76751186,4 10.1818182,4 Z" fill="#000000" opacity="0.3" />
-            </svg>
-          </span>
-          <!--end::Svg Icon-->
-        </div>
-        <!--end::drawer toggle-->
-      </div>
-      <!--end::Activities-->
       <!--begin::Notifications-->
       <div class="d-flex align-items-center ms-1 ms-lg-3">
         <!--begin::Menu wrapper-->
@@ -1153,301 +1137,11 @@
         <!--end::Menu wrapper-->
       </div>
       <!--end::Notifications-->
-      <!--begin::Chat-->
-      <div class="d-flex align-items-center ms-1 ms-lg-3">
-        <!--begin::Menu wrapper-->
-        <div class="btn btn-icon btn-active-light-primary position-relative w-30px h-30px w-md-40px h-md-40px" data-bs-toggle="tooltip" title="Available in &lt;span class='badge badge-pro badge-light-danger fw-bold fs-9 px-2 py-1 ms-1'&gt;Pro&lt;/span&gt; version" data-bs-html="true" data-bs-placement="bottom" id="kt_drawer_chat_toggle">
-          <!--begin::Svg Icon | path: icons/duotone/Communication/Group-chat.svg-->
-          <span class="svg-icon svg-icon-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-              <path d="M16,15.6315789 L16,12 C16,10.3431458 14.6568542,9 13,9 L6.16183229,9 L6.16183229,5.52631579 C6.16183229,4.13107011 7.29290239,3 8.68814808,3 L20.4776218,3 C21.8728674,3 23.0039375,4.13107011 23.0039375,5.52631579 L23.0039375,13.1052632 L23.0206157,17.786793 C23.0215995,18.0629336 22.7985408,18.2875874 22.5224001,18.2885711 C22.3891754,18.2890457 22.2612702,18.2363324 22.1670655,18.1421277 L19.6565168,15.6315789 L16,15.6315789 Z" fill="#000000" />
-              <path d="M1.98505595,18 L1.98505595,13 C1.98505595,11.8954305 2.88048645,11 3.98505595,11 L11.9850559,11 C13.0896254,11 13.9850559,11.8954305 13.9850559,13 L13.9850559,18 C13.9850559,19.1045695 13.0896254,20 11.9850559,20 L4.10078614,20 L2.85693427,21.1905292 C2.65744295,21.3814685 2.34093638,21.3745358 2.14999706,21.1750444 C2.06092565,21.0819836 2.01120804,20.958136 2.01120804,20.8293182 L2.01120804,18.32426 C1.99400175,18.2187196 1.98505595,18.1104045 1.98505595,18 Z M6.5,14 C6.22385763,14 6,14.2238576 6,14.5 C6,14.7761424 6.22385763,15 6.5,15 L11.5,15 C11.7761424,15 12,14.7761424 12,14.5 C12,14.2238576 11.7761424,14 11.5,14 L6.5,14 Z M9.5,16 C9.22385763,16 9,16.2238576 9,16.5 C9,16.7761424 9.22385763,17 9.5,17 L11.5,17 C11.7761424,17 12,16.7761424 12,16.5 C12,16.2238576 11.7761424,16 11.5,16 L9.5,16 Z" fill="#000000" opacity="0.3" />
-            </svg>
-          </span>
-          <!--end::Svg Icon-->
-          <span class="bullet bullet-dot bg-success h-6px w-6px position-absolute translate-middle top-0 start-50 animation-blink">
-          </span>
-        </div>
-        <!--end::Menu wrapper-->
-      </div>
-      <!--end::Chat-->
-      <!--begin::Quick links-->
-      <div class="d-flex align-items-center ms-1 ms-lg-3">
-        <!--begin::Menu wrapper-->
-        <div class="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end" data-kt-menu-flip="bottom">
-          <!--begin::Svg Icon | path: icons/duotone/Layout/Layout-4-blocks.svg-->
-          <span class="svg-icon svg-icon-1">
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                <rect x="0" y="0" width="24" height="24" />
-                <rect fill="#000000" x="4" y="4" width="7" height="7" rx="1.5" />
-                <path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" fill="#000000" opacity="0.3" />
-              </g>
-            </svg>
-          </span>
-          <!--end::Svg Icon-->
-        </div>
-        <!--begin::My apps-->
-        <div class="menu menu-sub menu-sub-dropdown menu-column w-100 w-sm-350px" data-kt-menu="true">
-          <!--begin::Card-->
-          <div class="card">
-            <!--begin::Card header-->
-            <div class="card-header">
-              <!--begin::Card title-->
-              <div class="card-title">My Apps</div>
-              <!--end::Card title-->
-              <!--begin::Card toolbar-->
-              <div class="card-toolbar">
-                <!--begin::Menu-->
-                <button type="button" class="btn btn-sm btn-icon btn-active-light-primary me-n3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-flip="top-end">
-                  <!--begin::Svg Icon | path: icons/duotone/General/Settings-1.svg-->
-                  <span class="svg-icon svg-icon-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                        <rect x="0" y="0" width="24" height="24" />
-                        <path d="M7,3 L17,3 C19.209139,3 21,4.790861 21,7 C21,9.209139 19.209139,11 17,11 L7,11 C4.790861,11 3,9.209139 3,7 C3,4.790861 4.790861,3 7,3 Z M7,9 C8.1045695,9 9,8.1045695 9,7 C9,5.8954305 8.1045695,5 7,5 C5.8954305,5 5,5.8954305 5,7 C5,8.1045695 5.8954305,9 7,9 Z" fill="#000000" />
-                        <path d="M7,13 L17,13 C19.209139,13 21,14.790861 21,17 C21,19.209139 19.209139,21 17,21 L7,21 C4.790861,21 3,19.209139 3,17 C3,14.790861 4.790861,13 7,13 Z M17,19 C18.1045695,19 19,18.1045695 19,17 C19,15.8954305 18.1045695,15 17,15 C15.8954305,15 15,15.8954305 15,17 C15,18.1045695 15.8954305,19 17,19 Z" fill="#000000" opacity="0.3" />
-                      </g>
-                    </svg>
-                  </span>
-                  <!--end::Svg Icon-->
-                </button>
-                <!--begin::Menu 3-->
-                <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px py-3" data-kt-menu="true">
-                  <!--begin::Heading-->
-                  <div class="menu-item px-3">
-                    <div class="menu-content text-muted pb-2 px-3 fs-7 text-uppercase">Payments</div>
-                  </div>
-                  <!--end::Heading-->
-                  <!--begin::Menu item-->
-                  <div class="menu-item px-3">
-                    <a href="#" class="menu-link px-3">Create Invoice</a>
-                  </div>
-                  <!--end::Menu item-->
-                  <!--begin::Menu item-->
-                  <div class="menu-item px-3">
-                    <a href="#" class="menu-link flex-stack px-3">Create Payment
-                      <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify a target name for future usage and reference"></i>
-                    </a>
-                  </div>
-                  <!--end::Menu item-->
-                  <!--begin::Menu item-->
-                  <div class="menu-item px-3">
-                    <a href="#" class="menu-link px-3">Generate Bill</a>
-                  </div>
-                  <!--end::Menu item-->
-                  <!--begin::Menu item-->
-                  <div class="menu-item px-3" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start" data-kt-menu-flip="center, top">
-                    <a href="#" class="menu-link px-3">
-                      <span class="menu-title">Subscription</span>
-                      <span class="menu-arrow">
-                      </span>
-                    </a>
-                    <!--begin::Menu sub-->
-                    <div class="menu-sub menu-sub-dropdown w-175px py-4">
-                      <!--begin::Menu item-->
-                      <div class="menu-item px-3">
-                        <a href="#" class="menu-link px-3">Plans</a>
-                      </div>
-                      <!--end::Menu item-->
-                      <!--begin::Menu item-->
-                      <div class="menu-item px-3">
-                        <a href="#" class="menu-link px-3">Billing</a>
-                      </div>
-                      <!--end::Menu item-->
-                      <!--begin::Menu item-->
-                      <div class="menu-item px-3">
-                        <a href="#" class="menu-link px-3">Statements</a>
-                      </div>
-                      <!--end::Menu item-->
-                      <!--begin::Menu separator-->
-                      <div class="separator my-2">
-                      </div>
-                      <!--end::Menu separator-->
-                      <!--begin::Menu item-->
-                      <div class="menu-item px-3">
-                        <div class="menu-content px-3">
-                          <!--begin::Switch-->
-                          <label class="form-check form-switch form-check-custom form-check-solid">
-                            <!--begin::Input-->
-                            <input class="form-check-input w-30px h-20px" type="checkbox" value="1" checked="checked" name="notifications" />
-                            <!--end::Input-->
-                            <!--end::Label-->
-                            <span class="form-check-label text-muted fs-6">Recuring</span>
-                            <!--end::Label-->
-                          </label>
-                          <!--end::Switch-->
-                        </div>
-                      </div>
-                      <!--end::Menu item-->
-                    </div>
-                    <!--end::Menu sub-->
-                  </div>
-                  <!--end::Menu item-->
-                  <!--begin::Menu item-->
-                  <div class="menu-item px-3 my-1">
-                    <a href="#" class="menu-link px-3">Settings</a>
-                  </div>
-                  <!--end::Menu item-->
-                </div>
-                <!--end::Menu 3-->
-                <!--end::Menu-->
-              </div>
-              <!--end::Card toolbar-->
-            </div>
-            <!--end::Card header-->
-            <!--begin::Card body-->
-            <div class="card-body py-5">
-              <!--begin::Scroll-->
-              <div class="mh-450px scroll-y me-n5 pe-5">
-                <!--begin::Row-->
-                <div class="row g-2">
-                  <!--begin::Col-->
-                  <div class="col-4">
-                    <a href="#" class="d-flex flex-column flex-center text-center text-gray-800 text-hover-primary bg-hover-light rounded p-3 mb-3">
-                      <img src="assets/media/svg/brand-logos/amazon-icon-1.svg" class="w-25px h-25px mb-2" alt="" />
-                      <span class="fw-boldest">AWS</span>
-                    </a>
-                  </div>
-                  <!--end::Col-->
-                  <!--begin::Col-->
-                  <div class="col-4">
-                    <a href="#" class="d-flex flex-column flex-center text-center text-gray-800 text-hover-primary bg-hover-light rounded p-3 mb-3">
-                      <img src="assets/media/svg/brand-logos/angular-icon-1.svg" class="w-25px h-25px mb-2" alt="" />
-                      <span class="fw-boldest">AngularJS</span>
-                    </a>
-                  </div>
-                  <!--end::Col-->
-                  <!--begin::Col-->
-                  <div class="col-4">
-                    <a href="#" class="d-flex flex-column flex-center text-center text-gray-800 text-hover-primary bg-hover-light rounded p-3 mb-3">
-                      <img src="assets/media/svg/brand-logos/atica.svg" class="w-25px h-25px mb-2" alt="" />
-                      <span class="fw-boldest">Atica</span>
-                    </a>
-                  </div>
-                  <!--end::Col-->
-                  <!--begin::Col-->
-                  <div class="col-4">
-                    <a href="#" class="d-flex flex-column flex-center text-center text-gray-800 text-hover-primary bg-hover-light rounded p-3 mb-3">
-                      <img src="assets/media/svg/brand-logos/beats-electronics.svg" class="w-25px h-25px mb-2" alt="" />
-                      <span class="fw-boldest">Music</span>
-                    </a>
-                  </div>
-                  <!--end::Col-->
-                  <!--begin::Col-->
-                  <div class="col-4">
-                    <a href="#" class="d-flex flex-column flex-center text-center text-gray-800 text-hover-primary bg-hover-light rounded p-3 mb-3">
-                      <img src="assets/media/svg/brand-logos/codeigniter.svg" class="w-25px h-25px mb-2" alt="" />
-                      <span class="fw-boldest">Codeigniter</span>
-                    </a>
-                  </div>
-                  <!--end::Col-->
-                  <!--begin::Col-->
-                  <div class="col-4">
-                    <a href="#" class="d-flex flex-column flex-center text-center text-gray-800 text-hover-primary bg-hover-light rounded p-3 mb-3">
-                      <img src="assets/media/svg/brand-logos/bootstrap-4.svg" class="w-25px h-25px mb-2" alt="" />
-                      <span class="fw-boldest">Bootstrap</span>
-                    </a>
-                  </div>
-                  <!--end::Col-->
-                  <!--begin::Col-->
-                  <div class="col-4">
-                    <a href="#" class="d-flex flex-column flex-center text-center text-gray-800 text-hover-primary bg-hover-light rounded p-3 mb-3">
-                      <img src="assets/media/svg/brand-logos/google-tag-manager.svg" class="w-25px h-25px mb-2" alt="" />
-                      <span class="fw-boldest">GTM</span>
-                    </a>
-                  </div>
-                  <!--end::Col-->
-                  <!--begin::Col-->
-                  <div class="col-4">
-                    <a href="#" class="d-flex flex-column flex-center text-center text-gray-800 text-hover-primary bg-hover-light rounded p-3 mb-3">
-                      <img src="assets/media/svg/brand-logos/disqus.svg" class="w-25px h-25px mb-2" alt="" />
-                      <span class="fw-boldest">Disqus</span>
-                    </a>
-                  </div>
-                  <!--end::Col-->
-                  <!--begin::Col-->
-                  <div class="col-4">
-                    <a href="#" class="d-flex flex-column flex-center text-center text-gray-800 text-hover-primary bg-hover-light rounded p-3 mb-3">
-                      <img src="assets/media/svg/brand-logos/dribbble-icon-1.svg" class="w-25px h-25px mb-2" alt="" />
-                      <span class="fw-boldest">Dribble</span>
-                    </a>
-                  </div>
-                  <!--end::Col-->
-                  <!--begin::Col-->
-                  <div class="col-4">
-                    <a href="#" class="d-flex flex-column flex-center text-center text-gray-800 text-hover-primary bg-hover-light rounded p-3 mb-3">
-                      <img src="assets/media/svg/brand-logos/google-play-store.svg" class="w-25px h-25px mb-2" alt="" />
-                      <span class="fw-boldest">Play Store</span>
-                    </a>
-                  </div>
-                  <!--end::Col-->
-                  <!--begin::Col-->
-                  <div class="col-4">
-                    <a href="#" class="d-flex flex-column flex-center text-center text-gray-800 text-hover-primary bg-hover-light rounded p-3 mb-3">
-                      <img src="assets/media/svg/brand-logos/google-podcasts.svg" class="w-25px h-25px mb-2" alt="" />
-                      <span class="fw-boldest">Podcasts</span>
-                    </a>
-                  </div>
-                  <!--end::Col-->
-                  <!--begin::Col-->
-                  <div class="col-4">
-                    <a href="#" class="d-flex flex-column flex-center text-center text-gray-800 text-hover-primary bg-hover-light rounded p-3 mb-3">
-                      <img src="assets/media/svg/brand-logos/figma-1.svg" class="w-25px h-25px mb-2" alt="" />
-                      <span class="fw-boldest">Figma</span>
-                    </a>
-                  </div>
-                  <!--end::Col-->
-                  <!--begin::Col-->
-                  <div class="col-4">
-                    <a href="#" class="d-flex flex-column flex-center text-center text-gray-800 text-hover-primary bg-hover-light rounded p-3 mb-3">
-                      <img src="assets/media/svg/brand-logos/github.svg" class="w-25px h-25px mb-2" alt="" />
-                      <span class="fw-boldest">Github</span>
-                    </a>
-                  </div>
-                  <!--end::Col-->
-                  <!--begin::Col-->
-                  <div class="col-4">
-                    <a href="#" class="d-flex flex-column flex-center text-center text-gray-800 text-hover-primary bg-hover-light rounded p-3 mb-3">
-                      <img src="assets/media/svg/brand-logos/gitlab.svg" class="w-25px h-25px mb-2" alt="" />
-                      <span class="fw-boldest">Gitlab</span>
-                    </a>
-                  </div>
-                  <!--end::Col-->
-                  <!--begin::Col-->
-                  <div class="col-4">
-                    <a href="#" class="d-flex flex-column flex-center text-center text-gray-800 text-hover-primary bg-hover-light rounded p-3 mb-3">
-                      <img src="assets/media/svg/brand-logos/instagram-2-1.svg" class="w-25px h-25px mb-2" alt="" />
-                      <span class="fw-boldest">Instagram</span>
-                    </a>
-                  </div>
-                  <!--end::Col-->
-                  <!--begin::Col-->
-                  <div class="col-4">
-                    <a href="#" class="d-flex flex-column flex-center text-center text-gray-800 text-hover-primary bg-hover-light rounded p-3 mb-3">
-                      <img src="assets/media/svg/brand-logos/pinterest-p.svg" class="w-25px h-25px mb-2" alt="" />
-                      <span class="fw-boldest">Pinterest</span>
-                    </a>
-                  </div>
-                  <!--end::Col-->
-                </div>
-                <!--end::Row-->
-              </div>
-              <!--end::Scroll-->
-            </div>
-            <!--end::Card body-->
-          </div>
-          <!--end::Card-->
-        </div>
-        <!--end::My apps-->
-        <!--end::Menu wrapper-->
-      </div>
-      <!--end::Quick links-->
       <!--begin::User-->
       <div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
         <!--begin::Menu wrapper-->
         <div class="cursor-pointer symbol symbol-circle symbol-30px symbol-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end" data-kt-menu-flip="bottom">
-          <img alt="Pic" src="assets/media/avatars/150-1.jpg" />
+          <img alt="Pic" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP7NjSjKYoQFApBGgMXfrAioIDBfleCIZWyA&usqp=CAU" />
         </div>
         <!--begin::Menu-->
         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold py-4 fs-6 w-275px" data-kt-menu="true">
@@ -1456,161 +1150,40 @@
             <div class="menu-content d-flex align-items-center px-3">
               <!--begin::Avatar-->
               <div class="symbol symbol-50px symbol-circle me-5">
-                <img alt="Logo" src="assets/media/avatars/150-1.jpg" />
+                <img alt="Logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP7NjSjKYoQFApBGgMXfrAioIDBfleCIZWyA&usqp=CAU" />
               </div>
               <!--end::Avatar-->
               <!--begin::Username-->
               <div class="d-flex flex-column">
-                <div class="fw-bolder d-flex align-items-center fs-5">Aria Grande
+                <div class="fw-bolder d-flex align-items-center fs-5">{{auth()->user()->name}}
                   <span class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2">Pro</span>
                 </div>
-                <a href="#" class="fw-bold text-muted text-hover-primary fs-7">aria@kt.com</a>
+                <a href="#" class="fw-bold text-muted text-hover-primary fs-7">{{auth()->user()->email}}</a>
               </div>
               <!--end::Username-->
             </div>
           </div>
           <!--end::Menu item-->
           <!--begin::Menu separator-->
-          <div class="separator my-2">
-          </div>
+          <div class="separator my-2"></div>
           <!--end::Menu separator-->
           <!--begin::Menu item-->
           <div class="menu-item px-5">
             <a href="account/overview.html" class="menu-link px-5">Profile</a>
           </div>
           <!--end::Menu item-->
-          <!--begin::Menu item-->
-          <div class="menu-item px-5">
-            <a href="account/overview.html" class="menu-link px-5">
-              <span class="menu-text">Dashboard</span>
-              <span class="menu-badge">
-                <span class="badge badge-light-danger badge-circle fw-bolder fs-7">3</span>
-              </span>
-            </a>
-          </div>
-          <!--end::Menu item-->
-          <!--begin::Menu item-->
-          <div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start" data-kt-menu-flip="bottom">
-            <a href="apps/customers/view.html" class="menu-link px-5">
-              <span class="menu-title">Subscription</span>
-              <span class="menu-arrow">
-              </span>
-            </a>
-            <!--begin::Menu sub-->
-            <div class="menu-sub menu-sub-dropdown w-175px py-4">
-              <!--begin::Menu item-->
-              <div class="menu-item px-3">
-                <a href="apps/customers/list.html" class="menu-link px-5">Plans</a>
-              </div>
-              <!--end::Menu item-->
-              <!--begin::Menu item-->
-              <div class="menu-item px-3">
-                <a href="apps/customers/view.html" class="menu-link px-5">Billing</a>
-              </div>
-              <!--end::Menu item-->
-              <!--begin::Menu item-->
-              <div class="menu-item px-3">
-                <a href="apps/customers/view.html" class="menu-link px-5">Payments</a>
-              </div>
-              <!--end::Menu item-->
-              <!--begin::Menu item-->
-              <div class="menu-item px-3">
-                <a href="apps/customers/view.html" class="menu-link d-flex flex-stack px-5">Statements
-                  <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="View your statements"></i>
-                </a>
-              </div>
-              <!--end::Menu item-->
-              <!--begin::Menu separator-->
-              <div class="separator my-2">
-              </div>
-              <!--end::Menu separator-->
-              <!--begin::Menu item-->
-              <div class="menu-item px-3">
-                <div class="menu-content px-3">
-                  <label class="form-check form-switch form-check-custom form-check-solid">
-                    <input class="form-check-input w-30px h-20px" type="checkbox" value="1" checked="checked" name="notifications" />
-                    <span class="form-check-label text-muted fs-7">Notifications</span>
-                  </label>
-                </div>
-              </div>
-              <!--end::Menu item-->
-            </div>
-            <!--end::Menu sub-->
-          </div>
-          <!--end::Menu item-->
-          <!--begin::Menu item-->
-          <div class="menu-item px-5">
-            <a href="#" class="menu-link px-5">Reports</a>
-          </div>
-          <!--end::Menu item-->
           <!--begin::Menu separator-->
-          <div class="separator my-2">
-          </div>
+          <div class="separator my-2"></div>
           <!--end::Menu separator-->
           <!--begin::Menu item-->
-          <div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start" data-kt-menu-flip="bottom">
-            <a href="#" class="menu-link px-5">
-              <span class="menu-title position-relative">Language
-                <span class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">English
-                  <img class="w-15px h-15px rounded-1 ms-2" src="assets/media/flags/united-states.svg" alt="metronic" />
-                </span>
-              </span>
-            </a>
-            <!--begin::Menu sub-->
-            <div class="menu-sub menu-sub-dropdown w-175px py-4">
-              <!--begin::Menu item-->
-              <div class="menu-item px-3">
-                <a href="#" class="menu-link d-flex px-5 active">
-                  <span class="symbol symbol-20px me-4">
-                    <img class="rounded-1" src="assets/media/flags/united-states.svg" alt="metronic" />
-                  </span>English</a>
-              </div>
-              <!--end::Menu item-->
-              <!--begin::Menu item-->
-              <div class="menu-item px-3">
-                <a href="#" class="menu-link d-flex px-5">
-                  <span class="symbol symbol-20px me-4">
-                    <img class="rounded-1" src="assets/media/flags/spain.svg" alt="metronic" />
-                  </span>Spanish</a>
-              </div>
-              <!--end::Menu item-->
-              <!--begin::Menu item-->
-              <div class="menu-item px-3">
-                <a href="#" class="menu-link d-flex px-5">
-                  <span class="symbol symbol-20px me-4">
-                    <img class="rounded-1" src="assets/media/flags/germany.svg" alt="metronic" />
-                  </span>German</a>
-              </div>
-              <!--end::Menu item-->
-              <!--begin::Menu item-->
-              <div class="menu-item px-3">
-                <a href="#" class="menu-link d-flex px-5">
-                  <span class="symbol symbol-20px me-4">
-                    <img class="rounded-1" src="assets/media/flags/japan.svg" alt="metronic" />
-                  </span>Japanese</a>
-              </div>
-              <!--end::Menu item-->
-              <!--begin::Menu item-->
-              <div class="menu-item px-3">
-                <a href="#" class="menu-link d-flex px-5">
-                  <span class="symbol symbol-20px me-4">
-                    <img class="rounded-1" src="assets/media/flags/france.svg" alt="metronic" />
-                  </span>French</a>
-              </div>
-              <!--end::Menu item-->
-            </div>
-            <!--end::Menu sub-->
-          </div>
-          <!--end::Menu item-->
-          <!--begin::Menu item-->
-          <div class="menu-item px-5 my-1">
-            <a href="#" class="menu-link px-5">Account Settings</a>
-          </div>
-          <!--end::Menu item-->
-          <!--begin::Menu item-->
           <div class="menu-item px-5">
-            <a href="#" class="menu-link px-5">Sign Out</a>
+            <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();" class="menu-link px-5">Sign Out</a>
           </div>
+
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+          </form>
           <!--end::Menu item-->
         </div>
         <!--end::Menu-->

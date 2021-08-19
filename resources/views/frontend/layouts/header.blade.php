@@ -522,7 +522,7 @@
         </a>
       </div>
       <div class="c-header__auth-button">
-        <a class="c-header__button-link c-header__button-link--account" title="Login" href="https://parkofideas.com/luchiana/demo/my-account/" rel="nofollow">
+        <a class="c-header__button-link c-header__button-link--account" title="Login" href="{{ url('admin') }}" rel="nofollow">
           <i class="ip-user">
             <!-- -->
           </i>
@@ -1056,7 +1056,7 @@
               </a>
             </div>
             <div class="c-header__auth-button">
-              <a class="c-header__button-link c-header__button-link--account" title="Login" href="https://parkofideas.com/luchiana/demo/my-account/" rel="nofollow">
+              <a class="c-header__button-link c-header__button-link--account" title="Login" href="{{ url('admin') }}" rel="nofollow">
                 <i class="ip-user">
                   <!-- -->
                 </i>
