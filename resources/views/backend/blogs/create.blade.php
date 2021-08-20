@@ -201,7 +201,7 @@
                                 <!-- Status -->
                                 <div class="col-md-2 mb-4">
                                     <div class="form-group">
-                                        <label class="form-label" for="customSwitch1">Publish Block</label>
+                                        <label class="form-label" for="customSwitch1">Publish Blog</label>
                                         <div class="form-check form-switch form-check-custom form-check-solid mt-3">
                                             <input type="checkbox" class="form-check-input" id="customSwitch1" name="status" value="1">
                                         </div>
@@ -234,7 +234,7 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
 <!-- Page specific script -->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     $(document).on('keydown', '#keywords', function() {
         if ($('#keywords').val() != "") {
             var keywords = $('#keywords').val();
@@ -250,7 +250,7 @@
             $('#tags').val(tags);
         }
     });
-</script>
+</script> -->
 <script>
     $('#summernote').summernote({
         placeholder: 'Hello stand alone ui',

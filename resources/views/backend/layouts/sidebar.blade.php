@@ -60,12 +60,12 @@
               </a>
             </div>
             <div class="menu-item">
-              <a class="menu-link" href="general/invoice.html">
+              <a class="menu-link" href="{{ url('admin/pages') }}">
                 <span class="menu-bullet">
                   <span class="bullet bullet-dot">
                   </span>
                 </span>
-                <span class="menu-title">Invoice</span>
+                <span class="menu-title">Page</span>
               </a>
             </div>
             <div class="menu-item">
