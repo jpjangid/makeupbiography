@@ -49,12 +49,12 @@
             <article id="post-142" class="c-post-list c-post-list--standard c-post-list--grid c-post-list--sidebar c-post-list--with-thumb c-post-list--post js-post-item post-142 post type-post status-publish format-standard has-post-thumbnail hentry category-cosmetic category-fashion tag-cosmetic tag-trends">
               <div class="c-post-list__thumb c-post-list__thumb--standard c-post-list__thumb--grid">
                 <a href="{{ url('blogdetail',$blog->slug) }}">
-                  <img style="width:auto; height: 18rem !important;" src="{{ asset('storage/blogs/'.$blog->featured_image) }}" alt="{{ $blog->alt }}" sizes="(max-width: 760px) 100vw, 760px" />
+                  <img style="width:auto; height: 18rem !important;" src="{{ asset('storage/blogs/'.$blog->featured_image) }}" alt="{{ $blog->alt }}" title="{{ $blog->title }}" sizes="(max-width: 760px) 100vw, 760px" />
                 </a>
               </div>
               <div class="c-post-list__wrap c-post-list__wrap--standard c-post-list__wrap--grid   c-post-list__wrap--sidebar ">
                 <div class="c-post-list__meta-date  c-post-list__meta-date--with-thumb   c-post-list__meta-date--sidebar  c-post-list__meta-date--grid">{{ date('M d, Y', strtotime($blog->publish_date)) }}</div>
-                <a class="c-post-list__header-link" href="https://parkofideas.com/luchiana/demo/2020/10/20/new-trends-2020/">
+                <a class="c-post-list__header-link" href="{{ url('blogdetail',$blog->slug) }}">
                   <h2 class="c-post-list__header">{{ $blog->title }}</h2>
                 </a>
                 <div class="c-post-list__except">
@@ -106,58 +106,21 @@
           <aside id="ideapark_latest_posts_widget-3" class="widget custom-lps-widget">
             <div class="widget-title">Latest Posts</div>
             <ul class="c-lp-widget">
-              <li class="c-lp-widget__item c-lp-widget__item--thumb">
-                <div class="c-lp-widget__thumb">
-                  <a href="https://parkofideas.com/luchiana/demo/2020/10/20/new-trends-2020/" rel="bookmark">
-                    <img width="115" height="115" src="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959487418-115x115.jpg" class="c-lp-widget__thumb-img wp-post-image" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959487418-115x115.jpg 115w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959487418-70x70.jpg 70w" sizes="(max-width: 115px) 100vw, 115px" />
-                  </a>
-                </div>
-                <div class="c-lp-widget__content">
-                  <a href="https://parkofideas.com/luchiana/demo/2020/10/20/new-trends-2020/" rel="bookmark">
-                    <div class="c-lp-widget__title">New Trends in 2020</div>
-                  </a>
-                  <div class="c-lp-widget__date">October 20, 2020</div>
-                </div>
-              </li>
-              <li class="c-lp-widget__item c-lp-widget__item--thumb">
-                <div class="c-lp-widget__thumb">
-                  <a href="https://parkofideas.com/luchiana/demo/2020/10/20/video-post/" rel="bookmark">
-                    <img width="115" height="115" src="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959282579-115x115.jpg" class="c-lp-widget__thumb-img wp-post-image" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959282579-115x115.jpg 115w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959282579-70x70.jpg 70w" sizes="(max-width: 115px) 100vw, 115px" />
-                  </a>
-                </div>
-                <div class="c-lp-widget__content">
-                  <a href="https://parkofideas.com/luchiana/demo/2020/10/20/video-post/" rel="bookmark">
-                    <div class="c-lp-widget__title">Video post</div>
-                  </a>
-                  <div class="c-lp-widget__date">October 20, 2020</div>
-                </div>
-              </li>
-              <li class="c-lp-widget__item c-lp-widget__item--thumb">
-                <div class="c-lp-widget__thumb">
-                  <a href="https://parkofideas.com/luchiana/demo/2020/10/20/gallery-post/" rel="bookmark">
-                    <img width="115" height="115" src="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959718882-115x115.jpg" class="c-lp-widget__thumb-img wp-post-image" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959718882-115x115.jpg 115w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959718882-70x70.jpg 70w" sizes="(max-width: 115px) 100vw, 115px" />
-                  </a>
-                </div>
-                <div class="c-lp-widget__content">
-                  <a href="https://parkofideas.com/luchiana/demo/2020/10/20/gallery-post/" rel="bookmark">
-                    <div class="c-lp-widget__title">Gallery post</div>
-                  </a>
-                  <div class="c-lp-widget__date">October 20, 2020</div>
-                </div>
-              </li>
-              <li class="c-lp-widget__item c-lp-widget__item--thumb">
-                <div class="c-lp-widget__thumb">
-                  <a href="https://parkofideas.com/luchiana/demo/2020/10/18/remember-trends/" rel="bookmark">
-                    <img width="115" height="115" src="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959020724-115x115.jpg" class="c-lp-widget__thumb-img wp-post-image" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959020724-115x115.jpg 115w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959020724-70x70.jpg 70w" sizes="(max-width: 115px) 100vw, 115px" />
-                  </a>
-                </div>
-                <div class="c-lp-widget__content">
-                  <a href="https://parkofideas.com/luchiana/demo/2020/10/18/remember-trends/" rel="bookmark">
-                    <div class="c-lp-widget__title">Remember trends</div>
-                  </a>
-                  <div class="c-lp-widget__date">October 18, 2020</div>
-                </div>
-              </li>
+              @for($i = 0; $i < 4; $i++)
+                <li class="c-lp-widget__item c-lp-widget__item--thumb">
+                  <div class="c-lp-widget__thumb">
+                    <a href="{{ $blogs[$i]->slug }}" rel="bookmark">
+                      <img style="height: 3.75rem !important; width: auto;" src="{{ asset('storage/blogs/'.$blogs[$i]->featured_image) }}" alt="{{ $blogs[$i]->alt }}" title="{{ $blogs[$i]->title }}" sizes="(max-width: 115px) 100vw, 115px" />
+                    </a>
+                  </div>
+                  <div class="c-lp-widget__content">
+                    <a href="{{ $blogs[$i]->slug }}" rel="bookmark">
+                      <div class="c-lp-widget__title">{{ $blogs[$i]->title }}</div>
+                    </a>
+                    <div class="c-lp-widget__date">{{ date('M d, Y', strtotime($blogs[$i]->publish_date)) }}</div>
+                  </div>
+                </li>
+              @endfor
             </ul>
           </aside>
           <aside id="tag_cloud-2" class="widget widget_tag_cloud">

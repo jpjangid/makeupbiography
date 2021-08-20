@@ -11,9 +11,9 @@ class BlogController extends Controller
     public function index($cat)
     {
         if($cat == 'all'){
-            $blogs = Blog::where(['flag' => '0'])->get();
+            $blogs = Blog::where(['flag' => '0'])->orderby('publish_date','desc')->get();
         }else{
-            $blogs = Blog::where(['flag' => '0', 'category' => $cat])->get();
+            $blogs = Blog::where(['flag' => '0', 'category' => $cat])->orderby('publish_date','desc')->get();
         }
         return view('frontend.blog.index', compact('blogs','cat'));
     }
