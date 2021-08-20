@@ -19,6 +19,7 @@ class CreatePagesTable extends Migration
             $table->string('title')->unique();  
             $table->longText('description');
             $table->text('featured_image')->nullable();
+            $table->string('alt')->nullable();
             $table->text('meta_title')->nullable();
             $table->text('meta_description')->nullable();
             $table->text('keywords')->nullable();
@@ -26,6 +27,7 @@ class CreatePagesTable extends Migration
             $table->text('og_title')->nullable();
             $table->text('og_description')->nullable();
             $table->text('og_image')->nullable();
+            $table->string('og_alt')->nullable();
             $table->tinyInteger('status')->default('0');
             $table->tinyInteger('flag')->default('0');
             $table->timestamps();

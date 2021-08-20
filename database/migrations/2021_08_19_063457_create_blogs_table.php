@@ -28,6 +28,7 @@ class CreateBlogsTable extends Migration
             $table->text('og_title')->nullable();
             $table->text('og_description')->nullable();
             $table->text('og_image')->nullable();
+            $table->string('og_alt')->nullable();
             $table->date('publish_date')->nullable();
             $table->string('category')->nullable();
             $table->tinyInteger('status')->default('0');

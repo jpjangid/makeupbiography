@@ -80,6 +80,7 @@ class BlogController extends Controller
             'og_title'                  =>  $request->og_title,
             'og_description'            =>  $request->og_description,
             'og_image'                  =>  $og_image,
+            'og_alt'                    =>  $request->og_alt,
         ]);
 
         return redirect('admin/blogs')->with('success', 'Blog Created Successfully');
@@ -160,6 +161,7 @@ class BlogController extends Controller
         $blog->og_title                 =  $request->og_title;
         $blog->og_description           =  $request->og_description;
         $blog->og_image                 =  $og_image;
+        $blog->og_alt                   =  $request->og_alt;
         $blog->update();
 
         return redirect('admin/blogs')->with('success', 'Blog Updated Successfully');
