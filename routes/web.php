@@ -55,7 +55,7 @@ Route::middleware(['auth','prevent-back-history','admin'])->prefix('admin')->gro
     });
 });
 
-/* Route for front end Begin */
+/* Route for frontend Begin */
 Route::get('/', function () {
     return view('frontend.main.index');
 });
