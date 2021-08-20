@@ -65,7 +65,7 @@
                   <span class="bullet bullet-dot">
                   </span>
                 </span>
-                <span class="menu-title">Page</span>
+                <span class="menu-title">Pages</span>
               </a>
             </div>
             <div class="menu-item">
