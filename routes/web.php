@@ -43,6 +43,7 @@ Route::middleware(['auth','prevent-back-history','admin'])->prefix('admin')->gro
         Route::get('/delete/{id}', [App\Http\Controllers\backend\BlogController::class, 'destroy']);
         Route::post('/update_status', [App\Http\Controllers\backend\BlogController::class, 'update_status']);
     });
+    
 });
 
 /* Route for front end Begin */
