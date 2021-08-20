@@ -43,7 +43,16 @@ Route::middleware(['auth','prevent-back-history','admin'])->prefix('admin')->gro
         Route::get('/delete/{id}', [App\Http\Controllers\backend\BlogController::class, 'destroy']);
         Route::post('/update_status', [App\Http\Controllers\backend\BlogController::class, 'update_status']);
     });
-    
+
+    Route::prefix('pages')->group(function () {
+        Route::get('/', [App\Http\Controllers\backend\PageController::class, 'index']);
+        Route::get('/create', [App\Http\Controllers\backend\PageController::class, 'create']);
+        Route::post('/store', [App\Http\Controllers\backend\PageController::class, 'store']);
+        Route::get('/edit/{id}', [App\Http\Controllers\backend\PageController::class, 'edit']);
+        Route::put('/update/{id}', [App\Http\Controllers\backend\PageController::class, 'update']);
+        Route::get('/delete/{id}', [App\Http\Controllers\backend\PageController::class, 'destroy']);
+        Route::post('/update_status', [App\Http\Controllers\backend\PageController::class, 'update_status']);
+    });
 });
 
 /* Route for front end Begin */
