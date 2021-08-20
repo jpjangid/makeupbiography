@@ -49,6 +49,15 @@ class BlogController extends Controller
             $path = Storage::putFileAs('public/blogs/', $file, $featured_image);
         }
 
+        $og_image = "";
+        if ($request->hasFile('og_image')) {
+            $extension = $request->file('og_image')->extension();
+            $file = $request->file('og_image');
+            $fileNameString = (string) Str::uuid();
+            $og_image = $fileNameString . time() . "." . $extension;
+            $path = Storage::putFileAs('public/blogs/og_images', $file, $og_image);
+        }
+
         $status = 0;
         if(isset($request->status)){
             $status = 1;
@@ -68,6 +77,9 @@ class BlogController extends Controller
             'alt'                       =>  $request->alt,
             'status'                    =>  $status,
             'category'                  =>  $request->category,
+            'og_title'                  =>  $request->og_title,
+            'og_description'            =>  $request->og_description,
+            'og_image'                  =>  $og_image,
         ]);
 
         return redirect('admin/blogs')->with('success', 'Blog Created Successfully');
@@ -118,6 +130,15 @@ class BlogController extends Controller
             $path = Storage::putFileAs('public/blogs/', $file, $featured_image);
         }
 
+        $og_image = $blog->og_image;
+        if ($request->hasFile('og_image')) {
+            $extension = $request->file('og_image')->extension();
+            $file = $request->file('og_image');
+            $fileNameString = (string) Str::uuid();
+            $og_image = $fileNameString . time() . "." . $extension;
+            $path = Storage::putFileAs('public/blogs/og_images', $file, $og_image);
+        }
+
         $status = 0;
         if(isset($request->status)){
             $status = 1;
@@ -136,6 +157,9 @@ class BlogController extends Controller
         $blog->alt                      =  $request->alt;
         $blog->status                   =  $status;
         $blog->category                 =  $request->category;
+        $blog->og_title                 =  $request->og_title;
+        $blog->og_description           =  $request->og_description;
+        $blog->og_image                 =  $og_image;
         $blog->update();
 
         return redirect('admin/blogs')->with('success', 'Blog Updated Successfully');

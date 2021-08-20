@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBlogsTable extends Migration
+class CreatePagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateBlogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('blogs', function (Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->string('slug');
-            $table->string('title');
-            $table->longtext('description');
-            $table->text('short_description');
-            $table->text('featured_image');
-            $table->string('alt');
+            $table->text('slug');
+            $table->string('title')->unique();  
+            $table->longText('description');
+            $table->text('featured_image')->nullable();
             $table->text('meta_title')->nullable();
             $table->text('meta_description')->nullable();
             $table->text('keywords')->nullable();
@@ -28,8 +26,6 @@ class CreateBlogsTable extends Migration
             $table->text('og_title')->nullable();
             $table->text('og_description')->nullable();
             $table->text('og_image')->nullable();
-            $table->date('publish_date')->nullable();
-            $table->string('category')->nullable();
             $table->tinyInteger('status')->default('0');
             $table->tinyInteger('flag')->default('0');
             $table->timestamps();
@@ -43,6 +39,6 @@ class CreateBlogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blogs');
+        Schema::dropIfExists('pages');
     }
 }

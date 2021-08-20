@@ -80,6 +80,7 @@
                                         @enderror
                                     </div>
                                 </div>
+
                                 <!-- alt title-->
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
@@ -90,6 +91,9 @@
                                         @enderror
                                     </div>
                                 </div>
+
+                                <hr>
+                                <h4>Meta Section</h4>
 
                                 <!-- Meta Title -->
                                 <div class="col-md-6 mb-4">
@@ -123,6 +127,44 @@
                                         @enderror
                                     </div>
                                 </div>
+
+                                <hr>
+                                <h4>OG Section</h4>
+
+                                <!-- OG Title -->
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-group">
+                                        <label class="form-label" for="og_title">OG Title</label>
+                                        <input type="text" class="form-control form-control-solid @error('og_title') is-invalid @enderror" name="og_title" value="{{ $blog->og_title }}" placeholder="Please Enter OG Title" />
+                                        @error('og_title')
+                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <!-- blog image -->
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-group">
+                                        <label class="required form-label" for="og_image">OG Image</label>
+                                        <input type="file" name="og_image" class="form-control @error('og_image') is-invalid @enderror" id="exampleInputFile">
+                                        @error('og_image')
+                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <!-- OG description -->
+                                <div class="col-md-12 mb-4">
+                                    <div class="form-group">
+                                        <label class="form-label" for="og_description">OG Description</label>
+                                        <textarea rows="4" cols="" class="form-control form-control-solid @error('og_description') is-invalid @enderror" name="og_description" placeholder="Please enter OG Description">{{ $blog->og_description }}</textarea>
+                                        @error('og_description')
+                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <hr>
 
                                 <!-- tags -->
                                 <div class="col-md-6 mb-4">
