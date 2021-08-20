@@ -166,37 +166,7 @@
             </ul>
           </li>
           <li id="menu-item-19" class="c-mobile-menu__item c-mobile-menu__item--has-children menu-item-19">
-            <a href="https://parkofideas.com/luchiana/demo/blog/">Blog</a>
-            <ul class="c-mobile-menu__submenu">
-              <li id="menu-item-553" class="c-mobile-menu__subitem c-mobile-menu__subitem--has-children menu-item-553">
-                <a>Blog style</a>
-                <ul class="c-mobile-menu__submenu c-mobile-menu__submenu--inner">
-                  <li id="menu-item-545" class="c-mobile-menu__subitem menu-item-545">
-                    <a href="https://parkofideas.com/luchiana/demo/blog/?set=1">Grid</a>
-                  </li>
-                  <li id="menu-item-546" class="c-mobile-menu__subitem menu-item-546">
-                    <a href="https://parkofideas.com/luchiana/demo/blog/?set=2">List</a>
-                  </li>
-                  <li id="menu-item-547" class="c-mobile-menu__subitem menu-item-547">
-                    <a href="https://parkofideas.com/luchiana/demo/blog/?set=3">Grid (sidebar)</a>
-                  </li>
-                  <li id="menu-item-548" class="c-mobile-menu__subitem menu-item-548">
-                    <a href="https://parkofideas.com/luchiana/demo/blog/?set=4">List (sidebar)</a>
-                  </li>
-                </ul>
-              </li>
-              <li id="menu-item-554" class="c-mobile-menu__subitem c-mobile-menu__subitem--has-children menu-item-554">
-                <a>Post format</a>
-                <ul class="c-mobile-menu__submenu c-mobile-menu__submenu--inner">
-                  <li id="menu-item-555" class="c-mobile-menu__subitem menu-item-555">
-                    <a href="https://parkofideas.com/luchiana/demo/2020/10/20/gallery-post/">Post format gallery</a>
-                  </li>
-                  <li id="menu-item-556" class="c-mobile-menu__subitem menu-item-556">
-                    <a href="https://parkofideas.com/luchiana/demo/2020/10/20/video-post/">Post format video</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
+            <a href="{{ url('blog') }}">Blog</a>>
           </li>
           <li id="menu-item-163" class="c-mobile-menu__item c-mobile-menu__item--has-children menu-item-163">
             <a>Pages</a>
@@ -756,37 +726,7 @@
                 </ul>
               </li>
               <li class="c-top-menu__item c-top-menu__item--has-children menu-item-19 js-menu-item">
-                <a href="https://parkofideas.com/luchiana/demo/blog/">Blog</a>
-                <ul class="c-top-menu__submenu c-top-menu__submenu--columns-2 c-top-menu__submenu--expand">
-                  <li class="c-top-menu__subitem menu-item-553 c-top-menu__subitem--expand js-menu-item">
-                    <a>Blog style</a>
-                    <ul class="c-top-menu__submenu c-top-menu__submenu--columns-1 c-top-menu__submenu--expand c-top-menu__submenu--inner">
-                      <li class="c-top-menu__subitem menu-item-545 c-top-menu__subitem--collapse js-menu-item">
-                        <a href="https://parkofideas.com/luchiana/demo/blog/?set=1">Grid</a>
-                      </li>
-                      <li class="c-top-menu__subitem menu-item-546 c-top-menu__subitem--collapse js-menu-item">
-                        <a href="https://parkofideas.com/luchiana/demo/blog/?set=2">List</a>
-                      </li>
-                      <li class="c-top-menu__subitem menu-item-547 c-top-menu__subitem--collapse js-menu-item">
-                        <a href="https://parkofideas.com/luchiana/demo/blog/?set=3">Grid (sidebar)</a>
-                      </li>
-                      <li class="c-top-menu__subitem menu-item-548 c-top-menu__subitem--collapse js-menu-item">
-                        <a href="https://parkofideas.com/luchiana/demo/blog/?set=4">List (sidebar)</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="c-top-menu__subitem menu-item-554 c-top-menu__subitem--expand js-menu-item">
-                    <a>Post format</a>
-                    <ul class="c-top-menu__submenu c-top-menu__submenu--columns-1 c-top-menu__submenu--expand c-top-menu__submenu--inner">
-                      <li class="c-top-menu__subitem menu-item-555 c-top-menu__subitem--collapse js-menu-item">
-                        <a href="https://parkofideas.com/luchiana/demo/2020/10/20/gallery-post/">Post format gallery</a>
-                      </li>
-                      <li class="c-top-menu__subitem menu-item-556 c-top-menu__subitem--collapse js-menu-item">
-                        <a href="https://parkofideas.com/luchiana/demo/2020/10/20/video-post/">Post format video</a>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
+                <a href="{{ url('blog') }}">Blog</a>
               </li>
               <li class="c-top-menu__item c-top-menu__item--has-children menu-item-163 js-menu-item">
                 <a>Pages</a>
