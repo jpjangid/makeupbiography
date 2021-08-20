@@ -68,7 +68,7 @@ Route::view('cart','frontend.cart.index');
 Route::view('cart/empty','frontend.cart.empty');
 Route::view('checkout','frontend.checkout.index');
 Route::view('myaccount','frontend.myaccount.myaccount');
-Route::view('blog','frontend.blog.index');
+Route::get('blog/{cat}', [App\Http\Controllers\frontend\BlogController::class, 'index']);
 Route::view('blog/xyz','frontend.blog.detail');
 
 /* Route for front end End */
