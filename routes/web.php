@@ -69,6 +69,9 @@ Route::view('cart/empty','frontend.cart.empty');
 Route::view('checkout','frontend.checkout.index');
 Route::view('myaccount','frontend.myaccount.myaccount');
 Route::get('blog/{cat}', [App\Http\Controllers\frontend\BlogController::class, 'index']);
-Route::view('blog/xyz','frontend.blog.detail');
+Route::get('blogdetail/{slug}', [App\Http\Controllers\frontend\BlogController::class, 'detail']);
+Route::get('blog/tag/{cat}', [App\Http\Controllers\frontend\BlogController::class, 'blogtag']);
+
+Route::post('storecomment', [App\Http\Controllers\frontend\CommentController::class, 'store']);
 
 /* Route for front end End */

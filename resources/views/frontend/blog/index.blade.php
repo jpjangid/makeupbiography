@@ -48,9 +48,11 @@
           @foreach($blogs as $blog)
             <article id="post-142" class="c-post-list c-post-list--standard c-post-list--grid c-post-list--sidebar c-post-list--with-thumb c-post-list--post js-post-item post-142 post type-post status-publish format-standard has-post-thumbnail hentry category-cosmetic category-fashion tag-cosmetic tag-trends">
               <div class="c-post-list__thumb c-post-list__thumb--standard c-post-list__thumb--grid">
-                <a href="{{ url('blogdetail',$blog->slug) }}">
-                  <img style="width:auto; height: 18rem !important;" src="{{ asset('storage/blogs/'.$blog->featured_image) }}" alt="{{ $blog->alt }}" title="{{ $blog->title }}" sizes="(max-width: 760px) 100vw, 760px" />
-                </a>
+                <div class="c-post-list__thumb-inner c-post-list__thumb-inner--grid">
+                  <a href="{{ url('blogdetail',$blog->slug) }}">
+                    <img class="c-post-list__img wp-post-image" src="{{ asset('storage/blogs/'.$blog->featured_image) }}" alt="{{ $blog->alt }}" title="{{ $blog->title }}" sizes="(max-width: 760px) 100vw, 760px" />
+                  </a>
+                </div>
               </div>
               <div class="c-post-list__wrap c-post-list__wrap--standard c-post-list__wrap--grid   c-post-list__wrap--sidebar ">
                 <div class="c-post-list__meta-date  c-post-list__meta-date--with-thumb   c-post-list__meta-date--sidebar  c-post-list__meta-date--grid">{{ date('M d, Y', strtotime($blog->publish_date)) }}</div>
@@ -87,7 +89,7 @@
               </li>
             </ul>
           </aside>
-          <aside id="search-3" class="widget widget_search">
+          <!-- <aside id="search-3" class="widget widget_search">
             <div class="widget-title">Search</div>
             <div class="c-search-form">
               <form role="search" method="get" class="js-search-form-entry" action="https://parkofideas.com/luchiana/demo/">
@@ -102,36 +104,35 @@
                 </div>
               </form>
             </div>
-          </aside>
+          </aside> -->
           <aside id="ideapark_latest_posts_widget-3" class="widget custom-lps-widget">
             <div class="widget-title">Latest Posts</div>
             <ul class="c-lp-widget">
               @for($i = 0; $i < 4; $i++)
-                <li class="c-lp-widget__item c-lp-widget__item--thumb">
-                  <div class="c-lp-widget__thumb">
-                    <a href="{{ $blogs[$i]->slug }}" rel="bookmark">
-                      <img style="height: 3.75rem !important; width: auto;" src="{{ asset('storage/blogs/'.$blogs[$i]->featured_image) }}" alt="{{ $blogs[$i]->alt }}" title="{{ $blogs[$i]->title }}" sizes="(max-width: 115px) 100vw, 115px" />
-                    </a>
-                  </div>
-                  <div class="c-lp-widget__content">
-                    <a href="{{ $blogs[$i]->slug }}" rel="bookmark">
-                      <div class="c-lp-widget__title">{{ $blogs[$i]->title }}</div>
-                    </a>
-                    <div class="c-lp-widget__date">{{ date('M d, Y', strtotime($blogs[$i]->publish_date)) }}</div>
-                  </div>
-                </li>
+                @if(isset($blogs[$i]))
+                  <li class="c-lp-widget__item c-lp-widget__item--thumb">
+                    <div class="c-lp-widget__thumb">
+                      <a href="{{ $blogs[$i]->slug }}" rel="bookmark">
+                        <img style="height: 3.5rem !important; width: auto;" src="{{ asset('storage/blogs/'.$blogs[$i]->featured_image) }}" alt="{{ $blogs[$i]->alt }}" title="{{ $blogs[$i]->title }}" loading="lazy"/>
+                      </a>
+                    </div>
+                    <div class="c-lp-widget__content">
+                      <a href="{{ $blogs[$i]->slug }}" rel="bookmark">
+                        <div class="c-lp-widget__title">{{ $blogs[$i]->title }}</div>
+                      </a>
+                      <div class="c-lp-widget__date">{{ date('M d, Y', strtotime($blogs[$i]->publish_date)) }}</div>
+                    </div>
+                  </li>
+                @endif
               @endfor
             </ul>
           </aside>
           <aside id="tag_cloud-2" class="widget widget_tag_cloud">
             <div class="widget-title">Tags</div>
             <div class="tagcloud">
-              <a href="https://parkofideas.com/luchiana/demo/tag/cosmetic/" class="tag-cloud-link tag-link-44 tag-link-position-1" style="font-size: 22pt;" aria-label="cosmetic (3 items)">cosmetic</a>
-              <a href="https://parkofideas.com/luchiana/demo/tag/gallery/" class="tag-cloud-link tag-link-38 tag-link-position-2" style="font-size: 8pt;" aria-label="gallery (1 item)">gallery</a>
-              <a href="https://parkofideas.com/luchiana/demo/tag/make-up/" class="tag-cloud-link tag-link-47 tag-link-position-3" style="font-size: 8pt;" aria-label="make up (1 item)">make up</a>
-              <a href="https://parkofideas.com/luchiana/demo/tag/slider/" class="tag-cloud-link tag-link-39 tag-link-position-4" style="font-size: 8pt;" aria-label="slider (1 item)">slider</a>
-              <a href="https://parkofideas.com/luchiana/demo/tag/trends/" class="tag-cloud-link tag-link-45 tag-link-position-5" style="font-size: 16.4pt;" aria-label="trends (2 items)">trends</a>
-              <a href="https://parkofideas.com/luchiana/demo/tag/video/" class="tag-cloud-link tag-link-48 tag-link-position-6" style="font-size: 8pt;" aria-label="video (1 item)">video</a>
+              @foreach($finaltags as $tag)
+                <a href="{{ url('blog/tag',$tag) }}" class="tag-cloud-link tag-link-44 tag-link-position-1" style="font-size: 22pt;">{{ $tag }}</a>
+              @endforeach
             </div>
           </aside>
         </aside>
