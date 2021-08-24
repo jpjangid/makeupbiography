@@ -175,24 +175,40 @@
                                 </div>
 
                                 <hr>
-                                
-                                <!-- tags -->
+
+                                <!-- published date -->
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
-                                        <label class="form-label" for="tags">Tags</label>
-                                        <input type="text" class="form-control form-control-solid @error('tags') is-invalid @enderror" name="tags" id="tags" value="{{ old('tags')}}" placeholder="Please Enter Meta Tag" />
-                                        @error('tags')
+                                        <label class="form-label" for="category">Category</label>
+                                        <select class="form-control form-control-solid @error('category') is-invalid @enderror" name="category">
+                                            <option value="">Select Blog Category</option>
+                                            <option value="Beauty" {{ old('catgory') == 'Beauty' ? 'selected' : '' }} >Beauty</option>
+                                            <option value="Cosmetic" {{ old('catgory') == 'Cosmetic' ? 'selected' : '' }} >Cosmetic</option>
+                                            <option value="Fashion" {{ old('catgory') == 'Fashion' ? 'selected' : '' }} >Fashion</option>
+                                        </select>
+                                        @error('category')
                                         <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>
 
                                 <!-- published date -->
-                                <div class="col-md-4 mb-4">
+                                <div class="col-md-6 mb-4">
                                     <div class="form-group">
                                         <label class="form-label" for="publish_date">Publish Date</label>
                                         <input type="date" class="form-control form-control-solid @error('publish_date') is-invalid @enderror" name="publish_date" id="publish_date" value="{{ old('publish_date')}}" placeholder="Please Enter Meta Tag" />
                                         @error('publish_date')
+                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
+                                <!-- tags -->
+                                <div class="col-md-10 mb-4">
+                                    <div class="form-group">
+                                        <label class="form-label" for="tags">Tags</label>
+                                        <input type="text" class="form-control form-control-solid @error('tags') is-invalid @enderror" name="tags" id="tags" value="{{ old('tags')}}" placeholder="Please Enter Meta Tag" />
+                                        @error('tags')
                                         <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
                                     </div>

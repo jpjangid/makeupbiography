@@ -5,12 +5,12 @@
   <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default
  c-page-header--post">
     <div class="c-page-header__wrap">
-      <h1 class="c-page-header__title">New Trends in 2020</h1>
+      <h1 class="c-page-header__title">{{ $blog->title }}</h1>
     </div>
     <nav class="c-breadcrumbs">
       <ol class="c-breadcrumbs__list c-breadcrumbs__list--default" itemscope itemtype="http://schema.org/BreadcrumbList">
         <li class="c-breadcrumbs__item  c-breadcrumbs__item--first  " itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          <a itemprop="item" title="Home" href="https://parkofideas.com/luchiana/demo/">
+          <a itemprop="item" title="Home" href="{{ url('') }}">
             <span itemprop="name">Home</span>
           </a>
           <!--
@@ -21,7 +21,7 @@
           <meta itemprop="position" content="1">
         </li>
         <li class="c-breadcrumbs__item  " itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          <a itemprop="item" title="Blog" href="https://parkofideas.com/luchiana/demo/blog/">
+          <a itemprop="item" title="Blog" href="{{ url('blog/all') }}">
             <span itemprop="name">Blog</span>
           </a>
           <!--
@@ -32,8 +32,8 @@
           <meta itemprop="position" content="2">
         </li>
         <li class="c-breadcrumbs__item  " itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          <a itemprop="item" title="2020" href="https://parkofideas.com/luchiana/demo/2020/">
-            <span itemprop="name">2020</span>
+          <a itemprop="item" title="2020" href="{{ url('blog', $blog->category) }}">
+            <span itemprop="name">{{ $blog->category }}</span>
           </a>
           <!--
 						-->
@@ -42,31 +42,9 @@
           </i>
           <meta itemprop="position" content="3">
         </li>
-        <li class="c-breadcrumbs__item  " itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          <a itemprop="item" title="10" href="https://parkofideas.com/luchiana/demo/2020/10/">
-            <span itemprop="name">10</span>
-          </a>
-          <!--
-						-->
-          <i class="ip-breadcrumb c-breadcrumbs__separator">
-            <!-- -->
-          </i>
-          <meta itemprop="position" content="4">
-        </li>
-        <li class="c-breadcrumbs__item  " itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          <a itemprop="item" title="20" href="https://parkofideas.com/luchiana/demo/2020/10/20/">
-            <span itemprop="name">20</span>
-          </a>
-          <!--
-						-->
-          <i class="ip-breadcrumb c-breadcrumbs__separator">
-            <!-- -->
-          </i>
-          <meta itemprop="position" content="5">
-        </li>
         <li class="c-breadcrumbs__item   c-breadcrumbs__item--last " itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          <a itemprop="item" title="New Trends in 2020" href="https://parkofideas.com/luchiana/demo/2020/10/20/new-trends-2020/">
-            <span itemprop="name">New Trends in 2020</span>
+          <a itemprop="item" title="{{ $blog->title }}" href="{{ url('blogdetail',$blog->slug) }}">
+            <span itemprop="name">{{ $blog->title }}</span>
           </a>
           <meta itemprop="position" content="6">
         </li>
@@ -80,38 +58,26 @@
       <div class="js-sticky-sidebar-nearby">
         <article id="post-142" class="c-post c-post--standard c-post--sidebar post-142 post type-post status-publish format-standard has-post-thumbnail hentry category-cosmetic category-fashion tag-cosmetic tag-trends">
           <div class="c-post__thumb c-post__thumb--standard  c-post__thumb--image ">
-            <img width="1120" height="630" src="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959487418.jpg" class="c-post__img wp-post-image" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959487418.jpg 1120w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959487418-460x259.jpg 460w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959487418-760x428.jpg 760w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959487418-920x518.jpg 920w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959487418-258x145.jpg 258w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959487418-516x290.jpg 516w" sizes="(max-width: 1120px) 100vw, 1120px" />
+            <img width="1120" height="630" class="c-post__img" src="{{ asset('storage/blogs/'.$blog->featured_image) }}" alt="{{ $blog->alt }}" title="{{ $blog->title }}" />
           </div>
           <div class="c-post__wrap  c-post__wrap--thumb   c-post__wrap--sidebar ">
             <div class="c-post__inner">
               <ul class="c-page__meta c-page__meta--sidebar">
                 <li class="c-page__meta-item">By
-                  <a href="https://parkofideas.com/luchiana/demo" title="Visit Luchiana&#8217;s website" rel="author external">Luchiana</a>
+                  Admin
                 </li>
-                <li class="c-page__meta-item">October 20, 2020</li>
+                <li class="c-page__meta-item">{{ date('M d, Y', strtotime($blog->publish_date)) }}</li>
                 <li class="c-page__meta-item">
-                  <a class="c-page__categories-item-link" href="https://parkofideas.com/luchiana/demo/category/cosmetic/" title="View all posts in Cosmetic">Cosmetic</a>,
-                  <a class="c-page__categories-item-link" href="https://parkofideas.com/luchiana/demo/category/fashion/" title="View all posts in Fashion">Fashion</a>
+                  <a class="c-page__categories-item-link" href="{{ url('blog', $blog->category) }}" title="View all posts in Cosmetic">Cosmetic</a>
                 </li>
                 <li class="c-page__meta-item">Comments:2</li>
               </ul>
               <div class="c-post__content h-clearfix entry-content  entry-content--sidebar ">
-                <p>Aliquet dictum hac gravida neque, sit faucibus eleifend vel velit. Ultricies sed a aenean quis. Pharetra platea ultricies quis suspendisse ipsum morbi. Pharetra, vivamus amet bibendum placerat vestibulum pulvinar viverra quis vitae. Pellentesque nec hac tincidunt molestie ut donec pretium tristique.</p>
-                <p>Consequat eu purus tortor mauris vel neque vel tortor donec. Sed sit porttitor nisi, in aliquam velit ut dolor, nisi. Nec gravida ut tellus eu sit fermentum augue magna senectus. Vel congue faucibus in diam elit. Malesuada suspendisse posuere elementum odio tellus tristique mauris in accumsan. Amet ornare quam feugiat sodales. Sit etiam dui euismod id facilisi. Quis viverra purus nulla fringilla.</p>
-                <blockquote class="wp-block-quote">
-                  <p>Sed sit porttitor nisi, in aliquam velit ut dolor, nisi. Nec gravida ut tellus eu sit fermentum augue magna senectus. Vel congue faucibus in diam elit. Malesuada suspendisse.</p>
-                  <cite>Gibor Ladared</cite>
-                </blockquote>
-                <h4>Brand History</h4>
-                <p>Aliquet dictum hac gravida neque, sit faucibus eleifend vel velit. Ultricies sed a aenean quis. Pharetra platea ultricies quis suspendisse ipsum morbi. Pharetra, vivamus amet bibendum placerat vestibulum pulvinar viverra quis vitae. Pellentesque nec hac tincidunt molestie ut donec pretium tristique.</p>
-                <p>Consequat eu purus tortor mauris vel neque vel tortor donec. Sed sit porttitor nisi, in aliquam velit ut dolor, nisi. Nec gravida ut tellus eu sit fermentum augue magna senectus. Vel congue faucibus in diam elit. Malesuada suspendisse posuere elementum odio tellus tristique mauris in accumsan. Amet ornare quam feugiat sodales. Sit etiam dui euismod id facilisi. Quis viverra purus nulla fringilla.</p>
+                <?php echo $blog->description; ?>
               </div>
               <div class="c-post__bottom">
                 <div class="c-post__tags">
                   <a href="https://parkofideas.com/luchiana/demo/tag/cosmetic/" rel="tag">cosmetic</a>
-                  <span class="h-bullet">
-                  </span>
-                  <a href="https://parkofideas.com/luchiana/demo/tag/trends/" rel="tag">trends</a>
                 </div>
                 <div class="c-post__share">
                   <div class="c-post__bottom-title">Share post:</div>
@@ -134,14 +100,8 @@
             </div>
           </div>
           <div class="c-post__row-2">
-            <nav class="c-post__nav" role="navigation">
-              <a class="c-post__nav-prev" href="https://parkofideas.com/luchiana/demo/2020/10/20/video-post/" rel="prev">
-                <i class="c-post__nav-prev-ico ip-right"></i>
-                <span class="c-post__nav-title">Video post</span>
-              </a>
-            </nav>
             <!-- .navigation -->
-            <div class="c-post__author">
+            <!-- <div class="c-post__author">
               <div class="c-post__author-thumb">
                 <img alt='' src='https://secure.gravatar.com/avatar/2d29f1a88cbfbf10e9241008d689d52c?s=155&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/2d29f1a88cbfbf10e9241008d689d52c?s=310&#038;d=mm&#038;r=g 2x' class='avatar avatar-155 photo' height='155' width='155' loading='lazy' />
               </div>
@@ -154,28 +114,24 @@
                 <div class="c-soc c-post__author-soc">
                   <a href="#" class="c-soc__link">
                     <i class="ip-facebook c-soc__icon c-soc__icon--facebook">
-                      <!-- -->
                     </i>
                   </a>
                   <a href="#" class="c-soc__link">
                     <i class="ip-instagram c-soc__icon c-soc__icon--instagram">
-                      <!-- -->
                     </i>
                   </a>
                   <a href="#" class="c-soc__link">
                     <i class="ip-whatsapp c-soc__icon c-soc__icon--whatsapp">
-                      <!-- -->
                     </i>
                   </a>
                   <a href="#" class="c-soc__link">
                     <i class="ip-youtube c-soc__icon c-soc__icon--youtube">
-                      <!-- -->
                     </i>
                   </a>
                 </div>
               </div>
-            </div>
-            <div class="c-post__comments-wrap">
+            </div> -->
+            <!-- <div class="c-post__comments-wrap">
               <div id="comments" class="c-post__comments">
                 <div class="c-post__comments-row c-post__comments-row--comments ">
                   <div>
@@ -206,9 +162,7 @@
                               <i class="ip-reply reply-button"></i>Reply</a>
                           </div>
                         </article>
-                        <!-- .comment-body -->
                       </li>
-                      <!-- #comment-## -->
                       <li id="comment-3" class="comment byuser comment-author-admin_2719 bypostauthor odd alt thread-odd thread-alt depth-1">
                         <article id="div-comment-3" class="comment-body ">
                           <header class="comment-meta">
@@ -234,11 +188,8 @@
                               <i class="ip-reply reply-button"></i>Reply</a>
                           </div>
                         </article>
-                        <!-- .comment-body -->
                       </li>
-                      <!-- #comment-## -->
                     </ol>
-                    <!-- .comments-list -->
                   </div>
                   <div id="respond" class="comment-respond">
                     <h3 id="reply-title" class="comment-reply-title">Post a Comment
@@ -246,28 +197,42 @@
                         <a rel="nofollow" id="cancel-comment-reply-link" href="/luchiana/demo/2020/10/20/new-trends-2020/#respond" style="display:none;">Cancel reply</a>
                       </small>
                     </h3>
-                    <form action="https://parkofideas.com/luchiana/demo/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-                      <p class="logged-in-as">
-                        <a href="https://parkofideas.com/luchiana/demo/wp-admin/profile.php" aria-label="Logged in as xyz. Edit your profile.">Logged in as xyz</a>.
-                        <a href="https://parkofideas.com/luchiana/demo/wp-login.php?action=logout&amp;redirect_to=https%3A%2F%2Fparkofideas.com%2Fluchiana%2Fdemo%2F2020%2F10%2F20%2Fnew-trends-2020%2F&amp;_wpnonce=4441456c6c">Log out?</a>
+                    <form action="{{ url('storecomment') }}" method="post" id="commentform" class="comment-form" novalidate="">
+                      @csrf
+                      <p class="comment-notes">
+                        <span id="email-notes">Your email address will not be published.</span> Required fields are marked 
+                        <span class="required">*</span>
                       </p>
-                      <p class="comment-form-comment">
-                        <textarea placeholder="Comment" id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required">
-                        </textarea>
+                      <p class="comment-form-comment"> 
+                        <textarea placeholder="Comment" id="comment" name="comment" cols="45" rows="8" required="required" class="@error('comment') is-invalid @enderror">{{ old('comment') }}</textarea>
+                        @error('comment')
+                          <span class="error invalid-feedback">{{ $message }}</span>
+                        @enderror
+                      </p>
+                      <p class="comment-form-author"> 
+                        <input placeholder="Name *" id="author" name="name" type="text" value="{{ old('name') }}" size="30" maxlength="245" required="required" class="@error('name') is-invalid @enderror">
+                        <input type="hidden" name="blog_id" value="{{ $blog->id }}">
+                        @error('name')
+                          <span class="error invalid-feedback">{{ $message }}</span>
+                        @enderror
+                      </p>
+                      <p class="comment-form-email"> 
+                        <input placeholder="Email *" id="email" name="email" type="email" value="{{ old('email') }}" size="30" maxlength="100" aria-describedby="email-notes" required="required" class="@error('email') is-invalid @enderror">
+                        @error('email')
+                          <span class="error invalid-feedback">{{ $message }}</span>
+                        @enderror
+                      </p>
+                      <p class="comment-form-url"> 
+                        <input placeholder="Website" id="url" name="website" type="url" value="{{ old('website') }}" size="30" maxlength="200">
                       </p>
                       <p class="form-submit">
-                        <button type="submit" name="submit" id="submit" class="submit">Post Comment</button>
-                        <input type='hidden' name='comment_post_ID' value='142' id='comment_post_ID' />
-                        <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+                        <button type="submit" name="submit" id="submit" class="submit">Post Comment</button> 
                       </p>
                     </form>
                   </div>
-                  <!-- #respond -->
                 </div>
               </div>
-              <!-- #comments -->
-            </div>
-            <!-- #comments-wrap -->
+            </div> -->
           </div>
         </article>
       </div>
@@ -279,17 +244,17 @@
             <div class="widget-title">Categories</div>
             <ul>
               <li class="cat-item cat-item-43">
-                <a href="https://parkofideas.com/luchiana/demo/category/beauty/">Beauty</a>
+                <a href="{{ url('blog/Beauty') }}">Beauty</a>
               </li>
               <li class="cat-item cat-item-40">
-                <a href="https://parkofideas.com/luchiana/demo/category/cosmetic/">Cosmetic</a>
+                <a href="{{ url('blog/Cosmetic') }}">Cosmetic</a>
               </li>
               <li class="cat-item cat-item-42">
-                <a href="https://parkofideas.com/luchiana/demo/category/fashion/">Fashion</a>
+                <a href="{{ url('blog/Fashion') }}">Fashion</a>
               </li>
             </ul>
           </aside>
-          <aside id="search-3" class="widget widget_search">
+          <!-- <aside id="search-3" class="widget widget_search">
             <div class="widget-title">Search</div>
             <div class="c-search-form">
               <form role="search" method="get" class="js-search-form-entry" action="https://parkofideas.com/luchiana/demo/">
@@ -304,73 +269,35 @@
                 </div>
               </form>
             </div>
-          </aside>
+          </aside> -->
           <aside id="ideapark_latest_posts_widget-3" class="widget custom-lps-widget">
             <div class="widget-title">Latest Posts</div>
             <ul class="c-lp-widget">
-              <li class="c-lp-widget__item c-lp-widget__item--thumb">
-                <div class="c-lp-widget__thumb">
-                  <a href="https://parkofideas.com/luchiana/demo/2020/10/20/new-trends-2020/" rel="bookmark">
-                    <img width="115" height="115" src="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959487418-115x115.jpg" class="c-lp-widget__thumb-img wp-post-image" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959487418-115x115.jpg 115w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959487418-70x70.jpg 70w" sizes="(max-width: 115px) 100vw, 115px" />
-                  </a>
-                </div>
-                <div class="c-lp-widget__content">
-                  <a href="https://parkofideas.com/luchiana/demo/2020/10/20/new-trends-2020/" rel="bookmark">
-                    <div class="c-lp-widget__title">New Trends in 2020</div>
-                  </a>
-                  <div class="c-lp-widget__date">October 20, 2020</div>
-                </div>
-              </li>
-              <li class="c-lp-widget__item c-lp-widget__item--thumb">
-                <div class="c-lp-widget__thumb">
-                  <a href="https://parkofideas.com/luchiana/demo/2020/10/20/video-post/" rel="bookmark">
-                    <img width="115" height="115" src="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959282579-115x115.jpg" class="c-lp-widget__thumb-img wp-post-image" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959282579-115x115.jpg 115w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959282579-70x70.jpg 70w" sizes="(max-width: 115px) 100vw, 115px" />
-                  </a>
-                </div>
-                <div class="c-lp-widget__content">
-                  <a href="https://parkofideas.com/luchiana/demo/2020/10/20/video-post/" rel="bookmark">
-                    <div class="c-lp-widget__title">Video post</div>
-                  </a>
-                  <div class="c-lp-widget__date">October 20, 2020</div>
-                </div>
-              </li>
-              <li class="c-lp-widget__item c-lp-widget__item--thumb">
-                <div class="c-lp-widget__thumb">
-                  <a href="https://parkofideas.com/luchiana/demo/2020/10/20/gallery-post/" rel="bookmark">
-                    <img width="115" height="115" src="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959718882-115x115.jpg" class="c-lp-widget__thumb-img wp-post-image" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959718882-115x115.jpg 115w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959718882-70x70.jpg 70w" sizes="(max-width: 115px) 100vw, 115px" />
-                  </a>
-                </div>
-                <div class="c-lp-widget__content">
-                  <a href="https://parkofideas.com/luchiana/demo/2020/10/20/gallery-post/" rel="bookmark">
-                    <div class="c-lp-widget__title">Gallery post</div>
-                  </a>
-                  <div class="c-lp-widget__date">October 20, 2020</div>
-                </div>
-              </li>
-              <li class="c-lp-widget__item c-lp-widget__item--thumb">
-                <div class="c-lp-widget__thumb">
-                  <a href="https://parkofideas.com/luchiana/demo/2020/10/18/remember-trends/" rel="bookmark">
-                    <img width="115" height="115" src="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959020724-115x115.jpg" class="c-lp-widget__thumb-img wp-post-image" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959020724-115x115.jpg 115w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1959020724-70x70.jpg 70w" sizes="(max-width: 115px) 100vw, 115px" />
-                  </a>
-                </div>
-                <div class="c-lp-widget__content">
-                  <a href="https://parkofideas.com/luchiana/demo/2020/10/18/remember-trends/" rel="bookmark">
-                    <div class="c-lp-widget__title">Remember trends</div>
-                  </a>
-                  <div class="c-lp-widget__date">October 18, 2020</div>
-                </div>
-              </li>
+              @for($i = 0; $i < 4; $i++)
+                @if(isset($blogs[$i]))
+                  <li class="c-lp-widget__item c-lp-widget__item--thumb">
+                    <div class="c-lp-widget__thumb">
+                      <a href="{{ $blogs[$i]->slug }}" rel="bookmark">
+                        <img width="115" height="115" loading="lazy" style="height: 3.75rem !important; width: auto;" class="c-lp-widget__thumb-img wp-post-image" src="{{ asset('storage/blogs/'.$blogs[$i]->featured_image) }}" alt="{{ $blogs[$i]->alt }}" title="{{ $blogs[$i]->title }}" />
+                      </a>
+                    </div>
+                    <div class="c-lp-widget__content">
+                      <a href="{{ $blogs[$i]->slug }}" rel="bookmark">
+                        <div class="c-lp-widget__title">{{ $blogs[$i]->title }}</div>
+                      </a>
+                      <div class="c-lp-widget__date">{{ date('M d, Y', strtotime($blogs[$i]->publish_date)) }}</div>
+                    </div>
+                  </li>
+                @endif
+              @endfor
             </ul>
           </aside>
           <aside id="tag_cloud-2" class="widget widget_tag_cloud">
             <div class="widget-title">Tags</div>
             <div class="tagcloud">
-              <a href="https://parkofideas.com/luchiana/demo/tag/cosmetic/" class="tag-cloud-link tag-link-44 tag-link-position-1" style="font-size: 22pt;" aria-label="cosmetic (3 items)">cosmetic</a>
-              <a href="https://parkofideas.com/luchiana/demo/tag/gallery/" class="tag-cloud-link tag-link-38 tag-link-position-2" style="font-size: 8pt;" aria-label="gallery (1 item)">gallery</a>
-              <a href="https://parkofideas.com/luchiana/demo/tag/make-up/" class="tag-cloud-link tag-link-47 tag-link-position-3" style="font-size: 8pt;" aria-label="make up (1 item)">make up</a>
-              <a href="https://parkofideas.com/luchiana/demo/tag/slider/" class="tag-cloud-link tag-link-39 tag-link-position-4" style="font-size: 8pt;" aria-label="slider (1 item)">slider</a>
-              <a href="https://parkofideas.com/luchiana/demo/tag/trends/" class="tag-cloud-link tag-link-45 tag-link-position-5" style="font-size: 16.4pt;" aria-label="trends (2 items)">trends</a>
-              <a href="https://parkofideas.com/luchiana/demo/tag/video/" class="tag-cloud-link tag-link-48 tag-link-position-6" style="font-size: 8pt;" aria-label="video (1 item)">video</a>
+              @foreach($tags as $tag)
+                <a href="{{ url('blog/tag',$tag) }}" class="tag-cloud-link tag-link-44 tag-link-position-1" style="font-size: 22pt;">{{ $tag }}</a>
+              @endforeach
             </div>
           </aside>
         </aside>

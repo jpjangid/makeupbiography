@@ -56,6 +56,7 @@
                                     <th>S.No.</th>
                                     <th>Title</th>
                                     <th>Slug</th>
+                                    <th>Blog Category</th>
                                     <th>Publish Date</th>
                                     <th>Publish</th>
                                     <th>Action</th>
@@ -68,6 +69,7 @@
                                         <td>{{ $i }}</td>
                                         <td>{{ $blog->title }}</td>
                                         <td>{{ $blog->slug }}</td>
+                                        <td>{{ $blog->category }}</td>
                                         <td>{{ date('d-m-Y', strtotime($blog->publish_date)) }}</td>
                                         <td>
                                             
