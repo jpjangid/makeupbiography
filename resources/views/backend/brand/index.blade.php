@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-@section('title','Blog')
+@section('title','Brand')
 
 @section('css')
 <!-- Status message -->
@@ -43,44 +43,39 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-tools mt-4">
-                            <a href="{{ url('admin/blogs/create') }}" class="btn btn-active-light-primary">
-                                + Add Blog
+                            <a href="{{ url('admin/brands/create') }}" class="btn btn-active-light-primary">
+                                + Add Brand
                             </a>
                         </div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body table-responsive">
-                        <table class="table table-row-bordered table-hover text-nowrap" id="blogTable">
+                        <table class="table table-row-bordered table-hover text-nowrap" id="brandTable">
                             <thead>
                                 <tr class="fw-bold fs-6 text-muted">
                                     <th>S.No.</th>
-                                    <th>Title</th>
+                                    <th>Brand</th>
                                     <th>Slug</th>
-                                    <th>Blog Category</th>
-                                    <th>Publish Date</th>
-                                    <th>Publish</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @php $i = 1; @endphp
-                                @foreach($blogs as $blog)
+                                @foreach($brands as $brand)
                                     <tr>
                                         <td>{{ $i }}</td>
-                                        <td>{{ $blog->title }}</td>
-                                        <td>{{ $blog->slug }}</td>
-                                        <td>{{ $blog->category }}</td>
-                                        <td>{{ date('d-m-Y', strtotime($blog->publish_date)) }}</td>
+                                        <td>{{ $brand->name }}</td>
+                                        <td>{{ $brand->slug }}</td>
                                         <td>
-                                            
                                             <div class="form-check form-switch form-check-custom form-check-solid">
-                                                <input type="hidden" value="{{ $blog->id }}" class="blog_id">
-                                                <input type="checkbox" class="form-check-input js-switch  h-20px w-30px" id="customSwitch1" name="status" value="{{ $blog->status }}" {{ $blog->status == 1 ? 'checked' : '' }}>
+                                                <input type="hidden" value="{{ $brand->id }}" class="brand_id">
+                                                <input type="checkbox" class="form-check-input js-switch  h-20px w-30px" id="customSwitch1" name="status" value="{{ $brand->status }}" {{ $brand->status == 1 ? 'checked' : '' }}>
                                             </div>
                                         </td>
                                         <td>
-                                            <a href="{{ url('admin/blogs/edit',['blog' => $blog->id]) }}"><i class="bi bi-pencil-square"></i></a>
-                                            <a href="{{ url('admin/blogs/delete',['blog' => $blog->id]) }}"><i class="bi bi-trash"></i></a>
+                                            <a href="{{ url('admin/brands/edit',['brand' => $brand->id]) }}"><i class="bi bi-pencil-square"></i></a>
+                                            <a href="{{ url('admin/brands/delete',['brand' => $brand->id]) }}"><i class="bi bi-trash"></i></a>
                                         </td>
                                     </tr>
                                     @php $i++; @endphp
@@ -103,7 +98,7 @@
 <!-- Soft Delete -->
 <script>
     $(document).ready(function() {
-        $('#blogTable').DataTable({
+        $('#brandTable').DataTable({
             "scrollY": 300,
             "scrollX": true
         });
@@ -115,14 +110,14 @@
     $('.js-switch').change(function() {
         var row = $(this).closest('tr');
         let status = row.find('.js-switch').val();
-        let blogId = row.find('.blog_id').val();
+        let brandId = row.find('.brand_id').val();
         $.ajax({
-            url: "{{ url('admin/blogs/update_status') }}",
+            url: "{{ url('admin/brands/update_status') }}",
             type: "POST",
             dataType: "json",
             data: {
                 status: status,
-                blog_id: blogId,
+                brand_id: brandId,
                 _token: '{{csrf_token()}}' 
             },
             success: function(data) {

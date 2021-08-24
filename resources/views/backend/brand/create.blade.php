@@ -26,12 +26,12 @@
                         <div class="card-body">
                             <div class="row">
 
-                                <!-- Blog Title -->
+                                <!-- Brand Title -->
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
-                                        <label class="required form-label" for="title">Title</label>
-                                        <input type="text" class="form-control form-control-solid @error('title') is-invalid @enderror" name="title" id="title" placeholder="Please Enter Blog title" value="{{ old('title') }}">
-                                        @error('title')
+                                        <label class="required form-label" for="name">Title</label>
+                                        <input type="text" class="form-control form-control-solid @error('name') is-invalid @enderror" name="name" id="name" placeholder="Please Enter Brand Name" value="{{ old('name') }}">
+                                        @error('name')
                                         <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -41,7 +41,7 @@
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
                                         <label class="required form-label" for="slug">Slug</label>
-                                        <input type="text" class="form-control form-control-solid @error('slug') is-invalid @enderror" name="slug" value="{{ old('slug')}}" placeholder="Please enter slug of blog" />
+                                        <input type="text" class="form-control form-control-solid @error('slug') is-invalid @enderror" name="slug" value="{{ old('slug')}}" placeholder="Please enter slug of Brand" />
                                         @error('slug')
                                         <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
@@ -58,7 +58,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Blog Description -->
+                                <!-- Brand Description -->
                                 <div class="col-md-12 mb-4">
                                     <div class="form-group">
                                         <label class="required form-label" for="description">Detail Description</label>
@@ -69,7 +69,7 @@
                                     </div>
                                 </div>
 
-                                <!-- blog image -->
+                                <!-- Brand image -->
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
                                         <label class="required form-label" for="featured_image">Featured Image</label>
@@ -79,6 +79,7 @@
                                         @enderror
                                     </div>
                                 </div>
+
                                 <!-- alt title-->
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
@@ -89,6 +90,9 @@
                                         @enderror
                                     </div>
                                 </div>
+
+                                <hr>
+                                <h4>Meta Section</h4>
 
                                 <!-- Meta Title -->
                                 <div class="col-md-6 mb-4">
@@ -123,8 +127,57 @@
                                     </div>
                                 </div>
 
-                                <!-- tags -->
+                                <hr>
+                                <h4>OG Section</h4>
+
+                                <!-- OG Title -->
+                                <div class="col-md-12 mb-4">
+                                    <div class="form-group">
+                                        <label class="form-label" for="og_title">OG Title</label>
+                                        <input type="text" class="form-control form-control-solid @error('og_title') is-invalid @enderror" name="og_title" value="{{ old('og_title')}}" placeholder="Please Enter OG Title" />
+                                        @error('og_title')
+                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <!-- Brand image -->
                                 <div class="col-md-6 mb-4">
+                                    <div class="form-group">
+                                        <label class="required form-label" for="og_image">OG Image</label>
+                                        <input type="file" name="og_image" class="form-control @error('og_image') is-invalid @enderror" id="exampleInputFile">
+                                        @error('og_image')
+                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
+                                <!-- OG Title -->
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-group">
+                                        <label class="form-label" for="og_alt">OG Image Alt</label>
+                                        <input type="text" class="form-control form-control-solid @error('og_alt') is-invalid @enderror" name="og_alt" value="{{ old('og_alt')}}" placeholder="Please Enter OG Image Alt" />
+                                        @error('og_alt')
+                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <!-- OG description -->
+                                <div class="col-md-12 mb-4">
+                                    <div class="form-group">
+                                        <label class="form-label" for="og_description">OG Description</label>
+                                        <textarea rows="4" cols="" class="form-control form-control-solid @error('og_description') is-invalid @enderror" name="og_description" placeholder="Please enter OG Description">{{ old('og_description')}}</textarea>
+                                        @error('og_description')
+                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <hr>
+                                
+                                <!-- tags -->
+                                <div class="col-md-10 mb-4">
                                     <div class="form-group">
                                         <label class="form-label" for="tags">Tags</label>
                                         <input type="text" class="form-control form-control-solid @error('tags') is-invalid @enderror" name="tags" id="tags" value="{{ old('tags')}}" placeholder="Please Enter Meta Tag" />
@@ -137,7 +190,7 @@
                                 <!-- Status -->
                                 <div class="col-md-2 mb-4">
                                     <div class="form-group">
-                                        <label class="form-label" for="customSwitch1">Active Status </label>
+                                        <label class="form-label" for="customSwitch1">Brand Status</label>
                                         <div class="form-check form-switch form-check-custom form-check-solid mt-3">
                                             <input type="checkbox" class="form-check-input" id="customSwitch1" name="status" value="1">
                                         </div>
@@ -162,4 +215,46 @@
     </div><!-- /.container-fluid -->
 </section>
 <!-- /.content -->
+
+@endsection
+
+@section('js')
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+<!-- Page specific script -->
+<!-- <script type="text/javascript">
+    $(document).on('keydown', '#keywords', function() {
+        if ($('#keywords').val() != "") {
+            var keywords = $('#keywords').val();
+            keywords = keywords.replace(/\s/g, ",");
+            $('#keywords').val(keywords);
+        }
+    });
+
+    $(document).on('keydown', '#tags', function() {
+        if ($('#tags').val() != "") {
+            var tags = $('#tags').val();
+            tags = tags.replace(/\s/g, ",");
+            $('#tags').val(tags);
+        }
+    });
+</script> -->
+<script>
+    $('#summernote').summernote({
+        placeholder: 'Hello stand alone ui',
+        tabsize: 2,
+        height: 120,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+    });
+</script>
+
 @endsection
