@@ -70,5 +70,7 @@ Route::view('checkout','frontend.checkout.index');
 Route::view('myaccount','frontend.myaccount.myaccount');
 Route::view('blog','frontend.blog.index');
 Route::view('blog/xyz','frontend.blog.detail');
+Route::view('faq','frontend.page.faq');
+Route::view('return/policy','frontend.page.return_policy');
 
 /* Route for front end End */
