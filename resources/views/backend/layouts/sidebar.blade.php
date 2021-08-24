@@ -51,6 +51,15 @@
           </span>
           <div class="menu-sub menu-sub-accordion">
             <div class="menu-item">
+              <a class="menu-link" href="{{ url('admin/brands') }}">
+                <span class="menu-bullet">
+                  <span class="bullet bullet-dot">
+                  </span>
+                </span>
+                <span class="menu-title">Brands</span>
+              </a>
+            </div>
+            <div class="menu-item">
               <a class="menu-link" href="{{ url('admin/blogs') }}">
                 <span class="menu-bullet">
                   <span class="bullet bullet-dot">
