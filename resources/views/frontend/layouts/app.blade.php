@@ -114,6 +114,7 @@
   .woocommerce-product-gallery{ opacity: 1 !important; }
     </style>
   </noscript>
+  @yield('css')
   <link rel="icon" href="{{ asset('wp-content/uploads/2020/10/luchiana-1807981163-115x115.png') }}" sizes="32x32" />
   <link rel="icon" href="{{ asset('wp-content/uploads/2020/10/luchiana-1807981163.png')}}" sizes="192x192" />
   <link rel="apple-touch-icon" href="{{ asset('wp-content/uploads/2020/10/luchiana-1807981163.png') }}" />

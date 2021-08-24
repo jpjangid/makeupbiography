@@ -53,6 +53,17 @@ Route::middleware(['auth','prevent-back-history','admin'])->prefix('admin')->gro
         Route::get('/delete/{id}', [App\Http\Controllers\backend\PageController::class, 'destroy']);
         Route::post('/update_status', [App\Http\Controllers\backend\PageController::class, 'update_status']);
     });
+
+    Route::prefix('brands')->group(function () {
+        Route::get('/', [App\Http\Controllers\backend\BrandController::class, 'index']);
+        Route::get('/create',[App\Http\Controllers\backend\BrandController::class,'create']);
+        Route::post('/store',[App\Http\Controllers\backend\BrandController::class,'store']);
+        Route::get('/edit/{id}', [App\Http\Controllers\backend\BrandController::class, 'edit']);
+        Route::put('/update/{id}', [App\Http\Controllers\backend\BrandController::class, 'update']);
+        Route::get('/delete/{id}', [App\Http\Controllers\backend\BrandController::class, 'destroy']);
+        Route::post('/update_status', [App\Http\Controllers\backend\BrandController::class, 'update_status']);
+    });
+
 });
 
 /* Route for frontend Begin */
@@ -68,6 +79,8 @@ Route::view('cart','frontend.cart.index');
 Route::view('cart/empty','frontend.cart.empty');
 Route::view('checkout','frontend.checkout.index');
 Route::view('myaccount','frontend.myaccount.myaccount');
+
+
 Route::get('blog/{cat}', [App\Http\Controllers\frontend\BlogController::class, 'index']);
 Route::get('blogdetail/{slug}', [App\Http\Controllers\frontend\BlogController::class, 'detail']);
 Route::get('blog/tag/{cat}', [App\Http\Controllers\frontend\BlogController::class, 'blogtag']);
