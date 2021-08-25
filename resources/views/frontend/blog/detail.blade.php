@@ -1,5 +1,40 @@
 @extends('frontend.main.index')
 
+@section('title', $blog->meta_title != '' ? $blog->meta_title : 'Makeup Biography')
+@section('description',$blog->meta_description != '' ? $blog->meta_description : '')
+@section('keywords',$blog->keywords != '' ? $blog->keywords : '')
+@section('og_title', $blog->og_title != '' ? $blog->og_title : 'Makeup Biography')
+@section('og_description',$blog->og_description != '' ? $blog->og_description : '')
+@section('og_image',$blog->og_image != '' ? asset('storage/blogs/'.$blog->og_image) : '')
+@section('twitter_title', $blog->og_title != '' ? $blog->og_title : 'Makeup Biography')
+@section('twitter_description',$blog->og_description != '' ? $blog->og_description : '')
+@section('twitter_image',$blog->og_image != '' ? asset('storage/blogs/'.$blog->og_image) : '')
+@section('twitter_site',url(Request::url()))
+
+@section('script')
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ $blog->title }}",
+    "image": "{{ asset('storage/blogs/'.$blog->featured_image) }}",
+    "author": {
+      "@type": "Organization",
+      "name": "Makeupbiography"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "https://g.page/makeupbiography?share",
+      "logo": {
+        "@type": "ImageObject",
+        "url": ""
+      }
+    },
+    "datePublished": "{{ $blog->publish_date }}"
+  }
+</script>
+@endsection
+
 @section('content')
 <div class="l-inner">
   <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default
@@ -77,7 +112,7 @@
               </div>
               <div class="c-post__bottom">
                 <div class="c-post__tags">
-                  <a href="https://parkofideas.com/luchiana/demo/tag/cosmetic/" rel="tag">cosmetic</a>
+                  <a href="{{ url('blog',$blog->category) }}" rel="tag">{{ $blog->category }}</a>
                 </div>
                 <div class="c-post__share">
                   <div class="c-post__bottom-title">Share post:</div>
@@ -273,30 +308,28 @@
           <aside id="ideapark_latest_posts_widget-3" class="widget custom-lps-widget">
             <div class="widget-title">Latest Posts</div>
             <ul class="c-lp-widget">
-              @for($i = 0; $i < 4; $i++)
-                @if(isset($blogs[$i]))
-                  <li class="c-lp-widget__item c-lp-widget__item--thumb">
-                    <div class="c-lp-widget__thumb">
-                      <a href="{{ $blogs[$i]->slug }}" rel="bookmark">
-                        <img width="115" height="115" loading="lazy" style="height: 3.75rem !important; width: auto;" class="c-lp-widget__thumb-img wp-post-image" src="{{ asset('storage/blogs/'.$blogs[$i]->featured_image) }}" alt="{{ $blogs[$i]->alt }}" title="{{ $blogs[$i]->title }}" />
-                      </a>
-                    </div>
-                    <div class="c-lp-widget__content">
-                      <a href="{{ $blogs[$i]->slug }}" rel="bookmark">
-                        <div class="c-lp-widget__title">{{ $blogs[$i]->title }}</div>
-                      </a>
-                      <div class="c-lp-widget__date">{{ date('M d, Y', strtotime($blogs[$i]->publish_date)) }}</div>
-                    </div>
-                  </li>
+              @for($i = 0; $i < 4; $i++) @if(isset($blogs[$i])) <li class="c-lp-widget__item c-lp-widget__item--thumb">
+                <div class="c-lp-widget__thumb">
+                  <a href="{{ $blogs[$i]->slug }}" rel="bookmark">
+                    <img width="115" height="115" loading="lazy" style="height: 3.75rem !important; width: auto;" class="c-lp-widget__thumb-img wp-post-image" src="{{ asset('storage/blogs/'.$blogs[$i]->featured_image) }}" alt="{{ $blogs[$i]->alt }}" title="{{ $blogs[$i]->title }}" />
+                  </a>
+                </div>
+                <div class="c-lp-widget__content">
+                  <a href="{{ $blogs[$i]->slug }}" rel="bookmark">
+                    <div class="c-lp-widget__title">{{ $blogs[$i]->title }}</div>
+                  </a>
+                  <div class="c-lp-widget__date">{{ date('M d, Y', strtotime($blogs[$i]->publish_date)) }}</div>
+                </div>
+                </li>
                 @endif
-              @endfor
+                @endfor
             </ul>
           </aside>
           <aside id="tag_cloud-2" class="widget widget_tag_cloud">
             <div class="widget-title">Tags</div>
             <div class="tagcloud">
               @foreach($tags as $tag)
-                <a href="{{ url('blog/tag',$tag) }}" class="tag-cloud-link tag-link-44 tag-link-position-1" style="font-size: 22pt;">{{ $tag }}</a>
+              <a href="{{ url('blog/tag',$tag) }}" class="tag-cloud-link tag-link-44 tag-link-position-1" style="font-size: 22pt;">{{ $tag }}</a>
               @endforeach
             </div>
           </aside>
