@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-@section('title','Brand')
+@section('title','Redirections')
 
 @section('css')
 <!-- Status message -->
@@ -43,39 +43,31 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-tools mt-4">
-                            <a href="{{ url('admin/brands/create') }}" class="btn btn-active-light-primary">
-                                + Add Brand
+                            <a href="{{ url('admin/redirections/create') }}" class="btn btn-active-light-primary">
+                                + Add Redirection
                             </a>
                         </div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body table-responsive">
-                        <table class="table table-row-bordered table-hover text-nowrap" id="brandTable">
+                        <table class="table table-row-bordered table-hover text-nowrap" id="redirectionTable">
                             <thead>
                                 <tr class="fw-bold fs-6 text-muted">
                                     <th>S.No.</th>
-                                    <th>Brand</th>
-                                    <th>Slug</th>
-                                    <th>Status</th>
+                                    <th>From Url</th>
+                                    <th>To Url</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @php $i = 1; @endphp
-                                @foreach($brands as $brand)
+                                @foreach($redirections as $redirection)
                                     <tr>
                                         <td>{{ $i }}</td>
-                                        <td>{{ $brand->name }}</td>
-                                        <td>{{ $brand->slug }}</td>
+                                        <td>{{ $redirection->from_url }}</td>
+                                        <td>{{ $redirection->to_url }}</td>
                                         <td>
-                                            <div class="form-check form-switch form-check-custom form-check-solid">
-                                                <input type="hidden" value="{{ $brand->id }}" class="brand_id">
-                                                <input type="checkbox" class="form-check-input js-switch  h-20px w-30px" id="customSwitch1" name="status" value="{{ $brand->status }}" {{ $brand->status == 1 ? 'checked' : '' }}>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <a href="{{ url('admin/brands/edit',['brand' => $brand->id]) }}"><i class="bi bi-pencil-square"></i></a>
-                                            <a href="{{ url('admin/brands/delete',['brand' => $brand->id]) }}"><i class="bi bi-trash"></i></a>
+                                            <a href="{{ url('admin/redirections/delete',['redirection' => $redirection->id]) }}"><i class="bi bi-trash"></i></a>
                                         </td>
                                     </tr>
                                     @php $i++; @endphp
@@ -90,44 +82,4 @@
         <!-- /.row -->
     </div>
 </section>
-
-@endsection
-
-@section('js')
-
-<!-- Soft Delete -->
-<script>
-    $(document).ready(function() {
-        $('#brandTable').DataTable({
-            "scrollY": 300,
-            "scrollX": true
-        });
-    });
-</script>
-
-<!-- Change Status -->
-<script>
-    $('.js-switch').change(function() {
-        var row = $(this).closest('tr');
-        let status = row.find('.js-switch').val();
-        let brandId = row.find('.brand_id').val();
-        $.ajax({
-            url: "{{ url('admin/brands/update_status') }}",
-            type: "POST",
-            dataType: "json",
-            data: {
-                status: status,
-                brand_id: brandId,
-                _token: '{{csrf_token()}}' 
-            },
-            success: function(data) {
-                toastr.options.closeButton = true;
-                toastr.options.closeMethod = 'fadeOut';
-                toastr.options.closeDuration = 100;
-                toastr.success(data.message);
-            }
-        });
-    });
-</script>
-
 @endsection
