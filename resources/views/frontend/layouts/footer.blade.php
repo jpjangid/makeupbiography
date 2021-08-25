@@ -13,7 +13,7 @@
                         <div class="elementor-widget-container">
                           <div class="c-ip-inline-menu">
                             <span class="c-ip-inline-menu__item">
-                              <a href="https://parkofideas.com/luchiana/demo/about/">About us</a>
+                              <a href="{{ url('about-us') }}">About us</a>
                             </span>
                             <i class="ip-dot c-ip-inline-menu__separator c-ip-inline-menu__separator--dot"></i>
                             <span class="c-ip-inline-menu__item">
@@ -21,7 +21,7 @@
                             </span>
                             <i class="ip-dot c-ip-inline-menu__separator c-ip-inline-menu__separator--dot"></i>
                             <span class="c-ip-inline-menu__item">
-                              <a href="https://parkofideas.com/luchiana/demo/faq/">FAQ</a>
+                              <a href="{{ url('faq') }}">FAQ</a>
                             </span>
                             <i class="ip-dot c-ip-inline-menu__separator c-ip-inline-menu__separator--dot"></i>
                             <span class="c-ip-inline-menu__item">
@@ -134,7 +134,7 @@
                                     <div class="elementor-widget-container">
                                       <div class="c-ip-heading c-ip-heading--default c-ip-heading--right c-ip-heading--tablet- c-ip-heading--mobile-center c-ip-heading--bullet-hide">
                                         <span class="c-ip-heading__inner">
-                                          <a href="https://parkofideas.com/luchiana/demo/about/">Read More</a>
+                                          <a href="{{ url('about-us') }}">Read More</a>
                                         </span>
                                       </div>
                                     </div>
@@ -176,7 +176,7 @@
                                         </span>
                                         <i class="ip-dot c-ip-inline-menu__separator c-ip-inline-menu__separator--dot"></i>
                                         <span class="c-ip-inline-menu__item">
-                                          <a href="https://parkofideas.com/luchiana/demo/faq/">Faq</a>
+                                          <a href="{{ url('faq') }}">Faq</a>
                                         </span>
                                       </div>
                                     </div>

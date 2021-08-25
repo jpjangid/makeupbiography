@@ -71,6 +71,16 @@ Route::middleware(['auth','prevent-back-history','admin'])->prefix('admin')->gro
         Route::get('/delete/{id}', [App\Http\Controllers\backend\RedirectionController::class, 'destroy']);
     });
 
+    Route::prefix('categories')->group(function () {
+        Route::get('/', [App\Http\Controllers\backend\CategoryController::class, 'index']);
+        Route::get('/create',[App\Http\Controllers\backend\CategoryController::class,'create']);
+        Route::post('/store',[App\Http\Controllers\backend\CategoryController::class,'store']);
+        Route::get('/edit/{id}', [App\Http\Controllers\backend\CategoryController::class, 'edit']);
+        Route::put('/update/{id}', [App\Http\Controllers\backend\CategoryController::class, 'update']);
+        Route::get('/delete/{id}', [App\Http\Controllers\backend\CategoryController::class, 'destroy']);
+        Route::post('/update_status', [App\Http\Controllers\backend\CategoryController::class, 'update_status']);
+    });
+
    
 
 });
@@ -88,15 +98,16 @@ Route::view('cart','frontend.cart.index');
 Route::view('cart/empty','frontend.cart.empty');
 Route::view('checkout','frontend.checkout.index');
 Route::view('myaccount','frontend.myaccount.myaccount');
-Route::view('faq','frontend.page.faq');
+// Route::view('faq','frontend.page.faq');
 Route::view('return/policy','frontend.page.return_policy');
 Route::view('shipping/policy','frontend.page.shipping_policy');
 Route::view('cancellation/policy','frontend.page.cancellation_policy');
 Route::view('privacy/policy','frontend.page.privacy_policy');
 Route::view('terms&conditions','frontend.page.terms&conditions');
 Route::view('aboutus','frontend.page.aboutus');
+Route::view('404','404');
 
-
+Route::get('{slug}', [App\Http\Controllers\frontend\PageController::class, 'index']);
 Route::get('blog/{cat}', [App\Http\Controllers\frontend\BlogController::class, 'index']);
 Route::get('blogdetail/{slug}', [App\Http\Controllers\frontend\BlogController::class, 'detail']);
 Route::get('blog/tag/{cat}', [App\Http\Controllers\frontend\BlogController::class, 'blogtag']);
