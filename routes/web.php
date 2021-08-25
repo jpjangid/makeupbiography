@@ -102,7 +102,9 @@ Route::view('myaccount','frontend.myaccount.myaccount');
 Route::view('return/policy','frontend.page.return_policy');
 Route::view('shipping/policy','frontend.page.shipping_policy');
 Route::view('cancellation/policy','frontend.page.cancellation_policy');
-// Route::view('aboutus','frontend.page.aboutus');
+Route::view('privacy/policy','frontend.page.privacy_policy');
+Route::view('terms&conditions','frontend.page.terms&conditions');
+Route::view('aboutus','frontend.page.aboutus');
 Route::view('404','404');
 
 Route::get('{slug}', [App\Http\Controllers\frontend\PageController::class, 'index']);
