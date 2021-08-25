@@ -92,6 +92,7 @@ Route::view('faq','frontend.page.faq');
 Route::view('return/policy','frontend.page.return_policy');
 Route::view('shipping/policy','frontend.page.shipping_policy');
 Route::view('cancellation/policy','frontend.page.cancellation_policy');
+Route::view('aboutus','frontend.page.aboutus');
 
 
 Route::get('blog/{cat}', [App\Http\Controllers\frontend\BlogController::class, 'index']);

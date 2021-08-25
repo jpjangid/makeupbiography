@@ -45,6 +45,7 @@
   		padding: 0 !important;
   	}
   </style>
+  
   <link rel='stylesheet' id='contact-form-7-css' href='{{ asset("wp-content/plugins/contact-form-7/includes/css/styles7661.css?ver=5.4.2") }}' type='text/css' media='all' />
   <style id='woocommerce-inline-inline-css' type='text/css'>
   .woocommerce form .form-row .required { visibility: visible; }
