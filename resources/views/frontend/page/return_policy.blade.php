@@ -24,30 +24,6 @@
             replacement and/or refund is offered by the seller to you.
             <br>
             <br>
-            <strong style="font-size: 20px;">Cancellation before shipment (Only valid on orders’ place & delivery in India):</strong>
-            <br>
-            If the order or the item(s) that you want to cancel have not been shipped yet, you can write to our customer support team on pqr@xyz.com or call us on 1800-XXX-XXXX (Monday to Friday, 10AM - 6PM).
-            <br>
-            In such cases, the order will be cancelled, and the money will be refunded to you within 24 - 48 business hours after the cancellation request is duly processed by us.
-            <br>
-            <br>
-            <strong  style="font-size: 20px;">How will I get refunded for the cancelled orders and how long will this process take?</strong>
-            <br>
-            In case of cancellation before shipment, we process the refund within 24 - 48 business hours after receiving the cancellation request.
-            <br>
-            In case of cancellation once the shipment has already been dispatched or if it is being returned, we process the refund once the products have been received and verified at our warehouse.
-            <br>
-            <ul>
-                <li>
-                    For <b>payments done through credit/debit cards or net banking</b>, the refund will be processed to the same account from which the payment was made within 24-48 business hours of us receiving the products back. 
-                    It may take 2 - 3 additional business days for the amount to reflect in your account.
-                </li>
-                <li>
-                    For <b>cash on delivery transactions</b>, we will initiate a bank transfer against the refund amount against the billing details shared by you. This process will be completed within 24-48 business hours of us receiving the products back and your bank details on email. 
-                    It will take an additional 2 - 3 business days for the amount to reflect in your account.
-                </li>
-            </ul>
-            <br>
             <strong  style="font-size: 20px;">
                 How do I return an item purchased on Makeup Biography?</strong>
                 <br>
@@ -138,9 +114,7 @@
             Yes, the free gift is included as a part of the item order and needs to be returned along with the originally delivered product.
             <br>
             <br>
-            <strong style="font-size: 20px;">
-                Can I return part of my order?
-            </strong>
+            <strong style="font-size: 20px;">Can I return a part of my order?</strong>
             <br>
             Yes. A return can be created at item level and if you have ordered multiple items, you can initiate a return/replacement/refund for any individual item. 
             However, any product being returned needs to be returned in full including all components as well as any complimentary gifts or products which came along with it.
