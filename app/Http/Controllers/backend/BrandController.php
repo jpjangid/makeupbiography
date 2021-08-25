@@ -28,7 +28,7 @@ class BrandController extends Controller
             'description'           =>  'required',
             'short_description'     =>  'required',
             'alt'                   =>  'required',
-            'slug'                  =>  'required|unique:brands,name',
+            'slug'                  =>  'required|unique:brands,slug',
         ], [
             'name.required'                 =>  'Brand Name is required',
             'description.required'          =>  'Brand Description is required',
