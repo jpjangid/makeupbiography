@@ -189,8 +189,11 @@
               <li id="menu-item-396" class="c-mobile-menu__subitem menu-item-396">
                 <a href="{{ url('cancellation-policy') }}">Cancellation Policy</a>
               </li>
-              <li id="menu-item-397" class="c-mobile-menu__subitem menu-item-397">
-                <a href="https://parkofideas.com/luchiana/demo/contact/">Contact</a>
+              <li class="c-mobile-menu__subitem menu-item-397">
+                <a href="{{ url('privacy-policy') }}">Privacy Policy</a>
+              </li>
+              <li class="c-mobile-menu__subitem menu-item-397">
+                <a href="{{ url('terms-and-conditions') }}">Terms & Conditions</a>
               </li>
             </ul>
           </li>
@@ -752,9 +755,11 @@
                   <li id="menu-item-396" class="c-top-menu__subitem menu-item-396  c-top-menu__subitem--collapse js-menu-item">
                     <a href="{{ url('cancellation-policy') }}">Cancellation Policy</a>
                   </li>
+                  <li class="c-top-menu__subitem menu-item-397 c-top-menu__subitem--collapse js-menu-item">
+                    <a href="{{ url('privacy-policy') }}">Privacy Policy</a>
                   </li>
                   <li class="c-top-menu__subitem menu-item-397 c-top-menu__subitem--collapse js-menu-item">
-                    <a href="https://parkofideas.com/luchiana/demo/contact/">Contact</a>
+                    <a href="{{ url('terms-and-conditions') }}">Terms & Conditions</a>
                   </li>
                 </ul>
               </li>

@@ -37,6 +37,5 @@
 
 
 @section('content')
-<?php echo $page->description; ?>
-<!-- /.l-inner -->
+	<?php echo $page->description; ?>
 @endsection

@@ -40,5 +40,5 @@
 @endsection
 
 @section('content')
-<?php echo $page->description; ?>
+	<?php echo $page->description; ?>
 @endsection
