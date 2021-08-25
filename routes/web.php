@@ -88,13 +88,13 @@ Route::view('cart','frontend.cart.index');
 Route::view('cart/empty','frontend.cart.empty');
 Route::view('checkout','frontend.checkout.index');
 Route::view('myaccount','frontend.myaccount.myaccount');
-Route::view('faq','frontend.page.faq');
+// Route::view('faq','frontend.page.faq');
 Route::view('return/policy','frontend.page.return_policy');
 Route::view('shipping/policy','frontend.page.shipping_policy');
 Route::view('cancellation/policy','frontend.page.cancellation_policy');
-Route::view('aboutus','frontend.page.aboutus');
+// Route::view('aboutus','frontend.page.aboutus');
 
-
+Route::get('{slug}', [App\Http\Controllers\frontend\PageController::class, 'index']);
 Route::get('blog/{cat}', [App\Http\Controllers\frontend\BlogController::class, 'index']);
 Route::get('blogdetail/{slug}', [App\Http\Controllers\frontend\BlogController::class, 'detail']);
 Route::get('blog/tag/{cat}', [App\Http\Controllers\frontend\BlogController::class, 'blogtag']);
