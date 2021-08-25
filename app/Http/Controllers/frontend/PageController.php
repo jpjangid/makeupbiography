@@ -12,12 +12,16 @@ class PageController extends Controller
     {
         $page = Page::where('slug',$slug)->first();
 
-        if($page->title == "About"){
-            return view('frontend.page.aboutus', compact('page'));
-        }elseif($page->title == "FAQ's"){
-            return view('frontend.page.faq', compact('page'));
+        if(!empty($page)){
+            if($page->title == "About"){
+                return view('frontend.page.aboutus', compact('page'));
+            }elseif($page->title == "FAQ's"){
+                return view('frontend.page.faq', compact('page'));
+            }else{
+                return view('404');
+            }
         }else{
-            return redirect()->back();
+            return view('404');
         }
     }
 }
