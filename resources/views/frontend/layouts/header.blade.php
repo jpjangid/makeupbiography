@@ -172,7 +172,7 @@
             <a>Pages</a>
             <ul class="c-mobile-menu__submenu">
               <li id="menu-item-165" class="c-mobile-menu__subitem menu-item-165">
-                <a href="https://parkofideas.com/luchiana/demo/about/">About us</a>
+                <a href="{{ url('about-us') }}">About us</a>
               </li>
               <li id="menu-item-2320" class="c-mobile-menu__subitem menu-item-2320">
                 <a href="https://parkofideas.com/luchiana/demo/service/">Service</a>
@@ -181,7 +181,7 @@
                 <a href="https://parkofideas.com/luchiana/demo/our-team/">Our team</a>
               </li>
               <li id="menu-item-185" class="c-mobile-menu__subitem menu-item-185">
-                <a href="https://parkofideas.com/luchiana/demo/faq/">FAQ</a>
+                <a href="{{ url('faq') }}">FAQ</a>
               </li>
               <li id="menu-item-395" class="c-mobile-menu__subitem menu-item-395">
                 <a href="https://parkofideas.com/luchiana/demo/maintenance-mode/">Maintenance mode</a>
@@ -732,7 +732,7 @@
                 <a>Pages</a>
                 <ul class="c-top-menu__submenu c-top-menu__submenu--columns-1">
                   <li class="c-top-menu__subitem menu-item-165 c-top-menu__subitem--collapse js-menu-item">
-                    <a href="https://parkofideas.com/luchiana/demo/about/">About us</a>
+                    <a href="{{ url('about-us') }}">About us</a>
                   </li>
                   <li class="c-top-menu__subitem menu-item-2320 c-top-menu__subitem--collapse js-menu-item">
                     <a href="https://parkofideas.com/luchiana/demo/service/">Service</a>
@@ -741,7 +741,7 @@
                     <a href="https://parkofideas.com/luchiana/demo/our-team/">Our team</a>
                   </li>
                   <li class="c-top-menu__subitem menu-item-185 c-top-menu__subitem--collapse js-menu-item">
-                    <a href="https://parkofideas.com/luchiana/demo/faq/">FAQ</a>
+                    <a href="{{ url('faq') }}">FAQ</a>
                   </li>
                   <li class="c-top-menu__subitem menu-item-395 c-top-menu__subitem--collapse js-menu-item">
                     <a href="https://parkofideas.com/luchiana/demo/maintenance-mode/">Maintenance mode</a>
