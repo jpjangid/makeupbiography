@@ -79,6 +79,10 @@ Route::view('cart','frontend.cart.index');
 Route::view('cart/empty','frontend.cart.empty');
 Route::view('checkout','frontend.checkout.index');
 Route::view('myaccount','frontend.myaccount.myaccount');
+Route::view('faq','frontend.page.faq');
+Route::view('return/policy','frontend.page.return_policy');
+Route::view('shipping/policy','frontend.page.shipping_policy');
+Route::view('cancellation/policy','frontend.page.cancellation_policy');
 
 
 Route::get('blog/{cat}', [App\Http\Controllers\frontend\BlogController::class, 'index']);

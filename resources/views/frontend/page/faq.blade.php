@@ -14,7 +14,7 @@
                     <div class="elementor-element elementor-element-d04350a elementor-widget elementor-widget-ideapark-page-header" data-id="d04350a" data-element_type="widget" data-widget_type="ideapark-page-header.default">
                       <div class="elementor-widget-container">
                         <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default
- c-page-header--page c-page-header--medium">
+                                        c-page-header--page c-page-header--medium">
                           <div class="c-page-header__wrap">
                             <h1 class="c-page-header__title">FAQ</h1>
                           </div>
