@@ -82,7 +82,7 @@
                               <div class="elementor-widget-wrap">
                                 <div class="elementor-element elementor-element-bc4e9cd elementor-widget elementor-widget-ideapark-heading" data-id="bc4e9cd" data-element_type="widget" data-widget_type="ideapark-heading.default">
                                   <div class="elementor-widget-container">
-                                    <div class="c-ip-heading c-ip-heading--default c-ip-heading--left c-ip-heading--tablet- c-ip-heading--mobile- c-ip-heading--bullet-hide">
+                                    <div class="c-ip-heading c-ip-heading--default c-ip-heading--left c-ip-heading--tablet- c-ip-heading--mobile- c-ip-heading--bullet-hide" style="text-align:justify;">
                                       <span class="c-ip-heading__inner">
                                         From the widest selection of genuine beauty products from around the world to beauty advice, 
                                         Makeup Biography is truly passionate about catering to your every beauty and wellness need. 
@@ -99,7 +99,7 @@
                               <div class="elementor-widget-wrap">
                                 <div class="elementor-element elementor-element-8c1e177 elementor-widget elementor-widget-ideapark-heading" data-id="8c1e177" data-element_type="widget" data-widget_type="ideapark-heading.default">
                                   <div class="elementor-widget-container">
-                                    <div class="c-ip-heading c-ip-heading--default c-ip-heading--left c-ip-heading--tablet- c-ip-heading--mobile- c-ip-heading--bullet-hide">
+                                    <div class="c-ip-heading c-ip-heading--default c-ip-heading--left c-ip-heading--tablet- c-ip-heading--mobile- c-ip-heading--bullet-hide" style="text-align:justify;">
                                       <span class="c-ip-heading__inner">
                                         With 100% authentic brands Makeup Biography offers a well curated comprehensive selection of makeup,
                                          skincare, haircare, bath and body, fragrance, grooming appliances, personal care, and health & wellness categories.
@@ -189,19 +189,25 @@
                               <i aria-hidden="true" class="c-ip-icon-list-1__icon fibd21- fi-bd21-natural" ></i>
                               <div class="c-ip-icon-list-1__title">All Natural</div>
                               <i class="ip-romb c-ip-icon-list-1__romb"></i>
-                              <div class="c-ip-icon-list-1__description">For county now sister engage had season better had waited. Occasional mrs interested far expression.</div>
+                              <div class="c-ip-icon-list-1__description">
+                              Farm-to-Face products are infused with super-fresh, natural extracts for the healthiest, glowiest skin of your life.
+                              </div>
                             </li>
                             <li class="c-ip-icon-list-1__item">
                               <i aria-hidden="true" class="c-ip-icon-list-1__icon fibd21- fi-bd21-crown"></i>
                               <div class="c-ip-icon-list-1__title">TOP Quality</div>
                               <i class="ip-romb c-ip-icon-list-1__romb"></i>
-                              <div class="c-ip-icon-list-1__description">Service get met adapted matters offence for. Principles man any insipidity age you simplicity.</div>
+                              <div class="c-ip-icon-list-1__description">
+                                100% premium quality products available of more than 100 brands.
+                              </div>
                             </li>
                             <li class="c-ip-icon-list-1__item">
                               <i aria-hidden="true" class="c-ip-icon-list-1__icon fibd21- fi-bd21-cashback"></i>
-                              <div class="c-ip-icon-list-1__title">10% Cashback</div>
+                              <div class="c-ip-icon-list-1__title">Rewards</div>
                               <i class="ip-romb c-ip-icon-list-1__romb"></i>
-                              <div class="c-ip-icon-list-1__description">Use securing confined his shutters. Delightful as he it acceptance an solicitude discretion reasonably.</div>
+                              <div class="c-ip-icon-list-1__description">
+                                Rewards for your loyalty, engagement and cooperation.
+                              </div>
                             </li>
                           </ul>
                         </div>

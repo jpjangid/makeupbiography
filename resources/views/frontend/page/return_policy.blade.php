@@ -61,7 +61,7 @@
             <br>
             During pick-up, your product will be checked for the following conditions:
             <br>
-            <table >
+            <table>
                 <thead>
                     <tr>
                         <th>Category</th>
