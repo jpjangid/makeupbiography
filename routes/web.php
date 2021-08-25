@@ -64,6 +64,15 @@ Route::middleware(['auth','prevent-back-history','admin'])->prefix('admin')->gro
         Route::post('/update_status', [App\Http\Controllers\backend\BrandController::class, 'update_status']);
     });
 
+    Route::prefix('redirections')->group(function () {
+        Route::get('/', [App\Http\Controllers\backend\RedirectionController::class, 'index']);
+        Route::get('/create',[App\Http\Controllers\backend\RedirectionController::class,'create']);
+        Route::post('/store',[App\Http\Controllers\backend\RedirectionController::class,'store']);
+        Route::get('/delete/{id}', [App\Http\Controllers\backend\RedirectionController::class, 'destroy']);
+    });
+
+   
+
 });
 
 /* Route for frontend Begin */
