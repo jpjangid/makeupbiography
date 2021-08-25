@@ -174,20 +174,20 @@
               <li id="menu-item-165" class="c-mobile-menu__subitem menu-item-165">
                 <a href="{{ url('about-us') }}">About us</a>
               </li>
-              <li id="menu-item-2320" class="c-mobile-menu__subitem menu-item-2320">
-                <a href="https://parkofideas.com/luchiana/demo/service/">Service</a>
-              </li>
               <li id="menu-item-164" class="c-mobile-menu__subitem menu-item-164">
                 <a href="https://parkofideas.com/luchiana/demo/our-team/">Our team</a>
               </li>
               <li id="menu-item-185" class="c-mobile-menu__subitem menu-item-185">
                 <a href="{{ url('faq') }}">FAQ</a>
               </li>
+              <li id="menu-item-2320" class="c-mobile-menu__subitem menu-item-2320">
+                <a href="{{ url('return-policy') }}">Return Policy</a>
+              </li>
               <li id="menu-item-395" class="c-mobile-menu__subitem menu-item-395">
-                <a href="https://parkofideas.com/luchiana/demo/maintenance-mode/">Maintenance mode</a>
+                <a href="{{ url('shipping-policy') }}">Shipping Policy</a>
               </li>
               <li id="menu-item-396" class="c-mobile-menu__subitem menu-item-396">
-                <a href="https://parkofideas.com/luchiana/demo/404">404 Error</a>
+                <a href="{{ url('cancellation-policy') }}">Cancellation Policy</a>
               </li>
               <li id="menu-item-397" class="c-mobile-menu__subitem menu-item-397">
                 <a href="https://parkofideas.com/luchiana/demo/contact/">Contact</a>
@@ -743,11 +743,15 @@
                   <li class="c-top-menu__subitem menu-item-185 c-top-menu__subitem--collapse js-menu-item">
                     <a href="{{ url('faq') }}">FAQ</a>
                   </li>
-                  <li class="c-top-menu__subitem menu-item-395 c-top-menu__subitem--collapse js-menu-item">
-                    <a href="https://parkofideas.com/luchiana/demo/maintenance-mode/">Maintenance mode</a>
+                  <li id="menu-item-2320" class="c-top-menu__subitem menu-item-2320  c-top-menu__subitem--collapse js-menu-item">
+                    <a href="{{ url('return-policy') }}">Return Policy</a>
                   </li>
-                  <li class="c-top-menu__subitem menu-item-396 c-top-menu__subitem--collapse js-menu-item">
-                    <a href="https://parkofideas.com/luchiana/demo/404">404 Error</a>
+                  <li id="menu-item-395" class="c-top-menu__subitem menu-item-395  c-top-menu__subitem--collapse js-menu-item">
+                    <a href="{{ url('shipping-policy') }}">Shipping Policy</a>
+                  </li>
+                  <li id="menu-item-396" class="c-top-menu__subitem menu-item-396  c-top-menu__subitem--collapse js-menu-item">
+                    <a href="{{ url('cancellation-policy') }}">Cancellation Policy</a>
+                  </li>
                   </li>
                   <li class="c-top-menu__subitem menu-item-397 c-top-menu__subitem--collapse js-menu-item">
                     <a href="https://parkofideas.com/luchiana/demo/contact/">Contact</a>
