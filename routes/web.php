@@ -127,6 +127,7 @@ Route::view('myaccount','frontend.myaccount.myaccount');
 // Route::view('terms&conditions','frontend.page.terms&conditions');
 // Route::view('aboutus','frontend.page.aboutus');
 Route::view('404','404');
+Route::view('newlogin','auth.newlogin');
 
 Route::get('{slug}', [App\Http\Controllers\frontend\PageController::class, 'index']);
 Route::get('blog/{cat}', [App\Http\Controllers\frontend\BlogController::class, 'index']);
