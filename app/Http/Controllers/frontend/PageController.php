@@ -17,6 +17,16 @@ class PageController extends Controller
                 return view('frontend.page.aboutus', compact('page'));
             }elseif($page->title == "FAQ's"){
                 return view('frontend.page.faq', compact('page'));
+            }elseif($page->title == "Return Policy"){
+                return view('frontend.page.return_policy', compact('page'));
+            }elseif($page->title == "Shipping Policy"){
+                return view('frontend.page.shipping_policy', compact('page'));
+            }elseif($page->title == "Cancellation Policy"){
+                return view('frontend.page.cancellation_policy', compact('page'));
+            }elseif($page->title == "Privacy Policy"){
+                return view('frontend.page.privacy_policy', compact('page'));
+            }elseif($page->title == "Terms & Conditions"){
+                return view('frontend.page.terms&conditions', compact('page'));
             }else{
                 return view('404');
             }

@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-@section('title','Categories')
+@section('title','Sub Categories')
 
 @section('css')
 <!-- Status message -->
@@ -43,17 +43,18 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-tools mt-4">
-                            <a href="{{ url('admin/categories/create') }}" class="btn btn-active-light-primary">
-                                + Add Category
+                            <a href="{{ url('admin/sub/categories/create') }}" class="btn btn-active-light-primary">
+                                + Add Sub Category
                             </a>
                         </div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body table-responsive">
-                        <table class="table table-row-bordered table-hover text-nowrap" id="categoryTable">
+                        <table class="table table-row-bordered table-hover text-nowrap" id="subCategoryTable">
                             <thead>
                                 <tr class="fw-bold fs-6 text-muted">
                                     <th>Category</th>
+                                    <th>Sub Category</th>
                                     <th>Slug</th>
                                     <th>Status</th>
                                     <th>Action</th>
@@ -78,11 +79,12 @@
 
 <!-- Soft Delete -->
 <script type="text/javascript">
-    var materialTable = $('#categoryTable').DataTable({
+    var materialTable = $('#subCategoryTable').DataTable({
         processing: true,
         serverSide: true,
-        url: "{{ url('admin/categories') }}",
+        url: "{{ url('admin/sub/categories') }}",
         columns: [
+            {data: 'main', name: 'main'},
             {data: 'name', name: 'name'},
             {data: 'slug', name: 'slug'},
             {data: 'active', name: 'status'}, 
@@ -98,7 +100,7 @@
         let status = row.find('.js-switch').val();
         let categoryId = row.find('.category_id').val();
         $.ajax({
-            url: "{{ url('admin/categories/update_status') }}",
+            url: "{{ url('admin/sub/categories/update_status') }}",
             type: "POST",
             dataType: "json",
             data: {
