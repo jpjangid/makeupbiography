@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-@section('title','Add Category')
+@section('title','Add Sub Category')
 
 @section('css')
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
@@ -17,11 +17,11 @@
                 <!-- general form elements -->
                 <div class="card card-info">
                     <div class="card-header">
-                        <h3 class="card-title">Add Category</h3>
+                        <h3 class="card-title">Add Sub Category</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form action="{{ url('admin/categories/store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ url('admin/sub/categories/store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
                             <div class="row">
@@ -46,7 +46,23 @@
                                         <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                </div>   
+                                </div>
+
+                                <!-- category parent -->
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-group">
+                                        <label class="form-label" for="slug">Parent Category</label>
+                                        <select class="form-select form-select-solid @error('parent_category') is-invalid @enderror" name="parent_id">
+                                            <option value="">Open this select menu</option>
+                                            @foreach($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('parent_category')
+                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>    
 
                                 <!-- short_description -->
                                 <div class="col-md-12 mb-4">
@@ -203,8 +219,8 @@
                         <!-- /.card-body -->
 
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-active-light-primary">Add Category</button>
-                            <a href="{{ url('admin/categories') }}" class="btn btn-active-light-danger"> Cancel </a>
+                            <button type="submit" class="btn btn-active-light-primary">Add Sub Category</button>
+                            <a href="{{ url('admin/sub/categories') }}" class="btn btn-active-light-danger"> Cancel </a>
                         </div>
 
                     </form>
