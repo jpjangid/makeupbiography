@@ -130,9 +130,8 @@ Route::view('404','404');
 Route::view('newlogin','auth.newlogin');
 
 Route::get('{slug}', [App\Http\Controllers\frontend\PageController::class, 'index']);
-Route::get('blog/{cat}', [App\Http\Controllers\frontend\BlogController::class, 'index']);
-Route::get('blogdetail/{slug}', [App\Http\Controllers\frontend\BlogController::class, 'detail']);
-Route::get('blog/tag/{cat}', [App\Http\Controllers\frontend\BlogController::class, 'blogtag']);
+Route::get('blogs/{cat}', [App\Http\Controllers\frontend\BlogController::class, 'index']);
+Route::get('blogs/{cat}/{slug}', [App\Http\Controllers\frontend\BlogController::class, 'detail']);
 
 Route::post('storecomment', [App\Http\Controllers\frontend\CommentController::class, 'store']);
 

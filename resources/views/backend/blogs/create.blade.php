@@ -182,9 +182,9 @@
                                         <label class="form-label" for="category">Category</label>
                                         <select class="form-control form-control-solid @error('category') is-invalid @enderror" name="category">
                                             <option value="">Select Blog Category</option>
-                                            <option value="Beauty" {{ old('catgory') == 'Beauty' ? 'selected' : '' }} >Beauty</option>
-                                            <option value="Cosmetic" {{ old('catgory') == 'Cosmetic' ? 'selected' : '' }} >Cosmetic</option>
-                                            <option value="Fashion" {{ old('catgory') == 'Fashion' ? 'selected' : '' }} >Fashion</option>
+                                            <option value="beauty" {{ old('catgory') == 'beauty' ? 'selected' : '' }} >Beauty</option>
+                                            <option value="cosmetic" {{ old('catgory') == 'cosmetic' ? 'selected' : '' }} >Cosmetic</option>
+                                            <option value="fashion" {{ old('catgory') == 'fashion' ? 'selected' : '' }} >Fashion</option>
                                         </select>
                                         @error('category')
                                         <span class="error invalid-feedback">{{ $message }}</span>
