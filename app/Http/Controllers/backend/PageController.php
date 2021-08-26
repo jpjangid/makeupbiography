@@ -12,9 +12,8 @@ class PageController extends Controller
 {
     public function index()
     {
-        $pages = Page::where('flag','0')->get();
-
-        return view('backend.pages.index', compact('pages'));
+        $page = Page::where('flag','0')->get();
+        return view('backend.pages.index', compact('page'));
     }
 
     public function create()

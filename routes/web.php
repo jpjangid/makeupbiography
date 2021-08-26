@@ -125,8 +125,7 @@ Route::view('shipping/policy','frontend.page.shipping_policy');
 Route::view('cancellation/policy','frontend.page.cancellation_policy');
 Route::view('privacy/policy','frontend.page.privacy_policy');
 Route::view('terms&conditions','frontend.page.terms&conditions');
-Route::view('aboutus','frontend.page.aboutus');
-Route::view('404','404');
+
 
 Route::get('{slug}', [App\Http\Controllers\frontend\PageController::class, 'index']);
 Route::get('blog/{cat}', [App\Http\Controllers\frontend\BlogController::class, 'index']);
@@ -134,5 +133,5 @@ Route::get('blogdetail/{slug}', [App\Http\Controllers\frontend\BlogController::c
 Route::get('blog/tag/{cat}', [App\Http\Controllers\frontend\BlogController::class, 'blogtag']);
 
 Route::post('storecomment', [App\Http\Controllers\frontend\CommentController::class, 'store']);
-
+Route::view('404','404');
 /* Route for front end End */
