@@ -56,7 +56,7 @@
           <meta itemprop="position" content="1">
         </li>
         <li class="c-breadcrumbs__item  " itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          <a itemprop="item" title="Blog" href="{{ url('blog/all') }}">
+          <a itemprop="item" title="Blog" href="{{ url('blogs/all') }}">
             <span itemprop="name">Blog</span>
           </a>
           <!--
@@ -67,7 +67,7 @@
           <meta itemprop="position" content="2">
         </li>
         <li class="c-breadcrumbs__item  " itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          <a itemprop="item" title="2020" href="{{ url('blog', $blog->category) }}">
+          <a itemprop="item" title="2020" href="{{ url('blogs', $blog->category) }}">
             <span itemprop="name">{{ $blog->category }}</span>
           </a>
           <!--
@@ -78,7 +78,7 @@
           <meta itemprop="position" content="3">
         </li>
         <li class="c-breadcrumbs__item   c-breadcrumbs__item--last " itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          <a itemprop="item" title="{{ $blog->title }}" href="{{ url('blogdetail',$blog->slug) }}">
+          <a itemprop="item" title="{{ $blog->title }}" href="{{ url('blogsdetail',$blog->slug) }}">
             <span itemprop="name">{{ $blog->title }}</span>
           </a>
           <meta itemprop="position" content="6">
@@ -103,7 +103,7 @@
                 </li>
                 <li class="c-page__meta-item">{{ date('M d, Y', strtotime($blog->publish_date)) }}</li>
                 <li class="c-page__meta-item">
-                  <a class="c-page__categories-item-link" href="{{ url('blog', $blog->category) }}" title="View all posts in Cosmetic">Cosmetic</a>
+                  <a class="c-page__categories-item-link" href="{{ url('blogs', $blog->category) }}" title="View all posts in Cosmetic">Cosmetic</a>
                 </li>
                 <li class="c-page__meta-item">Comments:2</li>
               </ul>
@@ -112,7 +112,7 @@
               </div>
               <div class="c-post__bottom">
                 <div class="c-post__tags">
-                  <a href="{{ url('blog',$blog->category) }}" rel="tag">{{ $blog->category }}</a>
+                  <a href="{{ url('blogs',$blog->category) }}" rel="tag">{{ $blog->category }}</a>
                 </div>
                 <div class="c-post__share">
                   <div class="c-post__bottom-title">Share post:</div>
@@ -278,15 +278,11 @@
           <aside id="categories-3" class="widget widget_categories">
             <div class="widget-title">Categories</div>
             <ul>
-              <li class="cat-item cat-item-43">
-                <a href="{{ url('blog/Beauty') }}">Beauty</a>
-              </li>
-              <li class="cat-item cat-item-40">
-                <a href="{{ url('blog/Cosmetic') }}">Cosmetic</a>
-              </li>
-              <li class="cat-item cat-item-42">
-                <a href="{{ url('blog/Fashion') }}">Fashion</a>
-              </li>
+              @foreach($categories as $category)
+                <li class="cat-item cat-item-43">
+                  <a href="{{ url('blogs',$category) }}">{{ ucfirst($category) }}</a>
+                </li>
+              @endforeach
             </ul>
           </aside>
           <!-- <aside id="search-3" class="widget widget_search">
@@ -329,7 +325,7 @@
             <div class="widget-title">Tags</div>
             <div class="tagcloud">
               @foreach($tags as $tag)
-              <a href="{{ url('blog/tag',$tag) }}" class="tag-cloud-link tag-link-44 tag-link-position-1" style="font-size: 22pt;">{{ $tag }}</a>
+              <a href="{{ url('blogs/tag',$tag) }}" class="tag-cloud-link tag-link-44 tag-link-position-1" style="font-size: 22pt;">{{ $tag }}</a>
               @endforeach
             </div>
           </aside>

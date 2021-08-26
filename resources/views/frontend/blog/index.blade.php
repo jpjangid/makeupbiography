@@ -1,5 +1,40 @@
 @extends('frontend.main.index')
 
+@section('title', $page->meta_title != '' ? $page->meta_title : 'Buy Beauty Products Online | MakeUp Products Store In Bangalore')
+@section('description',$page->meta_description != '' ? $page->meta_description : 'Are you looking for the best deals on all makeup and beauty brands? MakeUp Biography is your one stop solution for all your beauty related requirements.')
+@section('keywords',$page->keywords != '' ? $page->keywords : '')
+@section('og_title', $page->og_title != '' ? $page->og_title : 'Buy Beauty Products Online | MakeUp Products Store In Bangalore')
+@section('og_description',$page->og_description != '' ? $page->og_description : 'Are you looking for the best deals on all makeup and beauty brands? MakeUp Biography is your one stop solution for all your beauty related requirements.')
+@section('og_image',$page->og_image != '' ? asset('storage/blogs/'.$page->og_image) : '')
+@section('twitter_title', $page->og_title != '' ? $page->og_title : 'Buy Beauty Products Online | MakeUp Products Store In Bangalore')
+@section('twitter_description',$page->og_description != '' ? $page->og_description : 'Are you looking for the best deals on all makeup and beauty brands? MakeUp Biography is your one stop solution for all your beauty related requirements.')
+@section('twitter_image',$page->og_image != '' ? asset('storage/blogs/'.$page->og_image) : '')
+@section('twitter_site',url(Request::url()))
+
+@section('script')
+<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "BlogPosting",
+		"headline": "{{ $page->title }}",
+		"image": "{{ asset('storage/blogs/'.$page->featured_image) }}",
+		"author": {
+			"@type": "Organization",
+			"name": "Makeupbiography"
+		},
+		"publisher": {
+			"@type": "Organization",
+			"name": "https://g.page/makeupbiography?share",
+			"logo": {
+				"@type": "ImageObject",
+				"url": ""
+			}
+		},
+		"datePublished": "{{ date('Y-m-d', strtotime($page->created_at)) }}"
+	}
+</script>
+@endsection
+
 @section('content')
 <div class="l-inner">
   <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default c-page-header--post">
@@ -31,7 +66,7 @@
           <meta itemprop="position" content="2">
         </li>
         <li class="c-breadcrumbs__item   c-breadcrumbs__item--last " itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          <a itemprop="item" title="Blog" href="{{ $cat != '' ? url('blog',$cat) : url('blog/all') }}">
+          <a itemprop="item" title="Blog" href="{{ $cat != '' ? url('blogs',$cat) : url('blog/all') }}">
             <span itemprop="name">{{ $cat != '' ? $cat : 'ALL' }}</span>
           </a>
           <meta itemprop="position" content="2">
@@ -56,14 +91,14 @@
               </div>
               <div class="c-post-list__wrap c-post-list__wrap--standard c-post-list__wrap--grid   c-post-list__wrap--sidebar ">
                 <div class="c-post-list__meta-date  c-post-list__meta-date--with-thumb   c-post-list__meta-date--sidebar  c-post-list__meta-date--grid">{{ date('M d, Y', strtotime($blog->publish_date)) }}</div>
-                <a class="c-post-list__header-link" href="{{ url('blogdetail',$blog->slug) }}">
+                <a class="c-post-list__header-link" href="{{ url('blogs',['cat' => $blog->category,'slug' => $blog->slug]) }}">
                   <h2 class="c-post-list__header">{{ $blog->title }}</h2>
                 </a>
                 <div class="c-post-list__except">
                   <p>{{ $blog->short_description }}</p>
                 </div>
                 <div class="c-post-list__meta-category">
-                  <a class="c-post-list__categories-item-link" href="{{ url('blog',$blog->category) }}" title="View all posts in Cosmetic">{{ $blog->category }}</a>
+                  <a class="c-post-list__categories-item-link" href="{{ url('blogs',$blog->category) }}" title="View all posts in Cosmetic">{{ $blog->category }}</a>
                 </div>
                 <a class="c-button c-button--outline c-post-list__continue" href="{{ url('blogdetail',$blog->slug) }}">Read More</a>
               </div>
@@ -78,15 +113,11 @@
           <aside id="categories-3" class="widget widget_categories">
             <div class="widget-title">Categories</div>
             <ul>
-              <li class="cat-item cat-item-43">
-                <a href="{{ url('blog/Beauty') }}">Beauty</a>
-              </li>
-              <li class="cat-item cat-item-40">
-                <a href="{{ url('blog/Cosmetic') }}">Cosmetic</a>
-              </li>
-              <li class="cat-item cat-item-42">
-                <a href="{{ url('blog/Fashion') }}">Fashion</a>
-              </li>
+              @foreach($categories as $category)
+                <li class="cat-item cat-item-43">
+                  <a href="{{ url('blogs',$category) }}">{{ ucfirst($category) }}</a>
+                </li>
+              @endforeach
             </ul>
           </aside>
           <!-- <aside id="search-3" class="widget widget_search">
@@ -131,7 +162,7 @@
             <div class="widget-title">Tags</div>
             <div class="tagcloud">
               @foreach($finaltags as $tag)
-                <a href="{{ url('blog/tag',$tag) }}" class="tag-cloud-link tag-link-44 tag-link-position-1" style="font-size: 22pt;">{{ $tag }}</a>
+                <a href="{{ url('blogs/tag',$tag) }}" class="tag-cloud-link tag-link-44 tag-link-position-1" style="font-size: 22pt;">{{ $tag }}</a>
               @endforeach
             </div>
           </aside>
