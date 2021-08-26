@@ -702,12 +702,11 @@
                   <li class="c-top-menu__subitem menu-item-557 c-top-menu__subitem--expand js-menu-item">
                     <a>{{ $main->name }}</a>
                     <ul class="c-top-menu__submenu c-top-menu__submenu--columns-1 c-top-menu__submenu--expand c-top-menu__submenu--inner">
-                    
-
                     @if(!empty($main->subcategory))
                     @foreach($main->subcategory as $subcategory)
+                    @if($subcategory->status == 1 && $subcategory == 0)
                       @php 
-                        $subcategories = Category::select('id','name','slug')->where('flag',0)->where('status',0)->where('parent_id',$subcategory->id)->get();
+                        $subcategories = Category::select('id','name','slug')->where('flag',0)->where('status',1)->where('parent_id',$subcategory->id)->get();
                       @endphp
                       @if(count($subcategories) > 0)
                       <li class="c-top-menu__subitem c-top-menu__subitem--has-children menu-item-2042 c-top-menu__subitem--collapse js-menu-item">
@@ -725,11 +724,9 @@
                         <a href="https://parkofideas.com/luchiana/demo/shop/?set=31">{{ $subcategory->name }}</a>
                       </li>
                       @endif
-
-                      
-                    @endforeach  
                     @endif
-                      
+                    @endforeach  
+                    @endif  
                     </ul>
                   </li>
                 @endforeach

@@ -56,16 +56,27 @@
     <div class="l-section__content">
       <div class="woocommerce">
         <div class="c-login cap" id="customer_login">
+
           <div class="c-login__form js-login-form c-login__form--active">
             <div class="c-login__header para" style="padding: 10px;">-Login-</div>
-            <form class="c-form" method="post" style="width: 100%;">
+            <form method="POST" class="c-form" action="{{ route('login') }}" style="width: 100%;">
+            @csrf
               <div class="c-form__row fol" style="width: 100%;">
 
-                <input type="text" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text fol" placeholder="Username" name="username" id="username" autocomplete="off" value="" />
-
+                <input type="text" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text fol" placeholder="Email" name="username" id="username" autocomplete="off" value="" />
+                @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
               </div>
               <div class="c-form__row pass" style="width: 100%">
                 <input class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" placeholder="Password" type="password" name="password" id="password" autocomplete="current-password" />
+                @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
               </div>
               <div class="c-form__row c-form__row--inline c-login__remember">
                 <input type="hidden" id="woocommerce-login-nonce" name="woocommerce-login-nonce" value="934c87c088" />
@@ -87,29 +98,46 @@
               </div>
             </form>
           </div>
+
           <div class="c-login__form js-register-form">
             <div class="c-login__header para">-Register-</div>
-            <form method="post" class="c-form">
+            <form class="c-form" method="POST" action="{{ route('register') }}">
+              @csrf
               <div class="c-form__row">
 
-                <input type="text" placeholder="First Name" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="first name" id="reg_first_name" autocomplete="firstname" value="" />
+                <input type="text" placeholder="Name" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="name" id="name" autocomplete="name" value="" />
+                @error('name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
               </div>
               <div class="c-form__row pass">
 
-                <input type="text" placeholder="Last Name" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="last name" id="reg_last_name" autocomplete="lastname" value="" />
-              </div>
-
-              <div class="c-form__row pass">
-
-                <input type="text" placeholder="Phnoe No." class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="phone no" id="reg_phone_no" autocomplete="phoneno" value="" />
+                <input type="text" placeholder="Mobile No." class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="mobile" id="reg_mobile_no" autocomplete="mobileno" value="" />
+                @error('mobile')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
               </div>
               <div class="c-form__row pass">
 
                 <input type="email" placeholder="Email address" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" autocomplete="email" value="" />
+                @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
               </div>
               <div class="c-form__row pass">
 
                 <input type="password" placeholder="Password" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="password" id="password" autocomplete="password" value="" />
+                @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
               </div>
               <div class="c-form__row pass">
 
@@ -136,6 +164,7 @@
               </div>
             </form>
           </div>
+
         </div>
       </div>
     </div>

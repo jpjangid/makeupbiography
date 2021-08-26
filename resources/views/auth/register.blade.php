@@ -1,122 +1,123 @@
-@extends('layouts.app')
+@extends('frontend.layouts.app')
 
 @section('css')
-    <style>
-        /* Chrome, Safari, Edge, Opera */
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
+<style>
+  #customer_login{
+    box-shadow: 5px 10px #888888;
+  }  
 
-        /* Firefox */
-        input[type=number] {
-            -moz-appearance: textfield;
-        }
-    </style>
+ strong {
+    color: red;
+ }
+</style>
 @endsection
 
 @section('content')
-<section>
-    <div class="container h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-lg-12 col-xl-11">
+<div class="l-inner">
+  <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default
+ c-page-header--wc c-page-header--low">
+    <div class="c-page-header__wrap">
+      <h1 class="c-page-header__title">My account</h1>
+    </div>
+    <nav class="c-breadcrumbs">
+      <ol class="c-breadcrumbs__list c-breadcrumbs__list--default" itemscope itemtype="http://schema.org/BreadcrumbList">
+        <li class="c-breadcrumbs__item  c-breadcrumbs__item--first  " itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a itemprop="item" title="Home" href="https://parkofideas.com/luchiana/demo/">
+            <span itemprop="name">Home</span>
+          </a>
+          <!--
+						-->
+          <i class="ip-breadcrumb c-breadcrumbs__separator">
+            <!-- -->
+          </i>
+          <meta itemprop="position" content="1">
+        </li>
+        <li class="c-breadcrumbs__item   c-breadcrumbs__item--last " itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a itemprop="item" title="My account" href="https://parkofideas.com/luchiana/demo/my-account/">
+            <span itemprop="name">My account</span>
+          </a>
+          <meta itemprop="position" content="2">
+        </li>
+      </ol>
+    </nav>
+  </header>
+  <div class="woocommerce-notices-wrapper">
+  </div>
+  <div class="l-section l-section--container l-section--bottom-margin l-section--no-sidebar l-section--top-margin-60 l-section--white">
+    <div class="l-section__content">
+      <div class="woocommerce">
+        <div class="c-login cap" id="customer_login">
+
+          <div class="c-login__form js-register-form c-login__form--active">
+            <div class="c-login__header para">-Register-</div>
+            <form class="c-form" method="POST" action="{{ route('register') }}">
+              @csrf
+              <div class="c-form__row">
+
+                <input type="text" placeholder="Name" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="name" id="name" autocomplete="name" value="" />
+                @error('name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+              <div class="c-form__row pass">
+
+                <input type="text" placeholder="Mobile No." class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="mobile" id="reg_mobile_no" autocomplete="mobileno" value="" />
+                @error('mobile')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+              <div class="c-form__row pass">
+
+                <input type="email" placeholder="Email address" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" autocomplete="email" value="" />
+                @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+              <div class="c-form__row pass">
+
+                <input type="password" placeholder="Password" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="password" id="password" autocomplete="password" value="" />
+                @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+              <div class="c-form__row pass">
+
+                <input type="password" placeholder="Re-enter Password" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="repassword" id="repassword" autocomplete="repassword" value="" />
+              </div>
+
+              <div class="c-form__row">A password will be sent to your email address.</div>
+              <div class="woocommerce-privacy-policy-text">
+                <p>Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our
+                  <a href="https://parkofideas.com/luchiana/demo/privacy-policy/" class="woocommerce-privacy-policy-link" target="_blank">privacy policy</a>.
+                </p>
+              </div>
+              <div class="c-form__row" style="padding: 1px;">
+                <input type="hidden" id="woocommerce-register-nonce" name="woocommerce-register-nonce" value="732270f602" />
+                <input type="hidden" name="_wp_http_referer" value="/luchiana/demo/my-account/" />
+                <button type="submit" class="c-button c-button--outline c-button--full woocommerce-Button button" name="register" value="Register">Register</button>
+              </div>
+              <div class="c-login__bottom">
                 <div>
-                    <div class="card-body p-md-5">
-                        <div class="row justify-content-center">
-                            <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-
-                                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
-
-                                <form class="mx-1 mx-md-4" method="POST" action="{{ route('register') }}">
-                                    @csrf
-                                    <div class="d-flex flex-row align-items-center mb-4">
-                                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                                        <div class="form-outline flex-fill mb-0">
-                                            <input type="text" id="form3Example1c" class="form-control @error('name') is-invalid @enderror" name="name" />
-                                            <label class="form-label" for="form3Example1c">Your Name</label>
-                                            @error('name')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="d-flex flex-row align-items-center mb-4">
-                                        <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                        <div class="form-outline flex-fill mb-0">
-                                            <input type="email" id="form3Example3c" class="form-control @error('email') is-invalid @enderror" name="email" />
-                                            <label class="form-label" for="form3Example3c">Your Email</label>
-                                            @error('email')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="d-flex flex-row align-items-center mb-4">
-                                        <i class="fas fa-phone-alt fa-lg me-3 fa-fw"></i>
-                                        <div class="form-outline flex-fill mb-0">
-                                            <input type="number" id="form3Example3c" class="form-control @error('mobile') is-invalid @enderror" name="mobile" />
-                                            <label class="form-label" for="form3Example3c">Your Mobile No</label>
-                                            @error('mobile')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="d-flex flex-row align-items-center mb-4">
-                                        <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                                        <div class="form-outline flex-fill mb-0">
-                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-                                            <label class="form-label" for="form3Example4c">Password</label>
-                                            @error('password')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="d-flex flex-row align-items-center mb-4">
-                                        <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                                        <div class="form-outline flex-fill mb-0">
-                                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                                            <label class="form-label" for="form3Example4cd">Repeat your password</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4 float-right">
-                                        <button type="submit" class="btn btn-primary btn-md mr-2">Register</button>
-                                        <a href="{{ url('login') }}" class="btn btn-primary btn-md">Login</a>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-                                <img src="{{ asset('register.png') }}" class="img-fluid" alt="Sample image">
-                            </div>
-                        </div>
-                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-2 px-2 px-xl-5 bg-primary footer">
-        <!-- Copyright -->
-        <div class="text-white mb-3 mb-md-0">
-            Copyright © 2020. All rights reserved.
-        </div>
-        <!-- Copyright -->
+                <a href="{{ url('login') }}" class="c-login__register ">Login
+                  <i class="ip-menu-right c-login__more-icon"></i>
+                </a>
+              </div>
+            </form>
+          </div>
 
-        <!-- Right -->
-        <div>
-            <b style="color: white;">Developed By</b> <a href="https://www.webanix.in/" style="color: white;text-decoration: none;">WEbaniX</a>
         </div>
-        <!-- Right -->
+      </div>
     </div>
-</section>
+  </div>
+</div>
+<!-- /.l-inner -->
 @endsection
