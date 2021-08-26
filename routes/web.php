@@ -81,6 +81,27 @@ Route::middleware(['auth','prevent-back-history','admin'])->prefix('admin')->gro
         Route::post('/update_status', [App\Http\Controllers\backend\CategoryController::class, 'update_status']);
     });
 
+    Route::prefix('sub/categories')->group(function () {
+        Route::get('/', [App\Http\Controllers\backend\CategoryController::class, 'index_sub1']);
+        Route::get('/create',[App\Http\Controllers\backend\CategoryController::class,'create_sub1']);
+        Route::post('/store',[App\Http\Controllers\backend\CategoryController::class,'store_sub1']);
+        Route::get('/edit/{id}', [App\Http\Controllers\backend\CategoryController::class, 'edit_sub1']);
+        Route::put('/update/{id}', [App\Http\Controllers\backend\CategoryController::class, 'update_sub1']);
+        Route::get('/delete/{id}', [App\Http\Controllers\backend\CategoryController::class, 'destroy_sub1']);
+        Route::post('/update_status', [App\Http\Controllers\backend\CategoryController::class, 'update_status_sub1']);
+    });
+
+    Route::prefix('sub/sub/categories')->group(function () {
+        Route::get('/', [App\Http\Controllers\backend\CategoryController::class, 'index_sub2']);
+        Route::get('/create',[App\Http\Controllers\backend\CategoryController::class,'create_sub2']);
+        Route::post('/store',[App\Http\Controllers\backend\CategoryController::class,'store_sub2']);
+        Route::get('/edit/{id}', [App\Http\Controllers\backend\CategoryController::class, 'edit_sub2']);
+        Route::put('/update/{id}', [App\Http\Controllers\backend\CategoryController::class, 'update_sub2']);
+        Route::get('/delete/{id}', [App\Http\Controllers\backend\CategoryController::class, 'destroy_sub2']);
+        Route::post('/update_status', [App\Http\Controllers\backend\CategoryController::class, 'update_status_sub2']);
+    });
+
+
    
 
 });
