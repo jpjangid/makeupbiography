@@ -154,7 +154,7 @@
                                   <div class="elementor-element elementor-element-70e42022 elementor-widget elementor-widget-ideapark-heading" data-id="70e42022" data-element_type="widget" data-widget_type="ideapark-heading.default">
                                     <div class="elementor-widget-container">
                                       <div class="c-ip-heading c-ip-heading--default c-ip-heading--left c-ip-heading--tablet- c-ip-heading--mobile-center c-ip-heading--bullet-hide">
-                                        <span class="c-ip-heading__inner">© 2020 LUCHIANA Theme. All rights reserved.</span>
+                                        <span class="c-ip-heading__inner">© 2021 MakeUp Bipography. All rights reserved.</span>
                                       </div>
                                     </div>
                                   </div>
@@ -168,11 +168,11 @@
                                     <div class="elementor-widget-container">
                                       <div class="c-ip-inline-menu">
                                         <span class="c-ip-inline-menu__item">
-                                          <a href="https://parkofideas.com/luchiana/demo/privacy-policy/">Privacy Policy</a>
+                                          <a href="{{ url('privacy-policy') }}">Privacy Policy</a>
                                         </span>
                                         <i class="ip-dot c-ip-inline-menu__separator c-ip-inline-menu__separator--dot"></i>
                                         <span class="c-ip-inline-menu__item">
-                                          <a href="https://parkofideas.com/luchiana/demo/privacy-policy/">Terms</a>
+                                          <a href="{{ url('terms-and-conditions') }}">Terms</a>
                                         </span>
                                         <i class="ip-dot c-ip-inline-menu__separator c-ip-inline-menu__separator--dot"></i>
                                         <span class="c-ip-inline-menu__item">

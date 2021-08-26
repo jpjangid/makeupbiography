@@ -166,7 +166,7 @@
             </ul>
           </li>
           <li id="menu-item-19" class="c-mobile-menu__item c-mobile-menu__item--has-children menu-item-19">
-            <a href="{{ url('blog/all') }}">Blog</a>>
+            <a href="{{ url('blogs/all') }}">Blog</a>>
           </li>
           <li id="menu-item-163" class="c-mobile-menu__item c-mobile-menu__item--has-children menu-item-163">
             <a>Pages</a>
@@ -729,7 +729,7 @@
                 </ul>
               </li>
               <li class="c-top-menu__item c-top-menu__item--has-children menu-item-19 js-menu-item">
-                <a href="{{ url('blog/all') }}">Blog</a>
+                <a href="{{ url('blogs/all') }}">Blog</a>
               </li>
               <li class="c-top-menu__item c-top-menu__item--has-children menu-item-163 js-menu-item">
                 <a>Pages</a>

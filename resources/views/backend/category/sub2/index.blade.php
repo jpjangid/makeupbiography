@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-@section('title','Sub Categories')
+@section('title','Sub Sub Categories')
 
 @section('css')
 <!-- Status message -->
@@ -44,7 +44,7 @@
                     <div class="card-header">
                         <div class="card-tools mt-4">
                             <a href="{{ url('admin/sub/sub/categories/create') }}" class="btn btn-active-light-primary">
-                                + Add Sub Category
+                                + Add Sub Sub Category
                             </a>
                         </div>
                     </div>
@@ -55,6 +55,7 @@
                                 <tr class="fw-bold fs-6 text-muted">
                                     <th>Category</th>
                                     <th>Sub Category</th>
+                                    <th>Sub Sub Category</th>
                                     <th>Slug</th>
                                     <th>Status</th>
                                     <th>Action</th>
@@ -85,6 +86,7 @@
         url: "{{ url('admin/sub/categories') }}",
         columns: [
             {data: 'main', name: 'main'},
+            {data: 'sub', name: 'sub'},
             {data: 'name', name: 'name'},
             {data: 'slug', name: 'slug'},
             {data: 'active', name: 'status'}, 
