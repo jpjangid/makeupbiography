@@ -1,3 +1,8 @@
+@php
+ use \App\Models\Category;
+ $mains = Category::select('id','slug','name')->where('flag',0)->where('parent_id',null)->with('subcategory')->get();
+
+@endphp
 <header class="l-section" id="main-header">
   <div class="c-header__outer c-header__outer--mobile c-header__outer--header-type-4 c-header__outer--header-type-mobile-1">
     <div class="c-header c-header--sticky-support c-header--header-type-4 c-header--header-type-mobile-1 c-header--buttons-4 c-header--mobile js-header-mobile">
@@ -686,6 +691,61 @@
                   </li>
                 </ul>
               </li>
+
+              <!-- category begin -->
+
+              @if(count($mains) > 0)
+              <li class="c-top-menu__item c-top-menu__item--has-children menu-item-162 js-menu-item">
+                <a href="#">Category</a>
+                <ul class="c-top-menu__submenu c-top-menu__submenu--columns-4 c-top-menu__submenu--expand">
+                @foreach($mains as $main)  
+                  <li class="c-top-menu__subitem menu-item-557 c-top-menu__subitem--expand js-menu-item">
+                    <a>{{ $main->name }}</a>
+                    <ul class="c-top-menu__submenu c-top-menu__submenu--columns-1 c-top-menu__submenu--expand c-top-menu__submenu--inner">
+                    
+
+                    @if(!empty($main->subcategory))
+                    @foreach($main->subcategory as $subcategory)
+                      @php 
+                        $subcategories = Category::select('id','name','slug')->where('flag',0)->where('status',0)->where('parent_id',$subcategory->id)->get();
+                      @endphp
+                      @if(count($subcategories) > 0)
+                      <li class="c-top-menu__subitem c-top-menu__subitem--has-children menu-item-2042 c-top-menu__subitem--collapse js-menu-item">
+                        <a>{{ $subcategory->name }}</a>
+                        <ul class="c-top-menu__submenu c-top-menu__submenu--columns-1 c-top-menu__submenu--inner">
+                        @foreach($subcategories as $sub)  
+                          <li class="c-top-menu__subitem menu-item-805 c-top-menu__subitem--collapse js-menu-item">
+                            <a href="https://parkofideas.com/luchiana/demo/?set=21">{{ $sub->name }}</a>
+                          </li>
+                        @endforeach  
+                        </ul>
+                      </li>
+                      @else
+                      <li class="c-top-menu__subitem menu-item-2474 c-top-menu__subitem--collapse js-menu-item">
+                        <a href="https://parkofideas.com/luchiana/demo/shop/?set=31">{{ $subcategory->name }}</a>
+                      </li>
+                      @endif
+
+                      
+                    @endforeach  
+                    @endif
+                      
+                    </ul>
+                  </li>
+                @endforeach
+
+                </ul>
+              </li>
+              @endif
+
+
+
+
+
+
+
+              <!-- category end -->
+
               <li class="c-top-menu__item c-top-menu__item--has-children menu-item-804 js-menu-item">
                 <a>Headers</a>
                 <ul class="c-top-menu__submenu c-top-menu__submenu--columns-1">
