@@ -1,28 +1,41 @@
 @extends('frontend.layouts.app')
 
+@section('title', $page->meta_title != '' ? $page->meta_title : 'Buy Beauty Products Online | MakeUp Products Store In Bangalore')
+@section('description',$page->meta_description != '' ? $page->meta_description : 'Are you looking for the best deals on all makeup and beauty brands? MakeUp Biography is your one stop solution for all your beauty related requirements.')
+@section('keywords',$page->keywords != '' ? $page->keywords : '')
+@section('og_title', $page->og_title != '' ? $page->og_title : 'Buy Beauty Products Online | MakeUp Products Store In Bangalore')
+@section('og_description',$page->og_description != '' ? $page->og_description : 'Are you looking for the best deals on all makeup and beauty brands? MakeUp Biography is your one stop solution for all your beauty related requirements.')
+@section('og_image',$page->og_image != '' ? asset('storage/blogs/'.$page->og_image) : '')
+@section('twitter_title', $page->og_title != '' ? $page->og_title : 'Buy Beauty Products Online | MakeUp Products Store In Bangalore')
+@section('twitter_description',$page->og_description != '' ? $page->og_description : 'Are you looking for the best deals on all makeup and beauty brands? MakeUp Biography is your one stop solution for all your beauty related requirements.')
+@section('twitter_image',$page->og_image != '' ? asset('storage/blogs/'.$page->og_image) : '')
+@section('twitter_site',url(Request::url()))
+
+@section('script')
+<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "BlogPosting",
+		"headline": "{{ $page->title }}",
+		"image": "{{ asset('storage/blogs/'.$page->featured_image) }}",
+		"author": {
+			"@type": "Organization",
+			"name": "Makeupbiography"
+		},
+		"publisher": {
+			"@type": "Organization",
+			"name": "https://g.page/makeupbiography?share",
+			"logo": {
+				"@type": "ImageObject",
+				"url": ""
+			}
+		},
+		"datePublished": "{{ date('Y-m-d', strtotime($page->created_at)) }}"
+	}
+</script>
+@endsection
+
+
 @section('content')
-<div class="c-ip-accordion__item c-ip-accordion__item--layout-1" style="padding: 30px; margin: 30px 50px 30px 50px;">
-    <div class="container" style="font-family: 'Times New Roman', Times, serif; text-align: justify;">
-        <div class="card shadow p-3 mb-5 bg-white rounded">
-            <div class="card-body">
-                <h1 style="text-align:center; font-weight: bold; font-size: 25px;">SHIPPING POLICY</h1>
-                <br>
-                <p>
-                    <strong style="font-size: 20px;">General Shipping Policy</strong>
-                    <br>
-                    We can't deliver orders to PO box numbers. If there's no physical address to deliver your order, you can
-                    select a pick-up store in your vicinity to complete the order. To learn more about pick-up stores, please
-                    visit Pickup Stores. If pickup stores aren't available in your area, you can ship your order to a
-                    relative/acquaintance/hotel address and collect it from there.
-                    <br><br>
-                    <strong style="font-size: 20px;">Shipping Speed And Charges</strong>
-                    <br>
-                    We display shipping speeds and charges based on the items in your cart and the delivery address.
-                    <br><br>
-                    
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
+    <?php echo $page->description; ?>
 @endsection
