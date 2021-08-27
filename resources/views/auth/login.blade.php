@@ -57,7 +57,7 @@
             @csrf
               <div class="c-form__row fol" style="width: 100%;">
 
-                <input type="text" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text fol" placeholder="Email" name="email" id="email" autocomplete="off" value="" />
+                <input type="email" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text fol" placeholder="Email" name="email" id="email" autocomplete="off" value="{{ old('email') }}" />
                 @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong class="text-danger">{{ $message }}</strong>

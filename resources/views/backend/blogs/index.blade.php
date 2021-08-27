@@ -53,7 +53,6 @@
                         <table class="table table-row-bordered table-hover text-nowrap" id="blogTable">
                             <thead>
                                 <tr class="fw-bold fs-6 text-muted">
-                                    <th>S.No.</th>
                                     <th>Title</th>
                                     <th>Slug</th>
                                     <th>Blog Category</th>
@@ -63,28 +62,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @php $i = 1; @endphp
-                                @foreach($blogs as $blog)
-                                    <tr>
-                                        <td>{{ $i }}</td>
-                                        <td>{{ $blog->title }}</td>
-                                        <td>{{ $blog->slug }}</td>
-                                        <td>{{ $blog->category }}</td>
-                                        <td>{{ date('d-m-Y', strtotime($blog->publish_date)) }}</td>
-                                        <td>
-                                            
-                                            <div class="form-check form-switch form-check-custom form-check-solid">
-                                                <input type="hidden" value="{{ $blog->id }}" class="blog_id">
-                                                <input type="checkbox" class="form-check-input js-switch  h-20px w-30px" id="customSwitch1" name="status" value="{{ $blog->status }}" {{ $blog->status == 1 ? 'checked' : '' }}>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <a href="{{ url('admin/blogs/edit',['blog' => $blog->id]) }}"><i class="bi bi-pencil-square"></i></a>
-                                            <a href="{{ url('admin/blogs/delete',['blog' => $blog->id]) }}"><i class="bi bi-trash"></i></a>
-                                        </td>
-                                    </tr>
-                                    @php $i++; @endphp
-                                @endforeach
+                               
                             </tbody>
                         </table>
                     </div>
@@ -101,14 +79,21 @@
 @section('js')
 
 <!-- Soft Delete -->
-<script>
-    $(document).ready(function() {
-        $('#blogTable').DataTable({
-            "scrollY": 300,
-            "scrollX": true
-        });
+<script type="text/javascript">
+    var blogTable = $('#blogTable').DataTable({
+        processing: true,
+        serverSide: true,
+        url: "{{ url('admin/blogs') }}",
+        columns: [
+            {data: 'title', name: 'title'},
+            {data: 'slug', name: 'slug'},
+            {data: 'category', name: 'category'},
+            {data: 'publish_date', name: 'publish_date'},
+            {data: 'active', name: 'active'},
+            {data: 'action', name: 'action'},
+        ]
     });
-</script>
+</script> 
 
 <!-- Change Status -->
 <script>

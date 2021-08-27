@@ -54,7 +54,7 @@
               @csrf
               <div class="c-form__row">
 
-                <input type="text" placeholder="Name" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="name" id="name" autocomplete="name" value="" />
+                <input type="text" placeholder="Name" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="name" id="name" autocomplete="name" value="{{ old('name') }}" />
                 @error('name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -63,7 +63,7 @@
               </div>
               <div class="c-form__row pass">
 
-                <input type="text" placeholder="Mobile No." class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="mobile" id="reg_mobile_no" autocomplete="mobileno" value="" />
+                <input type="number" placeholder="Mobile No." class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="mobile" id="reg_mobile_no" autocomplete="mobileno" value="{{ old('mobile') }}" />
                 @error('mobile')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -72,7 +72,7 @@
               </div>
               <div class="c-form__row pass">
 
-                <input type="email" placeholder="Email address" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" autocomplete="email" value="" />
+                <input type="email" placeholder="Email address" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" autocomplete="email" value="{{ old('email') }}" />
                 @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -81,7 +81,7 @@
               </div>
               <div class="c-form__row pass">
 
-                <input type="password" placeholder="Password" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="password" id="password" autocomplete="password" value="" />
+                <input type="password" placeholder="Password" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="password" id="password" autocomplete="password" value="{{ old('password') }}" />
                 @error('password')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -90,7 +90,7 @@
               </div>
               <div class="c-form__row pass">
 
-                <input type="password" placeholder="Re-enter Password" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="repassword" id="repassword" autocomplete="repassword" value="" />
+                <input type="password" placeholder="Re-enter Password" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="password_confirmation" id="confirm" autocomplete="confirm" value="" />
               </div>
 
               <div class="c-form__row">A password will be sent to your email address.</div>
