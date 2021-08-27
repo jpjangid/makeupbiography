@@ -119,12 +119,19 @@ Route::view('cart','frontend.cart.index');
 Route::view('cart/empty','frontend.cart.empty');
 Route::view('checkout','frontend.checkout.index');
 Route::view('myaccount','frontend.myaccount.myaccount');
-Route::view('faq','frontend.page.faq');
-Route::view('return/policy','frontend.page.return_policy');
-Route::view('shipping/policy','frontend.page.shipping_policy');
-Route::view('cancellation/policy','frontend.page.cancellation_policy');
-Route::view('privacy/policy','frontend.page.privacy_policy');
-Route::view('terms&conditions','frontend.page.terms&conditions');
+Route::view('mydashboard','frontend.myaccount.mydashboard');
+Route::view('mywallet','frontend.myaccount.mywallet');
+Route::view('mywishlistempty','frontend.myaccount.mywishlist_empty');
+Route::view('myordersempty','frontend.myaccount.myorders_empty');
+Route::view('myaddressempty','frontend.myaccount.myaddress_empty');
+Route::view('questionanswer','frontend.myaccount.question_answer');
+
+// Route::view('faq','frontend.page.faq');
+// Route::view('return/policy','frontend.page.return_policy');
+// Route::view('shipping/policy','frontend.page.shipping_policy');
+// Route::view('cancellation/policy','frontend.page.cancellation_policy');
+// Route::view('privacy/policy','frontend.page.privacy_policy');
+// Route::view('terms&conditions','frontend.page.terms&conditions');
 
 
 Route::get('{slug}', [App\Http\Controllers\frontend\PageController::class, 'index']);

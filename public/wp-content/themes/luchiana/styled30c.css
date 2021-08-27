@@ -1647,7 +1647,7 @@ body.woo-variation-swatches .variable-items-wrapper .variable-item:not(.radio-va
 }
 
 .c-account__navigation-item.is-active {
-	color: var(--accent-color);
+	color: #c58c85;
 }
 
 .c-account__col-content > *:first-child {
