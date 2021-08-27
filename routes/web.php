@@ -120,6 +120,7 @@ Route::view('cart/empty','frontend.cart.empty');
 Route::view('checkout','frontend.checkout.index');
 Route::view('myaccount','frontend.myaccount.myaccount');
 Route::view('newlogin','auth.newlogin');
+Route::view('contactus','frontend.page.contactus');
 
 // Route::view('faq','frontend.page.faq');
 // Route::view('return/policy','frontend.page.return_policy');
