@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-@section('title','Add Blog')
+@section('title','Add Sub Sub Category')
 
 @section('css')
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
@@ -17,21 +17,21 @@
                 <!-- general form elements -->
                 <div class="card card-info">
                     <div class="card-header">
-                        <h3 class="card-title">Add Blog</h3>
+                        <h3 class="card-title">Add Sub Sub Category</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form action="{{ url('admin/blogs/store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ url('admin/sub/sub/categories/store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
                             <div class="row">
 
-                                <!-- Blog Title -->
+                                <!-- Category Title -->
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
-                                        <label class="required form-label" for="title">Title</label>
-                                        <input type="text" class="form-control form-control-solid @error('title') is-invalid @enderror" name="title" id="title" placeholder="Please Enter Blog title" value="{{ old('title') }}">
-                                        @error('title')
+                                        <label class="required form-label" for="name">Name</label>
+                                        <input type="text" class="form-control form-control-solid @error('name') is-invalid @enderror" name="name" id="name" placeholder="Please Enter Category Name" value="{{ old('name') }}">
+                                        @error('name')
                                         <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -41,12 +41,29 @@
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
                                         <label class="required form-label" for="slug">Slug</label>
-                                        <input type="text" class="form-control form-control-solid @error('slug') is-invalid @enderror" name="slug" value="{{ old('slug')}}" placeholder="Please enter slug of blog" />
+                                        <input type="text" class="form-control form-control-solid @error('slug') is-invalid @enderror" name="slug" value="{{ old('slug')}}" placeholder="Please enter slug of category" />
                                         @error('slug')
                                         <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>
+
+                                <!-- category parent -->
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-group">
+                                        <label class="form-label" for="slug">Sub Category</label>
+                                        <select class="form-select form-select-solid @error('parent_category') is-invalid @enderror" name="parent_id">
+                                            <option value="">Open this select menu</option>
+                                            @foreach($categories as $category)
+                                                <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('parent_category')
+                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>    
+
                                 <!-- short_description -->
                                 <div class="col-md-12 mb-4">
                                     <div class="form-group">
@@ -58,7 +75,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Blog Description -->
+                                <!-- Category Description -->
                                 <div class="col-md-12 mb-4">
                                     <div class="form-group">
                                         <label class="required form-label" for="description">Detail Description</label>
@@ -69,7 +86,7 @@
                                     </div>
                                 </div>
 
-                                <!-- blog image -->
+                                <!-- Category image -->
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
                                         <label class="required form-label" for="featured_image">Featured Image</label>
@@ -141,7 +158,7 @@
                                     </div>
                                 </div>
 
-                                <!-- blog image -->
+                                <!-- Category image -->
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
                                         <label class="required form-label" for="og_image">OG Image</label>
@@ -175,33 +192,6 @@
                                 </div>
 
                                 <hr>
-
-                                <!-- published date -->
-                                <div class="col-md-6 mb-4">
-                                    <div class="form-group">
-                                        <label class="form-label" for="category">Category</label>
-                                        <select class="form-control form-control-solid @error('category') is-invalid @enderror" name="category">
-                                            <option value="">Select Blog Category</option>
-                                            <option value="beauty" {{ old('catgory') == 'beauty' ? 'selected' : '' }} >Beauty</option>
-                                            <option value="cosmetic" {{ old('catgory') == 'cosmetic' ? 'selected' : '' }} >Cosmetic</option>
-                                            <option value="fashion" {{ old('catgory') == 'fashion' ? 'selected' : '' }} >Fashion</option>
-                                        </select>
-                                        @error('category')
-                                        <span class="error invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <!-- published date -->
-                                <div class="col-md-6 mb-4">
-                                    <div class="form-group">
-                                        <label class="form-label" for="publish_date">Publish Date</label>
-                                        <input type="date" class="form-control form-control-solid @error('publish_date') is-invalid @enderror" name="publish_date" id="publish_date" value="{{ old('publish_date')}}" placeholder="Please Enter Meta Tag" />
-                                        @error('publish_date')
-                                        <span class="error invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
                                 
                                 <!-- tags -->
                                 <div class="col-md-10 mb-4">
@@ -217,7 +207,7 @@
                                 <!-- Status -->
                                 <div class="col-md-2 mb-4">
                                     <div class="form-group">
-                                        <label class="form-label" for="customSwitch1">Publish Blog</label>
+                                        <label class="form-label" for="customSwitch1">Category Status</label>
                                         <div class="form-check form-switch form-check-custom form-check-solid mt-3">
                                             <input type="checkbox" class="form-check-input" id="customSwitch1" name="status" value="1">
                                         </div>
@@ -229,8 +219,8 @@
                         <!-- /.card-body -->
 
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-active-light-primary">Add Blog</button>
-                            <a href="{{ url('admin/blogs') }}" class="btn btn-active-light-danger"> Cancel </a>
+                            <button type="submit" class="btn btn-active-light-primary">Add Sub Sub Category</button>
+                            <a href="{{ url('admin/sub/categories') }}" class="btn btn-active-light-danger"> Cancel </a>
                         </div>
 
                     </form>

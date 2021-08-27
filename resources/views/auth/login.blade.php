@@ -1,82 +1,102 @@
-@extends('layouts.app')
+@extends('frontend.layouts.app')
 
 @section('css')
-    <link href="{{ asset('css/login.css') }}" rel="stylesheet"/>
+<style>
+
+  #customer_login{
+    box-shadow: 5px 10px #888888;
+  }  
+
+  .text-danger {
+      color: red;
+  }
+
+
+</style>
 @endsection
 
 @section('content')
-<section class="vh-100">
-    <div class="container-fluid h-custom">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-md-9 col-lg-6 col-xl-5">
-                <img src="{{ asset('login.png') }}" class="img-fluid" alt="Sample image">
-            </div>
-            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                <form method="POST" action="{{ route('login') }}">
-                    @csrf
-                    <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-                        <p class="lead fw-normal mb-0 me-3">Sign in with</p>
-                        <button type="button" class="btn btn-primary btn-floating mx-1">
-                            <i class="fab fa-facebook-f"></i>
-                        </button>
-
-                        <button type="button" class="btn btn-primary btn-floating mx-1">
-                            <i class="fab fa-twitter"></i>
-                        </button>
-
-                        <button type="button" class="btn btn-primary btn-floating mx-1">
-                            <i class="fab fa-linkedin-in"></i>
-                        </button>
-                    </div>
-
-                    <div class="divider d-flex align-items-center my-4">
-                        <p class="text-center fw-bold mx-3 mb-0">Or</p>
-                    </div>
-
-                    <!-- Email input -->
-                    <div class="form-outline mb-4">
-                        <input type="email" name="email" id="form3Example3" class="form-control form-control-lg" placeholder="Enter a valid email address" />
-                        <label class="form-label" for="form3Example3">Email address</label>
-                    </div>
-
-                    <!-- Password input -->
-                    <div class="form-outline mb-3">
-                        <input type="password" name="password" id="form3Example4" class="form-control form-control-lg" placeholder="Enter password" />
-                        <label class="form-label" for="form3Example4">Password</label>
-                    </div>
-
-                    <div class="d-flex justify-content-between align-items-center">
-                        <!-- Checkbox -->
-                        <div class="form-check mb-0">
-                            <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-                            <label class="form-check-label" for="form2Example3">
-                                Remember me
-                            </label>
-                        </div>
-                        <a href="#!" class="text-body">Forgot password?</a>
-                    </div>
-
-                    <div class="text-center text-lg-start mt-4 pt-2">
-                        <button type="submit" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
-                        <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="{{ route('register') }}"" class=" link-danger">Register</a></p>
-                    </div>
-
-                </form>
-            </div>
-        </div>
+<div class="l-inner">
+  <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default
+ c-page-header--wc c-page-header--low">
+    <div class="c-page-header__wrap">
+      <h1 class="c-page-header__title">My account</h1>
     </div>
-    <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-2 px-2 px-xl-5 bg-primary footer">
-        <!-- Copyright -->
-        <div class="text-white mb-3 mb-md-0">
-            Copyright © 2021. All rights reserved.
-        </div>
-        <!-- Copyright -->
+    <nav class="c-breadcrumbs">
+      <ol class="c-breadcrumbs__list c-breadcrumbs__list--default" itemscope itemtype="http://schema.org/BreadcrumbList">
+        <li class="c-breadcrumbs__item  c-breadcrumbs__item--first  " itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a itemprop="item" title="Home" href="https://parkofideas.com/luchiana/demo/">
+            <span itemprop="name">Home</span>
+          </a>
+          <!--
+						-->
+          <i class="ip-breadcrumb c-breadcrumbs__separator">
+            <!-- -->
+          </i>
+          <meta itemprop="position" content="1">
+        </li>
+        <li class="c-breadcrumbs__item   c-breadcrumbs__item--last " itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a itemprop="item" title="My account" href="https://parkofideas.com/luchiana/demo/my-account/">
+            <span itemprop="name">My account</span>
+          </a>
+          <meta itemprop="position" content="2">
+        </li>
+      </ol>
+    </nav>
+  </header>
+  <div class="woocommerce-notices-wrapper">
+  </div>
+  <div class="l-section l-section--container l-section--bottom-margin l-section--no-sidebar l-section--top-margin-60 l-section--white">
+    <div class="l-section__content">
+      <div class="woocommerce">
+        <div class="c-login cap" id="customer_login">
 
-        <!-- Right -->
-        <div>
-            <b style="color: white;">Developed By</b> <a href="https://www.webanix.in/" style="color: white;text-decoration: none;">WEbaniX</a>
+          <div class="c-login__form js-login-form c-login__form--active">
+            <div class="c-login__header para" style="padding: 10px;">-Login-</div>
+            <form method="POST" class="c-form" action="{{ route('login') }}" style="width: 100%;">
+            @csrf
+              <div class="c-form__row fol" style="width: 100%;">
+
+                <input type="email" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text fol" placeholder="Email" name="email" id="email" autocomplete="off" value="{{ old('email') }}" />
+                @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong class="text-danger">{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+              <div class="c-form__row pass" style="width: 100%">
+                <input class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" placeholder="Password" type="password" name="password" id="password" autocomplete="current-password" />
+                @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong class="text-danger">{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+              <div class="c-form__row c-form__row--inline c-login__remember">
+                <input type="hidden" id="woocommerce-login-nonce" name="woocommerce-login-nonce" value="934c87c088" />
+                <input type="hidden" name="_wp_http_referer" value="/luchiana/demo/my-account/" />
+                <label class="c-form__label">
+                  <input class="c-form__checkbox" name="rememberme" type="checkbox" id="rememberme" value="forever" />
+                  <i></i>Remember me</label>
+              </div>
+              <div class="c-form__row">
+                <button type="submit" class="c-button c-button--outline c-button--full woocommerce-Button button" name="login" value="Log in">Log in</button>
+              </div>
+              <div class="c-login__bottom">
+                <div class="c-login__lost-password">
+                  <a class="c-login__lost-password-link" href="https://parkofideas.com/luchiana/demo/my-account/lost-password/">Forgot password</a>
+                </div>
+                <a href="{{ url('register') }}" class="c-login__register">Register
+                  <i class="ip-menu-right c-login__more-icon"></i>
+                </a>
+              </div>
+            </form>
+          </div>
+
         </div>
-        <!-- Right -->
+      </div>
     </div>
-</section>
+  </div>
+</div>
+<!-- /.l-inner -->
 @endsection

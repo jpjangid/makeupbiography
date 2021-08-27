@@ -78,6 +78,15 @@
               </a>
             </div>
             <div class="menu-item">
+              <a class="menu-link" href="{{ url('admin/sub/sub/categories') }}">
+                <span class="menu-bullet">
+                  <span class="bullet bullet-dot">
+                  </span>
+                </span>
+                <span class="menu-title">Sub Sub Categories</span>
+              </a>
+            </div>
+            <div class="menu-item">
               <a class="menu-link" href="{{ url('admin/redirections') }}">
                 <span class="menu-bullet">
                   <span class="bullet bullet-dot">

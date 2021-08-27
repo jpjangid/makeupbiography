@@ -53,7 +53,6 @@
                         <table class="table table-row-bordered table-hover text-nowrap" id="brandTable">
                             <thead>
                                 <tr class="fw-bold fs-6 text-muted">
-                                    <th>S.No.</th>
                                     <th>Brand</th>
                                     <th>Slug</th>
                                     <th>Status</th>
@@ -61,25 +60,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @php $i = 1; @endphp
-                                @foreach($brands as $brand)
-                                    <tr>
-                                        <td>{{ $i }}</td>
-                                        <td>{{ $brand->name }}</td>
-                                        <td>{{ $brand->slug }}</td>
-                                        <td>
-                                            <div class="form-check form-switch form-check-custom form-check-solid">
-                                                <input type="hidden" value="{{ $brand->id }}" class="brand_id">
-                                                <input type="checkbox" class="form-check-input js-switch  h-20px w-30px" id="customSwitch1" name="status" value="{{ $brand->status }}" {{ $brand->status == 1 ? 'checked' : '' }}>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <a href="{{ url('admin/brands/edit',['brand' => $brand->id]) }}"><i class="bi bi-pencil-square"></i></a>
-                                            <a href="{{ url('admin/brands/delete',['brand' => $brand->id]) }}"><i class="bi bi-trash"></i></a>
-                                        </td>
-                                    </tr>
-                                    @php $i++; @endphp
-                                @endforeach
+                               
                             </tbody>
                         </table>
                     </div>
@@ -96,14 +77,19 @@
 @section('js')
 
 <!-- Soft Delete -->
-<script>
-    $(document).ready(function() {
-        $('#brandTable').DataTable({
-            "scrollY": 300,
-            "scrollX": true
-        });
+<script type="text/javascript">
+    var materialTable = $('#brandTable').DataTable({
+        processing: true,
+        serverSide: true,
+        url: "{{ url('admin/brands') }}",
+        columns: [
+            {data: 'name', name: 'name'},
+            {data: 'slug', name: 'slug'},
+            {data: 'active', name: 'status'}, 
+            {data: 'action', name: 'action'},
+        ]
     });
-</script>
+</script> 
 
 <!-- Change Status -->
 <script>

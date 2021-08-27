@@ -43,7 +43,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-tools mt-4">
-                            <a href="{{ url('admin/sub/categories/create') }}" class="btn btn-active-light-primary">
+                            <a href="{{ url('admin/sub/sub/categories/create') }}" class="btn btn-active-light-primary">
                                 + Add Sub Category
                             </a>
                         </div>
@@ -100,7 +100,7 @@
         let status = row.find('.js-switch').val();
         let categoryId = row.find('.category_id').val();
         $.ajax({
-            url: "{{ url('admin/sub/categories/update_status') }}",
+            url: "{{ url('admin/sub/sub/categories/update_status') }}",
             type: "POST",
             dataType: "json",
             data: {

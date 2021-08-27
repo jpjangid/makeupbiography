@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-@section('title','Page')
+@section('title','Sub Sub Categories')
 
 @section('css')
 <!-- Status message -->
@@ -43,24 +43,26 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-tools mt-4">
-                            <a href="{{ url('admin/pages/create') }}" class="btn btn-active-light-primary">
-                                + Add Page
+                            <a href="{{ url('admin/sub/sub/categories/create') }}" class="btn btn-active-light-primary">
+                                + Add Sub Sub Category
                             </a>
                         </div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body table-responsive">
-                        <table class="table table-row-bordered table-hover text-nowrap" id="pageTable">
+                        <table class="table table-row-bordered table-hover text-nowrap" id="subCategoryTable">
                             <thead>
                                 <tr class="fw-bold fs-6 text-muted">
-                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>Sub Category</th>
+                                    <th>Sub Sub Category</th>
                                     <th>Slug</th>
-                                    <th>Publish</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                              
+                               
                             </tbody>
                         </table>
                     </div>
@@ -72,20 +74,22 @@
     </div>
 </section>
 
-@endsection('content')
+@endsection
 
 @section('js')
 
 <!-- Soft Delete -->
 <script type="text/javascript">
-    var pageTable = $('#pageTable').DataTable({
+    var materialTable = $('#subCategoryTable').DataTable({
         processing: true,
         serverSide: true,
-        url: "{{ url('admin/pages') }}",
+        url: "{{ url('admin/sub/categories') }}",
         columns: [
-            {data: 'title', name: 'title'},
+            {data: 'main', name: 'main'},
+            {data: 'sub', name: 'sub'},
+            {data: 'name', name: 'name'},
             {data: 'slug', name: 'slug'},
-            {data: 'active', name: 'active'},
+            {data: 'active', name: 'status'}, 
             {data: 'action', name: 'action'},
         ]
     });
@@ -93,17 +97,17 @@
 
 <!-- Change Status -->
 <script>
-    $('.js-switch').change(function() {
+    $(document).on('change','.js-switch',function() {
         var row = $(this).closest('tr');
         let status = row.find('.js-switch').val();
-        let pageId = row.find('.page_id').val();
+        let categoryId = row.find('.category_id').val();
         $.ajax({
-            url: "{{ url('admin/pages/update_status') }}",
+            url: "{{ url('admin/sub/sub/categories/update_status') }}",
             type: "POST",
             dataType: "json",
             data: {
                 status: status,
-                page_id: pageId,
+                category_id: categoryId,
                 _token: '{{csrf_token()}}' 
             },
             success: function(data) {

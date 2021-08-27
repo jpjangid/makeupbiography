@@ -53,25 +53,13 @@
                         <table class="table table-row-bordered table-hover text-nowrap" id="redirectionTable">
                             <thead>
                                 <tr class="fw-bold fs-6 text-muted">
-                                    <th>S.No.</th>
                                     <th>From Url</th>
                                     <th>To Url</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @php $i = 1; @endphp
-                                @foreach($redirections as $redirection)
-                                    <tr>
-                                        <td>{{ $i }}</td>
-                                        <td>{{ $redirection->from_url }}</td>
-                                        <td>{{ $redirection->to_url }}</td>
-                                        <td>
-                                            <a href="{{ url('admin/redirections/delete',['redirection' => $redirection->id]) }}"><i class="bi bi-trash"></i></a>
-                                        </td>
-                                    </tr>
-                                    @php $i++; @endphp
-                                @endforeach
+                               
                             </tbody>
                         </table>
                     </div>
@@ -82,4 +70,19 @@
         <!-- /.row -->
     </div>
 </section>
+@endsection
+
+@section('js')
+<script type="text/javascript">
+    var redirectionTable = $('#redirectionTable').DataTable({
+        processing: true,
+        serverSide: true,
+        url: "{{ url('admin/redirections') }}",
+        columns: [
+            {data: 'from_url', name: 'from_url'},
+            {data: 'to_url', name: 'to_url'},
+            {data: 'action', name: 'action'},
+        ]
+    });
+</script> 
 @endsection
