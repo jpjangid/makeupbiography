@@ -179,8 +179,8 @@
                                 <!-- published date -->
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
-                                        <label class="form-label" for="category">Category</label>
-                                        <select class="form-control form-control-solid @error('category') is-invalid @enderror" name="category">
+                                        <label class="required form-label" for="category">Category</label>
+                                        <select class="form-select form-select-solid @error('category') is-invalid @enderror" name="category">
                                             <option value="">Select Blog Category</option>
                                             <option value="beauty" {{ old('catgory') == 'beauty' ? 'selected' : '' }} >Beauty</option>
                                             <option value="cosmetic" {{ old('catgory') == 'cosmetic' ? 'selected' : '' }} >Cosmetic</option>
@@ -195,7 +195,7 @@
                                 <!-- published date -->
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
-                                        <label class="form-label" for="publish_date">Publish Date</label>
+                                        <label class="required form-label" for="publish_date">Publish Date</label>
                                         <input type="date" class="form-control form-control-solid @error('publish_date') is-invalid @enderror" name="publish_date" id="publish_date" value="{{ old('publish_date')}}" placeholder="Please Enter Meta Tag" />
                                         @error('publish_date')
                                         <span class="error invalid-feedback">{{ $message }}</span>
