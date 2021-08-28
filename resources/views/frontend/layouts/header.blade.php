@@ -1088,7 +1088,7 @@
             @endauth
             @endif
             <div class="c-header__wishlist">
-              <a class="c-header__button-link" href="https://parkofideas.com/luchiana/demo/wishlist/">
+              <a class="c-header__button-link" href="{{ url('wishlist') }}">
                 <i class="ip-wishlist c-header__wishlist-icon"></i>
                 <span class="js-wishlist-info">
                 </span>
