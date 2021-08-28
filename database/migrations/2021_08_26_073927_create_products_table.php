@@ -15,7 +15,7 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('parent_id');
+            $table->unsignedBigInteger('parent_id')->nullable();
             $table->foreign('parent_id')->references('id')->on('categories')->onDelete('cascade');
             $table->string('name')->nullable();
             $table->string('slug')->nullable();
@@ -33,7 +33,7 @@ class CreateProductsTable extends Migration
             $table->text('og_description')->nullable();
             $table->text('og_image')->nullable();
             $table->text('tags')->nullable();
-            $table->tinyInteger('is_published')->default('0');
+            $table->tinyInteger('status')->default('0');
             $table->tinyInteger('flag')->default('0');
             $table->timestamps();
         });

@@ -7,7 +7,6 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
-use Yajra\DataTables\Services\DataTable;
 use DataTables;
 use Illuminate\Support\Collection;
 
@@ -18,47 +17,47 @@ class CategoryController extends Controller
     {
         //
         if (request()->ajax()) {
-            $categories1 = Category::select('id','name','slug','status')->where('flag',0)->get();
+            $categories1 = Category::select('id', 'name', 'slug', 'status')->where('flag', 0)->where('parent_id',null)->get();
 
             $categories = new Collection;
-            foreach($categories1 as $category1) {
+            foreach ($categories1 as $category1) {
                 $categories->push([
                     'id'    => $category1->id,
                     'name'  => $category1->name,
                     'slug'  => $category1->slug,
-                    'status'=> $category1->status 
-                ]);    
+                    'status' => $category1->status
+                ]);
             }
 
             return Datatables::of($categories)
-                    ->addIndexColumn()
-                    ->addColumn('active', function($row) {
-                        $checked = $row['status'] == '0' ? 'checked' : '';
-                        $active  = '<div class="form-check form-switch form-check-custom form-check-solid">
-                                        <input type="hidden" value="'.$row['id'].'" class="category_id">
-                                        <input type="checkbox" class="form-check-input js-switch  h-20px w-30px" id="customSwitch1" name="status" value="'.$row['status'].'" '.$checked.'>
+                ->addIndexColumn()
+                ->addColumn('active', function ($row) {
+                    $checked = $row['status'] == '1' ? 'checked' : '';
+                    $active  = '<div class="form-check form-switch form-check-custom form-check-solid">
+                                        <input type="hidden" value="' . $row['id'] . '" class="category_id">
+                                        <input type="checkbox" class="form-check-input js-switch  h-20px w-30px" id="customSwitch1" name="status" value="' . $row['status'] . '" ' . $checked . '>
                                     </div>';
 
-                      return $active;
-                    })
-                    ->addColumn('action', function($row) {
-                           $delete_url = url('admin/categories/delete',$row['id']);
-                           $edit_url = url('admin/categories/edit',$row['id']);
-                           $btn = '<a class="btn btn-primary btn-sm ml-1" href="'.$edit_url.'"><i class="fas fa-edit"></i></a>';
-                           $btn .= '<a class="btn btn-info btn-sm ml-1" href="'.$delete_url.'"><i class="fa fa-trash"></i></a>'; 
-                           return $btn;
-                    })
-                    ->rawColumns(['action','active'])
-                    ->make(true);
+                    return $active;
+                })
+                ->addColumn('action', function ($row) {
+                    $delete_url = url('admin/categories/delete', $row['id']);
+                    $edit_url = url('admin/categories/edit', $row['id']);
+                    $btn = '<a class="btn btn-primary btn-sm ml-1" href="' . $edit_url . '"><i class="fas fa-edit"></i></a>';
+                    $btn .= '<a class="btn btn-info btn-sm ml-1" href="' . $delete_url . '"><i class="fa fa-trash"></i></a>';
+                    return $btn;
+                })
+                ->rawColumns(['action', 'active'])
+                ->make(true);
         }
         return view('backend.category.index');
     }
 
     public function create()
     {
-        
-        $categories = Category::where('flag',0)->get();     
-        return view('backend.category.create',compact('categories'));
+
+        $categories = Category::where('flag', 0)->get();
+        return view('backend.category.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -96,7 +95,7 @@ class CategoryController extends Controller
         }
 
         $status = 0;
-        if(isset($request->status)){
+        if (isset($request->status)) {
             $status = 1;
         }
 
@@ -117,10 +116,10 @@ class CategoryController extends Controller
             'og_image'                  =>  $og_image,
             'og_alt'                    =>  $request->og_alt,
         ]);
-        
-        return redirect('categories')->with('success','Category added successfully');
+
+        return redirect('categories')->with('success', 'Category added successfully');
     }
-    
+
     public function update_status(Request $request)
     {
         $category = Category::find($request->category_id);
@@ -137,18 +136,18 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
-        $category = Category::where('id',$id)->first();
-        return view('backend.category.edit',compact('category'));
+        $category = Category::where('id', $id)->first();
+        return view('backend.category.edit', compact('category'));
     }
 
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         $request->validate([
-            'name'                  =>  'required|unique:categories,name,'.$id,
+            'name'                  =>  'required|unique:categories,name,' . $id,
             'description'           =>  'required',
             'short_description'     =>  'required',
             'alt'                   =>  'required',
-            'slug'                  =>  'required|unique:categories,slug,'.$id,
+            'slug'                  =>  'required|unique:categories,slug,' . $id,
         ], [
             'name.required'                 =>  'Category Name is required',
             'description.required'          =>  'Category Description is required',
@@ -176,11 +175,11 @@ class CategoryController extends Controller
         }
 
         $status = 0;
-        if(isset($request->status)){
+        if (isset($request->status)) {
             $status = 1;
         }
-        
-        Category::where('id',$id)->update([
+
+        Category::where('id', $id)->update([
             'slug'                      =>  $request->slug,
             'name'                      =>  $request->name,
             'description'               =>  $request->description,
@@ -197,58 +196,58 @@ class CategoryController extends Controller
             'og_image'                  =>  $og_image,
             'og_alt'                    =>  $request->og_alt,
         ]);
-        
-        return redirect('admin/categories')->with('success','Category updated successfully');
+
+        return redirect('admin/categories')->with('success', 'Category updated successfully');
     }
 
     public function destroy($id)
     {
-        Category::where('id',$id)->update(['flag' => 1]);
-        return redirect('categories')->with('danger','Category deleted successfully');
+        Category::where('id', $id)->update(['flag' => 1]);
+        return redirect('categories')->with('danger', 'Category deleted successfully');
     }
 
     //level 2 code for sub category
     public function index_sub1()
     {
         if (request()->ajax()) {
-            $categories1 = Category::where('flag',0)->where('parent_id',null)->with('subcategory')->distinct('parent_id')->get();
+            $categories1 = Category::where('flag', 0)->where('parent_id', null)->with('subcategory')->distinct('parent_id')->get();
             $categories = new Collection;
-            foreach($categories1 as $category1) {
-                if(!empty($category1->subcategory)) {
-                    foreach($category1->subcategory as $sub) {
-                        if($sub->flag == 0) {
+            foreach ($categories1 as $category1) {
+                if (!empty($category1->subcategory)) {
+                    foreach ($category1->subcategory as $sub) {
+                        if ($sub->flag == 0) {
                             $categories->push([
                                 'id'    => $sub->id,
                                 'main'  => $category1->name,
                                 'name'  => $sub->name,
                                 'slug'  => $sub->slug,
-                                'status'=> $sub->status 
+                                'status' => $sub->status
                             ]);
                         }
                     }
-                }       
+                }
             }
 
             return Datatables::of($categories)
-                    ->addIndexColumn()
-                    ->addColumn('active', function($row) {
-                        $checked = $row['status'] == '0' ? 'checked' : '';
-                        $active  = '<div class="form-check form-switch form-check-custom form-check-solid">
-                                        <input type="hidden" value="'.$row['id'].'" class="category_id">
-                                        <input type="checkbox" class="form-check-input js-switch  h-20px w-30px" id="customSwitch1" name="status" value="'.$row['status'].'" '.$checked.'>
+                ->addIndexColumn()
+                ->addColumn('active', function ($row) {
+                    $checked = $row['status'] == '1' ? 'checked' : '';
+                    $active  = '<div class="form-check form-switch form-check-custom form-check-solid">
+                                        <input type="hidden" value="' . $row['id'] . '" class="category_id">
+                                        <input type="checkbox" class="form-check-input js-switch  h-20px w-30px" id="customSwitch1" name="status" value="' . $row['status'] . '" ' . $checked . '>
                                     </div>';
 
-                      return $active;
-                    })
-                    ->addColumn('action', function($row) {
-                           $delete_url = url('admin/sub/categories/delete',$row['id']);
-                           $edit_url = url('admin/sub/categories/edit',$row['id']);
-                           $btn = '<a class="btn btn-primary btn-sm ml-1" href="'.$edit_url.'"><i class="fas fa-edit"></i></a>';
-                           $btn .= '<a class="btn btn-info btn-sm ml-1" href="'.$delete_url.'"><i class="fa fa-trash"></i></a>'; 
-                           return $btn;
-                    })
-                    ->rawColumns(['action','active'])
-                    ->make(true);
+                    return $active;
+                })
+                ->addColumn('action', function ($row) {
+                    $delete_url = url('admin/sub/categories/delete', $row['id']);
+                    $edit_url = url('admin/sub/categories/edit', $row['id']);
+                    $btn = '<a class="btn btn-primary btn-sm ml-1" href="' . $edit_url . '"><i class="fas fa-edit"></i></a>';
+                    $btn .= '<a class="btn btn-info btn-sm ml-1" href="' . $delete_url . '"><i class="fa fa-trash"></i></a>';
+                    return $btn;
+                })
+                ->rawColumns(['action', 'active'])
+                ->make(true);
         }
         return view('backend.category.sub1.index');
     }
@@ -264,19 +263,19 @@ class CategoryController extends Controller
 
     public function edit_sub1($id)
     {
-        $categories = Category::where('parent_id',null)->where('flag',0)->get();
-        $category = Category::where('id',$id)->first();
-        return view('backend.category.sub1.edit',compact('category','categories'));
+        $categories = Category::where('parent_id', null)->where('flag', 0)->get();
+        $category = Category::where('id', $id)->first();
+        return view('backend.category.sub1.edit', compact('category', 'categories'));
     }
 
-    public function update_sub1(Request $request,$id)
+    public function update_sub1(Request $request, $id)
     {
         $request->validate([
-            'name'                  =>  'required|unique:categories,name,'.$id,
+            'name'                  =>  'required|unique:categories,name,' . $id,
             'description'           =>  'required',
             'short_description'     =>  'required',
             'alt'                   =>  'required',
-            'slug'                  =>  'required|unique:categories,slug,'.$id,
+            'slug'                  =>  'required|unique:categories,slug,' . $id,
         ], [
             'name.required'                 =>  'Category Name is required',
             'description.required'          =>  'Category Description is required',
@@ -304,11 +303,11 @@ class CategoryController extends Controller
         }
 
         $status = 0;
-        if(isset($request->status)){
+        if (isset($request->status)) {
             $status = 1;
         }
-        
-        Category::where('id',$id)->update([
+
+        Category::where('id', $id)->update([
             'slug'                      =>  $request->slug,
             'name'                      =>  $request->name,
             'parent_id'                 =>  $request->parent_id,
@@ -326,14 +325,14 @@ class CategoryController extends Controller
             'og_image'                  =>  $og_image,
             'og_alt'                    =>  $request->og_alt,
         ]);
-        
-        return redirect('admin/sub/categories')->with('success','Sub category updated successfully');
+
+        return redirect('admin/sub/categories')->with('success', 'Sub category updated successfully');
     }
 
     public function create_sub1()
     {
-        $categories = Category::where('parent_id',null)->where('flag',0)->get(); 
-        return view('backend.category.sub1.create',compact('categories'));
+        $categories = Category::where('parent_id', null)->where('flag', 0)->get();
+        return view('backend.category.sub1.create', compact('categories'));
     }
 
     public function store_sub1(Request $request)
@@ -371,7 +370,7 @@ class CategoryController extends Controller
         }
 
         $status = 0;
-        if(isset($request->status)){
+        if (isset($request->status)) {
             $status = 1;
         }
 
@@ -393,36 +392,36 @@ class CategoryController extends Controller
             'og_image'                  =>  $og_image,
             'og_alt'                    =>  $request->og_alt,
         ]);
-        
-        return redirect('admin/sub/categories')->with('success','Sub category added successfully');
+
+        return redirect('admin/sub/categories')->with('success', 'Sub category added successfully');
     }
 
     public function destroy_sub1($id)
     {
-        Category::where('id',$id)->update(['flag' => 1]);
-        return redirect('admin/sub/categories')->with('danger','Category deleted successfully');
+        Category::where('id', $id)->update(['flag' => 1]);
+        return redirect('admin/sub/categories')->with('danger', 'Category deleted successfully');
     }
 
     //level 3 code for sub category
     public function index_sub2()
     {
         if (request()->ajax()) {
-            $categories1 = Category::select('id')->where('flag',0)->where('parent_id',null)->with('subcategory')->get();
+            $categories1 = Category::select('id')->where('flag', 0)->where('parent_id', null)->with('subcategory')->get();
             $categories = new Collection;
-            foreach($categories1 as $cat1) {
-                if(!empty($cat1->subcategory)) {        
-                    foreach($cat1->subcategory as $cat2) {
-                        $main = Category::select('name')->where('id',$cat1->id)->first();
-                        $sub = Category::select('name')->where('id',$cat2->id)->first();
-                        $subs1 = Category::where('parent_id',$cat2->id)->where('flag',0)->get();
-                        foreach($subs1 as $sub1) {
+            foreach ($categories1 as $cat1) {
+                if (!empty($cat1->subcategory)) {
+                    foreach ($cat1->subcategory as $cat2) {
+                        $main = Category::select('name')->where('id', $cat1->id)->first();
+                        $sub = Category::select('name')->where('id', $cat2->id)->first();
+                        $subs1 = Category::where('parent_id', $cat2->id)->where('flag', 0)->get();
+                        foreach ($subs1 as $sub1) {
                             $categories->push([
                                 'id'    => $sub1->id,
                                 'main'  => $main->name,
-                                'sub'   => $sub->name,    
+                                'sub'   => $sub->name,
                                 'name'  => $sub1->name,
                                 'slug'  => $sub1->slug,
-                                'status'=> $sub1->status 
+                                'status' => $sub1->status
                             ]);
                         }
                     }
@@ -430,25 +429,25 @@ class CategoryController extends Controller
             }
 
             return Datatables::of($categories)
-                    ->addIndexColumn()
-                    ->addColumn('active', function($row) {
-                        $checked = $row['status'] == '0' ? 'checked' : '';
-                        $active  = '<div class="form-check form-switch form-check-custom form-check-solid">
-                                        <input type="hidden" value="'.$row['id'].'" class="category_id">
-                                        <input type="checkbox" class="form-check-input js-switch  h-20px w-30px" id="customSwitch1" name="status" value="'.$row['status'].'" '.$checked.'>
+                ->addIndexColumn()
+                ->addColumn('active', function ($row) {
+                    $checked = $row['status'] == '1' ? 'checked' : '';
+                    $active  = '<div class="form-check form-switch form-check-custom form-check-solid">
+                                        <input type="hidden" value="' . $row['id'] . '" class="category_id">
+                                        <input type="checkbox" class="form-check-input js-switch  h-20px w-30px" id="customSwitch1" name="status" value="' . $row['status'] . '" ' . $checked . '>
                                     </div>';
 
-                      return $active;
-                    })
-                    ->addColumn('action', function($row) {
-                           $delete_url = url('admin/sub/sub/categories/delete',$row['id']);
-                           $edit_url = url('admin/sub/sub/categories/edit',$row['id']);
-                           $btn = '<a class="btn btn-primary btn-sm ml-1" href="'.$edit_url.'"><i class="fas fa-edit"></i></a>';
-                           $btn .= '<a class="btn btn-info btn-sm ml-1" href="'.$delete_url.'"><i class="fa fa-trash"></i></a>'; 
-                           return $btn;
-                    })
-                    ->rawColumns(['action','active'])
-                    ->make(true);
+                    return $active;
+                })
+                ->addColumn('action', function ($row) {
+                    $delete_url = url('admin/sub/sub/categories/delete', $row['id']);
+                    $edit_url = url('admin/sub/sub/categories/edit', $row['id']);
+                    $btn = '<a class="btn btn-primary btn-sm ml-1" href="' . $edit_url . '"><i class="fas fa-edit"></i></a>';
+                    $btn .= '<a class="btn btn-info btn-sm ml-1" href="' . $delete_url . '"><i class="fa fa-trash"></i></a>';
+                    return $btn;
+                })
+                ->rawColumns(['action', 'active'])
+                ->make(true);
         }
         return view('backend.category.sub2.index');
     }
@@ -464,11 +463,11 @@ class CategoryController extends Controller
 
     public function create_sub2()
     {
-        $categories1 = Category::select('id')->where('flag',0)->where('parent_id',null)->with('subcategory')->get();
+        $categories1 = Category::select('id')->where('flag', 0)->where('parent_id', null)->with('subcategory')->get();
         $categories = new Collection;
-        foreach($categories1 as $cat1) {
-            if(!empty($cat1->subcategory)) {
-                foreach($cat1->subcategory as $cat2) {
+        foreach ($categories1 as $cat1) {
+            if (!empty($cat1->subcategory)) {
+                foreach ($cat1->subcategory as $cat2) {
                     $categories->push([
                         'id'    => $cat2->id,
                         'name'  => $cat2->name,
@@ -476,8 +475,8 @@ class CategoryController extends Controller
                 }
             }
         }
- 
-        return view('backend.category.sub2.create',compact('categories'));
+
+        return view('backend.category.sub2.create', compact('categories'));
     }
 
     public function store_sub2(Request $request)
@@ -515,7 +514,7 @@ class CategoryController extends Controller
         }
 
         $status = 0;
-        if(isset($request->status)){
+        if (isset($request->status)) {
             $status = 1;
         }
 
@@ -537,17 +536,17 @@ class CategoryController extends Controller
             'og_image'                  =>  $og_image,
             'og_alt'                    =>  $request->og_alt,
         ]);
-        
-        return redirect('admin/sub/sub/categories')->with('success','Sub Sub category added successfully');
+
+        return redirect('admin/sub/sub/categories')->with('success', 'Sub Sub category added successfully');
     }
 
     public function edit_sub2($id)
     {
-        $categories1 = Category::select('id')->where('flag',0)->where('parent_id',null)->with('subcategory')->get();
+        $categories1 = Category::select('id')->where('flag', 0)->where('parent_id', null)->with('subcategory')->get();
         $categories = new Collection;
-        foreach($categories1 as $cat1) {
-            if(!empty($cat1->subcategory)) {
-                foreach($cat1->subcategory as $cat2) {
+        foreach ($categories1 as $cat1) {
+            if (!empty($cat1->subcategory)) {
+                foreach ($cat1->subcategory as $cat2) {
                     $categories->push([
                         'id'    => $cat2->id,
                         'name'  => $cat2->name,
@@ -556,18 +555,18 @@ class CategoryController extends Controller
             }
         }
 
-        $category = Category::where('id',$id)->first();
-        return view('backend.category.sub2.edit',compact('category','categories'));
+        $category = Category::where('id', $id)->first();
+        return view('backend.category.sub2.edit', compact('category', 'categories'));
     }
 
-    public function update_sub2(Request $request,$id)
+    public function update_sub2(Request $request, $id)
     {
         $request->validate([
-            'name'                  =>  'required|unique:categories,name,'.$id,
+            'name'                  =>  'required|unique:categories,name,' . $id,
             'description'           =>  'required',
             'short_description'     =>  'required',
             'alt'                   =>  'required',
-            'slug'                  =>  'required|unique:categories,slug,'.$id,
+            'slug'                  =>  'required|unique:categories,slug,' . $id,
         ], [
             'name.required'                 =>  'Category Name is required',
             'description.required'          =>  'Category Description is required',
@@ -595,11 +594,11 @@ class CategoryController extends Controller
         }
 
         $status = 0;
-        if(isset($request->status)){
+        if (isset($request->status)) {
             $status = 1;
         }
-        
-        Category::where('id',$id)->update([
+
+        Category::where('id', $id)->update([
             'slug'                      =>  $request->slug,
             'name'                      =>  $request->name,
             'parent_id'                 =>  $request->parent_id,
@@ -617,14 +616,13 @@ class CategoryController extends Controller
             'og_image'                  =>  $og_image,
             'og_alt'                    =>  $request->og_alt,
         ]);
-        
-        return redirect('admin/sub/sub/categories')->with('success','Sub Sub category updated successfully');
+
+        return redirect('admin/sub/sub/categories')->with('success', 'Sub Sub category updated successfully');
     }
 
     public function destroy_sub2($id)
     {
-        Category::where('id',$id)->update(['flag' => 1]);
-        return redirect('admin/sub/sub/categories')->with('danger','Category deleted successfully');
+        Category::where('id', $id)->update(['flag' => 1]);
+        return redirect('admin/sub/sub/categories')->with('danger', 'Category deleted successfully');
     }
-
 }

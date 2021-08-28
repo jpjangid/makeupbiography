@@ -87,6 +87,15 @@
               </a>
             </div>
             <div class="menu-item">
+              <a class="menu-link" href="{{ url('admin/products') }}">
+                <span class="menu-bullet">
+                  <span class="bullet bullet-dot">
+                  </span>
+                </span>
+                <span class="menu-title">Products</span>
+              </a>
+            </div>
+            <div class="menu-item">
               <a class="menu-link" href="{{ url('admin/redirections') }}">
                 <span class="menu-bullet">
                   <span class="bullet bullet-dot">

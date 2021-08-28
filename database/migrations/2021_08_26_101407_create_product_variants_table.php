@@ -19,10 +19,11 @@ class CreateProductVariantsTable extends Migration
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->string('link_identifier')->nullable();
             $table->string('name')->nullable();
+            $table->string('slug')->nullable();
             $table->string('sku')->nullable();
             $table->string('hex_code')->nullable();
             $table->string('p_type')->nullable();
-            $table->string('size')->nullable();
+            $table->string('variation')->nullable();
             $table->string('discount_type')->nullable();
             $table->integer('discount')->nullable();
             $table->integer('regular_price');
