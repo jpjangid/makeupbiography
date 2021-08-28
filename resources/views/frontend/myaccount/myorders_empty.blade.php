@@ -24,9 +24,6 @@
             <span class="c-page-header__login-text">Logged in as
                 <span class="c-page-header__login-name">xyz</span>
             </span>
-            <a class="c-page-header__logout" href="https://parkofideas.com/luchiana/demo/my-account/customer-logout/?_wpnonce=c22e1eb537">Logout
-                <i class="ip-menu-right c-page-header__logout-icon"></i>
-            </a>
         </div>
     </header>
     <div class="woocommerce-notices-wrapper">
@@ -60,6 +57,7 @@
                                     <a class="c-account__navigation-link" href="#"><i class='fas fa-sign-out-alt'></i> Log out</a>
                                 </li>
                             </ul>
+                        @include('frontend.myaccount.sidebar')
                         </nav>
                     </div>
                     <div class="c-account__col-content">

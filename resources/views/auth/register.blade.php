@@ -62,8 +62,7 @@
                 @enderror
               </div>
               <div class="c-form__row pass">
-
-                <input type="number" placeholder="Mobile No." class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="mobile" id="reg_mobile_no" autocomplete="mobileno" value="{{ old('mobile') }}" />
+                <input type="number" placeholder="Mobile No." class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="mobile" id="reg_mobile_no" autocomplete="mobile" value="{{ old('mobile') }}" />
                 @error('mobile')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
