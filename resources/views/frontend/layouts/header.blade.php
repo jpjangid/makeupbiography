@@ -593,7 +593,7 @@
         <div class="c-header__col-left">
           <div class="c-header__logo">
             <a href="{{ url('/') }}">
-              <img width="205" height="18" src="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3056882909.svg" alt="Luchiana" class="c-header__logo-img c-header__logo-img--desktop" />
+              <img src="{{ asset('/images/mblogo.png') }}" style="width: 70px; height:70px; border-radius: 50%">
             </a>
           </div>
         </div>

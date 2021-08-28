@@ -3,74 +3,13 @@
 @section('content')
 <div class="l-inner">
   <div data-elementor-type="wp-page" data-elementor-id="1131" class="elementor elementor-1131" data-elementor-settings="[]">
-    <div class="elementor-inner">
+    <div class="elementor-inner" style="background-color: #e0ffff;">
       <div class="elementor-section-wrap">
-        <section class="elementor-section elementor-top-section elementor-element elementor-element-d23e9e3 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="d23e9e3" data-element_type="section">
-          <div class="elementor-container elementor-column-gap-no">
-            <div class="elementor-row">
-              <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-aaeed27" data-id="aaeed27" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                <div class="elementor-column-wrap elementor-element-populated">
-                  <div class="elementor-widget-wrap">
-                    <div class="elementor-element elementor-element-eaa0ffd elementor-widget elementor-widget-ideapark-heading" data-id="eaa0ffd" data-element_type="widget" data-widget_type="ideapark-heading.default">
-                      <div class="elementor-widget-container">
-                        <div class="c-ip-heading c-ip-heading--small c-ip-heading--left c-ip-heading--tablet- c-ip-heading--mobile- c-ip-heading--bullet-hide">
-                          <span class="c-ip-heading__inner">Package</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="elementor-element elementor-element-1b5e752 elementor-widget elementor-widget-ideapark-heading" data-id="1b5e752" data-element_type="widget" data-widget_type="ideapark-heading.default">
-                      <div class="elementor-widget-container">
-                        <div class="c-ip-heading c-ip-heading--large c-ip-heading--left c-ip-heading--tablet- c-ip-heading--mobile- c-ip-heading--bullet-hide">
-                          <span class="c-ip-heading__inner">Premium</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="elementor-element elementor-element-eb91543 elementor-widget elementor-widget-ideapark-button" data-id="eb91543" data-element_type="widget" data-widget_type="ideapark-button.default">
-                      <div class="elementor-widget-container">
-                        <div class="c-ip-button__wrap">
-                          <a href="https://parkofideas.com/luchiana/demo/shop/airbrush-matte/?set=11" class="c-button c-ip-button c-button--outline" role="button">
-                            <span class="c-ip-button__text">Explore</span>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-64ce9a3" data-id="64ce9a3" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                <div class="elementor-column-wrap elementor-element-populated">
-                  <div class="elementor-widget-wrap">
-                    <div class="elementor-element elementor-element-9a6f48d elementor-widget elementor-widget-ideapark-heading" data-id="9a6f48d" data-element_type="widget" data-widget_type="ideapark-heading.default">
-                      <div class="elementor-widget-container">
-                        <div class="c-ip-heading c-ip-heading--small c-ip-heading--left c-ip-heading--tablet- c-ip-heading--mobile- c-ip-heading--bullet-hide">
-                          <span class="c-ip-heading__inner">New Brand</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="elementor-element elementor-element-d0e63e1 elementor-widget elementor-widget-ideapark-heading" data-id="d0e63e1" data-element_type="widget" data-widget_type="ideapark-heading.default">
-                      <div class="elementor-widget-container">
-                        <div class="c-ip-heading c-ip-heading--large c-ip-heading--left c-ip-heading--tablet- c-ip-heading--mobile- c-ip-heading--bullet-hide">
-                          <span class="c-ip-heading__inner">Touch</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="elementor-element elementor-element-11504a2 elementor-widget elementor-widget-ideapark-button" data-id="11504a2" data-element_type="widget" data-widget_type="ideapark-button.default">
-                      <div class="elementor-widget-container">
-                        <div class="c-ip-button__wrap">
-                          <a href="https://parkofideas.com/luchiana/demo/shop/?set=6" class="c-button c-ip-button c-button--outline" role="button">
-                            <span class="c-ip-button__text">Explore</span>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="elementor-section elementor-top-section elementor-element elementor-element-d63423e elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="d63423e" data-element_type="section">
-          <div class="elementor-container elementor-column-gap-no">
+        <img src="{{ asset('/images/mb.png') }}" style="width:100%;">
+      </div>
+            <!-- <img src="{{ asset('/images/brush-stroke-preview.png') }}" height="5%" width="10%" style="z-index:1; float:right; margin-top:80px;">   -->
+      <section class="elementor-section elementor-top-section elementor-element elementor-element-d63423e elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="d63423e" data-element_type="section" style="background-image: linear-gradient(to right, #C19A6B, #FFE5B4); padding-top:30px; padding-bottom:30px;"> 
+      <div class="elementor-container elementor-column-gap-no">
             <div class="elementor-row">
               <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-83255c5" data-id="83255c5" data-element_type="column">
                 <div class="elementor-column-wrap elementor-element-populated">
@@ -148,7 +87,7 @@
                     <div class="elementor-element elementor-element-34b38e3 elementor-widget elementor-widget-ideapark-heading" data-id="34b38e3" data-element_type="widget" data-widget_type="ideapark-heading.default">
                       <div class="elementor-widget-container">
                         <div class="c-ip-heading c-ip-heading--medium c-ip-heading--center c-ip-heading--tablet- c-ip-heading--mobile- c-ip-heading--bullet-hide">
-                          <span class="c-ip-heading__inner">TOP Products</span>
+                          <span class="c-ip-heading__inner">Top Products</span>
                         </div>
                       </div>
                     </div>
