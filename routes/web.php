@@ -93,6 +93,9 @@ Route::middleware(['auth','prevent-back-history','admin'])->prefix('admin')->gro
         Route::post('/update_status', [App\Http\Controllers\backend\CategoryController::class, 'update_status_sub2']);
     });
 
+    //route for profile update
+    Route::get('profile',[App\Http\Controllers\Auth\ProfileController::class, 'edit']);
+
 
    
 
@@ -102,13 +105,13 @@ Route::middleware(['auth','prevent-back-history','admin'])->prefix('admin')->gro
 Route::middleware(['auth','prevent-back-history'])->group(function () {
     
     //My account routes
-    Route::view('my-account','frontend.myaccount.myaccount');
-    Route::view('my-dashboard','frontend.myaccount.mydashboard');
-    Route::view('my-wallet','frontend.myaccount.mywallet');
+    Route::get('my-account',[App\Http\Controllers\frontend\MyAccountController::class, 'myaccount']);
+    Route::get('my-wallet',[App\Http\Controllers\frontend\MyAccountController::class, 'mywallet']);
     Route::view('mywishlistempty','frontend.myaccount.mywishlist_empty');
-    Route::view('wishlist/empty','frontend.wishlist.empty');
-    Route::view('myordersempty','frontend.myaccount.myorders_empty');
-    Route::view('myaddressempty','frontend.myaccount.myaddress_empty');
+    Route::get('my-wishlist',[App\Http\Controllers\frontend\MyAccountController::class, 'wishlist']);
+    Route::get('my-orders',[App\Http\Controllers\frontend\MyAccountController::class, 'myorders']);
+    Route::get('q&a',[App\Http\Controllers\frontend\MyAccountController::class, 'question_answers']);
+    Route::get('my-address',[App\Http\Controllers\frontend\MyAccountController::class, 'myaddress']);
     Route::view('questionanswer','frontend.myaccount.question_answer');
     Route::view('wishlist','frontend.wishlist.index');
 
