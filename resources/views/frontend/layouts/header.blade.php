@@ -7,7 +7,7 @@
   <div class="c-header__outer c-header__outer--mobile c-header__outer--header-type-4 c-header__outer--header-type-mobile-1">
     <div class="c-header c-header--sticky-support c-header--header-type-4 c-header--header-type-mobile-1 c-header--buttons-4 c-header--mobile js-header-mobile">
       <div class="c-header__row">
-        <a href="https://parkofideas.com/luchiana/demo/" class="c-header__logo">
+        <a href="{{ url('/') }}" class="c-header__logo">
           <img width="205" height="18" src="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3056882909.svg" alt="Luchiana" class="c-header__logo-img c-header__logo-img--all" />
         </a>
         <button class="h-cb h-cb--svg c-header__menu-button js-mobile-menu-open" type="button">
@@ -500,11 +500,17 @@
         </a>
       </div>
       <div class="c-header__auth-button">
+      @if (Route::has('login'))
+        @auth
+        xyz
+        @else 
         <a class="c-header__button-link c-header__button-link--account" title="Login" href="{{ url('admin') }}" rel="nofollow">
           <i class="ip-user">
             <!-- -->
           </i>
         </a>
+        @endauth
+      @endif  
       </div>
       <div class="c-header__wishlist">
         <a class="c-header__button-link" href="https://parkofideas.com/luchiana/demo/wishlist/">
@@ -586,7 +592,7 @@
       <div class="c-header__row">
         <div class="c-header__col-left">
           <div class="c-header__logo">
-            <a href="https://parkofideas.com/luchiana/demo/">
+            <a href="{{ url('/') }}">
               <img width="205" height="18" src="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3056882909.svg" alt="Luchiana" class="c-header__logo-img c-header__logo-img--desktop" />
             </a>
           </div>
@@ -1061,13 +1067,26 @@
                 </i>
               </a>
             </div>
+           
+            @if (Route::has('login'))
+            @auth
             <div class="c-header__auth-button">
-              <a class="c-header__button-link c-header__button-link--account" title="Login" href="{{ url('admin') }}" rel="nofollow">
+              <a class="c-header__button-link c-header__button-link--account" title="my-account" href="{{ url('my-account') }}" rel="nofollow">
                 <i class="ip-user">
                   <!-- -->
                 </i>
               </a>
             </div>
+            @else
+            <div class="c-header__auth-button">
+              <a class="c-header__button-link c-header__button-link--account" title="Login" href="{{ url('login') }}" rel="nofollow">
+                <i class="ip-user">
+                  <!-- -->
+                </i>
+              </a>
+            </div>
+            @endauth
+            @endif
             <div class="c-header__wishlist">
               <a class="c-header__button-link" href="https://parkofideas.com/luchiana/demo/wishlist/">
                 <i class="ip-wishlist c-header__wishlist-icon"></i>
@@ -1076,7 +1095,7 @@
               </a>
             </div>
             <div class="c-header__cart js-cart">
-              <a class="c-header__button-link" href="https://parkofideas.com/luchiana/demo/cart/">
+              <a class="c-header__button-link" href="{{ url('cart') }}">
                 <i class="ip-cart c-header__cart-icon">
                   <!-- -->
                 </i>

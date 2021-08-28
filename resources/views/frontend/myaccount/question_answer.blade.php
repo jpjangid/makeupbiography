@@ -31,9 +31,6 @@
             <span class="c-page-header__login-text">Logged in as
                 <span class="c-page-header__login-name">xyz</span>
             </span>
-            <a class="c-page-header__logout" href="https://parkofideas.com/luchiana/demo/my-account/customer-logout/?_wpnonce=c22e1eb537">Logout
-                <i class="ip-menu-right c-page-header__logout-icon"></i>
-            </a>
         </div>
     </header>
     <div class="woocommerce-notices-wrapper">
@@ -44,29 +41,7 @@
                 <div class="c-account">
                     <div class="c-account__col-menu">
                         <nav>
-                            <ul class="c-account__navigation">
-                                <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--dashboard">
-                                    <a class="c-account__navigation-link" href="#"><i class='fas fa-user-edit'></i> My Dashboard</a>
-                                </li>
-                                <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--wallet">
-                                    <a class="c-account__navigation-link" href="#"><i class='fas fa-wallet'></i> My Wallet</a>
-                                </li>
-                                <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders--edit-account is-active">
-                                    <a class="c-account__navigation-link" href="#"><i class='fas fa-truck'></i> My Orders</a>
-                                </li>
-                                <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--wishlist">
-                                    <a class="c-account__navigation-link" href="#"><i class='fas fa-heart'></i> My Wishlist</a>
-                                </li>
-                                <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--address">
-                                    <a class="c-account__navigation-link" href="#"><i class='fas fa-address-card'></i> My Addresses</a>
-                                </li>
-                                <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--q&a">
-                                    <a class="c-account__navigation-link" href="#"><i class='fas fa-question-circle'></i> Q&A</a>
-                                </li>
-                                <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--log-out">
-                                    <a class="c-account__navigation-link" href="#"><i class='fas fa-sign-out-alt'></i> Log out</a>
-                                </li>
-                            </ul>
+                        @include('frontend.myaccount.sidebar')
                         </nav>
                     </div>
                     <div class="c-account__col-content">

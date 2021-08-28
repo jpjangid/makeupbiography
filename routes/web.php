@@ -17,14 +17,6 @@ Route::get('login/facebook', [App\Http\Controllers\Auth\LoginController::class, 
 
 Route::get('login/facebook/callback', [App\Http\Controllers\Auth\LoginController::class, 'loginWithFacebook']);
 
-Route::get('unauthorized', function() {
-    return "unauthorized";
-});
-
-Route::get('/admin', function () {
-    return view('auth/login');
-});
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -107,24 +99,44 @@ Route::middleware(['auth','prevent-back-history','admin'])->prefix('admin')->gro
 });
 
 /* Route for frontend Begin */
+Route::middleware(['auth','prevent-back-history'])->group(function () {
+    
+    //My account routes
+    Route::view('my-account','frontend.myaccount.myaccount');
+    Route::view('my-dashboard','frontend.myaccount.mydashboard');
+    Route::view('my-wallet','frontend.myaccount.mywallet');
+    Route::view('mywishlistempty','frontend.myaccount.mywishlist_empty');
+    Route::view('wishlist/empty','frontend.wishlist.empty');
+    Route::view('myordersempty','frontend.myaccount.myorders_empty');
+    Route::view('myaddressempty','frontend.myaccount.myaddress_empty');
+    Route::view('questionanswer','frontend.myaccount.question_answer');
+    Route::view('wishlist','frontend.wishlist.index');
+
+    //Route for profile update
+    Route::patch('profile/{id}',[App\Http\Controllers\Auth\ProfileController::class, 'update'])->name('profile');
+
+    //Route for Cart
+    Route::view('cart','frontend.cart.index');
+    Route::view('cart/empty','frontend.cart.empty');
+});    
+
+
+
+
 Route::get('/', function () {
     return view('frontend.main.index');
 });
 Route::view('product', 'frontend.product.detail');
 Route::view('category', 'frontend.product.category');
 Route::view('brand','frontend.brand.index');
-Route::view('wishlist','frontend.wishlist.index');
-Route::view('wishlist/empty','frontend.wishlist.empty');
-Route::view('cart','frontend.cart.index');
-Route::view('cart/empty','frontend.cart.empty');
+
+
+
 Route::view('checkout','frontend.checkout.index');
-Route::view('myaccount','frontend.myaccount.myaccount');
-Route::view('mydashboard','frontend.myaccount.mydashboard');
-Route::view('mywallet','frontend.myaccount.mywallet');
-Route::view('mywishlistempty','frontend.myaccount.mywishlist_empty');
-Route::view('myordersempty','frontend.myaccount.myorders_empty');
-Route::view('myaddressempty','frontend.myaccount.myaddress_empty');
-Route::view('questionanswer','frontend.myaccount.question_answer');
+
+
+
+
 Route::view('contactus','frontend.page.contactus');
 
 // Route::view('faq','frontend.page.faq');
