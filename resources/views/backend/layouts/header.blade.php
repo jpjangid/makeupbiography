@@ -1161,7 +1161,7 @@
           <!--end::Menu separator-->
           <!--begin::Menu item-->
           <div class="menu-item px-5">
-            <a href="account/overview.html" class="menu-link px-5">Profile</a>
+            <a href="{{ url('admin/profile') }}" class="menu-link px-5">Profile</a>
           </div>
           <!--end::Menu item-->
           <!--begin::Menu separator-->
