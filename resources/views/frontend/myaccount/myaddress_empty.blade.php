@@ -158,6 +158,13 @@
                                             <label for="postal" style="padding: 10px;"><b>Postal Code</b></label>
                                             <input type="number" placeholder="Enter Postal Code" style="padding: 10px;" name="pincode" required>
 
+                                            <label for="name" style="padding: 10px;"><b>Address Type</b></label>
+                                                <input type="radio" name="radio-choice-1" id="radio-choice-1" value="choice-1" checked="checked" style="padding: 10px;">
+                                                <label for="radio-choice-1" style="padding: 10px; display: inline-block;">Home</label>
+
+                                                <input type="radio" name="radio-choice-1" id="radio-choice-2" value="choice-2" style="padding: 10px;">
+                                                <label for="radio-choice-2" style="padding: 10px; display: inline-block;">Work</label>
+
                                             <label for="address" style="padding: 10px;"><b>Address</b></label>
                                             <textarea name="addresses" rows="4" cols="50" style="padding: 10px;">
                                             </textarea>

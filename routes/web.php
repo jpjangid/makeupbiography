@@ -124,6 +124,8 @@ Route::view('mywallet','frontend.myaccount.mywallet');
 Route::view('mywishlistempty','frontend.myaccount.mywishlist_empty');
 Route::view('myordersempty','frontend.myaccount.myorders_empty');
 Route::view('myaddressempty','frontend.myaccount.myaddress_empty');
+Route::view('myorders','frontend.myaccount.myorders');
+Route::view('mywishlist','frontend.myaccount.mywishlist');
 Route::view('questionanswer','frontend.myaccount.question_answer');
 Route::view('contactus','frontend.page.contactus');
 

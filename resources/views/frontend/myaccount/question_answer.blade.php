@@ -10,10 +10,38 @@
         margin: 15px 20px 25px 0;
         padding: 20px 15px 20px 20px;
         white-space: normal;
-        width: 340px;
-        min-height: 203px;
+        width: 540px;
+        min-height: 103px;
         vertical-align: middle;
         position: relative;
+    }
+    .ask
+    {
+        width: 100%;
+        height: auto;
+        resize: none;
+        overflow: auto;
+        line-height: 24px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #3f414d;
+        padding: 2px 10px 0;
+        outline: none;
+        border-radius: 0;
+        border-width: 0px 0px 1px;
+        border-bottom-color: #e1e1e1;
+    }
+    .post-btn
+    {
+        border-radius: 16px;
+        text-align: center;
+        background-color: #c58c85;
+        border: none;
+        color: white;
+        cursor: pointer;
+        opacity: 0.8;
+        margin-top: 20px;
+        float: right;
     }
 </style>
 @endsection
@@ -51,7 +79,7 @@
                                 <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--wallet">
                                     <a class="c-account__navigation-link" href="#"><i class='fas fa-wallet'></i> My Wallet</a>
                                 </li>
-                                <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders--edit-account is-active">
+                                <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders">
                                     <a class="c-account__navigation-link" href="#"><i class='fas fa-truck'></i> My Orders</a>
                                 </li>
                                 <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--wishlist">
@@ -60,7 +88,7 @@
                                 <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--address">
                                     <a class="c-account__navigation-link" href="#"><i class='fas fa-address-card'></i> My Addresses</a>
                                 </li>
-                                <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--q&a">
+                                <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--q&a--edit-account is-active">
                                     <a class="c-account__navigation-link" href="#"><i class='fas fa-question-circle'></i> Q&A</a>
                                 </li>
                                 <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--log-out">
@@ -76,6 +104,18 @@
                                     <i class='fas fa-question-circle' style="color: #c58c85;"></i> Q & A
                                     <hr style="width:800px;">
                                 </label>
+                            </p>
+                            <p class="woocommerce-form-row woocommerce-form-row--first form-row form-row-first">
+                                <label style="font-size:20px; text-align:center;">
+                                    There are no questions yet.
+                                </label>
+                            </p>
+                            <p class="woocommerce-form-row woocommerce-form-row--last form-row form-row-last">                             
+                                <div class="card-view">
+                                    <label style="font-size:15px; font-weight:bold;">Hi xyz</label>
+                                    <textarea placeholder="What is your question?" class="ask"></textarea>
+                                    <button type="submit" class="post-btn">Post</button>
+                                </div>
                             </p>
                         </form>
                     </div>
