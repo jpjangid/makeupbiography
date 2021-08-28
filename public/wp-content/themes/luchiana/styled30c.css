@@ -1647,7 +1647,7 @@ body.woo-variation-swatches .variable-items-wrapper .variable-item:not(.radio-va
 }
 
 .c-account__navigation-item.is-active {
-	color: var(--accent-color);
+	color: #c58c85;
 }
 
 .c-account__col-content > *:first-child {
@@ -4631,6 +4631,7 @@ div.wpcf7 span.ajax-loader {
 		padding-left:    50px;
 		padding-right:   50px;
 		min-height:      90px;
+		background-image: linear-gradient(to bottom, #20B2AA, #93FFE8);
 	}
 
 	.c-header__row:empty {
@@ -4757,6 +4758,7 @@ div.wpcf7 span.ajax-loader {
 	.c-header__col-right-wrap {
 		-webkit-box-pack: end;
 		        justify-content: flex-end;
+
 	}
 
 	.c-header__col-center {
@@ -4927,8 +4929,9 @@ div.wpcf7 span.ajax-loader {
 	.c-header__top-row--header-type-3,
 	.c-header__top-row--header-type-4,
 	.c-header__top-row--header-type-5 {
-		color:            var(--top-color);
-		background-color: var(--top-background-color);
+		color:       white;
+		border-bottom: 2px solid goldenrod;
+		background-image: linear-gradient(to bottom, #008B8B, #3B9C9C);
 	}
 
 	.c-header__outer--header-type-3.c-header__outer--top-row {
@@ -5023,7 +5026,7 @@ div.wpcf7 span.ajax-loader {
 		font-size:      12px;
 		line-height:    15px;
 		letter-spacing: 0.05em;
-		color:          var(--top-color-light);
+		color:          white;
 	}
 
 	.c-header__top-row-item--social {
@@ -5040,7 +5043,7 @@ div.wpcf7 span.ajax-loader {
 	}
 
 	.c-header__top-row-icon {
-		color:        var(--top-color);
+		color:        white;
 		margin-right: 5px;
 		position:     relative;
 		top:          1px
@@ -11317,7 +11320,7 @@ p + .woocommerce-order-details {
         transition:         visibility 0.15s linear, opacity 0.15s linear;
         text-transform:     none;
         font-weight:        normal;
-        background-color:   var(--top-background-color);
+        background-image:   linear-gradient(to bottom, #008B8B, #20B2AA);
         box-shadow:         0 2px 7px rgba(0, 0, 0, 0.07);
         display:            -webkit-box;
         display:            flex;
@@ -11357,7 +11360,6 @@ p + .woocommerce-order-details {
         right:            -10px;
         top:              -15px;
         height:           15px;
-        background-color: var(--top-background-color);
     }
 
     .c-top-bar-menu__submenu--inner {

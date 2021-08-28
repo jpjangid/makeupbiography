@@ -1,8 +1,13 @@
+@php
+ use \App\Models\Category;
+ $mains = Category::select('id','slug','name')->where('flag',0)->where('parent_id',null)->with('subcategory')->get();
+
+@endphp
 <header class="l-section" id="main-header">
   <div class="c-header__outer c-header__outer--mobile c-header__outer--header-type-4 c-header__outer--header-type-mobile-1">
     <div class="c-header c-header--sticky-support c-header--header-type-4 c-header--header-type-mobile-1 c-header--buttons-4 c-header--mobile js-header-mobile">
       <div class="c-header__row">
-        <a href="https://parkofideas.com/luchiana/demo/" class="c-header__logo">
+        <a href="{{ url('/') }}" class="c-header__logo">
           <img width="205" height="18" src="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3056882909.svg" alt="Luchiana" class="c-header__logo-img c-header__logo-img--all" />
         </a>
         <button class="h-cb h-cb--svg c-header__menu-button js-mobile-menu-open" type="button">
@@ -495,11 +500,17 @@
         </a>
       </div>
       <div class="c-header__auth-button">
+      @if (Route::has('login'))
+        @auth
+        xyz
+        @else 
         <a class="c-header__button-link c-header__button-link--account" title="Login" href="{{ url('admin') }}" rel="nofollow">
           <i class="ip-user">
             <!-- -->
           </i>
         </a>
+        @endauth
+      @endif  
       </div>
       <div class="c-header__wishlist">
         <a class="c-header__button-link" href="https://parkofideas.com/luchiana/demo/wishlist/">
@@ -581,7 +592,7 @@
       <div class="c-header__row">
         <div class="c-header__col-left">
           <div class="c-header__logo">
-            <a href="https://parkofideas.com/luchiana/demo/">
+            <a href="{{ url('/') }}">
               <img width="205" height="18" src="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3056882909.svg" alt="Luchiana" class="c-header__logo-img c-header__logo-img--desktop" />
             </a>
           </div>
@@ -686,6 +697,58 @@
                   </li>
                 </ul>
               </li>
+
+              <!-- category begin -->
+
+              @if(count($mains) > 0)
+              <li class="c-top-menu__item c-top-menu__item--has-children menu-item-162 js-menu-item">
+                <a href="#">Category</a>
+                <ul class="c-top-menu__submenu c-top-menu__submenu--columns-4 c-top-menu__submenu--expand">
+                @foreach($mains as $main)  
+                  <li class="c-top-menu__subitem menu-item-557 c-top-menu__subitem--expand js-menu-item">
+                    <a>{{ $main->name }}</a>
+                    <ul class="c-top-menu__submenu c-top-menu__submenu--columns-1 c-top-menu__submenu--expand c-top-menu__submenu--inner">
+                    @if(!empty($main->subcategory))
+                    @foreach($main->subcategory as $subcategory)
+                    @if($subcategory->status == 1 && $subcategory->flag == 0)
+                      @php 
+                        $subcategories = Category::select('id','name','slug')->where('flag',0)->where('status',1)->where('parent_id',$subcategory->id)->get();
+                      @endphp
+                      @if(count($subcategories) > 0)
+                      <li class="c-top-menu__subitem c-top-menu__subitem--has-children menu-item-2042 c-top-menu__subitem--collapse js-menu-item">
+                        <a>{{ $subcategory->name }}</a>
+                        <ul class="c-top-menu__submenu c-top-menu__submenu--columns-1 c-top-menu__submenu--inner">
+                        @foreach($subcategories as $sub)
+                          <li class="c-top-menu__subitem menu-item-805 c-top-menu__subitem--collapse js-menu-item">
+                            <a href="https://parkofideas.com/luchiana/demo/?set=21">{{ $sub->name }}</a>
+                          </li> 
+                        @endforeach  
+                        </ul>
+                      </li>
+                      @else
+                      <li class="c-top-menu__subitem menu-item-2474 c-top-menu__subitem--collapse js-menu-item">
+                        <a href="https://parkofideas.com/luchiana/demo/shop/?set=31">{{ $subcategory->name }}</a>
+                      </li>
+                      @endif
+                    @endif
+                    @endforeach  
+                    @endif  
+                    </ul>
+                  </li>
+                @endforeach
+
+                </ul>
+              </li>
+              @endif
+
+
+
+
+
+
+
+              <!-- category end -->
+
               <li class="c-top-menu__item c-top-menu__item--has-children menu-item-804 js-menu-item">
                 <a>Headers</a>
                 <ul class="c-top-menu__submenu c-top-menu__submenu--columns-1">
@@ -1004,13 +1067,26 @@
                 </i>
               </a>
             </div>
+           
+            @if (Route::has('login'))
+            @auth
             <div class="c-header__auth-button">
-              <a class="c-header__button-link c-header__button-link--account" title="Login" href="{{ url('admin') }}" rel="nofollow">
+              <a class="c-header__button-link c-header__button-link--account" title="my-account" href="{{ url('my-account') }}" rel="nofollow">
                 <i class="ip-user">
                   <!-- -->
                 </i>
               </a>
             </div>
+            @else
+            <div class="c-header__auth-button">
+              <a class="c-header__button-link c-header__button-link--account" title="Login" href="{{ url('login') }}" rel="nofollow">
+                <i class="ip-user">
+                  <!-- -->
+                </i>
+              </a>
+            </div>
+            @endauth
+            @endif
             <div class="c-header__wishlist">
               <a class="c-header__button-link" href="https://parkofideas.com/luchiana/demo/wishlist/">
                 <i class="ip-wishlist c-header__wishlist-icon"></i>
@@ -1019,7 +1095,7 @@
               </a>
             </div>
             <div class="c-header__cart js-cart">
-              <a class="c-header__button-link" href="https://parkofideas.com/luchiana/demo/cart/">
+              <a class="c-header__button-link" href="{{ url('cart') }}">
                 <i class="ip-cart c-header__cart-icon">
                   <!-- -->
                 </i>

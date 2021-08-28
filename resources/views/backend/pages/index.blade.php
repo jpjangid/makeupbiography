@@ -53,7 +53,6 @@
                         <table class="table table-row-bordered table-hover text-nowrap" id="pageTable">
                             <thead>
                                 <tr class="fw-bold fs-6 text-muted">
-                                    <th>S.No.</th>
                                     <th>Title</th>
                                     <th>Slug</th>
                                     <th>Publish</th>
@@ -61,26 +60,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @php $i = 1; @endphp
-                                @foreach($pages as $page)
-                                    <tr>
-                                        <td>{{ $i }}</td>
-                                        <td>{{ $page->title }}</td>
-                                        <td>{{ $page->slug }}</td>
-                                        <td>
-                                            
-                                            <div class="form-check form-switch form-check-custom form-check-solid">
-                                                <input type="hidden" value="{{ $page->id }}" class="page_id">
-                                                <input type="checkbox" class="form-check-input js-switch  h-20px w-30px" id="customSwitch1" name="status" value="{{ $page->status }}" {{ $page->status == 1 ? 'checked' : '' }}>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <a href="{{ url('admin/pages/edit',['page' => $page->id]) }}"><i class="bi bi-pencil-square"></i></a>
-                                            <a href="{{ url('admin/pages/delete',['page' => $page->id]) }}"><i class="bi bi-trash"></i></a>
-                                        </td>
-                                    </tr>
-                                    @php $i++; @endphp
-                                @endforeach
+                              
                             </tbody>
                         </table>
                     </div>
@@ -97,14 +77,19 @@
 @section('js')
 
 <!-- Soft Delete -->
-<script>
-    $(document).ready(function() {
-        $('#pageTable').DataTable({
-            "scrollY": 300,
-            "scrollX": true
-        });
+<script type="text/javascript">
+    var pageTable = $('#pageTable').DataTable({
+        processing: true,
+        serverSide: true,
+        url: "{{ url('admin/pages') }}",
+        columns: [
+            {data: 'title', name: 'title'},
+            {data: 'slug', name: 'slug'},
+            {data: 'active', name: 'active'},
+            {data: 'action', name: 'action'},
+        ]
     });
-</script>
+</script> 
 
 <!-- Change Status -->
 <script>

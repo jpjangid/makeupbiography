@@ -112,21 +112,53 @@ Route::middleware(['auth', 'prevent-back-history', 'admin'])->prefix('admin')->g
         Route::get('/variants/{id}', [App\Http\Controllers\backend\ProductController::class, 'variants']);
         Route::post('/variants/store', [App\Http\Controllers\backend\ProductController::class, 'store_variants']);
     });
+    //route for profile update
+    Route::get('profile',[App\Http\Controllers\Auth\ProfileController::class, 'edit']);
+
+
+   
+
 });
 
 /* Route for frontend Begin */
+Route::middleware(['auth','prevent-back-history'])->group(function () {
+    
+    //My account routes
+    Route::get('my-account',[App\Http\Controllers\frontend\MyAccountController::class, 'myaccount']);
+    Route::get('my-wallet',[App\Http\Controllers\frontend\MyAccountController::class, 'mywallet']);
+    Route::view('mywishlistempty','frontend.myaccount.mywishlist_empty');
+    Route::get('my-wishlist',[App\Http\Controllers\frontend\MyAccountController::class, 'wishlist']);
+    Route::get('my-orders',[App\Http\Controllers\frontend\MyAccountController::class, 'myorders']);
+    Route::get('q&a',[App\Http\Controllers\frontend\MyAccountController::class, 'question_answers']);
+    Route::get('my-address',[App\Http\Controllers\frontend\MyAccountController::class, 'myaddress']);
+    Route::view('questionanswer','frontend.myaccount.question_answer');
+    Route::view('wishlist','frontend.wishlist.index');
+
+    //Route for profile update
+    Route::patch('profile/{id}',[App\Http\Controllers\Auth\ProfileController::class, 'update'])->name('profile');
+
+    //Route for Cart
+    Route::view('cart','frontend.cart.index');
+    Route::view('cart/empty','frontend.cart.empty');
+});    
+
+
+
+
 Route::get('/', function () {
     return view('frontend.main.index');
 });
 Route::view('product', 'frontend.product.detail');
 Route::view('category', 'frontend.product.category');
-Route::view('brand', 'frontend.brand.index');
 Route::view('wishlist', 'frontend.wishlist.index');
 Route::view('wishlist/empty', 'frontend.wishlist.empty');
 Route::view('cart', 'frontend.cart.index');
 Route::view('cart/empty', 'frontend.cart.empty');
 Route::view('checkout', 'frontend.checkout.index');
 Route::view('myaccount', 'frontend.myaccount.myaccount');
+Route::view('brand','frontend.brand.index');
+Route::view('contactus','frontend.page.contactus');
+
 // Route::view('faq','frontend.page.faq');
 // Route::view('return/policy','frontend.page.return_policy');
 // Route::view('shipping/policy','frontend.page.shipping_policy');
@@ -142,5 +174,5 @@ Route::get('blogs/{cat}', [App\Http\Controllers\frontend\BlogController::class, 
 Route::get('blogs/{cat}/{slug}', [App\Http\Controllers\frontend\BlogController::class, 'detail']);
 
 Route::post('storecomment', [App\Http\Controllers\frontend\CommentController::class, 'store']);
-
+Route::view('404','404');
 /* Route for front end End */

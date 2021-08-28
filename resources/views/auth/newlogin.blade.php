@@ -1,7 +1,24 @@
 @extends('frontend.layouts.app')
 
 @section('css')
+<style>
+  .para {
 
+    font-family: rtrim;
+  }
+
+  .cap {
+
+    background: -webkit-linear-gradient(#d2b48c, white);
+  }
+
+  .pass {
+
+    padding-top: 25px;
+  }
+
+
+</style>
 @endsection
 
 @section('content')
@@ -38,15 +55,28 @@
   <div class="l-section l-section--container l-section--bottom-margin l-section--no-sidebar l-section--top-margin-60 l-section--white">
     <div class="l-section__content">
       <div class="woocommerce">
-        <div class="c-login" id="customer_login">
+        <div class="c-login cap" id="customer_login">
+
           <div class="c-login__form js-login-form c-login__form--active">
-            <div class="c-login__header">Login</div>
-            <form class="c-form" method="post">
-              <div class="c-form__row">
-                <input type="text" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" placeholder="Username or email address" name="username" id="username" autocomplete="username" value="" />
+            <div class="c-login__header para" style="padding: 10px;">-Login-</div>
+            <form method="POST" class="c-form" action="{{ route('login') }}" style="width: 100%;">
+            @csrf
+              <div class="c-form__row fol" style="width: 100%;">
+
+                <input type="text" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text fol" placeholder="Email" name="username" id="username" autocomplete="off" value="" />
+                @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
               </div>
-              <div class="c-form__row">
+              <div class="c-form__row pass" style="width: 100%">
                 <input class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" placeholder="Password" type="password" name="password" id="password" autocomplete="current-password" />
+                @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
               </div>
               <div class="c-form__row c-form__row--inline c-login__remember">
                 <input type="hidden" id="woocommerce-login-nonce" name="woocommerce-login-nonce" value="934c87c088" />
@@ -60,7 +90,7 @@
               </div>
               <div class="c-login__bottom">
                 <div class="c-login__lost-password">
-                  <a class="c-login__lost-password-link" href="https://parkofideas.com/luchiana/demo/my-account/lost-password/">Lost your password?</a>
+                  <a class="c-login__lost-password-link" href="https://parkofideas.com/luchiana/demo/my-account/lost-password/">Forgot password</a>
                 </div>
                 <a href="" onclick="return false;" class="c-login__register js-login-form-toggle">Register
                   <i class="ip-menu-right c-login__more-icon"></i>
@@ -68,18 +98,59 @@
               </div>
             </form>
           </div>
+
           <div class="c-login__form js-register-form">
-            <div class="c-login__header">Register</div>
-            <form method="post" class="c-form">
+            <div class="c-login__header para">-Register-</div>
+            <form class="c-form" method="POST" action="{{ route('register') }}">
+              @csrf
               <div class="c-form__row">
-                <input type="email" placeholder="Email address" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" autocomplete="email" value="" />
+
+                <input type="text" placeholder="Name" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="name" id="name" autocomplete="name" value="" />
+                @error('name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
               </div>
+              <div class="c-form__row pass">
+
+                <input type="text" placeholder="Mobile No." class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="mobile" id="reg_mobile_no" autocomplete="mobileno" value="" />
+                @error('mobile')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+              <div class="c-form__row pass">
+
+                <input type="email" placeholder="Email address" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" autocomplete="email" value="" />
+                @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+              <div class="c-form__row pass">
+
+                <input type="password" placeholder="Password" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="password" id="password" autocomplete="password" value="" />
+                @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+              <div class="c-form__row pass">
+
+                <input type="password" placeholder="Re-enter Password" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="repassword" id="repassword" autocomplete="repassword" value="" />
+              </div>
+
               <div class="c-form__row">A password will be sent to your email address.</div>
               <div class="woocommerce-privacy-policy-text">
                 <p>Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our
-                  <a href="https://parkofideas.com/luchiana/demo/privacy-policy/" class="woocommerce-privacy-policy-link" target="_blank">privacy policy</a>.</p>
+                  <a href="https://parkofideas.com/luchiana/demo/privacy-policy/" class="woocommerce-privacy-policy-link" target="_blank">privacy policy</a>.
+                </p>
               </div>
-              <div class="c-form__row">
+              <div class="c-form__row" style="padding: 1px;">
                 <input type="hidden" id="woocommerce-register-nonce" name="woocommerce-register-nonce" value="732270f602" />
                 <input type="hidden" name="_wp_http_referer" value="/luchiana/demo/my-account/" />
                 <button type="submit" class="c-button c-button--outline c-button--full woocommerce-Button button" name="register" value="Register">Register</button>
@@ -93,6 +164,7 @@
               </div>
             </form>
           </div>
+
         </div>
       </div>
     </div>

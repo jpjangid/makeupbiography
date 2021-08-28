@@ -7,13 +7,50 @@ use App\Models\Brand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Yajra\DataTables\Services\DataTable;
+use DataTables;
+use Illuminate\Support\Collection;
 
 class BrandController extends Controller
 {
     public function index()
     {
-        $brands = Brand::where('flag',0)->get();
-        return view('backend.brand.index',compact('brands'));
+        
+        if (request()->ajax()) {
+            $brands1 = Brand::where(['flag' => 0,'status' => 1])->get();
+
+            $brands = new Collection;
+            foreach($brands1 as $brand) {
+                $brands->push([
+                    'id'    => $brand->id,
+                    'name'  => $brand->name,
+                    'slug'  => $brand->slug,
+                    'status'=> $brand->status 
+                ]);    
+            }
+
+            return Datatables::of($brands)
+                    ->addIndexColumn()
+                    ->addColumn('active', function($row) {
+                        $checked = $row['status'] == '1' ? 'checked' : '';
+                        $active  = '<div class="form-check form-switch form-check-custom form-check-solid">
+                                        <input type="hidden" value="'.$row['id'].'" class="category_id">
+                                        <input type="checkbox" class="form-check-input js-switch  h-20px w-30px" id="customSwitch1" name="status" value="'.$row['status'].'" '.$checked.'>
+                                    </div>';
+
+                      return $active;
+                    })
+                    ->addColumn('action', function($row) {
+                           $delete_url = url('admin/brands/delete',$row['id']);
+                           $edit_url = url('admin/brands/edit',$row['id']);
+                           $btn = '<a class="btn btn-primary btn-sm ml-1" href="'.$edit_url.'"><i class="fas fa-edit"></i></a>';
+                           $btn .= '<a class="btn btn-info btn-sm ml-1" href="'.$delete_url.'"><i class="fa fa-trash"></i></a>'; 
+                           return $btn;
+                    })
+                    ->rawColumns(['action','active'])
+                    ->make(true);
+        }
+        return view('backend.brand.index');
     }
 
     public function create()
