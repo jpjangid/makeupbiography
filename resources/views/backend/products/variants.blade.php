@@ -174,7 +174,7 @@
                                                     </select>
                                                 </td>
                                                 <td class="media_td">
-                                                    <input type="file" name="media[]" class="form-control">
+                                                    <input type="file" name="media[]" class="form-control" required>
                                                 </td>
                                                 <td>
                                                     <input type="number" name="sequence[]" class="form-control" placeholder="Enter Sequence">
@@ -255,10 +255,10 @@
         var row = $(this).closest("tr");
         if (type == 'video') {
             row.find('.media_td').empty();
-            row.find('.media_td').html('<input type="text" class="form-control form-control-solid" name="media1[]" id="sale_price" placeholder="Please Enter Video Link" value="">');
+            row.find('.media_td').html('<input type="text" class="form-control form-control-solid" name="media1[]" id="sale_price" placeholder="Please Enter Video Link" required>');
         } else {
             row.find('.media_td').empty();
-            row.find('.media_td').html('<input type="file" name="media[]" class="form-control">');
+            row.find('.media_td').html('<input type="file" name="media[]" class="form-control" required>');
         }
     });
 
