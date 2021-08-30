@@ -173,6 +173,8 @@ Route::get('{slug}', [App\Http\Controllers\frontend\PageController::class, 'inde
 Route::get('blogs/{cat}', [App\Http\Controllers\frontend\BlogController::class, 'index']);
 Route::get('blogs/{cat}/{slug}', [App\Http\Controllers\frontend\BlogController::class, 'detail']);
 
+Route::get('products/{product}/{variant}', [App\Http\Controllers\frontend\ProductController::class, 'index']);
+
 Route::post('storecomment', [App\Http\Controllers\frontend\CommentController::class, 'store']);
 Route::view('404','404');
 /* Route for front end End */
