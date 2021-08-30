@@ -1872,6 +1872,9 @@
 .c-ip-product-tabs__wrap {
     margin: 0 50px 45px;
     text-align: center;
+    background-image:linear-gradient(to bottom, #3B9C9C, #43BFC7);
+    border-radius: 20px;
+    padding-top: 25px;
 }
 .c-ip-product-tabs__menu {
     display: -webkit-inline-box !important;
@@ -1908,7 +1911,7 @@
     margin: 0;
     padding-bottom: 29px;
     border-bottom: 1px solid transparent;
-    color: var(--text-color-light);
+    color: white;
 }
 .c-ip-product-tabs__menu:not(.owl-carousel)
     .c-ip-product-tabs__menu-item:not(:last-child) {
@@ -1921,8 +1924,8 @@
     margin-left: 60px;
 }
 .c-ip-product-tabs__menu-item.active {
-    color: var(--text-color);
-    border-bottom-color: var(--text-color);
+    color: white;
+    border-bottom: 3px solid white;
 }
 .c-ip-product-tabs__menu .owl-item:last-child {
     margin-right: -1px !important;

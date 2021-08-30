@@ -11,7 +11,7 @@ class MyAccountController extends Controller
     public function myaccount()
     {
         if(auth()->user()->role == 'admin') {
-            return redirect('profile');
+            return redirect('admin/profile');
         }
         return view('frontend.myaccount.myaccount');
     }
