@@ -8,7 +8,7 @@
     <div class="c-header c-header--sticky-support c-header--header-type-4 c-header--header-type-mobile-1 c-header--buttons-4 c-header--mobile js-header-mobile">
       <div class="c-header__row">
         <a href="{{ url('/') }}" class="c-header__logo">
-          <img width="205" height="18" src="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3056882909.svg" alt="Luchiana" class="c-header__logo-img c-header__logo-img--all" />
+          <img src="{{ asset('/images/mblogo.png') }}" style="width: 50px; height:50px; border-radius: 50%">
         </a>
         <button class="h-cb h-cb--svg c-header__menu-button js-mobile-menu-open" type="button">
           <i class="ip-hamburger_menu c-header__menu-button-icon"></i>

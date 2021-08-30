@@ -3,7 +3,7 @@
     <div data-elementor-type="wp-post" data-elementor-id="1052" class="elementor elementor-1052" data-elementor-settings="[]">
       <div class="elementor-inner">
         <div class="elementor-section-wrap">
-          <section class="elementor-section elementor-top-section elementor-element elementor-element-720db9e8 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="720db9e8" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+          <section class="elementor-section elementor-top-section elementor-element elementor-element-720db9e8 elementor-section-full_width elementor-section-height-default" data-id="720db9e8" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
             <div class="elementor-container elementor-column-gap-no">
               <div class="elementor-row">
                 <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-11148c13" data-id="11148c13" data-element_type="column">
@@ -11,6 +11,8 @@
                     <div class="elementor-widget-wrap">
                       <div class="elementor-element elementor-element-33548589 elementor-widget elementor-widget-ideapark-inline-menu" data-id="33548589" data-element_type="widget" data-widget_type="ideapark-inline-menu.default">
                         <div class="elementor-widget-container">
+                        <img src="{{ asset('/images/golden-stroke.png') }}" height="5%" width="10%" style="float:left; margin-left: -5px; margin-top: -10px;">
+          <img src="{{ asset('/images/golden-stroke.png') }}" height="5%" width="10%" style="float:right; -webkit-transform: scaleX(-1); transform: scaleX(-1); margin-right: -5px; margin-top: -10px;">
                           <div class="c-ip-inline-menu">
                             <span class="c-ip-inline-menu__item">
                               <a href="{{ url('about-us') }}">About us</a>
@@ -34,6 +36,7 @@
                           </div>
                         </div>
                       </div>
+                      
                       <section class="elementor-section elementor-inner-section elementor-element elementor-element-2b806726 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="2b806726" data-element_type="section">
                         <div class="elementor-container elementor-column-gap-no">
                           <div class="elementor-row">
@@ -86,7 +89,7 @@
                                     <div class="elementor-widget-container">
                                       <div class="elementor-image">
                                         <a href="#">
-                                          <img width="205" height="18" src="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3056882909.svg" class="attachment-full size-full" alt="" loading="lazy" />
+                                        <img src="{{ asset('/images/mblogo.png') }}" style="width: 70px; height:70px; border-radius: 50%">
                                         </a>
                                       </div>
                                     </div>
