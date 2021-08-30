@@ -5335,12 +5335,12 @@ div.wpcf7 span.ajax-loader {
 	.c-header--header-type-5 {
 		height:           60px;
 		color:            white;
-		background-image: linear-gradient(to bottom, #20B2AA, #93FFE8);
+		background-image: linear-gradient(to bottom, #20B2AA, #43C6DB);
 	}
 
 	.c-header--sticky {
 		color:            white;
-		background-image: linear-gradient(to bottom, #20B2AA, #93FFE8);
+		background-image: linear-gradient(to bottom, #20B2AA, #43C6DB);
 		box-shadow:       0 4px 7px rgba(0, 0, 0, 0.06);
 	}
 

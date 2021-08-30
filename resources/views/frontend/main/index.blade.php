@@ -1,14 +1,80 @@
 @extends('frontend.layouts.app')
 
+@section('css')
+<style>
+  @media screen and (min-width: 480px) {
+    .image-stroke
+    {
+      width: 35%;
+    }
+  }
+
+    #slider {
+      overflow: hidden;
+    }
+    #slider figure {
+      position: relative;
+      width: 500%;
+      margin: 0;
+      left: 0;
+      animation: 20s slider infinite;
+    }
+    #slider figure img {
+      width: 20%;
+      float: left;
+    }
+
+    @keyframes slider {
+      0% {
+        left: 0;
+      }
+      20% {
+        left: 0;
+      }
+      25% {
+        left: -100%;
+      }
+      45% {
+        left: -100%;
+      }
+      50% {
+        left: -200%;
+      }
+      70% {
+        left: -200%;
+      }
+      75% {
+        left: -300%;
+      }
+      95% {
+        left: -300%;
+      }
+      100% {
+        left: -400%;
+      }
+    }
+
+</style>
+@endsection
+
 @section('content')
 <div class="l-inner">
   <div data-elementor-type="wp-page" data-elementor-id="1131" class="elementor elementor-1131" data-elementor-settings="[]">
     <div class="elementor-inner" style="background-color: #e0ffff;">
       <div class="elementor-section-wrap">
-        <img src="{{ asset('/images/mb.png') }}" style="width:100%;">
+        <!-- <img src="{{ asset('/images/mb.png') }}" style="width:100%;"> -->
+        <div id="slider">
+          <figure>
+            <img src="{{ asset('/images/s1.jpg') }}">
+            <img src="{{ asset('/images/s2.jpg') }}">
+            <img src="{{ asset('/images/s3.jpg') }}">
+            <img src="{{ asset('/images/s4.jpg') }}">
+            <img src="{{ asset('/images/s5.jpg') }}">
+          </figure>
+        </div>
       </div>
-            <!-- <img src="{{ asset('/images/brush-stroke-preview.png') }}" height="5%" width="10%" style="z-index:1; float:right; margin-top:80px;">   -->
-      <section class="elementor-section elementor-top-section elementor-element elementor-element-d63423e elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="d63423e" data-element_type="section" style="background-image: linear-gradient(to right, #C19A6B, #FFE5B4); padding-top:30px; padding-bottom:30px;"> 
+      <section class="elementor-section elementor-top-section elementor-element elementor-element-d63423e elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="d63423e" data-element_type="section" style="background-image: linear-gradient(to right, #C19A6B, #FFE5B4); padding-bottom:30px;"> 
+      <img src="{{ asset('/images/paint-stroke.png') }}" height="4%" width="9%" style="margin-top: -20px; -webkit-transform: scaleX(-1); transform: scaleX(-1);">
       <div class="elementor-container elementor-column-gap-no">
             <div class="elementor-row">
               <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-83255c5" data-id="83255c5" data-element_type="column">
@@ -77,6 +143,7 @@
               </div>
             </div>
           </div>
+          <img src="{{ asset('/images/paint-stroke.png') }}" height="4%" width="9%" style="float:right; padding-top: 10px;">  
         </section>
         <section class="elementor-section elementor-top-section elementor-element elementor-element-e52934a elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="e52934a" data-element_type="section">
           <div class="elementor-container elementor-column-gap-no">
@@ -87,7 +154,7 @@
                     <div class="elementor-element elementor-element-34b38e3 elementor-widget elementor-widget-ideapark-heading" data-id="34b38e3" data-element_type="widget" data-widget_type="ideapark-heading.default">
                       <div class="elementor-widget-container">
                         <div class="c-ip-heading c-ip-heading--medium c-ip-heading--center c-ip-heading--tablet- c-ip-heading--mobile- c-ip-heading--bullet-hide">
-                          <span class="c-ip-heading__inner">Top Products</span>
+                          <img src="{{ asset('/images/paint-brush-stroke-new.png') }}" class="image-stroke">
                         </div>
                       </div>
                     </div>
@@ -97,7 +164,7 @@
             </div>
           </div>
         </section>
-        <section class="elementor-section elementor-top-section elementor-element elementor-element-d57b645 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="d57b645" data-element_type="section">
+        <section class="elementor-section elementor-top-section elementor-element elementor-element-d57b645 elementor-section-full_width elementor-section-height-default" style="margin-top: -50px;" data-id="d57b645" data-element_type="section">
           <div class="elementor-container elementor-column-gap-no">
             <div class="elementor-row">
               <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-c9d7225" data-id="c9d7225" data-element_type="column">
