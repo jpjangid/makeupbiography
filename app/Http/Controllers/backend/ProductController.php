@@ -197,22 +197,26 @@ class ProductController extends Controller
         $video_data = array();
         $image_data = array();
         foreach ($request->media_type as $key => $media_type) {
-            if($media_type == 'video'){
-                $video['media_type'] = $media_type;
-                $video['sequence']  = $request->sequence[$key];
+            if(!empty($media_type)){
+                if($media_type == 'video'){
+                    $video['media_type'] = $media_type;
+                    $video['sequence']  = $request->sequence[$key];
 
-                array_push($video_data,$video);
-            }
-            if($media_type == 'image'){
-                $image['media_type'] = $media_type;
-                $image['sequence']  = $request->sequence[$key];
+                    array_push($video_data,$video);
+                }
+                if($media_type == 'image'){
+                    $image['media_type'] = $media_type;
+                    $image['sequence']  = $request->sequence[$key];
 
-                array_push($image_data,$image);
+                    array_push($image_data,$image);
+                }
             }
         }
 
         foreach ($request->media1 as $key => $video) {
-            $video_data[$key]['media'] = $video;
+            if(!empty($video)){
+                $video_data[$key]['media'] = $video;
+            }
         }
 
         foreach ($request->media as $key => $image) {

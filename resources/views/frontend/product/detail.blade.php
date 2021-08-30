@@ -1,5 +1,40 @@
 @extends('frontend.main.index')
 
+@section('title', $product->meta_title != '' ? $product->meta_title : 'Buy Beauty Products Online | MakeUp Products Store In Bangalore')
+@section('description',$product->meta_description != '' ? $product->meta_description : 'Are you looking for the best deals on all makeup and beauty brands? MakeUp Biography is your one stop solution for all your beauty related requirements.')
+@section('keywords',$product->keywords != '' ? $product->keywords : '')
+@section('og_title', $product->og_title != '' ? $product->og_title : 'Buy Beauty Products Online | MakeUp Products Store In Bangalore')
+@section('og_description',$product->og_description != '' ? $product->og_description : 'Are you looking for the best deals on all makeup and beauty brands? MakeUp Biography is your one stop solution for all your beauty related requirements.')
+@section('og_image',$product->og_image != '' ? asset('storage/products/'.$product->og_image) : '')
+@section('twitter_title', $product->og_title != '' ? $product->og_title : 'Buy Beauty Products Online | MakeUp Products Store In Bangalore')
+@section('twitter_description',$product->og_description != '' ? $product->og_description : 'Are you looking for the best deals on all makeup and beauty brands? MakeUp Biography is your one stop solution for all your beauty related requirements.')
+@section('twitter_image',$product->og_image != '' ? asset('storage/products/'.$product->og_image) : '')
+@section('twitter_site',url(Request::url()))
+
+@section('script')
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ $product->title }}",
+    "image": "{{ asset('storage/products/'.$product->featured_image) }}",
+    "author": {
+      "@type": "Organization",
+      "name": "Makeupbiography"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "https://g.page/makeupbiography?share",
+      "logo": {
+        "@type": "ImageObject",
+        "url": ""
+      }
+    },
+    "datePublished": "{{ $product->publish_date }}"
+  }
+</script>
+@endsection
+
 @section('content')
 <div class="l-inner">
   <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default c-page-header--product-page">
