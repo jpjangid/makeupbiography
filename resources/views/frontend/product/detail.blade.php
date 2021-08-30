@@ -86,7 +86,7 @@
                 @if($media->media_type == 'image')
                   <div class="c-product__slider-item c-product__slider-item--zoom woocommerce-product-gallery__image ">
                     <a download href="{{ asset('storage/products/variants/'.$media->media) }}" class="c-product__image-link c-product__image-link--zoom js-product-modal" data-size="1201x1200" data-index="0" data-product-id="511" data-elementor-open-lightbox="no" onclick="return false;">
-                      <img width="460" height="460" src="{{ asset('storage/products/variants/'.$media->media) }}" class="c-product__slider-img c-product__slider-img--cover" alt="product-20-1" sizes="(max-width: 460px) 100vw, 460px" />
+                      <img width="460" height="460" src="{{ asset('storage/products/variants/'.$media->media) }}" class="c-product__slider-img c-product__slider-img--cover" alt="{{ $media->media_alt }}" sizes="(max-width: 460px) 100vw, 460px" />
                       <span class="c-product__loading js-loading-wrap">
                       </span>
                     </a>
