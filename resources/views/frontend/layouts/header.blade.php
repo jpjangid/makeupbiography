@@ -1102,7 +1102,7 @@
                 <span class="js-cart-info">
                 </span>
               </a>
-              <div class="widget_shopping_cart_content">
+              <div class="widget_shopping_cart_content">              
               </div>
             </div>
           </div>

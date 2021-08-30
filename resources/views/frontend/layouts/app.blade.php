@@ -258,4 +258,9 @@
   <script type='text/javascript' src='{{ asset("wp-content/plugins/elementor/assets/js/frontend.min3d36.js?ver=3.3.1") }}' id='elementor-frontend-js'></script>
   <script type='text/javascript' src='{{ asset("wp-content/plugins/elementor/assets/js/preloaded-modules.min3d36.js?ver=3.3.1") }}' id='preloaded-modules-js'></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js" integrity="sha512-jNDtFf7qgU0eH/+Z42FG4fw3w7DM/9zbgNPe3wfJlCylVDTT3IgKW5r92Vy9IHa6U50vyMz5gRByIu4YIXFtaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- cart js -->
+  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script type='text/javascript' src='{{ asset("js/cart.js") }}' id='preloaded-modules-js'></script>
+
 </html>
