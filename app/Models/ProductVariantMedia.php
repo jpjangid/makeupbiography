@@ -10,6 +10,6 @@ class ProductVariantMedia extends Model
     use HasFactory;
 
     protected $fillable = [
-        'product_variant_id','media','media_type','sequence','flag'
+        'product_variant_id','media','media_type','sequence','flag','media_alt'
     ];
 }

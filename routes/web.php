@@ -111,6 +111,8 @@ Route::middleware(['auth', 'prevent-back-history', 'admin'])->prefix('admin')->g
         Route::post('/update_status', [App\Http\Controllers\backend\ProductController::class, 'update_status']);
         Route::get('/variants/{id}', [App\Http\Controllers\backend\ProductController::class, 'variants']);
         Route::post('/variants/store', [App\Http\Controllers\backend\ProductController::class, 'store_variants']);
+        Route::get('/variants/edit/{id}', [App\Http\Controllers\backend\ProductController::class, 'edit_variant']);
+        Route::put('/variants/update/{id}', [App\Http\Controllers\backend\ProductController::class, 'update_variant']);
     });
     //route for profile update
     Route::get('profile',[App\Http\Controllers\Auth\ProfileController::class, 'edit']);

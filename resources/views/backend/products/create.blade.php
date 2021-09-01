@@ -174,7 +174,7 @@
                                 <h4>OG Section</h4>
 
                                 <!-- OG Title -->
-                                <div class="col-md-12 mb-4">
+                                <div class="col-md-6 mb-4">
                                     <div class="form-group">
                                         <label class="form-label" for="og_title">OG Title</label>
                                         <input type="text" class="form-control form-control-solid @error('og_title') is-invalid @enderror" name="og_title" value="{{ old('og_title')}}" placeholder="Please Enter OG Title" />
@@ -187,20 +187,9 @@
                                 <!-- Product image -->
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
-                                        <label class="required form-label" for="og_image">OG Image</label>
+                                        <label class="form-label" for="og_image">OG Image</label>
                                         <input type="file" name="og_image" class="form-control @error('og_image') is-invalid @enderror" id="exampleInputFile">
                                         @error('og_image')
-                                        <span class="error invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                
-                                <!-- OG Title -->
-                                <div class="col-md-6 mb-4">
-                                    <div class="form-group">
-                                        <label class="form-label" for="og_alt">OG Image Alt</label>
-                                        <input type="text" class="form-control form-control-solid @error('og_alt') is-invalid @enderror" name="og_alt" value="{{ old('og_alt')}}" placeholder="Please Enter OG Image Alt" />
-                                        @error('og_alt')
                                         <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
                                     </div>
