@@ -30,7 +30,16 @@
     </nav>
   </header>
   <div class="woocommerce-notices-wrapper">
+  @if ($message = Session::get('success'))
+    <div class="woocommerce-notice shown" role="alert">
+        <i class="ip-wc-success woocommerce-notice-success-svg"></i>
+        {{ $message }}
+        <button class="h-cb h-cb--svg woocommerce-notice-close js-notice-close" type="button"><i class="ip-close-small woocommerce-notice-close-svg"></i></button>
+    </div>
+  @endif
   </div>
+
+  @if(count($cartItems) > 0 || count($cookieCartItems) > 0)
   <div class="l-section l-section--container l-section--bottom-margin l-section--no-sidebar l-section--top-margin">
     <div class="l-section__content">
       <div class="woocommerce">
@@ -38,7 +47,8 @@
           <div class="c-cart__wrap">
             <div class="c-cart__col-1">
               <div class=" js-sticky-sidebar-nearby ">
-                <form class="woocommerce-cart-form" action="https://parkofideas.com/luchiana/demo/cart/" method="post">
+                <form class="woocommerce-cart-form" action="{{ url('cart/items/update') }}" method="post">
+                  @csrf
                   <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents c-cart__shop-table" cellspacing="0">
                     <thead class="c-cart__shop-thead">
                       <tr>
@@ -52,28 +62,31 @@
                         <td colspan="4" class="c-cart__shop-td-space">
                         </td>
                       </tr>
+                      @foreach($cartItems as $item)
                       <tr class="c-cart__shop-tr cart_item">
+                        <input type="number" name="cart_id[]" value="{{ $item->id }}" hidden>
                         <td class="c-cart__shop-td c-cart__shop-td--product-thumbnail">
-                          <a href="https://parkofideas.com/luchiana/demo/cart/?remove_item=1651cf0d2f737d7adeab84d339dbabd3&#038;_wpnonce=5d80b18e36" class="c-cart__shop-remove remove" aria-label="Remove this item" data-product_id="438" data-product_sku="6549845321">
+                          <a href="{{ url('remove/cart/item',['id'=>$item->id,'variant_id' => $item->product_variant_id]) }}" class="c-cart__shop-remove remove" aria-label="Remove this item" data-product_id="438" data-product_sku="6549845321">
                             <i class="ip-close-small c-cart__shop-remove-icon"></i>
                           </a>
-                          <a class="c-cart__thumbnail-link" href="https://parkofideas.com/luchiana/demo/shop/airbrush-matte/">
-                            <img width="115" height="115" src="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-115x115.jpg" class="attachment-woocommerce_gallery_thumbnail size-woocommerce_gallery_thumbnail" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-115x115.jpg 115w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-460x460.jpg 460w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-760x760.jpg 760w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-920x920.jpg 920w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-145x145.jpg 145w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-290x290.jpg 290w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061.jpg 1200w" sizes="(max-width: 115px) 100vw, 115px" />
+                          <a class="c-cart__thumbnail-link" href="">
+                            <img width="115" height="115" src="" class="attachment-woocommerce_gallery_thumbnail size-woocommerce_gallery_thumbnail" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-115x115.jpg 115w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-460x460.jpg 460w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-760x760.jpg 760w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-920x920.jpg 920w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-145x145.jpg 145w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-290x290.jpg 290w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061.jpg 1200w" sizes="(max-width: 115px) 100vw, 115px" />
                           </a>
                         </td>
                         <td class="c-cart__shop-td c-cart__shop-td--product-name" data-title="Product">
-                          <a href="https://parkofideas.com/luchiana/demo/shop/airbrush-matte/">Airbrush Matte</a>
+                          <a href="">{{ $item->product->name."-".$item->productVariant->name }}</a>
                           <span class="c-cart__item-price">
                             <span class="woocommerce-Price-amount amount">
                               <bdi>
-                                <span class="woocommerce-Price-currencySymbol">&#36;</span>40.00</bdi>
+                                <span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $item->productVariant->sale_price }}</bdi>
                             </span>
                           </span>
                         </td>
                         <td class="c-cart__shop-td c-cart__shop-td--product-quantity" data-title="Quantity">
                           <div class="c-product__quantity quantity">
                             <label class="screen-reader-text" for="quantity_611e40a1cb9f6">Airbrush Matte quantity</label>
-                            <input type="number" id="quantity_611e40a1cb9f6" class="h-cb c-product__quantity-value qty" step="1" min="0" name="cart[1651cf0d2f737d7adeab84d339dbabd3][qty]" value="1" title="Qty" placeholder="" inputmode="numeric" />
+                            <input type="number" id="quantity_611e40a1cb9f6" class="h-cb c-product__quantity-value qty" step="1" min="0" name="quantity[]" value="{{ $item->quantity }}" title="Qty" placeholder="" inputmode="numeric" />
+                            
                             <button class="h-cb c-product__quantity-minus js-quantity-minus" type="button">
                               <i class="ip-minus"></i>
                             </button>
@@ -85,32 +98,50 @@
                         <td class="c-cart__shop-td c-cart__shop-td--product-price c-cart__shop-td--product-subtotal" data-title="Subtotal">
                           <span class="woocommerce-Price-amount amount">
                             <bdi>
-                              <span class="woocommerce-Price-currencySymbol">&#36;</span>40.00</bdi>
+                              <span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $item->productVariant->sale_price*$item->quantity }}</bdi>
                           </span>
                         </td>
                       </tr>
+                      @endforeach  
+
+                      @foreach($cookieCartItems as $item)
                       <tr class="c-cart__shop-tr cart_item">
+                        <input type="number" name="product_id[]" value="{{ $item['product']->id }}" hidden>
+                        <input type="number" name="product_variant_id[]" value="{{ $item['product_variant_id'] }}" hidden>
                         <td class="c-cart__shop-td c-cart__shop-td--product-thumbnail">
-                          <a href="https://parkofideas.com/luchiana/demo/cart/?remove_item=75fc093c0ee742f6dddaa13fff98f104&#038;_wpnonce=5d80b18e36" class="c-cart__shop-remove remove" aria-label="Remove this item" data-product_id="429" data-product_sku="">
+                          <a href="{{ url('remove/cart/item',['id'=>$item['product']->id]) }}" class="c-cart__shop-remove remove" aria-label="Remove this item" data-product_id="438" data-product_sku="6549845321">
                             <i class="ip-close-small c-cart__shop-remove-icon"></i>
                           </a>
-                          <a class="c-cart__thumbnail-link" href="https://parkofideas.com/luchiana/demo/shop/face-body-foundation/">
-                            <img width="115" height="115" src="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3019438449-115x115.jpg" class="attachment-woocommerce_gallery_thumbnail size-woocommerce_gallery_thumbnail" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3019438449-115x115.jpg 115w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3019438449-460x460.jpg 460w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3019438449-760x760.jpg 760w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3019438449-920x920.jpg 920w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3019438449-145x145.jpg 145w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3019438449-290x290.jpg 290w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3019438449.jpg 1200w" sizes="(max-width: 115px) 100vw, 115px" />
+                          <a class="c-cart__thumbnail-link" href="">
+                            <img width="115" height="115" src="" class="attachment-woocommerce_gallery_thumbnail size-woocommerce_gallery_thumbnail" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-115x115.jpg 115w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-460x460.jpg 460w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-760x760.jpg 760w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-920x920.jpg 920w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-145x145.jpg 145w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-290x290.jpg 290w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061.jpg 1200w" sizes="(max-width: 115px) 100vw, 115px" />
                           </a>
                         </td>
+                        @php 
+                          $productVariantName = "";
+                          $productVariantSlug = "";
+                          $salePrice = 0.00;
+                          foreach($item['product']->variants as $var) {
+                            if($item['product_variant_id'] == $var->id) {
+                              $productVariantSlug = $var->slug;
+                              $productVariantName = $var->name;
+                              $salePrice = $var->sale_price;
+                            }
+                          }
+                        @endphp
                         <td class="c-cart__shop-td c-cart__shop-td--product-name" data-title="Product">
-                          <a href="https://parkofideas.com/luchiana/demo/shop/face-body-foundation/">Face &amp; Body Foundation</a>
+                          <a href="">{{ $item['product']['name']."-".$productVariantName}}</a>
                           <span class="c-cart__item-price">
                             <span class="woocommerce-Price-amount amount">
                               <bdi>
-                                <span class="woocommerce-Price-currencySymbol">&#36;</span>40.00</bdi>
+                                <span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $salePrice }}</bdi>
                             </span>
                           </span>
                         </td>
                         <td class="c-cart__shop-td c-cart__shop-td--product-quantity" data-title="Quantity">
                           <div class="c-product__quantity quantity">
-                            <label class="screen-reader-text" for="quantity_611e40a1cc2f1">Face &amp; Body Foundation quantity</label>
-                            <input type="number" id="quantity_611e40a1cc2f1" class="h-cb c-product__quantity-value qty" step="1" min="0" name="cart[75fc093c0ee742f6dddaa13fff98f104][qty]" value="1" title="Qty" placeholder="" inputmode="numeric" />
+                            <label class="screen-reader-text" for="quantity_611e40a1cb9f6">Airbrush Matte quantity</label>
+                            <input type="number" id="quantity_611e40a1cb9f6" class="h-cb c-product__quantity-value qty" step="1" min="0" name="quantity[]" value="{{ $item['quantity'] }}" title="Qty" placeholder="" inputmode="numeric" />
+                            
                             <button class="h-cb c-product__quantity-minus js-quantity-minus" type="button">
                               <i class="ip-minus"></i>
                             </button>
@@ -122,10 +153,12 @@
                         <td class="c-cart__shop-td c-cart__shop-td--product-price c-cart__shop-td--product-subtotal" data-title="Subtotal">
                           <span class="woocommerce-Price-amount amount">
                             <bdi>
-                              <span class="woocommerce-Price-currencySymbol">&#36;</span>40.00</bdi>
+                              <span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $salePrice*$item['quantity'] }}</bdi>
                           </span>
                         </td>
                       </tr>
+                      @endforeach  
+                      
                       <tr class="c-cart__shop-tr c-cart__shop-tr--space">
                         <td colspan="4" class="c-cart__shop-td-space">
                         </td>
@@ -517,6 +550,26 @@
       </div>
     </div>
   </div>
+  @else 
+  <div class="l-inner">
+    <div class="woocommerce-notices-wrapper">
+    </div>
+    <div class="l-section l-section--container l-section--bottom-margin l-section--no-sidebar l-section--top-margin-60 l-section--white">
+      <div class="l-section__content">
+        <div class="woocommerce">
+          <div class="c-cart-empty">
+            <div class="c-cart-empty__image-wrap">
+              <i class="ip-cart-normal c-cart-empty__icon c-cart-empty__icon--failed"></i>
+            </div>
+            <h1 class="c-cart-empty__header">Your cart is currently empty</h1>
+            <a class="c-button c-button--outline c-cart-empty__backward" href="{{ url('/') }}">Return to shop</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.l-inner -->
+  @endif
 </div>
 <!-- /.l-inner -->
 @endsection

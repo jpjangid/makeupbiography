@@ -235,7 +235,9 @@
               <form class="cart" action="https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" method="post" enctype='multipart/form-data'>
                 <div class="c-product__quantity quantity">
                   <label class="screen-reader-text" for="quantity_611f6fb23f9e0">Midnight Musk quantity</label>
-                  <input type="number" id="quantity_611f6fb23f9e0" class="h-cb c-product__quantity-value qty" step="1" min="1" name="quantity" value="1" title="Qty" placeholder="" inputmode="numeric" />
+                  <input type="number" id="quantity_611f6fb23f9e0" class="h-cb c-product__quantity-value qty product-quantity" step="1" min="1" name="quantity" value="1" title="Qty" placeholder="" inputmode="numeric" />
+                  <input type="text" id="productId" value="{{ $product->id }}" hidden>
+                  <input type="text" id="productVarientId" value="{{ $variant->id }}" hidden>
                   <button class="h-cb c-product__quantity-minus js-quantity-minus" type="button">
                     <i class="ip-minus"></i>
                   </button>
@@ -243,7 +245,7 @@
                     <i class="ip-plus_big"></i>
                   </button>
                 </div>
-                <button type="submit" name="add-to-cart" value="511" class="single_add_to_cart_button button alt">Add to cart</button>
+                <button type="button" name="add-to-cart" value="511" class="single_add_to_cart_button button alt add-to-cart">Add to cart</button>
               </form>
             </div>
             <!-- .c-product__atc-wra -->
