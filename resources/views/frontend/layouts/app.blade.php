@@ -123,6 +123,10 @@
 </head>
 
 <body class="page-template page-template-elementor_header_footer page page-id-1131 theme-luchiana woocommerce-no-js woo-variation-swatches wvs-theme-luchiana wvs-theme-child-luchiana wvs-style-rounded wvs-attr-behavior-blur wvs-tooltip wvs-css woocommerce-on h-ltr h-wpml elementor-default elementor-template-full-width elementor-kit-37 elementor-page elementor-page-1131">
+  <input type="text" id="baseUrl" value="{{ url('/') }}" hidden>
+  <input type="text" id="currentUrl" value="{{ url()->current() }}" hidden>
+  <input type="text" id="cartUrl" value="{{ url('cart') }}" hidden>
+  <input type="text" id="tokken" value="" hidden>
   <div class="c-header-search disabled js-ajax-search">
     <div class="c-header-search__wrap">
       <div class="c-header-search__shadow js-search-close">

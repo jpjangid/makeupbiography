@@ -138,10 +138,16 @@ Route::middleware(['auth','prevent-back-history'])->group(function () {
     Route::patch('profile/{id}',[App\Http\Controllers\Auth\ProfileController::class, 'update'])->name('profile');
 
     //Route for Cart
-    Route::view('cart','frontend.cart.index');
+   
     Route::view('cart/empty','frontend.cart.empty');
+    
 });    
 
+//Route for Add to Cart
+Route::get('cart',[App\Http\Controllers\frontend\CartController::class, 'list']);
+Route::get('remove/cart/item/{id}/{variant_id}',[App\Http\Controllers\frontend\CartController::class, 'remove_item']);
+Route::get('add/to/cart',[App\Http\Controllers\frontend\CartController::class,'add_to_cart']);
+Route::post('cart/items/update',[App\Http\Controllers\frontend\CartController::class, 'update_items']);
 
 
 
@@ -152,7 +158,7 @@ Route::view('product', 'frontend.product.detail');
 Route::view('category', 'frontend.product.category');
 Route::view('wishlist', 'frontend.wishlist.index');
 Route::view('wishlist/empty', 'frontend.wishlist.empty');
-Route::view('cart', 'frontend.cart.index');
+// Route::view('cart', 'frontend.cart.index');
 Route::view('cart/empty', 'frontend.cart.empty');
 Route::view('checkout', 'frontend.checkout.index');
 Route::view('myaccount', 'frontend.myaccount.myaccount');

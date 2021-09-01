@@ -233,7 +233,9 @@
               <form class="cart" action="https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" method="post" enctype='multipart/form-data'>
                 <div class="c-product__quantity quantity">
                   <label class="screen-reader-text" for="quantity_611f6fb23f9e0">Midnight Musk quantity</label>
-                  <input type="number" id="quantity_611f6fb23f9e0" class="h-cb c-product__quantity-value qty" step="1" min="1" name="quantity" value="1" title="Qty" placeholder="" inputmode="numeric" />
+                  <input type="number" id="quantity_611f6fb23f9e0" class="h-cb c-product__quantity-value qty product-quantity" step="1" min="1" name="quantity" value="1" title="Qty" placeholder="" inputmode="numeric" />
+                  <input type="text" id="productId" value="{{ $product->id }}" hidden>
+                  <input type="text" id="productVarientId" value="{{ $variant->id }}" hidden>
                   <button class="h-cb c-product__quantity-minus js-quantity-minus" type="button">
                     <i class="ip-minus"></i>
                   </button>
@@ -241,7 +243,7 @@
                     <i class="ip-plus_big"></i>
                   </button>
                 </div>
-                <button type="submit" name="add-to-cart" value="511" class="single_add_to_cart_button button alt">Add to cart</button>
+                <button type="button" name="add-to-cart" value="511" class="single_add_to_cart_button button alt add-to-cart">Add to cart</button>
               </form>
             </div>
             <!-- .c-product__atc-wra -->
@@ -408,7 +410,7 @@
             <!-- .c-product-grid__thumb-wrap -->
             <a href="?add-to-cart=464" data-quantity="1" class="h-cb c-product-grid__atc button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="464" data-product_sku="6549845315" aria-label="Add &ldquo;Flowerbomb&rdquo; to your cart" rel="nofollow">
               <i class="ip-plus c-product-grid__atc-icon"></i>
-              <span class="c-product-grid__atc-text">Add to cart</span>
+              <span class="c-product-grid__atc-text add-to-cart">Add to cart</span>
             </a>
             <div class="c-product-grid__details">
               <div class="c-product-grid__title-wrap">
