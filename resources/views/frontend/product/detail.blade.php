@@ -39,29 +39,33 @@
 <div class="l-inner">
   <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default c-page-header--product-page">
     <div class="c-page-header__wrap">
-      <div class="c-page-header__title">Shop</div>
+      <div class="c-page-header__title">{{ $product->name }}</div>
     </div>
     <nav class="c-breadcrumbs">
       <ol class="c-breadcrumbs__list">
         <li class="c-breadcrumbs__item">
           <a href="{{ url('') }}">Home</a>
-          <i class="ip-breadcrumb c-breadcrumbs__separator">
-            <!-- -->
-          </i>
+          <i class="ip-breadcrumb c-breadcrumbs__separator"></i>
         </li>
-        <li class="c-breadcrumbs__item">
-          <a href="https://parkofideas.com/luchiana/demo/shop/">Shop</a>
-          <i class="ip-breadcrumb c-breadcrumbs__separator">
-            <!-- -->
-          </i>
-        </li>
-        <li class="c-breadcrumbs__item">
-          <a href="https://parkofideas.com/luchiana/demo/product-category/fragrance/">Fragrance</a>
-          <i class="ip-breadcrumb c-breadcrumbs__separator">
-            <!-- -->
-          </i>
-        </li>
-        <li class="c-breadcrumbs__item">Midnight Musk</li>
+        @if(isset($product->category->parent->parent->name) && !empty($product->category->parent->parent))
+          <li class="c-breadcrumbs__item">
+            <a href="{{ url('category',$product->category->parent->parent->slug) }}">{{ $product->category->parent->parent->name }}</a>
+            <i class="ip-breadcrumb c-breadcrumbs__separator"></i>
+          </li>
+        @endif
+        @if(isset($product->category->parent->name) && !empty($product->category->parent))
+          <li class="c-breadcrumbs__item">
+            <a href="{{ url('category',$product->category->parent->slug) }}">{{ $product->category->parent->name }}</a>
+            <i class="ip-breadcrumb c-breadcrumbs__separator"></i>
+          </li>
+        @endif
+        @if(isset($product->category->name) && !empty($product->category))
+          <li class="c-breadcrumbs__item">
+            <a href="{{ url('category',$product->category->slug) }}">{{ $product->category->name }}</a>
+            <i class="ip-breadcrumb c-breadcrumbs__separator"></i>
+          </li>
+        @endif
+        <li class="c-breadcrumbs__item">{{ $product->name }}</li>
       </ol>
     </nav>
   </header>
@@ -77,8 +81,6 @@
         <div class="js-sticky-sidebar-nearby">
           <div class="c-product__gallery">
             <div class="c-badge__list c-product__badges">
-              <span class="c-badge c-badge--featured">Featured</span>
-              <span class="c-badge c-badge--new">New</span>
             </div>
             <!-- .c-product__badges -->
             <div class="c-product__slider c-product__slider--carousel h-carousel h-carousel--inner h-carousel--hover h-carousel--dots-hide js-single-product-carousel">

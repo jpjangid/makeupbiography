@@ -175,6 +175,7 @@ Route::get('{slug}', [App\Http\Controllers\frontend\PageController::class, 'inde
 Route::get('blogs/{cat}', [App\Http\Controllers\frontend\BlogController::class, 'index']);
 Route::get('blogs/{cat}/{slug}', [App\Http\Controllers\frontend\BlogController::class, 'detail']);
 
+Route::get('category/{slug}', [App\Http\Controllers\frontend\CategoryController::class, 'index']);
 Route::get('products/{product}/{variant}', [App\Http\Controllers\frontend\ProductController::class, 'index']);
 
 Route::post('storecomment', [App\Http\Controllers\frontend\CommentController::class, 'store']);
