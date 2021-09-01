@@ -9,7 +9,7 @@ class Category extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'slug', 'parent_id','description','short_description','featured_image','meta_title','meta_description','keywords',
-    'tags','alt','status','flag','og_title','og_description','og_image','og_alt'];
+    'tags','alt','status','flag','og_title','og_description','og_image','og_alt', 'type'];
     
     public function subcategory()
     {
