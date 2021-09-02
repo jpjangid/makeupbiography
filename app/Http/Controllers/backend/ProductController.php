@@ -8,10 +8,10 @@ use App\Models\Product;
 use App\Models\ProductVariant;
 use App\Models\ProductVariantMedia;
 use Illuminate\Http\Request;
-use DataTables;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Yajra\DataTables\DataTables;
 
 class ProductController extends Controller
 {
@@ -302,7 +302,7 @@ class ProductController extends Controller
             }
         }
 
-        if(!empty($request->media1)){
+        if (!empty($request->media1)) {
             foreach ($request->media1 as $key => $video) {
                 if (!empty($video)) {
                     $video_data[$key]['media'] = $video;
@@ -310,7 +310,7 @@ class ProductController extends Controller
             }
         }
 
-        if(!empty($request->media)){
+        if (!empty($request->media)) {
             foreach ($request->media as $key => $image) {
                 $media = "";
                 if (!empty($image)) {
@@ -342,7 +342,7 @@ class ProductController extends Controller
         ]);
 
         foreach ($final_media as $media) {
-            if(isset($media['media']) && !empty($media['media'])){
+            if (isset($media['media']) && !empty($media['media'])) {
                 ProductVariantMedia::create([
                     'product_variant_id'    =>  $variant->id,
                     'media'                 =>  $media['media'],
@@ -364,7 +364,7 @@ class ProductController extends Controller
     {
         $variant = ProductVariant::where('id', $id)->with('medias')->first();
 
-        return view('backend.products.edit_variant', compact('variant','id'));
+        return view('backend.products.edit_variant', compact('variant', 'id'));
     }
 
     public function update_variant(Request $request, $id)
@@ -404,7 +404,7 @@ class ProductController extends Controller
             }
         }
 
-        if(!empty($request->media1)){
+        if (!empty($request->media1)) {
             foreach ($request->media1 as $key => $video) {
                 if (!empty($video)) {
                     $video_data[$key]['media'] = $video;
@@ -412,7 +412,7 @@ class ProductController extends Controller
             }
         }
 
-        if(!empty($request->media)){
+        if (!empty($request->media)) {
             foreach ($request->media as $key => $image) {
                 $media = "";
                 if (!empty($image)) {
@@ -443,7 +443,7 @@ class ProductController extends Controller
         $variant->sale_price        =  $request->sale_price;
 
         foreach ($final_media as $media) {
-            if(isset($media['media']) && !empty($media['media'])){
+            if (isset($media['media']) && !empty($media['media'])) {
                 ProductVariantMedia::create([
                     'product_variant_id'    =>  $variant->id,
                     'media'                 =>  $media['media'],
@@ -454,6 +454,6 @@ class ProductController extends Controller
             }
         }
 
-        return redirect('admin/products/variants/'.$variant->product_id)->with('success', 'Product Variant Updated Successfully');
+        return redirect('admin/products/variants/' . $variant->product_id)->with('success', 'Product Variant Updated Successfully');
     }
 }

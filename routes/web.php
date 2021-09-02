@@ -126,6 +126,15 @@ Route::middleware(['auth', 'prevent-back-history', 'admin'])->prefix('admin')->g
         Route::post('/update_status', [App\Http\Controllers\backend\CouponController::class, 'update_status']);
     });
 
+    Route::prefix('users')->group(function () {
+        Route::get('/', [App\Http\Controllers\backend\UserController::class, 'index']);
+        Route::get('/create', [App\Http\Controllers\backend\UserController::class, 'create']);
+        Route::post('/store', [App\Http\Controllers\backend\UserController::class, 'store']);
+        Route::get('/edit/{id}', [App\Http\Controllers\backend\UserController::class, 'edit']);
+        Route::put('/update/{id}', [App\Http\Controllers\backend\UserController::class, 'update']);
+        Route::get('/delete/{id}', [App\Http\Controllers\backend\UserController::class, 'destroy']);
+    });
+
     //route for profile update
     Route::get('profile', [App\Http\Controllers\Auth\ProfileController::class, 'edit']);
 });

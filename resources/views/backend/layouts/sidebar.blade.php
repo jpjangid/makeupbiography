@@ -132,6 +132,15 @@
               </a>
             </div>
             <div class="menu-item">
+              <a class="menu-link" href="{{ url('admin/users') }}">
+                <span class="menu-bullet">
+                  <span class="bullet bullet-dot">
+                  </span>
+                </span>
+                <span class="menu-title">User</span>
+              </a>
+            </div>
+            <div class="menu-item">
               <a class="menu-link" href="#" data-kt-page="pro">
                 <span class="menu-bullet">
                   <span class="bullet bullet-dot">
