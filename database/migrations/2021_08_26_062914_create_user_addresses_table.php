@@ -17,13 +17,15 @@ class CreateUserAddressesTable extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('name');
-            $table->string('mobile');
-            $table->string('address');
-            $table->string('pincode');
-            $table->string('landmark');
-            $table->string('state');
-            $table->string('city');
+            $table->string('name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('mobile')->nullable();
+            $table->text('address')->nullable();
+            $table->string('pincode')->nullable();
+            $table->string('landmark')->nullable();
+            $table->string('state')->nullable();
+            $table->string('city')->nullable();
+            $table->integer('flag')->default(0);
             $table->timestamps();
         });
     }

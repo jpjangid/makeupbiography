@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>@yield('title')</title>
+  <title>Makeupbiograpy | @yield('title','Home')</title>
   <meta name="description" content="@yield('description','')" />
   <meta name="keywords" content="@yield('keywords','')">
   <meta property=”og:title” content="@yield('og_title')" />
@@ -50,6 +50,8 @@
   <style id='woocommerce-inline-inline-css' type='text/css'>
   .woocommerce form .form-row .required { visibility: visible; }
   </style>
+  <link rel='stylesheet' id='select2-css'  href='{{ url("https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css") }}' type='text/css' media='all' />
+
   <link rel='stylesheet' id='elementor-frontend-legacy-css' href='{{ asset("wp-content/plugins/elementor/assets/css/frontend-legacy.min3d36.css?ver=3.3.1") }}' type='text/css' media='all' />
   <link rel='stylesheet' id='elementor-frontend-css' href='{{ asset("wp-content/uploads/elementor/css/custom-frontend.mina47c.css?ver=1626831364") }}' type='text/css' media='all' />
   <style id='elementor-frontend-inline-css' type='text/css'>
@@ -123,6 +125,10 @@
 </head>
 
 <body class="page-template page-template-elementor_header_footer page page-id-1131 theme-luchiana woocommerce-no-js woo-variation-swatches wvs-theme-luchiana wvs-theme-child-luchiana wvs-style-rounded wvs-attr-behavior-blur wvs-tooltip wvs-css woocommerce-on h-ltr h-wpml elementor-default elementor-template-full-width elementor-kit-37 elementor-page elementor-page-1131">
+  <input type="text" id="baseUrl" value="{{ url('/') }}" hidden>
+  <input type="text" id="currentUrl" value="{{ url()->current() }}" hidden>
+  <input type="text" id="cartUrl" value="{{ url('cart') }}" hidden>
+  <input type="text" id="tokken" value="" hidden>
   <div class="c-header-search disabled js-ajax-search">
     <div class="c-header-search__wrap">
       <div class="c-header-search__shadow js-search-close">
@@ -258,4 +264,10 @@
   <script type='text/javascript' src='{{ asset("wp-content/plugins/elementor/assets/js/frontend.min3d36.js?ver=3.3.1") }}' id='elementor-frontend-js'></script>
   <script type='text/javascript' src='{{ asset("wp-content/plugins/elementor/assets/js/preloaded-modules.min3d36.js?ver=3.3.1") }}' id='preloaded-modules-js'></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js" integrity="sha512-jNDtFf7qgU0eH/+Z42FG4fw3w7DM/9zbgNPe3wfJlCylVDTT3IgKW5r92Vy9IHa6U50vyMz5gRByIu4YIXFtaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- cart js -->
+  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type='text/javascript' src='{{ asset("js/cart.js") }}' id='preloaded-modules-js'></script>
+  @yield('js')  
 </html>

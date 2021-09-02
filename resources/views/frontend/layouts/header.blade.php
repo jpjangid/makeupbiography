@@ -706,7 +706,7 @@
                 <ul class="c-top-menu__submenu c-top-menu__submenu--columns-4 c-top-menu__submenu--expand">
                 @foreach($mains as $main)  
                   <li class="c-top-menu__subitem menu-item-557 c-top-menu__subitem--expand js-menu-item">
-                    <a>{{ $main->name }}</a>
+                    <a href="{{ url('category',$main->slug) }}" >{{ $main->name }}</a>
                     <ul class="c-top-menu__submenu c-top-menu__submenu--columns-1 c-top-menu__submenu--expand c-top-menu__submenu--inner">
                     @if(!empty($main->subcategory))
                     @foreach($main->subcategory as $subcategory)
@@ -716,18 +716,18 @@
                       @endphp
                       @if(count($subcategories) > 0)
                       <li class="c-top-menu__subitem c-top-menu__subitem--has-children menu-item-2042 c-top-menu__subitem--collapse js-menu-item">
-                        <a>{{ $subcategory->name }}</a>
+                        <a href="{{ url('category',$subcategory->slug) }}">{{ $subcategory->name }}</a>
                         <ul class="c-top-menu__submenu c-top-menu__submenu--columns-1 c-top-menu__submenu--inner">
                         @foreach($subcategories as $sub)
                           <li class="c-top-menu__subitem menu-item-805 c-top-menu__subitem--collapse js-menu-item">
-                            <a href="https://parkofideas.com/luchiana/demo/?set=21">{{ $sub->name }}</a>
+                            <a href="{{ url('category',$sub->slug) }}">{{ $sub->name }}</a>
                           </li> 
                         @endforeach  
                         </ul>
                       </li>
                       @else
                       <li class="c-top-menu__subitem menu-item-2474 c-top-menu__subitem--collapse js-menu-item">
-                        <a href="https://parkofideas.com/luchiana/demo/shop/?set=31">{{ $subcategory->name }}</a>
+                        <a href="{{ url('category',$subcategory->slug) }}">{{ $subcategory->name }}</a>
                       </li>
                       @endif
                     @endif
@@ -1102,7 +1102,8 @@
                 <span class="js-cart-info">
                 </span>
               </a>
-              <div class="widget_shopping_cart_content">
+              <div class="widget_shopping_cart_content">   
+                           
               </div>
             </div>
           </div>

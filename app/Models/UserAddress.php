@@ -10,6 +10,11 @@ class UserAddress extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id','name','mobile','address','pincode','landmark','state','city'
+        'user_id','name','email','mobile','address','pincode','landmark','state','city','flag'
     ];
+
+    public function location()
+    {
+        return $this->hasOne('App\Models\Location','zip','pincode');
+    }
 }

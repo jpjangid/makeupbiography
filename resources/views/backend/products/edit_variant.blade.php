@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-@section('title','Add Product Variants')
+@section('title','Edit Product Variants')
 
 @section('content')
 
@@ -39,12 +39,13 @@
                 <!-- general form elements -->
                 <div class="card card-info">
                     <div class="card-header">
-                        <h3 class="card-title">Add Product Variants</h3>
+                        <h3 class="card-title">Edit Product Variants</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form action="{{ url('admin/products/variants/store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ url('admin/products/variants/update',$id) }}" method="post" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="card-body">
                             <div class="row">
 
@@ -52,7 +53,7 @@
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
                                         <label class="required form-label" for="name">Name</label>
-                                        <input type="text" class="form-control form-control-solid @error('name') is-invalid @enderror" name="name" id="name" placeholder="Please Enter Product Variant Name" value="{{ old('name') }}">
+                                        <input type="text" class="form-control form-control-solid @error('name') is-invalid @enderror" name="name" id="name" placeholder="Please Enter Product Variant Name" value="{{ $variant->name }}">
                                         @error('name')
                                         <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
@@ -63,7 +64,7 @@
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
                                         <label class="required form-label" for="sku">SKU</label>
-                                        <input type="text" class="form-control form-control-solid @error('sku') is-invalid @enderror" name="sku" id="sku" placeholder="Please Enter Product Variant SKU" value="{{ old('sku') }}">
+                                        <input type="text" class="form-control form-control-solid @error('sku') is-invalid @enderror" name="sku" id="sku" placeholder="Please Enter Product Variant SKU" value="{{ $variant->sku }}">
                                         @error('sku')
                                         <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
@@ -74,7 +75,7 @@
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
                                         <label class="form-label" for="hex_code">Hex Code</label>
-                                        <input type="text" class="form-control form-control-solid" name="hex_code" id="hex_code" placeholder="Please Enter Hex Code" value="{{ old('hex_code') }}">
+                                        <input type="text" class="form-control form-control-solid" name="hex_code" id="hex_code" placeholder="Please Enter Hex Code" value="{{ $variant->hex_code }}">
                                     </div>
                                 </div>
 
@@ -84,11 +85,11 @@
                                         <label class="form-label" for="p_type">Product Type</label>
                                         <select name="p_type" class="form-select form-select-solid">
                                             <option value="">Select Type</option>
-                                            <option value="pieces">Pieces</option>
-                                            <option value="ltrs">Ltrs</option>
-                                            <option value="mltrs">MLtrs</option>
-                                            <option value="grams">Grams</option>
-                                            <option value="shades">Shades</option>
+                                            <option value="pieces" {{ $variant->p_type == 'pieces' ? 'selected' : '' }} >Pieces</option>
+                                            <option value="ltrs" {{ $variant->p_type == 'ltrs' ? 'selected' : '' }} >Ltrs</option>
+                                            <option value="mltrs" {{ $variant->p_type == 'mltrs' ? 'selected' : '' }} >MLtrs</option>
+                                            <option value="grams" {{ $variant->p_type == 'grams' ? 'selected' : '' }} >Grams</option>
+                                            <option value="shades" {{ $variant->p_type == 'shades' ? 'selected' : '' }} >Shades</option>
                                         </select>
                                     </div>
                                 </div>
@@ -97,7 +98,7 @@
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
                                         <label class="form-label" for="variation">Variation</label>
-                                        <input type="text" class="form-control form-control-solid" name="variation" id="variation" placeholder="Please Enter Hex Code" value="{{ old('variation') }}">
+                                        <input type="text" class="form-control form-control-solid" name="variation" id="variation" placeholder="Please Enter Hex Code" value="{{ $variant->variation }}">
                                     </div>
                                 </div>
 
@@ -105,7 +106,7 @@
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
                                         <label class="form-label" for="sequence">Product Sequence</label>
-                                        <input type="text" class="form-control form-control-solid" name="main_sequence" id="sequence" placeholder="Please Enter Product Sequence" value="{{ old('sequence') }}">
+                                        <input type="text" class="form-control form-control-solid" name="main_sequence" id="sequence" placeholder="Please Enter Product Sequence" value="{{ $variant->sequence }}">
                                     </div>
                                 </div>
 
@@ -115,8 +116,8 @@
                                         <label class="form-label" for="discount_type">Product Discount Type</label>
                                         <select name="discount_type" class="form-select form-select-solid" id="dis_type">
                                             <option value="">Select Type</option>
-                                            <option value="percentage">Percentage</option>
-                                            <option value="flat">Flat</option>
+                                            <option value="percentage" {{ $variant->discount_type == 'percentage' ? 'selected' : '' }} >Percentage</option>
+                                            <option value="flat" {{ $variant->discount_type == 'flat' ? 'selected' : '' }} >Flat</option>
                                         </select>
                                     </div>
                                 </div>
@@ -125,7 +126,7 @@
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
                                         <label class="form-label" for="discount">Product Discount</label>
-                                        <input type="text" class="form-control form-control-solid" name="discount" id="discount" placeholder="Please Enter Product Discount" value="{{ old('discount') }}">
+                                        <input type="text" class="form-control form-control-solid" name="discount" id="discount" placeholder="Please Enter Product Discount" value="{{ $variant->discount }}">
                                     </div>
                                 </div>
 
@@ -133,7 +134,7 @@
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
                                         <label class="form-label" for="regular_price">Product Regular Price</label>
-                                        <input type="text" class="form-control form-control-solid" name="regular_price" id="regular_price" placeholder="Please Enter Product Regular Price" value="{{ old('regular_price') }}">
+                                        <input type="text" class="form-control form-control-solid" name="regular_price" id="regular_price" placeholder="Please Enter Product Regular Price" value="{{ $variant->regular_price }}">
                                     </div>
                                 </div>
 
@@ -141,7 +142,7 @@
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
                                         <label class="form-label" for="sale_price">Product Sale Price</label>
-                                        <input type="text" class="form-control form-control-solid" name="sale_price" id="sale_price" placeholder="Please Enter Product Sale Price" value="{{ old('sale_price') }}">
+                                        <input type="text" class="form-control form-control-solid" name="sale_price" id="sale_price" placeholder="Please Enter Product Sale Price" value="{{ $variant->sale_price }}">
                                     </div>
                                 </div>
 
@@ -149,7 +150,7 @@
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
                                         <label class="form-label" for="slug">Slug</label>
-                                        <input type="text" class="form-control form-control-solid" name="slug" id="slug" placeholder="Please Enter Slug" value="{{ old('slug') }}">
+                                        <input type="text" class="form-control form-control-solid" name="slug" id="slug" placeholder="Please Enter Slug" value="{{ $variant->slug }}">
                                         <input type="hidden" name="product_id" value="{{ $id }}">
                                     </div>
                                 </div>
@@ -161,12 +162,27 @@
                                             <tr>
                                                 <th>Media Type</th>
                                                 <th>Media</th>
-                                                <th>Alt title</th>
+                                                <th>Media Alt</th>
                                                 <th>Sequence</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach($variant->medias as $media)
+                                                <tr>
+                                                    <td>{{ ucfirst($media->media_type) }}</td>
+                                                    <td>
+                                                        @if($media->media_type == 'image')
+                                                            <img src="{{ asset('storage/products/variants/'.$media->media) }}" style="height: 10rem;width: 10rem;">
+                                                        @else
+                                                            {{$media->media}}
+                                                        @endif
+                                                    </td>
+                                                    <td>{{ $media->media_alt }}</td>
+                                                    <td>{{ $media->sequence }}</td>
+                                                    <td><a href="{{ url('admin/products/deletemedia',$media->id) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a></td>
+                                                </tr>
+                                            @endforeach
                                             <tr>
                                                 <td>
                                                     <select name="media_type[]" class="form-select form-select-solid media_type">
@@ -175,7 +191,7 @@
                                                     </select>
                                                 </td>
                                                 <td class="media_td">
-                                                    <input type="file" name="media[]" class="form-control" required>
+                                                    <input type="file" name="media[]" class="form-control">
                                                 </td>
                                                 <td>
                                                     <input type="text" name="media_alt[]" class="form-control" placeholder="Enter Alt Title">
@@ -197,37 +213,11 @@
                         <!-- /.card-body -->
 
                         <div class="card-footer">
-                            <button type="submit" name="submit" value="more" class="btn btn-light-primary" style="float: right;">Add More</button>
-                            <button type="submit" name="submit" value="complete" class="btn btn-light-success">Complete</button>
+                            <button type="submit" class="btn btn-light-primary mb-2" style="float: right;">Update</button>
+                            <a href="{{ url('admin/products/variants',$variant->product_id) }}" class="btn btn-light-warning" >Back</a>
                         </div>
 
                     </form>
-                    <div class="card-footer">
-                        <table class="table table-row-bordered text-nowrap">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>SKU</th>
-                                    <th>Slug</th>
-                                    <th>Regular Price</th>
-                                    <th>Sale Price</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($variants as $variant)
-                                <tr>
-                                    <td>{{ $variant->name }}</td>
-                                    <td>{{ $variant->sku }}</td>
-                                    <td>{{ $variant->slug }}</td>
-                                    <td>{{ $variant->regular_price }}</td>
-                                    <td>{{ $variant->sale_price }}</td>
-                                    <td><a href="{{ url('admin/products/variants/edit',$variant->id) }}"><i class="fas fa-edit"></i></a></td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
             </div>
             <!--/.col (left) -->
