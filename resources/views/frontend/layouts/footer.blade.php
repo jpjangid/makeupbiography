@@ -89,7 +89,7 @@
                                     <div class="elementor-widget-container">
                                       <div class="elementor-image">
                                         <a href="#">
-                                        <img src="{{ asset('/images/mblogo.png') }}" style="width: 70px; height:70px; border-radius: 50%">
+                                        <img src="{{ asset('/images/mblogo.png') }}" style="width: 230px; height: 50px;">
                                         </a>
                                       </div>
                                     </div>
