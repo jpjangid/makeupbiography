@@ -1,6 +1,6 @@
 @extends('frontend.main.index')
 
-@section('title','Edit Address')
+@section('title','New Address')
 
 @section('css')
 <style>
@@ -35,10 +35,9 @@
             </nav>
           </div>
           <div class="c-account__col-content">
-            <form method="post" action="{{ url('my-address/update',$address->id) }}">
-              @method('PATCH')
+            <form method="post" action="{{ url('my-address/create') }}">
               @csrf
-              <h3>Edit address</h3>
+              <h3>New address</h3>
               <div class="woocommerce-address-fields">
                 <div class="woocommerce-address-fields__field-wrapper">
                   <p class="form-row form-row-first validate-required" id="billing_first_name_field" data-priority="10">
@@ -46,7 +45,7 @@
                       <abbr class="required" title="required">*</abbr>
                     </label>
                     <span class="woocommerce-input-wrapper">
-                      <input type="text" class="input-text " name="name" id="name" placeholder="" value="{{ $address->name }}" autocomplete="given-name">
+                      <input type="text" class="input-text " name="name" id="name" placeholder="" value="{{ old('name') }}" autocomplete="given-name">
                     </span>
                     @error('name')
                       <span class="invalid-feedback" role="alert">
@@ -59,7 +58,7 @@
                       <abbr class="required" title="required">*</abbr>
                     </label>
                     <span class="woocommerce-input-wrapper">
-                      <input type="email" class="input-text " name="email" id="email" placeholder="" value="{{ $address->email }}" autocomplete="email username">
+                      <input type="email" class="input-text " name="email" id="email" placeholder="" value="{{ old('email') }}" autocomplete="email username">
                     </span>
                     @error('email')
                       <span class="invalid-feedback" role="alert">
@@ -72,7 +71,7 @@
                       <abbr class="required" title="required">*</abbr>
                     </label>
                     <span class="woocommerce-input-wrapper">
-                      <input type="text" class="number input-text " name="mobile_no" id="mobile_no" placeholder="" value="{{ $address->mobile }}" autocomplete="tel">
+                      <input type="text" class="number input-text " name="mobile_no" id="mobile_no" placeholder="" value="{{ old('mobile_no') }}" autocomplete="tel">
                     </span>
                     @error('mobile_no')
                       <span class="invalid-feedback" role="alert">
@@ -85,7 +84,7 @@
                       <abbr class="required" title="required">*</abbr>
                     </label>
                     <span class="woocommerce-input-wrapper">
-                      <input type="text" class="input-text " name="address" id="address" placeholder="House number and address" value="{{ $address->address }}" autocomplete="address-line1">
+                      <input type="text" class="input-text " name="address" id="address" placeholder="House number and address" value="{{ old('address') }}" autocomplete="address-line1">
                     </span>
                     @error('address')
                       <span class="invalid-feedback" role="alert">
@@ -98,18 +97,18 @@
                       <abbr class="required" title="required">*</abbr>
                     </label>
                     <span class="woocommerce-input-wrapper">
-                      <input type="text" class="input-text number" name="postcode" id="postcode" placeholder="" value="{{ $address->pincode }}" autocomplete="postal-code">
+                      <input type="text" class="input-text number" name="postcode" id="postcode" placeholder="" value="{{ old('postcode') }}" autocomplete="postal-code">
                     </span>
                     <span>
                       <small>state :</small>
-                      <small class="stateName">{{ $address->state }}</small>
+                      <small class="stateName"></small>
                     </span>
                     <span>
                       <span>|</span>
                     </span>
                     <span>
                       <small>city:</small>
-                      <small class="cityName">{{ $address->city }}</small>
+                      <small class="cityName"></small>
                     </span>
                     @error('postcode')
                       <span class="invalid-feedback" role="alert">
@@ -122,7 +121,7 @@
                       <abbr class="required" title="required">*</abbr>
                     </label>
                     <span class="woocommerce-input-wrapper">
-                      <input type="text" class="input-text " name="landmark" id="landmark" placeholder="" value="{{ $address->landmark }}" autocomplete="given-name">
+                      <input type="text" class="input-text " name="landmark" id="landmark" placeholder="" value="{{ old('landmark') }}" autocomplete="given-name">
                     </span>
                     @error('landmark')
                       <span class="invalid-feedback" role="alert">
@@ -132,7 +131,7 @@
                   </p>
                 </div>
                 <p>
-                  <button type="submit" class="button">Update address</button>
+                  <button type="submit" class="button">Save address</button>
                 </p>
               </div>
             </form>
