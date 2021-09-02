@@ -5132,17 +5132,17 @@ var requirejs, require, define;
 /*!
  * The Final Countdown for jQuery v2.2.0 (http://hilios.github.io/jQuery.countdown/)
  * Copyright (c) 2016 Edson Hilios
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
  * the Software without restriction, including without limitation the rights to
  * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
  * the Software, and to permit persons to whom the Software is furnished to do so,
  * subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
  * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
@@ -5885,7 +5885,6 @@ var requirejs, require, define;
                         }
                         var $first_item = $items.first();
                         var element = $first_item[0];
-                        var style = element.currentStyle || window.getComputedStyle(element);
                         var banner_width = parseInt(style.width.replace('px', ''));
                         var window_width = $(window).width();
                         var banners_on_screen = Math.round(window_width / banner_width);
@@ -5900,8 +5899,53 @@ var requirejs, require, define;
                             } else {
                                 $banners_order.push($banners[i]);
                             }
-                        }
-                        if ($banners_order.length) {
+                                    $a.data("timestamp") - $b.data("timestamp")
+                                );
+                            });
+                            var timestamp = Math.round(new Date() / 1000);
+                            var $old_banner = $banners_visible[0];
+                            if (typeof $old_banner === "undefined") {
+                                clearInterval(timer);
+                                return;
+                            }
+                            var old_order = $old_banner.css("order");
+                            var $new_banner = $banners_order[0];
+                            var new_order = $new_banner.css("order");
+                            $list.css({
+                                height: $old_banner.outerHeight() + "px",
+                            });
+                            $new_banner.addClass(
+                                "c-ip-banners__item--animation"
+                            );
+                            ideapark_on_animation_end_callback(
+                                $new_banner,
+                                function () {
+                                    $new_banner
+                                        .css({ order: old_order })
+                                        .data("timestamp", timestamp);
+                                    $old_banner
+                                        .css({ order: new_order })
+                                        .data("timestamp", timestamp);
+                                    $old_banner.removeClass(animation + "-out");
+                                    $new_banner
+                                        .removeClass(animation + "-in")
+                                        .removeClass(
+                                            "c-ip-banners__item--animation"
+                                        )
+                                        .css({ left: "", height: "" });
+                                    $list.css({ height: "" });
+                                }
+                            );
+                            $new_banner
+                                .addClass(animation + "-in")
+                                .css({
+                                    left:
+                                        $old_banner.offset().left -
+                                        $list.offset().left +
+                                        "px",
+                                    height: $old_banner.outerHeight() + "px",
+                                });
+                            $old_banner.addClass(animation + "-out");
                             $banners_visible.sort(function($a, $b) {
                                 return $a.data('timestamp') - $b.data('timestamp');
                             });
