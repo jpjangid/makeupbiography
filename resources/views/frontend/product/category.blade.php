@@ -1,5 +1,41 @@
 @extends('frontend.main.index')
 
+@section('title', $main_category->meta_title != '' ? $main_category->meta_title : 'Buy Beauty Products Online | MakeUp Products Store In Bangalore')
+@section('description',$main_category->meta_description != '' ? $main_category->meta_description : 'Are you looking for the best deals on all makeup and beauty brands? MakeUp Biography is your one stop solution for all your beauty related requirements.')
+@section('keywords',$main_category->keywords != '' ? $main_category->keywords : '')
+@section('og_title', $main_category->og_title != '' ? $main_category->og_title : 'Buy Beauty Products Online | MakeUp Products Store In Bangalore')
+@section('og_description',$main_category->og_description != '' ? $main_category->og_description : 'Are you looking for the best deals on all makeup and beauty brands? MakeUp Biography is your one stop solution for all your beauty related requirements.')
+@section('og_image',$main_category->og_image != '' ? asset('storage/category/'.$main_category->og_image) : '')
+@section('twitter_title', $main_category->og_title != '' ? $main_category->og_title : 'Buy Beauty Products Online | MakeUp Products Store In Bangalore')
+@section('twitter_description',$main_category->og_description != '' ? $main_category->og_description : 'Are you looking for the best deals on all makeup and beauty brands? MakeUp Biography is your one stop solution for all your beauty related requirements.')
+@section('twitter_image',$main_category->og_image != '' ? asset('storage/category/'.$main_category->og_image) : '')
+@section('twitter_site',url(Request::url()))
+
+@section('script')
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ $main_category->title }}",
+    "image": "{{ asset('storage/products/'.$main_category->featured_image) }}",
+    "author": {
+      "@type": "Organization",
+      "name": "Makeupbiography"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "https://g.page/makeupbiography?share",
+      "logo": {
+        "@type": "ImageObject",
+        "url": ""
+      }
+    },
+    "datePublished": "{{ $main_category->publish_date }}"
+  }
+</script>
+@endsection
+
+
 @section('content')
 <div class="l-inner">
   <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default
