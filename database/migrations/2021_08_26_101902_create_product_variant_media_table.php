@@ -18,6 +18,7 @@ class CreateProductVariantMediaTable extends Migration
             $table->unsignedBigInteger('product_variant_id');
             $table->foreign('product_variant_id')->references('id')->on('product_variants')->onDelete('cascade');
             $table->text('media');
+            $table->string('media_alt')->nullable();
             $table->string('media_type');
             $table->integer('sequence')->nullable();
             $table->tinyInteger('flag')->default('0');

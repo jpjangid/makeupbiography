@@ -87,7 +87,7 @@
                               <div class="c-ip-image-list-1__item c-ip-image-list-1__item--carousel">
                                 <a href="https://parkofideas.com/luchiana/demo/product-category/skincare/" class="c-ip-image-list-1__link">
                                   <div class="c-ip-image-list-1__thumb">
-                                    <img class="c-ip-image-list-1__image" width="115" height="115" src="../wp-content/uploads/2020/12/luchiana-0654733209-115x115.jpg" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/12/luchiana-0654733209-115x115.jpg 115w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/12/luchiana-0654733209-145x145.jpg 145w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/12/luchiana-0654733209.jpg 180w" sizes="(max-width: 115px) 100vw, 115px" alt="cat-1" loading="lazy" />
+                                    <img class="c-ip-image-list-1__image" width="115" height="50vh" src="../wp-content/uploads/2020/12/luchiana-0654733209-115x115.jpg" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/12/luchiana-0654733209-115x115.jpg 115w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/12/luchiana-0654733209-145x145.jpg 145w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/12/luchiana-0654733209.jpg 180w" sizes="(max-width: 115px) 100vw, 115px" alt="cat-1" loading="lazy" />
                                   </div>
                                   <div class="c-ip-image-list-1__title">Skincare</div>
                                 </a>

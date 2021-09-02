@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Cart;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -63,14 +65,59 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
+
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'mobile' => $data['mobile'],
             'role' => 'user',
             'password' => Hash::make($data['password']),
         ]);
+
+        //cart code 
+        $cart = [];
+        $minutes = 60;
+        if($user)
+        {
+            $cartItems = Cart::where('user_id',$user->id)->get();
+            if(request()->hasCookie('makeup_biography'))
+            {
+                $cookieValues = json_decode(request()->cookie('makeup_biography'));
+
+                foreach($cookieValues  as $cookieValue)
+                {
+                    $cart[]=['product_id'=>$cookieValue->product_id,'quantity'=>$cookieValue->quantity,'product_variant_id'=>$cookieValue->product_variant_id];
+                }
+
+                \Cookie::queue(\Cookie::forget('makeup_biography'));
+
+                foreach($cartItems  as $cartItem)
+                {
+                    foreach($cart  as $key => $cartValue)
+                    {
+                        if($cartValue['product_id'] == $cartItem->product_id && $cartValue['product_variant_id'] == $cartItem->product_variant_id)
+                        {
+                            /// Update data
+                            Cart::where('id', $cartItem->id)
+                            ->update(['quantity' =>  $cartItem->quantity+$cartValue['quantity']]);
+                            unset($cart[$key]);
+                        }
+                    }
+                }
+                foreach($cart  as $key => $cartValue)
+                {
+                    $CartTable = new Cart;
+                    $CartTable->product_id = $cartValue['product_id'];
+                    $CartTable->product_variant_id = $cartValue['product_variant_id'];
+                    $CartTable->user_id = $user->id;
+                    $CartTable->quantity = $cartValue['quantity'];
+                    $CartTable->save();
+                }
+            }
+        }
+
+        return $user;
     }
 }

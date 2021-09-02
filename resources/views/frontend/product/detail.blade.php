@@ -39,29 +39,33 @@
 <div class="l-inner">
   <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default c-page-header--product-page">
     <div class="c-page-header__wrap">
-      <div class="c-page-header__title">Shop</div>
+      <div class="c-page-header__title">{{ $product->name }}</div>
     </div>
     <nav class="c-breadcrumbs">
       <ol class="c-breadcrumbs__list">
         <li class="c-breadcrumbs__item">
           <a href="{{ url('') }}">Home</a>
-          <i class="ip-breadcrumb c-breadcrumbs__separator">
-            <!-- -->
-          </i>
+          <i class="ip-breadcrumb c-breadcrumbs__separator"></i>
         </li>
+        @if(isset($product->category->parent->parent->name) && !empty($product->category->parent->parent))
         <li class="c-breadcrumbs__item">
-          <a href="https://parkofideas.com/luchiana/demo/shop/">Shop</a>
-          <i class="ip-breadcrumb c-breadcrumbs__separator">
-            <!-- -->
-          </i>
+          <a href="{{ url('category',$product->category->parent->parent->slug) }}">{{ $product->category->parent->parent->name }}</a>
+          <i class="ip-breadcrumb c-breadcrumbs__separator"></i>
         </li>
+        @endif
+        @if(isset($product->category->parent->name) && !empty($product->category->parent))
         <li class="c-breadcrumbs__item">
-          <a href="https://parkofideas.com/luchiana/demo/product-category/fragrance/">Fragrance</a>
-          <i class="ip-breadcrumb c-breadcrumbs__separator">
-            <!-- -->
-          </i>
+          <a href="{{ url('category',$product->category->parent->slug) }}">{{ $product->category->parent->name }}</a>
+          <i class="ip-breadcrumb c-breadcrumbs__separator"></i>
         </li>
-        <li class="c-breadcrumbs__item">Midnight Musk</li>
+        @endif
+        @if(isset($product->category->name) && !empty($product->category))
+        <li class="c-breadcrumbs__item">
+          <a href="{{ url('category',$product->category->slug) }}">{{ $product->category->name }}</a>
+          <i class="ip-breadcrumb c-breadcrumbs__separator"></i>
+        </li>
+        @endif
+        <li class="c-breadcrumbs__item">{{ $product->name }}</li>
       </ol>
     </nav>
   </header>
@@ -77,52 +81,50 @@
         <div class="js-sticky-sidebar-nearby">
           <div class="c-product__gallery">
             <div class="c-badge__list c-product__badges">
-              <span class="c-badge c-badge--featured">Featured</span>
-              <span class="c-badge c-badge--new">New</span>
             </div>
             <!-- .c-product__badges -->
             <div class="c-product__slider c-product__slider--carousel h-carousel h-carousel--inner h-carousel--hover h-carousel--dots-hide js-single-product-carousel">
-              @foreach($medias as $media)  
-                @if($media->media_type == 'image')
-                  <div class="c-product__slider-item c-product__slider-item--zoom woocommerce-product-gallery__image ">
-                    <a download href="{{ asset('storage/products/variants/'.$media->media) }}" class="c-product__image-link c-product__image-link--zoom js-product-modal" data-size="1201x1200" data-index="0" data-product-id="511" data-elementor-open-lightbox="no" onclick="return false;">
-                      <img width="460" height="460" src="{{ asset('storage/products/variants/'.$media->media) }}" class="c-product__slider-img c-product__slider-img--cover" alt="product-20-1" sizes="(max-width: 460px) 100vw, 460px" />
-                      <span class="c-product__loading js-loading-wrap">
-                      </span>
-                    </a>
-                  </div>
-                @endif
-                @if($media->media_type == 'video')
-                  <div class="c-product__slider-item c-product__slider-item--video">
-                    <a download href="{{ $media->media }}" class="c-product__image-link c-product__image-link--zoom js-product-modal" data-index="3" data-product-id="511" data-elementor-open-lightbox="no" onclick="return false;">
-                      <span class="c-product__slider--video" style="background-image: url({{ $media->media }})">
-                        <span class="c-product__video-mask">
-                        </span>
-                      </span>
-                      <i class="c-play c-play--large c-play--disabled"></i>
-                    </a>
-                  </div>
-                @endif
+              @foreach($medias as $media)
+              @if($media->media_type == 'image')
+              <div class="c-product__slider-item c-product__slider-item--zoom woocommerce-product-gallery__image ">
+                <a download href="{{ asset('storage/products/variants/'.$media->media) }}" class="c-product__image-link c-product__image-link--zoom js-product-modal" data-size="1201x1200" data-index="0" data-product-id="511" data-elementor-open-lightbox="no" onclick="return false;">
+                  <img width="460" height="460" src="{{ asset('storage/products/variants/'.$media->media) }}" class="c-product__slider-img c-product__slider-img--cover" alt="{{ $media->media_alt }}" sizes="(max-width: 460px) 100vw, 460px" />
+                  <span class="c-product__loading js-loading-wrap">
+                  </span>
+                </a>
+              </div>
+              @endif
+              @if($media->media_type == 'video')
+              <div class="c-product__slider-item c-product__slider-item--video">
+                <a download href="{{ $media->media }}" class="c-product__image-link c-product__image-link--zoom js-product-modal" data-index="3" data-product-id="511" data-elementor-open-lightbox="no" onclick="return false;">
+                  <span class="c-product__slider--video" style="background-image: url()">
+                    <span class="c-product__video-mask">
+                    </span>
+                  </span>
+                  <i class="c-play c-play--large c-play--disabled"></i>
+                </a>
+              </div>
+              @endif
               @endforeach
             </div>
             <div class="c-product__thumbs h-carousel h-carousel--nav-hide h-carousel--dots-hide js-product-thumbs-carousel">
-              @foreach($medias as $media)  
-                @if($media->media_type == 'image')
-                  <div class="c-product__thumbs-item">
-                    <button type="button" class="h-cb js-single-product-thumb " data-index="0">
-                      <img width="115" height="115" src="{{ asset('storage/products/variants/'.$media->media) }}" sizes="(max-width: 115px) 100vw, 115px" />
-                    </button>
-                  </div>
-                @endif
-                @if($media->media_type == 'video')
-                  <div class="c-product__thumbs-item ">
-                    <button type="button" class="h-cb js-single-product-thumb c-product__thumbs-video" data-index="3" style="background-image: url({{ $media->media }})">
-                      <span class="c-product__thumbs-video-mask">
-                      </span>
-                      <i class="c-play"></i>
-                    </button>
-                  </div>
-                @endif
+              @foreach($medias as $media)
+              @if($media->media_type == 'image')
+              <div class="c-product__thumbs-item">
+                <button type="button" class="h-cb js-single-product-thumb " data-index="0">
+                  <img width="115" height="115" src="{{ asset('storage/products/variants/'.$media->media) }}" sizes="(max-width: 115px) 100vw, 115px" />
+                </button>
+              </div>
+              @endif
+              @if($media->media_type == 'video')
+              <div class="c-product__thumbs-item ">
+                <button type="button" class="h-cb js-single-product-thumb c-product__thumbs-video" data-index="3" style="background-image: url()">
+                  <span class="c-product__thumbs-video-mask">
+                  </span>
+                  <i class="c-play"></i>
+                </button>
+              </div>
+              @endif
               @endforeach
             </div>
           </div>
@@ -233,7 +235,9 @@
               <form class="cart" action="https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" method="post" enctype='multipart/form-data'>
                 <div class="c-product__quantity quantity">
                   <label class="screen-reader-text" for="quantity_611f6fb23f9e0">Midnight Musk quantity</label>
-                  <input type="number" id="quantity_611f6fb23f9e0" class="h-cb c-product__quantity-value qty" step="1" min="1" name="quantity" value="1" title="Qty" placeholder="" inputmode="numeric" />
+                  <input type="number" id="quantity_611f6fb23f9e0" class="h-cb c-product__quantity-value qty product-quantity" step="1" min="1" name="quantity" value="1" title="Qty" placeholder="" inputmode="numeric" />
+                  <input type="text" id="productId" value="{{ $product->id }}" hidden>
+                  <input type="text" id="productVarientId" value="{{ $variant->id }}" hidden>
                   <button class="h-cb c-product__quantity-minus js-quantity-minus" type="button">
                     <i class="ip-minus"></i>
                   </button>
@@ -241,7 +245,7 @@
                     <i class="ip-plus_big"></i>
                   </button>
                 </div>
-                <button type="submit" name="add-to-cart" value="511" class="single_add_to_cart_button button alt">Add to cart</button>
+                <button type="button" name="add-to-cart" value="511" class="single_add_to_cart_button button alt add-to-cart">Add to cart</button>
               </form>
             </div>
             <!-- .c-product__atc-wra -->
@@ -288,18 +292,19 @@
       <!-- .js-sticky-sidebar -->
     </div>
     <!-- .c-product__wrap -->
+    @if($related_products->isNotEmpty())
     <section class="c-product__products c-product__products--related">
       <div class="c-product__products-title">Related products</div>
       <div class="c-product-grid__wrap c-product-grid__wrap--4-per-row ">
+        @foreach($related_products as $key => $related)
         <div class="c-product-grid__list c-product-grid__list--4-per-row c-ip-woocommerce-carousel__list c-ip-woocommerce-carousel__list--4-per-row c-ip-woocommerce-carousel__list--3 js-woocommerce-carousel h-carousel h-carousel--default-dots h-carousel--flex h-carousel--round-light h-carousel--outside h-carousel--dots-hide">
           <div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal c-product-grid__item--hover product type-product post-459 status-publish first instock product_cat-fragrance product_tag-florals product_tag-fragrance product_tag-warm has-post-thumbnail featured shipping-taxable purchasable product-type-simple">
             <div class="c-product-grid__badges c-badge__list">
-              <span class="c-badge c-badge--featured">Featured</span>
             </div>
             <!-- .c-product-grid__badges -->
             <div class="c-product-grid__thumb-wrap">
-              <a href="https://parkofideas.com/luchiana/demo/shop/voce-viva-eau-de-parfum/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                <img width="260" height="230" src="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3042606786-260x230.jpg" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3042606786-260x230.jpg 260w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3042606786-520x460.jpg 520w" sizes="(max-width: 260px) 100vw, 260px" />
+              <a href="{{ url('products',['product' => $related->slug, 'variant' => $related_variants[$key] ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+                <img width="260" height="230" src="{{ asset('storage/products/'.$related->main_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3042606786-260x230.jpg 260w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3042606786-520x460.jpg 520w" sizes="(max-width: 260px) 100vw, 260px" />
               </a>
               <div class="c-product-grid__thumb-button-list">
                 <button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="459">
@@ -319,11 +324,11 @@
             </a>
             <div class="c-product-grid__details">
               <div class="c-product-grid__title-wrap">
-                <a href="https://parkofideas.com/luchiana/demo/shop/voce-viva-eau-de-parfum/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                  <h2 class="woocommerce-loop-product__title">Voce Viva Eau de Parfum</h2>
+                <a href="{{ url('products',['product' => $related->slug, 'variant' => $related_variants[$key] ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+                  <h2 class="woocommerce-loop-product__title">{{ $related->name }}</h2>
                 </a>
                 <div class="c-product-grid__short-desc">
-                  <p>Italian Bergamot, Orange Blossom Absolute.</p>
+                  <p>{{ $related->short_description }}</p>
                 </div>
               </div>
               <!-- .c-product-grid__title-wrap -->
@@ -331,100 +336,7 @@
                 <span class="price">
                   <span class="woocommerce-Price-amount amount">
                     <bdi>
-                      <span class="woocommerce-Price-currencySymbol">&#36;</span>150.00</bdi>
-                  </span>
-                </span>
-              </div>
-              <!-- .c-product-grid__price-wrap -->
-            </div>
-            <!-- .c-product-grid__details -->
-          </div>
-          <div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal c-product-grid__item--hover product type-product post-482 status-publish instock product_cat-fragrance product_cat-skincare product_tag-cream product_tag-dry product_tag-skin has-post-thumbnail featured shipping-taxable purchasable product-type-simple">
-            <div class="c-product-grid__badges c-badge__list">
-              <span class="c-badge c-badge--featured">Featured</span>
-            </div>
-            <!-- .c-product-grid__badges -->
-            <div class="c-product-grid__thumb-wrap">
-              <a href="https://parkofideas.com/luchiana/demo/shop/purity-made-simple-cleanser/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                <img width="260" height="230" src="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3025788510-260x230.jpg" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3025788510-260x230.jpg 260w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3025788510-520x460.jpg 520w" sizes="(max-width: 260px) 100vw, 260px" />
-              </a>
-              <div class="c-product-grid__thumb-button-list">
-                <button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="482">
-                  <i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>
-                  <i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>
-                </button>
-                <button class="js-wishlist-btn c-wishlist__btn c-wishlist__item-482-btn h-cb c-product-grid__thumb-button" data-product-id="482" data-title="Wishlist">
-                  <i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
-                  <i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
-                </button>
-              </div>
-            </div>
-            <!-- .c-product-grid__thumb-wrap -->
-            <a href="?add-to-cart=482" data-quantity="1" class="h-cb c-product-grid__atc button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="482" data-product_sku="6549845399" aria-label="Add &ldquo;Purity Made Cleanser&rdquo; to your cart" rel="nofollow">
-              <i class="ip-plus c-product-grid__atc-icon"></i>
-              <span class="c-product-grid__atc-text">Add to cart</span>
-            </a>
-            <div class="c-product-grid__details">
-              <div class="c-product-grid__title-wrap">
-                <a href="https://parkofideas.com/luchiana/demo/shop/purity-made-simple-cleanser/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                  <h2 class="woocommerce-loop-product__title">Purity Made Cleanser</h2>
-                </a>
-                <div class="c-product-grid__short-desc">
-                  <p>Top-selling facial cleanser.</p>
-                </div>
-              </div>
-              <!-- .c-product-grid__title-wrap -->
-              <div class="c-product-grid__price-wrap">
-                <span class="price">
-                  <span class="woocommerce-Price-amount amount">
-                    <bdi>
-                      <span class="woocommerce-Price-currencySymbol">&#36;</span>60.00</bdi>
-                  </span>
-                </span>
-              </div>
-              <!-- .c-product-grid__price-wrap -->
-            </div>
-            <!-- .c-product-grid__details -->
-          </div>
-          <div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal c-product-grid__item--hover product type-product post-464 status-publish instock product_cat-fragrance product_tag-fragrance product_tag-warm has-post-thumbnail shipping-taxable purchasable product-type-simple">
-            <div class="c-product-grid__badges c-badge__list">
-            </div>
-            <!-- .c-product-grid__badges -->
-            <div class="c-product-grid__thumb-wrap">
-              <a href="https://parkofideas.com/luchiana/demo/shop/eau-de-soleil-blanc-set/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                <img width="260" height="230" src="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3000062647-260x230.jpg" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3000062647-260x230.jpg 260w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3000062647-520x460.jpg 520w" sizes="(max-width: 260px) 100vw, 260px" />
-              </a>
-              <div class="c-product-grid__thumb-button-list">
-                <button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="464">
-                  <i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>
-                  <i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>
-                </button>
-                <button class="js-wishlist-btn c-wishlist__btn c-wishlist__item-464-btn h-cb c-product-grid__thumb-button" data-product-id="464" data-title="Wishlist">
-                  <i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
-                  <i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
-                </button>
-              </div>
-            </div>
-            <!-- .c-product-grid__thumb-wrap -->
-            <a href="?add-to-cart=464" data-quantity="1" class="h-cb c-product-grid__atc button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="464" data-product_sku="6549845315" aria-label="Add &ldquo;Flowerbomb&rdquo; to your cart" rel="nofollow">
-              <i class="ip-plus c-product-grid__atc-icon"></i>
-              <span class="c-product-grid__atc-text">Add to cart</span>
-            </a>
-            <div class="c-product-grid__details">
-              <div class="c-product-grid__title-wrap">
-                <a href="https://parkofideas.com/luchiana/demo/shop/eau-de-soleil-blanc-set/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                  <h2 class="woocommerce-loop-product__title">Flowerbomb</h2>
-                </a>
-                <div class="c-product-grid__short-desc">
-                  <p>Vert de Bergamot, Coco de Mer Accord.</p>
-                </div>
-              </div>
-              <!-- .c-product-grid__title-wrap -->
-              <div class="c-product-grid__price-wrap">
-                <span class="price">
-                  <span class="woocommerce-Price-amount amount">
-                    <bdi>
-                      <span class="woocommerce-Price-currencySymbol">&#36;</span>200.00</bdi>
+                      <span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $related_prices[$key] }}</bdi>
                   </span>
                 </span>
               </div>
@@ -433,8 +345,10 @@
             <!-- .c-product-grid__details -->
           </div>
         </div>
+        @endforeach
       </div>
     </section>
+    @endif
   </div>
 </div>
 <!-- /.l-inner -->

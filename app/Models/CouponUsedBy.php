@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProductVariantMedia extends Model
+class CouponUsedBy extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'product_variant_id','media','media_type','sequence','flag','media_alt'
+        'coupon_id','user_id','applied_times'
     ];
 }

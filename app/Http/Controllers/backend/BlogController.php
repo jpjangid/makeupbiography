@@ -7,7 +7,6 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
-use Yajra\DataTables\Services\DataTable;
 use DataTables;
 use Illuminate\Support\Collection;
 
@@ -15,42 +14,42 @@ class BlogController extends Controller
 {
     public function index()
     {
-           
+
         if (request()->ajax()) {
             $blogs1 = Blog::where('flag', '0')->get();
 
             $blogs = new Collection;
-            foreach($blogs1 as $blog) {
+            foreach ($blogs1 as $blog) {
                 $blogs->push([
                     'id'    => $blog->id,
-                    'title'  => $category1->title,
-                    'slug'  => $category1->slug,
-                    'category'=> $category1->category,
+                    'title'  => $blog->title,
+                    'slug'  => $blog->slug,
+                    'category' => $blog->category,
                     'publish_date'  => date('d-m-Y', strtotime($blog->publish_date)),
-                    'status' => $blog->status 
-                ]);    
+                    'status' => $blog->status
+                ]);
             }
 
             return Datatables::of($blogs)
-                    ->addIndexColumn()
-                    ->addColumn('active', function($row) {
-                        $checked = $row['status'] == '1' ? 'checked' : '';
-                        $active  = '<div class="form-check form-switch form-check-custom form-check-solid">
-                                        <input type="hidden" value="'.$row['id'].'" class="category_id">
-                                        <input type="checkbox" class="form-check-input js-switch  h-20px w-30px" id="customSwitch1" name="status" value="'.$row['status'].'" '.$checked.'>
+                ->addIndexColumn()
+                ->addColumn('active', function ($row) {
+                    $checked = $row['status'] == '1' ? 'checked' : '';
+                    $active  = '<div class="form-check form-switch form-check-custom form-check-solid">
+                                        <input type="hidden" value="' . $row['id'] . '" class="category_id">
+                                        <input type="checkbox" class="form-check-input js-switch  h-20px w-30px" id="customSwitch1" name="status" value="' . $row['status'] . '" ' . $checked . '>
                                     </div>';
 
-                      return $active;
-                    })
-                    ->addColumn('action', function($row) {
-                           $delete_url = url('admin/categories/delete',$row['id']);
-                           $edit_url = url('admin/categories/edit',$row['id']);
-                           $btn = '<a class="btn btn-primary btn-sm ml-1" href="'.$edit_url.'"><i class="fas fa-edit"></i></a>';
-                           $btn .= '<a class="btn btn-info btn-sm ml-1" href="'.$delete_url.'"><i class="fa fa-trash"></i></a>'; 
-                           return $btn;
-                    })
-                    ->rawColumns(['action','active'])
-                    ->make(true);
+                    return $active;
+                })
+                ->addColumn('action', function ($row) {
+                    $delete_url = url('admin/blogs/delete', $row['id']);
+                    $edit_url = url('admin/blogs/edit', $row['id']);
+                    $btn = '<a class="btn btn-primary btn-sm ml-1" href="' . $edit_url . '"><i class="fas fa-edit"></i></a>';
+                    $btn .= '<a class="btn btn-info btn-sm ml-1" href="' . $delete_url . '"><i class="fa fa-trash"></i></a>';
+                    return $btn;
+                })
+                ->rawColumns(['action', 'active'])
+                ->make(true);
         }
         return view('backend.blogs.index');
     }
@@ -97,7 +96,7 @@ class BlogController extends Controller
         }
 
         $status = 0;
-        if(isset($request->status)){
+        if (isset($request->status)) {
             $status = 1;
         }
 
@@ -179,7 +178,7 @@ class BlogController extends Controller
         }
 
         $status = 0;
-        if(isset($request->status)){
+        if (isset($request->status)) {
             $status = 1;
         }
 
