@@ -14,7 +14,6 @@ class BlogController extends Controller
 {
     public function index()
     {
-
         if (request()->ajax()) {
             $blogs1 = Blog::where('flag', '0')->get();
 
