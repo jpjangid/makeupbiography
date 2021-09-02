@@ -62,7 +62,6 @@
   <div data-elementor-type="wp-page" data-elementor-id="1131" class="elementor elementor-1131" data-elementor-settings="[]">
     <div class="elementor-inner" style="background-color: #e0ffff;">
       <div class="elementor-section-wrap">
-        <!-- <img src="{{ asset('/images/mb.png') }}" style="width:100%;"> -->
         <div id="slider">
           <figure>
             <img src="{{ asset('/images/s1.jpg') }}">
