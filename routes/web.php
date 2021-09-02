@@ -169,6 +169,9 @@ Route::post('cart/items/update', [App\Http\Controllers\frontend\CartController::
 Route::get('/', function () {
     return view('frontend.main.index');
 });
+Route::view('discount', 'email_templates.Discount');
+Route::view('completed', 'email_templates.Ordercompleted-card');
+
 Route::view('product', 'frontend.product.detail');
 Route::view('category', 'frontend.product.category');
 Route::view('wishlist', 'frontend.wishlist.index');
