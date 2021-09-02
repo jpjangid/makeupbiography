@@ -10,6 +10,7 @@ use App\Models\Product;
 
 class CartController extends Controller
 {
+   //adding product to cart
    public function add_to_cart(Request $request)
    {
        $cart = [];
@@ -69,7 +70,7 @@ class CartController extends Controller
         
        $message = $product->name."-".$message->name." has been added to your cart.";
         return response($message);
-    }
+   }
     
    //getting list of cart items of loged in user
    public function list()
@@ -80,12 +81,23 @@ class CartController extends Controller
        $cookieCartItems = [];
        $totalCartItems = 0;
        $totalQuantityItems = 0;
+       $subtotal = 0.00;
+       $discountPrice = 0.00;
+       $totalPrice = 0.00;
        if($user)
        {
            $cartItems = Cart::where('user_id',$user->id)->with('product','productVariant.medias')->get();
+
            $totalQuantityItems = Cart::where('user_id',$user->id)->sum('quantity');
            if($cartItems)
            {
+               foreach($cartItems as $vari) {
+                $subtotal += round(floatval($vari->productVariant->sale_price) * $vari->quantity); 
+                if($vari->productVariant->discount > 0){
+                    $discountPrice = round(floatval(floatval($vari->productVariant->regular_price) * $vari->quantity) - floatval(floatval($vari->productVariant->sale_price) * $vari->quantity));
+                }
+               }
+
                $totalCartItems = count($cartItems);
            }
        }
@@ -133,10 +145,12 @@ class CartController extends Controller
          $data['listItem'] = $listItem;
          return response()->json($data); 
        }
+       $totalPrice = $subtotal;
 
-       return view('frontend.cart.index',compact('cartItems','cookieCartItems','totalCartItems'));
+       return view('frontend.cart.index',compact('cartItems','cookieCartItems','totalCartItems','subtotal','discountPrice','totalPrice'));
    }
 
+   //html cookie item for html page from cookie
    public function cookie_items($product) {
         $variant = $product['product']['variants'][0];
         $removeItem = url('remove/cart/item',['id'=>$product['product']->id,'variant_id'=>$product['product_variant_id']]);
@@ -160,6 +174,7 @@ class CartController extends Controller
         return $item; 
    }
 
+   //html list item for html page from cart db
    public function list_items($product)
    {
         $removeItem = url('remove/cart/item',['id'=>$product->id,'variant_id'=>$product->product_variant_id ]);
@@ -265,59 +280,34 @@ class CartController extends Controller
         return redirect('cart')->with('success','Cart Updated');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    //checkout function
+    public function checkout()
     {
-        //
+       $user = auth()->user();
+       $cartItems = [];
+       $cookieItems = [];
+       $cookieCartItems = [];
+       $totalCartItems = 0;
+       $totalQuantityItems = 0;
+       $subtotal = 0.00;
+       $discountPrice = 0.00;
+       $totalPrice = 0.00;
+       $cartItems = Cart::where('user_id',$user->id)->with('product','productVariant.medias')->get();
+       $totalQuantityItems = Cart::where('user_id',$user->id)->sum('quantity');
+       if($cartItems)
+       {
+            foreach($cartItems as $vari) {
+            $subtotal += round(floatval($vari->productVariant->sale_price) * $vari->quantity); 
+            if($vari->productVariant->discount > 0){
+                $discountPrice = round(floatval(floatval($vari->productVariant->regular_price) * $vari->quantity) - floatval(floatval($vari->productVariant->sale_price) * $vari->quantity));
+            }
+            }
+
+            $totalCartItems = count($cartItems);
+       }
+       $totalPrice = $subtotal;
+
+        return view('frontend.checkout.index',compact('cartItems','totalCartItems','subtotal','discountPrice','totalPrice'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Cart  $cart
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Cart $cart)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Cart  $cart
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Cart $cart)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Cart  $cart
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Cart $cart)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Cart  $cart
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Cart $cart)
-    {
-        //
-    }
 }

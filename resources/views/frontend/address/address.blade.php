@@ -1,5 +1,22 @@
 @extends('frontend.main.index')
 
+@section('css')
+<style>
+address {
+    line-height: 1.5em;
+    height: 5em;       
+    overflow: hidden;  
+}
+
+.add {
+  background-color: #3B9C9C !important;
+  color: white;
+  padding: 10px 20px;
+  margin-bott0m: 10px !important;
+}
+</style>
+@endsection
+
 @section('content')
 <div class="l-inner">
   <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default
@@ -9,14 +26,12 @@
     </div>
     <div class="c-page-header__login-info">
       <span class="c-page-header__login-text">Logged in as
-        <span class="c-page-header__login-name">xyz</span>
+        <span class="c-page-header__login-name">{{ auth()->user()->name }}</span>
       </span>
-      <a class="c-page-header__logout" href="https://parkofideas.com/luchiana/demo/my-account/customer-logout/?_wpnonce=c22e1eb537">Logout
-        <i class="ip-menu-right c-page-header__logout-icon"></i>
-      </a>
     </div>
   </header>
   <div class="woocommerce-notices-wrapper">
+   @include('frontend.message.message') 
   </div>
   <div class="l-section l-section--container l-section--bottom-margin l-section--no-sidebar l-section--top-margin-60 l-section--white">
     <div class="l-section__content">
@@ -24,50 +39,28 @@
         <div class="c-account">
           <div class="c-account__col-menu">
             <nav>
-              <ul class="c-account__navigation">
-                <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--dashboard">
-                  <a class="c-account__navigation-link" href="https://parkofideas.com/luchiana/demo/my-account/">Dashboard</a>
-                </li>
-                <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders">
-                  <a class="c-account__navigation-link" href="https://parkofideas.com/luchiana/demo/my-account/orders/">Orders</a>
-                </li>
-                <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--downloads">
-                  <a class="c-account__navigation-link" href="https://parkofideas.com/luchiana/demo/my-account/downloads/">Downloads</a>
-                </li>
-                <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-address is-active">
-                  <a class="c-account__navigation-link" href="https://parkofideas.com/luchiana/demo/my-account/edit-address/">Addresses</a>
-                </li>
-                <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-account">
-                  <a class="c-account__navigation-link" href="https://parkofideas.com/luchiana/demo/my-account/edit-account/">Account details</a>
-                </li>
-              </ul>
+            @include('frontend.myaccount.sidebar')
             </nav>
           </div>
           <div class="c-account__col-content">
-            <p>The following addresses will be used on the checkout page by default.</p>
+            <a href="{{ url('my-address/create') }}" class="add">Add</a>
+            <p style="margin-top: 20px">The following addresses will be used on the checkout page by default.</p>
+            
             <div class="u-columns woocommerce-Addresses col2-set addresses">
+              @php $count = 1; @endphp
+              @foreach($user_addresses as $user_address)
               <div class="u-column1 col-1 woocommerce-Address">
                 <header class="woocommerce-Address-title title">
-                  <h3>Billing address</h3>
-                  <a href="https://parkofideas.com/luchiana/demo/my-account/edit-address/billing/" class="edit">Edit</a>
+                  <h3>Address {{ $count }}</h3>
+                  <a href="{{ url('my-address/edit',$user_address->id) }}" class="edit">Edit</a>
                 </header>
-                <address>xyz xyz
-                  <br />ascasc
-                  <br />ascas
-                  <br />ddd
-                  <br />sdvsdv Victoria 313002</address>
+                <address>{{ $user_address->address }}</address>
+                <small>State: {{ !empty($user_address->state) ? $user_address->state : '' }}</small><br>
+                <small>City: {{ !empty($user_address->city) ? $user_address->city : '' }}</small><br>
+                <small>Postcode: {{ !empty($user_address->pincode) ? $user_address->pincode : '' }}</small>
               </div>
-              <div class="u-column2 col-2 woocommerce-Address">
-                <header class="woocommerce-Address-title title">
-                  <h3>Shipping address</h3>
-                  <a href="https://parkofideas.com/luchiana/demo/my-account/edit-address/shipping/" class="edit">Edit</a>
-                </header>
-                <address>xyz xyz
-                  <br />ascasc
-                  <br />ascas
-                  <br />ddd
-                  <br />sdvsdv Victoria 313002</address>
-              </div>
+              @php $count++ @endphp
+              @endforeach
             </div>
           </div>
         </div>

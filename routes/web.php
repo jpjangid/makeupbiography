@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -139,7 +140,7 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::get('my-wishlist', [App\Http\Controllers\frontend\MyAccountController::class, 'wishlist']);
     Route::get('my-orders', [App\Http\Controllers\frontend\MyAccountController::class, 'myorders']);
     Route::get('q&a', [App\Http\Controllers\frontend\MyAccountController::class, 'question_answers']);
-    Route::get('my-address', [App\Http\Controllers\frontend\MyAccountController::class, 'myaddress']);
+
     Route::view('questionanswer', 'frontend.myaccount.question_answer');
     Route::view('wishlist', 'frontend.wishlist.index');
 
@@ -147,8 +148,14 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::patch('profile/{id}', [App\Http\Controllers\Auth\ProfileController::class, 'update'])->name('profile');
 
     //Route for Cart
+    Route::get('checkout', [App\Http\Controllers\frontend\CartController::class, 'checkout']);
 
-    Route::view('cart/empty', 'frontend.cart.empty');
+    //Route for myaddress
+    Route::get('my-address', [App\Http\Controllers\frontend\MyAccountController::class, 'myaddress']);
+    Route::get('my-address/create', [App\Http\Controllers\frontend\MyAccountController::class, 'myAddressViewCreate']);
+    Route::post('my-address/create', [App\Http\Controllers\frontend\MyAccountController::class, 'myAddressStore']);
+    Route::get('my-address/edit/{id}', [App\Http\Controllers\frontend\MyAccountController::class, 'myAddressEdit']);
+    Route::patch('my-address/update/{id}', [App\Http\Controllers\frontend\MyAccountController::class, 'myAddressUpdate']);
 });
 
 //Route for Add to Cart
@@ -168,7 +175,7 @@ Route::view('wishlist', 'frontend.wishlist.index');
 Route::view('wishlist/empty', 'frontend.wishlist.empty');
 // Route::view('cart', 'frontend.cart.index');
 Route::view('cart/empty', 'frontend.cart.empty');
-Route::view('checkout', 'frontend.checkout.index');
+
 Route::view('myaccount', 'frontend.myaccount.myaccount');
 Route::view('brand', 'frontend.brand.index');
 Route::view('contactus', 'frontend.page.contactus');
