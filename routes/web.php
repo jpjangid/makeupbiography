@@ -135,6 +135,15 @@ Route::middleware(['auth', 'prevent-back-history', 'admin'])->prefix('admin')->g
         Route::get('/delete/{id}', [App\Http\Controllers\backend\UserController::class, 'destroy']);
     });
 
+    Route::prefix('wallets')->group(function () {
+        Route::get('/', [App\Http\Controllers\backend\WalletController::class, 'index']);
+        Route::get('/create', [App\Http\Controllers\backend\WalletController::class, 'create']);
+        Route::post('/store', [App\Http\Controllers\backend\WalletController::class, 'store']);
+        Route::get('/edit/{id}', [App\Http\Controllers\backend\WalletController::class, 'edit']);
+        Route::put('/update/{id}', [App\Http\Controllers\backend\WalletController::class, 'update']);
+        Route::get('/delete/{id}', [App\Http\Controllers\backend\WalletController::class, 'destroy']);
+    });
+
     //route for profile update
     Route::get('profile', [App\Http\Controllers\Auth\ProfileController::class, 'edit']);
 });
