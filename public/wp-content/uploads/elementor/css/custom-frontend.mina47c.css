@@ -745,6 +745,7 @@ h1.entry-title {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    
 }
 @media (max-width: 1189px) {
     .elementor-row {
