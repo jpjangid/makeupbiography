@@ -5899,9 +5899,8 @@ var requirejs, require, define;
                             } else {
                                 $banners_order.push($banners[i]);
                             }
-                                    $a.data("timestamp") - $b.data("timestamp")
-                                );
-                            });
+                            $a.data("timestamp") - $b.data("timestamp")
+                     
                             var timestamp = Math.round(new Date() / 1000);
                             var $old_banner = $banners_visible[0];
                             if (typeof $old_banner === "undefined") {
