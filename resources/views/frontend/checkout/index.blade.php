@@ -1,5 +1,22 @@
 @extends('frontend.main.index')
 
+@section('title','Checkout')
+
+@section('css')
+<style>
+  small .list-address {
+    line-height: 1.5em;
+    height: 2em;       
+    overflow: hidden;  
+  }
+  .button {
+    background-color: #3B9C9C !important;
+    color: white !important;
+    margin: 20px;
+  }
+</style>
+@endsection
+
 @section('content')
 <div class="l-inner">
   <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default
@@ -34,124 +51,75 @@
   <div class="l-section l-section--container l-section--bottom-margin l-section--no-sidebar l-section--top-margin-60 l-section--white l-section--checkout">
     <div class="l-section__content">
       <div class="woocommerce">
-        <form name="checkout" method="post" class="c-cart c-cart--checkout checkout woocommerce-checkout" action="https://parkofideas.com/luchiana/demo/checkout/" enctype="multipart/form-data">
+        <form method="post" class="c-cart c-cart--checkout checkout woocommerce-checkout" action="#">
           <div class="c-cart__wrap">
             <div class="c-cart__col-1 c-cart__col-1--checkout">
               <div class=" js-sticky-sidebar-nearby ">
                 <div class="c-cart__customer-details" id="customer_details">
                   <div class="col-1">
+                    <h2 class="c-cart__header">Checkout</h2>
+                    @foreach($locations as $location)
+                      <input type="radio" name="addressSelect" id="addressSelect"><small class="list-address">{{ implode(' ', array_slice(str_word_count($location->address,1), 0, 10)) }}</small>,<small>{{$location->state}}</small>,<small>{{$location->city}}</small><br>
+                    @endforeach
+                    <button class="button button-add-new-address">Add New Address</button>
+                  </div>
+                  <hr class="col-1 add-new-address-show" style="display: none;">  
+                  <div class="col-1 add-new-address-show" style="display: none;">
                     <div class="c-cart__form c-cart__form--billing-fields woocommerce-billing-fields">
                       <h3 class="c-cart__header">Billing details</h3>
                       <div class="c-cart__billing-fields woocommerce-billing-fields__field-wrapper">
-                        <p class="form-row form-row-first validate-required" id="billing_first_name_field" data-priority="10">
-                          <label for="billing_first_name" class="">First name&nbsp;
+                        <p class="form-row form-row-first validate-required" data-priority="10">
+                          <label for="billing_name" class="">Name&nbsp;
                             <abbr class="required" title="required">*</abbr>
                           </label>
                           <span class="woocommerce-input-wrapper">
-                            <input type="text" class="input-text " name="billing_first_name" id="billing_first_name" placeholder="" value="" autocomplete="given-name" />
+                            <input type="text" class="input-text " name="billing_name" id="billing_name" placeholder="" value="" autocomplete="given-name" />
                           </span>
                         </p>
-                        <p class="form-row form-row-last validate-required" id="billing_last_name_field" data-priority="20">
-                          <label for="billing_last_name" class="">Last name&nbsp;
+                        <p class="form-row form-row-first validate-required" data-priority="10">
+                          <label for="billing_email" class="">Email&nbsp;
                             <abbr class="required" title="required">*</abbr>
                           </label>
                           <span class="woocommerce-input-wrapper">
-                            <input type="text" class="input-text " name="billing_last_name" id="billing_last_name" placeholder="" value="" autocomplete="family-name" />
+                            <input type="email" class="input-text " name="billing_email" id="billing_email" placeholder="" value="" autocomplete="given-name" />
                           </span>
                         </p>
-                        <p class="form-row form-row-wide" id="billing_company_field" data-priority="30">
-                          <label for="billing_company" class="">Company name&nbsp;
-                            <span class="optional">(optional)</span>
-                          </label>
-                          <span class="woocommerce-input-wrapper">
-                            <input type="text" class="input-text " name="billing_company" id="billing_company" placeholder="" value="" autocomplete="organization" />
-                          </span>
-                        </p>
-                        <p class="form-row form-row-wide address-field update_totals_on_change validate-required" id="billing_country_field" data-priority="40">
-                          <label for="billing_country" class="">Country / Region&nbsp;
+                        <p class="form-row form-row-first validate-required" data-priority="10">
+                          <label for="billing_mobile" class="">Mobile No&nbsp;
                             <abbr class="required" title="required">*</abbr>
                           </label>
                           <span class="woocommerce-input-wrapper">
-                            <select name="billing_country" id="billing_country" class="country_to_state country_select " autocomplete="country" data-placeholder="Select a country / region&hellip;" data-label="Country / Region">
-                              <option value="">Select a country / region&hellip;</option>
-                              <option value="AF">Afghanistan</option>
-                              <option value="AX">Åland Islands</option>
-                            </select>
-                            <noscript>
-                              <button type="submit" name="woocommerce_checkout_update_totals" value="Update country / region">Update country / region</button>
-                            </noscript>
+                            <input type="text" class="input-text number" name="billing_mobile" id="billing_email" placeholder="" value="" autocomplete="given-name" />
                           </span>
                         </p>
-                        <p class="form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
-                          <label for="billing_address_1" class="">Street address&nbsp;
+                        <p class="form-row form-row-first validate-required" data-priority="10">
+                          <label for="billing_address" class="">Address&nbsp;
                             <abbr class="required" title="required">*</abbr>
                           </label>
                           <span class="woocommerce-input-wrapper">
-                            <input type="text" class="input-text " name="billing_address_1" id="billing_address_1" placeholder="House number and street name" value="" autocomplete="address-line1" />
+                            <input type="text" class="input-text number" name="billing_address" id="billing_address" placeholder="" value="" autocomplete="given-name" />
                           </span>
                         </p>
-                        <p class="form-row form-row-wide address-field" id="billing_address_2_field" data-priority="60">
-                          <label for="billing_address_2" class="screen-reader-text">Apartment, suite, unit, etc.&nbsp;
-                            <span class="optional">(optional)</span>
-                          </label>
-                          <span class="woocommerce-input-wrapper">
-                            <input type="text" class="input-text " name="billing_address_2" id="billing_address_2" placeholder="Apartment, suite, unit, etc. (optional)" value="" autocomplete="address-line2" />
-                          </span>
-                        </p>
-                        <p class="form-row form-row-wide address-field validate-required" id="billing_city_field" data-priority="70">
-                          <label for="billing_city" class="">Suburb&nbsp;
-                            <abbr class="required" title="required">*</abbr>
-                          </label>
-                          <span class="woocommerce-input-wrapper">
-                            <input type="text" class="input-text " name="billing_city" id="billing_city" placeholder="" value="" autocomplete="address-level2" />
-                          </span>
-                        </p>
-                        <p class="form-row form-row-wide address-field validate-required validate-state" id="billing_state_field" data-priority="80">
-                          <label for="billing_state" class="">State&nbsp;
-                            <abbr class="required" title="required">*</abbr>
-                          </label>
-                          <span class="woocommerce-input-wrapper">
-                            <select name="billing_state" id="billing_state" class="state_select " autocomplete="address-level1" data-placeholder="Select an option&hellip;" data-input-classes="" data-label="State">
-                              <option value="">Select an option&hellip;</option>
-                              <option value="ACT">Australian Capital Territory</option>
-                              <option value="NSW">New South Wales</option>
-                              <option value="NT">Northern Territory</option>
-                              <option value="QLD">Queensland</option>
-                              <option value="SA">South Australia</option>
-                              <option value="TAS">Tasmania</option>
-                              <option value="VIC" selected='selected'>Victoria</option>
-                              <option value="WA">Western Australia</option>
-                            </select>
-                          </span>
-                        </p>
-                        <p class="form-row form-row-wide address-field validate-required validate-postcode" id="billing_postcode_field" data-priority="90">
+                        <p class="form-row form-row-first validate-required" data-priority="10">
                           <label for="billing_postcode" class="">Postcode&nbsp;
                             <abbr class="required" title="required">*</abbr>
                           </label>
                           <span class="woocommerce-input-wrapper">
-                            <input type="text" class="input-text " name="billing_postcode" id="billing_postcode" placeholder="" value="" autocomplete="postal-code" />
+                            <input type="text" class="input-text number" name="billing_postcode" id="billing_postcode" placeholder="" value="" autocomplete="given-name" />
                           </span>
                         </p>
-                        <p class="form-row form-row-wide validate-required validate-phone" id="billing_phone_field" data-priority="100">
-                          <label for="billing_phone" class="">Phone&nbsp;
+                        <p class="form-row form-row-first validate-required" data-priority="10">
+                          <label for="billing_landmark" class="">Landmark&nbsp;
                             <abbr class="required" title="required">*</abbr>
                           </label>
                           <span class="woocommerce-input-wrapper">
-                            <input type="tel" class="input-text " name="billing_phone" id="billing_phone" placeholder="" value="" autocomplete="tel" />
-                          </span>
-                        </p>
-                        <p class="form-row form-row-wide validate-required validate-email" id="billing_email_field" data-priority="110">
-                          <label for="billing_email" class="">Email address&nbsp;
-                            <abbr class="required" title="required">*</abbr>
-                          </label>
-                          <span class="woocommerce-input-wrapper">
-                            <input type="email" class="input-text " name="billing_email" id="billing_email" placeholder="" value="xyz@gmail.com" autocomplete="email username" />
+                            <input type="text" class="input-text number" name="billing_landmark" id="billing_landmark" placeholder="" value="" autocomplete="given-name" />
                           </span>
                         </p>
                       </div>
                     </div>
                   </div>
-                  <div class="col-2">
+                  <div class="col-2 add-new-address-show" style="display: none;">
                     <div class="c-cart__form c-cart__form--shipping-fields woocommerce-shipping-fields">
                       <label for="ship-to-different-address-checkbox" class="checkbox">
                         <h3 id="ship-to-different-address">
@@ -160,96 +128,54 @@
                       </label>
                       <div class="shipping_address">
                         <div class="c-cart__shipping-fields woocommerce-shipping-fields__field-wrapper">
-                          <p class="form-row form-row-first validate-required" id="shipping_first_name_field" data-priority="10">
-                            <label for="shipping_first_name" class="">First name&nbsp;
-                              <abbr class="required" title="required">*</abbr>
-                            </label>
-                            <span class="woocommerce-input-wrapper">
-                              <input type="text" class="input-text " name="shipping_first_name" id="shipping_first_name" placeholder="" value="" autocomplete="given-name" />
-                            </span>
-                          </p>
-                          <p class="form-row form-row-last validate-required" id="shipping_last_name_field" data-priority="20">
-                            <label for="shipping_last_name" class="">Last name&nbsp;
-                              <abbr class="required" title="required">*</abbr>
-                            </label>
-                            <span class="woocommerce-input-wrapper">
-                              <input type="text" class="input-text " name="shipping_last_name" id="shipping_last_name" placeholder="" value="" autocomplete="family-name" />
-                            </span>
-                          </p>
-                          <p class="form-row form-row-wide" id="shipping_company_field" data-priority="30">
-                            <label for="shipping_company" class="">Company name&nbsp;
-                              <span class="optional">(optional)</span>
-                            </label>
-                            <span class="woocommerce-input-wrapper">
-                              <input type="text" class="input-text " name="shipping_company" id="shipping_company" placeholder="" value="" autocomplete="organization" />
-                            </span>
-                          </p>
-                          <p class="form-row form-row-wide address-field update_totals_on_change validate-required" id="shipping_country_field" data-priority="40">
-                            <label for="shipping_country" class="">Country / Region&nbsp;
-                              <abbr class="required" title="required">*</abbr>
-                            </label>
-                            <span class="woocommerce-input-wrapper">
-                              <select name="shipping_country" id="shipping_country" class="country_to_state country_select " autocomplete="country" data-placeholder="Select a country / region&hellip;" data-label="Country / Region">
-                                <option value="">Select a country / region&hellip;</option>
-                                <option value="AF">Afghanistan</option>
-                                <option value="AX">Åland Islands</option>
-                                <option value="AL">Albania</option>
-                              </select>
-                              <noscript>
-                                <button type="submit" name="woocommerce_checkout_update_totals" value="Update country / region">Update country / region</button>
-                              </noscript>
-                            </span>
-                          </p>
-                          <p class="form-row form-row-wide address-field validate-required" id="shipping_address_1_field" data-priority="50">
-                            <label for="shipping_address_1" class="">Street address&nbsp;
-                              <abbr class="required" title="required">*</abbr>
-                            </label>
-                            <span class="woocommerce-input-wrapper">
-                              <input type="text" class="input-text " name="shipping_address_1" id="shipping_address_1" placeholder="House number and street name" value="" autocomplete="address-line1" />
-                            </span>
-                          </p>
-                          <p class="form-row form-row-wide address-field" id="shipping_address_2_field" data-priority="60">
-                            <label for="shipping_address_2" class="screen-reader-text">Apartment, suite, unit, etc.&nbsp;
-                              <span class="optional">(optional)</span>
-                            </label>
-                            <span class="woocommerce-input-wrapper">
-                              <input type="text" class="input-text " name="shipping_address_2" id="shipping_address_2" placeholder="Apartment, suite, unit, etc. (optional)" value="" autocomplete="address-line2" />
-                            </span>
-                          </p>
-                          <p class="form-row form-row-wide address-field validate-required" id="shipping_city_field" data-priority="70">
-                            <label for="shipping_city" class="">Suburb&nbsp;
-                              <abbr class="required" title="required">*</abbr>
-                            </label>
-                            <span class="woocommerce-input-wrapper">
-                              <input type="text" class="input-text " name="shipping_city" id="shipping_city" placeholder="" value="" autocomplete="address-level2" />
-                            </span>
-                          </p>
-                          <p class="form-row form-row-wide address-field validate-required validate-state" id="shipping_state_field" data-priority="80">
-                            <label for="shipping_state" class="">State&nbsp;
-                              <abbr class="required" title="required">*</abbr>
-                            </label>
-                            <span class="woocommerce-input-wrapper">
-                              <select name="shipping_state" id="shipping_state" class="state_select " autocomplete="address-level1" data-placeholder="Select an option&hellip;" data-input-classes="" data-label="State">
-                                <option value="">Select an option&hellip;</option>
-                                <option value="ACT">Australian Capital Territory</option>
-                                <option value="NSW">New South Wales</option>
-                                <option value="NT">Northern Territory</option>
-                                <option value="QLD">Queensland</option>
-                                <option value="SA">South Australia</option>
-                                <option value="TAS">Tasmania</option>
-                                <option value="VIC" selected='selected'>Victoria</option>
-                                <option value="WA">Western Australia</option>
-                              </select>
-                            </span>
-                          </p>
-                          <p class="form-row form-row-wide address-field validate-required validate-postcode" id="shipping_postcode_field" data-priority="90">
-                            <label for="shipping_postcode" class="">Postcode&nbsp;
-                              <abbr class="required" title="required">*</abbr>
-                            </label>
-                            <span class="woocommerce-input-wrapper">
-                              <input type="text" class="input-text " name="shipping_postcode" id="shipping_postcode" placeholder="" value="" autocomplete="postal-code" />
-                            </span>
-                          </p>
+                        <p class="form-row form-row-first validate-required" data-priority="10">
+                          <label for="billing_name" class="">Name&nbsp;
+                            <abbr class="required" title="required">*</abbr>
+                          </label>
+                          <span class="woocommerce-input-wrapper">
+                            <input type="text" class="input-text " name="billing_name" id="billing_name" placeholder="" value="" autocomplete="given-name" />
+                          </span>
+                        </p>
+                        <p class="form-row form-row-first validate-required" data-priority="10">
+                          <label for="billing_email" class="">Email&nbsp;
+                            <abbr class="required" title="required">*</abbr>
+                          </label>
+                          <span class="woocommerce-input-wrapper">
+                            <input type="email" class="input-text " name="billing_email" id="billing_email" placeholder="" value="" autocomplete="given-name" />
+                          </span>
+                        </p>
+                        <p class="form-row form-row-first validate-required" data-priority="10">
+                          <label for="billing_mobile" class="">Mobile No&nbsp;
+                            <abbr class="required" title="required">*</abbr>
+                          </label>
+                          <span class="woocommerce-input-wrapper">
+                            <input type="text" class="input-text number" name="billing_mobile" id="billing_email" placeholder="" value="" autocomplete="given-name" />
+                          </span>
+                        </p>
+                        <p class="form-row form-row-first validate-required" data-priority="10">
+                          <label for="billing_address" class="">Address&nbsp;
+                            <abbr class="required" title="required">*</abbr>
+                          </label>
+                          <span class="woocommerce-input-wrapper">
+                            <input type="text" class="input-text number" name="billing_address" id="billing_address" placeholder="" value="" autocomplete="given-name" />
+                          </span>
+                        </p>
+                        <p class="form-row form-row-first validate-required" data-priority="10">
+                          <label for="billing_postcode" class="">Postcode&nbsp;
+                            <abbr class="required" title="required">*</abbr>
+                          </label>
+                          <span class="woocommerce-input-wrapper">
+                            <input type="text" class="input-text number" name="billing_postcode" id="billing_postcode" placeholder="" value="" autocomplete="given-name" />
+                          </span>
+                        </p>
+                        <p class="form-row form-row-first validate-required" data-priority="10">
+                          <label for="billing_landmark" class="">Landmark&nbsp;
+                            <abbr class="required" title="required">*</abbr>
+                          </label>
+                          <span class="woocommerce-input-wrapper">
+                            <input type="text" class="input-text number" name="billing_landmark" id="billing_landmark" placeholder="" value="" autocomplete="given-name" />
+                          </span>
+                        </p>
                         </div>
                       </div>
                     </div>
@@ -567,4 +493,9 @@
   </div>
 </div>
 <!-- /.l-inner -->
+@endsection
+
+@section('js')
+<script type='text/javascript' src='{{ asset("js/validation.js") }}' id='preloaded-modules-js'></script>
+<script type='text/javascript' src='{{ asset("js/checkout.js") }}' id='preloaded-modules-js'></script>
 @endsection
