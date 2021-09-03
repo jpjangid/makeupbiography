@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -103,8 +104,8 @@ Route::middleware(['auth', 'prevent-back-history', 'admin'])->prefix('admin')->g
 
     Route::prefix('products')->group(function () {
         Route::get('/', [App\Http\Controllers\backend\ProductController::class, 'index']);
-        Route::get('/create',[App\Http\Controllers\backend\ProductController::class,'create']);
-        Route::post('/store',[App\Http\Controllers\backend\ProductController::class,'store']);
+        Route::get('/create', [App\Http\Controllers\backend\ProductController::class, 'create']);
+        Route::post('/store', [App\Http\Controllers\backend\ProductController::class, 'store']);
         Route::get('/edit/{id}', [App\Http\Controllers\backend\ProductController::class, 'edit']);
         Route::put('/update/{id}', [App\Http\Controllers\backend\ProductController::class, 'update']);
         Route::get('/delete/{id}', [App\Http\Controllers\backend\ProductController::class, 'destroy']);
@@ -114,53 +115,72 @@ Route::middleware(['auth', 'prevent-back-history', 'admin'])->prefix('admin')->g
         Route::get('/variants/edit/{id}', [App\Http\Controllers\backend\ProductController::class, 'edit_variant']);
         Route::put('/variants/update/{id}', [App\Http\Controllers\backend\ProductController::class, 'update_variant']);
     });
+
+    Route::prefix('coupons')->group(function () {
+        Route::get('/', [App\Http\Controllers\backend\CouponController::class, 'index']);
+        Route::get('/create', [App\Http\Controllers\backend\CouponController::class, 'create']);
+        Route::post('/store', [App\Http\Controllers\backend\CouponController::class, 'store']);
+        Route::get('/edit/{id}', [App\Http\Controllers\backend\CouponController::class, 'edit']);
+        Route::put('/update/{id}', [App\Http\Controllers\backend\CouponController::class, 'update']);
+        Route::get('/delete/{id}', [App\Http\Controllers\backend\CouponController::class, 'destroy']);
+        Route::post('/update_status', [App\Http\Controllers\backend\CouponController::class, 'update_status']);
+    });
+
+    Route::prefix('users')->group(function () {
+        Route::get('/', [App\Http\Controllers\backend\UserController::class, 'index']);
+        Route::get('/create', [App\Http\Controllers\backend\UserController::class, 'create']);
+        Route::post('/store', [App\Http\Controllers\backend\UserController::class, 'store']);
+        Route::get('/edit/{id}', [App\Http\Controllers\backend\UserController::class, 'edit']);
+        Route::put('/update/{id}', [App\Http\Controllers\backend\UserController::class, 'update']);
+        Route::get('/delete/{id}', [App\Http\Controllers\backend\UserController::class, 'destroy']);
+    });
+
     //route for profile update
-    Route::get('profile',[App\Http\Controllers\Auth\ProfileController::class, 'edit']);
-
-
-   
-
+    Route::get('profile', [App\Http\Controllers\Auth\ProfileController::class, 'edit']);
 });
 
 /* Route for frontend Begin */
-Route::middleware(['auth','prevent-back-history'])->group(function () {
-    
+Route::middleware(['auth', 'prevent-back-history'])->group(function () {
+
     //My account routes
-    Route::get('my-account',[App\Http\Controllers\frontend\MyAccountController::class, 'myaccount']);
-    Route::get('my-wallet',[App\Http\Controllers\frontend\MyAccountController::class, 'mywallet']);
-    Route::view('mywishlistempty','frontend.myaccount.mywishlist_empty');
-    Route::get('my-wishlist',[App\Http\Controllers\frontend\MyAccountController::class, 'wishlist']);
-    Route::get('my-orders',[App\Http\Controllers\frontend\MyAccountController::class, 'myorders']);
-    Route::get('q&a',[App\Http\Controllers\frontend\MyAccountController::class, 'question_answers']);
-   
-    Route::view('questionanswer','frontend.myaccount.question_answer');
-    Route::view('wishlist','frontend.wishlist.index');
+    Route::get('my-account', [App\Http\Controllers\frontend\MyAccountController::class, 'myaccount']);
+    Route::get('my-wallet', [App\Http\Controllers\frontend\MyAccountController::class, 'mywallet']);
+    Route::view('mywishlistempty', 'frontend.myaccount.mywishlist_empty');
+    Route::get('my-wishlist', [App\Http\Controllers\frontend\MyAccountController::class, 'wishlist']);
+    Route::get('my-orders', [App\Http\Controllers\frontend\MyAccountController::class, 'myorders']);
+    Route::get('q&a', [App\Http\Controllers\frontend\MyAccountController::class, 'question_answers']);
+
+    Route::view('questionanswer', 'frontend.myaccount.question_answer');
+    Route::view('wishlist', 'frontend.wishlist.index');
 
     //Route for profile update
-    Route::patch('profile/{id}',[App\Http\Controllers\Auth\ProfileController::class, 'update'])->name('profile');
+    Route::patch('profile/{id}', [App\Http\Controllers\Auth\ProfileController::class, 'update'])->name('profile');
 
     //Route for Cart
-    Route::get('checkout',[App\Http\Controllers\frontend\CartController::class, 'checkout']);
-    
+    Route::get('checkout', [App\Http\Controllers\frontend\CartController::class, 'checkout']);
+
     //Route for myaddress
-    Route::get('my-address',[App\Http\Controllers\frontend\MyAccountController::class, 'myaddress']);
-    Route::get('my-address/create',[App\Http\Controllers\frontend\MyAccountController::class, 'myAddressViewCreate']);
-    Route::post('my-address/create',[App\Http\Controllers\frontend\MyAccountController::class, 'myAddressStore']);
-    Route::get('my-address/edit/{id}',[App\Http\Controllers\frontend\MyAccountController::class, 'myAddressEdit']);
-    Route::patch('my-address/update/{id}',[App\Http\Controllers\frontend\MyAccountController::class, 'myAddressUpdate']);
-});    
+    Route::get('my-address', [App\Http\Controllers\frontend\MyAccountController::class, 'myaddress']);
+    Route::get('my-address/create', [App\Http\Controllers\frontend\MyAccountController::class, 'myAddressViewCreate']);
+    Route::post('my-address/create', [App\Http\Controllers\frontend\MyAccountController::class, 'myAddressStore']);
+    Route::get('my-address/edit/{id}', [App\Http\Controllers\frontend\MyAccountController::class, 'myAddressEdit']);
+    Route::patch('my-address/update/{id}', [App\Http\Controllers\frontend\MyAccountController::class, 'myAddressUpdate']);
+});
 
 //Route for Add to Cart
-Route::get('cart',[App\Http\Controllers\frontend\CartController::class, 'list']);
-Route::get('remove/cart/item/{id}/{variant_id}',[App\Http\Controllers\frontend\CartController::class, 'remove_item']);
-Route::get('add/to/cart',[App\Http\Controllers\frontend\CartController::class,'add_to_cart']);
-Route::post('cart/items/update',[App\Http\Controllers\frontend\CartController::class, 'update_items']);
+Route::get('cart', [App\Http\Controllers\frontend\CartController::class, 'list']);
+Route::get('remove/cart/item/{id}/{variant_id}', [App\Http\Controllers\frontend\CartController::class, 'remove_item']);
+Route::get('add/to/cart', [App\Http\Controllers\frontend\CartController::class, 'add_to_cart']);
+Route::post('cart/items/update', [App\Http\Controllers\frontend\CartController::class, 'update_items']);
 
 
 
 Route::get('/', function () {
     return view('frontend.main.index');
 });
+Route::view('discount', 'email_templates.Discount');
+Route::view('completed', 'email_templates.Ordercompleted-card');
+
 Route::view('product', 'frontend.product.detail');
 Route::view('category', 'frontend.product.category');
 Route::view('wishlist', 'frontend.wishlist.index');
@@ -169,8 +189,8 @@ Route::view('wishlist/empty', 'frontend.wishlist.empty');
 Route::view('cart/empty', 'frontend.cart.empty');
 
 Route::view('myaccount', 'frontend.myaccount.myaccount');
-Route::view('brand','frontend.brand.index');
-Route::view('contactus','frontend.page.contactus');
+Route::view('brand', 'frontend.brand.index');
+Route::view('contactus', 'frontend.page.contactus');
 
 // Route::view('faq','frontend.page.faq');
 // Route::view('return/policy','frontend.page.return_policy');
@@ -190,5 +210,5 @@ Route::get('category/{slug}', [App\Http\Controllers\frontend\CategoryController:
 Route::get('products/{product}/{variant}', [App\Http\Controllers\frontend\ProductController::class, 'index']);
 
 Route::post('storecomment', [App\Http\Controllers\frontend\CommentController::class, 'store']);
-Route::view('404','404');
+Route::view('404', '404');
 /* Route for front end End */

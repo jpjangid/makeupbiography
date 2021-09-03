@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('role');
-            $table->bigInteger('mobile')->nullable();
+            $table->string('mobile')->nullable();
             $table->string('image')->nullable();
             $table->string('auto_page')->nullable();
             $table->datetime('auto_datetime')->nullable();
