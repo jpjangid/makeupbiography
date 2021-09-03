@@ -7,6 +7,7 @@ use App\Models\Cart;
 use Illuminate\Http\Request;
 use App\Models\ProductVariant;
 use App\Models\Product;
+use App\Models\UserAddress;
 
 class CartController extends Controller
 {
@@ -306,8 +307,9 @@ class CartController extends Controller
             $totalCartItems = count($cartItems);
        }
        $totalPrice = $subtotal;
+       $locations = UserAddress::where('user_id',auth()->user()->id)->get();
 
-        return view('frontend.checkout.index',compact('cartItems','totalCartItems','subtotal','discountPrice','totalPrice'));
+        return view('frontend.checkout.index',compact('cartItems','totalCartItems','subtotal','discountPrice','totalPrice','locations'));
     }
 
 }

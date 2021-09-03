@@ -126,6 +126,24 @@ Route::middleware(['auth', 'prevent-back-history', 'admin'])->prefix('admin')->g
         Route::post('/update_status', [App\Http\Controllers\backend\CouponController::class, 'update_status']);
     });
 
+    Route::prefix('users')->group(function () {
+        Route::get('/', [App\Http\Controllers\backend\UserController::class, 'index']);
+        Route::get('/create', [App\Http\Controllers\backend\UserController::class, 'create']);
+        Route::post('/store', [App\Http\Controllers\backend\UserController::class, 'store']);
+        Route::get('/edit/{id}', [App\Http\Controllers\backend\UserController::class, 'edit']);
+        Route::put('/update/{id}', [App\Http\Controllers\backend\UserController::class, 'update']);
+        Route::get('/delete/{id}', [App\Http\Controllers\backend\UserController::class, 'destroy']);
+    });
+
+    Route::prefix('wallets')->group(function () {
+        Route::get('/', [App\Http\Controllers\backend\WalletController::class, 'index']);
+        Route::get('/create', [App\Http\Controllers\backend\WalletController::class, 'create']);
+        Route::post('/store', [App\Http\Controllers\backend\WalletController::class, 'store']);
+        Route::get('/edit/{id}', [App\Http\Controllers\backend\WalletController::class, 'edit']);
+        Route::put('/update/{id}', [App\Http\Controllers\backend\WalletController::class, 'update']);
+        Route::get('/delete/{id}', [App\Http\Controllers\backend\WalletController::class, 'destroy']);
+    });
+
     //route for profile update
     Route::get('profile', [App\Http\Controllers\Auth\ProfileController::class, 'edit']);
 });
@@ -169,6 +187,9 @@ Route::post('cart/items/update', [App\Http\Controllers\frontend\CartController::
 Route::get('/', function () {
     return view('frontend.main.index');
 });
+Route::view('discount', 'email_templates.Discount');
+Route::view('completed', 'email_templates.Ordercompleted-card');
+
 Route::view('product', 'frontend.product.detail');
 Route::view('category', 'frontend.product.category');
 Route::view('wishlist', 'frontend.wishlist.index');

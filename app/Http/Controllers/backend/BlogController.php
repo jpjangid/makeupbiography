@@ -7,14 +7,13 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
-use DataTables;
 use Illuminate\Support\Collection;
+use Yajra\DataTables\DataTables;
 
 class BlogController extends Controller
 {
     public function index()
     {
-
         if (request()->ajax()) {
             $blogs1 = Blog::where('flag', '0')->get();
 
