@@ -59,7 +59,7 @@
                   <div class="col-1">
                     <h2 class="c-cart__header">Checkout</h2>
                     @foreach($locations as $location)
-                      <input type="radio" name="addressSelect" id="addressSelect"><small class="list-address">{{ implode(' ', array_slice(str_word_count($location->address,1), 0, 10)) }}</small>,<small>{{$location->state}}</small>,<small>{{$location->city}}</small><br>
+                      <input type="radio" class="input-radio addressSelect" name="addressSelect" style="opacity: 1 !important;margin:10px !important;"><small class="list-address">{{ implode(' ', array_slice(str_word_count($location->address,1), 0, 10)) }}</small>,<small>{{$location->state}}</small>,<small>{{$location->city}}</small><br>
                     @endforeach
                     <button class="button button-add-new-address">Add New Address</button>
                   </div>
@@ -126,54 +126,54 @@
                           <input id="ship-to-different-address-checkbox" class="input-checkbox" type="checkbox" name="ship_to_different_address" value="1" />
                           <i></i>Ship to a different address?</h3>
                       </label>
-                      <div class="shipping_address">
+                      <div class="shipping_address" style="display: none;">
                         <div class="c-cart__shipping-fields woocommerce-shipping-fields__field-wrapper">
                         <p class="form-row form-row-first validate-required" data-priority="10">
-                          <label for="billing_name" class="">Name&nbsp;
+                          <label for="shipping_name" class="">Name&nbsp;
                             <abbr class="required" title="required">*</abbr>
                           </label>
                           <span class="woocommerce-input-wrapper">
-                            <input type="text" class="input-text " name="billing_name" id="billing_name" placeholder="" value="" autocomplete="given-name" />
+                            <input type="text" class="input-text " name="shipping_name" id="shipping_name" placeholder="" value="" autocomplete="given-name" />
                           </span>
                         </p>
                         <p class="form-row form-row-first validate-required" data-priority="10">
-                          <label for="billing_email" class="">Email&nbsp;
+                          <label for="shipping_email" class="">Email&nbsp;
                             <abbr class="required" title="required">*</abbr>
                           </label>
                           <span class="woocommerce-input-wrapper">
-                            <input type="email" class="input-text " name="billing_email" id="billing_email" placeholder="" value="" autocomplete="given-name" />
+                            <input type="email" class="input-text " name="shipping_email" id="shipping_email" placeholder="" value="" autocomplete="given-name" />
                           </span>
                         </p>
                         <p class="form-row form-row-first validate-required" data-priority="10">
-                          <label for="billing_mobile" class="">Mobile No&nbsp;
+                          <label for="shipping_mobile" class="">Mobile No&nbsp;
                             <abbr class="required" title="required">*</abbr>
                           </label>
                           <span class="woocommerce-input-wrapper">
-                            <input type="text" class="input-text number" name="billing_mobile" id="billing_email" placeholder="" value="" autocomplete="given-name" />
+                            <input type="text" class="input-text number" name="shipping_mobile" id="shipping_mobile" placeholder="" value="" autocomplete="given-name" />
                           </span>
                         </p>
                         <p class="form-row form-row-first validate-required" data-priority="10">
-                          <label for="billing_address" class="">Address&nbsp;
+                          <label for="shipping_address" class="">Address&nbsp;
                             <abbr class="required" title="required">*</abbr>
                           </label>
                           <span class="woocommerce-input-wrapper">
-                            <input type="text" class="input-text number" name="billing_address" id="billing_address" placeholder="" value="" autocomplete="given-name" />
+                            <input type="text" class="input-text number" name="shipping_address" id="shipping_address" placeholder="" value="" autocomplete="given-name" />
                           </span>
                         </p>
                         <p class="form-row form-row-first validate-required" data-priority="10">
-                          <label for="billing_postcode" class="">Postcode&nbsp;
+                          <label for="shipping_postcode" class="">Postcode&nbsp;
                             <abbr class="required" title="required">*</abbr>
                           </label>
                           <span class="woocommerce-input-wrapper">
-                            <input type="text" class="input-text number" name="billing_postcode" id="billing_postcode" placeholder="" value="" autocomplete="given-name" />
+                            <input type="text" class="input-text number" name="shipping_postcode" id="shipping_postcode" placeholder="" value="" autocomplete="given-name" />
                           </span>
                         </p>
                         <p class="form-row form-row-first validate-required" data-priority="10">
-                          <label for="billing_landmark" class="">Landmark&nbsp;
+                          <label for="shipping_landmark" class="">Landmark&nbsp;
                             <abbr class="required" title="required">*</abbr>
                           </label>
                           <span class="woocommerce-input-wrapper">
-                            <input type="text" class="input-text number" name="billing_landmark" id="billing_landmark" placeholder="" value="" autocomplete="given-name" />
+                            <input type="text" class="input-text number" name="shipping_landmark" id="shipping_landmark" placeholder="" value="" autocomplete="given-name" />
                           </span>
                         </p>
                         </div>
