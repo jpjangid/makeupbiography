@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-@section('title','User')
+@section('title','Wallet')
 
 @section('css')
 <!-- Status message -->
@@ -43,22 +43,16 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-tools mt-4">
-                            <a href="{{ url('admin/users/create') }}" class="btn btn-active-light-primary">
-                                + Add User
-                            </a>
                         </div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body table-responsive">
-                        <table class="table table-row-bordered table-hover text-nowrap" id="userTable">
+                        <table class="table table-row-bordered table-hover text-nowrap" id="walletTable">
                             <thead>
                                 <tr class="fw-bold fs-6 text-muted">
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>Role</th>
-                                    <th>Mobile</th>
-                                    <th>Wallet</th>
-                                    <th>Wallet Amount</th>
+                                    <th>Amount</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -78,10 +72,10 @@
 
 @section('js')
 <script type="text/javascript">
-    var userTable = $('#userTable').DataTable({
+    var walletTable = $('#walletTable').DataTable({
         processing: true,
         serverSide: true,
-        url: "{{ url('admin/users') }}",
+        url: "{{ url('admin/wallets') }}",
         columns: [{
                 data: 'name',
                 name: 'name'
@@ -89,18 +83,6 @@
             {
                 data: 'email',
                 name: 'email'
-            },
-            {
-                data: 'role',
-                name: 'role'
-            },
-            {
-                data: 'mobile',
-                name: 'mobile'
-            },
-            {
-                data: 'wallet',
-                name: 'wallet'
             },
             {
                 data: 'amount',
