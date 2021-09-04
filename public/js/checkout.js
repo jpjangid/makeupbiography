@@ -69,3 +69,32 @@ $('body').on('change',function(){
         $('#shipping_landmark').val(billingLandmark);
     }
 });
+
+/* coupan check */
+$(document).on('click','#ip-checkout-apply-coupon-check', function(e){
+    e.preventDefault();
+    $('.coupon-error').text('');
+    var baseUrl = $('#baseUrl').val();
+    var applyCouponUrl = baseUrl+"/checkout/apply/coupon";
+    var couponCode = $('#coupon_code').val();
+    var csrfToken = $('#couponCsrfToken').val();
+    if(couponCode != "") {
+        $.ajax({
+            type:'POST',
+            url: applyCouponUrl,
+            data: {_token:csrfToken,coupon_code:couponCode},
+            success:function(data) {
+               console.log(data);
+            }
+        });
+    } else {
+        $('.coupon-error').text('Please Enter Coupon Code');
+    }
+});
+
+/* coupan check blank or not */
+$(document).on('keyup','#coupon_code',function(){
+    if($('#coupon_code').val() != "") {
+        $('.coupon-error').text('');
+    }
+}); 
