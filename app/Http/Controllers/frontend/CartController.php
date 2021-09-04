@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\ProductVariant;
 use App\Models\Product;
 use App\Models\UserAddress;
+use App\Models\Coupon;
+use Carbon\Carbon;
 
 class CartController extends Controller
 {
@@ -308,8 +310,25 @@ class CartController extends Controller
        }
        $totalPrice = $subtotal;
        $locations = UserAddress::where('user_id',auth()->user()->id)->get();
+    //    ->where('offer_start','>=',date('Y-m-d H:i:s'))
+       $user_coupons = Coupon::where(['user_id' => auth()->user()->id,'type' => 'customer_based','show_in_front' => 1])->where('offer_start','<=',date('Y-m-d H:i:s'))->where('offer_end','>=',date('Y-m-d H:i:s'))->get();
 
-        return view('frontend.checkout.index',compact('cartItems','totalCartItems','subtotal','discountPrice','totalPrice','locations'));
+       return view('frontend.checkout.index',compact('cartItems','totalCartItems','subtotal','discountPrice','totalPrice','locations','user_coupons'));
+    }
+
+    public function couponApply(Request $request)
+    {
+        if(!empty($request->coupon_code)) {
+            if(Coupon::where('code',$request->coupon_code)->first()){
+                return response()->json(['status' => 200,'message' => "found"]);
+            }
+            
+            //not found
+            return response()->json(['status' => 404,'message' => "You entered invalid coupon code"]);
+
+            // return response()->json(['status' => 502,'message' => ""]);
+        }
+        return response()->json(['status' => 406,'message' => "Please enter coupon"]);
     }
 
 }

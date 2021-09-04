@@ -59,7 +59,7 @@
                   <div class="col-1">
                     <h2 class="c-cart__header">Checkout</h2>
                     @foreach($locations as $location)
-                      <input type="radio" class="input-radio addressSelect" name="addressSelect" style="opacity: 1 !important;margin:10px !important;"><small class="list-address">{{ implode(' ', array_slice(str_word_count($location->address,1), 0, 10)) }}</small>,<small>{{$location->state}}</small>,<small>{{$location->city}}</small><br>
+                      <input type="radio" class="addressSelect" name="addressSelect" style="opacity: 1 !important;margin:10px !important;"><small class="list-address">{{ implode(' ', array_slice(str_word_count($location->address,1), 0, 10)) }}</small>,<small>{{$location->state}}</small>,<small>{{$location->city}}</small><br>
                     @endforeach
                     <button class="button button-add-new-address">Add New Address</button>
                   </div>
@@ -204,13 +204,24 @@
                       <i class="ip-down_arrow c-cart__select-icon"></i>
                     </div>
                   </a>
-                  <div class="c-cart__coupon-from-wrap">
+                  <div class="c-cart__coupon-from-wrap c-cart__coupon-from-wrap--opened">
                     <div class="c-cart__coupon-form">
                       <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Coupon code" />
-                      <button class="c-button--outline c-cart__coupon-apply c-button" id="ip-checkout-apply-coupon" name="apply_coupon" type="button">Apply</button>
+                      <button class="c-button--outline c-cart__coupon-apply c-button" id="ip-checkout-apply-coupon-check" name="apply_coupon" type="button">Apply</button>
                     </div>
+                    <strong class="text-danger coupon-error"></strong>
+                    <input type="text" id="couponCsrfToken" value="{{ csrf_token() }}" hidden>
                   </div>
+                  <hr style="width: 100%;color: rgb(236, 236, 236);">
+                  <h2>Availabel Coupons</h2>
+                  <hr style="width: 100%;color: rgb(236, 236, 236);">
+                  @foreach($user_coupons as $ucoupon)
+                  <div style="display: flex;flex-direction: row;justify-content: space-between;">
+                    <span style="padding: 25px;">{{ $ucoupon->code }}</span><button data-id="{{ $ucoupon->id }}" class="button">Add</button>
+                  </div>
+                  @endforeach
                 </div>
+
                 <div class="c-cart__sub-header" id="order_review_heading">Your order</div>
                 <div id="order_review" class="c-cart__review-order woocommerce-checkout-review-order">
                   <table class="c-cart__totals-table shop_table woocommerce-checkout-review-order-table">

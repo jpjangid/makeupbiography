@@ -167,6 +167,7 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
 
     //Route for Cart
     Route::get('checkout', [App\Http\Controllers\frontend\CartController::class, 'checkout']);
+    Route::post('checkout/apply/coupon',[App\Http\Controllers\frontend\CartController::class, 'couponApply']);
 
     //Route for myaddress
     Route::get('my-address', [App\Http\Controllers\frontend\MyAccountController::class, 'myaddress']);
@@ -174,6 +175,7 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::post('my-address/create', [App\Http\Controllers\frontend\MyAccountController::class, 'myAddressStore']);
     Route::get('my-address/edit/{id}', [App\Http\Controllers\frontend\MyAccountController::class, 'myAddressEdit']);
     Route::patch('my-address/update/{id}', [App\Http\Controllers\frontend\MyAccountController::class, 'myAddressUpdate']);
+
 });
 
 //Route for Add to Cart

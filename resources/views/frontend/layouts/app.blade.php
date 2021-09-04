@@ -23,6 +23,7 @@
 
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inter%3A200%2Cregular%2C500%2C600%2C700%2C900%7CMarcellus%3Aregular%26subset%3Dlatin%2Clatin-ext&amp;display=swap">
   <link rel="stylesheet" href="{{ asset('wp-content/themes/luchiana/assets/font/theme-icons9d3f.css?ver=1614106825')}}">
+  <link rel="stylesheet" href="{{ asset('css/frontend.css')}}">
   <link rel='dns-prefetch' href='http://s.w.org/' />
   <link rel="alternate" type="application/rss+xml" title="Luchiana &raquo; Feed" href="https://parkofideas.com/luchiana/demo/feed/" />
   <link rel="alternate" type="application/rss+xml" title="Luchiana &raquo; Comments Feed" href="https://parkofideas.com/luchiana/demo/comments/feed/" />
