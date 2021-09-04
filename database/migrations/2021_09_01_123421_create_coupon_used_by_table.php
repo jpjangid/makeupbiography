@@ -16,7 +16,9 @@ class CreateCouponUsedByTable extends Migration
         Schema::create('coupon_used_by', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('coupon_id')->nullable();
+            $table->unsignedBigInteger('order_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
+            $table->float('amount')->nullable();
             $table->integer('applied_times')->nullable();
             $table->timestamps();
         });

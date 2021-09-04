@@ -208,7 +208,6 @@ Route::view('contactus', 'frontend.page.contactus');
 // Route::view('privacy/policy','frontend.page.privacy_policy');
 // Route::view('terms&conditions','frontend.page.terms&conditions');
 // Route::view('aboutus','frontend.page.aboutus');
-Route::view('404', '404');
 Route::view('newlogin', 'auth.newlogin');
 
 Route::get('{slug}', [App\Http\Controllers\frontend\PageController::class, 'index']);
@@ -217,6 +216,7 @@ Route::get('blogs/{cat}/{slug}', [App\Http\Controllers\frontend\BlogController::
 
 Route::get('category/{slug}', [App\Http\Controllers\frontend\CategoryController::class, 'index']);
 Route::get('products/{product}/{variant}', [App\Http\Controllers\frontend\ProductController::class, 'index']);
+Route::post('orders',[App\Http\Controllers\frontend\OrderController::class, 'index']);
 
 Route::post('storecomment', [App\Http\Controllers\frontend\CommentController::class, 'store']);
 Route::view('404', '404');
