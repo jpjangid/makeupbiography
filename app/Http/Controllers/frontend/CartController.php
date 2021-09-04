@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\UserAddress;
 use App\Models\Coupon;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 
 class CartController extends Controller
 {
@@ -20,6 +21,7 @@ class CartController extends Controller
        $minutes = 60*24*30;
        $user = auth()->user();
        $existCookie = false;
+       $checkTrue = false;
        if($user)
        {
            $cartItems = Cart::where('user_id',$user->id)->where('product_id',$request->product_id)->where('product_variant_id',$request->product_varient_id)->first();
@@ -32,7 +34,7 @@ class CartController extends Controller
            }
            else
            {
-               /// Insert data
+               // Insert data
                $CartTable = new Cart;
                $CartTable->product_id = $request->product_id;
                $CartTable->product_variant_id = $request->product_varient_id;
@@ -89,7 +91,11 @@ class CartController extends Controller
        $totalPrice = 0.00;
        if($user)
        {
-           $cartItems = Cart::where('user_id',$user->id)->with('product','productVariant.medias')->get();
+           $cartItems = Cart::where('user_id',$user->id)->with(['product' => function (Builder $query) {
+              $query->where('status',1);
+              $query->where('flag',0);
+           },
+           'productVariant.medias'])->get();
 
            $totalQuantityItems = Cart::where('user_id',$user->id)->sum('quantity');
            if($cartItems)
@@ -127,7 +133,6 @@ class CartController extends Controller
 
        }
        if(request()->ajax()) {
-
          if(count($cartItems) > 0) {
             $cartItems = $cartItems->take(3);
          }
