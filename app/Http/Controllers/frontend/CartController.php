@@ -22,6 +22,13 @@ class CartController extends Controller
        $user = auth()->user();
        $existCookie = false;
        $checkTrue = false;
+       $message = ProductVariant::select('name')->where('id',$request->product_varient_id)->first();
+       $product = Product::select('name')->where('id',$request->product_id)->first();
+       if($product->status == 0 && $product->status == 0) {
+        $message = "";
+        return response($message);
+       }
+       
        if($user)
        {
            $cartItems = Cart::where('user_id',$user->id)->where('product_id',$request->product_id)->where('product_variant_id',$request->product_varient_id)->first();
@@ -70,11 +77,9 @@ class CartController extends Controller
            $array_json=json_encode($cart);
            \Cookie::queue('makeup_biography', $array_json, $minutes);
        }
-       $message = ProductVariant::select('name')->where('id',$request->product_varient_id)->first();
-       $product = Product::select('name')->where('id',$request->product_id)->first();
-        
+  
        $message = $product->name."-".$message->name." has been added to your cart.";
-        return response($message);
+       return response($message);
    }
     
    //getting list of cart items of loged in user
@@ -116,7 +121,6 @@ class CartController extends Controller
            {
                $cookieItems = json_decode(request()->cookie('makeup_biography'));
                $totalCartItems = count($cookieItems);
-               // dd($cookieItems);
                foreach ($cookieItems as $cookieItem)
                {
                    if($cookieItem->product_id){
@@ -126,8 +130,10 @@ class CartController extends Controller
                            ['products.flag', '=', 0]
                        ])->first();
                        $totalQuantityItems += $cookieItem->quantity; 
-                       $cookieCartItems[] = ['quantity'=>$cookieItem->quantity,'product'=>$cookie_products,'product_variant_id' => $cookieItem->product_variant_id];
-                   }
+                        if($cookie_products != ""){  
+                          $cookieCartItems[] = ['quantity'=>$cookieItem->quantity,'product'=>$cookie_products,'product_variant_id' => $cookieItem->product_variant_id];
+                        }      
+                    }
                }
            }
 
@@ -142,10 +148,12 @@ class CartController extends Controller
                 $listItem .= $this->list_items($item);
              }
          }
-         
+
          if(count($cookieCartItems) > 0) {
             foreach($cookieCartItems as $cookie_item) {  
+              if($cookie_item['product'] != "") {
                 $listItem .= $this->cookie_items($cookie_item);
+              }  
             }
          }   
 
