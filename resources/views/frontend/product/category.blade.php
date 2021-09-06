@@ -275,10 +275,19 @@
                   </div>
                 </div>
                 <!-- .c-product-grid__thumb-wrap -->
-                <a href="?add-to-cart=438" data-quantity="1" class="h-cb c-product-grid__atc button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="438" data-product_sku="6549845321" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
+      
+                @if($product->status == 1 && $product->flag == 0)
+                <button data-quantity="1" class="h-cb c-product-grid__atc button product_type_simple add-to-cart" data-product_id="{{ $product->id }}" data-product_variant="{{ $variant_ids[$key] }}" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
                   <i class="ip-plus c-product-grid__atc-icon"></i>
                   <span class="c-product-grid__atc-text">Add to cart</span>
+                </button>
+                @else 
+                <a href="" data-quantity="1" class="h-cb c-product-grid__atc button product_type_simple" onclick="return false;" data-product_id="438" data-product_sku="6549845321" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
+                  <i class=" c-product-grid__atc-icon"></i>
+                  <span class="c-product-grid__atc-text">Currently Unavailable</span>
                 </a>
+                @endif
+
                 <div class="c-product-grid__details">
                   <div class="c-product-grid__title-wrap">
                     <a href="{{ url('products',['product' => $product->slug, 'variant' => $variants[$key] ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">

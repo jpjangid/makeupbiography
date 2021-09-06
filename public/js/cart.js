@@ -58,6 +58,16 @@ $(document).ready(function() {
         var productId = $('#productId').val();
         var productVarientId = $('#productVarientId').val();
         var productQuantity = $('.product-quantity').val();
+
+        if($(this).data('product_variant') != null) {
+            productId = $(this).data('product_variant');
+        }
+        if($(this).data('product_variant') != null) {
+            productVarientId = $(this).data('product_variant');
+        }
+        if(productQuantity == null) {
+            productQuantity = 1;
+        }
         $.ajax({
             type:'GET',
             url: mainUrl,

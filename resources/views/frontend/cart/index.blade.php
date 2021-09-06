@@ -1,6 +1,9 @@
 @extends('frontend.main.index')
 
 @section('content')
+@php  
+  use App\Models\ProductVariantMedia;
+@endphp
 <div class="l-inner">
   <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default
  c-page-header--wc c-page-header--low">
@@ -63,6 +66,13 @@
                         </td>
                       </tr>
                       @foreach($cartItems as $item)
+                      @php  
+                          $product_image = "";
+                          if(ProductVariantMedia::where('product_variant_id',$item->product_variant_id)->where('flag',0)->orderby('sequence','asc')->first()) {
+                              $pro_img = ProductVariantMedia::where('product_variant_id',$item->product_variant_id)->orderby('sequence','asc')->first();
+                              $product_image = asset('storage/products/variants/'.$pro_img->media);
+                          }
+                      @endphp
                       <tr class="c-cart__shop-tr cart_item">
                         <input type="number" name="cart_id[]" value="{{ $item->id }}" hidden>
                         <td class="c-cart__shop-td c-cart__shop-td--product-thumbnail">
@@ -70,7 +80,7 @@
                             <i class="ip-close-small c-cart__shop-remove-icon"></i>
                           </a>
                           <a class="c-cart__thumbnail-link" href="">
-                            <img width="115" height="115" src="" class="attachment-woocommerce_gallery_thumbnail size-woocommerce_gallery_thumbnail" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-115x115.jpg 115w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-460x460.jpg 460w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-760x760.jpg 760w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-920x920.jpg 920w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-145x145.jpg 145w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-290x290.jpg 290w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061.jpg 1200w" sizes="(max-width: 115px) 100vw, 115px" />
+                            <img width="115" height="115" src="{{ $product_image }}" class="attachment-woocommerce_gallery_thumbnail size-woocommerce_gallery_thumbnail" alt="" loading="lazy" srcset="{{ $product_image }}" sizes="(max-width: 115px) 100vw, 115px" />
                           </a>
                         </td>
                         <td class="c-cart__shop-td c-cart__shop-td--product-name" data-title="Product">
@@ -105,6 +115,26 @@
                       @endforeach  
 
                       @foreach($cookieCartItems as $item)
+                      @php 
+                        $productVariantName = "";
+                        $productVariantSlug = "";
+                        $salePrice = 0.00;
+                        $productVariantId = "";
+                        foreach($item['product']->variants as $var) {
+                          if($item['product_variant_id'] == $var->id) {
+                            $productVariantSlug = $var->slug;
+                            $productVariantName = $var->name;
+                            $salePrice = $var->sale_price;
+                            $productVariantId = $var->id;
+                          }
+                        }
+
+                        $product_image = "";
+                        if(ProductVariantMedia::where('product_variant_id',$productVariantId)->where('flag',0)->orderby('sequence','asc')->first()) {
+                            $pro_img = ProductVariantMedia::where('product_variant_id',$productVariantId)->orderby('sequence','asc')->first();
+                            $product_image = asset('storage/products/variants/'.$pro_img->media);
+                        }
+                      @endphp
                       <tr class="c-cart__shop-tr cart_item">
                         <input type="number" name="product_id[]" value="{{ $item['product']->id }}" hidden>
                         <input type="number" name="product_variant_id[]" value="{{ $item['product_variant_id'] }}" hidden>
@@ -113,21 +143,10 @@
                             <i class="ip-close-small c-cart__shop-remove-icon"></i>
                           </a>
                           <a class="c-cart__thumbnail-link" href="">
-                            <img width="115" height="115" src="" class="attachment-woocommerce_gallery_thumbnail size-woocommerce_gallery_thumbnail" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-115x115.jpg 115w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-460x460.jpg 460w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-760x760.jpg 760w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-920x920.jpg 920w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-145x145.jpg 145w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-290x290.jpg 290w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061.jpg 1200w" sizes="(max-width: 115px) 100vw, 115px" />
+                            <img width="115" height="115" src="{{ $product_image }}" class="attachment-woocommerce_gallery_thumbnail size-woocommerce_gallery_thumbnail" alt="" loading="lazy" srcset="{{ $product_image }}" sizes="(max-width: 115px) 100vw, 115px" />
                           </a>
                         </td>
-                        @php 
-                          $productVariantName = "";
-                          $productVariantSlug = "";
-                          $salePrice = 0.00;
-                          foreach($item['product']->variants as $var) {
-                            if($item['product_variant_id'] == $var->id) {
-                              $productVariantSlug = $var->slug;
-                              $productVariantName = $var->name;
-                              $salePrice = $var->sale_price;
-                            }
-                          }
-                        @endphp
+                       
                         <td class="c-cart__shop-td c-cart__shop-td--product-name" data-title="Product">
                           <a href="">{{ $item['product']['name']."-".$productVariantName}}</a>
                           <span class="c-cart__item-price">
