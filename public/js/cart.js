@@ -6,6 +6,7 @@ $(document).ready(function() {
         $('.js-cart-info').empty();
         var baseUrl = $('#baseUrl').val();
         var cartUrl = baseUrl+"/cart"; 
+        var checkoutUrl = baseUrl+"/checkout"; 
         $.ajax({
             type:'GET',
             url: cartUrl,
@@ -22,7 +23,7 @@ $(document).ready(function() {
                     var baseUrl = $('#baseUrl').val();
                     var cartUrl = baseUrl+"/cart"; 
                     var cartTotal = `<div class="woocommerce-mini-cart__total c-product-list-widget__total total"><span class="c-product-list-widget__total-title">Total Items:</span> <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">`+data.totalQuantityItems+`</span></bdi></span></div>`;	
-                    var checkout = `<div class="woocommerce-mini-cart__buttons c-product-list-widget__buttons buttons"><a href="`+cartUrl+`" class="button wc-forward">View cart</a><a href="https://parkofideas.com/luchiana/demo/checkout/" class="button checkout wc-forward">Checkout</a></div>`;
+                    var checkout = `<div class="woocommerce-mini-cart__buttons c-product-list-widget__buttons buttons"><a href="`+cartUrl+`" class="button wc-forward">View cart</a><a href="`+checkoutUrl+`" class="button checkout wc-forward">Checkout</a></div>`;
                     $('.widget_shopping_cart_content').append(cartTotal);  
                     $('.widget_shopping_cart_content').append(checkout);  
                 } else {

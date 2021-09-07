@@ -25,7 +25,7 @@ class CartController extends Controller
        $checkTrue = false;
        $message = ProductVariant::select('name')->where('id',$request->product_varient_id)->first();
        $product = Product::select('name')->where('id',$request->product_id)->first();
-       if($product->status == 1 && $product->flag == 0) {
+       if($product->status == 0 && $product->flag == 1 || $product->status == 0 && $product->flag == 1) {
         $message = "";
         return response($message);
        }
