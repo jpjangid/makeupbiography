@@ -9,26 +9,39 @@ use App\Models\ProductVariant;
 use App\Models\Product;
 use App\Models\UserAddress;
 use App\Models\Coupon;
+use App\Models\ProductVariantMedia;
 use Illuminate\Support\Collection;
 
 class CartController extends Controller
 {
-    //adding product to cart
+   //adding product to cart
     public function add_to_cart(Request $request)
     {
         $cart = [];
-        $minutes = 60 * 24 * 30;
+        $minutes = 60*24*30;
         $user = auth()->user();
         $existCookie = false;
-        if ($user) {
-            $cartItems = Cart::where('user_id', $user->id)->where('product_id', $request->product_id)->where('product_variant_id', $request->product_varient_id)->first();
+        $checkTrue = false;
+        $message = ProductVariant::select('name')->where('id',$request->product_varient_id)->first();
+        $product = Product::select('name')->where('id',$request->product_id)->first();
+        if($product->status == 1 && $product->flag == 0) {
+            $message = "";
+            return response($message);
+        }
+        
+        if($user)
+        {
+            $cartItems = Cart::where('user_id',$user->id)->where('product_id',$request->product_id)->where('product_variant_id',$request->product_varient_id)->first();
 
-            if ($cartItems) {
+            if($cartItems)
+            {
                 //update data
                 Cart::where('id', $cartItems->id)
-                    ->update(['quantity' =>  $cartItems->quantity + $request->product_quantity]);
-            } else {
-                /// Insert data
+                ->update(['quantity' =>  $cartItems->quantity + $request->product_quantity]);
+            }
+            else
+            {
+                // Insert data
                 $CartTable = new Cart;
                 $CartTable->product_id = $request->product_id;
                 $CartTable->product_variant_id = $request->product_varient_id;
@@ -36,34 +49,40 @@ class CartController extends Controller
                 $CartTable->quantity = $request->product_quantity;
                 $CartTable->save();
             }
-        } else {
-            if ($request->hasCookie('makeup_biography')) {
+        }
+        else
+        {
+            if($request->hasCookie('makeup_biography'))
+            {
                 $cartItems = json_decode(request()->cookie('makeup_biography'));
 
-                foreach ($cartItems  as $cartItem) {
-                    if ($cartItem->product_id == $request->product_id && $cartItem->product_variant_id  == $request->product_varient_id) {
+                foreach($cartItems  as $cartItem)
+                {
+                    if($cartItem->product_id == $request->product_id && $cartItem->product_variant_id  == $request->product_varient_id)
+                    {
                         $cartItem->quantity += $request->product_quantity;
                         $existCookie = true;
                     }
-                    $cart[] = ['product_id' => $cartItem->product_id, 'product_variant_id' => $request->product_varient_id, 'quantity' => $cartItem->quantity];
+                    $cart[]=['product_id'=>$cartItem->product_id,'product_variant_id'=>$request->product_varient_id,'quantity'=>$cartItem->quantity];
                 }
-                if (!$existCookie) {
-                    $cart[] = ['product_id' => $request->product_id, 'product_variant_id' => $request->product_varient_id, 'quantity' => $request->product_quantity];
+                if(!$existCookie)
+                {
+                    $cart[]=['product_id'=>$request->product_id,'product_variant_id' => $request->product_varient_id,'quantity'=>$request->product_quantity];
                 }
-            } else {
-                $cart[] = ['product_id' => $request->product_id, 'product_variant_id' => $request->product_varient_id, 'quantity' => $request->product_quantity];
             }
-            $array_json = json_encode($cart);
+            else
+            {
+                $cart[]=['product_id'=>$request->product_id,'product_variant_id'=>$request->product_varient_id,'quantity'=>$request->product_quantity];
+            }
+            $array_json=json_encode($cart);
             \Cookie::queue('makeup_biography', $array_json, $minutes);
         }
-        $message = ProductVariant::select('name')->where('id', $request->product_varient_id)->first();
-        $product = Product::select('name')->where('id', $request->product_id)->first();
-
-        $message = $product->name . "-" . $message->name . " has been added to your cart.";
+    
+        $message = $product->name."-".$message->name." has been added to your cart.";
         return response($message);
     }
-
-    //getting list of cart items of loged in user
+    
+   //getting list of cart items of loged in user
     public function list()
     {
         $user = auth()->user();
@@ -75,98 +94,158 @@ class CartController extends Controller
         $subtotal = 0.00;
         $discountPrice = 0.00;
         $totalPrice = 0.00;
-        if ($user) {
-            $cartItems = Cart::where('user_id', $user->id)->with('product', 'productVariant.medias')->get();
+        if($user)
+        {
+            $cartItems = Cart::where('user_id',$user->id)->with(['product' => function($query)
+            {
+                $query->where(['status' => 1,'flag' => 0]);
+            },
+            'productVariant.medias'])->get();
 
-            $totalQuantityItems = Cart::where('user_id', $user->id)->sum('quantity');
-            if ($cartItems) {
-                foreach ($cartItems as $vari) {
-                    $subtotal += round(floatval($vari->productVariant->sale_price) * $vari->quantity);
-                    if ($vari->productVariant->discount > 0) {
-                        $discountPrice = round(floatval(floatval($vari->productVariant->regular_price) * $vari->quantity) - floatval(floatval($vari->productVariant->sale_price) * $vari->quantity));
+            $totalQuantityItems = Cart::where('user_id',$user->id)->sum('quantity');
+            if($cartItems)
+            {
+                foreach($cartItems as $vari) {
+                    if(Product::where('id',$vari->product_id)->where(['status'=> 0,'flag' => 0])->orWhere('flag',1)->first()) {
+                        Cart::where(['product_id' => $vari->product_id,'user_id' => $vari->user_id])->delete();
+                    } else {
+                        $subtotal += round(floatval($vari->productVariant->sale_price) * $vari->quantity); 
+                        if($vari->productVariant->discount > 0){
+                            $discountPrice = round(floatval(floatval($vari->productVariant->regular_price) * $vari->quantity) - floatval(floatval($vari->productVariant->sale_price) * $vari->quantity));
+                        }
+                    }
+                    $totalCartItems = count($cartItems);
+                    }
+            }
+        }
+        else
+        {
+                $minutes = 60;
+                if(request()->hasCookie('makeup_biography'))
+                {
+                    $cartItems = json_decode(request()->cookie('makeup_biography'));
+
+                    foreach($cartItems  as $cartItem)
+                    {
+                        if(empty(Product::where('id',$cartItem->product_id)->where(['status'=> 0,'flag' => 0])->orWhere('flag',1)->first()) === true) {
+                            $cart[]=['product_id'=>$cartItem->product_id,'quantity'=>$cartItem->quantity,'product_variant_id' => $cartItem->product_variant_id];
+                        } 
                     }
                 }
+                if(empty($cart))
+                {
+                    \Cookie::queue(\Cookie::forget('makeup_biography'));
+                }
+                else
+                {
+                    $array_json=json_encode($cart);
+                    \Cookie::queue('makeup_biography', $array_json, $minutes);
+                }
 
-                $totalCartItems = count($cartItems);
-            }
-        } else {
-            if (request()->cookie('makeup_biography')) {
+            if(request()->cookie('makeup_biography'))
+            {
                 $cookieItems = json_decode(request()->cookie('makeup_biography'));
                 $totalCartItems = count($cookieItems);
-                // dd($cookieItems);
-                foreach ($cookieItems as $cookieItem) {
-                    if ($cookieItem->product_id) {
-                        $cookie_products = Product::with('variants')->where([
+                foreach ($cookieItems as $cookieItem)
+                {
+                    if($cookieItem->product_id){
+                        $variantId = $cookieItem->product_variant_id; 
+                        $cookie_products = Product::with(['variants' => function($query) use ($variantId) {
+                            $query->where('id',$variantId)->first();
+                        }])->where([
                             ['products.status', '=', 1],
                             ['products.id', '=', $cookieItem->product_id],
                             ['products.flag', '=', 0]
                         ])->first();
-                        $totalQuantityItems += $cookieItem->quantity;
-                        $cookieCartItems[] = ['quantity' => $cookieItem->quantity, 'product' => $cookie_products, 'product_variant_id' => $cookieItem->product_variant_id];
-                    }
+                        $totalQuantityItems += $cookieItem->quantity; 
+                            if($cookie_products != ""){  
+                            $cookieCartItems[] = ['quantity'=>$cookieItem->quantity,'product'=>$cookie_products,'product_variant_id' => $cookieItem->product_variant_id];
+                            }      
+                        }
                 }
             }
-        }
-        if (request()->ajax()) {
 
-            if (count($cartItems) > 0) {
+        }
+        if(request()->ajax()) {
+            if(count($cartItems) > 0) {
                 $cartItems = $cartItems->take(3);
             }
             $listItem = "";
-            if (count($cartItems) > 0) {
-                foreach ($cartItems as $item) {
+            if(count($cartItems) > 0) {
+                foreach($cartItems as $item) {
                     $listItem .= $this->list_items($item);
                 }
             }
 
-            if (count($cookieCartItems) > 0) {
-                foreach ($cookieCartItems as $cookie_item) {
+            if(count($cookieCartItems) > 0) {
+                foreach($cookieCartItems as $cookie_item) {  
+                if($cookie_item['product'] != "") {
                     $listItem .= $this->cookie_items($cookie_item);
+                }  
                 }
+
+                if (count($cookieCartItems) > 0) {
+                    foreach ($cookieCartItems as $cookie_item) {
+                        $listItem .= $this->cookie_items($cookie_item);
+                    }
+                }
+
+                $data['totalQuantityItems'] = $totalQuantityItems;
+                $data['listItem'] = $listItem;
+                return response()->json($data);
             }
+            $totalPrice = $subtotal;
 
-            $data['totalQuantityItems'] = $totalQuantityItems;
-            $data['listItem'] = $listItem;
-            return response()->json($data);
+            return view('frontend.cart.index', compact('cartItems', 'cookieCartItems', 'totalCartItems', 'subtotal', 'discountPrice', 'totalPrice'));
         }
-        $totalPrice = $subtotal;
-
-        return view('frontend.cart.index', compact('cartItems', 'cookieCartItems', 'totalCartItems', 'subtotal', 'discountPrice', 'totalPrice'));
     }
 
-    //html cookie item for html page from cookie
+        //html cookie item for html page from cookie
     public function cookie_items($product)
     {
-        $variant = $product['product']['variants'][0];
-        $removeItem = url('remove/cart/item', ['id' => $product['product']->id, 'variant_id' => $product['product_variant_id']]);
-        $item = '<li class="woocommerce-mini-cart-item c-product-list-widget__item mini_cart_item">
-                    <div class="c-product-list-widget__wrap">
-                        <div class="c-product-list-widget__thumb-col">
-                            <a href="https://parkofideas.com/luchiana/demo/shop/airbrush-matte/"><img width="115" height="115" src="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-115x115.jpg" class="c-product-list-widget__thumb" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-115x115.jpg 115w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-460x460.jpg 460w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-760x760.jpg 760w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-920x920.jpg 920w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-145x145.jpg 145w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-290x290.jpg 290w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061.jpg 1200w" sizes="(max-width: 115px) 100vw, 115px"></a>					
-                        </div>
-                        <div class="c-product-list-widget__title-col">
-                            <div class="c-product-list-widget__title">
-                                ' . $product['product']['name'] . '-' . $variant->name . '								
-                            </div>
-                            <div class="c-product-list-widget__price">
-                                <span class="quantity">' . $product['quantity'] . ' × <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>' . $variant->sale_price . '</bdi></span></span>								
-                            </div>
-                        </div>
-                        <button data-remove-url="' . $removeItem . '" class="remove-product-drop c-product-list-widget__remove remove" aria-label="Remove this item"><i class="ip-close-small c-product-list-widget__remove-icon"></i></button>						
-                    </div>
-                </li>';
+            $variant = $product['product']['variants'][0];
+            $product_image = "";
+            if(ProductVariantMedia::where('product_variant_id',$variant->id)->where('flag',0)->orderby('sequence','asc')->first()) {
+                $pro_img = ProductVariantMedia::where('product_variant_id',$variant->id)->orderby('sequence','asc')->first();
+                $product_image = asset('storage/products/variants/'.$pro_img->media);
+            }
 
-        return $item;
+            // $image = asset('storage/product/'.$product->);
+            $removeItem = url('remove/cart/item',['id'=>$product['product']->id,'variant_id'=>$product['product_variant_id']]);
+            $item = '<li class="woocommerce-mini-cart-item c-product-list-widget__item mini_cart_item">
+                        <div class="c-product-list-widget__wrap">
+                            <div class="c-product-list-widget__thumb-col">
+                                <a href="https://parkofideas.com/luchiana/demo/shop/airbrush-matte/"><img width="115" height="115" src="'.$product_image.'" class="c-product-list-widget__thumb" alt="" loading="lazy" srcset="'.$product_image.'" sizes="(max-width: 115px) 100vw, 115px"></a>					
+                            </div>
+                            <div class="c-product-list-widget__title-col">
+                                <div class="c-product-list-widget__title">
+                                    ' . $product['product']['name'] . '-' . $variant->name . '								
+                                </div>
+                                <div class="c-product-list-widget__price">
+                                    <span class="quantity">' . $product['quantity'] . ' × <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>' . $variant->sale_price . '</bdi></span></span>								
+                                </div>
+                            </div>
+                            <button data-remove-url="' . $removeItem . '" class="remove-product-drop c-product-list-widget__remove remove" aria-label="Remove this item"><i class="ip-close-small c-product-list-widget__remove-icon"></i></button>						
+                        </div>
+                    </li>';
+            
+            return $item; 
     }
 
-    //html list item for html page from cart db
+   //html list item for html page from cart db
     public function list_items($product)
     {
-        $removeItem = url('remove/cart/item', ['id' => $product->id, 'variant_id' => $product->product_variant_id]);
+        $removeItem = url('remove/cart/item',['id'=>$product->id,'variant_id'=>$product->product_variant_id ]);
+        $product_image = "";
+        if(ProductVariantMedia::where('product_variant_id',$product->productVariant->id)->where('flag',0)->orderby('sequence','asc')->first()) {
+            $pro_img = ProductVariantMedia::where('product_variant_id',$product->productVariant->id)->orderby('sequence','asc')->first();
+            $product_image = asset('storage/products/variants/'.$pro_img->media);
+        }
+        
         $item = '<li class="woocommerce-mini-cart-item c-product-list-widget__item mini_cart_item">
                     <div class="c-product-list-widget__wrap">
                         <div class="c-product-list-widget__thumb-col">
-                            <a href="https://parkofideas.com/luchiana/demo/shop/airbrush-matte/"><img width="115" height="115" src="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-115x115.jpg" class="c-product-list-widget__thumb" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-115x115.jpg 115w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-460x460.jpg 460w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-760x760.jpg 760w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-920x920.jpg 920w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-145x145.jpg 145w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-290x290.jpg 290w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061.jpg 1200w" sizes="(max-width: 115px) 100vw, 115px"></a>					
+                            <a href="https://parkofideas.com/luchiana/demo/shop/airbrush-matte/"><img width="115" height="115" src="'.$product_image.'" class="c-product-list-widget__thumb" alt="" loading="lazy" srcset="'.$product_image.'" sizes="(max-width: 115px) 100vw, 115px"></a>					
                         </div>
                         <div class="c-product-list-widget__title-col">
                             <div class="c-product-list-widget__title">

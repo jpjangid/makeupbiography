@@ -58,16 +58,34 @@ $(document).ready(function() {
         var productId = $('#productId').val();
         var productVarientId = $('#productVarientId').val();
         var productQuantity = $('.product-quantity').val();
+
+        if($(this).data('product_variant') != null) {
+            productId = $(this).data('product_variant');
+        }
+        if($(this).data('product_variant') != null) {
+            productVarientId = $(this).data('product_variant');
+        }
+        if(productQuantity == null) {
+            productQuantity = 1;
+        }
         $.ajax({
             type:'GET',
             url: mainUrl,
             data: {product_id: productId,product_varient_id: productVarientId,product_quantity:productQuantity},
             success:function(data) {
-                var msg = `<div class="woocommerce-notice shown" role="alert">
+                if(data == "") {
+                   var msg = `<div class="woocommerce-notice shown" role="alert">
+                                    <i class="ip-wc-error woocommerce-notice-error-svg"></i>
+                                    Product is not available<button class="h-cb h-cb--svg woocommerce-notice-close js-notice-close" type="button"><i class="ip-close-small woocommerce-notice-close-svg"></i></button>
+                              </div>`; 
+                   ideapark_show_notice($(msg));      
+                } else {
+                    var msg = `<div class="woocommerce-notice shown" role="alert">
                                 <i class="ip-wc-success woocommerce-notice-success-svg"></i>
                                 <a href="`+cartUrl+`" tabindex="1" class="button wc-forward">View cart</a>`+data+`<button class="h-cb h-cb--svg woocommerce-notice-close js-notice-close" type="button"><i class="ip-close-small woocommerce-notice-close-svg"></i></button>
                             </div>`;
-                ideapark_show_notice($(msg)); 
+                    ideapark_show_notice($(msg)); 
+                }
                 cart();
             }
         });

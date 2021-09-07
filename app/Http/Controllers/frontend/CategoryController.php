@@ -15,13 +15,15 @@ class CategoryController extends Controller
         $categories = Category::where('parent_id',$main_category->id)->get();
         $products = Product::where('parent_id',$main_category->id)->with('variants.medias')->get();
         $variants = array();
+        $variant_ids = array();
         foreach($products as $product){
             if(isset($product) && !empty($product)){
                 $allvariants = ProductVariant::where('product_id', $product->id)->orderby('sequence','asc')->get();
                 array_push($variants, $allvariants[0]->slug);
+                array_push($variant_ids,$allvariants[0]->id);
             }
         }
 
-        return view('frontend.product.category', compact('main_category','categories','products','variants'));
+        return view('frontend.product.category', compact('main_category','categories','products','variants','variant_ids'));
     }
 }

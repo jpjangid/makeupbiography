@@ -245,7 +245,9 @@
                     <i class="ip-plus_big"></i>
                   </button>
                 </div>
-                <button type="button" name="add-to-cart" value="511" class="single_add_to_cart_button button alt add-to-cart">Add to cart</button>
+                @if($product->status == 1 && $product->flag == 0)
+                  <button type="button" name="add-to-cart" value="511" class="single_add_to_cart_button button alt add-to-cart">Add to cart</button>
+                @endif
               </form>
             </div>
             <!-- .c-product__atc-wra -->
