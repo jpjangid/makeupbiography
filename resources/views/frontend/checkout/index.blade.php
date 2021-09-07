@@ -69,6 +69,30 @@
                       <h3 class="c-cart__header">Billing details</h3>
                       <div class="c-cart__billing-fields woocommerce-billing-fields__field-wrapper">
                         <p class="form-row form-row-first validate-required" data-priority="10">
+                          <label for="billing_postcode" class="">Postcode&nbsp;
+                            <abbr class="required" title="required">*</abbr>
+                          </label>
+                          <span class="woocommerce-input-wrapper">
+                            <input type="text" class="input-text number" name="billing_postcode" id="billing_postcode" placeholder="" value="" autocomplete="given-name" />
+                          </span>
+                        </p>
+                        <p class="form-row form-row-first validate-required" data-priority="10">
+                          <label for="billing_state" class="">State&nbsp;
+                            <abbr class="required" title="required">*</abbr>
+                          </label>
+                          <span class="woocommerce-input-wrapper">
+                            <input type="text" class="input-text" name="billing_state" id="billing_state" placeholder="" value="" autocomplete="given-name" />
+                          </span>
+                        </p>
+                        <p class="form-row form-row-first validate-required" data-priority="10">
+                          <label for="billing_city" class="">City&nbsp;
+                            <abbr class="required" title="required">*</abbr>
+                          </label>
+                          <span class="woocommerce-input-wrapper">
+                            <input type="text" class="input-text" name="billing_city" id="billing_city" placeholder="" value="" autocomplete="given-name" />
+                          </span>
+                        </p>
+                        <p class="form-row form-row-first validate-required" data-priority="10">
                           <label for="billing_name" class="">Name&nbsp;
                             <abbr class="required" title="required">*</abbr>
                           </label>
@@ -101,14 +125,6 @@
                           </span>
                         </p>
                         <p class="form-row form-row-first validate-required" data-priority="10">
-                          <label for="billing_postcode" class="">Postcode&nbsp;
-                            <abbr class="required" title="required">*</abbr>
-                          </label>
-                          <span class="woocommerce-input-wrapper">
-                            <input type="text" class="input-text number" name="billing_postcode" id="billing_postcode" placeholder="" value="" autocomplete="given-name" />
-                          </span>
-                        </p>
-                        <p class="form-row form-row-first validate-required" data-priority="10">
                           <label for="billing_landmark" class="">Landmark&nbsp;
                             <abbr class="required" title="required">*</abbr>
                           </label>
@@ -129,6 +145,30 @@
                       </label>
                       <div class="shipping_address" style="display: none;">
                         <div class="c-cart__shipping-fields woocommerce-shipping-fields__field-wrapper">
+                          <p class="form-row form-row-first validate-required" data-priority="10">
+                            <label for="shipping_postcode" class="">Postcode&nbsp;
+                              <abbr class="required" title="required">*</abbr>
+                            </label>
+                            <span class="woocommerce-input-wrapper">
+                              <input type="text" class="input-text number" name="shipping_postcode" id="shipping_postcode" placeholder="" value="" autocomplete="given-name" />
+                            </span>
+                          </p>
+                          <p class="form-row form-row-first validate-required" data-priority="10">
+                            <label for="shipping_state" class="">State&nbsp;
+                              <abbr class="required" title="required">*</abbr>
+                            </label>
+                            <span class="woocommerce-input-wrapper">
+                              <input type="text" class="input-text" name="shipping_state" id="shipping_state" placeholder="" value="" autocomplete="given-name" />
+                            </span>
+                          </p>
+                          <p class="form-row form-row-first validate-required" data-priority="10">
+                            <label for="shipping_city" class="">City&nbsp;
+                              <abbr class="required" title="required">*</abbr>
+                            </label>
+                            <span class="woocommerce-input-wrapper">
+                              <input type="text" class="input-text" name="shipping_city" id="shipping_city" placeholder="" value="" autocomplete="given-name" />
+                            </span>
+                          </p>
                           <p class="form-row form-row-first validate-required" data-priority="10">
                             <label for="shipping_name" class="">Name&nbsp;
                               <abbr class="required" title="required">*</abbr>
@@ -159,14 +199,6 @@
                             </label>
                             <span class="woocommerce-input-wrapper">
                               <input type="text" class="input-text number" name="shipping_address" id="shipping_address" placeholder="" value="" autocomplete="given-name" />
-                            </span>
-                          </p>
-                          <p class="form-row form-row-first validate-required" data-priority="10">
-                            <label for="shipping_postcode" class="">Postcode&nbsp;
-                              <abbr class="required" title="required">*</abbr>
-                            </label>
-                            <span class="woocommerce-input-wrapper">
-                              <input type="text" class="input-text number" name="shipping_postcode" id="shipping_postcode" placeholder="" value="" autocomplete="given-name" />
                             </span>
                           </p>
                           <p class="form-row form-row-first validate-required" data-priority="10">
@@ -395,7 +427,6 @@
 @section('js')
 <script type='text/javascript' src='{{ asset("js/validation.js") }}' id='preloaded-modules-js'></script>
 <script type='text/javascript' src='{{ asset("js/checkout.js") }}' id='preloaded-modules-js'></script>
-
 <script>
   function coupon_applied(code) {
     $('#coupon_code').val(code);
@@ -455,12 +486,32 @@
       $("#checkout-form").submit();
     }
   });
-</script>
-<script type="text/javascript">
+
+
+
+  //get city state billing
+  $(document).on('keyup','#billing_postcode',function(){
+    $('#billing_state').val('');
+    $('#billing_city').val('');
+    var pincode = $(this).val();
+    $.ajax({
+        type:'GET',
+        url: '{{ url("my-address/create") }}',
+        data: {pincode:pincode},
+        success:function(data) {
+          console.log(data);
+            if(data.location != "") {
+              $('#billing_state').val(data.location.state);
+              $('#billing_city').val(data.location.city);
+            }
+        }
+    });
+  });
+
+  //get city state shipping
   $(document).on('keyup','#shipping_postcode',function(){
-    alert("hello");
-    $('#state').val('');
-    $('#city').val('');
+    $('#shipping_state').val('');
+    $('#shipping_city').val('');
     var pincode = $(this).val();
     $.ajax({
         type:'GET',
@@ -468,8 +519,8 @@
         data: {pincode:pincode},
         success:function(data) {
             if(data.location != "") {
-              $('#state').val(data.location.state);
-              $('#city').val(data.location.city);
+              $('#shipping_state').val(data.location.state);
+              $('#shipping_city').val(data.location.city);
             }
         }
     });

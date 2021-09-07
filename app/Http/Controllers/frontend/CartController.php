@@ -12,6 +12,7 @@ use App\Models\Coupon;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\ProductVariantMedia;
+use Illuminate\Support\Collection;
 
 class CartController extends Controller
 {
@@ -182,9 +183,9 @@ class CartController extends Controller
 
             if(count($cookieCartItems) > 0) {
                 foreach($cookieCartItems as $cookie_item) {  
-                if($cookie_item['product'] != "") {
-                    $listItem .= $this->cookie_items($cookie_item);
-                }  
+                    if($cookie_item['product'] != "") {
+                        $listItem .= $this->cookie_items($cookie_item);
+                    }  
                 }
 
                 if (count($cookieCartItems) > 0) {
