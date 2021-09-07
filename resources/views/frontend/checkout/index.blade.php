@@ -418,7 +418,8 @@
           $('#product_tbody').empty();
           var html = '';
           $('#coupon_dis').html('<span class="woocommerce-Price-currencySymbol">&#8377;</span>' + data[0][0]['coupon_disc']);
-          $('#total_price').html('<span class="woocommerce-Price-currencySymbol">&#8377;</span>' + data[0][0]['total']);
+          var total = parseFloat(data[0][0]['total']) + 100;
+          $('#total_price').html('<span class="woocommerce-Price-currencySymbol">&#8377;</span>' + total);
           $.each(data[0][0]['checkout_items'], function(index, value) {
             html += `
                         <tr class="c-cart__totals-product cart_item">
