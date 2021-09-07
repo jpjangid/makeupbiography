@@ -36,6 +36,7 @@
 @endsection
 
 @section('content')
+<input type="text" id="csrfToken" value="{{ csrf_token() }}" hidden>
 <div class="l-inner">
   <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default c-page-header--product-page">
     <div class="c-page-header__wrap">
@@ -252,10 +253,10 @@
             </div>
             <!-- .c-product__atc-wra -->
             <div class="c-product__wishlist">
-              <button class="js-wishlist-btn c-wishlist__btn c-wishlist__item-511-btn h-cb c-product__wishlist-button" data-product-id="511" data-title="Wishlist">
+              <button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-511-btn h-cb c-product__wishlist-button" data-product_variant_id="{{ $variant->id }}" data-product-id="{{ $product->id }}">
                 <i class="ip-heart c-product__wishlist-icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
                 <i class="ip-heart_hover c-product__wishlist-icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
-                <span class="c-product__wishlist-text c-wishlist__btn-text-add">Add to Wishlist</span>
+                <span class="c-product__wishlist-text" >Add to Wishlist</span>
                 <span class="c-product__wishlist-text c-wishlist__btn-text-remove">Remove from Wishlist</span>
               </button>
             </div>

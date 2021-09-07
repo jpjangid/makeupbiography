@@ -129,7 +129,8 @@
   <input type="text" id="baseUrl" value="{{ url('/') }}" hidden>
   <input type="text" id="currentUrl" value="{{ url()->current() }}" hidden>
   <input type="text" id="cartUrl" value="{{ url('cart') }}" hidden>
-  <input type="text" id="tokken" value="" hidden>
+  <input type="text" id="tokken" value="{{ csrf_token() }}" hidden>
+  <input type="text" id="userIdAuth" value="{{ !empty(auth()->user()->id) ? auth()->user()->id : '' }}" hidden>
   <div class="c-header-search disabled js-ajax-search">
     <div class="c-header-search__wrap">
       <div class="c-header-search__shadow js-search-close">
@@ -270,5 +271,6 @@
   <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script type='text/javascript' src='{{ asset("js/cart.js") }}' id='preloaded-modules-js'></script>
+  <script type='text/javascript' src='{{ asset("js/favourite.js") }}' id='preloaded-modules-js'></script>
   @yield('js')  
 </html>

@@ -35,8 +35,8 @@
 </script>
 @endsection
 
-
 @section('content')
+<input type="text" id="csrfToken" value="{{ csrf_token() }}" hidden>
 <div class="l-inner">
   <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default
  c-page-header--product-list">
@@ -268,7 +268,7 @@
                     <img width="460" height="460" src="{{ asset('storage/products/'.$product->main_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" sizes="(max-width: 460px) 100vw, 460px" />
                   </a>
                   <div class="c-product-grid__thumb-button-list">
-                    <button class="js-wishlist-btn c-wishlist__btn c-wishlist__item-438-btn h-cb c-product-grid__thumb-button" data-product-id="438" data-title="Wishlist">
+                    <button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $product->id }}-btn h-cb c-product-grid__thumb-button" data-product_variant_id="{{ $variant_ids[$key] }}" data-product-id="{{ $product->id }}" data-title="Wishlist">
                       <i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
                       <i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
                     </button>

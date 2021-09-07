@@ -151,6 +151,10 @@ class MyAccountController extends Controller
             if(!empty($location)) {
                 $state = $location->state;
                 $city = $location->city;
+            } else {
+                Location::create(['city' => strtoupper($request->city),'state' => strtoupper($request->city),'zip' => $request->postcode]);
+                $state = strtoupper($request->state);
+                $city = strtoupper($request->city);
             }
         }
 

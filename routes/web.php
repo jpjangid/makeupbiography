@@ -176,6 +176,11 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::get('my-address/edit/{id}', [App\Http\Controllers\frontend\MyAccountController::class, 'myAddressEdit']);
     Route::patch('my-address/update/{id}', [App\Http\Controllers\frontend\MyAccountController::class, 'myAddressUpdate']);
 
+    //Route for favrouite
+    Route::post('wishlist/add',[App\Http\Controllers\frontend\FavoriteController::class, 'store']);
+    Route::get('wishlist/delete/{id}',[App\Http\Controllers\frontend\FavoriteController::class, 'destroy']);
+    Route::get('wishlist',[App\Http\Controllers\frontend\FavoriteController::class, 'index']);
+    Route::post('wishlist/add/to/cart',[App\Http\Controllers\frontend\FavoriteController::class, 'addToCart']);
 });
 
 //Route for Add to Cart
@@ -194,7 +199,6 @@ Route::view('completed', 'email_templates.Ordercompleted-card');
 
 Route::view('product', 'frontend.product.detail');
 Route::view('category', 'frontend.product.category');
-Route::view('wishlist', 'frontend.wishlist.index');
 Route::view('wishlist/empty', 'frontend.wishlist.empty');
 // Route::view('cart', 'frontend.cart.index');
 Route::view('cart/empty', 'frontend.cart.empty');

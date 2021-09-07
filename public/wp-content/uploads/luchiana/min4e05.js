@@ -3097,6 +3097,7 @@ var requirejs, require, define;
                     $buttons = $('.c-wishlist__item-' + productId + '-btn');
                 $buttons.removeClass('c-wishlist__btn--added');
                 $buttons.ideapark_button('loading', 16, true);
+                alert();
                 wishlistAjax = $.ajax({
                     type: 'POST',
                     url: ideapark_wp_vars.ajaxUrl,
@@ -3123,6 +3124,7 @@ var requirejs, require, define;
                             $('body').trigger('wishlist_removed_item');
                             $buttons.attr('title', ideapark_wp_vars.wishlistTitleAdd);
                         }
+                  
                     }
                 });
             });

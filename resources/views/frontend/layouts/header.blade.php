@@ -1091,6 +1091,13 @@
               <a class="c-header__button-link" href="{{ url('wishlist') }}">
                 <i class="ip-wishlist c-header__wishlist-icon"></i>
                 <span class="js-wishlist-info">
+                  @php
+                    $countF = ""; 
+                    if(auth()->user() && App\Models\Favorite::where('user_id',auth()->user()->id)->count() > 0) {
+                      $countF = '<span class="c-header__cart-count">'.App\Models\Favorite::where('user_id',auth()->user()->id)->count().'</span>';
+                    }
+                    echo $countF;
+                  @endphp
                 </span>
               </a>
             </div>

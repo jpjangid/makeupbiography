@@ -457,4 +457,23 @@
     }
   });
 </script>
+<script type="text/javascript">
+  $(document).on('keyup','#shipping_postcode',function(){
+    alert("hello");
+    $('#state').val('');
+    $('#city').val('');
+    var pincode = $(this).val();
+    $.ajax({
+        type:'GET',
+        url: '{{ url("my-address/create") }}',
+        data: {pincode:pincode},
+        success:function(data) {
+            if(data.location != "") {
+              $('#state').val(data.location.state);
+              $('#city').val(data.location.city);
+            }
+        }
+    });
+  });
+</script>
 @endsection
