@@ -1,0 +1,67 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateOrdersTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('orders', function (Blueprint $table) {
+            $table->id();
+            $table->string('order_no')->unique();
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->float('order_amount');
+            $table->float('discount_applied')->nullable();
+            $table->float('service_charge_applied')->nullable();
+            $table->float('total_amount');
+            $table->integer('no_items');
+            $table->string('billing_name');
+            $table->string('billing_mobile');
+            $table->string('billing_address');
+            $table->string('billing_country');
+            $table->string('billing_state');
+            $table->string('billing_city');
+            $table->string('billing_zip');
+            $table->string('billing_landmark');
+            $table->string('shipping_name');
+            $table->string('shipping_mobile');
+            $table->string('shipping_address');
+            $table->string('shipping_country');
+            $table->string('shipping_state');
+            $table->string('shipping_city');
+            $table->string('shipping_zip');
+            $table->string('shipping_landmark');
+            $table->string('order_status');
+            $table->string('payment_gateway_id')->nullable();
+            $table->string('payment_mode')->nullable();
+            $table->float('payment_amount')->nullable();
+            $table->string('payment_currency')->nullable();
+            $table->string('payment_status')->nullable();
+            $table->string('shiprocket_order_id')->nullable();
+            $table->string('shiprocket_shipment_id')->nullable();
+            $table->text('order_comments')->nullable();
+            $table->float('wallet_amount')->nullable();
+            $table->string('coupon_id')->nullable();
+            $table->string('shop')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('orders');
+    }
+}
