@@ -9,6 +9,8 @@ class CouponUsedBy extends Model
 {
     use HasFactory;
 
+    protected $table = 'coupon_used_by';
+
     protected $fillable = [
         'coupon_id','user_id','applied_times','amount','order_id'
     ];

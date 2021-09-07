@@ -6,9 +6,10 @@
 <style>
   small .list-address {
     line-height: 1.5em;
-    height: 2em;       
-    overflow: hidden;  
+    height: 2em;
+    overflow: hidden;
   }
+
   .button {
     background-color: #3B9C9C !important;
     color: white !important;
@@ -19,8 +20,7 @@
 
 @section('content')
 <div class="l-inner">
-  <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default
- c-page-header--wc c-page-header--low">
+  <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default c-page-header--wc c-page-header--low">
     <div class="c-page-header__wrap">
       <h1 class="c-page-header__title">Checkout</h1>
     </div>
@@ -38,7 +38,7 @@
           <meta itemprop="position" content="1">
         </li>
         <li class="c-breadcrumbs__item   c-breadcrumbs__item--last " itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          <a itemprop="item" title="Checkout" href="https://parkofideas.com/luchiana/demo/checkout/">
+          <a itemprop="item" title="Checkout" href="{{ url('checkout') }}">
             <span itemprop="name">Checkout</span>
           </a>
           <meta itemprop="position" content="2">
@@ -59,11 +59,11 @@
                   <div class="col-1">
                     <h2 class="c-cart__header">Checkout</h2>
                     @foreach($locations as $location)
-                      <input type="radio" class="addressSelect" name="addressSelect" style="opacity: 1 !important;margin:10px !important;"><small class="list-address">{{ implode(' ', array_slice(str_word_count($location->address,1), 0, 10)) }}</small>,<small>{{$location->state}}</small>,<small>{{$location->city}}</small><br>
+                    <input type="radio" class="addressSelect" name="addressSelect" style="opacity: 1 !important;margin:10px !important;"><small class="list-address">{{ implode(' ', array_slice(str_word_count($location->address,1), 0, 10)) }}</small>,<small>{{$location->state}}</small>,<small>{{$location->city}}</small><br>
                     @endforeach
                     <button class="button button-add-new-address">Add New Address</button>
                   </div>
-                  <hr class="col-1 add-new-address-show" style="display: none;">  
+                  <hr class="col-1 add-new-address-show" style="display: none;">
                   <div class="col-1 add-new-address-show" style="display: none;">
                     <div class="c-cart__form c-cart__form--billing-fields woocommerce-billing-fields">
                       <h3 class="c-cart__header">Billing details</h3>
@@ -124,58 +124,59 @@
                       <label for="ship-to-different-address-checkbox" class="checkbox">
                         <h3 id="ship-to-different-address">
                           <input id="ship-to-different-address-checkbox" class="input-checkbox" type="checkbox" name="ship_to_different_address" value="1" />
-                          <i></i>Ship to a different address?</h3>
+                          <i></i>Ship to a different address?
+                        </h3>
                       </label>
                       <div class="shipping_address" style="display: none;">
                         <div class="c-cart__shipping-fields woocommerce-shipping-fields__field-wrapper">
-                        <p class="form-row form-row-first validate-required" data-priority="10">
-                          <label for="shipping_name" class="">Name&nbsp;
-                            <abbr class="required" title="required">*</abbr>
-                          </label>
-                          <span class="woocommerce-input-wrapper">
-                            <input type="text" class="input-text " name="shipping_name" id="shipping_name" placeholder="" value="" autocomplete="given-name" />
-                          </span>
-                        </p>
-                        <p class="form-row form-row-first validate-required" data-priority="10">
-                          <label for="shipping_email" class="">Email&nbsp;
-                            <abbr class="required" title="required">*</abbr>
-                          </label>
-                          <span class="woocommerce-input-wrapper">
-                            <input type="email" class="input-text " name="shipping_email" id="shipping_email" placeholder="" value="" autocomplete="given-name" />
-                          </span>
-                        </p>
-                        <p class="form-row form-row-first validate-required" data-priority="10">
-                          <label for="shipping_mobile" class="">Mobile No&nbsp;
-                            <abbr class="required" title="required">*</abbr>
-                          </label>
-                          <span class="woocommerce-input-wrapper">
-                            <input type="text" class="input-text number" name="shipping_mobile" id="shipping_mobile" placeholder="" value="" autocomplete="given-name" />
-                          </span>
-                        </p>
-                        <p class="form-row form-row-first validate-required" data-priority="10">
-                          <label for="shipping_address" class="">Address&nbsp;
-                            <abbr class="required" title="required">*</abbr>
-                          </label>
-                          <span class="woocommerce-input-wrapper">
-                            <input type="text" class="input-text number" name="shipping_address" id="shipping_address" placeholder="" value="" autocomplete="given-name" />
-                          </span>
-                        </p>
-                        <p class="form-row form-row-first validate-required" data-priority="10">
-                          <label for="shipping_postcode" class="">Postcode&nbsp;
-                            <abbr class="required" title="required">*</abbr>
-                          </label>
-                          <span class="woocommerce-input-wrapper">
-                            <input type="text" class="input-text number" name="shipping_postcode" id="shipping_postcode" placeholder="" value="" autocomplete="given-name" />
-                          </span>
-                        </p>
-                        <p class="form-row form-row-first validate-required" data-priority="10">
-                          <label for="shipping_landmark" class="">Landmark&nbsp;
-                            <abbr class="required" title="required">*</abbr>
-                          </label>
-                          <span class="woocommerce-input-wrapper">
-                            <input type="text" class="input-text number" name="shipping_landmark" id="shipping_landmark" placeholder="" value="" autocomplete="given-name" />
-                          </span>
-                        </p>
+                          <p class="form-row form-row-first validate-required" data-priority="10">
+                            <label for="shipping_name" class="">Name&nbsp;
+                              <abbr class="required" title="required">*</abbr>
+                            </label>
+                            <span class="woocommerce-input-wrapper">
+                              <input type="text" class="input-text " name="shipping_name" id="shipping_name" placeholder="" value="" autocomplete="given-name" />
+                            </span>
+                          </p>
+                          <p class="form-row form-row-first validate-required" data-priority="10">
+                            <label for="shipping_email" class="">Email&nbsp;
+                              <abbr class="required" title="required">*</abbr>
+                            </label>
+                            <span class="woocommerce-input-wrapper">
+                              <input type="email" class="input-text " name="shipping_email" id="shipping_email" placeholder="" value="" autocomplete="given-name" />
+                            </span>
+                          </p>
+                          <p class="form-row form-row-first validate-required" data-priority="10">
+                            <label for="shipping_mobile" class="">Mobile No&nbsp;
+                              <abbr class="required" title="required">*</abbr>
+                            </label>
+                            <span class="woocommerce-input-wrapper">
+                              <input type="text" class="input-text number" name="shipping_mobile" id="shipping_mobile" placeholder="" value="" autocomplete="given-name" />
+                            </span>
+                          </p>
+                          <p class="form-row form-row-first validate-required" data-priority="10">
+                            <label for="shipping_address" class="">Address&nbsp;
+                              <abbr class="required" title="required">*</abbr>
+                            </label>
+                            <span class="woocommerce-input-wrapper">
+                              <input type="text" class="input-text number" name="shipping_address" id="shipping_address" placeholder="" value="" autocomplete="given-name" />
+                            </span>
+                          </p>
+                          <p class="form-row form-row-first validate-required" data-priority="10">
+                            <label for="shipping_postcode" class="">Postcode&nbsp;
+                              <abbr class="required" title="required">*</abbr>
+                            </label>
+                            <span class="woocommerce-input-wrapper">
+                              <input type="text" class="input-text number" name="shipping_postcode" id="shipping_postcode" placeholder="" value="" autocomplete="given-name" />
+                            </span>
+                          </p>
+                          <p class="form-row form-row-first validate-required" data-priority="10">
+                            <label for="shipping_landmark" class="">Landmark&nbsp;
+                              <abbr class="required" title="required">*</abbr>
+                            </label>
+                            <span class="woocommerce-input-wrapper">
+                              <input type="text" class="input-text number" name="shipping_landmark" id="shipping_landmark" placeholder="" value="" autocomplete="given-name" />
+                            </span>
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -207,7 +208,7 @@
                   <div class="c-cart__coupon-from-wrap c-cart__coupon-from-wrap--opened">
                     <div class="c-cart__coupon-form">
                       <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Coupon code" />
-                      <button class="c-button--outline c-cart__coupon-apply c-button" id="ip-checkout-apply-coupon-check" name="apply_coupon" type="button">Apply</button>
+                      <button class="c-button--outline c-cart__coupon-apply c-button" id="apply_coupon" type="button">Apply</button>
                     </div>
                     <strong class="text-danger coupon-error"></strong>
                     <input type="text" id="couponCsrfToken" value="{{ csrf_token() }}" hidden>
@@ -215,9 +216,13 @@
                   <hr style="width: 100%;color: rgb(236, 236, 236);">
                   <h2>Availabel Coupons</h2>
                   <hr style="width: 100%;color: rgb(236, 236, 236);">
-                  @foreach($user_coupons as $ucoupon)
+                  @foreach($user_coupons as $coupon)
                   <div style="display: flex;flex-direction: row;justify-content: space-between;">
-                    <span style="padding: 25px;">{{ $ucoupon->code }}</span><button data-id="{{ $ucoupon->id }}" class="button">Add</button>
+                    <span style="padding: 25px;">{{ $coupon['code'] }}</span>
+                    <span style="padding: 25px;">{{ $coupon['disc_type'] != 'amount' ? $coupon['discount'].'%' : '&#8377;'.$coupon['discount'] }} off</span>
+                    <span style="padding: 25px;">
+                      <input type="radio" class="coupon_radio" onclick="coupon_applied('<?php echo $coupon['code']; ?>')">
+                    </span>
                   </div>
                   @endforeach
                 </div>
@@ -228,15 +233,12 @@
                     <thead>
                       <tr>
                         <th class="c-cart__totals-th product-name">Product</th>
-                        <th class="c-cart__totals-th c-cart__totals-th--product-total product-total">Subtotal</th>
+                        <th class="c-cart__totals-th c-cart__totals-th--product-total product-total">Price</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr>
-                        <td colspan="2" class="c-cart__totals-product-space">
-                        </td>
-                      </tr>
-                      @foreach($cartItems as $item)
+                    <tbody id="product_tbody">
+                      @php $regular_price = 0; @endphp
+                      @foreach($cartItems as $key => $item)
                       <tr class="c-cart__totals-product cart_item">
                         <td class="c-cart__totals-product-name">{{ $item->product->name."-".$item->productVariant->name }}&nbsp;
                           <strong class="c-cart__totals-product-quantity product-quantity">&times;&nbsp;{{ $item->quantity }}</strong>
@@ -244,15 +246,32 @@
                         <td class="c-cart__totals-price">
                           <span class="woocommerce-Price-amount amount">
                             <bdi>
-                              <span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $item->productVariant->sale_price * $item->quantity }}</bdi>
+                              <span class="woocommerce-Price-currencySymbol">&#8377;</span><input type="text" name="sale_price" class="sale_price" value="{{ $item->productVariant->sale_price * $item->quantity }}" readonly></bdi>
+                            <p>&#8377;{{ $item->productVariant->regular_price * $item->quantity }}</p>
+                            <p>&#8377;{{ $product_dis[$key] }}</p>
                           </span>
                         </td>
                       </tr>
+                      @php $regular_price += $item->productVariant->regular_price * $item->quantity; @endphp
                       @endforeach
                     </tbody>
                     <tfoot>
-                      <tr>
-                        <td colspan="2" class="c-cart__totals-space c-cart__totals-space--hr">
+                      <tr class="cart-subtotal">
+                        <th class="c-cart__sub-sub-header">MRP</th>
+                        <td class="c-cart__totals-price">
+                          <span class="woocommerce-Price-amount amount">
+                            <bdi>
+                              <span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $regular_price }}</bdi>
+                          </span>
+                        </td>
+                      </tr>
+                      <tr class="cart-subtotal">
+                        <th class="c-cart__sub-sub-header">Product Discount</th>
+                        <td class="c-cart__totals-price">
+                          <span class="woocommerce-Price-amount amount">
+                            <bdi>
+                              <span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $discountPrice }}</bdi>
+                          </span>
                         </td>
                       </tr>
                       <tr class="cart-subtotal">
@@ -265,15 +284,24 @@
                         </td>
                       </tr>
                       <tr>
-                        <td colspan="2" class="c-cart__totals-space c-cart__totals-space--hr">
-                        </td>
-                      </tr>
-                      <tr class="cart-subtotal">
-                        <th class="c-cart__sub-sub-header">Discount</th>
+                        <th class="c-cart__sub-sub-header">Coupon Discount</th>
                         <td class="c-cart__totals-price">
                           <span class="woocommerce-Price-amount amount">
-                            <bdi>
-                              <span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $discountPrice }}</bdi>
+                            <bdi id="coupon_dis">
+                              <span class="woocommerce-Price-currencySymbol">&#8377;</span>
+                              {{ $coupon_dis }}
+                            </bdi>
+                          </span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th class="c-cart__sub-sub-header">Shipping Charge</th>
+                        <td class="c-cart__totals-price">
+                          <span class="woocommerce-Price-amount amount">
+                            <bdi id="shipping_chrg">
+                              <span class="woocommerce-Price-currencySymbol">&#8377;</span>
+                              100
+                            </bdi>
                           </span>
                         </td>
                       </tr>
@@ -309,8 +337,10 @@
                         <td class="c-cart__totals-price c-cart__totals-price--total" data-title="Total">
                           <strong>
                             <span class="woocommerce-Price-amount amount">
-                              <bdi>
-                                <span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $totalPrice }}</bdi>
+                              <bdi id="total_price">
+                                <span class="woocommerce-Price-currencySymbol">&#8377;</span>
+                                {{ $totalPrice + 100 }}
+                              </bdi>
                             </span>
                           </strong>
                         </td>
@@ -326,23 +356,17 @@
                     <ul class="c-cart__payment-methods wc_payment_methods payment_methods methods">
                       <li class="wc_payment_method payment_method_bacs">
                         <span class="c-cart__payment-methods-wrap">
-                          <input id="payment_method_bacs" type="radio" class="c-cart__payment-method-radio input-radio" name="payment_method" value="bacs" checked='checked' data-order_button_text="" />
+                          <input id="payment_method" type="radio" class="c-cart__payment-method-radio input-radio" name="payment_method" value="online" checked='checked' data-order_button_text="" />
                           <i></i>
                         </span>
-                        <label class="c-cart__payment-methods-title" for="payment_method_bacs">Direct bank transfer</label>
-                        <div class="c-cart__payment-methods-box payment_box payment_method_bacs">
-                          <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.</p>
-                        </div>
+                        <label class="c-cart__payment-methods-title" for="payment_method_bacs">Online Payment</label>
                       </li>
                       <li class="wc_payment_method payment_method_cod">
                         <span class="c-cart__payment-methods-wrap">
-                          <input id="payment_method_cod" type="radio" class="c-cart__payment-method-radio input-radio" name="payment_method" value="cod" data-order_button_text="" />
+                          <input id="payment_method" type="radio" class="c-cart__payment-method-radio input-radio" name="payment_method" value="cod" data-order_button_text="" />
                           <i></i>
                         </span>
                         <label class="c-cart__payment-methods-title" for="payment_method_cod">Cash on delivery</label>
-                        <div class="c-cart__payment-methods-box payment_box payment_method_cod" style="display:none;">
-                          <p>Pay with cash upon delivery.</p>
-                        </div>
                       </li>
                     </ul>
                     <div class="c-cart__place-order form-row place-order">
@@ -351,144 +375,6 @@
                         <br />
                         <button type="submit" class="button alt" name="woocommerce_checkout_update_totals" value="Update totals">Update totals</button>
                       </noscript>
-                      <div class="woocommerce-terms-and-conditions-wrapper">
-                        <div class="woocommerce-privacy-policy-text">
-                          <p>Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our
-                            <a href="https://parkofideas.com/luchiana/demo/privacy-policy/" class="woocommerce-privacy-policy-link" target="_blank">privacy policy</a>.</p>
-                        </div>
-                        <div class="woocommerce-terms-and-conditions" style="display: none; max-height: 200px; overflow: auto;">
-                          <h3 style="text-align: center">Who we are</h3>
-                          <p>
-                            <!-- /wp:heading -->
-                          </p>
-                          <p>
-                            <!-- wp:paragraph -->
-                          </p>
-                          <p>Our website address is:
-                            <a href="https://parkofideas.com/luchiana/demo" target="_blank" rel="noopener noreferrer">https://parkofideas.com/luchiana/demo</a>.</p>
-                          <p>
-                            <!-- /wp:paragraph -->
-                          </p>
-                          <p>
-                            <!-- wp:heading -->
-                          </p>
-                          <h3 style="text-align: center">What personal data
-                            <br />we collect</h3>
-                          <h5>Comments</h5>
-                          <p>
-                            <!-- /wp:heading -->
-                          </p>
-                          <p>
-                            <!-- wp:paragraph -->
-                          </p>
-                          <p>When visitors leave comments on the site we collect the data shown in the comments form, and also the visitor’s IP address and browser user agent string to help spam detection.</p>
-                          <p>
-                            <!-- /wp:paragraph -->
-                          </p>
-                          <p>
-                            <!-- wp:paragraph -->
-                          </p>
-                          <p>An anonymized string created from your email address (also called a hash) may be provided to the Gravatar service to see if you are using it. The Gravatar service privacy policy is available here: https://automattic.com/privacy/. After approval of your comment, your profile picture is visible to the public in the context of your comment.</p>
-                          <p>
-                            <!-- /wp:paragraph -->
-                          </p>
-                          <p>
-                            <!-- wp:heading {"level":3} -->
-                          </p>
-                          <h5>Media</h5>
-                          <p>
-                            <!-- /wp:heading -->
-                          </p>
-                          <p>
-                            <!-- wp:paragraph -->
-                          </p>
-                          <p>If you upload images to the website, you should avoid uploading images with embedded location data (EXIF GPS) included. Visitors to the website can download and extract any location data from images on the website.</p>
-                          <p>
-                            <!-- /wp:paragraph -->
-                          </p>
-                          <p>
-                            <!-- wp:heading {"level":3} -->
-                          </p>
-                          <h5>Cookies</h5>
-                          <p>
-                            <!-- /wp:heading -->
-                          </p>
-                          <p>
-                            <!-- wp:paragraph -->
-                          </p>
-                          <p>If you leave a comment on our site you may opt-in to saving your name, email address and website in cookies. These are for your convenience so that you do not have to fill in your details again when you leave another comment. These cookies will last for one year.</p>
-                          <p>
-                            <!-- /wp:paragraph -->
-                          </p>
-                          <p>
-                            <!-- wp:paragraph -->
-                          </p>
-                          <p>If you visit our login page, we will set a temporary cookie to determine if your browser accepts cookies. This cookie contains no personal data and is discarded when you close your browser.</p>
-                          <p>
-                            <!-- /wp:paragraph -->
-                          </p>
-                          <p>
-                            <!-- wp:paragraph -->
-                          </p>
-                          <p>When you log in, we will also set up several cookies to save your login information and your screen display choices. Login cookies last for two days, and screen options cookies last for a year. If you select &#8220;Remember Me&#8221;, your login will persist for two weeks. If you log out of your account, the login cookies will be removed.</p>
-                          <p>
-                            <!-- /wp:paragraph -->
-                          </p>
-                          <p>
-                            <!-- wp:paragraph -->
-                          </p>
-                          <p>If you edit or publish an article, an additional cookie will be saved in your browser. This cookie includes no personal data and simply indicates the post ID of the article you just edited. It expires after 1 day.</p>
-                          <p>
-                            <!-- /wp:paragraph -->
-                          </p>
-                          <p>
-                            <!-- wp:heading {"level":3} -->
-                          </p>
-                          <h5>Embedded content from other websites</h5>
-                          <p>
-                            <!-- /wp:heading -->
-                          </p>
-                          <p>
-                            <!-- wp:paragraph -->
-                          </p>
-                          <p>Articles on this site may include embedded content (e.g. videos, images, articles, etc.). Embedded content from other websites behaves in the exact same way as if the visitor has visited the other website.</p>
-                          <p>
-                            <!-- /wp:paragraph -->
-                          </p>
-                          <p>
-                            <!-- wp:paragraph -->
-                          </p>
-                          <p>These websites may collect data about you, use cookies, embed additional third-party tracking, and monitor your interaction with that embedded content, including tracking your interaction with the embedded content if you have an account and are logged in to that website.</p>
-                          <p>
-                            <!-- /wp:paragraph -->
-                          </p>
-                          <p>
-                            <!-- wp:heading {"level":3} -->
-                          </p>
-                          <h5>If you leave a comment, the comment and its metadata are retained indefinitely. This is so we can recognize and approve any follow-up comments automatically instead of holding them in a moderation queue.</h5>
-                          <p>
-                            <!-- /wp:paragraph -->
-                          </p>
-                          <p>
-                            <!-- wp:paragraph -->
-                          </p>
-                          <p>For users that register on our website (if any), we also store the personal information they provide in their user profile. All users can see, edit, or delete their personal information at any time (except they cannot change their username). Website administrators can also see and edit that information.</p>
-                          <p>
-                            <!-- /wp:heading -->
-                          </p>
-                        </div>
-                        <p class="c-form__terms-and-conditions form-row validate-required">
-                          <label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
-                            <input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="terms" id="terms" />
-                            <i></i>
-                            <span class="woocommerce-terms-and-conditions-checkbox-text">I have read and agree to the website
-                              <a href="https://parkofideas.com/luchiana/demo/privacy-policy/" class="woocommerce-terms-and-conditions-link" target="_blank">terms and conditions</a>
-                            </span>&nbsp;
-                            <span class="required">*</span>
-                          </label>
-                          <input type="hidden" name="terms-field" value="1" />
-                        </p>
-                      </div>
                       <button type="submit" class="c-button c-button--big c-cart__place-order-btn button alt" name="woocommerce_checkout_place_order" id="place_order" value="Place order" data-value="Place order">Place order</button>
                       <input type="hidden" id="woocommerce-process-checkout-nonce" name="woocommerce-process-checkout-nonce" value="71dca3f0ec" />
                       <input type="hidden" name="_wp_http_referer" value="/luchiana/demo/checkout/" />
@@ -509,4 +395,65 @@
 @section('js')
 <script type='text/javascript' src='{{ asset("js/validation.js") }}' id='preloaded-modules-js'></script>
 <script type='text/javascript' src='{{ asset("js/checkout.js") }}' id='preloaded-modules-js'></script>
+
+<script>
+  function coupon_applied(code) {
+    $('#coupon_code').val(code);
+  }
+
+  $(document).on('click', '#apply_coupon', function() {
+    var code = $('#coupon_code').val();
+    $.ajax({
+      url: "{{url('checkout/apply_coupon')}}",
+      type: "POST",
+      data: {
+        coupon_code: code,
+        _token: '{{csrf_token()}}'
+      },
+      dataType: 'json',
+      success: function(data) {
+        if (data['status'] == '200') {
+          $('#coupon_dis').empty();
+          $('#total_price').empty();
+          $('#product_tbody').empty();
+          var html = '';
+          $('#coupon_dis').html('<span class="woocommerce-Price-currencySymbol">&#8377;</span>' + data[0][0]['coupon_disc']);
+          $('#total_price').html('<span class="woocommerce-Price-currencySymbol">&#8377;</span>' + data[0][0]['total']);
+          $.each(data[0][0]['checkout_items'], function(index, value) {
+            html += `
+                        <tr class="c-cart__totals-product cart_item">
+                          <td class="c-cart__totals-product-name">` + value[0]['product_name'] + `&nbsp;
+                            <strong class="c-cart__totals-product-quantity product-quantity">&times;&nbsp;` + value[0]['qty'] + `</strong>
+                          </td>
+                          <td class="c-cart__totals-price">
+                            <span class="woocommerce-Price-amount amount">
+                              <bdi>
+                                <span class="woocommerce-Price-currencySymbol">&#8377;</span><input type="text" name="sale_price" class="sale_price" value="` + value[0]['sale'] + `" readonly></bdi>
+                              <p>&#8377;` + value[0]['regular'] + `</p>
+                              <p>&#8377;` + value[0]['total_disc'] + `</p>
+                            </span>
+                          </td>
+                        </tr>`;
+          });
+          $('#product_tbody').html(html);
+        } else {
+          toastr.options.closeButton = true;
+          toastr.options.closeMethod = 'fadeOut';
+          toastr.options.closeDuration = 100;
+          toastr.success(data.message);
+        }
+      }
+    });
+  });
+
+  $(document).on('click', '#payment_method', function() {
+    var payment_mode = $("input[name=payment_method]:checked").val();
+    if (payment_mode == "online") {
+      rzp.open();
+      e.preventDefault();
+    } else {
+      $("#checkout-form").submit();
+    }
+  });
+</script>
 @endsection

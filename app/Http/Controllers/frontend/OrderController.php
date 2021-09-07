@@ -31,7 +31,7 @@ class OrderController extends Controller
         $order_no = $this->quickRandom(20);
     }
 
-    function quickRandom($length)
+    public function quickRandom($length)
     {
         $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 

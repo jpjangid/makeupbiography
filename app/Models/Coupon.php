@@ -14,4 +14,9 @@ class Coupon extends Model
         'offer_end', 'coupon_limit', 'times_applied', 'disc_type', 'discount', 'show_in_front', 'flag',
         'brand_id', 'main_cat_id', 'cat_id', 'sub_cat_id', 'product_id', 'user_id', 'days'
     ];
+
+    public function coupon_used()
+    {
+        return $this->hasMany('App\Models\CouponUsedBy', 'coupon_id', 'id');
+    }
 }
