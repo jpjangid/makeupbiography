@@ -34,8 +34,8 @@ class AutomationMail extends Mailable
     public function build()
     {
         return $this->markdown('email.cancel_offer')
-        ->from('mohsinwebanix@gmail.com', '20MCC')
-        ->subject('Cancel Offer '.$this->coupon_code)
+        ->from('webanixnew@gmail.com', 'makeuptest')
+        ->subject('Discount'.$this->coupon_code)
         ->with([
 			'coupon_code' => $this->coupon_code,
             'offer' => $this->offer,
