@@ -24,7 +24,6 @@ $(document).on('click','#ship-to-different-address-checkbox', function() {
     var billingAddress = $('#billing_address').val();
     var billingPostcode = $('#billing_postcode').val();
     var billingLandmark = $('#billing_landmark').val();
-
     if($(this).prop("checked") == true) {
        $('.shipping_address').css("display",'block'); 
        $('#billing_name').val(billingName);

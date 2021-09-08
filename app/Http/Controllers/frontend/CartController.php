@@ -9,6 +9,8 @@ use App\Models\ProductVariant;
 use App\Models\Product;
 use App\Models\UserAddress;
 use App\Models\Coupon;
+use Razorpay\Api\Api;
+use Razorpay\Api\Errors\SignatureVerificationError;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
@@ -388,77 +390,86 @@ class CartController extends Controller
                 $checkout_items = array();
                 $cartItems = Cart::where('user_id', $user->id)->with('product.category.parent.parent', 'productVariant.medias')->get();
                 if ($cartItems) {
+                    $cart_value = 0.00;
                     foreach ($cartItems as $vari) {
-                        if ($coupon->type == 'merchandise') {
-                            if (
-                                !empty($coupon->product_id) &&
-                                !empty($vari->product) &&
-                                $coupon->product_id == $vari->product_id &&
-                                $user_times < 1
-                            ) {
-                                array_push($checkout_items, $this->disc_apply($vari, $coupon));
-                            } elseif (
-                                !empty($coupon->sub_cat_id) &&
-                                !empty($vari->product->parent_id) &&
-                                $coupon->sub_cat_id == $vari->product->parent_id &&
-                                $user_times < 1
-                            ) {
-                                array_push($checkout_items, $this->disc_apply($vari, $coupon));
-                            } elseif (
-                                !empty($coupon->cat_id) && isset($vari->product->category->parent) &&
-                                !empty($vari->product->category->parent) &&
-                                $coupon->cat_id == $vari->product->category->parent->id &&
-                                $user_times < 1
-                            ) {
-                                array_push($checkout_items, $this->disc_apply($vari, $coupon));
-                            } elseif (
-                                !empty($coupon->cat_id) && isset($vari->product->category->parent) &&
-                                !empty($vari->product->parent_id) &&
-                                $coupon->cat_id == $vari->product->parent_id &&
-                                $user_times < 1
-                            ) {
-                                array_push($checkout_items, $this->disc_apply($vari, $coupon));
-                            } elseif (
-                                !empty($coupon->main_cat_id) && isset($vari->product->category->parent->parent) &&
-                                !empty($vari->product->category->parent->parent) &&
-                                $coupon->main_cat_id == $vari->product->category->parent->parent->id &&
-                                $user_times < 1
-                            ) {
-                                array_push($checkout_items, $this->disc_apply($vari, $coupon));
-                            } elseif (
-                                !empty($coupon->main_cat_id) && isset($vari->product->category->parent) &&
-                                !empty($vari->product->parent_id) &&
-                                $coupon->main_cat_id == $vari->product->parent_id &&
-                                $user_times < 1
-                            ) {
-                                array_push($checkout_items, $this->disc_apply($vari, $coupon));
-                            } elseif (
-                                !empty($coupon->brand_id) && isset($vari->product->brand_id) &&
-                                !empty($vari->product->brand_id) &&
-                                $coupon->brand_id == $vari->product->brand_id &&
-                                $user_times < 1
-                            ) {
+                        $cart_value += $vari->productVariant->sale_price * $vari->quantity;
+                    }
+                    foreach ($cartItems as $vari) {
+                        if ($cart_value > $coupon->min_order_amount) {
+                            if ($coupon->type == 'merchandise') {
+                                if (
+                                    !empty($coupon->product_id) &&
+                                    !empty($vari->product) &&
+                                    $coupon->product_id == $vari->product_id &&
+                                    $user_times < 1
+                                ) {
+                                    array_push($checkout_items, $this->disc_apply($vari, $coupon));
+                                } elseif (
+                                    !empty($coupon->sub_cat_id) &&
+                                    !empty($vari->product->parent_id) &&
+                                    $coupon->sub_cat_id == $vari->product->parent_id &&
+                                    $user_times < 1
+                                ) {
+                                    array_push($checkout_items, $this->disc_apply($vari, $coupon));
+                                } elseif (
+                                    !empty($coupon->cat_id) && isset($vari->product->category->parent) &&
+                                    !empty($vari->product->category->parent) &&
+                                    $coupon->cat_id == $vari->product->category->parent->id &&
+                                    $user_times < 1
+                                ) {
+                                    array_push($checkout_items, $this->disc_apply($vari, $coupon));
+                                } elseif (
+                                    !empty($coupon->cat_id) && isset($vari->product->category->parent) &&
+                                    !empty($vari->product->parent_id) &&
+                                    $coupon->cat_id == $vari->product->parent_id &&
+                                    $user_times < 1
+                                ) {
+                                    array_push($checkout_items, $this->disc_apply($vari, $coupon));
+                                } elseif (
+                                    !empty($coupon->main_cat_id) && isset($vari->product->category->parent->parent) &&
+                                    !empty($vari->product->category->parent->parent) &&
+                                    $coupon->main_cat_id == $vari->product->category->parent->parent->id &&
+                                    $user_times < 1
+                                ) {
+                                    array_push($checkout_items, $this->disc_apply($vari, $coupon));
+                                } elseif (
+                                    !empty($coupon->main_cat_id) && isset($vari->product->category->parent) &&
+                                    !empty($vari->product->parent_id) &&
+                                    $coupon->main_cat_id == $vari->product->parent_id &&
+                                    $user_times < 1
+                                ) {
+                                    array_push($checkout_items, $this->disc_apply($vari, $coupon));
+                                } elseif (
+                                    !empty($coupon->brand_id) && isset($vari->product->brand_id) &&
+                                    !empty($vari->product->brand_id) &&
+                                    $coupon->brand_id == $vari->product->brand_id &&
+                                    $user_times < 1
+                                ) {
+                                    array_push($checkout_items, $this->disc_apply($vari, $coupon));
+                                } else {
+                                    $emptycoupon = '';
+                                    array_push($checkout_items, $this->disc_apply($vari, $emptycoupon));
+                                }
+                            } elseif ($coupon->type == 'customer_based') {
+                                if ($coupon->user_id == auth()->user()->id && $coupon->coupon_limit >= $coupon->times_applied) {
+                                    array_push($checkout_items, $this->disc_apply($vari, $coupon));
+                                } else {
+                                    $emptycoupon = '';
+                                    array_push($checkout_items, $this->disc_apply($vari, $emptycoupon));
+                                }
+                            } elseif ($coupon->type == 'personal_code' || $coupon->type == 'global') {
+                                if ($user_times < 1) {
+                                    array_push($checkout_items, $this->disc_apply($vari, $coupon));
+                                } else {
+                                    $emptycoupon = '';
+                                    array_push($checkout_items, $this->disc_apply($vari, $emptycoupon));
+                                }
+                            } elseif ($coupon->type == 'cart_value_discount') {
                                 array_push($checkout_items, $this->disc_apply($vari, $coupon));
                             } else {
                                 $emptycoupon = '';
                                 array_push($checkout_items, $this->disc_apply($vari, $emptycoupon));
                             }
-                        } elseif ($coupon->type == 'customer_based') {
-                            if ($coupon->user_id == auth()->user()->id && $coupon->coupon_limit >= $coupon->times_applied) {
-                                array_push($checkout_items, $this->disc_apply($vari, $coupon));
-                            } else {
-                                $emptycoupon = '';
-                                array_push($checkout_items, $this->disc_apply($vari, $emptycoupon));
-                            }
-                        } elseif ($coupon->type == 'personal_code' || $coupon->type == 'global') {
-                            if ($user_times < 1) {
-                                array_push($checkout_items, $this->disc_apply($vari, $coupon));
-                            } else {
-                                $emptycoupon = '';
-                                array_push($checkout_items, $this->disc_apply($vari, $emptycoupon));
-                            }
-                        } elseif ($coupon->type == 'cart_value_discount') {
-                            array_push($checkout_items, $this->disc_apply($vari, $coupon));
                         } else {
                             $emptycoupon = '';
                             array_push($checkout_items, $this->disc_apply($vari, $emptycoupon));
@@ -708,16 +719,24 @@ class CartController extends Controller
         if (!empty($coupon)) {
             if ($coupon->disc_type == 'percent') {
                 $disc_amt = floatval((floatval($vari->productVariant->sale_price) * $coupon->discount) / 100);
+                if ($disc_amt > $coupon->max_order_amount) {
+                    $disc_amt = $coupon->max_order_amount;
+                }
                 $sale = (floatval($vari->productVariant->sale_price) - floatval($disc_amt)) * $vari->quantity;
             }
             if ($coupon->disc_type == 'amount') {
                 $disc_amt = $coupon->discount;
-                $sale = (floatval($vari->productVariant->sale_price) - $coupon->discount) * $vari->quantity;
+                if ($vari->productVariant->sale_price < $disc_amt) {
+                    $sale = (floatval($vari->productVariant->sale_price) - $coupon->discount) * $vari->quantity;
+                } else {
+                    $sale = floatval($vari->productVariant->sale_price) * $vari->quantity;
+                }
             }
         } else {
             $disc_amt = 0.00;
             $sale = floatval($vari->productVariant->sale_price) * $vari->quantity;
         }
+        $total_disc = (floatval($vari->productVariant->regular_price) - floatval($vari->productVariant->sale_price)) + $disc_amt;
 
         $checkout_items->push([
             'coupon_disc'       =>  $disc_amt,
@@ -727,9 +746,32 @@ class CartController extends Controller
             'cart_id'           =>  $vari->id,
             'qty'               =>  $vari->quantity,
             'regular'           =>  floatval($vari->productVariant->regular_price) * $vari->quantity,
-            'total_disc'        => (floatval($vari->productVariant->regular_price) - floatval($vari->productVariant->sale_price)) + $disc_amt,
+            'total_disc'        => $total_disc * $vari->quantity,
         ]);
 
         return $checkout_items;
+    }
+
+    public function create_razorpay_order(Request $request)
+    {
+        $keyId = 'rzp_live_f7q120n58ysQwH';
+        $keySecret = 'xHKdv1TyRYrGr81uAfCDlFC0';
+
+        $api = new Api($keyId, $keySecret);
+
+        $orderData = [
+            'receipt'         => 3456,
+            'amount'          => $request->total * 100, // 2000 rupees in paise
+            'currency'        => 'INR',
+            'payment_capture' => 1 // auto capture
+        ];
+
+        $razorpayOrder = $api->order->create($orderData);
+
+        $data['razorpayOrderId'] = $razorpayOrder['id'];
+        $data['amount'] = $orderData['amount'];
+        $data['user'] = auth()->user();
+
+        return response()->json($data);
     }
 }
