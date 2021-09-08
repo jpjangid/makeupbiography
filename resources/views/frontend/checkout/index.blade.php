@@ -390,8 +390,6 @@
 										</ul>
 										<div class="c-cart__place-order form-row place-order">
 											<button type="button" class="c-button c-button--big c-cart__place-order-btn button alt" name="woocommerce_checkout_place_order" id="place_order" value="Place order" data-value="Place order">Place order</button>
-											<input type="hidden" id="woocommerce-process-checkout-nonce" name="woocommerce-process-checkout-nonce" value="71dca3f0ec" />
-											<input type="hidden" name="_wp_http_referer" value="/luchiana/demo/checkout/" />
 										</div>
 									</div>
 								</div>
