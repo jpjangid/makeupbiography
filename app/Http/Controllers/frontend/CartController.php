@@ -787,13 +787,18 @@ class CartController extends Controller
 
     public function checkoutCouponGet(Request $request)
     {
-      $request->session()->forget('_code');  
-      if(isset($request->_code)) {
-        if(Coupon::where(['code' => $request->_code,'times_applied' => null])->first()) {
-            $request->session()->put('_code', $request->_code);
-        }
+      if (auth()->user()) {
+        $request->session()->forget('_code');  
+        if(isset($request->_code)) {
+          if(Coupon::where(['code' => $request->_code,'user_id' => auth()->user()->id,'times_applied' => null])->first()) {
+              $request->session()->put('_code', $request->_code);
+          }
+          return redirect('checkout');
+        } 
         return redirect('checkout');
-      } 
-      return redirect('checkout');
+      } else {
+        return redirect()->route('login');
+      }  
+
     }
 }
