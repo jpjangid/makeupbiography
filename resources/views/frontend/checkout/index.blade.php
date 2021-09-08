@@ -224,8 +224,7 @@
 														<span class="optional">(optional)</span>
 													</label>
 													<span class="woocommerce-input-wrapper">
-														<textarea name="order_comments" class="input-text " id="order_comments" placeholder="Notes about your order, e.g. special notes for delivery." rows="2" cols="5">
-                            </textarea>
+														<textarea name="order_comments" class="input-text " id="order_comments" placeholder="Notes about your order, e.g. special notes for delivery." rows="2" cols="5"></textarea>
 													</span>
 												</p>
 											</div>
@@ -391,8 +390,6 @@
 										</ul>
 										<div class="c-cart__place-order form-row place-order">
 											<button type="button" class="c-button c-button--big c-cart__place-order-btn button alt" name="woocommerce_checkout_place_order" id="place_order" value="Place order" data-value="Place order">Place order</button>
-											<input type="hidden" id="woocommerce-process-checkout-nonce" name="woocommerce-process-checkout-nonce" value="71dca3f0ec" />
-											<input type="hidden" name="_wp_http_referer" value="/luchiana/demo/checkout/" />
 										</div>
 									</div>
 								</div>
@@ -411,14 +408,10 @@
 @endsection
 
 @section('js')
-<script type='text/javascript' src='{{ asset("js/validation.js") }}' id='preloaded-modules-js'></script>
-<script type='text/javascript' src='{{ asset("js/checkout.js") }}' id='preloaded-modules-js'></script>
-<<<<<<< HEAD <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.js">
-	</script>
+	<script type='text/javascript' src='{{ asset("js/validation.js") }}' id='preloaded-modules-js'></script>
+	<script type='text/javascript' src='{{ asset("js/checkout.js") }}' id='preloaded-modules-js'></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.js"></script>
 	<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-
-	=======
-	>>>>>>> ef58bd4e656e14b4f716a093223ede2fc755cccc
 	<script>
 		$("#checkout-form").validate({
 			rules: {
