@@ -74,11 +74,35 @@
 											<h3 class="c-cart__header">Billing details</h3>
 											<div class="c-cart__billing-fields woocommerce-billing-fields__field-wrapper">
 												<p class="form-row form-row-first validate-required" data-priority="10">
+													<label for="billing_postcode" class="">Postcode&nbsp;
+														<abbr class="required" title="required">*</abbr>
+													</label>
+													<span class="woocommerce-input-wrapper">
+														<input type="text" class="input-text number" name="billing_postcode" id="billing_postcode" placeholder="" value="" autocomplete="given-name" />
+													</span>
+												</p>
+												<p class="form-row form-row-first validate-required" data-priority="10">
+													<label for="billing_state" class="">State&nbsp;
+														<abbr class="required" title="required">*</abbr>
+													</label>
+													<span class="woocommerce-input-wrapper">
+														<input type="text" class="input-text" name="billing_state" id="billing_state" placeholder="" value="" autocomplete="given-name" />
+													</span>
+												</p>
+												<p class="form-row form-row-first validate-required" data-priority="10">
+													<label for="billing_city" class="">City&nbsp;
+														<abbr class="required" title="required">*</abbr>
+													</label>
+													<span class="woocommerce-input-wrapper">
+														<input type="text" class="input-text" name="billing_city" id="billing_city" placeholder="" value="" autocomplete="given-name" />
+													</span>
+												</p>
+												<p class="form-row form-row-first validate-required" data-priority="10">
 													<label for="billing_name" class="">Name&nbsp;
 														<abbr class="required" title="required">*</abbr>
 													</label>
 													<span class="woocommerce-input-wrapper">
-														<input type="text" class="input-text " name="billing_name" id="billing_name" placeholder="" value="" autocomplete="given-name" required />
+														<input type="text" class="input-text " name="billing_name" id="billing_name" placeholder="" value="" autocomplete="given-name" />
 													</span>
 												</p>
 												<p class="form-row form-row-first validate-required" data-priority="10">
@@ -86,7 +110,7 @@
 														<abbr class="required" title="required">*</abbr>
 													</label>
 													<span class="woocommerce-input-wrapper">
-														<input type="email" class="input-text " name="billing_email" id="billing_email" placeholder="" value="" autocomplete="given-name" required />
+														<input type="email" class="input-text " name="billing_email" id="billing_email" placeholder="" value="" autocomplete="given-name" />
 													</span>
 												</p>
 												<p class="form-row form-row-first validate-required" data-priority="10">
@@ -94,7 +118,7 @@
 														<abbr class="required" title="required">*</abbr>
 													</label>
 													<span class="woocommerce-input-wrapper">
-														<input type="text" class="input-text number" name="billing_mobile" id="billing_email" placeholder="" value="" autocomplete="given-name" required />
+														<input type="text" class="input-text number" name="billing_mobile" id="billing_email" placeholder="" value="" autocomplete="given-name" />
 													</span>
 												</p>
 												<p class="form-row form-row-first validate-required" data-priority="10">
@@ -102,15 +126,7 @@
 														<abbr class="required" title="required">*</abbr>
 													</label>
 													<span class="woocommerce-input-wrapper">
-														<input type="text" class="input-text" name="billing_address" id="billing_address" placeholder="" value="" autocomplete="given-name" required />
-													</span>
-												</p>
-												<p class="form-row form-row-first validate-required" data-priority="10">
-													<label for="billing_postcode" class="">Postcode&nbsp;
-														<abbr class="required" title="required">*</abbr>
-													</label>
-													<span class="woocommerce-input-wrapper">
-														<input type="text" class="input-text number" name="billing_postcode" id="billing_postcode" placeholder="" value="" autocomplete="given-name" required />
+														<input type="text" class="input-text number" name="billing_address" id="billing_address" placeholder="" value="" autocomplete="given-name" />
 													</span>
 												</p>
 												<p class="form-row form-row-first validate-required" data-priority="10">
@@ -118,7 +134,7 @@
 														<abbr class="required" title="required">*</abbr>
 													</label>
 													<span class="woocommerce-input-wrapper">
-														<input type="text" class="input-text" name="billing_landmark" id="billing_landmark" placeholder="" value="" autocomplete="given-name" />
+														<input type="text" class="input-text number" name="billing_landmark" id="billing_landmark" placeholder="" value="" autocomplete="given-name" />
 													</span>
 												</p>
 											</div>
@@ -135,11 +151,35 @@
 											<div class="shipping_address" style="display: none;">
 												<div class="c-cart__shipping-fields woocommerce-shipping-fields__field-wrapper">
 													<p class="form-row form-row-first validate-required" data-priority="10">
+														<label for="shipping_postcode" class="">Postcode&nbsp;
+															<abbr class="required" title="required">*</abbr>
+														</label>
+														<span class="woocommerce-input-wrapper">
+															<input type="text" class="input-text number" name="shipping_postcode" id="shipping_postcode" placeholder="" value="" autocomplete="given-name" />
+														</span>
+													</p>
+													<p class="form-row form-row-first validate-required" data-priority="10">
+														<label for="shipping_state" class="">State&nbsp;
+															<abbr class="required" title="required">*</abbr>
+														</label>
+														<span class="woocommerce-input-wrapper">
+															<input type="text" class="input-text" name="shipping_state" id="shipping_state" placeholder="" value="" autocomplete="given-name" />
+														</span>
+													</p>
+													<p class="form-row form-row-first validate-required" data-priority="10">
+														<label for="shipping_city" class="">City&nbsp;
+															<abbr class="required" title="required">*</abbr>
+														</label>
+														<span class="woocommerce-input-wrapper">
+															<input type="text" class="input-text" name="shipping_city" id="shipping_city" placeholder="" value="" autocomplete="given-name" />
+														</span>
+													</p>
+													<p class="form-row form-row-first validate-required" data-priority="10">
 														<label for="shipping_name" class="">Name&nbsp;
 															<abbr class="required" title="required">*</abbr>
 														</label>
 														<span class="woocommerce-input-wrapper">
-															<input type="text" class="input-text " name="shipping_name" id="shipping_name" placeholder="" value="" autocomplete="given-name" required />
+															<input type="text" class="input-text " name="shipping_name" id="shipping_name" placeholder="" value="" autocomplete="given-name" />
 														</span>
 													</p>
 													<p class="form-row form-row-first validate-required" data-priority="10">
@@ -147,7 +187,7 @@
 															<abbr class="required" title="required">*</abbr>
 														</label>
 														<span class="woocommerce-input-wrapper">
-															<input type="email" class="input-text " name="shipping_email" id="shipping_email" placeholder="" value="" autocomplete="given-name" required />
+															<input type="email" class="input-text " name="shipping_email" id="shipping_email" placeholder="" value="" autocomplete="given-name" />
 														</span>
 													</p>
 													<p class="form-row form-row-first validate-required" data-priority="10">
@@ -155,7 +195,7 @@
 															<abbr class="required" title="required">*</abbr>
 														</label>
 														<span class="woocommerce-input-wrapper">
-															<input type="text" class="input-text number" name="shipping_mobile" id="shipping_mobile" placeholder="" value="" autocomplete="given-name" required />
+															<input type="text" class="input-text number" name="shipping_mobile" id="shipping_mobile" placeholder="" value="" autocomplete="given-name" />
 														</span>
 													</p>
 													<p class="form-row form-row-first validate-required" data-priority="10">
@@ -163,15 +203,7 @@
 															<abbr class="required" title="required">*</abbr>
 														</label>
 														<span class="woocommerce-input-wrapper">
-															<input type="text" class="input-text" name="shipping_address" id="shipping_address" placeholder="" value="" autocomplete="given-name" required />
-														</span>
-													</p>
-													<p class="form-row form-row-first validate-required" data-priority="10">
-														<label for="shipping_postcode" class="">Postcode&nbsp;
-															<abbr class="required" title="required">*</abbr>
-														</label>
-														<span class="woocommerce-input-wrapper">
-															<input type="text" class="input-text number" name="shipping_postcode" id="shipping_postcode" placeholder="" value="" autocomplete="given-name" required />
+															<input type="text" class="input-text number" name="shipping_address" id="shipping_address" placeholder="" value="" autocomplete="given-name" />
 														</span>
 													</p>
 													<p class="form-row form-row-first validate-required" data-priority="10">
@@ -179,7 +211,7 @@
 															<abbr class="required" title="required">*</abbr>
 														</label>
 														<span class="woocommerce-input-wrapper">
-															<input type="text" class="input-text" name="shipping_landmark" id="shipping_landmark" placeholder="" value="" autocomplete="given-name" />
+															<input type="text" class="input-text number" name="shipping_landmark" id="shipping_landmark" placeholder="" value="" autocomplete="given-name" />
 														</span>
 													</p>
 												</div>
@@ -192,7 +224,8 @@
 														<span class="optional">(optional)</span>
 													</label>
 													<span class="woocommerce-input-wrapper">
-														<textarea name="order_comments" class="input-text " id="order_comments" placeholder="Notes about your order, e.g. special notes for delivery." rows="2" cols="5"></textarea>
+														<textarea name="order_comments" class="input-text " id="order_comments" placeholder="Notes about your order, e.g. special notes for delivery." rows="2" cols="5">
+                            </textarea>
 													</span>
 												</p>
 											</div>
@@ -380,55 +413,58 @@
 @section('js')
 <script type='text/javascript' src='{{ asset("js/validation.js") }}' id='preloaded-modules-js'></script>
 <script type='text/javascript' src='{{ asset("js/checkout.js") }}' id='preloaded-modules-js'></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.js"></script>
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<<<<<<< HEAD <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.js">
+	</script>
+	<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
-<script>
-	$("#checkout-form").validate({
-		rules: {
-			shipping_name: {
-				required: true
-			},
-			shipping_mobile: {
-				required: true,
-				minlength: 10,
-				maxlength: 10,
-				number: true
-			},
-			billing_mobile: {
-				minlength: 10,
-				maxlength: 10,
-				number: true
+	=======
+	>>>>>>> ef58bd4e656e14b4f716a093223ede2fc755cccc
+	<script>
+		$("#checkout-form").validate({
+			rules: {
+				shipping_name: {
+					required: true
+				},
+				shipping_mobile: {
+					required: true,
+					minlength: 10,
+					maxlength: 10,
+					number: true
+				},
+				billing_mobile: {
+					minlength: 10,
+					maxlength: 10,
+					number: true
+				}
 			}
+		});
+
+		function coupon_applied(code) {
+			$('#coupon_code').val(code);
 		}
-	});
 
-	function coupon_applied(code) {
-		$('#coupon_code').val(code);
-	}
+		$(document).on('click', '#apply_coupon', function() {
+			var code = $('#coupon_code').val();
+			var shipping = $('#shipping_chrg').val();
+			$.ajax({
+				url: "{{url('checkout/apply_coupon')}}",
+				type: "POST",
+				data: {
+					coupon_code: code,
+					_token: '{{csrf_token()}}'
+				},
+				dataType: 'json',
+				success: function(data) {
+					if (data['status'] == '200') {
+						$('#coupon_dis').val(data[0][0]['coupon_disc']);
 
-	$(document).on('click', '#apply_coupon', function() {
-		var code = $('#coupon_code').val();
-		var shipping = $('#shipping_chrg').val();
-		$.ajax({
-			url: "{{url('checkout/apply_coupon')}}",
-			type: "POST",
-			data: {
-				coupon_code: code,
-				_token: '{{csrf_token()}}'
-			},
-			dataType: 'json',
-			success: function(data) {
-				if (data['status'] == '200') {
-					$('#coupon_dis').val(data[0][0]['coupon_disc']);
+						var total = parseFloat(data[0][0]['total']) + parseFloat(shipping);
+						$('#total_price').val(parseFloat(total).toFixed(2));
 
-					var total = parseFloat(data[0][0]['total']) + parseFloat(shipping);
-					$('#total_price').val(parseFloat(total).toFixed(2));
-
-					var html = '';
-					$('#product_tbody').empty();
-					$.each(data[0][0]['checkout_items'], function(index, value) {
-						html += `<tr class="c-cart__totals-product cart_item">
+						var html = '';
+						$('#product_tbody').empty();
+						$.each(data[0][0]['checkout_items'], function(index, value) {
+							html += `<tr class="c-cart__totals-product cart_item">
 									<td class="c-cart__totals-product-name">` + value[0]['product_name'] + `&nbsp;
 									<strong class="c-cart__totals-product-quantity product-quantity">&times;&nbsp;` + value[0]['qty'] + `</strong>
 									</td>
@@ -441,84 +477,125 @@
 									</span>
 									</td>
 								</tr>`;
-					});
-					$('#product_tbody').html(html);
-				}
-			}
-		});
-	});
-
-	$(document).on('click', '#place_order', function(e) {
-		e.preventDefault();
-		if ($("#checkout-form").valid()) {
-			var payment_mode = $("input[name=payment_method]:checked").val();
-			var total = $('#total_price').val();
-			if (payment_mode == "online") {
-				$.ajax({
-					url: "{{url('checkout/razorpay')}}",
-					type: "POST",
-					data: {
-						total: total,
-						_token: '{{csrf_token()}}'
-					},
-					dataType: 'json',
-					success: function(data) {
-						var options = razorpay_options(data['razorpayOrderId'], data['amount'], data['user']);
-						var rzp = new Razorpay(options);
-						rzp.open();
+						});
+						$('#product_tbody').html(html);
 					}
-				});
-			} else {
-				$("#checkout-form").submit();
-			}
-		}
-	});
+				}
+			});
+		});
 
-	function razorpay_options(razorpayOrderId, amount, user) {
-		var image = "{{ asset('images/mblogo.png') }}";
-		var options = {
-			"key": "rzp_live_f7q120n58ysQwH", // Enter the Key ID generated from the Dashboard
-			"amount": amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-			"currency": "INR",
-			"name": "Vaibhav Stores",
-			"description": "Test Transaction",
-			"image": image,
-			"order_id": razorpayOrderId, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-			"handler": function(response) {
-				alert(response.razorpay_payment_id);
-				alert(response.razorpay_order_id);
-				alert(response.razorpay_signature);
-				$('#razorpay_payment_id').val(response.razorpay_payment_id);
-				$('#razorpay_order_id').val(response.razorpay_order_id);
-				$('#razorpay_signature').val(response.razorpay_signature);
-				if (response.razorpay_payment_id != '' && response.razorpay_order_id != '') {
+		$(document).on('click', '#place_order', function(e) {
+			e.preventDefault();
+			if ($("#checkout-form").valid()) {
+				var payment_mode = $("input[name=payment_method]:checked").val();
+				var total = $('#total_price').val();
+				if (payment_mode == "online") {
+					$.ajax({
+						url: "{{url('checkout/razorpay')}}",
+						type: "POST",
+						data: {
+							total: total,
+							_token: '{{csrf_token()}}'
+						},
+						dataType: 'json',
+						success: function(data) {
+							var options = razorpay_options(data['razorpayOrderId'], data['amount'], data['user']);
+							var rzp = new Razorpay(options);
+							rzp.open();
+						}
+					});
+				} else {
 					$("#checkout-form").submit();
 				}
-			},
-			"prefill": {
-				"name": user.name,
-				"email": user.email,
-				"contact": user.mobile
-			},
-			"notes": {
-				"address": "Webanix"
-			},
-			"theme": {
-				"color": "#3399cc"
 			}
-		};
-		var rzp1 = new Razorpay(options);
-		rzp1.on('payment.failed', function(response) {
-			alert(response.error.code);
-			alert(response.error.description);
-			alert(response.error.source);
-			alert(response.error.step);
-			alert(response.error.reason);
-			alert(response.error.metadata.order_id);
-			alert(response.error.metadata.payment_id);
 		});
 
-		return options;
-	}
-</script>
-@endsection
+		function razorpay_options(razorpayOrderId, amount, user) {
+			var image = "{{ asset('images/mblogo.png') }}";
+			var options = {
+				"key": "rzp_live_f7q120n58ysQwH", // Enter the Key ID generated from the Dashboard
+				"amount": amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+				"currency": "INR",
+				"name": "Vaibhav Stores",
+				"description": "Test Transaction",
+				"image": image,
+				"order_id": razorpayOrderId, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+				"handler": function(response) {
+					alert(response.razorpay_payment_id);
+					alert(response.razorpay_order_id);
+					alert(response.razorpay_signature);
+					$('#razorpay_payment_id').val(response.razorpay_payment_id);
+					$('#razorpay_order_id').val(response.razorpay_order_id);
+					$('#razorpay_signature').val(response.razorpay_signature);
+					if (response.razorpay_payment_id != '' && response.razorpay_order_id != '') {
+						$("#checkout-form").submit();
+					}
+				},
+				"prefill": {
+					"name": user.name,
+					"email": user.email,
+					"contact": user.mobile
+				},
+				"notes": {
+					"address": "Webanix"
+				},
+				"theme": {
+					"color": "#3399cc"
+				}
+			};
+			var rzp1 = new Razorpay(options);
+			rzp1.on('payment.failed', function(response) {
+				alert(response.error.code);
+				alert(response.error.description);
+				alert(response.error.source);
+				alert(response.error.step);
+				alert(response.error.reason);
+				alert(response.error.metadata.order_id);
+				alert(response.error.metadata.payment_id);
+			});
+
+			return options;
+		}
+
+		//get city state billing
+		$(document).on('keyup', '#billing_postcode', function() {
+			$('#billing_state').val('');
+			$('#billing_city').val('');
+			var pincode = $(this).val();
+			$.ajax({
+				type: 'GET',
+				url: '{{ url("my-address/create") }}',
+				data: {
+					pincode: pincode
+				},
+				success: function(data) {
+					console.log(data);
+					if (data.location != "") {
+						$('#billing_state').val(data.location.state);
+						$('#billing_city').val(data.location.city);
+					}
+				}
+			});
+		});
+
+		//get city state shipping
+		$(document).on('keyup', '#shipping_postcode', function() {
+			$('#shipping_state').val('');
+			$('#shipping_city').val('');
+			var pincode = $(this).val();
+			$.ajax({
+				type: 'GET',
+				url: '{{ url("my-address/create") }}',
+				data: {
+					pincode: pincode
+				},
+				success: function(data) {
+					if (data.location != "") {
+						$('#shipping_state').val(data.location.state);
+						$('#shipping_city').val(data.location.city);
+					}
+				}
+			});
+		});
+	</script>
+	@endsection

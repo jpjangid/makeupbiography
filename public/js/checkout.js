@@ -51,6 +51,8 @@ $('body').on('change',function(){
     var billingMobile = $('#billing_mobile').val();
     var billingAddress = $('#billing_address').val();
     var billingPostcode = $('#billing_postcode').val();
+    var billingState = $('#billing_state').val();
+    var billingCity = $('#billing_city').val();
     var billingLandmark = $('#billing_landmark').val();
 
     if($(this).prop("checked") == true) {
@@ -59,6 +61,8 @@ $('body').on('change',function(){
        $('#billing_mobile').val(billingMobile);
        $('#billing_address').val(billingAddress);
        $('#billing_postcode').val(billingPostcode);
+       $('#billing_state').val(billingState);
+       $('#billing_city').val(billingCity);
        $('#billing_landmark').val(billingLandmark);
     } else {
         $('#shipping_name').val(billingName);
@@ -66,6 +70,8 @@ $('body').on('change',function(){
         $('#shipping_mobile').val(billingMobile);
         $('#shipping_address').val(billingAddress);
         $('#shipping_postcode').val(billingPostcode);
+        $('#shipping_state').val(billingState);
+        $('#shipping_city').val(billingCity);
         $('#shipping_landmark').val(billingLandmark);
     }
 });

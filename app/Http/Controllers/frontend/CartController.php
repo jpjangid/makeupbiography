@@ -9,9 +9,12 @@ use App\Models\ProductVariant;
 use App\Models\Product;
 use App\Models\UserAddress;
 use App\Models\Coupon;
-use App\Models\ProductVariantMedia;
 use Razorpay\Api\Api;
 use Razorpay\Api\Errors\SignatureVerificationError;
+use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
+use App\Models\ProductVariantMedia;
 use Illuminate\Support\Collection;
 
 class CartController extends Controller
@@ -85,6 +88,7 @@ class CartController extends Controller
         $discountPrice = 0.00;
         $totalPrice = 0.00;
         if ($user) {
+            User::where('id', auth()->user()->id)->update(['auto_page' => 'cart', 'auto_email' => 0, 'auto_datetime' => date('y-m-d H:i:s')]);
             $cartItems = Cart::where('user_id', $user->id)->with([
                 'product' => function ($query) {
                     $query->where(['status' => 1, 'flag' => 0]);
@@ -319,6 +323,7 @@ class CartController extends Controller
     //checkout function
     public function checkout()
     {
+        User::where('id', auth()->user()->id)->update(['auto_page' => 'checkout', 'auto_datetime' => date('y-m-d H:i:s'), 'auto_email' => 0]);
         $user = auth()->user();
         $cartItems = [];
         $cookieItems = [];
@@ -390,7 +395,7 @@ class CartController extends Controller
                         $cart_value += $vari->productVariant->sale_price * $vari->quantity;
                     }
                     foreach ($cartItems as $vari) {
-                        if($cart_value > $coupon->min_order_amount){
+                        if ($cart_value > $coupon->min_order_amount) {
                             if ($coupon->type == 'merchandise') {
                                 if (
                                     !empty($coupon->product_id) &&
@@ -465,7 +470,7 @@ class CartController extends Controller
                                 $emptycoupon = '';
                                 array_push($checkout_items, $this->disc_apply($vari, $emptycoupon));
                             }
-                        }else{
+                        } else {
                             $emptycoupon = '';
                             array_push($checkout_items, $this->disc_apply($vari, $emptycoupon));
                         }
@@ -714,16 +719,16 @@ class CartController extends Controller
         if (!empty($coupon)) {
             if ($coupon->disc_type == 'percent') {
                 $disc_amt = floatval((floatval($vari->productVariant->sale_price) * $coupon->discount) / 100);
-                if($disc_amt > $coupon->max_order_amount){
+                if ($disc_amt > $coupon->max_order_amount) {
                     $disc_amt = $coupon->max_order_amount;
                 }
                 $sale = (floatval($vari->productVariant->sale_price) - floatval($disc_amt)) * $vari->quantity;
             }
             if ($coupon->disc_type == 'amount') {
                 $disc_amt = $coupon->discount;
-                if($vari->productVariant->sale_price < $disc_amt){
+                if ($vari->productVariant->sale_price < $disc_amt) {
                     $sale = (floatval($vari->productVariant->sale_price) - $coupon->discount) * $vari->quantity;
-                }else{
+                } else {
                     $sale = floatval($vari->productVariant->sale_price) * $vari->quantity;
                 }
             }

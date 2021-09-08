@@ -73,13 +73,17 @@ class MyAccountController extends Controller
             'mobile_no'    => 'required|numeric|digits:10',
             'address'      => 'required',
             'landmark'     => 'nullable', 
-            'postcode'     => 'required|numeric' 
+            'postcode'     => 'required|numeric', 
+            'state'        => 'required',
+            'city'         => 'required',
         ],[
             'name.required'         => 'Name is required',
             'email.required'        => 'Email is required',
             'mobile_no.required'    => 'Mobile No is required',
             'address.required'      => 'Address is required',
             'postcode.required'     => 'Postcode is required',
+            'state.required'        => 'State is required',
+            'city.required'        => 'City is required',
             'mobile_no.numeric'     => 'Mobile No must be numeric',
             'mobile_no.digits'      => 'Mobile No must be of 10 digits',
             'postcode.numeric'      => 'Postcode Must be numeric'
@@ -92,6 +96,10 @@ class MyAccountController extends Controller
             if(!empty($location)) {
                 $state = $location->state;
                 $city = $location->city;
+            } else {
+                Location::create(['city' => strtoupper($request->city),'state' => strtoupper($request->city),'zip' => $request->postcode]);
+                $state = strtoupper($request->state);
+                $city = strtoupper($request->city);
             }
         }
 
@@ -132,13 +140,17 @@ class MyAccountController extends Controller
             'mobile_no'    => 'required|numeric|digits:10',
             'address'      => 'required',
             'landmark'     => 'nullable', 
-            'postcode'     => 'required|numeric' 
+            'postcode'     => 'required|numeric',
+            'state'        => 'required',
+            'city'         => 'required', 
         ],[
             'name.required'         => 'Name is required',
             'email.required'        => 'Email is required',
             'mobile_no.required'    => 'Mobile No is required',
             'address.required'      => 'Address is required',
             'postcode.required'     => 'Postcode is required',
+            'state.required'        => 'State is required',
+            'city.required'        => 'City is required',
             'mobile_no.numeric'     => 'Mobile No must be numeric',
             'mobile_no.digits'      => 'Mobile No must be of 10 digits',
             'postcode.numeric'      => 'Postcode Must be numeric'
