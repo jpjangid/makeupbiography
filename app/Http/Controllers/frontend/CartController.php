@@ -15,6 +15,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\ProductVariantMedia;
+use App\Models\Wallet;
 use Illuminate\Support\Collection;
 
 class CartController extends Controller
@@ -355,6 +356,24 @@ class CartController extends Controller
 
         $coupon_dis = 0.00;
 
+        $wallet = 0.00;
+        $credit = 0.00;
+        $debit = 0.00;
+        $user_wallets = Wallet::where('user_id',$user->id)->get();
+        if($user_wallets->isNotEmpty()){
+            foreach($user_wallets as $user_wallet){
+                if($user_wallet->status == 'credited'){
+                    $credit += $user_wallet->amount;
+                }
+                if($user_wallet->status == 'debited'){
+                    $debit += $user_wallet->amount;
+                }
+            }
+            if($credit > $debit){
+                $wallet = $credit - $debit;
+            }
+        }
+
         return view('frontend.checkout.index', compact(
             'cartItems',
             'totalCartItems',
@@ -364,7 +383,8 @@ class CartController extends Controller
             'locations',
             'user_coupons',
             'product_dis',
-            'coupon_dis'
+            'coupon_dis',
+            'wallet'
         ));
     }
 
@@ -716,24 +736,26 @@ class CartController extends Controller
     public function disc_apply($vari, $coupon)
     {
         $checkout_items = new Collection();
+        $disc_amt = 0.00;
         if (!empty($coupon)) {
             if ($coupon->disc_type == 'percent') {
-                $disc_amt = floatval((floatval($vari->productVariant->sale_price) * $coupon->discount) / 100);
-                if ($disc_amt > $coupon->max_order_amount) {
-                    $disc_amt = $coupon->max_order_amount;
+                $disc = floatval((floatval($vari->productVariant->sale_price) * $coupon->discount) / 100);
+                if ($disc > $coupon->max_order_amount) {
+                    $disc = $coupon->max_order_amount;
                 }
-                $sale = (floatval($vari->productVariant->sale_price) - floatval($disc_amt)) * $vari->quantity;
+                $sale = (floatval($vari->productVariant->sale_price) - floatval($disc)) * $vari->quantity;
+                $disc_amt = $disc * $vari->quantity;
             }
             if ($coupon->disc_type == 'amount') {
-                $disc_amt = $coupon->discount;
-                if ($vari->productVariant->sale_price < $disc_amt) {
+                $disc = $coupon->discount;
+                if ($vari->productVariant->sale_price < $disc) {
+                    $disc_amt = $disc * $vari->quantity;
                     $sale = (floatval($vari->productVariant->sale_price) - $coupon->discount) * $vari->quantity;
                 } else {
                     $sale = floatval($vari->productVariant->sale_price) * $vari->quantity;
                 }
             }
         } else {
-            $disc_amt = 0.00;
             $sale = floatval($vari->productVariant->sale_price) * $vari->quantity;
         }
         $total_disc = (floatval($vari->productVariant->regular_price) - floatval($vari->productVariant->sale_price)) + $disc_amt;
