@@ -10,6 +10,7 @@ class OrderController extends Controller
 {
     public function index(Request $request)
     {
+        dd($request->all());
         $request->validate([
             'billing_name'          =>  'required',
             'billing_mobile'        =>  'required',
