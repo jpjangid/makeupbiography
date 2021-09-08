@@ -124,6 +124,11 @@
                     <span class="woocommerce-input-wrapper">
                       <input type="text" class="input-text " name="state" id="state" placeholder="" value="{{ $address->state }}" autocomplete="given-name">
                     </span>
+                    @error('state')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                    @enderror
                   </p>
                   <p class="form-row form-row-first validate-required" id="billing_first_name_field" data-priority="10">
                     <label for="name" class=""> City&nbsp;
@@ -132,6 +137,11 @@
                     <span class="woocommerce-input-wrapper">
                       <input type="text" class="input-text " name="city" id="city" placeholder="" value="{{ $address->city }}" autocomplete="given-name">
                     </span>
+                    @error('city')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                    @enderror
                   </p>
                   <p class="form-row form-row-first validate-required" id="billing_first_name_field" data-priority="10">
                     <label for="name" class=""> Landmark&nbsp;

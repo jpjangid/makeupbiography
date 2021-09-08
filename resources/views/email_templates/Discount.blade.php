@@ -71,10 +71,10 @@
         <div class="inner-card">
             <img src="MB-Logo.png" alt="company-logo" style="width:45%; text-align: center;">
             <p class="head-line">We are happy to see you. You will be the first to know about latest trends, new arrivals and exclusive offers.</p>
-            <p class="offer">ENJOY 20% OFF</p>
+            <p class="offer">ENJOY {{ $offer }}% OFF</p>
             <p class="coupon-text-top">Here is a coupon code just for you!</p>
-            <span class="promo">code: MBXXXX123450</span>
-            <p class="coupon-text-bottom">Expires in 7 days from receipt of this email</p>
+            <span class="promo">code: {{ $coupon_code }}</span>
+            <p class="coupon-text-bottom">Expires in {{ $days }} days from receipt of this email</p>
             <p style="font-size: 30px; text-transform: uppercase; color: #008B8B;">Now that we're friends</p>
             <span>We'd love to address you by name, send you special birthday surprises and keep you updated on happenings.</span>
             <br><br>

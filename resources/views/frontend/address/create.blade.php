@@ -117,6 +117,32 @@
                     @enderror
                   </p>
                   <p class="form-row form-row-first validate-required" id="billing_first_name_field" data-priority="10">
+                    <label for="name" class=""> State&nbsp;
+                      <abbr class="required" title="required">*</abbr>
+                    </label>
+                    <span class="woocommerce-input-wrapper">
+                      <input type="text" class="input-text " name="state" id="state" placeholder="" value="{{ old('state') }}" autocomplete="given-name">
+                    </span>
+                    @error('state')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                    @enderror
+                  </p>
+                  <p class="form-row form-row-first validate-required" id="billing_first_name_field" data-priority="10">
+                    <label for="name" class=""> City&nbsp;
+                      <abbr class="required" title="required">*</abbr>
+                    </label>
+                    <span class="woocommerce-input-wrapper">
+                      <input type="text" class="input-text " name="city" id="city" placeholder="" value="{{ old('city') }}" autocomplete="given-name">
+                    </span>
+                    @error('city')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                    @enderror
+                  </p>
+                  <p class="form-row form-row-first validate-required" id="billing_first_name_field" data-priority="10">
                     <label for="name" class=""> Landmark&nbsp;
                       <abbr class="required" title="required">*</abbr>
                     </label>
@@ -149,6 +175,8 @@
   $(document).on('keyup','#postcode',function(){
     $('.stateName').text('');
     $('.cityName').text('');
+    $('#state').val('');
+    $('#city').val('');
     var pincode = $(this).val();
     $.ajax({
         type:'GET',
@@ -158,9 +186,12 @@
             if(data.location != "") {
               $('.stateName').text(data.location.state);
               $('.cityName').text(data.location.city);
+              $('#state').val(data.location.state);
+              $('#city').val(data.location.city);
             }
         }
     });
   });
+</script>
 </script>
 @endsection

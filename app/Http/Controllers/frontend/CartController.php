@@ -9,6 +9,7 @@ use App\Models\ProductVariant;
 use App\Models\Product;
 use App\Models\UserAddress;
 use App\Models\Coupon;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\ProductVariantMedia;
@@ -98,6 +99,7 @@ class CartController extends Controller
        $totalPrice = 0.00;
        if($user)
        {
+           User::where('id',auth()->user()->id)->update(['auto_page' => 'cart','auto_email'=> 0,'auto_datetime' => date('y-m-d H:i:s')]);
            $cartItems = Cart::where('user_id',$user->id)->with(['product' => function($query)
            {
                $query->where(['status' => 1,'flag' => 0]);
@@ -341,6 +343,7 @@ class CartController extends Controller
     //checkout function
     public function checkout()
     {
+        User::where('id',auth()->user()->id)->update(['auto_page' => 'checkout','auto_datetime' => date('y-m-d H:i:s'),'auto_email'=> 0]);
         $user = auth()->user();
         $cartItems = [];
         $cookieItems = [];
