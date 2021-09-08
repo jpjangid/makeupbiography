@@ -185,6 +185,9 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::get('wishlist/delete/{id}',[App\Http\Controllers\frontend\FavoriteController::class, 'destroy']);
     Route::get('wishlist',[App\Http\Controllers\frontend\FavoriteController::class, 'index']);
     Route::post('wishlist/add/to/cart',[App\Http\Controllers\frontend\FavoriteController::class, 'addToCart']);
+
+    //Route get location
+    Route::post('checkout/get/location',[App\Http\Controllers\frontend\MyAccountController::class, 'getMyAddress']);
 });
 
 //Route for Add to Cart

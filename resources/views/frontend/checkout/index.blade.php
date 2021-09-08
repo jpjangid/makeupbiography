@@ -64,12 +64,14 @@
 									<div class="col-1">
 										<h2 class="c-cart__header">Checkout</h2>
 										@foreach($locations as $location)
-										<input type="radio" class="addressSelect" name="addressSelect" value="{{ $location->id }}"><small class="list-address">{{ implode(' ', array_slice(str_word_count($location->address,1), 0, 10)) }}</small>,<small>{{$location->state}}</small>,<small>{{$location->city}}</small><br>
+											<input type="radio" class="addressSelect" name="addressSelect" value="{{ $location->id }}"><small class="list-address">{{ implode(' ', array_slice(str_word_count($location->address,1), 0, 10)) }}</small>,<small>{{$location->state}}</small>,<small>{{$location->city}}</small><br>
 										@endforeach
-										<a class="button button-add-new-address c-button--outline c-button">Add New Address</a>
+										{{-- <a class="button button-add-new-address c-button--outline c-button">Add New Address</a> --}}
 									</div>
-									<hr class="col-1 add-new-address-show" style="display: none;">
-									<div class="col-1 add-new-address-show" style="display: none;">
+									{{-- <hr class="col-1 add-new-address-show" style="display: none;">
+									<div class="col-1 add-new-address-show" style="display: none;"> --}}
+									<hr class="col-1 add-new-address-show">
+									<div class="col-1 add-new-address-show">	
 										<div class="c-cart__form c-cart__form--billing-fields woocommerce-billing-fields">
 											<h3 class="c-cart__header">Billing details</h3>
 											<div class="c-cart__billing-fields woocommerce-billing-fields__field-wrapper">
@@ -102,7 +104,7 @@
 														<abbr class="required" title="required">*</abbr>
 													</label>
 													<span class="woocommerce-input-wrapper">
-														<input type="text" class="input-text " name="billing_name" id="billing_name" placeholder="" value="" autocomplete="given-name" />
+														<input type="text" class="input-text" name="billing_name" id="billing_name" placeholder="" value="" autocomplete="given-name" />
 													</span>
 												</p>
 												<p class="form-row form-row-first validate-required" data-priority="10">
@@ -110,7 +112,7 @@
 														<abbr class="required" title="required">*</abbr>
 													</label>
 													<span class="woocommerce-input-wrapper">
-														<input type="email" class="input-text " name="billing_email" id="billing_email" placeholder="" value="" autocomplete="given-name" />
+														<input type="email" class="input-text" name="billing_email" id="billing_email" placeholder="" value="" autocomplete="given-name" />
 													</span>
 												</p>
 												<p class="form-row form-row-first validate-required" data-priority="10">
@@ -126,28 +128,33 @@
 														<abbr class="required" title="required">*</abbr>
 													</label>
 													<span class="woocommerce-input-wrapper">
-														<input type="text" class="input-text number" name="billing_address" id="billing_address" placeholder="" value="" autocomplete="given-name" />
+														<input type="text" class="input-text" name="billing_address" id="billing_address" placeholder="" value="" autocomplete="given-name" />
 													</span>
 												</p>
 												<p class="form-row form-row-first validate-required" data-priority="10">
 													<label for="billing_landmark" class="">Landmark&nbsp;
-														<abbr class="required" title="required">*</abbr>
 													</label>
 													<span class="woocommerce-input-wrapper">
-														<input type="text" class="input-text number" name="billing_landmark" id="billing_landmark" placeholder="" value="" autocomplete="given-name" />
+														<input type="text" class="input-text" name="billing_landmark" id="billing_landmark" placeholder="" value="" autocomplete="given-name" />
 													</span>
 												</p>
 											</div>
 										</div>
 									</div>
-									<div class="col-2 add-new-address-show" style="display: none;">
+									<br>
+									<div>
+										<label for="ship-to-different-address-checkbox" class="checkbox">
+											<h3 id="ship-to-different-address">
+												<input id="ship-to-different-address-checkbox" class="input-checkbox" type="checkbox" name="ship_to_different_address" value="1" />
+												<i></i>Ship to a different address?
+											</h3>
+										</label>
+									</div>
+									{{-- <div class="col-2 add-new-address-show" style="display: none;"> --}}
+									<div class="col-2 add-new-address-show">
 										<div class="c-cart__form c-cart__form--shipping-fields woocommerce-shipping-fields">
-											<label for="ship-to-different-address-checkbox" class="checkbox">
-												<h3 id="ship-to-different-address">
-													<input id="ship-to-different-address-checkbox" class="input-checkbox" type="checkbox" name="ship_to_different_address" value="1" />
-													<i></i>Ship to a different address?
-												</h3>
-											</label>
+
+											{{-- <div class="shipping_address" style="display: none;"> --}}
 											<div class="shipping_address" style="display: none;">
 												<div class="c-cart__shipping-fields woocommerce-shipping-fields__field-wrapper">
 													<p class="form-row form-row-first validate-required" data-priority="10">
@@ -179,7 +186,7 @@
 															<abbr class="required" title="required">*</abbr>
 														</label>
 														<span class="woocommerce-input-wrapper">
-															<input type="text" class="input-text " name="shipping_name" id="shipping_name" placeholder="" value="" autocomplete="given-name" />
+															<input type="text" class="input-text" name="shipping_name" id="shipping_name" placeholder="" value="" autocomplete="given-name" />
 														</span>
 													</p>
 													<p class="form-row form-row-first validate-required" data-priority="10">
@@ -187,7 +194,7 @@
 															<abbr class="required" title="required">*</abbr>
 														</label>
 														<span class="woocommerce-input-wrapper">
-															<input type="email" class="input-text " name="shipping_email" id="shipping_email" placeholder="" value="" autocomplete="given-name" />
+															<input type="email" class="input-text" name="shipping_email" id="shipping_email" placeholder="" value="" autocomplete="given-name" />
 														</span>
 													</p>
 													<p class="form-row form-row-first validate-required" data-priority="10">
@@ -203,15 +210,15 @@
 															<abbr class="required" title="required">*</abbr>
 														</label>
 														<span class="woocommerce-input-wrapper">
-															<input type="text" class="input-text number" name="shipping_address" id="shipping_address" placeholder="" value="" autocomplete="given-name" />
+															<input type="text" class="input-text" name="shipping_address" id="shipping_address" placeholder="" value="" autocomplete="given-name" />
 														</span>
 													</p>
 													<p class="form-row form-row-first validate-required" data-priority="10">
 														<label for="shipping_landmark" class="">Landmark&nbsp;
-															<abbr class="required" title="required">*</abbr>
+				
 														</label>
 														<span class="woocommerce-input-wrapper">
-															<input type="text" class="input-text number" name="shipping_landmark" id="shipping_landmark" placeholder="" value="" autocomplete="given-name" />
+															<input type="text" class="input-text" name="shipping_landmark" id="shipping_landmark" placeholder="" value="" autocomplete="given-name" />
 														</span>
 													</p>
 												</div>
@@ -415,8 +422,37 @@
 	<script>
 		$("#checkout-form").validate({
 			rules: {
+				billing_name: {
+					required: true
+				},
+				billing_email: {
+					required: true,
+					email: true
+				},
+				billing_mobile: {
+					required: true,
+					minlength: 10,
+					maxlength: 10,
+					number: true
+				},
+				billing_address: {
+					required: true
+				},
+				billing_postcode: {
+					required: true,
+				},
+				billing_state: {
+					required: true
+				},
+				billing_city: {
+					required: true
+				},
 				shipping_name: {
 					required: true
+				},
+				shipping_email: {
+					required: true,
+					email: true
 				},
 				shipping_mobile: {
 					required: true,
@@ -424,10 +460,17 @@
 					maxlength: 10,
 					number: true
 				},
-				billing_mobile: {
-					minlength: 10,
-					maxlength: 10,
-					number: true
+				shipping_address: {
+					required: true
+				},
+				shipping_postcode: {
+					required: true,
+				},
+				shipping_state: {
+					required: true
+				},
+				shipping_city: {
+					required: true
 				}
 			}
 		});
