@@ -33,7 +33,7 @@ class AutomationMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('email.cancel_offer')
+        return $this->markdown('email_templates.Discount')
         ->from('webanixnew@gmail.com', 'makeuptest')
         ->subject('Discount'.$this->coupon_code)
         ->with([

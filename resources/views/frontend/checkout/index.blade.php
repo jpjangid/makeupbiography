@@ -474,6 +474,13 @@
 				}
 			}
 		});
+		$(document).ready(function() {
+			var external_coupon = "";
+			external_coupon = "{{ $external_code }}";
+			if(external_coupon != "") {
+				$('#coupon_code').val(external_coupon);
+			} 
+		});
 
 		function coupon_applied(code) {
 			$('#coupon_code').val(code);

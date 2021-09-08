@@ -78,7 +78,10 @@
             <p style="font-size: 30px; text-transform: uppercase; color: #008B8B;">Now that we're friends</p>
             <span>We'd love to address you by name, send you special birthday surprises and keep you updated on happenings.</span>
             <br><br>
-            <input type="button" value="Shop Now" class="btn">
+            <form action="{{ url('checkout/coupon/apply') }}" method="get">
+                <input type="hidden" name="_code" value="{{ $coupon_code }}" hidden>
+                <input type="submit" value="Shop Now" class="btn">
+            </form>
             <p class="foot-line">Your cart is misses you..Complete your purchase!!</p>
         </div>
     </div>

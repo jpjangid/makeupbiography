@@ -169,6 +169,7 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::get('checkout', [App\Http\Controllers\frontend\CartController::class, 'checkout']);
     Route::post('checkout/apply_coupon',[App\Http\Controllers\frontend\CartController::class, 'couponApply']);
     Route::post('checkout/razorpay',[App\Http\Controllers\frontend\CartController::class, 'create_razorpay_order']);
+    Route::get('checkout/coupon/apply', [App\Http\Controllers\frontend\CartController::class, 'checkoutCouponGet']);
 
     //Store Order
     Route::post('order/orderstore',[App\Http\Controllers\frontend\OrderController::class, 'index']);
@@ -188,6 +189,7 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
 
     //Route get location
     Route::post('checkout/get/location',[App\Http\Controllers\frontend\MyAccountController::class, 'getMyAddress']);
+
 });
 
 //Route for Add to Cart

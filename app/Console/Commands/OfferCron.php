@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Models\Cart;
 use App\Models\Coupon;
 use App\Mail\AutomationMail;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
 
 class OfferCron extends Command
 {
@@ -49,11 +51,11 @@ class OfferCron extends Command
             $automation_time = strtotime($startTime);
             $cenvertedTime = date('Y-m-d H:i:s', strtotime('+5 minutes', strtotime($automation_date_time)));
             $converted_time = strtotime($cenvertedTime);
-
             if ($automation_time > $converted_time) {
                 if ($auto_page == 'cart') {
                     $number_day = 7;
                     $discount = 10;
+
                     $coupon_code = $this->coupon_code_generater();
                     $start_date = date("Y-m-d");
                     $end_date = date('Y-m-d', strtotime('+' . $number_day . ' days'));
@@ -66,9 +68,8 @@ class OfferCron extends Command
                     $carts = Cart::where('user_id', $user->id)->get();
 
                     if (!empty($carts)) {
-
                         Coupon::create([
-                            'name'                  => 'Discount',
+                            'name'                  => "Discount " . Str::random(12),
                             'code'                  => $coupon_code,
                             'type'                  => 'customer_based',
                             'user_id'               => $user->id,
@@ -106,7 +107,7 @@ class OfferCron extends Command
                     $carts = Cart::where('user_id', $user->id)->get();
                     if (!empty($carts)) {
                         Coupon::create([
-                            'name'                  => 'Discount',
+                            'name'                  => "Discount " . Str::random(12),
                             'code'                  => $coupon_code,
                             'type'                  => 'customer_based',
                             'user_id'               => $user->id,
@@ -143,7 +144,7 @@ class OfferCron extends Command
                     $carts = Cart::where('user_id', $user->id)->get();
                     if (!empty($carts)) {
                         Coupon::create([
-                            'name'                  => 'Discount',
+                            'name'                  => "Discount " . Str::random(12),
                             'code'                  => $coupon_code,
                             'type'                  => 'customer_based',
                             'user_id'               => $user->id,

@@ -321,9 +321,11 @@ class CartController extends Controller
     }
 
     //checkout function
-    public function checkout()
+    public function checkout(Request $request)
     {
+
         User::where('id', auth()->user()->id)->update(['auto_page' => 'checkout', 'auto_datetime' => date('y-m-d H:i:s'), 'auto_email' => 0]);
+        $external_code = "";
         $user = auth()->user();
         $cartItems = [];
         $cookieItems = [];
@@ -336,6 +338,13 @@ class CartController extends Controller
         $product_dis = array();
         $cartItems = Cart::where('user_id', $user->id)->with('product', 'productVariant.medias')->get();
         $totalQuantityItems = Cart::where('user_id', $user->id)->sum('quantity');
+        if ($request->session()->has('_code')) {
+            $external_code = $request->session()->get('_code');
+        }
+        if(count($cartItems) == 0 || empty($cartItems)) {
+            return redirect('/');
+        }
+
         if ($cartItems) {
             foreach ($cartItems as $vari) {
                 $subtotal += round(floatval($vari->productVariant->sale_price) * $vari->quantity);
@@ -364,7 +373,8 @@ class CartController extends Controller
             'locations',
             'user_coupons',
             'product_dis',
-            'coupon_dis'
+            'coupon_dis',
+            'external_code'
         ));
     }
 
@@ -773,5 +783,17 @@ class CartController extends Controller
         $data['user'] = auth()->user();
 
         return response()->json($data);
+    }
+
+    public function checkoutCouponGet(Request $request)
+    {
+      $request->session()->forget('_code');  
+      if(isset($request->_code)) {
+        if(Coupon::where(['code' => $request->_code,'times_applied' => null])->first()) {
+            $request->session()->put('_code', $request->_code);
+        }
+        return redirect('checkout');
+      } 
+      return redirect('checkout');
     }
 }
