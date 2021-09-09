@@ -4,53 +4,58 @@ $(document).on('click', '.button-add-new-address', function(e) {
     $('.add-new-address-show').css('display', 'block');
 
 });
-/* address radio events */
-$(document).on('click', '.addressSelect', function(e) {
-    e.preventDefault();
-    var locationId = $(this).val();
-    var csrfToken = $('#tokken').val();
-    var baseUrl = $('#baseUrl').val();
-    var mainUrl = baseUrl + "/checkout/get/location";
-    if ($(this).attr('checked', true) && locationId != "") {
-        $.ajax({
-            type: 'POST',
-            url: mainUrl,
-            data: { _token: csrfToken, location_id: locationId },
-            success: function(data) {
-                if (data.status == 200 && data.data != "") {
-                    locationClear();
-                    var billingName = data.data.name;
-                    var billingEmail = data.data.email;
-                    var billingMobile = data.data.mobile;
-                    var billingAddress = data.data.address;
-                    var billingPostcode = data.data.pincode;
-                    var billingState = data.data.state;
-                    var billingCity = data.data.city;
-                    var billingLandmark = data.data.landmark;
 
-                    $('#billing_name').val(billingName);
-                    $('#billing_email').val(billingEmail);
-                    $('#billing_mobile').val(billingMobile);
-                    $('#billing_address').val(billingAddress);
-                    $('#billing_postcode').val(billingPostcode);
-                    $('#billing_state').val(billingState);
-                    $('#billing_city').val(billingCity);
-                    $('#billing_landmark').val(billingLandmark);
+/* address function */
+function addressChange(address) {
+    var locationId = $('input[name=addressSelect]:checked', '#checkout-form').val();
+    if (locationId != "new" && locationId != "") {
+        var csrfToken = $('#tokken').val();
+        var baseUrl = $('#baseUrl').val();
+        var mainUrl = baseUrl + "/checkout/get/location";
+        if ($(this).attr('checked', true) && locationId != "") {
+            $.ajax({
+                type: 'POST',
+                url: mainUrl,
+                data: { _token: csrfToken, location_id: locationId },
+                success: function(data) {
+                    if (data.status == 200 && data.data != "") {
+                        locationClear();
+                        var billingName = data.data.name;
+                        var billingEmail = data.data.email;
+                        var billingMobile = data.data.mobile;
+                        var billingAddress = data.data.address;
+                        var billingPostcode = data.data.pincode;
+                        var billingState = data.data.state;
+                        var billingCity = data.data.city;
+                        var billingLandmark = data.data.landmark;
 
-                    $('#shipping_name').val(billingName);
-                    $('#shipping_email').val(billingEmail);
-                    $('#shipping_mobile').val(billingMobile);
-                    $('#shipping_address').val(billingAddress);
-                    $('#shipping_postcode').val(billingPostcode);
-                    $('#shipping_state').val(billingState);
-                    $('#shipping_city').val(billingCity);
-                    $('#shipping_landmark').val(billingLandmark);
+                        $('#billing_name').val(billingName);
+                        $('#billing_email').val(billingEmail);
+                        $('#billing_mobile').val(billingMobile);
+                        $('#billing_address').val(billingAddress);
+                        $('#billing_postcode').val(billingPostcode);
+                        $('#billing_state').val(billingState);
+                        $('#billing_city').val(billingCity);
+                        $('#billing_landmark').val(billingLandmark);
 
+                        $('#shipping_name').val(billingName);
+                        $('#shipping_email').val(billingEmail);
+                        $('#shipping_mobile').val(billingMobile);
+                        $('#shipping_address').val(billingAddress);
+                        $('#shipping_postcode').val(billingPostcode);
+                        $('#shipping_state').val(billingState);
+                        $('#shipping_city').val(billingCity);
+                        $('#shipping_landmark').val(billingLandmark);
+
+                    }
                 }
-            }
-        });
-    };
-});
+            });
+        };
+    } else {
+        locationClear();
+    }
+
+}
 
 /* Empty the input forms for locations */
 function locationClear() {
@@ -58,12 +63,16 @@ function locationClear() {
     $('#billing_email').val('');
     $('#billing_mobile').val('');
     $('#billing_address').val('');
+    $('#billing_state').val('');
+    $('#billing_city').val('');
     $('#billing_postcode').val('');
     $('#billing_landmark').val('');
     $('#shipping_name').val('');
     $('#shipping_email').val('');
     $('#shipping_mobile').val('');
     $('#shipping_address').val('');
+    $('#shipping_state').val('');
+    $('#shipping_city').val('');
     $('#shipping_postcode').val('');
     $('#shipping_landmark').val('');
 }

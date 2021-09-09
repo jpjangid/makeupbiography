@@ -64,8 +64,9 @@
 									<div class="col-1">
 										<h2 class="c-cart__header">Checkout</h2>
 										@foreach($locations as $location)
-											<input type="radio" class="addressSelect" name="addressSelect" value="{{ $location->id }}"><small class="list-address">{{ implode(' ', array_slice(str_word_count($location->address,1), 0, 10)) }}</small>,<small>{{$location->state}}</small>,<small>{{$location->city}}</small><br>
+											<input type="radio" name="addressSelect" onclick="addressChange(this)" value="{{ $location->id }}"><small class="list-address">{{ implode(' ', array_slice(str_word_count($location->address,1), 0, 10)) }}</small>,<small>{{$location->state}}</small>,<small>{{$location->city}}</small><br>
 										@endforeach
+											<input type="radio" name="addressSelect" onclick="addressChange(this)" value="new" checked><small>New</small><br>
 										{{-- <a class="button button-add-new-address c-button--outline c-button">Add New Address</a> --}}
 									</div>
 									{{-- <hr class="col-1 add-new-address-show" style="display: none;">
