@@ -149,34 +149,37 @@ class CartController extends Controller
         }
 
         if (request()->ajax()) {
-            if (count($cartItems) > 0) {
-                $cartItems = $cartItems->take(3);
-            }
+            $data = [];
             $listItem = "";
-            if (count($cartItems) > 0) {
-                foreach ($cartItems as $item) {
-                    $listItem .= $this->list_items($item);
+            if($user) {
+                if (count($cartItems) > 0) {
+                    $cartItems = $cartItems->take(3);
                 }
-                $data['totalQuantityItems'] = $totalQuantityItems;
-                $data['listItem'] = $listItem;
-            }
-
-            if (count($cookieCartItems) > 0) {
-                foreach ($cookieCartItems as $cookie_item) {
-                    if ($cookie_item['product'] != "") {
-                        $listItem .= $this->cookie_items($cookie_item);
+                if (count($cartItems) > 0) {
+                    foreach ($cartItems as $item) {
+                        $listItem .= $this->list_items($item);
                     }
+                    $data['totalQuantityItems'] = $totalQuantityItems;
+                    $data['listItem'] = $listItem;
                 }
-
+            } else {    
                 if (count($cookieCartItems) > 0) {
                     foreach ($cookieCartItems as $cookie_item) {
-                        $listItem .= $this->cookie_items($cookie_item);
+                        if ($cookie_item['product'] != "") {
+                            $listItem .= $this->cookie_items($cookie_item);
+                        }
                     }
-                }
 
-                $data['totalQuantityItems'] = $totalQuantityItems;
-                $data['listItem'] = $listItem;
-            }
+                    if (count($cookieCartItems) > 0) {
+                        foreach ($cookieCartItems as $cookie_item) {
+                            $listItem .= $this->cookie_items($cookie_item);
+                        }
+                    }
+
+                    $data['totalQuantityItems'] = $totalQuantityItems;
+                    $data['listItem'] = $listItem;
+                }
+            }    
             return response()->json($data);
         }
 
