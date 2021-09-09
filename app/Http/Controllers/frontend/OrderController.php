@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Razorpay\Api\Api;
 use Razorpay\Api\Errors\SignatureVerificationError;
 use Illuminate\Support\Str;
+use Illuminate\Support\Collection;
 
 class OrderController extends Controller
 {
@@ -60,11 +61,11 @@ class OrderController extends Controller
             } else {
                 return redirect('cart')->with('fail', 'Payment failed.');
             }
-        }elseif($payment_mode == "cod"){
+        } elseif ($payment_mode == "cod") {
             $razorpay_payment_id = '';
             $razorpay_order_id = '';
             $online_payment = "pending";
-        }else{
+        } else {
             $payment_mode == "online";
             $razorpay_payment_id = '';
             $razorpay_order_id = '';
@@ -99,22 +100,22 @@ class OrderController extends Controller
         $order_amt = 0.00;
         $coupon_id = '';
         $discount = 0.00;
-        if($request->wallet_amt != 0){
-            if(!empty($request->total)){
+        if ($request->wallet_amt != 0) {
+            if (!empty($request->total)) {
                 $order_amt = $request->wallet_amt + $request->total;
-            }else{
+            } else {
                 $order_amt = $request->wallet_amt;
             }
-        }else{
+        } else {
             $order_amt = $request->total;
         }
 
         $coupon = '';
-        if($request->coupon_discount != 0){
+        if ($request->coupon_discount != 0) {
             $discount = $request->coupon_discount + $request->product_discount;
-            $coupon = Coupon::where('code',$request->coupon_code)->first();
+            $coupon = Coupon::where('code', $request->coupon_code)->first();
             $coupon_id = $coupon->id;
-        }else{
+        } else {
             $discount = $request->product_discount;
         }
 
@@ -159,7 +160,7 @@ class OrderController extends Controller
             'wallet_amount'             => $request->wallet_amt,
         ]);
 
-        foreach($cartItems as $item){
+        foreach ($cartItems as $item) {
             OrderItem::create([
                 'order_id'              =>  $order->id,
                 'product_id'            =>  $item->product_id,
@@ -168,8 +169,8 @@ class OrderController extends Controller
             ]);
         }
 
-        if(!empty($coupon) && $request->coupon_discount != 0){
-            if($coupon->type == 'merchandise' || $coupon->type == 'global' || $coupon->type == 'personal_code' || $coupon->type == 'cart_value_discount' ){
+        if (!empty($coupon) && $request->coupon_discount != 0) {
+            if ($coupon->type == 'merchandise' || $coupon->type == 'global' || $coupon->type == 'personal_code' || $coupon->type == 'cart_value_discount') {
                 CouponUsedBy::create([
                     'coupon_id'         =>  $coupon->id,
                     'user_id'           =>  $user->id,
@@ -177,13 +178,13 @@ class OrderController extends Controller
                     'amount'            =>  $request->coupon_discount,
                     'applied_times'     =>  1,
                 ]);
-            }else{
+            } else {
                 $coupon->times_applied  = $coupon->times_applied + 1;
                 $coupon->update();
             }
         }
 
-        if($request->wallet_amt != 0){
+        if ($request->wallet_amt != 0) {
             Wallet::create([
                 'user_id'           =>  $user->id,
                 'order_id'          =>  $order->id,
@@ -192,23 +193,138 @@ class OrderController extends Controller
             ]);
         }
 
-        if(!empty($order)){
-            foreach($cartItems as $item){
+        if (!empty($order)) {
+            foreach ($cartItems as $item) {
                 $item->delete();
             }
         }
 
-        return redirect('/')->with('success','Order Placed Successfully');
+        $response = $this->create_shiprocket_order($order->id);
+
+        return redirect('/')->with('success', 'Order Placed Successfully');
     }
 
     public function order_no()
     {
         $no = Str::random(8);
-        $order = Order::where('order_no',$no)->first();
-        if(!empty($order)){
+        $order = Order::where('order_no', $no)->first();
+        if (!empty($order)) {
             $this->order_no();
-        }else{
+        } else {
             return $no;
         }
+    }
+
+    public function create_shiprocket_order($order_id)
+    {
+        $auth_response = $this->shiprocket_auth();
+        $auth_response = json_decode($auth_response);
+        $token = $auth_response->token;
+
+        $token_new = array(
+            'Content-Type: application/json',
+            'Authorization: Bearer '.$token.''
+        );
+        dd($token_new);
+
+
+		$order = Order::where('id',$order_id)->with('items')->first();
+        $payment_mode = $order->payment_mode == 'cod' ? 'COD' : 'Prepaid';
+		$items = new Collection();
+		foreach ($order->items as $order_item) {
+			$items->push([
+				'name'          => $order_item->variant->product->name.' - '.$order_item->variant->name,
+				'sku'           => $order_item->variant->sku,
+				'units'         => $order_item->quantity,
+				'selling_price' => $order_item->variant->sale_price,
+				'hsn'           => $order_item->variant->product->hsn_code
+			]);
+		}
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://apiv2.shiprocket.in/v1/external/orders/create/adhoc',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => '{
+                "order_id": '.$order->order_no.',
+                "order_date": '.$order->created_at.',
+                "pickup_location": "Primary",
+                "billing_customer_name": '.$order->billing_name.',
+                "billing_last_name": '.$order->billing_name.',
+                "billing_address": '.$order->billing_address.',
+                "billing_address_2": '.$order->billing_address.',
+                "billing_city": '.$order->billing_city.',
+                "billing_pincode": '.$order->billing_zip.',
+                "billing_state": '.$order->billing_state.',
+                "billing_country": '.$order->billing_country.',
+                "billing_email": '.$order->billing_email.',
+                "billing_phone": '.$order->billing_mobile.',
+                "shipping_is_billing": false,
+                "shipping_customer_name": '.$order->shipping_name.',
+                "shipping_last_name": '.$order->shipping_name.',
+                "shipping_address": '.$order->shipping_address.',
+                "shipping_address_2": '.$order->shipping_address.',
+                "shipping_city": '.$order->shipping_city.',
+                "shipping_pincode": '.$order->shipping_zip.',
+                "shipping_state": '.$order->shipping_state.',
+                "shipping_country": '.$order->shipping_country.',
+                "shipping_email": '.$order->shipping_email.',
+                "shipping_phone": '.$order->shipping_mobile.',
+                "order_items": '.$items.',
+                "payment_method": '.$payment_mode.',
+                "shipping_charges": '.$order->service_charge_applied.',
+                "sub_total": '.$order->total_amount.',
+                "length": 1,
+                "breadth": 1,
+                "height": 1,
+                "weight": 1
+            }',
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type: application/json',
+                'Authorization: Bearer '.$token.''
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        dd($response);
+        return $response;
+    }
+
+    public function shiprocket_auth()
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://apiv2.shiprocket.in/v1/external/auth/login',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => '{
+                "email": "marketing@28southventures.com",
+                "password": "Admin@28mb"
+            }',
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type: application/json'
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+
+        return $response;
     }
 }
