@@ -64,9 +64,9 @@
 									<div class="col-1">
 										<h2 class="c-cart__header">Checkout</h2>
 										@foreach($locations as $location)
-											<input type="radio" name="addressSelect" onclick="addressChange(this)" value="{{ $location->id }}"><small class="list-address">{{ implode(' ', array_slice(str_word_count($location->address,1), 0, 10)) }}</small>,<small>{{$location->state}}</small>,<small>{{$location->city}}</small><br>
+										<input type="radio" name="addressSelect" onclick="addressChange(this)" value="{{ $location->id }}"><small class="list-address">{{ implode(' ', array_slice(str_word_count($location->address,1), 0, 10)) }}</small>,<small>{{$location->state}}</small>,<small>{{$location->city}}</small><br>
 										@endforeach
-											<input type="radio" name="addressSelect" onclick="addressChange(this)" value="new" checked><small>New</small><br>
+										<input type="radio" name="addressSelect" onclick="addressChange(this)" value="new" checked><small>New</small><br>
 										{{-- <a class="button button-add-new-address c-button--outline c-button">Add New Address</a> --}}
 									</div>
 									{{-- <hr class="col-1 add-new-address-show" style="display: none;">
@@ -137,6 +137,7 @@
 													</label>
 													<span class="woocommerce-input-wrapper">
 														<input type="text" class="input-text" name="billing_landmark" id="billing_landmark" placeholder="" value="" autocomplete="given-name" />
+														<input type="hidden" name="billing_country" value="INDIA">
 													</span>
 												</p>
 											</div>
@@ -219,6 +220,7 @@
 
 														</label>
 														<span class="woocommerce-input-wrapper">
+															<input type="hidden" name="shipping_country" value="INDIA">
 															<input type="text" class="input-text" name="shipping_landmark" id="shipping_landmark" placeholder="" value="" autocomplete="given-name" />
 														</span>
 													</p>
@@ -280,6 +282,7 @@
 												<th class="c-cart__totals-th c-cart__totals-th--product-total product-total">Price</th>
 											</tr>
 										</thead>
+										<input type="hidden" name="no_items" value="{{ $no_items }}">
 										<tbody id="product_tbody">
 											@php $regular_price = 0; @endphp
 											@foreach($cartItems as $key => $item)

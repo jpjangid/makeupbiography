@@ -14,9 +14,9 @@ class Order extends Model
         'no_items', 'billing_name', 'billing_mobile', 'billing_address', 'billing_country', 'billing_state',
         'billing_city', 'billing_zip', 'billing_landmark', 'shipping_name', 'shipping_mobile', 'shipping_address',
         'shipping_country', 'shipping_state', 'shipping_city', 'shipping_zip', 'shipping_landmark', 'order_status',
-        'payment_gateway_id', 'payment_mode', 'payment_currency', 'payment_status', 'shiprocket_order_id',
+        'razorpay_order_id', 'razorpay_payment_id', 'payment_mode', 'payment_currency', 'payment_status', 'shiprocket_order_id',
         'shiprocket_shipment_id', 'coupon_id', 'shop', 'order_comments', 'payment_amount', 'wallet_amount',
-        'coupon_discount'
+        'coupon_discount', 'shipping_email', 'billing_email'
     ];
 
     public function items()
