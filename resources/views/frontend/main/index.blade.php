@@ -84,54 +84,18 @@
                         <div class="c-ip-image-list-1 c-ip-image-list-1--carousel">
                           <div class="c-ip-image-list-1__wrap c-ip-image-list-1__wrap--carousel">
                             <div class="c-ip-image-list-1__list c-ip-image-list-1__list--carousel  js-image-list-1 h-carousel h-carousel--dots-hide h-carousel--nav-hide">
-                              <div class="c-ip-image-list-1__item c-ip-image-list-1__item--carousel">
-                                <a href="https://parkofideas.com/luchiana/demo/product-category/skincare/" class="c-ip-image-list-1__link">
-                                  <div class="c-ip-image-list-1__thumb">
-                                    <img class="c-ip-image-list-1__image" width="115" height="50vh" src="../wp-content/uploads/2020/12/luchiana-0654733209-115x115.jpg" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/12/luchiana-0654733209-115x115.jpg 115w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/12/luchiana-0654733209-145x145.jpg 145w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/12/luchiana-0654733209.jpg 180w" sizes="(max-width: 115px) 100vw, 115px" alt="cat-1" loading="lazy" />
-                                  </div>
-                                  <div class="c-ip-image-list-1__title">Skincare</div>
-                                </a>
-                              </div>
-                              <div class="c-ip-image-list-1__item c-ip-image-list-1__item--carousel">
-                                <a href="https://parkofideas.com/luchiana/demo/product-category/makeup/lips/" class="c-ip-image-list-1__link">
-                                  <div class="c-ip-image-list-1__thumb">
-                                    <img class="c-ip-image-list-1__image" width="115" height="115" src="../wp-content/uploads/2020/12/luchiana-0654102558-115x115.jpg" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/12/luchiana-0654102558-115x115.jpg 115w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/12/luchiana-0654102558-145x145.jpg 145w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/12/luchiana-0654102558.jpg 180w" sizes="(max-width: 115px) 100vw, 115px" alt="cat-2" loading="lazy" />
-                                  </div>
-                                  <div class="c-ip-image-list-1__title">Lips</div>
-                                </a>
-                              </div>
-                              <div class="c-ip-image-list-1__item c-ip-image-list-1__item--carousel">
-                                <a href="https://parkofideas.com/luchiana/demo/product-category/makeup/hair/" class="c-ip-image-list-1__link">
-                                  <div class="c-ip-image-list-1__thumb">
-                                    <img class="c-ip-image-list-1__image" width="115" height="115" src="../wp-content/uploads/2020/12/luchiana-0654445062-115x115.jpg" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/12/luchiana-0654445062-115x115.jpg 115w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/12/luchiana-0654445062-145x145.jpg 145w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/12/luchiana-0654445062.jpg 180w" sizes="(max-width: 115px) 100vw, 115px" alt="cat-3" loading="lazy" />
-                                  </div>
-                                  <div class="c-ip-image-list-1__title">Hair</div>
-                                </a>
-                              </div>
-                              <div class="c-ip-image-list-1__item c-ip-image-list-1__item--carousel">
-                                <a href="https://parkofideas.com/luchiana/demo/product-category/makeup/eye/" class="c-ip-image-list-1__link">
-                                  <div class="c-ip-image-list-1__thumb">
-                                    <img class="c-ip-image-list-1__image" width="115" height="115" src="../wp-content/uploads/2020/12/luchiana-0654822752-115x115.jpg" alt="cat-4" loading="lazy" />
-                                  </div>
-                                  <div class="c-ip-image-list-1__title">Eye</div>
-                                </a>
-                              </div>
-                              <div class="c-ip-image-list-1__item c-ip-image-list-1__item--carousel">
-                                <a href="https://parkofideas.com/luchiana/demo/product-category/makeup/" class="c-ip-image-list-1__link">
-                                  <div class="c-ip-image-list-1__thumb">
-                                    <img class="c-ip-image-list-1__image" width="115" height="115" src="../wp-content/uploads/2020/12/luchiana-0654132591-115x115.jpg" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/12/luchiana-0654132591-115x115.jpg 115w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/12/luchiana-0654132591-145x145.jpg 145w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/12/luchiana-0654132591.jpg 180w" sizes="(max-width: 115px) 100vw, 115px" alt="cat-5" loading="lazy" />
-                                  </div>
-                                  <div class="c-ip-image-list-1__title">Makeup</div>
-                                </a>
-                              </div>
-                              <div class="c-ip-image-list-1__item c-ip-image-list-1__item--carousel">
-                                <a href="https://parkofideas.com/luchiana/demo/product-category/fragrance/" class="c-ip-image-list-1__link">
-                                  <div class="c-ip-image-list-1__thumb">
-                                    <img class="c-ip-image-list-1__image" width="115" height="115" src="../wp-content/uploads/2020/12/luchiana-0654439537-115x115.jpg" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/12/luchiana-0654439537-115x115.jpg 115w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/12/luchiana-0654439537.jpg 178w" sizes="(max-width: 115px) 100vw, 115px" alt="cat-6" loading="lazy" />
-                                  </div>
-                                  <div class="c-ip-image-list-1__title">Fragrance</div>
-                                </a>
-                              </div>
+                              @if(!empty($main_categories))  
+                              @foreach($main_categories as $main_category)  
+                                <div class="c-ip-image-list-1__item c-ip-image-list-1__item--carousel">
+                                  <a href="{{ url('category',['slug' => $main_category->slug]) }}" class="c-ip-image-list-1__link">
+                                    <div class="c-ip-image-list-1__thumb">
+                                      <img class="c-ip-image-list-1__image" width="115" height="50vh" src="{{ asset('storage/category/'.$main_category->featured_image) }}" srcset="{{ asset('storage/category/'.$main_category->featured_image) }} 180w" sizes="(max-width: 115px) 100vw, 115px" alt="{{ $main_category->alt }}" loading="lazy" />
+                                    </div>
+                                    <div class="c-ip-image-list-1__title">{{ $main_category->name }}</div>
+                                  </a>
+                                </div>
+                              @endforeach  
+                              @endif
                             </div>
                           </div>
                         </div>
@@ -189,10 +153,14 @@
                             </div>
                           </div>
                           <div class="c-ip-product-tabs__list">
+                            <!-- Top Products Newest Begin -->
                             <div class="c-ip-product-tabs__item visible active" id="tab-01406ee-1">
                               <div class="woocommerce columns-4 ">
                                 <div class="c-product-grid__wrap c-product-grid__wrap--4-per-row ">
                                   <div class="c-product-grid__list c-ip-product-tabs__list c-ip-product-tabs__list--4-per-row c-ip-product-tabs__list--grid c-product-grid__list--4-per-row ">
+                                   
+                                    <!-- Top Product List Item Begin -->
+                                    @foreach($main_newest_products as $main_newest_product)
                                     <div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple">
                                       <div class="c-product-grid__badges c-badge__list">
                                         <span class="c-badge c-badge--featured">Featured</span>
@@ -253,542 +221,9 @@
                                       </div>
                                       <!-- .c-product-grid__details -->
                                     </div>
-                                    <div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-504 status-publish instock product_cat-hair product_tag-hair product_tag-shampoo has-post-thumbnail shipping-taxable purchasable product-type-simple">
-                                      <div class="c-product-grid__badges c-badge__list">
-                                        <span class="c-badge c-badge--new">New</span>
-                                      </div>
-                                      <!-- .c-product-grid__badges -->
-                                      <div class="c-product-grid__thumb-wrap">
-                                        <a href="https://parkofideas.com/luchiana/demo/shop/bodifying-shampoo/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                          <img width="260" height="230" src="../wp-content/uploads/2020/10/luchiana-3015865450-260x230.jpg" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3015865450-260x230.jpg 260w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3015865450-520x460.jpg 520w" sizes="(max-width: 260px) 100vw, 260px" />
-                                        </a>
-                                        <div class="c-product-grid__thumb-button-list">
-                                          <button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="504">
-                                            <i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>
-                                            <i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>
-                                          </button>
-                                          <button class="js-wishlist-btn c-wishlist__btn c-wishlist__item-504-btn h-cb c-product-grid__thumb-button" data-product-id="504" data-title="Wishlist">
-                                            <i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
-                                            <i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
-                                          </button>
-                                        </div>
-                                      </div>
-                                      <!-- .c-product-grid__thumb-wrap -->
-                                      <a href="index6932.html?add-to-cart=504" data-quantity="1" class="h-cb c-product-grid__atc button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="504" data-product_sku="6549845337" aria-label="Add &ldquo;Bodifying Shampoo&rdquo; to your cart" rel="nofollow">
-                                        <i class="ip-plus c-product-grid__atc-icon"></i>
-                                        <span class="c-product-grid__atc-text">Add to cart</span>
-                                      </a>
-                                      <div class="c-product-grid__details">
-                                        <div class="c-product-grid__title-wrap">
-                                          <a href="https://parkofideas.com/luchiana/demo/shop/bodifying-shampoo/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                            <h2 class="woocommerce-loop-product__title">Bodifying Shampoo</h2>
-                                          </a>
-                                          <div class="c-product-grid__short-desc">
-                                            <p>A gentle but thorough cleanser that leaves hair.</p>
-                                          </div>
-                                        </div>
-                                        <!-- .c-product-grid__title-wrap -->
-                                        <div class="c-product-grid__price-wrap">
-                                          <span class="price">
-                                            <span class="woocommerce-Price-amount amount">
-                                              <bdi>
-                                                <span class="woocommerce-Price-currencySymbol">&#36;</span>45.00</bdi>
-                                            </span>
-                                          </span>
-                                        </div>
-                                        <!-- .c-product-grid__price-wrap -->
-                                      </div>
-                                      <!-- .c-product-grid__details -->
-                                    </div>
-                                    <div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-508 status-publish instock product_cat-eye product_tag-brightening product_tag-corrector product_tag-eye has-post-thumbnail shipping-taxable purchasable product-type-simple">
-                                      <div class="c-product-grid__badges c-badge__list">
-                                        <span class="c-badge c-badge--new">New</span>
-                                      </div>
-                                      <!-- .c-product-grid__badges -->
-                                      <div class="c-product-grid__thumb-wrap">
-                                        <a href="https://parkofideas.com/luchiana/demo/shop/eye-brightening-corrector/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                          <img width="260" height="230" src="../wp-content/uploads/2020/10/luchiana-3022718468-260x230.jpg" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022718468-260x230.jpg 260w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022718468-520x460.jpg 520w" sizes="(max-width: 260px) 100vw, 260px" />
-                                        </a>
-                                        <div class="c-product-grid__thumb-button-list">
-                                          <button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="508">
-                                            <i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>
-                                            <i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>
-                                          </button>
-                                          <button class="js-wishlist-btn c-wishlist__btn c-wishlist__item-508-btn h-cb c-product-grid__thumb-button" data-product-id="508" data-title="Wishlist">
-                                            <i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
-                                            <i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
-                                          </button>
-                                        </div>
-                                      </div>
-                                      <!-- .c-product-grid__thumb-wrap -->
-                                      <a href="index9fa9.html?add-to-cart=508" data-quantity="1" class="h-cb c-product-grid__atc button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="508" data-product_sku="6549845322" aria-label="Add &ldquo;Brightening Corrector&rdquo; to your cart" rel="nofollow">
-                                        <i class="ip-plus c-product-grid__atc-icon"></i>
-                                        <span class="c-product-grid__atc-text">Add to cart</span>
-                                      </a>
-                                      <div class="c-product-grid__details">
-                                        <div class="c-product-grid__title-wrap">
-                                          <a href="https://parkofideas.com/luchiana/demo/shop/eye-brightening-corrector/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                            <h2 class="woocommerce-loop-product__title">Brightening Corrector</h2>
-                                          </a>
-                                          <div class="c-product-grid__short-desc">
-                                            <p>A full-coverage color corrector.</p>
-                                          </div>
-                                        </div>
-                                        <!-- .c-product-grid__title-wrap -->
-                                        <div class="c-product-grid__price-wrap">
-                                          <span class="price">
-                                            <span class="woocommerce-Price-amount amount">
-                                              <bdi>
-                                                <span class="woocommerce-Price-currencySymbol">&#36;</span>80.00</bdi>
-                                            </span>
-                                          </span>
-                                        </div>
-                                        <!-- .c-product-grid__price-wrap -->
-                                      </div>
-                                      <!-- .c-product-grid__details -->
-                                    </div>
-                                    <div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-451 status-publish last instock product_cat-lips product_tag-lips product_tag-tint has-post-thumbnail shipping-taxable purchasable product-type-simple">
-                                      <div class="c-product-grid__badges c-badge__list">
-                                      </div>
-                                      <!-- .c-product-grid__badges -->
-                                      <div class="c-product-grid__thumb-wrap">
-                                        <a href="https://parkofideas.com/luchiana/demo/shop/extra-lip-tint/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                          <img width="260" height="230" src="../wp-content/uploads/2020/10/luchiana-3024294986-260x230.jpg" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3024294986-260x230.jpg 260w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3024294986-520x460.jpg 520w" sizes="(max-width: 260px) 100vw, 260px" />
-                                        </a>
-                                        <div class="c-product-grid__thumb-button-list">
-                                          <button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="451">
-                                            <i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>
-                                            <i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>
-                                          </button>
-                                          <button class="js-wishlist-btn c-wishlist__btn c-wishlist__item-451-btn h-cb c-product-grid__thumb-button" data-product-id="451" data-title="Wishlist">
-                                            <i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
-                                            <i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
-                                          </button>
-                                        </div>
-                                      </div>
-                                      <!-- .c-product-grid__thumb-wrap -->
-                                      <a href="indexa369.html?add-to-cart=451" data-quantity="1" class="h-cb c-product-grid__atc button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="451" data-product_sku="6549845335" aria-label="Add &ldquo;Extra Lip Tint&rdquo; to your cart" rel="nofollow">
-                                        <i class="ip-plus c-product-grid__atc-icon"></i>
-                                        <span class="c-product-grid__atc-text">Add to cart</span>
-                                      </a>
-                                      <div class="c-product-grid__details">
-                                        <div class="c-product-grid__title-wrap">
-                                          <a href="https://parkofideas.com/luchiana/demo/shop/extra-lip-tint/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                            <h2 class="woocommerce-loop-product__title">Extra Lip Tint</h2>
-                                          </a>
-                                          <div class="c-product-grid__short-desc">
-                                            <p>Сolor-enhancing tint that brings out the best in lips.</p>
-                                          </div>
-                                        </div>
-                                        <!-- .c-product-grid__title-wrap -->
-                                        <div class="c-product-grid__price-wrap">
-                                          <span class="price">
-                                            <span class="woocommerce-Price-amount amount">
-                                              <bdi>
-                                                <span class="woocommerce-Price-currencySymbol">&#36;</span>29.00</bdi>
-                                            </span>
-                                          </span>
-                                        </div>
-                                        <!-- .c-product-grid__price-wrap -->
-                                      </div>
-                                      <!-- .c-product-grid__details -->
-                                    </div>
-                                    <div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-420 status-publish first instock product_cat-makeup has-post-thumbnail sale featured shipping-taxable product-type-grouped">
-                                      <div class="c-product-grid__badges c-badge__list">
-                                        <span class="c-badge c-badge--featured">Featured</span>
-                                        <span class="c-badge c-badge--sale">Sale</span>
-                                      </div>
-                                      <!-- .c-product-grid__badges -->
-                                      <div class="c-product-grid__thumb-wrap">
-                                        <a href="https://parkofideas.com/luchiana/demo/shop/flyliner-longwear-eyeliner/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                          <img width="260" height="230" src="../wp-content/uploads/2020/10/luchiana-3019755709-260x230.jpg" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3019755709-260x230.jpg 260w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3019755709-520x460.jpg 520w" sizes="(max-width: 260px) 100vw, 260px" />
-                                        </a>
-                                        <div class="c-product-grid__thumb-button-list">
-                                          <button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="420">
-                                            <i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>
-                                            <i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>
-                                          </button>
-                                          <button class="js-wishlist-btn c-wishlist__btn c-wishlist__item-420-btn h-cb c-product-grid__thumb-button" data-product-id="420" data-title="Wishlist">
-                                            <i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
-                                            <i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
-                                          </button>
-                                        </div>
-                                      </div>
-                                      <!-- .c-product-grid__thumb-wrap -->
-                                      <a href="https://parkofideas.com/luchiana/demo/shop/flyliner-longwear-eyeliner/" data-quantity="1" class="h-cb c-product-grid__atc button product_type_grouped" data-product_id="420" data-product_sku="6549845382" aria-label="View products in the &ldquo;Eyeliner Pack&rdquo; group" rel="nofollow">
-                                        <span class="c-product-grid__atc-text">View products</span>
-                                        <i class="ip-button-more c-product-grid__atc-icon"></i>
-                                      </a>
-                                      <div class="c-product-grid__details">
-                                        <div class="c-product-grid__title-wrap">
-                                          <a href="https://parkofideas.com/luchiana/demo/shop/flyliner-longwear-eyeliner/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                            <h2 class="woocommerce-loop-product__title">Eyeliner Pack</h2>
-                                          </a>
-                                          <div class="c-product-grid__short-desc">
-                                            <p>A hyper-saturated, water-resistant, liquid eyeliner.</p>
-                                          </div>
-                                        </div>
-                                        <!-- .c-product-grid__title-wrap -->
-                                        <div class="c-product-grid__price-wrap">
-                                          <span class="price">
-                                            <span class="woocommerce-Price-amount amount">
-                                              <bdi>
-                                                <span class="woocommerce-Price-currencySymbol">&#36;</span>40.00</bdi>
-                                            </span>&ndash;
-                                            <span class="woocommerce-Price-amount amount">
-                                              <bdi>
-                                                <span class="woocommerce-Price-currencySymbol">&#36;</span>80.00</bdi>
-                                            </span>
-                                          </span>
-                                        </div>
-                                        <!-- .c-product-grid__price-wrap -->
-                                      </div>
-                                      <!-- .c-product-grid__details -->
-                                    </div>
-                                    <div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-429 status-publish instock product_cat-makeup has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple">
-                                      <div class="c-product-grid__badges c-badge__list">
-                                        <span class="c-badge c-badge--featured">Featured</span>
-                                        <span class="c-badge c-badge--sale">-11%</span>
-                                      </div>
-                                      <!-- .c-product-grid__badges -->
-                                      <div class="c-product-grid__thumb-wrap">
-                                        <a href="https://parkofideas.com/luchiana/demo/shop/face-body-foundation/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                          <img width="260" height="230" src="../wp-content/uploads/2020/10/luchiana-3019438449-260x230.jpg" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3019438449-260x230.jpg 260w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3019438449-520x460.jpg 520w" sizes="(max-width: 260px) 100vw, 260px" />
-                                        </a>
-                                        <div class="c-product-grid__thumb-button-list">
-                                          <button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="429">
-                                            <i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>
-                                            <i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>
-                                          </button>
-                                          <button class="js-wishlist-btn c-wishlist__btn c-wishlist__item-429-btn h-cb c-product-grid__thumb-button" data-product-id="429" data-title="Wishlist">
-                                            <i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
-                                            <i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
-                                          </button>
-                                        </div>
-                                      </div>
-                                      <!-- .c-product-grid__thumb-wrap -->
-                                      <a href="indexd633.html?add-to-cart=429" data-quantity="1" class="h-cb c-product-grid__atc button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="429" data-product_sku="" aria-label="Add &ldquo;Face &amp; Body Foundation&rdquo; to your cart" rel="nofollow">
-                                        <i class="ip-plus c-product-grid__atc-icon"></i>
-                                        <span class="c-product-grid__atc-text">Add to cart</span>
-                                      </a>
-                                      <div class="c-product-grid__details">
-                                        <div class="c-product-grid__title-wrap">
-                                          <a href="https://parkofideas.com/luchiana/demo/shop/face-body-foundation/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                            <h2 class="woocommerce-loop-product__title">Face &#038; Body Foundation</h2>
-                                          </a>
-                                          <div class="c-product-grid__short-desc">
-                                            <p>A foundation for the face and body.</p>
-                                          </div>
-                                        </div>
-                                        <!-- .c-product-grid__title-wrap -->
-                                        <div class="c-product-grid__price-wrap">
-                                          <span class="price">
-                                            <del aria-hidden="true">
-                                              <span class="woocommerce-Price-amount amount">
-                                                <bdi>
-                                                  <span class="woocommerce-Price-currencySymbol">&#36;</span>45.00</bdi>
-                                              </span>
-                                            </del>
-                                            <ins>
-                                              <span class="woocommerce-Price-amount amount">
-                                                <bdi>
-                                                  <span class="woocommerce-Price-currencySymbol">&#36;</span>40.00</bdi>
-                                              </span>
-                                            </ins>
-                                          </span>
-                                        </div>
-                                        <!-- .c-product-grid__price-wrap -->
-                                      </div>
-                                      <!-- .c-product-grid__details -->
-                                    </div>
-                                    <div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-464 status-publish instock product_cat-fragrance product_tag-fragrance product_tag-warm has-post-thumbnail shipping-taxable purchasable product-type-simple">
-                                      <div class="c-product-grid__badges c-badge__list">
-                                      </div>
-                                      <!-- .c-product-grid__badges -->
-                                      <div class="c-product-grid__thumb-wrap">
-                                        <a href="https://parkofideas.com/luchiana/demo/shop/eau-de-soleil-blanc-set/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                          <img width="260" height="230" src="../wp-content/uploads/2020/10/luchiana-3000062647-260x230.jpg" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3000062647-260x230.jpg 260w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3000062647-520x460.jpg 520w" sizes="(max-width: 260px) 100vw, 260px" />
-                                        </a>
-                                        <div class="c-product-grid__thumb-button-list">
-                                          <button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="464">
-                                            <i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>
-                                            <i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>
-                                          </button>
-                                          <button class="js-wishlist-btn c-wishlist__btn c-wishlist__item-464-btn h-cb c-product-grid__thumb-button" data-product-id="464" data-title="Wishlist">
-                                            <i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
-                                            <i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
-                                          </button>
-                                        </div>
-                                      </div>
-                                      <!-- .c-product-grid__thumb-wrap -->
-                                      <a href="index63e5.html?add-to-cart=464" data-quantity="1" class="h-cb c-product-grid__atc button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="464" data-product_sku="6549845315" aria-label="Add &ldquo;Flowerbomb&rdquo; to your cart" rel="nofollow">
-                                        <i class="ip-plus c-product-grid__atc-icon"></i>
-                                        <span class="c-product-grid__atc-text">Add to cart</span>
-                                      </a>
-                                      <div class="c-product-grid__details">
-                                        <div class="c-product-grid__title-wrap">
-                                          <a href="https://parkofideas.com/luchiana/demo/shop/eau-de-soleil-blanc-set/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                            <h2 class="woocommerce-loop-product__title">Flowerbomb</h2>
-                                          </a>
-                                          <div class="c-product-grid__short-desc">
-                                            <p>Vert de Bergamot, Coco de Mer Accord.</p>
-                                          </div>
-                                        </div>
-                                        <!-- .c-product-grid__title-wrap -->
-                                        <div class="c-product-grid__price-wrap">
-                                          <span class="price">
-                                            <span class="woocommerce-Price-amount amount">
-                                              <bdi>
-                                                <span class="woocommerce-Price-currencySymbol">&#36;</span>200.00</bdi>
-                                            </span>
-                                          </span>
-                                        </div>
-                                        <!-- .c-product-grid__price-wrap -->
-                                      </div>
-                                      <!-- .c-product-grid__details -->
-                                    </div>
-                                    <div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-515 status-publish last instock product_cat-hair has-post-thumbnail sale shipping-taxable purchasable product-type-variable has-default-attributes">
-                                      <div class="c-product-grid__badges c-badge__list">
-                                        <span class="c-badge c-badge--new">New</span>
-                                        <span class="c-badge c-badge--sale">Sale</span>
-                                      </div>
-                                      <!-- .c-product-grid__badges -->
-                                      <div class="c-product-grid__thumb-wrap">
-                                        <a href="https://parkofideas.com/luchiana/demo/shop/hair-coloring/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                          <img width="260" height="230" src="../wp-content/uploads/2020/10/luchiana-3056568558-260x230.jpg" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3056568558-260x230.jpg 260w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3056568558-520x460.jpg 520w" sizes="(max-width: 260px) 100vw, 260px" />
-                                        </a>
-                                        <div class="c-product-grid__thumb-button-list">
-                                          <button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="515">
-                                            <i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>
-                                            <i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>
-                                          </button>
-                                          <button class="js-wishlist-btn c-wishlist__btn c-wishlist__item-515-btn h-cb c-product-grid__thumb-button" data-product-id="515" data-title="Wishlist">
-                                            <i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
-                                            <i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
-                                          </button>
-                                        </div>
-                                      </div>
-                                      <!-- .c-product-grid__thumb-wrap -->
-                                      <a href="https://parkofideas.com/luchiana/demo/shop/hair-coloring/" data-quantity="1" class="h-cb c-product-grid__atc button product_type_variable add_to_cart_button" data-product_id="515" data-product_sku="6549845320" aria-label="Select options for &ldquo;Hair Coloring&rdquo;" rel="nofollow">
-                                        <span class="c-product-grid__atc-text">Select options</span>
-                                        <i class="ip-button-more c-product-grid__atc-icon"></i>
-                                      </a>
-                                      <div class="c-product-grid__details">
-                                        <div class="c-product-grid__title-wrap">
-                                          <a href="https://parkofideas.com/luchiana/demo/shop/hair-coloring/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                            <h2 class="woocommerce-loop-product__title">Hair Coloring</h2>
-                                          </a>
-                                          <div class="c-product-grid__short-desc">
-                                            <p>A semi-permanent hair color in a deep conditioning.</p>
-                                          </div>
-                                        </div>
-                                        <!-- .c-product-grid__title-wrap -->
-                                        <div class="c-product-grid__price-wrap">
-                                          <span class="price">
-                                            <span class="woocommerce-Price-amount amount">
-                                              <bdi>
-                                                <span class="woocommerce-Price-currencySymbol">&#36;</span>30.00</bdi>
-                                            </span>&ndash;
-                                            <span class="woocommerce-Price-amount amount">
-                                              <bdi>
-                                                <span class="woocommerce-Price-currencySymbol">&#36;</span>45.00</bdi>
-                                            </span>
-                                          </span>
-                                        </div>
-                                        <!-- .c-product-grid__price-wrap -->
-                                      </div>
-                                      <!-- .c-product-grid__details -->
-                                    </div>
-                                    <div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-474 status-publish first outofstock product_cat-makeup has-post-thumbnail shipping-taxable purchasable product-type-simple">
-                                      <div class="c-product-grid__badges c-badge__list">
-                                      </div>
-                                      <!-- .c-product-grid__badges -->
-                                      <div class="c-product-grid__thumb-wrap">
-                                        <div class="c-product-grid__stock-wrap">
-                                          <span class="c-product-grid__stock c-product-grid__stock--out-of-stock out-of-stock">Out of stock</span>
-                                        </div>
-                                        <a href="https://parkofideas.com/luchiana/demo/shop/instant-retouch-primer/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                          <img width="260" height="230" src="../wp-content/uploads/2020/10/luchiana-3006105529-260x230.jpg" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3006105529-260x230.jpg 260w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3006105529-520x460.jpg 520w" sizes="(max-width: 260px) 100vw, 260px" />
-                                        </a>
-                                        <div class="c-product-grid__thumb-button-list">
-                                          <button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="474">
-                                            <i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>
-                                            <i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>
-                                          </button>
-                                          <button class="js-wishlist-btn c-wishlist__btn c-wishlist__item-474-btn h-cb c-product-grid__thumb-button" data-product-id="474" data-title="Wishlist">
-                                            <i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
-                                            <i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
-                                          </button>
-                                        </div>
-                                      </div>
-                                      <!-- .c-product-grid__thumb-wrap -->
-                                      <a href="https://parkofideas.com/luchiana/demo/shop/instant-retouch-primer/" data-quantity="1" class="h-cb c-product-grid__atc button product_type_simple" data-product_id="474" data-product_sku="6549845377" aria-label="Read more about &ldquo;Instant Retouch Primer&rdquo;" rel="nofollow">
-                                        <i class="ip-plus c-product-grid__atc-icon"></i>
-                                        <span class="c-product-grid__atc-text">Read more</span>
-                                      </a>
-                                      <div class="c-product-grid__details">
-                                        <div class="c-product-grid__title-wrap">
-                                          <a href="https://parkofideas.com/luchiana/demo/shop/instant-retouch-primer/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                            <h2 class="woocommerce-loop-product__title">Instant Retouch Primer</h2>
-                                          </a>
-                                          <div class="c-product-grid__short-desc">
-                                            <p>Longer wear with an instant retouch effect.</p>
-                                          </div>
-                                        </div>
-                                        <!-- .c-product-grid__title-wrap -->
-                                        <div class="c-product-grid__price-wrap">
-                                          <span class="price">
-                                            <span class="woocommerce-Price-amount amount">
-                                              <bdi>
-                                                <span class="woocommerce-Price-currencySymbol">&#36;</span>45.00</bdi>
-                                            </span>
-                                          </span>
-                                        </div>
-                                        <!-- .c-product-grid__price-wrap -->
-                                      </div>
-                                      <!-- .c-product-grid__details -->
-                                    </div>
-                                    <div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-431 status-publish instock product_cat-skincare has-post-thumbnail featured shipping-taxable purchasable product-type-simple">
-                                      <div class="c-product-grid__badges c-badge__list">
-                                        <span class="c-badge c-badge--featured">Featured</span>
-                                      </div>
-                                      <!-- .c-product-grid__badges -->
-                                      <div class="c-product-grid__thumb-wrap">
-                                        <a href="https://parkofideas.com/luchiana/demo/shop/lactic-acid-treatment/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                          <img width="260" height="230" src="../wp-content/uploads/2020/10/luchiana-3015857259-260x230.jpg" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3015857259-260x230.jpg 260w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3015857259-520x460.jpg 520w" sizes="(max-width: 260px) 100vw, 260px" />
-                                        </a>
-                                        <div class="c-product-grid__thumb-button-list">
-                                          <button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="431">
-                                            <i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>
-                                            <i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>
-                                          </button>
-                                          <button class="js-wishlist-btn c-wishlist__btn c-wishlist__item-431-btn h-cb c-product-grid__thumb-button" data-product-id="431" data-title="Wishlist">
-                                            <i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
-                                            <i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
-                                          </button>
-                                        </div>
-                                      </div>
-                                      <!-- .c-product-grid__thumb-wrap -->
-                                      <a href="index086a.html?add-to-cart=431" data-quantity="1" class="h-cb c-product-grid__atc button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="431" data-product_sku="" aria-label="Add &ldquo;Lactic Acid Treatment&rdquo; to your cart" rel="nofollow">
-                                        <i class="ip-plus c-product-grid__atc-icon"></i>
-                                        <span class="c-product-grid__atc-text">Add to cart</span>
-                                      </a>
-                                      <div class="c-product-grid__details">
-                                        <div class="c-product-grid__title-wrap">
-                                          <a href="https://parkofideas.com/luchiana/demo/shop/lactic-acid-treatment/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                            <h2 class="woocommerce-loop-product__title">Lactic Acid Treatment</h2>
-                                          </a>
-                                          <div class="c-product-grid__short-desc">
-                                            <p>An all-in-one AHA treatment.</p>
-                                          </div>
-                                        </div>
-                                        <!-- .c-product-grid__title-wrap -->
-                                        <div class="c-product-grid__price-wrap">
-                                          <span class="price">
-                                            <span class="woocommerce-Price-amount amount">
-                                              <bdi>
-                                                <span class="woocommerce-Price-currencySymbol">&#36;</span>37.00</bdi>
-                                            </span>
-                                          </span>
-                                        </div>
-                                        <!-- .c-product-grid__price-wrap -->
-                                      </div>
-                                      <!-- .c-product-grid__details -->
-                                    </div>
-                                    <div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-490 status-publish instock product_cat-eye product_tag-eye product_tag-serum has-post-thumbnail shipping-taxable product-type-external">
-                                      <div class="c-product-grid__badges c-badge__list">
-                                      </div>
-                                      <!-- .c-product-grid__badges -->
-                                      <div class="c-product-grid__thumb-wrap">
-                                        <a href="https://parkofideas.com/luchiana/demo/shop/long-lash-serum/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                          <img width="260" height="230" src="../wp-content/uploads/2020/10/luchiana-3037998670-260x230.jpg" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3037998670-260x230.jpg 260w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3037998670-520x460.jpg 520w" sizes="(max-width: 260px) 100vw, 260px" />
-                                        </a>
-                                        <div class="c-product-grid__thumb-button-list">
-                                          <button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="490">
-                                            <i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>
-                                            <i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>
-                                          </button>
-                                          <button class="js-wishlist-btn c-wishlist__btn c-wishlist__item-490-btn h-cb c-product-grid__thumb-button" data-product-id="490" data-title="Wishlist">
-                                            <i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
-                                            <i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
-                                          </button>
-                                        </div>
-                                      </div>
-                                      <!-- .c-product-grid__thumb-wrap -->
-                                      <a href="#" data-quantity="1" class="h-cb c-product-grid__atc button product_type_external" data-product_id="490" data-product_sku="6549845388" aria-label="Buy on the Amazon" rel="nofollow">
-                                        <span class="c-product-grid__atc-text">Buy on the Amazon</span>
-                                        <i class="ip-button-more c-product-grid__atc-icon"></i>
-                                      </a>
-                                      <div class="c-product-grid__details">
-                                        <div class="c-product-grid__title-wrap">
-                                          <a href="https://parkofideas.com/luchiana/demo/shop/long-lash-serum/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                            <h2 class="woocommerce-loop-product__title">Long Lash Serum</h2>
-                                          </a>
-                                          <div class="c-product-grid__short-desc">
-                                            <p>This is an external product.</p>
-                                          </div>
-                                        </div>
-                                        <!-- .c-product-grid__title-wrap -->
-                                        <div class="c-product-grid__price-wrap">
-                                          <span class="price">
-                                            <span class="woocommerce-Price-amount amount">
-                                              <bdi>
-                                                <span class="woocommerce-Price-currencySymbol">&#36;</span>25.00</bdi>
-                                            </span>
-                                          </span>
-                                        </div>
-                                        <!-- .c-product-grid__price-wrap -->
-                                      </div>
-                                      <!-- .c-product-grid__details -->
-                                    </div>
-                                    <div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-511 status-publish last instock product_cat-fragrance product_tag-perfume has-post-thumbnail featured shipping-taxable purchasable product-type-simple">
-                                      <div class="c-product-grid__badges c-badge__list">
-                                        <span class="c-badge c-badge--featured">Featured</span>
-                                        <span class="c-badge c-badge--new">New</span>
-                                      </div>
-                                      <!-- .c-product-grid__badges -->
-                                      <div class="c-product-grid__thumb-wrap">
-                                        <a href="https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                          <img width="260" height="230" src="../wp-content/uploads/2020/10/luchiana-3032395463-260x230.jpg" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3032395463-260x230.jpg 260w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3032395463-520x460.jpg 520w" sizes="(max-width: 260px) 100vw, 260px" />
-                                        </a>
-                                        <div class="c-product-grid__thumb-button-list">
-                                          <button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="511">
-                                            <i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>
-                                            <i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>
-                                          </button>
-                                          <button class="js-wishlist-btn c-wishlist__btn c-wishlist__item-511-btn h-cb c-product-grid__thumb-button" data-product-id="511" data-title="Wishlist">
-                                            <i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
-                                            <i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
-                                          </button>
-                                        </div>
-                                      </div>
-                                      <!-- .c-product-grid__thumb-wrap -->
-                                      <a href="indexd5bb.html?add-to-cart=511" data-quantity="1" class="h-cb c-product-grid__atc button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="511" data-product_sku="65498453209" aria-label="Add &ldquo;Midnight Musk&rdquo; to your cart" rel="nofollow">
-                                        <i class="ip-plus c-product-grid__atc-icon"></i>
-                                        <span class="c-product-grid__atc-text">Add to cart</span>
-                                      </a>
-                                      <div class="c-product-grid__details">
-                                        <div class="c-product-grid__title-wrap">
-                                          <a href="https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                            <h2 class="woocommerce-loop-product__title">Midnight Musk</h2>
-                                          </a>
-                                          <div class="c-product-grid__short-desc">
-                                            <p>Earthy &amp; Woody.</p>
-                                          </div>
-                                        </div>
-                                        <!-- .c-product-grid__title-wrap -->
-                                        <div class="c-product-grid__price-wrap">
-                                          <span class="price">
-                                            <span class="woocommerce-Price-amount amount">
-                                              <bdi>
-                                                <span class="woocommerce-Price-currencySymbol">&#36;</span>150.00</bdi>
-                                            </span>
-                                          </span>
-                                        </div>
-                                        <!-- .c-product-grid__price-wrap -->
-                                      </div>
-                                      <!-- .c-product-grid__details -->
-                                    </div>
+                                    @endforeach
+                                    <!-- Top Product List Item End -->
+
                                   </div>
                                 </div>
                               </div>
@@ -796,6 +231,8 @@
                                 <a href="https://parkofideas.com/luchiana/demo/newest/" class="c-button c-button--outline c-ip-product-tabs__button">View All</a>
                               </div>
                             </div>
+                            <!-- Top Products Newest End -->
+                            <!-- Top Products Popular Begin -->
                             <div class="c-ip-product-tabs__item " id="tab-01406ee-2">
                               <div class="woocommerce columns-4 ">
                                 <div class="c-product-grid__wrap c-product-grid__wrap--4-per-row ">
@@ -1404,6 +841,8 @@
                                 <a href="https://parkofideas.com/luchiana/demo/popular/" class="c-button c-button--outline c-ip-product-tabs__button">View All</a>
                               </div>
                             </div>
+                            <!-- Top Products Popular End -->
+                            <!-- Top Products Popular Begin-->
                             <div class="c-ip-product-tabs__item " id="tab-01406ee-3">
                               <div class="woocommerce columns-3 ">
                                 <div class="c-product-grid__wrap c-product-grid__wrap--4-per-row ">
@@ -2018,6 +1457,8 @@
                                 <a href="https://parkofideas.com/luchiana/demo/product-category/makeup/" class="c-button c-button--outline c-ip-product-tabs__button">View All</a>
                               </div>
                             </div>
+                            <!-- Top Products Popular End -->
+                            <!-- Top Products Brand Begin -->
                             <div class="c-ip-product-tabs__item " id="tab-01406ee-4">
                               <div class="woocommerce columns-4 ">
                                 <div class="c-product-grid__wrap c-product-grid__wrap--4-per-row ">
@@ -2217,6 +1658,7 @@
                                 <a href="https://parkofideas.com/luchiana/demo/brands/loreal/" class="c-button c-button--outline c-ip-product-tabs__button">View All</a>
                               </div>
                             </div>
+                            <!-- Top Products Brand End -->
                           </div>
                         </div>
                       </div>

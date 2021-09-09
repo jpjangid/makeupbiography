@@ -199,10 +199,9 @@ Route::get('add/to/cart', [App\Http\Controllers\frontend\CartController::class, 
 Route::post('cart/items/update', [App\Http\Controllers\frontend\CartController::class, 'update_items']);
 
 
+//Route for main home page
+Route::get('/', [App\Http\Controllers\frontend\HomeController::class, 'index']);
 
-Route::get('/', function () {
-    return view('frontend.main.index');
-});
 Route::view('discount', 'email_templates.Discount');
 Route::view('completed', 'email_templates.Ordercompleted-card');
 
