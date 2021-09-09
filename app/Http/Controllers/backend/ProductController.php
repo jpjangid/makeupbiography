@@ -124,6 +124,11 @@ class ProductController extends Controller
             Storage::putFileAs('public/products/og_images', $file, $og_image);
         }
 
+        $tags = "";
+        if(!empty($request->tags)) {
+            $tags = implode(',', $request->tags);
+        }
+
         $product = Product::create([
             'name'                  =>  $request->name,
             'slug'                  =>  $request->slug,
@@ -136,7 +141,7 @@ class ProductController extends Controller
             'meta_description'      =>  $request->meta_description,
             'og_title'              =>  $request->og_title,
             'og_description'        =>  $request->og_description,
-            'tags'                  =>  $request->tags,
+            'tags'                  =>  $tags,
             'status'                =>  $request->status,
             'main_image'            =>  $featured_image,
             'og_image'              =>  $og_image,
@@ -233,6 +238,11 @@ class ProductController extends Controller
             Storage::putFileAs('public/products/og_images', $file, $og_image);
         }
 
+        $tags = "";
+        if(!empty($request->tags)) {
+            $tags = implode(',', $request->tags);
+        }
+
         $product->name                  =  $request->name;
         $product->slug                  =  $request->slug;
         $product->short_description     =  $request->short_description;
@@ -243,7 +253,7 @@ class ProductController extends Controller
         $product->meta_description      =  $request->meta_description;
         $product->og_title              =  $request->og_title;
         $product->og_description        =  $request->og_description;
-        $product->tags                  =  $request->tags;
+        $product->tags                  =  $tags;
         $product->status                =  $status;
         $product->parent_id             =  $category_id;
         $product->main_image            =  $featured_image;

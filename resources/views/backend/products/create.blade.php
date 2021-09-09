@@ -212,7 +212,12 @@
                                 <div class="col-md-10 mb-4">
                                     <div class="form-group">
                                         <label class="form-label" for="tags">Tags</label>
-                                        <input type="text" class="form-control form-control-solid @error('tags') is-invalid @enderror" name="tags" id="tags" value="{{ old('tags')}}" placeholder="Please Enter Meta Tag" />
+                                        <select class="form-select form-select-solid @error('tags') is-invalid @enderror" data-control="select2" data-placeholder="Select an option" data-allow-clear="true" multiple="multiple" name="tags[]">
+                                            <option value="newest" {{ in_array("newest",old('tags')) ? "selected" : "" }}>Newest</option>
+                                            <option value="popular" {{ in_array("popular",old('tags')) ? "selected" : "" }}>Popular</option>
+                                            <option value="category" {{ in_array("category",old('tags')) ? "selected" : "" }}>Category</option>
+                                            <option value="brand" {{ in_array("brand",old('tags')) ? "selected" : "" }}>Brand</option>
+                                        </select>  
                                         @error('tags')
                                         <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
@@ -253,6 +258,7 @@
 @section('js')
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <!-- Page specific script -->
 <!-- <script type="text/javascript">
