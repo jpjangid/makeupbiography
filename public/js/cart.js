@@ -11,7 +11,7 @@ $(document).ready(function() {
             type:'GET',
             url: cartUrl,
             success:function(data) {
-                if(data.listItem != "") {
+                if(data != "") {
                     var header = `<span class="c-header__cart-count js-cart-count">`+data.totalQuantityItems+`</span>`;
                     $('.js-cart-info').append(header);
                     var cartList = `<ul class="woocommerce-mini-cart cart_list c-product-list-widget"></ul>`;

@@ -1,5 +1,4 @@
 $(document).on('click','.js-wishlist-btn-add',function(){
-    alert("hello");
     var productId = $(this).data('product-id');
     var productVariantId = $(this).data('product_variant_id');
     var baseUrl = $('#baseUrl').val();
