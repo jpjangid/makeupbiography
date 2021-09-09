@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\UserAddress;
 use App\Models\Location;
+use App\Models\User;
 
 class MyAccountController extends Controller
 {
@@ -182,6 +183,13 @@ class MyAccountController extends Controller
         $address->update();
         
         return redirect('my-address')->with('success','Address updated Successfully');
+    }
+
+    //get address from db 
+    public function getMyAddress(Request $request)
+    {
+        $location = UserAddress::find($request->location_id);
+        return response()->json(['status' => 200,'data' => $location]);
     }
 
 }

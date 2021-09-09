@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Coupon;
 use App\Models\Order;
 use App\Models\UserAddress;
 use Illuminate\Http\Request;
@@ -39,7 +40,7 @@ class OrderController extends Controller
                     $attributes = array(
                         'razorpay_order_id' => $request->razorpay_order_id,
                         'razorpay_payment_id' => $request->razorpay_payment_id,
-                        'razorpay_signature' => $request->razorpay_signature
+                        'razorpay_signature' => $request->razorpay_signature,
                     );
 
                     $api->utility->verifyPaymentSignature($attributes);
@@ -50,51 +51,97 @@ class OrderController extends Controller
             }
 
             if ($success === true) {
-                $razorpay_order_id = $request->session()->get('razorpay_order_id');
-                $razorpay_payment_id = $_POST['razorpay_payment_id'];
-                $razorpay_signature = $_POST['razorpay_signature'];
+                $razorpay_order_id = $$request->razorpay_order_id;
+                $razorpay_payment_id =$request->razorpay_payment_id;
+                $razorpay_signature = $request->razorpay_signature;
                 $online_payment = !empty($razorpay_payment_id) ? "success" : "pending";
             } else {
                 return redirect('cart')->with('fail', 'Payment failed.');
             }
         }
 
-        // $order = Order::create([
-        //     'order_no'                  => $request->razorpay_order_id,
-        //     'user_id'                   => $request->,
-        //     'order_amount'              => $request->,
-        //     'discount_applied'          => $request->,
-        //     'service_charge_applied'    => $request->,
-        //     'total_amount'              => $request->,
-        //     'no_items'                  => $request->,
-        //     'billing_name'              => $request->,
-        //     'billing_mobile'            => $request->,
-        //     'billing_address'           => $request->,
-        //     'billing_country'           => $request->,
-        //     'billing_state'             => $request->,
-        //     'billing_city'              => $request->,
-        //     'billing_zip'               => $request->,
-        //     'billing_landmark'          => $request->,
-        //     'shipping_name'             => $request->,
-        //     'shipping_mobile'           => $request->,
-        //     'shipping_address'          => $request->,
-        //     'shipping_country'          => $request->,
-        //     'shipping_state'            => $request->,
-        //     'shipping_city'             => $request->,
-        //     'shipping_zip'              => $request->,
-        //     'shipping_landmark'         => $request->,
-        //     'order_status'              => $request->,
-        //     'payment_gateway_id'        => $request->,
-        //     'payment_mode'              => $request->,
-        //     'payment_currency'          => $request->,
-        //     'payment_status'            => $request->,
-        //     'shiprocket_order_id'       => $request->,
-        //     'shiprocket_shipment_id'    => $request->,
-        //     'coupon_id'                 => $request->,
-        //     'shop'                      => $request->,
-        //     'order_comments'            => $request->,
-        //     'payment_amount'            => $request->,
-        //     'wallet_amount'             => $request->,
-        // ]);
+        $address = UserAddress::find($request->addressSelect);
+        if (empty($address)) {
+            $UserAddress = new UserAddress;
+            $UserAddress->user_id   = $user->id;
+            $UserAddress->name      = $request->billing_name;
+            $UserAddress->mobile    = $request->billing_mobile;
+            $UserAddress->address   = $request->billing_address;
+            $UserAddress->pincode   = $request->billing_postcode;
+            $UserAddress->landmark  = $request->billing_landmark;
+            $UserAddress->state     = $request->billing_state;
+            $UserAddress->city      = $request->billing_city;
+            $UserAddress->save();
+
+            $UserAddress = new UserAddress;
+            $UserAddress->user_id   = $user->id;
+            $UserAddress->name      = $request->shipping_name;
+            $UserAddress->mobile    = $request->shipping_mobile;
+            $UserAddress->address   = $request->shipping_address;
+            $UserAddress->pincode   = $request->shipping_postcode;
+            $UserAddress->landmark  = $request->shipping_landmark;
+            $UserAddress->state     = $request->shipping_state;
+            $UserAddress->city      = $request->shipping_city;
+            $UserAddress->save();
+        }
+
+        $order_amt = 0.00;
+        $coupon_id = '';
+        $discount = 0.00;
+        if($request->wallet_amt != 0){
+            if(!empty($request->total)){
+                $order_amt = $request->wallet_amt + $request->total;
+            }else{
+                $order_amt = $request->wallet_amt;
+            }
+            $coupon = Coupon::where('code',$request->coupon_code)->first();
+            $coupon_id = $coupon->id;
+        }else{
+            $order_amt = $request->total;
+        }
+
+        if($request->coupon_discount != 0){
+            $discount = $request->coupon_discount + $request->product_discount;
+        }else{
+            $discount = $request->product_discount;
+        }
+
+        $order = Order::create([
+            'order_no'                  => $request->razorpay_order_id,
+            'user_id'                   => $user->id,
+            'order_amount'              => $order_amt,
+            'discount_applied'          => $discount,
+            'service_charge_applied'    => $request->shipping_charge,
+            'total_amount'              => $request->total,
+            'no_items'                  => $request->,
+            'billing_name'              => $request->billing_name,
+            'billing_mobile'            => $request->billing_mobile,
+            'billing_address'           => $request->billing_address,
+            'billing_country'           => $request->billing_country,
+            'billing_state'             => $request->billing_state,
+            'billing_city'              => $request->billing_city,
+            'billing_zip'               => $request->,
+            'billing_landmark'          => $request->,
+            'shipping_name'             => $request->,
+            'shipping_mobile'           => $request->,
+            'shipping_address'          => $request->,
+            'shipping_country'          => $request->,
+            'shipping_state'            => $request->,
+            'shipping_city'             => $request->,
+            'shipping_zip'              => $request->,
+            'shipping_landmark'         => $request->,
+            'order_status'              => $request->,
+            'payment_gateway_id'        => $request->,
+            'payment_mode'              => $request->,
+            'payment_currency'          => $request->,
+            'payment_status'            => $request->,
+            'shiprocket_order_id'       => $request->,
+            'shiprocket_shipment_id'    => $request->,
+            'coupon_id'                 => $request->,
+            'shop'                      => $request->,
+            'order_comments'            => $request->,
+            'payment_amount'            => $request->,
+            'wallet_amount'             => $request->,
+        ]);
     }
 }

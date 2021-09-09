@@ -10,10 +10,7 @@ use App\Models\Product;
 use App\Models\UserAddress;
 use App\Models\Coupon;
 use Razorpay\Api\Api;
-use Razorpay\Api\Errors\SignatureVerificationError;
 use App\Models\User;
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Builder;
 use App\Models\ProductVariantMedia;
 use App\Models\Wallet;
 use Illuminate\Support\Collection;
@@ -322,9 +319,11 @@ class CartController extends Controller
     }
 
     //checkout function
-    public function checkout()
+    public function checkout(Request $request)
     {
+
         User::where('id', auth()->user()->id)->update(['auto_page' => 'checkout', 'auto_datetime' => date('y-m-d H:i:s'), 'auto_email' => 0]);
+        $external_code = "";
         $user = auth()->user();
         $cartItems = [];
         $cookieItems = [];
@@ -337,6 +336,13 @@ class CartController extends Controller
         $product_dis = array();
         $cartItems = Cart::where('user_id', $user->id)->with('product', 'productVariant.medias')->get();
         $totalQuantityItems = Cart::where('user_id', $user->id)->sum('quantity');
+        if ($request->session()->has('_code')) {
+            $external_code = $request->session()->get('_code');
+        }
+        if (count($cartItems) == 0 || empty($cartItems)) {
+            return redirect('/');
+        }
+
         if ($cartItems) {
             foreach ($cartItems as $vari) {
                 $subtotal += round(floatval($vari->productVariant->sale_price) * $vari->quantity);
@@ -359,17 +365,17 @@ class CartController extends Controller
         $wallet = 0.00;
         $credit = 0.00;
         $debit = 0.00;
-        $user_wallets = Wallet::where('user_id',$user->id)->get();
-        if($user_wallets->isNotEmpty()){
-            foreach($user_wallets as $user_wallet){
-                if($user_wallet->status == 'credited'){
+        $user_wallets = Wallet::where('user_id', $user->id)->get();
+        if ($user_wallets->isNotEmpty()) {
+            foreach ($user_wallets as $user_wallet) {
+                if ($user_wallet->status == 'credited') {
                     $credit += $user_wallet->amount;
                 }
-                if($user_wallet->status == 'debited'){
+                if ($user_wallet->status == 'debited') {
                     $debit += $user_wallet->amount;
                 }
             }
-            if($credit > $debit){
+            if ($credit > $debit) {
                 $wallet = $credit - $debit;
             }
         }
@@ -384,7 +390,8 @@ class CartController extends Controller
             'user_coupons',
             'product_dis',
             'coupon_dis',
-            'wallet'
+            'wallet',
+            'external_code'
         ));
     }
 
@@ -795,5 +802,21 @@ class CartController extends Controller
         $data['user'] = auth()->user();
 
         return response()->json($data);
+    }
+
+    public function checkoutCouponGet(Request $request)
+    {
+        if (auth()->user()) {
+            $request->session()->forget('_code');
+            if (isset($request->_code)) {
+                if (Coupon::where(['code' => $request->_code, 'user_id' => auth()->user()->id, 'times_applied' => null])->first()) {
+                    $request->session()->put('_code', $request->_code);
+                }
+                return redirect('checkout');
+            }
+            return redirect('checkout');
+        } else {
+            return redirect()->route('login');
+        }
     }
 }
