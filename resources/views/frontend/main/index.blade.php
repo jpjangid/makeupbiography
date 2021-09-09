@@ -58,6 +58,7 @@
 @endsection
 
 @section('content')
+<input type="text" id="csrfToken" value="{{ csrf_token() }}" hidden>
 <div class="l-inner">
   <div data-elementor-type="wp-page" data-elementor-id="1131" class="elementor elementor-1131" data-elementor-settings="[]">
     <div class="elementor-inner" style="background-color: #e0ffff;">
@@ -183,7 +184,7 @@
                                                   <i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>
                                                   <i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>
                                                 </button>
-                                                <button class="js-wishlist-btn c-wishlist__btn c-wishlist__item-438-btn h-cb c-product-grid__thumb-button" data-product-id="438" data-title="Wishlist">
+                                                <button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button"  data-product_variant_id="{{ $variant->id }}" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
                                                   <i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
                                                   <i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
                                                 </button>
@@ -273,7 +274,7 @@
                                                   <i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>
                                                   <i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>
                                                 </button>
-                                                <button class="js-wishlist-btn c-wishlist__btn c-wishlist__item-438-btn h-cb c-product-grid__thumb-button" data-product-id="438" data-title="Wishlist">
+                                                <button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button"  data-product_variant_id="{{ $variant->id }}" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
                                                   <i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
                                                   <i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
                                                 </button>
@@ -363,7 +364,7 @@
                                                 <i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>
                                                 <i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>
                                               </button>
-                                              <button class="js-wishlist-btn c-wishlist__btn c-wishlist__item-438-btn h-cb c-product-grid__thumb-button" data-product-id="438" data-title="Wishlist">
+                                              <button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button"  data-product_variant_id="{{ $variant->id }}" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
                                                 <i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
                                                 <i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
                                               </button>
@@ -453,7 +454,7 @@
                                                 <i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>
                                                 <i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>
                                               </button>
-                                              <button class="js-wishlist-btn c-wishlist__btn c-wishlist__item-438-btn h-cb c-product-grid__thumb-button" data-product-id="438" data-title="Wishlist">
+                                              <button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button"  data-product_variant_id="{{ $variant->id }}" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
                                                 <i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
                                                 <i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
                                               </button>

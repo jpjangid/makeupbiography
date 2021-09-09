@@ -37,6 +37,7 @@ class FavoriteController extends Controller
     //add item to wishlist
     public function store(Request $request)
     {
+
         $product = Product::select('name')->where('id',$request->product_id)->first();
         $product_variant = ProductVariant::where('id',$request->product_variant_id)->first();
         if($product->status == 0 && $product->flag == 1 || $product->status == 0 && $product->flag == 1) {
