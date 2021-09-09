@@ -333,6 +333,7 @@ class CartController extends Controller
         $subtotal = 0.00;
         $discountPrice = 0.00;
         $totalPrice = 0.00;
+        $no_items = 0;
         $product_dis = array();
         $cartItems = Cart::where('user_id', $user->id)->with('product', 'productVariant.medias')->get();
         $totalQuantityItems = Cart::where('user_id', $user->id)->sum('quantity');
@@ -345,6 +346,7 @@ class CartController extends Controller
 
         if ($cartItems) {
             foreach ($cartItems as $vari) {
+                $no_items += 1;
                 $subtotal += round(floatval($vari->productVariant->sale_price) * $vari->quantity);
                 if ($vari->productVariant->discount > 0) {
                     $discount = round(floatval(floatval($vari->productVariant->regular_price) * $vari->quantity) - floatval(floatval($vari->productVariant->sale_price) * $vari->quantity));
@@ -391,7 +393,8 @@ class CartController extends Controller
             'product_dis',
             'coupon_dis',
             'wallet',
-            'external_code'
+            'external_code',
+            'no_items'
         ));
     }
 

@@ -42,7 +42,8 @@ class CreateOrdersTable extends Migration
             $table->string('shipping_zip');
             $table->string('shipping_landmark')->nullable();
             $table->string('order_status');
-            $table->string('payment_gateway_id')->nullable();
+            $table->string('razorpay_order_id')->nullable();
+            $table->string('razorpay_payment_id')->nullable();
             $table->string('payment_mode')->nullable();
             $table->float('payment_amount')->nullable();
             $table->string('payment_currency')->nullable();
