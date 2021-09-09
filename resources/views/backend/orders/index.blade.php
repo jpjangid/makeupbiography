@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-@section('title','Blog')
+@section('title','Orders')
 
 @section('css')
 <!-- Status message -->
@@ -43,22 +43,20 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-tools mt-4">
-                            <a href="{{ url('admin/blogs/create') }}" class="btn btn-active-light-primary">
-                                + Add Blog
-                            </a>
                         </div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body table-responsive">
-                        <table class="table table-row-bordered table-hover text-nowrap" id="blogTable">
+                        <table class="table table-row-bordered table-hover text-nowrap" id="orderTable">
                             <thead>
                                 <tr class="fw-bold fs-6 text-muted">
-                                    <th>Title</th>
-                                    <th>Slug</th>
-                                    <th>Blog Category</th>
-                                    <th>Publish Date</th>
-                                    <th>Publish</th>
-                                    <th>Action</th>
+                                    <th>Order No</th>
+                                    <th>Customer Name</th>
+                                    <th>Order Status</th>
+                                    <th>Payment Status</th>
+                                    <th>Total Amount</th>
+                                    <th>Order Date</th>
+                                    <th>Special Requirement</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -80,60 +78,39 @@
 
 <!-- Soft Delete -->
 <script type="text/javascript">
-    var blogTable = $('#blogTable').DataTable({
+    var orderTable = $('#orderTable').DataTable({
         processing: true,
         serverSide: true,
-        url: "{{ url('admin/blogs') }}",
+        url: "{{ url('admin/orders') }}",
         columns: [{
-                data: 'title',
-                name: 'title'
+                data: 'orderno',
+                name: 'orderno'
             },
             {
-                data: 'slug',
-                name: 'slug'
+                data: 'client',
+                name: 'client'
             },
             {
-                data: 'category',
-                name: 'category'
+                data: 'order_status',
+                name: 'order_status'
             },
             {
-                data: 'publish_date',
-                name: 'publish_date'
+                data: 'payment_status',
+                name: 'payment_status'
             },
             {
-                data: 'active',
-                name: 'active'
+                data: 'total',
+                name: 'total'
             },
             {
-                data: 'action',
-                name: 'action'
+                data: 'date',
+                name: 'date'
+            },
+            {
+                data: 'order_comments',
+                name: 'order_comments'
             },
         ]
-    });
-</script>
-
-<!-- Change Status -->
-<script>
-    $('.js-switch').change(function() {
-        var row = $(this).closest('tr');
-        let status = row.find('.js-switch').val();
-        let blogId = row.find('.blog_id').val();
-        $.ajax({
-            url: "{{ url('admin/blogs/update_status') }}",
-            type: "POST",
-            dataType: "json",
-            data: {
-                status: status,
-                blog_id: blogId,
-                _token: '{{csrf_token()}}'
-            },
-            success: function(data) {
-                toastr.options.closeButton = true;
-                toastr.options.closeMethod = 'fadeOut';
-                toastr.options.closeDuration = 100;
-                toastr.success(data.message);
-            }
-        });
     });
 </script>
 

@@ -65,7 +65,7 @@ class OrderController extends Controller
             $razorpay_order_id = '';
             $online_payment = "pending";
         }else{
-            $payment_mode == "wallet";
+            $payment_mode == "online";
             $razorpay_payment_id = '';
             $razorpay_order_id = '';
             $online_payment = "success";
@@ -149,7 +149,7 @@ class OrderController extends Controller
             'order_status'              => $online_payment,
             'razorpay_order_id'         => $razorpay_order_id,
             'razorpay_payment_id'       => $razorpay_payment_id,
-            'payment_mode'              => $request->$payment_mode,
+            'payment_mode'              => $payment_mode,
             'payment_currency'          => 'INR',
             'payment_status'            => $online_payment,
             'coupon_id'                 => $coupon_id,

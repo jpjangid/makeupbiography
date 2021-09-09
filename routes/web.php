@@ -144,6 +144,11 @@ Route::middleware(['auth', 'prevent-back-history', 'admin'])->prefix('admin')->g
         Route::get('/delete/{id}', [App\Http\Controllers\backend\WalletController::class, 'destroy']);
     });
 
+    Route::prefix('orders')->group(function () {
+        Route::get('/', [App\Http\Controllers\backend\OrderController::class, 'index']);
+        Route::get('/order_detail/{id}', [App\Http\Controllers\backend\OrderController::class, 'order_detail']);
+    });
+
     //route for profile update
     Route::get('profile', [App\Http\Controllers\Auth\ProfileController::class, 'edit']);
 });
