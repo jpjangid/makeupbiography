@@ -111,8 +111,8 @@ $(document).on('click', '#ship-to-different-address-checkbox', function() {
 
     var city = $('#shipping_city').val();
     var shipping = 0.00;
-    if (city != 'Bangalore' || city != 'Bengaluru') {
-        if (city !== '') {
+    if (city != 'Bangalore' || city != 'Bengaluru' || city != 'BANGALORE' || city != 'BENGALURU') {
+        if (city != '') {
             shipping = 100;
             $('#shipping_chrg').val(shipping);
         }
@@ -155,13 +155,13 @@ $('body').on('change', function() {
 
     var city = $('#shipping_city').val();
     var shipping = 0.00;
-    if (city != 'Bangalore' || city != 'Bengaluru') {
-        if (city !== '') {
+    if (city == 'Bangalore' || city == 'Bengaluru' || city == 'BANGALORE' || city == 'BENGALURU') {
+        $('#shipping_chrg').val(shipping);
+    } else {
+        if (city != '') {
             shipping = 100;
             $('#shipping_chrg').val(shipping);
         }
-    } else {
-        $('#shipping_chrg').val(shipping);
     }
     wallet(shipping);
 });

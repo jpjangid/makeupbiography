@@ -15,6 +15,7 @@ use Razorpay\Api\Api;
 use Razorpay\Api\Errors\SignatureVerificationError;
 use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
+use GuzzleHttp\Client;
 
 class OrderController extends Controller
 {
@@ -25,10 +26,10 @@ class OrderController extends Controller
 
         $online_payment = "fail";
 
-        $payment_mode = $request->payment_mode;
+        $payment_mode = $request->payment_method;
         // $payment_mode = "online";
 
-        if ($payment_mode == "online" && $request->total != 0) {
+        if ($payment_mode == "online" && !empty($request->razorpay_order_id)) {
 
             $keyId = 'rzp_live_f7q120n58ysQwH';
             $keySecret = 'xHKdv1TyRYrGr81uAfCDlFC0';
@@ -54,26 +55,29 @@ class OrderController extends Controller
             }
 
             if ($success === true) {
-                $razorpay_order_id = $$request->razorpay_order_id;
+                $razorpay_order_id = $request->razorpay_order_id;
                 $razorpay_payment_id = $request->razorpay_payment_id;
                 $razorpay_signature = $request->razorpay_signature;
                 $online_payment = !empty($razorpay_payment_id) ? "success" : "pending";
             } else {
                 return redirect('cart')->with('fail', 'Payment failed.');
             }
-        } elseif ($payment_mode == "cod") {
+        }
+
+        if ($payment_mode == "cod") {
             $razorpay_payment_id = '';
             $razorpay_order_id = '';
             $online_payment = "pending";
-        } else {
+        }
+
+        if ($request->wallet_amt != 0 && empty($request->razorpay_order_id)) {
             $payment_mode == "online";
             $razorpay_payment_id = '';
             $razorpay_order_id = '';
             $online_payment = "success";
         }
 
-        $address = UserAddress::find($request->addressSelect);
-        if (empty($address)) {
+        if($request->addressSelect == 'new'){
             $UserAddress = new UserAddress;
             $UserAddress->user_id   = $user->id;
             $UserAddress->name      = $request->billing_name;
@@ -169,6 +173,16 @@ class OrderController extends Controller
             ]);
         }
 
+        if ($order->payment_mode == 'online') {
+            $response = $this->create_shiprocket_order($order->id);
+            if (!empty($response) && $response->status == 'NEW') {
+                $update_order = Order::find($order->id);
+                $update_order->shiprocket_order_id = $response->order_id;
+                $update_order->shiprocket_shipment_id = $response->shipment_id;
+                $update_order->update();
+            }
+        }
+
         if (!empty($coupon) && $request->coupon_discount != 0) {
             if ($coupon->type == 'merchandise' || $coupon->type == 'global' || $coupon->type == 'personal_code' || $coupon->type == 'cart_value_discount') {
                 CouponUsedBy::create([
@@ -199,8 +213,6 @@ class OrderController extends Controller
             }
         }
 
-        $response = $this->create_shiprocket_order($order->id);
-
         return redirect('/')->with('success', 'Order Placed Successfully');
     }
 
@@ -217,105 +229,72 @@ class OrderController extends Controller
 
     public function create_shiprocket_order($order_id)
     {
-        $auth_response = $this->shiprocket_auth();
-        $auth_response = json_decode($auth_response);
+        $m_response = array();
+        $client = new Client();
+        $params = array(
+            'form_params' => array('email' => 'ved@webanix.in', 'password' => 'Admin@@123#')
+        );
+        $response = $client->post('https://apiv2.shiprocket.in/v1/external/auth/login', $params);
+        $auth_response = json_decode((string) $response->getBody());
+        # Shiprocket auth token
         $token = $auth_response->token;
-
-		$order = Order::where('id',$order_id)->with('items')->first();
+        # Creating order params
+        $order = Order::where('id', $order_id)->with('items')->first();
         $payment_mode = $order->payment_mode == 'cod' ? 'COD' : 'Prepaid';
-		$items = new Collection();
-		foreach ($order->items as $order_item) {
-			$items->push([
-				'name'          => $order_item->variant->product->name.' - '.$order_item->variant->name,
-				'sku'           => $order_item->variant->sku,
-				'units'         => $order_item->quantity,
-				'selling_price' => $order_item->variant->sale_price,
-				'hsn'           => $order_item->variant->product->hsn_code
-			]);
-		}
-
-        $curl = curl_init();
-
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://apiv2.shiprocket.in/v1/external/orders/create/adhoc',
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => '',
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS => '{
-                "order_id": "'.$order->order_no.'",
-                "order_date": "'.$order->created_at.'",
-                "pickup_location": "Primary",
-                "billing_customer_name": "'.$order->billing_name.'",
-                "billing_last_name": "'.$order->billing_name.'",
-                "billing_address": "'.$order->billing_address.'",
-                "billing_address_2": "'.$order->billing_address.'",
-                "billing_city": "'.$order->billing_city.'",
-                "billing_pincode": "'.$order->billing_zip.'",
-                "billing_state": "'.$order->billing_state.'",
-                "billing_country": "'.$order->billing_country.'",
-                "billing_email": "'.$order->billing_email.'",
-                "billing_phone": "'.$order->billing_mobile.'",
-                "shipping_is_billing": false,
-                "shipping_customer_name": "'.$order->shipping_name.'",
-                "shipping_last_name": "'.$order->shipping_name.'",
-                "shipping_address": "'.$order->shipping_address.'",
-                "shipping_address_2": "'.$order->shipping_address.'",
-                "shipping_city": "'.$order->shipping_city.'",
-                "shipping_pincode": "'.$order->shipping_zip.'",
-                "shipping_state": "'.$order->shipping_state.'",
-                "shipping_country": "'.$order->shipping_country.'",
-                "shipping_email": "'.$order->shipping_email.'",
-                "shipping_phone": "'.$order->shipping_mobile.'",
-                "order_items": "'.$items.'",
-                "payment_method": "'.$payment_mode.'",
-                "shipping_charges": "'.$order->service_charge_applied.'",
-                "sub_total": "'.$order->total_amount.'",
-                "length": 1,
-                "breadth": 1,
-                "height": 1,
-                "weight": 1
-            }',
-            CURLOPT_HTTPHEADER => array(
-                'Content-Type: application/json',
-                'Authorization: Bearer '.$token.''
+        $items = new Collection();
+        foreach ($order->items as $order_item) {
+            $items->push([
+                'name'          => $order_item->variant->product->name . ' - ' . $order_item->variant->name,
+                'sku'           => $order_item->variant->sku,
+                'units'         => $order_item->quantity,
+                'selling_price' => $order_item->variant->sale_price,
+                'hsn'           => $order_item->variant->product->hsn
+            ]);
+        }
+        $order_params = array(
+            'headers' => ['Content-Type' => 'application/json', 'Authorization' => 'Bearer ' . $token],
+            'json' => array(
+                "order_id" => $order->order_no,
+                "order_date" => $order->created_at,
+                "pickup_location" => "Primary",
+                "billing_customer_name" => $order->billing_name,
+                "billing_last_name" => $order->billing_name,
+                "billing_address" => $order->billing_address,
+                "billing_address_2" => $order->billing_address,
+                "billing_city" => $order->billing_city,
+                "billing_pincode" => $order->billing_zip,
+                "billing_state" => $order->billing_state,
+                "billing_country" => $order->billing_country,
+                "billing_email" => $order->billing_email,
+                "billing_phone" => $order->billing_mobile,
+                "shipping_is_billing" => false,
+                "shipping_customer_name" => $order->shipping_name,
+                "shipping_last_name" => $order->shipping_name,
+                "shipping_address" => $order->shipping_address,
+                "shipping_address_2" => $order->shipping_address,
+                "shipping_city" => $order->shipping_city,
+                "shipping_pincode" => $order->shipping_zip,
+                "shipping_state" => $order->shipping_state,
+                "shipping_country" => $order->shipping_country,
+                "shipping_email" => $order->shipping_email,
+                "shipping_phone" => $order->shipping_mobile,
+                "order_items" => $items,
+                "payment_method" => $payment_mode,
+                "shipping_charges" => '',
+                "sub_total" => $order->total_amount,
+                "length" => 1,
+                "breadth" => 1,
+                "height" => 1,
+                "weight" => 1
             ),
-        ));
-
-        $response = curl_exec($curl);
-        curl_close($curl);
-        dd($response);
-        return $response;
-    }
-
-    public function shiprocket_auth()
-    {
-        $curl = curl_init();
-
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://apiv2.shiprocket.in/v1/external/auth/login',
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => '',
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS => '{
-                "email": "ved@webanix.in",
-                "password": "Admin@@123#"
-            }',
-            CURLOPT_HTTPHEADER => array(
-                'Content-Type: application/json'
-            ),
-        ));
-
-        $response = curl_exec($curl);
-        curl_close($curl);
- 
-        return $response;
+        );
+        try {
+            $response = $client->post('https://apiv2.shiprocket.in/v1/external/orders/create/adhoc', $order_params);
+            $m_response = json_decode((string) $response->getBody());
+            return $m_response;
+        } catch (Exception $e) {
+            $m_response = $e;
+        }
+        return $m_response;
     }
 }

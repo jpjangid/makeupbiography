@@ -260,7 +260,7 @@
 										<input type="text" id="couponCsrfToken" value="{{ csrf_token() }}" hidden>
 									</div>
 									<hr style="width: 100%;color: rgb(236, 236, 236);">
-									<h2>Availabel Coupons</h2>
+									<h2>{{ $user_coupons->isNotEmpty() ? 'Availabel Coupons' : 'No Availabel Coupons' }}</h2>
 									<hr style="width: 100%;color: rgb(236, 236, 236);">
 									@foreach($user_coupons as $coupon)
 									<div style="display: flex;flex-direction: row;justify-content: space-between;">
