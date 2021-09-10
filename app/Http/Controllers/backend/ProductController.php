@@ -12,6 +12,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Yajra\DataTables\DataTables;
+use App\Models\Label;
 
 class ProductController extends Controller
 {
@@ -57,6 +58,7 @@ class ProductController extends Controller
     public function create()
     {
         $main_cats = Category::where(['flag' => '0', 'parent_id' => null])->get();
+        $labels = Label::where(['flag' => 0,'status' => 1])->get();
         $cats = new Collection;
         $sub_cats = new Collection;
         foreach ($main_cats as $cat) {
@@ -80,7 +82,7 @@ class ProductController extends Controller
             }
         }
 
-        return view('backend.products.create', compact('main_cats', 'cats', 'sub_cats'));
+        return view('backend.products.create', compact('main_cats', 'cats', 'sub_cats', 'labels'));
     }
 
     public function store(Request $request)
@@ -145,6 +147,7 @@ class ProductController extends Controller
             'status'                =>  $request->status,
             'main_image'            =>  $featured_image,
             'og_image'              =>  $og_image,
+            'label_name'            =>  $request->label_name,
         ]);
 
         return redirect('admin/products/variants/' . $product->id);
@@ -162,6 +165,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         $main_cats = Category::where(['flag' => '0', 'parent_id' => null])->get();
+        $labels = Label::where(['flag' => 0,'status' => 1])->get();
         $cats = new Collection;
         $sub_cats = new Collection;
         foreach ($main_cats as $cat) {
@@ -187,7 +191,7 @@ class ProductController extends Controller
 
         $product = Product::find($id);
 
-        return view('backend.products.edit', compact('main_cats', 'cats', 'sub_cats', 'product'));
+        return view('backend.products.edit', compact('main_cats', 'cats', 'sub_cats', 'product','labels'));
     }
 
     public function update(Request $request, $id)
@@ -258,6 +262,7 @@ class ProductController extends Controller
         $product->parent_id             =  $category_id;
         $product->main_image            =  $featured_image;
         $product->og_image              =  $og_image;
+        $product->label_name            =  $request->label_name;
         $product->update();
 
         return redirect('admin/products/variants/' . $id);

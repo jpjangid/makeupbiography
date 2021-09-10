@@ -102,6 +102,16 @@ Route::middleware(['auth', 'prevent-back-history', 'admin'])->prefix('admin')->g
         Route::post('/update_status', [App\Http\Controllers\backend\CategoryController::class, 'update_status_sub2']);
     });
 
+    Route::prefix('labels')->group(function () {
+        Route::get('/', [App\Http\Controllers\backend\LabelController::class, 'index']);
+        Route::get('/create', [App\Http\Controllers\backend\LabelController::class, 'create']);
+        Route::post('/store', [App\Http\Controllers\backend\LabelController::class, 'store']);
+        Route::get('/edit/{id}', [App\Http\Controllers\backend\LabelController::class, 'edit']);
+        Route::put('/update/{id}', [App\Http\Controllers\backend\LabelController::class, 'update']);
+        Route::get('/delete/{id}', [App\Http\Controllers\backend\LabelController::class, 'destroy']);
+        Route::post('/update_status', [App\Http\Controllers\backend\LabelController::class, 'update_status']);
+    });
+
     Route::prefix('products')->group(function () {
         Route::get('/', [App\Http\Controllers\backend\ProductController::class, 'index']);
         Route::get('/create', [App\Http\Controllers\backend\ProductController::class, 'create']);
