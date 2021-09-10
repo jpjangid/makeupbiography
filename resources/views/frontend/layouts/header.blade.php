@@ -35,7 +35,7 @@
             <a href="{{ url('/') }}">Home</a>
           </li>
           <li id="menu-item-162" class="c-mobile-menu__item c-mobile-menu__item--has-children menu-item-162">
-            <a href="https://parkofideas.com/luchiana/demo/shop/">Shop</a>
+            <a href="{{ url('shop') }}">Shop</a>
             <ul class="c-mobile-menu__submenu">
               <li id="menu-item-557" class="c-mobile-menu__subitem c-mobile-menu__subitem--has-children menu-item-557">
                 <a>Shop layout</a>
@@ -604,7 +604,7 @@
                 <a href="{{ url('/') }}">Home</a>
               </li>
               <li class="c-top-menu__item c-top-menu__item--has-children menu-item-162 js-menu-item">
-                <a href="https://parkofideas.com/luchiana/demo/shop/">Shop</a>
+                <a href="{{ url('shop') }}">Shop</a>
                 <ul class="c-top-menu__submenu c-top-menu__submenu--columns-4 c-top-menu__submenu--expand">
                   <li class="c-top-menu__subitem menu-item-557 c-top-menu__subitem--expand js-menu-item">
                     <a>Shop layout</a>

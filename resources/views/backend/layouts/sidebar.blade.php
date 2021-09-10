@@ -114,6 +114,15 @@
               </a>
             </div>
             <div class="menu-item">
+              <a class="menu-link" href="{{ url('admin/footer/banners') }}">
+                <span class="menu-bullet">
+                  <span class="bullet bullet-dot">
+                  </span>
+                </span>
+                <span class="menu-title">Footer Banners</span>
+              </a>
+            </div>
+            <div class="menu-item">
               <a class="menu-link" href="{{ url('admin/redirections') }}">
                 <span class="menu-bullet">
                   <span class="bullet bullet-dot">

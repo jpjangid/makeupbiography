@@ -9,6 +9,7 @@ use App\Models\ProductVariant;
 
 class CategoryController extends Controller
 {
+    //for category page
     public function index($slug)
     {
         $main_category = Category::where('slug',$slug)->with('parent.parent')->first();
@@ -26,4 +27,21 @@ class CategoryController extends Controller
 
         return view('frontend.product.category', compact('main_category','categories','products','variants','variant_ids'));
     }
+
+    //for shop page
+    public function shop()
+    {
+        $products = Product::where(['flag' => 0,'status' => 1])->with(['variants.medias'])->orderBy('updated_at','asc')->get();
+        
+        $variants = array();
+        $variant_ids = array();
+        foreach($products as $product){
+                $allvariants = ProductVariant::where(['product_id' => $product->id,'flag' => 0])->orderby('sequence','asc')->get();
+                array_push($variants, $allvariants[0]->slug);
+                array_push($variant_ids,$allvariants[0]->id);
+        }
+
+        return view('frontend.product.shop', compact('products','variants','variant_ids'));
+    }
+
 }
