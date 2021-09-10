@@ -147,6 +147,7 @@ Route::middleware(['auth', 'prevent-back-history', 'admin'])->prefix('admin')->g
     Route::prefix('orders')->group(function () {
         Route::get('/', [App\Http\Controllers\backend\OrderController::class, 'index']);
         Route::get('/order_detail/{id}', [App\Http\Controllers\backend\OrderController::class, 'order_detail']);
+        Route::post('/update', [App\Http\Controllers\backend\OrderController::class, 'update']);
     });
 
     //route for profile update
