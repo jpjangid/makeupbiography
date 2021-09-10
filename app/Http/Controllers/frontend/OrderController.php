@@ -211,9 +211,16 @@ class OrderController extends Controller
             foreach ($cartItems as $item) {
                 $item->delete();
             }
-        }
+        }  
 
-        return redirect('/')->with('success', 'Order Placed Successfully');
+        return redirect('orders/thanks/'.$order->order_no);
+    }
+
+    public function thankyou_page($order_no)
+    {
+        $order = Order::where('order_no',$order_no)->with('items.variant.product','items.variant.medias','user')->first();
+
+        return view('frontend.order.ordersuccess', compact('order'));
     }
 
     public function order_no()
