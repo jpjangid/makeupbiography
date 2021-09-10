@@ -1,5 +1,10 @@
 @extends('backend.layouts.app')
 
+@section('css')
+<!-- Status message -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+@endsection
+
 @section('title','Order Detail')
 
 @section('content')
@@ -14,26 +19,37 @@
                 <div class="card card-info">
                     <div class="card-header">
                         <h3 class="card-title">Order #{{ $order->order_no }}</h3>
+                        <a href="{{ url('admin/orders') }}" class="btn btn-warning btn-sm" style="height: 3rem;width: 6rem;margin-top: 1rem;padding: 1rem;">Back</a>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
                     <div class="card-body">
                         <div class="row">
-
+                            <div class="col-md-6 mb-4">
+                                <h4>Order Status</h4>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <input type="hidden" value="{{ $order->id }}" id="order_id">
+                                <select class="form-select form-select-solid" id="order_status">
+                                    <option value="pending" {{ $order->order_status == 'pending' ? 'selected' : '' }}>Pending</option>
+                                    <option value="success" {{ $order->order_status == 'success' ? 'selected' : '' }}>Completed</option>
+                                </select>
+                            </div>
                             <div class="col-md-12 mb-4">
                                 <h4>Order Details</h4>
                                 <table class="table table-row-bordered table-hover text-nowrap">
                                     <thead>
                                         <tr>
-                                            <th>Ordered Item</th>
+                                            <th colspan="2">Ordered Item</th>
                                             <th>Qty.</th>
                                             <th>Item Price</th>
                                             <th>Amount</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($order->items as $item)
+                                        @foreach($order->items as $key => $item)
                                         <tr>
+                                            <td><img src="{{ asset('storage/products/variants/'.$image[$key]) }}" alt="{{ $image[$key] }}" style="height: 5rem;"></td>
                                             <td>{{ $item->variant->product->name }} - {{ $item->variant->name }}</td>
                                             <td>{{ $item->quantity }}</td>
                                             <td>{{ $item->variant->sale_price }}</td>
@@ -133,4 +149,28 @@
 @endsection
 
 @section('js')
+<script>
+    $(document).on('change', '#order_status', function() {
+        var status = $('#order_status').val();
+        var id = $('#order_id').val();
+        $.ajax({
+            url: "{{ url('admin/orders/update') }}",
+            type: "POST",
+            dataType: "json",
+            data: {
+                order_status: status,
+                id: id,
+                _token: '{{csrf_token()}}'
+            },
+            success: function(data) {
+                location.reload();
+                toastr.options.closeButton = true;
+                toastr.options.closeMethod = 'fadeOut';
+                toastr.options.closeDuration = 100;
+                toastr.success(data.message);
+
+            }
+        });
+    });
+</script>
 @endsection

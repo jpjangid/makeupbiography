@@ -157,6 +157,7 @@ Route::middleware(['auth', 'prevent-back-history', 'admin'])->prefix('admin')->g
     Route::prefix('orders')->group(function () {
         Route::get('/', [App\Http\Controllers\backend\OrderController::class, 'index']);
         Route::get('/order_detail/{id}', [App\Http\Controllers\backend\OrderController::class, 'order_detail']);
+        Route::post('/update', [App\Http\Controllers\backend\OrderController::class, 'update']);
     });
 
     Route::prefix('footer/banners')->group(function () {
@@ -215,6 +216,7 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
 
 });
 
+
 //Route for Add to Cart
 Route::get('cart', [App\Http\Controllers\frontend\CartController::class, 'list']);
 Route::get('remove/cart/item/{id}/{variant_id}', [App\Http\Controllers\frontend\CartController::class, 'remove_item']);
@@ -255,6 +257,7 @@ Route::get('blogs/{cat}/{slug}', [App\Http\Controllers\frontend\BlogController::
 Route::get('category/{slug}', [App\Http\Controllers\frontend\CategoryController::class, 'index']);
 Route::get('products/{product}/{variant}', [App\Http\Controllers\frontend\ProductController::class, 'index']);
 Route::post('orders',[App\Http\Controllers\frontend\OrderController::class, 'index']);
+Route::get('orders/thanks/{order_no}', [App\Http\Controllers\frontend\OrderController::class, 'thankyou_page']);
 
 Route::post('storecomment', [App\Http\Controllers\frontend\CommentController::class, 'store']);
 Route::view('404', '404');

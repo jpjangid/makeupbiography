@@ -5,26 +5,15 @@
   <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default
  c-page-header--wc c-page-header--low">
     <div class="c-page-header__wrap">
-      <h1 class="c-page-header__title">Checkout</h1>
+      <h1 class="c-page-header__title">Order Details</h1>
     </div>
     <nav class="c-breadcrumbs">
       <ol class="c-breadcrumbs__list c-breadcrumbs__list--default" itemscope itemtype="http://schema.org/BreadcrumbList">
         <li class="c-breadcrumbs__item  c-breadcrumbs__item--first  " itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          <a itemprop="item" title="Home" href="https://parkofideas.com/luchiana/demo/">
+          <a itemprop="item" title="Home" href="{{ url('') }}">
             <span itemprop="name">Home</span>
           </a>
-          <!--
-						-->
-          <i class="ip-breadcrumb c-breadcrumbs__separator">
-            <!-- -->
-          </i>
           <meta itemprop="position" content="1">
-        </li>
-        <li class="c-breadcrumbs__item   c-breadcrumbs__item--last " itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-          <a itemprop="item" title="Checkout" href="https://parkofideas.com/luchiana/demo/checkout/">
-            <span itemprop="name">Checkout</span>
-          </a>
-          <meta itemprop="position" content="2">
         </li>
       </ol>
     </nav>
@@ -42,28 +31,28 @@
           <ul class="c-order__details">
             <li class="c-order__details-item c-order__details-item--order">
               <span class="c-order__details-title">Order number:</span>
-              <span class="c-order__details-value">2531</span>
+              <span class="c-order__details-value">{{ $order->order_no }}</span>
             </li>
             <li class="c-order__details-item c-order__details-item--date">
               <span class="c-order__details-title">Date:</span>
-              <span class="c-order__details-value">August 19, 2021</span>
+              <span class="c-order__details-value">{{ date('M d, Y', strtotime($order->created_at)) }}</span>
             </li>
             <li class="c-order__details-item c-order__details-item--email">
               <span class="c-order__details-title">Email:</span>
-              <span class="c-order__details-value">xyz@gmail.com</span>
+              <span class="c-order__details-value">{{ $order->billing_email }}</span>
             </li>
             <li class="c-order__details-item c-order__details-item--total">
               <span class="c-order__details-title">Total:</span>
               <span class="c-order__details-value">
                 <span class="woocommerce-Price-amount amount">
                   <bdi>
-                    <span class="woocommerce-Price-currencySymbol">&#36;</span>110.00</bdi>
+                    <span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $order->total_amount }}</bdi>
                 </span>
               </span>
             </li>
             <li class="c-order__details-item c-order__details-item--payment-method">
               <span class="c-order__details-title">Payment method:</span>
-              <span class="c-order__details-value">Cash on delivery</span>
+              <span class="c-order__details-value">{{ strtoupper($order->payment_mode) }}</span>
             </li>
           </ul>
           <div class="c-order__info">
@@ -78,44 +67,52 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="woocommerce-table__line-item order_item">
-                    <td class="woocommerce-table__product-name product-name">
-                      <a href="https://parkofideas.com/luchiana/demo/shop/airbrush-matte/">Airbrush Matte</a>
-                      <strong class="product-quantity">&times;&nbsp;2</strong>
-                    </td>
-                    <td class="woocommerce-table__product-total product-total">
-                      <span class="woocommerce-Price-amount amount">
-                        <bdi>
-                          <span class="woocommerce-Price-currencySymbol">&#36;</span>80.00</bdi>
-                      </span>
-                    </td>
-                  </tr>
+                  @foreach($order->items as $item)
+                    <tr class="woocommerce-table__line-item order_item">
+                      <td class="woocommerce-table__product-name product-name">
+                        <a href="https://parkofideas.com/luchiana/demo/shop/airbrush-matte/">{{ $item->variant->product->name }} - {{ $item->variant->name }}</a>
+                        <strong class="product-quantity">&times;&nbsp;{{ $item->quantity }}</strong>
+                      </td>
+                      <td class="woocommerce-table__product-total product-total">
+                        <span class="woocommerce-Price-amount amount">
+                          <bdi>
+                            <span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $item->variant->sale_price }}</bdi>
+                        </span>
+                      </td>
+                    </tr>
+                  @endforeach
                 </tbody>
                 <tfoot>
                   <tr>
                     <th scope="row">Subtotal:</th>
                     <td>
                       <span class="woocommerce-Price-amount amount">
-                        <span class="woocommerce-Price-currencySymbol">&#036;</span>80.00</span>
+                        <span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $order->order_amount }}</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Coupon Discount:</th>
+                    <td>
+                      <span class="woocommerce-Price-amount amount">
+                        <span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $order->coupon_discount }}</span>
                     </td>
                   </tr>
                   <tr>
                     <th scope="row">Shipping:</th>
                     <td>
                       <span class="woocommerce-Price-amount amount">
-                        <span class="woocommerce-Price-currencySymbol">&#036;</span>30.00</span>&nbsp;
-                      <small class="shipped_via">via Flat rate</small>
+                        <span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $order->service_charge_applied }}</span>&nbsp;
                     </td>
                   </tr>
                   <tr>
                     <th scope="row">Payment method:</th>
-                    <td>Cash on delivery</td>
+                    <td>{{ strtoupper($order->payment_mode) }}</td>
                   </tr>
                   <tr>
                     <th scope="row">Total:</th>
                     <td>
                       <span class="woocommerce-Price-amount amount">
-                        <span class="woocommerce-Price-currencySymbol">&#036;</span>110.00</span>
+                        <span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $order->total_amount }}</span>
                     </td>
                   </tr>
                 </tfoot>
@@ -125,23 +122,24 @@
               <section class="woocommerce-columns woocommerce-columns--2 woocommerce-columns--addresses col2-set addresses">
                 <div class="woocommerce-column woocommerce-column--1 woocommerce-column--billing-address col-1">
                   <h2 class="woocommerce-column__title">Billing address</h2>
-                  <address>xyz xyz
-                    <br />ascasc
-                    <br />ascas
-                    <br />ddd
-                    <br />sdvsdv Victoria 313002
-                    <p class="woocommerce-customer-details--phone">1234567890</p>
-                    <p class="woocommerce-customer-details--email">xyz@gmail.com</p>
+                  <address>{{ $order->billing_name }}
+                    <br />{{ $order->billing_address }}
+                    <br />{{ $order->billing_city }}
+                    <br />{{ $order->billing_state }} ({{ $order->billing_zip }})
+                    <p class="woocommerce-customer-details--phone">{{$order->billing_mobile}}</p>
+                    <p class="woocommerce-customer-details--email">{{$order->billing_email}}</p>
                   </address>
                 </div>
                 <!-- /.col-1 -->
                 <div class="woocommerce-column woocommerce-column--2 woocommerce-column--shipping-address col-2">
                   <h2 class="woocommerce-column__title">Shipping address</h2>
-                  <address>xyz xyz
-                    <br />ascasc
-                    <br />ascas
-                    <br />ddd
-                    <br />sdvsdv Victoria 313002</address>
+                  <address>{{ $order->shipping_name }}
+                    <br />{{ $order->shipping_address }}
+                    <br />{{ $order->shipping_city }}
+                    <br />{{ $order->shipping_state }} ({{ $order->shipping_zip }})
+                    <p class="woocommerce-customer-details--phone">{{$order->shipping_mobile}}</p>
+                    <p class="woocommerce-customer-details--email">{{$order->shipping_email}}</p>
+                  </address>
                 </div>
                 <!-- /.col-2 -->
               </section>
