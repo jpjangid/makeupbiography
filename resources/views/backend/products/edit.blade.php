@@ -221,8 +221,24 @@
                                             <option value="popular" {{ !empty($product->tags) && str_contains($product->tags,"popular") ? "selected" : "" }}>Popular</option>
                                             <option value="category" {{ !empty($product->tags) && str_contains($product->tags,"category") ? "selected" : "" }}>Category</option>
                                             <option value="brand" {{ !empty($product->tags) && str_contains($product->tags,"brand") ? "selected" : "" }}>Brand</option>
+                                            <option value="big discount" {{ !empty($product->tags) && str_contains($product->tags,"big discount") ? "selected" : "" }}>Big Discount</option>
                                         </select>                                        
                                         @error('tags')
+                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <!-- labels -->
+                                <div class="col-md-10 mb-4">
+                                    <div class="form-group">
+                                        <label class="form-label" for="tags">Label</label>
+                                        <select class="form-select form-select-solid @error('label_name') is-invalid @enderror" data-control="select2" data-placeholder="Select an option" data-allow-clear="true" name="label_name">
+                                            @foreach($labels as $label)  
+                                            <option value="{{ $label->name }}" {{ $product->label_name == $label->name ? "selected" : "" }}>{{ $label->name }}</option>
+                                            @endforeach  
+                                        </select>  
+                                        @error('label_name')
                                         <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
                                     </div>

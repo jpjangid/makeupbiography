@@ -213,12 +213,28 @@
                                     <div class="form-group">
                                         <label class="form-label" for="tags">Tags</label>
                                         <select class="form-select form-select-solid @error('tags') is-invalid @enderror" data-control="select2" data-placeholder="Select an option" data-allow-clear="true" multiple="multiple" name="tags[]">
-                                            <option value="newest" {{ in_array("newest",old('tags')) ? "selected" : "" }}>Newest</option>
-                                            <option value="popular" {{ in_array("popular",old('tags')) ? "selected" : "" }}>Popular</option>
-                                            <option value="category" {{ in_array("category",old('tags')) ? "selected" : "" }}>Category</option>
-                                            <option value="brand" {{ in_array("brand",old('tags')) ? "selected" : "" }}>Brand</option>
+                                            <option value="newest" {{ !empty(old('tags')) && in_array("newest",old('tags')) ? "selected" : "" }}>Newest</option>
+                                            <option value="popular" {{ !empty(old('tags')) && in_array("popular",old('tags')) ? "selected" : "" }}>Popular</option>
+                                            <option value="category" {{ !empty(old('tags')) && in_array("category",old('tags')) ? "selected" : "" }}>Category</option>
+                                            <option value="brand" {{ !empty(old('tags')) && in_array("brand",old('tags')) ? "selected" : "" }}>Brand</option>
+                                            <option value="big discount" {{ !empty(old('tags')) && in_array("big discount",old('tags')) ? "selected" : "" }}>Big Discount</option>
                                         </select>  
                                         @error('tags')
+                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <!-- labels -->
+                                <div class="col-md-10 mb-4">
+                                    <div class="form-group">
+                                        <label class="form-label" for="tags">Label</label>
+                                        <select class="form-select form-select-solid @error('label_name') is-invalid @enderror" data-control="select2" data-placeholder="Select an option" data-allow-clear="true" name="label_name">
+                                          @foreach($labels as $label)  
+                                            <option value="{{ $label->name }}" {{ old('label_name') == $label->name ? "selected" : "" }}>{{ $label->name }}</option>
+                                          @endforeach  
+                                        </select>  
+                                        @error('label_name')
                                         <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
                                     </div>
