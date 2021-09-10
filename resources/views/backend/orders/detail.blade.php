@@ -40,15 +40,16 @@
                                 <table class="table table-row-bordered table-hover text-nowrap">
                                     <thead>
                                         <tr>
-                                            <th>Ordered Item</th>
+                                            <th colspan="2">Ordered Item</th>
                                             <th>Qty.</th>
                                             <th>Item Price</th>
                                             <th>Amount</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($order->items as $item)
+                                        @foreach($order->items as $key => $item)
                                         <tr>
+                                            <td><img src="{{ asset('storage/products/variants/'.$image[$key]) }}" alt="{{ $image[$key] }}" style="height: 5rem;"></td>
                                             <td>{{ $item->variant->product->name }} - {{ $item->variant->name }}</td>
                                             <td>{{ $item->quantity }}</td>
                                             <td>{{ $item->variant->sale_price }}</td>

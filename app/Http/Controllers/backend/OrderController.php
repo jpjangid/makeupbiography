@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Yajra\DataTables\DataTables;
 use GuzzleHttp\Client;
+use App\Models\ProductVariantMedia;
 
 class OrderController extends Controller
 {
@@ -45,9 +46,16 @@ class OrderController extends Controller
 
     public function order_detail($id)
     {
-        $order = Order::where('id',$id)->with('items.variant.product','user')->first();
+        $order = Order::where('id',$id)->with('items.variant.product','items.variant.medias','user')->first();
+        $image = array();
+        foreach($order->items as $item){
+            $media = ProductVariantMedia::where(['product_variant_id' => $item->variant->id, 'media_type' => 'image'])->orderby('sequence','asc')->first();
+            if(!empty($media)){
+                array_push($image, $media->media);
+            }
+        }
 
-        return view('backend.orders.detail', compact('order'));
+        return view('backend.orders.detail', compact('order','image'));
     }
 
     public function update(Request $request)
