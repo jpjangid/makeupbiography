@@ -221,13 +221,6 @@ class OrderController extends Controller
         $auth_response = json_decode($auth_response);
         $token = $auth_response->token;
 
-        $token_new = array(
-            'Content-Type: application/json',
-            'Authorization: Bearer '.$token.''
-        );
-        dd($token_new);
-
-
 		$order = Order::where('id',$order_id)->with('items')->first();
         $payment_mode = $order->payment_mode == 'cod' ? 'COD' : 'Prepaid';
 		$items = new Collection();
@@ -293,7 +286,6 @@ class OrderController extends Controller
         ));
 
         $response = curl_exec($curl);
-
         curl_close($curl);
         dd($response);
         return $response;
@@ -313,8 +305,8 @@ class OrderController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => '{
-                "email": "marketing@28southventures.com",
-                "password": "Admin@28mb"
+                "email": "ved@webanix.in",
+                "password": "Admin@@123#"
             }',
             CURLOPT_HTTPHEADER => array(
                 'Content-Type: application/json'
@@ -322,9 +314,8 @@ class OrderController extends Controller
         ));
 
         $response = curl_exec($curl);
-
         curl_close($curl);
-
+ 
         return $response;
     }
 }
