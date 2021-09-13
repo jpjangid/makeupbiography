@@ -165,6 +165,14 @@ Route::middleware(['auth', 'prevent-back-history', 'admin'])->prefix('admin')->g
         Route::get('/return_detail/{id}', [App\Http\Controllers\backend\ReturnController::class, 'return_detail']);
         Route::post('/update', [App\Http\Controllers\backend\ReturnController::class, 'update']);
     });
+    
+    Route::prefix('footer/banners')->group(function () {
+        Route::get('/', [App\Http\Controllers\backend\FooterBannerController::class, 'index']);
+        Route::get('/edit/{id}', [App\Http\Controllers\backend\FooterBannerController::class, 'edit']);
+        Route::put('/update/{id}', [App\Http\Controllers\backend\FooterBannerController::class, 'update']);
+        Route::get('/delete/{id}', [App\Http\Controllers\backend\FooterBannerController::class, 'destroy']);
+        Route::post('/update_status', [App\Http\Controllers\backend\FooterBannerController::class, 'update_status']);
+    });
 
     //route for profile update
     Route::get('profile', [App\Http\Controllers\Auth\ProfileController::class, 'edit']);
@@ -236,6 +244,7 @@ Route::view('wishlist/empty', 'frontend.wishlist.empty');
 Route::view('cart/empty', 'frontend.cart.empty');
 
 Route::view('myaccount', 'frontend.myaccount.myaccount');
+Route::get('shop', [App\Http\Controllers\frontend\CategoryController::class, 'shop']);
 Route::view('brand', 'frontend.brand.index');
 Route::view('contactus', 'frontend.page.contactus');
 

@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-@section('title','Label')
+@section('title','Footer Banners')
 
 @section('css')
 <!-- Status message -->
@@ -43,17 +43,15 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-tools mt-4">
-                            <a href="{{ url('admin/labels/create') }}" class="btn btn-active-light-primary">
-                                + Add Label
-                            </a>
+
                         </div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body table-responsive">
-                        <table class="table table-row-bordered table-hover text-nowrap" id="labelTable">
+                        <table class="table table-row-bordered table-hover text-nowrap" id="footerTable">
                             <thead>
                                 <tr class="fw-bold fs-6 text-muted">
-                                    <th>Label</th>
+                                    <th>Name</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -77,10 +75,10 @@
 
 <!-- Soft Delete -->
 <script type="text/javascript">
-    var materialTable = $('#labelTable').DataTable({
+    var materialTable = $('#footerTable').DataTable({
         processing: true,
         serverSide: true,
-        url: "{{ url('admin/labels') }}",
+        url: "{{ url('admin/footer/banners') }}",
         columns: [
             {data: 'name', name: 'name'},
             {data: 'active', name: 'status'}, 
@@ -94,14 +92,14 @@
     $('.js-switch').change(function() {
         var row = $(this).closest('tr');
         let status = row.find('.js-switch').val();
-        let labelId = row.find('.label_id').val();
+        let footerId = row.find('.footer_id').val();
         $.ajax({
-            url: "{{ url('admin/labels/update_status') }}",
+            url: "{{ url('admin/footer/banners/update_status') }}",
             type: "POST",
             dataType: "json",
             data: {
                 status: status,
-                label_id: labelId,
+                label_id: footerId,
                 _token: '{{csrf_token()}}' 
             },
             success: function(data) {
