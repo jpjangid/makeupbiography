@@ -228,7 +228,7 @@ class OrderController extends Controller
         $no = Str::random(8);
         $order = Order::where('order_no', $no)->first();
         if (!empty($order)) {
-            $this->order_no();
+            return $this->order_no();
         } else {
             return $no;
         }

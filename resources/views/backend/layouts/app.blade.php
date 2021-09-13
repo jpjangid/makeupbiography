@@ -18,8 +18,8 @@
   <link href="{{ asset('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
   <link href="{{ asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
   <!-- DataTable Css -->
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
-<link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
   @yield('css')
   <!--end::Global Stylesheets Bundle-->
 </head>
@@ -62,7 +62,7 @@
   <!--begin::Page Custom Javascript(used by this page)-->
   <script src="{{ asset('assets/js/custom/widgets.js') }}"></script>
   <script src="{{ asset('https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap.min.js')}}"></script>
-<script src="{{ asset('https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js')}}"></script>
+  <script src="{{ asset('https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js')}}"></script>
   <!--end::Page Custom Javascript-->
   <!--end::Javascript-->
   @yield('js')

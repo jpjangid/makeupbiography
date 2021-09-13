@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\UserAddress;
 use App\Models\Location;
+use App\Models\Order;
 use App\Models\User;
+use App\Models\ProductVariantMedia;
 
 class MyAccountController extends Controller
 {
@@ -28,7 +30,24 @@ class MyAccountController extends Controller
     //view for myorders
     public function myorders()
     {
-        return view('frontend.myaccount.myorders');
+        $user = auth()->user();
+        $orders = Order::where('user_id',$user->id)->with('items.variant.product','user')->orderby('id','desc')->get();
+
+        return view('frontend.myaccount.myorders', compact('orders'));
+    }
+
+    public function order_detail($order_no)
+    {
+        $order = Order::where('order_no',$order_no)->with('items.variant.product','items.variant.medias','user')->first();
+        $image = array();
+        foreach($order->items as $item){
+            $media = ProductVariantMedia::where(['product_variant_id' => $item->variant->id, 'media_type' => 'image'])->orderby('sequence','asc')->first();
+            if(!empty($media)){
+                array_push($image, $media->media);
+            }
+        }
+
+        return view('frontend.myaccount.order_detail', compact('order','image'));
     }
 
     //view for wishlist
