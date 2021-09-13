@@ -155,6 +155,7 @@
                           </div>
                           <div class="c-ip-product-tabs__list">
                             <!-- Top Products Newest Begin -->
+                            
                             <div class="c-ip-product-tabs__item visible active" id="tab-01406ee-1">
                               <div class="woocommerce columns-4 ">
                                 <div class="c-product-grid__wrap c-product-grid__wrap--4-per-row ">
@@ -163,6 +164,7 @@
                                     <!-- Top Newest Product List Item Begin -->
                                     @if(!empty($main_newest_products))
                                       @foreach($main_newest_products as $main_newest_product)
+                                       @if(!empty($main_newest_product->variants) && count($main_newest_product->variants) > 0) 
                                         @php 
                                           $variant = $main_newest_product->variants[0];
                                         @endphp
@@ -245,6 +247,7 @@
                                             <!-- .c-product-grid__details -->
                                           </div>
                                         @endif
+                                       @endif 
                                       @endforeach
                                     @endif
                                     <!-- Top Newest Product List Item End -->
@@ -257,6 +260,7 @@
                               </div>
                             </div>
                             <!-- Top Products Newest End -->
+                            
                             <!-- Top Products Popular Begin -->
                             <div class="c-ip-product-tabs__item " id="tab-01406ee-2">
                               <div class="woocommerce columns-4 ">
@@ -266,6 +270,7 @@
                                     <!-- Top Popular Product List Item Begin -->
                                     @if(!empty($main_newest_products))
                                       @foreach($main_newest_products as $main_newest_product)
+                                       @if(!empty($main_newest_product->variants)  && count($main_newest_product->variants) > 0) 
                                         @php 
                                           $variant = $main_newest_product->variants[0];
                                         @endphp
@@ -346,6 +351,7 @@
                                             <!-- .c-product-grid__details -->
                                           </div>
                                         @endif
+                                       @endif 
                                       @endforeach
                                     @endif
                                     <!-- Top Popular Product List Item End -->
@@ -367,6 +373,7 @@
                                     <!-- Top Category Product List Item Begin -->
                                     @if(!empty($main_newest_products))
                                     @foreach($main_newest_products as $main_newest_product)
+                                    @if(!empty($main_newest_product->variants)  && count($main_newest_product->variants) > 0) 
                                       @php 
                                         $variant = $main_newest_product->variants[0];
                                       @endphp
@@ -447,6 +454,7 @@
                                           <!-- .c-product-grid__details -->
                                         </div>
                                       @endif
+                                    @endif  
                                     @endforeach
                                     @endif
                                     <!-- Top Category Product List Item End -->
@@ -468,6 +476,7 @@
                                     <!-- Top Brand Product List Item Begin -->
                                     @if(!empty($main_newest_products))
                                     @foreach($main_newest_products as $main_newest_product)
+                                    @if(!empty($main_newest_product->variants)  && count($main_newest_product->variants) > 0) 
                                       @php 
                                         $variant = $main_newest_product->variants[0];
                                       @endphp
@@ -548,11 +557,11 @@
                                           <!-- .c-product-grid__details -->
                                         </div>
                                       @endif
+                                    @endif  
                                     @endforeach
                                     @endif
                                     <!-- Top Brand Product List Item End -->
-
-
+                  
                                   </div>
                                 </div>
                               </div>
@@ -578,6 +587,7 @@
             </div>
           </div>
         </section>
+       
         <section class="elementor-section elementor-top-section elementor-element elementor-element-071bf45 elementor-section-height-min-height elementor-section-boxed elementor-section-height-default elementor-section-items-middle" data-id="071bf45" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
           <div class="elementor-container elementor-column-gap-no">
             <div class="elementor-row">
@@ -778,6 +788,7 @@
             </div>
           </div>
         </section>
+        @if(!empty($footer_banners) && count($footer_banners) > 0)
         <section class="elementor-section elementor-top-section elementor-element elementor-element-3d1ff9f elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="3d1ff9f" data-element_type="section">
           <div class="elementor-container elementor-column-gap-no">
             <div class="elementor-row">
@@ -814,6 +825,7 @@
             </div>
           </div>
         </section>
+        @endif
       </div>
     </div>
   </div>

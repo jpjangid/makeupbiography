@@ -11,6 +11,10 @@
 @section('twitter_image',$main_category->og_image != '' ? asset('storage/category/'.$main_category->og_image) : '')
 @section('twitter_site',url(Request::url()))
 
+@section('css')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.css"/>
+@endsection
+
 @section('script')
 <script type="application/ld+json">
   {
@@ -83,6 +87,8 @@
   </div>
   <div class="woocommerce-notices-wrapper">
   </div>
+  <!-- Sider filter slider Begin -->
+  
   <div class="l-section l-section--container l-section--top-margin l-section--bottom-margin">
     <div class="l-section__sidebar">
       <div class="c-sidebar c-shop-sidebar c-shop-sidebar--desktop-filter js-shop-sidebar ">
@@ -95,71 +101,48 @@
             </button>
           </div>
           <div class="c-shop-sidebar__content c-shop-sidebar__content--desktop-filter js-shop-sidebar-content-desktop">
-            <aside id="woocommerce_product_categories-2" class="widget woocommerce widget_product_categories">
-              <div class="widget-title">Product categories</div>
-              <ul class="product-categories">
-                <li class="cat-item cat-item-67">
-                  <a href="https://parkofideas.com/luchiana/demo/product-category/fragrance/">Fragrance</a>
-                </li>
-                <li class="cat-item cat-item-50 cat-parent">
-                  <a href="https://parkofideas.com/luchiana/demo/product-category/makeup/">Makeup</a>
-                  <ul class='children'>
-                    <li class="cat-item cat-item-58">
-                      <a href="https://parkofideas.com/luchiana/demo/product-category/makeup/eye/">Eye Palettes</a>
-                    </li>
-                    <li class="cat-item cat-item-64">
-                      <a href="https://parkofideas.com/luchiana/demo/product-category/makeup/hair/">Hair Health</a>
-                    </li>
-                    <li class="cat-item cat-item-49">
-                      <a href="https://parkofideas.com/luchiana/demo/product-category/makeup/lips/">Lips Gloss</a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="cat-item cat-item-54">
-                  <a href="https://parkofideas.com/luchiana/demo/product-category/skincare/">Skincare</a>
-                </li>
-              </ul>
+          <!-- Filter sidebar for computer begin --> 
+          <form action="{{ url('category',['slug' => $slug]); }}" method="get" id="categoryPageFrom">
+            @if(!empty($sub_categories) && count($sub_categories) > 0)
+              <aside id="woocommerce_product_categories-2" class="widget woocommerce widget_product_categories">
+                <div class="widget-title">Product categories</div>
+                <ul class="product-categories">
+                @foreach($sub_categories as $pet_cat)
+                  <li class="cat-item cat-item-50 cat-parent">
+                
+                    <input type="checkbox" name="filter_category[]" id="filterCategory" class="filter_category" value="{{$pet_cat->slug}}" {{ !empty($filter_old) && in_array($pet_cat->slug,$filter_old) ? "checked" : "" }}> 
+                    <label for="" >{{ $pet_cat->name }}</label>
+
+                    @if(!empty($pet_cat->subcategory)  && count($pet_cat->subcategory) > 0)
+                    <ul class='children'>
+                      @foreach($pet_cat->subcategory as $sub)
+                        <li class="cat-item cat-item-58 cat-parent">
+                          <input type="checkbox"  name="filter_category[]" id="filterCategory" class="filter_category" value="{{$sub->slug}}" {{ !empty($filter_old) && in_array($sub->slug,$filter_old) ? "checked" : "" }}> 
+                          <label for="">{{ $sub->name }}</label>
+                        </li>
+                      @endforeach
+                    </ul>
+                    @endif
+                  </li>
+                @endforeach  
+                  
+                </ul>
+              </aside>
+            @endif  
+
+            <aside id="woocommerce_price_filter-2" class="widget woocommerce widget_price_filter"><div class="widget-title">Price <span id="min_price_filter_text">{{ $min_price_filter }}</span> - <span id="max_price_filter_text">{{ $max_price_filter }}</span></div>
+              <div class="price_slider_wrapper">
+                <div id="slider" wire:ignore></div>
+              </div>
             </aside>
-            <aside id="woocommerce_price_filter-2" class="widget woocommerce widget_price_filter">
-              <div class="widget-title">Price</div>
-              <form method="get" action="https://parkofideas.com/luchiana/demo/shop/">
-                <div class="price_slider_wrapper">
-                  <div class="price_slider" style="display:none;">
-                  </div>
-                  <div class="price_slider_amount" data-step="10">
-                    <input type="text" id="min_price" name="min_price" value="20" data-min="20" placeholder="Min price" />
-                    <input type="text" id="max_price" name="max_price" value="200" data-max="200" placeholder="Max price" />
-                    <button type="submit" class="button">Filter</button>
-                    <div class="price_label" style="display:none;">Price:
-                      <span class="from">
-                      </span>&mdash;
-                      <span class="to">
-                      </span>
-                    </div>
-                    <input type="hidden" name="set" value="5" />
-                    <div class="clear">
-                    </div>
-                  </div>
-                </div>
-              </form>
+
+            <aside id="woocommerce_layered_nav-2" style="margin-top: 20px;" class="widget woocommerce widget_layered_nav woocommerce-widget-layered-nav">  
+              <input type="text" name="min_price_filter" id="min_price_filter" value="" hidden>
+              <input type="text" name="max_price_filter" id="max_price_filter" value="" hidden>
+              <button type="submit" id="filterButton" class="button">Filter</button>
             </aside>
-            <aside id="woocommerce_layered_nav-2" class="widget woocommerce widget_layered_nav woocommerce-widget-layered-nav">
-              <div class="widget-title">Capacity</div>
-              <ul class="woocommerce-widget-layered-nav-list">
-                <li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
-                  <a rel="nofollow" href="https://parkofideas.com/luchiana/demo/shop/?filter_capacity=30ml">30 mL</a>
-                  <span class="count">(4)</span>
-                </li>
-                <li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
-                  <a rel="nofollow" href="https://parkofideas.com/luchiana/demo/shop/?filter_capacity=40ml">40 mL</a>
-                  <span class="count">(10)</span>
-                </li>
-                <li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
-                  <a rel="nofollow" href="https://parkofideas.com/luchiana/demo/shop/?filter_capacity=50ml">50 mL</a>
-                  <span class="count">(7)</span>
-                </li>
-              </ul>
-            </aside>
+          </form>  
+          <!-- Filter sidebar for computer end -->  
           </div>
           <div class="c-shop-sidebar__content c-shop-sidebar__content--mobile js-shop-sidebar-content">
             <aside id="woocommerce_price_filter-3" class="widget woocommerce widget_price_filter">
@@ -259,6 +242,7 @@
               </div>
               @endforeach
               @foreach($products as $key => $product)
+              @if(!empty($product->variants) && count($product->variants) > 0)
               <div class="c-product-grid__item c-product-grid__item--3-per-row c-product-grid__item--normal c-product-grid__item--hover product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple">
                 <div class="c-product-grid__badges c-badge__list">
                 </div>
@@ -290,8 +274,16 @@
 
                 <div class="c-product-grid__details">
                   <div class="c-product-grid__title-wrap">
+                    @php 
+                        $variant_name = ""; 
+                        foreach($product->variants as $v) {
+                          if($v->slug == $variants[$key]) {
+                            $variant_name = $v->name;
+                          }
+                        } 
+                    @endphp
                     <a href="{{ url('products',['product' => $product->slug, 'variant' => $variants[$key] ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                      <h2 class="woocommerce-loop-product__title">{{ $product->name }}</h2>
+                      <h2 class="woocommerce-loop-product__title">{{ $product->name."-".$variant_name }}</h2>
                     </a>
                     <div class="c-product-grid__short-desc">
                       <p>{{ $product->short_description }}</p>
@@ -301,6 +293,7 @@
                 </div>
                 <!-- .c-product-grid__details -->
               </div>
+              @endif
               @endforeach
             </div>
           </div>
@@ -323,8 +316,51 @@
       </div>
     </div>
   </div>
+ 
+  <!-- Sider filter slider End -->
+
   <div class="l-section l-section--container entry-content c-product-grid__cat-desc c-product-grid__cat-desc--below">
   </div>
 </div>
 <!-- /.l-inner -->
+@endsection
+
+@section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    // $(document).on('click','#filterCategory',function(e){
+    //   e.preventDefault();
+    //   $('#categoryPageFrom').submit();
+    // });
+    $(document).on('click','#filterButton',function(e){
+      e.preventDefault();
+      $('#categoryPageFrom').submit();
+    });
+
+    var slider = document.getElementById('slider');
+    noUiSlider.create(slider, {
+        start: [1, 1000],
+        connect: true,
+        range: {
+            'min': 1,
+            'max': 1000
+        },
+        pips: {
+          mode: 'steps',
+          stepped: true,
+          density: 4
+        }
+    });
+    slider.noUiSlider.on('update',function(value){
+      priceChangeFilter(value[0],value[1]);
+    });
+    function priceChangeFilter(min_price,max_price) {
+      $('#min_price_filter_text').text(min_price);
+      $('#max_price_filter_text').text(max_price);
+      $('#min_price_filter').val(min_price);
+      $('#max_price_filter').val(max_price);
+    }
+  });
+</script>
 @endsection
