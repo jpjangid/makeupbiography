@@ -160,6 +160,12 @@ Route::middleware(['auth', 'prevent-back-history', 'admin'])->prefix('admin')->g
         Route::post('/update', [App\Http\Controllers\backend\OrderController::class, 'update']);
     });
 
+    Route::prefix('returns')->group(function () {
+        Route::get('/', [App\Http\Controllers\backend\ReturnController::class, 'index']);
+        Route::get('/return_detail/{id}', [App\Http\Controllers\backend\ReturnController::class, 'return_detail']);
+        Route::post('/update', [App\Http\Controllers\backend\ReturnController::class, 'update']);
+    });
+    
     Route::prefix('footer/banners')->group(function () {
         Route::get('/', [App\Http\Controllers\backend\FooterBannerController::class, 'index']);
         Route::get('/edit/{id}', [App\Http\Controllers\backend\FooterBannerController::class, 'edit']);
@@ -181,6 +187,7 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::view('mywishlistempty', 'frontend.myaccount.mywishlist_empty');
     Route::get('my-wishlist', [App\Http\Controllers\frontend\MyAccountController::class, 'wishlist']);
     Route::get('my-orders', [App\Http\Controllers\frontend\MyAccountController::class, 'myorders']);
+    Route::get('detail/{order_no}', [App\Http\Controllers\frontend\MyAccountController::class, 'order_detail']);
     Route::get('q&a', [App\Http\Controllers\frontend\MyAccountController::class, 'question_answers']);
 
     Route::view('questionanswer', 'frontend.myaccount.question_answer');
@@ -258,6 +265,7 @@ Route::get('category/{slug}', [App\Http\Controllers\frontend\CategoryController:
 Route::get('products/{product}/{variant}', [App\Http\Controllers\frontend\ProductController::class, 'index']);
 Route::post('orders',[App\Http\Controllers\frontend\OrderController::class, 'index']);
 Route::get('orders/thanks/{order_no}', [App\Http\Controllers\frontend\OrderController::class, 'thankyou_page']);
+Route::post('orders/return', [App\Http\Controllers\frontend\ReturnController::class, 'index']);
 
 Route::post('storecomment', [App\Http\Controllers\frontend\CommentController::class, 'store']);
 Route::view('404', '404');

@@ -60,6 +60,15 @@
               </a>
             </div>
             <div class="menu-item">
+              <a class="menu-link" href="{{ url('admin/returns') }}">
+                <span class="menu-bullet">
+                  <span class="bullet bullet-dot">
+                  </span>
+                </span>
+                <span class="menu-title">Return Orders</span>
+              </a>
+            </div>
+            <div class="menu-item">
               <a class="menu-link" href="{{ url('admin/brands') }}">
                 <span class="menu-bullet">
                   <span class="bullet bullet-dot">

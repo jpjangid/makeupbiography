@@ -17,4 +17,9 @@ class OrderItem extends Model
     {
         return $this->belongsTo('App\Models\ProductVariant', 'product_variant_id');
     }
+
+    public function order()
+    {
+        return $this->belongsTo('App\Models\Order','order_id');
+    }
 }
