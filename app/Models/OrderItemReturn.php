@@ -11,7 +11,7 @@ class OrderItemReturn extends Model
 
     protected $fillable = [
         'user_id','order_id','order_item_id','product_id','product_variant_id','quantity','amount','reason',
-        'description','status','return_no'
+        'description','status','return_no','shiprocket_order_id', 'shiprocket_shipment_id'
     ];
 
     public function order()

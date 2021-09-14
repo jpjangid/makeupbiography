@@ -778,6 +778,7 @@
             </div>
           </div>
         </section>
+        @if(!empty($footer_banners) && count($footer_banners) > 0)                  
         <section class="elementor-section elementor-top-section elementor-element elementor-element-3d1ff9f elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="3d1ff9f" data-element_type="section">
           <div class="elementor-container elementor-column-gap-no">
             <div class="elementor-row">
@@ -814,6 +815,7 @@
             </div>
           </div>
         </section>
+        @endif                                    
       </div>
     </div>
   </div>

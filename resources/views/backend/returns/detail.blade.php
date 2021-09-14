@@ -81,8 +81,8 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>{{ $return_order->order->shiprocket_order_id }}</td>
-                                            <td>{{ $return_order->order->shiprocket_shipment_id }}</td>
+                                            <td>{{ $return_order->shiprocket_order_id }}</td>
+                                            <td>{{ $return_order->shiprocket_shipment_id }}</td>
                                         </tr>
                                     </tbody>
                                 </table>

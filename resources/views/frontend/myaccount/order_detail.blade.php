@@ -105,64 +105,64 @@
                                 <hr style="width:800px;">
                             </label>
                         </p>
-                        <div class="card-view">
-                            <form action="{{ url('orders/return') }}" method="post">
-                                @csrf
-                                <table class="table" id="producttbl">
-                                    <thead>
-                                        <tr>
-                                            <th colspan="2">Product Name</th>
-                                            <th>Price</th>
-                                            <th>Total</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <input type="hidden" name="order_id" value="{{ $order->id }}">
-                                        @foreach($order->items as $key => $item)
-                                        <tr>
-                                            <td><img src="{{ asset('storage/products/variants/'.$image[$key]) }}" alt="{{ $image[$key] }}" style="height: 4rem;"></td>
-                                            <td>{{ $item->variant->product->name }} - {{ $item->variant->name }} X {{ $item->quantity }}</td>
-                                            <td>{{ $item->variant->sale_price }}</td>
-                                            <td>{{ $item->variant->sale_price * $item->quantity }}</td>
-                                            @if($item->item_status == '')
-                                            <input type="hidden" class="orderitem_id" value="{{ $item->id }}">
-                                            <td><input type="checkbox" class="form-control return_check" name="return_check[]" value="{{ $item->id }}"></td>
-                                            @else
-                                            <td>{{ $item->item_status }}</td>
-                                            @endif
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                                <div class="col-md-12">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label for="">Return/Exchange Request</label>
-                                            <select class="form-select form-select-solid @error('status') is-invalid @enderror" name="status">
-                                                <option value="">Reason Of Return</option>
-                                                <option value="Accidentally Placed Order">Accidentally Placed Order</option>
-                                                <option value="Ordered Wrong Product">Ordered Wrong Product</option>
-                                                <option value="Product is not good as per requirement">Product is not good as per requirement</option>
-                                                <option value="Did not like">Did not like</option>
-                                                <option value="Defective Product">Defective Product</option>
-                                            </select>
-                                            @error('status')
-                                            <span class="error invalid-feedback" style="color: red;">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="">Please Describe the Issue</label>
-                                            <textarea name="description" class="@error('description') is-invalid @enderror" cols="30" rows="2" placeholder="Please Enter..."></textarea>
-                                            @error('description')
-                                            <span class="error invalid-feedback" style="color: red;">{{ $message }}</span>
-                                            @enderror
-                                        </div>
+                        <form action="{{ url('orders/return') }}" method="post">
+                            @csrf
+                            @php $no = 0; @endphp
+                            @foreach($order->items as $key => $item)
+                                @if($item->item_status == '')
+                                    @php $no += 1; @endphp
+                                    <div class="card-view">
+                                        <table class="table" id="producttbl">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="2">Product Name</th>
+                                                    <th>Price</th>
+                                                    <th>Total</th>
+                                                    <th>Check If Return</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <input type="hidden" name="order_id" value="{{ $order->id }}">
+                                                <tr>
+                                                    <td><img src="{{ asset('storage/products/variants/'.$image[$key]) }}" alt="{{ $image[$key] }}" style="height: 4rem;"></td>
+                                                    <td>{{ $item->variant->product->name }} - {{ $item->variant->name }} X {{ $item->quantity }}</td>
+                                                    <td>{{ $item->variant->sale_price }}</td>
+                                                    <td>{{ $item->variant->sale_price * $item->quantity }}</td>
+                                                    <input type="hidden" class="orderitem_id" value="{{ $item->id }}">
+                                                    <td><input type="checkbox" class="form-control return_check" name="return_check[]" value="{{ $item->id }}"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="5">Return/Exchange Request <span style="color: red;">*</span> </th>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="5">
+                                                        <select class="status" name="status[]">
+                                                            <option value="">Reason Of Return</option>
+                                                            <option value="Accidentally Placed Order">Accidentally Placed Order</option>
+                                                            <option value="Ordered Wrong Product">Ordered Wrong Product</option>
+                                                            <option value="Product is not good as per requirement">Product is not good as per requirement</option>
+                                                            <option value="Didn't like the Product">Didn't like the Product</option>
+                                                            <option value="Defective Product">Defective Product</option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="5">Please Describe the Issue <span style="color: red;">*</span> </th>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="5">
+                                                        <textarea name="description[]" class="description" cols="30" rows="2" placeholder="Please Enter..."></textarea>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
-                                </div>
+                                @endif
+                            @endforeach
+                            @if($no > 0)
                                 <button class="btn btn-primary return">Return</button>
-                            </form>
-                        </div>
+                            @endif
+                        </form>
                     </div>
                 </div>
             </div>
@@ -172,4 +172,24 @@
 <!-- /.l-inner -->
 @endsection
 @section('js')
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    $(document).on('click', '.return_check', function() {
+        var statusrow = $(this).closest('tr').next('tr').next('tr');
+        var discriptionrow = $(this).closest('tr').next('tr').next('tr').next('tr').next('tr');
+        var status = statusrow.find('.status').val();
+        var description = discriptionrow.find('.description').val();
+        if ($(this).prop("checked") == true) {
+            if (description == '') {
+                swal("Please Describe the Issue");
+                $(this).removeAttr('checked');
+            }
+            if (status == '') {
+                swal("Please Select Return/Exchange Request");
+                $(this).removeAttr('checked');
+            }
+        }
+
+    });
+</script>
 @endsection
