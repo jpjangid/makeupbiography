@@ -71,7 +71,7 @@ class ReturnController extends Controller
             $total = $itemtotal;
         }
 
-        return view('backend.returns.detail', compact('return_order', 'image','total'));
+        return view('backend.returns.detail', compact('return_order', 'image','total','order'));
     }
 
     public function update(Request $request)
@@ -146,13 +146,15 @@ class ReturnController extends Controller
             $order->no_items = $order->no_items - 1;
             $order->update();
 
-            $wallet = Wallet::create([
-                'user_id'       =>  $order->user_id,
-                'order_id'      =>  $order->id,
-                'amount'        =>  $total,
-                'remark'        =>  'Refund Amount',
-                'status'        =>  'credited',
-            ]);
+            if($order->payment_status == 'success'){
+                Wallet::create([
+                    'user_id'       =>  $order->user_id,
+                    'order_id'      =>  $order->id,
+                    'amount'        =>  $total,
+                    'remark'        =>  'Refund Amount',
+                    'status'        =>  'credited',
+                ]);
+            }
         }
 
         $data['message'] = 'Return Order Status Updated';

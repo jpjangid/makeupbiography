@@ -27,8 +27,6 @@
                         <div class="row">
                             <div class="col-md-6 mb-4">
                                 <h4>Order Status</h4>
-                            </div>
-                            <div class="col-md-6 mb-4">
                                 <input type="hidden" value="{{ $return_order->id }}" id="return_order_id">
                                 <select class="form-select form-select-solid" id="status">
                                     <option value="Pending" {{ $return_order->status == 'Pending' ? 'selected' : '' }}>Pending</option>
@@ -41,6 +39,10 @@
                                     <option value="Refund Completed Via Voucher" {{ $return_order->status == 'Refund Completed Via Voucher' ? 'selected' : '' }}>Refund Completed Via Voucher</option>
                                     <option value="Cancel Approved" {{ $return_order->status == 'Cancel Approved' ? 'selected' : '' }}>Cancel Approved</option>
                                 </select>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <h4>Payment Status</h4>
+                                <input type="text" class="form-control form-control-solid" value="{{ $order->payment_status == 'success' ? 'Success' : 'Pending' }}" disabled>
                             </div>
                             <div class="col-md-12 mb-4">
                                 <h4>Item Details</h4>
