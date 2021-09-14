@@ -110,7 +110,7 @@ class OrderController extends Controller
             'json' => array(
                 "order_id" => $order->order_no,
                 "order_date" => $order->created_at,
-                "pickup_location" => "Makeup Biography",
+                "pickup_location" => "Primary",
                 "billing_customer_name" => $order->billing_name,
                 "billing_last_name" => $order->billing_name,
                 "billing_address" => $order->billing_address,

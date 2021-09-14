@@ -109,7 +109,7 @@
                             @csrf
                             @php $no = 0; @endphp
                             @foreach($order->items as $key => $item)
-                                @if($item->item_status == '')
+                                @if($item->flag == '0')
                                     @php $no += 1; @endphp
                                     <div class="card-view">
                                         <table class="table" id="producttbl">

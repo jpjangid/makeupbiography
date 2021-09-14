@@ -48,13 +48,15 @@
                                     </thead>
                                     <tbody>
                                         @foreach($order->items as $key => $item)
-                                        <tr>
-                                            <td><img src="{{ asset('storage/products/variants/'.$image[$key]) }}" alt="{{ $image[$key] }}" style="height: 5rem;"></td>
-                                            <td>{{ $item->variant->product->name }} - {{ $item->variant->name }}</td>
-                                            <td>{{ $item->quantity }}</td>
-                                            <td>{{ $item->variant->sale_price }}</td>
-                                            <td>{{ $item->variant->sale_price * $item->quantity }}</td>
-                                        </tr>
+                                            @if($item->flag == '0')
+                                                <tr>
+                                                    <td><img src="{{ asset('storage/products/variants/'.$image[$key]) }}" alt="{{ $image[$key] }}" style="height: 5rem;"></td>
+                                                    <td>{{ $item->variant->product->name }} - {{ $item->variant->name }}</td>
+                                                    <td>{{ $item->quantity }}</td>
+                                                    <td>{{ $item->variant->sale_price }}</td>
+                                                    <td>{{ $item->variant->sale_price * $item->quantity }}</td>
+                                                </tr>
+                                            @endif
                                         @endforeach
                                     </tbody>
                                 </table>
