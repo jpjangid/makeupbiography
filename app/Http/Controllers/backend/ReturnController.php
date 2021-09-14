@@ -54,8 +54,24 @@ class ReturnController extends Controller
         $return_order = OrderItemReturn::where('id', $id)->with('item', 'order', 'user', 'variant')->first();
         $media = ProductVariantMedia::where(['product_variant_id' => $return_order->variant->id, 'media_type' => 'image'])->orderby('sequence', 'asc')->first();
         $image = $media->media != '' ? $media->media : '';
+        $order_id = $return_order->order_id;
+        $order = Order::where('id', $order_id)->with('items')->first();
+        $total = 0.00;
+        $itemtotal = 0.00;
+        foreach ($order->items as $order_item) {
+            if ($order_item->id == $return_order->order_item_id) {
+                $itemtotal = $order_item->variant->sale_price * $order_item->quantity;
+            }
+        }
 
-        return view('backend.returns.detail', compact('return_order', 'image'));
+        if (!empty($order->coupon_id)) {
+            $coupon = Coupon::find($order->coupon_id);
+            $total = $this->coupon($coupon, $return_order);
+        } else {
+            $total = $itemtotal;
+        }
+
+        return view('backend.returns.detail', compact('return_order', 'image','total'));
     }
 
     public function update(Request $request)
