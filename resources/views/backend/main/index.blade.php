@@ -1746,10 +1746,10 @@
                   <!--begin::Tabs-->
                   <ul class="nav nav-pills nav-line-pills border rounded p-1">
                     <li class="nav-item me-2">
-                      <a class="nav-link btn btn-active-light btn-active-color-gray-700 btn-color-gray-400 py-2 px-5 fs-6 fw-bold active" data-bs-toggle="tab" href="#kt_charts_widget_3_tab_pane_1" id="kt_charts_widget_3_tab_1">Day</a>
+                      <a class="nav-link btn btn-active-light btn-active-color-gray-700 btn-color-gray-400 py-2 px-5 fs-6 fw-bold active" data-bs-toggle="tab"  id="kt_charts_widget_3_tab_1" data-day="today">Day</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link btn btn-active-light btn-active-color-gray-700 btn-color-gray-400 py-2 px-5 fs-6 fw-bold" data-bs-toggle="tab" href="#kt_charts_widget_3_tab_pane_2" id="kt_charts_widget_3_tab_2">Month</a>
+                      <a class="nav-link btn btn-active-light btn-active-color-gray-700 btn-color-gray-400 py-2 px-5 fs-6 fw-bold" data-bs-toggle="tab"  id="kt_charts_widget_3_tab_2" data-day="month">Month</a>
                     </li>
                   </ul>
                   <!--end::Tabs-->

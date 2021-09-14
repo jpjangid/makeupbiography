@@ -3,8 +3,8 @@
   <div class="aside-logo flex-column-auto pt-9 pb-7 px-9" id="kt_aside_logo">
     <!--begin::Logo-->
     <a href="{{ url('admin') }}">
-      <img alt="Logo" src="assets/media/logos/logo-default.svg" class="max-h-50px logo-default" />
-      <img alt="Logo" src="assets/media/logos/logo-compact.svg" class="max-h-50px logo-minimize" />
+      <img alt="Logo" src="{{ asset('images/mblogo.png') }}" class="max-h-50px logo-default" style="height: 40px !important;"/>
+      <img alt="Logo" src="{{ asset('images/mblogo.png') }}" class="max-h-50px logo-minimize" style="height: 40px !important;"/>
     </a>
     <!--end::Logo-->
   </div>
@@ -16,7 +16,7 @@
     <div class="menu menu-column menu-pill menu-title-gray-600 menu-icon-gray-400 menu-state-primary menu-arrow-gray-500 menu-active-bg-primary fw-bold fs-5 my-5 mt-lg-2 mb-lg-0" id="kt_aside_menu" data-kt-menu="true">
       <div class="hover-scroll-y me-n3 pe-3" id="kt_aside_menu_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-height="auto" data-kt-scroll-wrappers="#kt_aside_menu" data-kt-scroll-dependencies="#kt_aside_logo, #kt_aside_footer" data-kt-scroll-offset="20px">
         <div class="menu-item mb-1">
-          <a class="menu-link active" href="index.html">
+          <a class="menu-link active" href="{{ url('admin') }}">
             <span class="menu-icon">
               <!--begin::Svg Icon | path: icons/duotone/Layout/Layout-4-blocks.svg-->
               <span class="svg-icon svg-icon-2">
@@ -30,7 +30,7 @@
               </span>
               <!--end::Svg Icon-->
             </span>
-            <span class="menu-title">Dashboards</span>
+            <span class="menu-title">Dashboard</span>
           </a>
         </div>
         <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
@@ -183,9 +183,5 @@
     <!--end::Menu-->
   </div>
   <!--end::Aside menu-->
-  <!--begin::Footer-->
-  <div class="aside-footer flex-column-auto px-6 pb-5" id="kt_aside_footer">
-    <a href="https://keenthemes.com/products/rider-html-pro" class="btn btn-light-primary w-100" data-bs-toggle="tooltip" data-bs-html="true" data-bs-trigger="hover" title="Upgrade to Pro to get &lt;br/&gt;the best of Rider">Upgrade to Pro</a>
-  </div>
-  <!--end::Footer-->
+  
 </div>

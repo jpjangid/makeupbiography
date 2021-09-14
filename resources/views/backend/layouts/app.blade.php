@@ -27,6 +27,7 @@
 <!--begin::Body-->
 
 <body id="kt_body" class="header-fixed header-tablet-and-mobile-fixed aside-fixed">
+  <input type="text" id="csrfToken1" value="{{ csrf_token() }}" hidden>
   <!--begin::Main-->
   <div class="d-flex flex-column flex-root">
     <!--begin::Page-->
@@ -63,6 +64,9 @@
   <script src="{{ asset('assets/js/custom/widgets.js') }}"></script>
   <script src="{{ asset('https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap.min.js')}}"></script>
   <script src="{{ asset('https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js')}}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="{{ asset('js/admin_dashboard.js') }}"></script>
+
   <!--end::Page Custom Javascript-->
   <!--end::Javascript-->
   @yield('js')
