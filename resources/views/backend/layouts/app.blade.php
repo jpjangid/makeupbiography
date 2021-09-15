@@ -61,10 +61,10 @@
   <script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
   <!--end::Global Javascript Bundle-->
   <!--begin::Page Custom Javascript(used by this page)-->
-
+  <script src="{{ asset('assets/js/custom/widgets.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="{{ asset('https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap.min.js')}}"></script>
   <script src="{{ asset('https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js')}}"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="{{ asset('js/admin_dashboard.js') }}"></script>
 
   <!--end::Page Custom Javascript-->

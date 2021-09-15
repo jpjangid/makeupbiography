@@ -27,8 +27,6 @@
                         <div class="row">
                             <div class="col-md-6 mb-4">
                                 <h4>Order Status</h4>
-                            </div>
-                            <div class="col-md-6 mb-4">
                                 <input type="hidden" value="{{ $return_order->id }}" id="return_order_id">
                                 <select class="form-select form-select-solid" id="status">
                                     <option value="Pending" {{ $return_order->status == 'Pending' ? 'selected' : '' }}>Pending</option>
@@ -42,6 +40,10 @@
                                     <option value="Cancel Approved" {{ $return_order->status == 'Cancel Approved' ? 'selected' : '' }}>Cancel Approved</option>
                                 </select>
                             </div>
+                            <div class="col-md-6 mb-4">
+                                <h4>Payment Status</h4>
+                                <input type="text" class="form-control form-control-solid" value="{{ $order->payment_status == 'success' ? 'Success' : 'Pending' }}" disabled>
+                            </div>
                             <div class="col-md-12 mb-4">
                                 <h4>Item Details</h4>
                                 <table class="table table-row-bordered table-hover text-nowrap">
@@ -53,6 +55,7 @@
                                             <th>Amount</th>
                                             <th>Reason</th>
                                             <th>Description</th>
+                                            <th>Return Amount</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -60,10 +63,11 @@
                                             <td><img src="{{ asset('storage/products/variants/'.$image) }}" alt="{{ $image }}" style="height: 5rem;"></td>
                                             <td>{{ $return_order->variant->product->name }} - {{ $return_order->variant->name }}</td>
                                             <td>{{ $return_order->quantity }}</td>
-                                            <td>{{ $return_order->variant->sale_price }}</td>
-                                            <td>{{ $return_order->variant->sale_price * $return_order->quantity }}</td>
+                                            <td>{{ number_format((float)$return_order->variant->sale_price, 2, '.', '') }}</td>
+                                            <td>{{ number_format((float)$return_order->variant->sale_price * $return_order->quantity, 2, '.', '') }}</td>
                                             <td>{{ $return_order->reason }}</td>
                                             <td>{{ $return_order->description }}</td>
+                                            <td>{{ number_format((float)$total, 2, '.', '') }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -81,8 +85,8 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>{{ $return_order->order->shiprocket_order_id }}</td>
-                                            <td>{{ $return_order->order->shiprocket_shipment_id }}</td>
+                                            <td>{{ $return_order->shiprocket_order_id }}</td>
+                                            <td>{{ $return_order->shiprocket_shipment_id }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
