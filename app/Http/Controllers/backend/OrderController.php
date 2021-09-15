@@ -3,19 +3,22 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\OrderPlaced;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Yajra\DataTables\DataTables;
 use GuzzleHttp\Client;
 use App\Models\ProductVariantMedia;
+use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
     public function index()
     {
         if (request()->ajax()) {
-            $allorders = Order::with('items','user')->orderby('created_at','desc')->get();
+            $allorders = Order::with('items', 'user')->orderby('created_at', 'desc')->get();
 
             $orders = new Collection;
             foreach ($allorders as $order) {
@@ -35,7 +38,7 @@ class OrderController extends Controller
                 ->addIndexColumn()
                 ->addColumn('orderno', function ($row) {
                     $edit_url = url('admin/orders/order_detail', $row['id']);
-                    $btn = '<a href="' . $edit_url . '">#'.$row['order_no'].'</i></a>';
+                    $btn = '<a href="' . $edit_url . '">#' . $row['order_no'] . '</i></a>';
                     return $btn;
                 })
                 ->rawColumns(['orderno'])
@@ -46,21 +49,22 @@ class OrderController extends Controller
 
     public function order_detail($id)
     {
-        $order = Order::where('id',$id)->with('items.variant.product','items.variant.medias','user')->first();
+        $order = Order::where('id', $id)->with('items.variant.product', 'items.variant.medias', 'user')->first();
+        $user = User::find($order->user_id);
         $image = array();
-        foreach($order->items as $item){
-            $media = ProductVariantMedia::where(['product_variant_id' => $item->variant->id, 'media_type' => 'image'])->orderby('sequence','asc')->first();
-            if(!empty($media)){
+        foreach ($order->items as $item) {
+            $media = ProductVariantMedia::where(['product_variant_id' => $item->variant->id, 'media_type' => 'image'])->orderby('sequence', 'asc')->first();
+            if (!empty($media)) {
                 array_push($image, $media->media);
             }
         }
 
-        return view('backend.orders.detail', compact('order','image'));
+        return view('backend.orders.detail', compact('order', 'image'));
     }
 
     public function update(Request $request)
     {
-        if($request->order_status == 'success'){
+        if ($request->order_status == 'success') {
             $response = $this->create_shiprocket_order($request->id);
             if (!empty($response) && $response->status == 'NEW') {
                 $update_order = Order::find($request->id);
@@ -70,13 +74,13 @@ class OrderController extends Controller
                 $update_order->payment_status = $request->order_status;
                 $update_order->update();
             }
-        }else{
+        } else {
             $update_order = Order::find($request->id);
             $update_order->order_status = $request->order_status;
             $update_order->payment_status = $request->order_status;
             $update_order->update();
         }
-        
+
         $data['message'] = 'Order Status Updated';
         return response()->json($data);
     }

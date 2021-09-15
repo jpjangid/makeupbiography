@@ -37,7 +37,9 @@
                                     <option value="Return/Exchange Rejected" {{ $return_order->status == 'Return/Exchange Rejected' ? 'selected' : '' }}>Return/Exchange Rejected</option>
                                     <option value="Refund Completed Via Acc" {{ $return_order->status == 'Refund Completed Via Acc' ? 'selected' : '' }}>Refund Completed Via Acc</option>
                                     <option value="Refund Completed Via Voucher" {{ $return_order->status == 'Refund Completed Via Voucher' ? 'selected' : '' }}>Refund Completed Via Voucher</option>
-                                    <option value="Cancel Approved" {{ $return_order->status == 'Cancel Approved' ? 'selected' : '' }}>Cancel Approved</option>
+                                    @if(empty($order->shiprocket_order_id) && empty($order->shiprocket_shipment_id))
+                                        <option value="Cancel Approved" {{ $return_order->status == 'Cancel Approved' ? 'selected' : '' }}>Cancel Approved</option>
+                                    @endif
                                 </select>
                             </div>
                             <div class="col-md-6 mb-4">

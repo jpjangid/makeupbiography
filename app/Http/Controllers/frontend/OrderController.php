@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\OrderPlaced;
 use App\Models\Cart;
 use App\Models\Coupon;
 use App\Models\CouponUsedBy;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\ProductVariantMedia;
+use App\Models\User;
 use App\Models\UserAddress;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
@@ -16,6 +19,7 @@ use Razorpay\Api\Errors\SignatureVerificationError;
 use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -211,8 +215,29 @@ class OrderController extends Controller
             foreach ($cartItems as $item) {
                 $item->delete();
             }
-        }  
 
+            $recent_order = Order::where('id', $order->id)->with('items.variant.product', 'items.variant.medias', 'user')->first();
+            $user = User::find($recent_order->user_id);
+            $image = array();
+            foreach ($recent_order->items as $item) {
+                $media = ProductVariantMedia::where(['product_variant_id' => $item->variant->id, 'media_type' => 'image'])->orderby('sequence', 'asc')->first();
+                if (!empty($media)) {
+                    array_push($image, $media->media);
+                }
+            }
+            Mail::to($recent_order->billing_email)
+                ->cc(['lakhansharma.webanix@gmail.com','mohsinwebanix@gmail.com'])
+                ->send(
+                    new OrderPlaced(
+                        $user->name,
+                        $recent_order->order_no,
+                        'Your order has been placed successfully. Your order no. is ' . $recent_order->order_no . ' and you can check your order details and get invoice from the below link.
+                        <br><a href="' . url('detail', $recent_order->order_no) . '">Click here to download order invoice.</a>',
+                        $recent_order,
+                        $image
+                    )
+                );
+        }
         return redirect('orders/thanks/'.$order->order_no);
     }
 
