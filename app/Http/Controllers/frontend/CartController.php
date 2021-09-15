@@ -20,6 +20,7 @@ class CartController extends Controller
     //adding product to cart
     public function add_to_cart(Request $request)
     {
+        dd($request->all());
         $cart = [];
         $minutes = 60 * 24 * 30;
         $user = auth()->user();
