@@ -225,16 +225,17 @@ class OrderController extends Controller
                     array_push($image, $media->media);
                 }
             }
+            $status = 'ORDER PLACED!!';
             Mail::to($recent_order->billing_email)
                 ->cc(['lakhansharma.webanix@gmail.com','mohsinwebanix@gmail.com'])
                 ->send(
                     new OrderPlaced(
                         $user->name,
                         $recent_order->order_no,
-                        'Your order has been placed successfully. Your order no. is ' . $recent_order->order_no . ' and you can check your order details and get invoice from the below link.
-                        <br><a href="' . url('detail', $recent_order->order_no) . '">Click here to download order invoice.</a>',
+                        $user->name.' your order has been placed successfully. Your order no. is #' . $recent_order->order_no . ' and you can find your purchase information below.',
                         $recent_order,
-                        $image
+                        $image,
+                        $status
                     )
                 );
         }

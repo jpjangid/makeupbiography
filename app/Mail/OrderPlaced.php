@@ -17,13 +17,14 @@ class OrderPlaced extends Mailable
      *
      * @return void
      */
-    public function __construct($name, $order_no, $message, $order, $image)
+    public function __construct($name, $order_no, $message, $order, $image, $status)
     {
         $this->name = $name;
         $this->order_no = $order_no;
-        $this->messages = $message;
+        $this->message = $message;
         $this->order = $order;
         $this->image = $image;
+        $this->status = $status;
     }
 
     /**
@@ -37,9 +38,10 @@ class OrderPlaced extends Mailable
             ->from('webanixnew@gmail.com', 'makeuptest')
             ->subject('Order no. is ' . $this->order_no)
             ->with([
-                'messages' => $this->messages,
+                'message' => $this->message,
                 'order' => $this->order,
                 'image'  => $this->image,
+                'status' => $this->status,
             ]);
     }
 }

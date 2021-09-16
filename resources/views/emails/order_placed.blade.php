@@ -54,9 +54,8 @@
         <div class="inner-card">
             <img src="{{ asset('images/mblogo.png') }}" alt="company-logo" class="logo">
             <section class="order">
-                <p class="head">ORDER COMPLETED!!</p>
-                <p>{{ $order->billing_name }}, Thank You for your order.</p>
-                <p style="text-align: center; padding-left:20px; padding-right:20px;">Your order has been delivered. You can find your purchase information below.</p>
+                <p class="head">{{ strtoupper($status) }}</p>
+                <p style="text-align: center; padding-left:20px; padding-right:20px;">{{ $message }}</p>
             </section>
             <p class="summary-head">Order Summary</p>
                 @foreach($order->items as $key => $item)
