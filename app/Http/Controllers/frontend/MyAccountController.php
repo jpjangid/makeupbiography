@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\UserAddress;
 use App\Models\Location;
 use App\Models\Order;
+use App\Models\OrderItemReturn;
 use App\Models\User;
 use App\Models\ProductVariantMedia;
 
@@ -31,7 +32,7 @@ class MyAccountController extends Controller
     public function myorders()
     {
         $user = auth()->user();
-        $orders = Order::where('user_id',$user->id)->with('items.variant.product','user')->orderby('id','desc')->get();
+        $orders = Order::where([['user_id',$user->id],['no_items','>','0']])->with('items.variant.product','user')->orderby('id','desc')->get();
 
         return view('frontend.myaccount.myorders', compact('orders'));
     }
@@ -48,6 +49,14 @@ class MyAccountController extends Controller
         }
 
         return view('frontend.myaccount.order_detail', compact('order','image'));
+    }
+
+    public function return_orders()
+    {
+        $user = auth()->user();
+        $return_orders = OrderItemReturn::where('user_id',$user->id)->with('item','order')->get();
+
+        return view('frontend.myaccount.return_orders', compact('return_orders'));
     }
 
     //view for wishlist

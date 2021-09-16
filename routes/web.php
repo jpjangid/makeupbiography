@@ -187,6 +187,7 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::view('mywishlistempty', 'frontend.myaccount.mywishlist_empty');
     Route::get('my-wishlist', [App\Http\Controllers\frontend\MyAccountController::class, 'wishlist']);
     Route::get('my-orders', [App\Http\Controllers\frontend\MyAccountController::class, 'myorders']);
+    Route::get('return-orders', [App\Http\Controllers\frontend\MyAccountController::class, 'return_orders']);
     Route::get('detail/{order_no}', [App\Http\Controllers\frontend\MyAccountController::class, 'order_detail']);
     Route::get('q&a', [App\Http\Controllers\frontend\MyAccountController::class, 'question_answers']);
 

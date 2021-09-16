@@ -8,6 +8,9 @@
     <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders {{ url('my-orders') == url()->current() ? 'is-active' : '' }}">
         <a class="c-account__navigation-link" href="{{ url('my-orders') }}"><i class='fas fa-truck'></i> My Orders</a>
     </li>
+    <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders {{ url('return-orders') == url()->current() ? 'is-active' : '' }}">
+        <a class="c-account__navigation-link" href="{{ url('return-orders') }}"><i class='fas fa-truck'></i> Return Orders</a>
+    </li>
     <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--wishlist {{ url('my-wishlist') == url()->current() ? 'is-active' : '' }}">
         <a class="c-account__navigation-link" href="{{ url('my-wishlist') }}"><i class='fas fa-heart'></i> My Wishlist</a>
     </li>
