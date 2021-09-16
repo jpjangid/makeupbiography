@@ -13,7 +13,6 @@ function sendSms($mobile, $message){
     $parameters="username=$username&api_password=$api_password&sender=$sender&to=$mobile&message=$message&priority=$priority";
     $fp = fopen("http://$domain/pushsms.php?$parameters", "r");
     $response = stream_get_contents($fp);
-    dd($response);
     fpassthru($fp);
     fclose($fp);
 }
