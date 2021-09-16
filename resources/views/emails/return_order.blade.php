@@ -67,10 +67,9 @@
                 <p style="text-align: center; padding-left:20px; padding-right:20px;">{{ $message }}</p>
             </section>
             <p class="summary-head">Order Summary</p>
-            @foreach($order->items as $key => $item)
             <table class="table-sm table-borderless productTable">
                 <tr>
-                    <td rowspan="12"><img src="{{ asset('storage/products/variants/'.$image[$key]) }}" style="float:left; height:60%; width:60%;"></td>
+                    <td rowspan="12"><img src="{{ asset('storage/products/variants/'.$image) }}" style="float:left; height:60%; width:60%;"></td>
                 </tr>
                 <tr>
                     <th style="width:35%;">Product</th>
@@ -94,7 +93,6 @@
                 </tr>
             </table>
             <hr>
-            @endforeach
             <table width="100%" style="margin: 1rem;">
                 <tr>
                     <th style="width:35%;">Product Total</th>

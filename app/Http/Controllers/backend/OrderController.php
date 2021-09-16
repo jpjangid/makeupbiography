@@ -11,6 +11,7 @@ use Yajra\DataTables\DataTables;
 use GuzzleHttp\Client;
 use App\Models\ProductVariantMedia;
 use App\Models\User;
+use Exception;
 use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
