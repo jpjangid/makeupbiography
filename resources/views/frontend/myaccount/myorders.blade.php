@@ -111,12 +111,3 @@
 </div>
 <!-- /.l-inner -->
 @endsection
-@section('js')
-<script>
-    $(document).on('change', '.status', function() {
-        var row =
-            var status = $(this).val();
-        alert(status);
-    });
-</script>
-@endsection
