@@ -2,12 +2,11 @@
 
 @section('css')
 <style>
-    table
-    {
+    table {
         width: 80%;
     }
-    .history
-    {
+
+    .history {
         color: #c58c85;
     }
 </style>
@@ -17,8 +16,7 @@
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
 <div class="l-inner">
-    <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default
- c-page-header--wc c-page-header--low">
+    <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default c-page-header--wc c-page-header--low">
         <div class="c-page-header__wrap">
             <h1 class="c-page-header__title">My account</h1>
         </div>
@@ -36,7 +34,7 @@
                 <div class="c-account">
                     <div class="c-account__col-menu">
                         <nav>
-                        @include('frontend.myaccount.sidebar')
+                            @include('frontend.myaccount.sidebar')
                         </nav>
                     </div>
                     <div class="c-account__col-content">
@@ -52,24 +50,24 @@
                                 <label style="font-size:15px;">
                                     <strong>Wallet Balance</strong>
                                 </label>
-                                 <p style="color: #c58c85; font-size:15px;">&#8377;0</p>
+                            <p style="color: #c58c85; font-size:15px;">&#8377;0</p>
                             </p>
                             <div class="clear">
                             </div>
                             <hr style="width:450px;">
                             <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                                <table>
-                                    <tr>
-                                        <td>M B CASH</td>
-                                        <td>&#8377;0</td>
-                                        <td><a href="#" class="history">History</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>REWARD POINTS</td>
-                                        <td>&#8377;0</td>
-                                        <td><a href="#" class="history">History</a></td>
-                                    </tr>
-                                </table>
+                            <table>
+                                <tr>
+                                    <td>M B CASH</td>
+                                    <td>&#8377;0</td>
+                                    <td><a href="#" class="history">History</a></td>
+                                </tr>
+                                <tr>
+                                    <td>REWARD POINTS</td>
+                                    <td>&#8377;0</td>
+                                    <td><a href="#" class="history">History</a></td>
+                                </tr>
+                            </table>
                             </p>
                         </form>
                     </div>

@@ -75,7 +75,7 @@ class ReturnController extends Controller
             $total = $itemtotal;
         }
 
-        return view('backend.returns.detail', compact('return_order', 'image','total','order'));
+        return view('backend.returns.detail', compact('return_order', 'image', 'total', 'order'));
     }
 
     public function update(Request $request)
@@ -84,7 +84,7 @@ class ReturnController extends Controller
         $return_order->status = $request->status;
         $return_order->update();
 
-        $update_order = OrderItem::where('id',$return_order->order_item_id)->with('variant.product')->first();
+        $update_order = OrderItem::where('id', $return_order->order_item_id)->with('variant.product')->first();
         $update_order->item_status = $return_order->status;
         $update_order->flag = '1';
         $update_order->update();
@@ -108,7 +108,7 @@ class ReturnController extends Controller
             }
 
             $subject = 'YOUR RETURN REQUEST IS ACCEPTED!';
-            $message = $user->name.' your return request has been approved & and the product will be picked within 10 business days. Your order no. is #' . $placed_order->order_no . ' and you can find your purchase information below.';
+            $message = $user->name . ' your return request has been approved & and the product will be picked within 10 business days. Your order no. is #' . $placed_order->order_no . ' and you can find your purchase information below.';
         }
 
         if ($request->status == 'Refund Completed via Acc') {
@@ -121,7 +121,7 @@ class ReturnController extends Controller
                     $itemtotal = $order_item->variant->sale_price * $order_item->quantity;
                 }
             }
-    
+
             if (!empty($order->coupon_id)) {
                 $coupon = Coupon::find($order->coupon_id);
                 $total = $this->coupon($coupon, $return_order);
@@ -132,9 +132,9 @@ class ReturnController extends Controller
             $order->total_amount = $order->total_amount - $response['total'];
             $order->no_items = $order->no_items - 1;
             $order->update();
-            
+
             $subject = 'YOUR REFUND REQUEST IS ACCEPTED!';
-            $message = $user->name.' your refund request is approved and refund completed via Account. Your order no. is #' . $placed_order->order_no . ' and you can find your purchase information below.';
+            $message = $user->name . ' your refund request is approved and refund completed via Account. Your order no. is #' . $placed_order->order_no . ' and you can find your purchase information below.';
         }
 
         if ($request->status == 'Refund Completed via Voucher') {
@@ -147,7 +147,7 @@ class ReturnController extends Controller
                     $itemtotal = $order_item->variant->sale_price * $order_item->quantity;
                 }
             }
-    
+
             if (!empty($order->coupon_id)) {
                 $coupon = Coupon::find($order->coupon_id);
                 $total = $this->coupon($coupon, $return_order);
@@ -159,7 +159,7 @@ class ReturnController extends Controller
             $order->no_items = $order->no_items - 1;
             $order->update();
 
-            if($order->payment_status == 'success'){
+            if ($order->payment_status == 'success') {
                 Wallet::create([
                     'user_id'       =>  $order->user_id,
                     'order_id'      =>  $order->id,
@@ -168,34 +168,34 @@ class ReturnController extends Controller
                     'status'        =>  'credited',
                 ]);
             }
-            
+
             $subject = 'YOUR REFUND REQUEST IS ACCEPTED!';
-            $message = $user->name.' your refund request is approved and refund completed via wallet money. Your order no. is #' . $placed_order->order_no . ' and you can find your purchase information below.';
+            $message = $user->name . ' your refund request is approved and refund completed via wallet money. Your order no. is #' . $placed_order->order_no . ' and you can find your purchase information below.';
         }
 
-        if($request->status == 'Exchange Initiated'){
+        if ($request->status == 'Exchange Initiated') {
             $subject = 'YOUR EXCHANGE IS INITIATED!';
-            $message = $user->name.' your exchange initiated. Your order no. is #' . $placed_order->order_no . ' and you can find your purchase information below.';
+            $message = $user->name . ' your exchange initiated. Your order no. is #' . $placed_order->order_no . ' and you can find your purchase information below.';
         }
 
-        if($request->status == 'Exchange Approved'){
+        if ($request->status == 'Exchange Approved') {
             $subject = 'YOUR EXCHANGE IS APPROVED!';
-            $message = $user->name.' your exchange approved. Your order no. is #' . $placed_order->order_no . ' and you can find your purchase information below.';
+            $message = $user->name . ' your exchange approved. Your order no. is #' . $placed_order->order_no . ' and you can find your purchase information below.';
         }
 
-        if($request->status == 'Exchange Completed'){
+        if ($request->status == 'Exchange Completed') {
             $subject = 'YOUR EXCHANGE ORDER IS COMPLETED!';
-            $message = $user->name.' your exchange completed. Your order no. is #' . $placed_order->order_no . ' and you can find your purchase information below.';
+            $message = $user->name . ' your exchange completed. Your order no. is #' . $placed_order->order_no . ' and you can find your purchase information below.';
         }
 
-        if($request->status == 'Return/Exchange Rejected'){
+        if ($request->status == 'Return/Exchange Rejected') {
             $subject = 'YOUR RETURN REQUEST IS NOT APPROVED!';
-            $message = $user->name.' your Return/Exchange Rejected. Your order no. is #' . $placed_order->order_no . ' and you can find your purchase information below.';
+            $message = $user->name . ' your Return/Exchange Rejected. Your order no. is #' . $placed_order->order_no . ' and you can find your purchase information below.';
         }
 
-        if($request->status == 'Cancel Approved'){
+        if ($request->status == 'Cancel Approved') {
             $subject = 'Cancel Request Approved!';
-            $message = $user->name.' your Cancel Approved. Your order no. is #' . $placed_order->order_no . ' and you can find your purchase information below.';
+            $message = $user->name . ' your Cancel Approved. Your order no. is #' . $placed_order->order_no . ' and you can find your purchase information below.';
         }
 
         $status = $request->status;
@@ -203,7 +203,7 @@ class ReturnController extends Controller
         $image = $media->media != '' ? $media->media : '';
 
         Mail::to($placed_order->billing_email)
-            ->cc(['lakhansharma.webanix@gmail.com','mohsinwebanix@gmail.com'])
+            ->cc(['lakhansharma.webanix@gmail.com', 'mohsinwebanix@gmail.com'])
             ->send(
                 new ReturnMail(
                     $user->name,
@@ -216,6 +216,7 @@ class ReturnController extends Controller
                     $subject
                 )
             );
+        sendSms($placed_order->billing_mobile, "$message");
 
         $data['message'] = 'Return Order Status Updated';
         return response()->json($data);
@@ -278,16 +279,16 @@ class ReturnController extends Controller
                 'pickup_email' => $order->shipping_email, # Customer email
                 'pickup_phone' => $order->shipping_mobile,
                 'pickup_location_id' => '1767511',
-				'shipping_customer_name' => 'Naman',
-				'shipping_last_name' => 'Naman',
-				'shipping_address' => '#45, Sri Complex, Sajjan Rae circle, V.V. Puram',
-				'shipping_address_2' => '#45, Sri Complex, Sajjan Rae circle, V.V. Puram',
-				'shipping_city' => 'Bangalore',
-				'shipping_pincode' => '560004',
-				'shipping_country' => 'India',
-				'shipping_state' => 'Karnataka',
-				'shipping_email' => 'info@makeupbiography.com',
-				'shipping_phone' => '9483480760',
+                'shipping_customer_name' => 'Naman',
+                'shipping_last_name' => 'Naman',
+                'shipping_address' => '#45, Sri Complex, Sajjan Rae circle, V.V. Puram',
+                'shipping_address_2' => '#45, Sri Complex, Sajjan Rae circle, V.V. Puram',
+                'shipping_city' => 'Bangalore',
+                'shipping_pincode' => '560004',
+                'shipping_country' => 'India',
+                'shipping_state' => 'Karnataka',
+                'shipping_email' => 'info@makeupbiography.com',
+                'shipping_phone' => '9483480760',
                 'order_items' => $items,
                 'payment_method' => $payment_mode,
                 /* 'sub_total' => $selling_price, --changed on 02/04/2021*/

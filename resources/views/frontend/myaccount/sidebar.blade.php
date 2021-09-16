@@ -21,18 +21,18 @@
         <a class="c-account__navigation-link" href="{{ url('my-address') }}"><i class='fas fa-address-card'></i> My Addresses</a>
     </li>
     @if (Route::has('login'))
-        @auth
-        <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--log-out">
-        <form action="{{ route('logout') }}" method="post">   
-            @csrf 
+    @auth
+    <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--log-out">
+        <form action="{{ route('logout') }}" method="post">
+            @csrf
             <button type="submit" style="background: none!important;border: none;margin-left: -7px;font-style: normal;font-weight: normal;font-size: 13px;line-height: 18px;letter-spacing: 0.06em;text-transform: uppercase;"><i class='fas fa-sign-out-alt'></i> Log out</button>
         </form>
-        </li>
-        @else 
-        <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-address {{ url('my-wishlist') == url()->current() ? 'is-active' : '' }}">
-            <a class="c-account__navigation-link" href="{{ route('login') }}"> Login</a>
-        </li>
-        @endauth
-    @endif    
+    </li>
+    @else
+    <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-address {{ url('my-wishlist') == url()->current() ? 'is-active' : '' }}">
+        <a class="c-account__navigation-link" href="{{ route('login') }}"> Login</a>
+    </li>
+    @endauth
+    @endif
 
 </ul>

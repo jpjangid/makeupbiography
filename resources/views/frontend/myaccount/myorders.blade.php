@@ -46,8 +46,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div class="l-inner">
-    <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default
- c-page-header--wc c-page-header--low">
+    <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default c-page-header--wc c-page-header--low">
         <div class="c-page-header__wrap">
             <h1 class="c-page-header__title">My account</h1>
         </div>

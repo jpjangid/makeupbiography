@@ -2,8 +2,7 @@
 
 @section('css')
 <style>
-    .card-view
-    {
+    .card-view {
         border-radius: 2px;
         box-shadow: 0 2px 10px 0 rgb(0 0 0 / 10%);
         display: inline-block;
@@ -15,8 +14,8 @@
         vertical-align: middle;
         position: relative;
     }
-    .add-address-btn
-    {
+
+    .add-address-btn {
         text-align: center;
         background-color: #c58c85;
         border: none;
@@ -37,27 +36,38 @@
         opacity: 0.8;
         float: right;
     }
+
     /* The Modal (background) */
     .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
         left: 0;
         top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
     }
 
     /* Modal Content/Box */
     .modal-content {
         background-color: #fefefe;
-        margin: 15% auto; /* 15% from the top and centered */
+        margin: 15% auto;
+        /* 15% from the top and centered */
         padding: 20px;
         border: 1px solid #888;
-        width: 60%; /* Could be more or less, depending on screen size */
+        width: 60%;
+        /* Could be more or less, depending on screen size */
     }
 
     /* The Close Button */
@@ -67,6 +77,7 @@
         font-size: 28px;
         font-weight: bold;
     }
+
     .close:hover,
     .close:focus {
         color: black;
@@ -80,8 +91,7 @@
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
 <div class="l-inner">
-    <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default
- c-page-header--wc c-page-header--low">
+    <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default c-page-header--wc c-page-header--low">
         <div class="c-page-header__wrap">
             <h1 class="c-page-header__title">My account</h1>
         </div>
@@ -99,7 +109,7 @@
                 <div class="c-account">
                     <div class="c-account__col-menu">
                         <nav>
-                        @include('frontend.myaccount.sidebar')
+                            @include('frontend.myaccount.sidebar')
                         </nav>
                     </div>
                     <div class="c-account__col-content">
@@ -110,48 +120,48 @@
                                     <hr style="width:800px;">
                                 </label>
                             </p>
-                                <button class="open-button" id="myBtn">
-                                    <i class='fas fa-pencil-alt'></i> ADD NEW ADDRESS
-                                </button>
-                                <div id="myModal" class="modal">
-                                    <!-- Modal content -->
-                                    <div class="modal-content">
-                                        <span class="close">&times;</span>
-                                        <form action="/action_page.php">
-                                            <label for="country" style="padding: 10px;"><b>Select Country</b></label>
-                                            <select name="country" id="" style="padding: 10px;">
-                                                <option disabled>Select</option>
-                                                <option>India</option>
-                                            </select>
+                            <button class="open-button" id="myBtn">
+                                <i class='fas fa-pencil-alt'></i> ADD NEW ADDRESS
+                            </button>
+                            <div id="myModal" class="modal">
+                                <!-- Modal content -->
+                                <div class="modal-content">
+                                    <span class="close">&times;</span>
+                                    <form action="/action_page.php">
+                                        <label for="country" style="padding: 10px;"><b>Select Country</b></label>
+                                        <select name="country" id="" style="padding: 10px;">
+                                            <option disabled>Select</option>
+                                            <option>India</option>
+                                        </select>
 
-                                            <label for="name" style="padding: 10px;"><b>Name</b></label>
-                                            <input type="text" placeholder="Enter Name" name="name" style="padding: 10px;" required>
+                                        <label for="name" style="padding: 10px;"><b>Name</b></label>
+                                        <input type="text" placeholder="Enter Name" name="name" style="padding: 10px;" required>
 
-                                            <label for="mobile-number" style="padding: 10px;"><b>Mobile Number</b></label>
-                                            <input type="number" placeholder="Enter Number" style="padding: 10px;" name="mobile" required>
+                                        <label for="mobile-number" style="padding: 10px;"><b>Mobile Number</b></label>
+                                        <input type="number" placeholder="Enter Number" style="padding: 10px;" name="mobile" required>
 
-                                            <label for="postal" style="padding: 10px;"><b>Postal Code</b></label>
-                                            <input type="number" placeholder="Enter Postal Code" style="padding: 10px;" name="pincode" required>
+                                        <label for="postal" style="padding: 10px;"><b>Postal Code</b></label>
+                                        <input type="number" placeholder="Enter Postal Code" style="padding: 10px;" name="pincode" required>
 
-                                            <label for="name" style="padding: 10px;"><b>Address Type</b></label>
-                                                <input type="radio" name="radio-choice-1" id="radio-choice-1" value="choice-1" checked="checked" style="padding: 10px;">
-                                                <label for="radio-choice-1" style="padding: 10px; display: inline-block;">Home</label>
+                                        <label for="name" style="padding: 10px;"><b>Address Type</b></label>
+                                        <input type="radio" name="radio-choice-1" id="radio-choice-1" value="choice-1" checked="checked" style="padding: 10px;">
+                                        <label for="radio-choice-1" style="padding: 10px; display: inline-block;">Home</label>
 
-                                                <input type="radio" name="radio-choice-1" id="radio-choice-2" value="choice-2" style="padding: 10px;">
-                                                <label for="radio-choice-2" style="padding: 10px; display: inline-block;">Work</label>
+                                        <input type="radio" name="radio-choice-1" id="radio-choice-2" value="choice-2" style="padding: 10px;">
+                                        <label for="radio-choice-2" style="padding: 10px; display: inline-block;">Work</label>
 
-                                            <label for="address" style="padding: 10px;"><b>Address</b></label>
-                                            <textarea name="addresses" rows="4" cols="50" style="padding: 10px;">
+                                        <label for="address" style="padding: 10px;"><b>Address</b></label>
+                                        <textarea name="addresses" rows="4" cols="50" style="padding: 10px;">
                                             </textarea>
 
-                                            <button type="submit" class="add-address-btn">ADD ADDRESS</button>
+                                        <button type="submit" class="add-address-btn">ADD ADDRESS</button>
                                     </form>
-                                    </div>
                                 </div>
-                            <p class="woocommerce-form-row woocommerce-form-row--last form-row form-row-last">                             
-                                <div class="card-view">
-                                    <label style="font-size:12px; font-weight:bold;">No Address Found</label>
-                                </div>
+                            </div>
+                            <p class="woocommerce-form-row woocommerce-form-row--last form-row form-row-last">
+                            <div class="card-view">
+                                <label style="font-size:12px; font-weight:bold;">No Address Found</label>
+                            </div>
                             </p>
                             <script>
                                 // Get the modal
@@ -165,19 +175,19 @@
 
                                 // When the user clicks on the button, open the modal
                                 btn.onclick = function() {
-                                modal.style.display = "block";
+                                    modal.style.display = "block";
                                 }
 
                                 // When the user clicks on <span> (x), close the modal
                                 span.onclick = function() {
-                                modal.style.display = "none";
+                                    modal.style.display = "none";
                                 }
 
                                 // When the user clicks anywhere outside of the modal, close it
                                 window.onclick = function(event) {
-                                if (event.target == modal) {
-                                    modal.style.display = "none";
-                                }
+                                    if (event.target == modal) {
+                                        modal.style.display = "none";
+                                    }
                                 }
                             </script>
                         </form>

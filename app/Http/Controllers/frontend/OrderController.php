@@ -13,6 +13,7 @@ use App\Models\ProductVariantMedia;
 use App\Models\User;
 use App\Models\UserAddress;
 use App\Models\Wallet;
+use Exception;
 use Illuminate\Http\Request;
 use Razorpay\Api\Api;
 use Razorpay\Api\Errors\SignatureVerificationError;
@@ -81,7 +82,7 @@ class OrderController extends Controller
             $online_payment = "success";
         }
 
-        if($request->addressSelect == 'new'){
+        if ($request->addressSelect == 'new') {
             $UserAddress = new UserAddress;
             $UserAddress->user_id   = $user->id;
             $UserAddress->name      = $request->billing_name;
@@ -227,24 +228,25 @@ class OrderController extends Controller
             }
             $status = 'ORDER PLACED!!';
             Mail::to($recent_order->billing_email)
-                ->cc(['lakhansharma.webanix@gmail.com','mohsinwebanix@gmail.com'])
+                ->cc(['lakhansharma.webanix@gmail.com', 'mohsinwebanix@gmail.com'])
                 ->send(
                     new OrderPlaced(
                         $user->name,
                         $recent_order->order_no,
-                        $user->name.' your order has been placed successfully. Your order no. is #' . $recent_order->order_no . ' and you can find your purchase information below.',
+                        $user->name . ' your order has been placed successfully. Your order no. is #' . $recent_order->order_no . ' and you can find your purchase information below.',
                         $recent_order,
                         $image,
                         $status
                     )
                 );
+            sendSms($recent_order->billing_mobile, "Thank you for placing an order with us. We will be processing it soon. For any assistance plz mail us at enquiry@vaibhavstores.in. Thank you, Vaibhav Stores. PH: +9180 41518183");
         }
-        return redirect('orders/thanks/'.$order->order_no);
+        return redirect('orders/thanks/' . $order->order_no);
     }
 
     public function thankyou_page($order_no)
     {
-        $order = Order::where('order_no',$order_no)->with('items.variant.product','items.variant.medias','user')->first();
+        $order = Order::where('order_no', $order_no)->with('items.variant.product', 'items.variant.medias', 'user')->first();
 
         return view('frontend.order.ordersuccess', compact('order'));
     }

@@ -46,8 +46,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div class="l-inner">
-    <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default
- c-page-header--wc c-page-header--low">
+    <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default c-page-header--wc c-page-header--low">
         <div class="c-page-header__wrap">
             <h1 class="c-page-header__title">My account</h1>
         </div>
@@ -80,29 +79,29 @@
                                 </label>
                             </p>
                             @foreach($return_orders as $return_order)
-                                <div class="card-view">
-                                    <table class="table">
-                                        <tr>
-                                            <td colspan="2">Return Order Summary</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Name: {{ $return_order->order->user->name }}</td>
-                                            <td>Payment Menthod: {{ strtoupper($return_order->order->payment_mode) }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Order Number: #{{ strtoupper($return_order->order->order_no) }}</td>
-                                            <td>Return Number: #{{ strtoupper($return_order->return_no) }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Order Status: {{ strtoupper($return_order->order->order_status) }}</td>
-                                            <td>Return Status: {{ strtoupper($return_order->status) }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Order Date: {{ date('d-m-Y h:i A', strtotime($return_order->order->created_at)) }}</td>
-                                            <td>Return Date: {{ date('d-m-Y h:i A', strtotime($return_order->created_at)) }}</td>
-                                        </tr>
-                                    </table>
-                                </div>
+                            <div class="card-view">
+                                <table class="table">
+                                    <tr>
+                                        <td colspan="2">Return Order Summary</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Name: {{ $return_order->order->user->name }}</td>
+                                        <td>Payment Menthod: {{ strtoupper($return_order->order->payment_mode) }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Order Number: #{{ strtoupper($return_order->order->order_no) }}</td>
+                                        <td>Return Number: #{{ strtoupper($return_order->return_no) }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Order Status: {{ strtoupper($return_order->order->order_status) }}</td>
+                                        <td>Return Status: {{ strtoupper($return_order->status) }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Order Date: {{ date('d-m-Y h:i A', strtotime($return_order->order->created_at)) }}</td>
+                                        <td>Return Date: {{ date('d-m-Y h:i A', strtotime($return_order->created_at)) }}</td>
+                                    </tr>
+                                </table>
+                            </div>
                             @endforeach
                         </form>
                     </div>

@@ -50,8 +50,7 @@
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
 <div class="l-inner">
-    <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default
- c-page-header--wc c-page-header--low">
+    <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default c-page-header--wc c-page-header--low">
         <div class="c-page-header__wrap">
             <h1 class="c-page-header__title">My account</h1>
         </div>
