@@ -22,7 +22,7 @@ class CreateOrdersTable extends Migration
             $table->float('discount_applied')->nullable();
             $table->float('service_charge_applied')->nullable();
             $table->float('total_amount');
-            $table->integer('no_items');
+            $table->integer('no_items')->default(0);
             $table->string('billing_name');
             $table->string('billing_mobile');
             $table->string('billing_email');

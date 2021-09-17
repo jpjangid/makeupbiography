@@ -74,32 +74,34 @@
                         <form class="woocommerce-EditAccountForm edit-account" action="" method="post">
                             <p class="woocommerce-form-row woocommerce-form-row--first form-row form-row-first">
                                 <label style="font-size:20px; font-weight:bolder;">
-                                    <i class='fas fa-truck' style="color: #c58c85;"></i> MY ORDERS
+                                    <i class='fas fa-truck' style="color: #c58c85;"></i> Return ORDERS
                                     <hr style="width:800px;">
                                 </label>
                             </p>
-                            @foreach($orders as $order)
-                            <a href="{{ url('detail',$order->order_no) }}">
-                                <div class="card-view">
-                                    <table class="table">
-                                        <tr>
-                                            <td colspan="2">Order Summary</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Name: {{ $order->user->name }}</td>
-                                            <td>Order Number: {{ strtoupper($order->order_no) }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Order Date: {{ date('d-m-Y h:i A', strtotime($order->created_at)) }}</td>
-                                            <td>Order Status: {{ strtoupper($order->order_status) }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Payment Menthod: {{ strtoupper($order->payment_mode) }}</td>
-                                            <td>Total: &#8377;{{ $order->total_amount }}</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </a>
+                            @foreach($return_orders as $return_order)
+                            <div class="card-view">
+                                <table class="table">
+                                    <tr>
+                                        <td colspan="2">Return Order Summary</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Name: {{ $return_order->order->user->name }}</td>
+                                        <td>Payment Menthod: {{ strtoupper($return_order->order->payment_mode) }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Order Number: #{{ strtoupper($return_order->order->order_no) }}</td>
+                                        <td>Return Number: #{{ strtoupper($return_order->return_no) }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Order Status: {{ strtoupper($return_order->order->order_status) }}</td>
+                                        <td>Return Status: {{ strtoupper($return_order->status) }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Order Date: {{ date('d-m-Y h:i A', strtotime($return_order->order->created_at)) }}</td>
+                                        <td>Return Date: {{ date('d-m-Y h:i A', strtotime($return_order->created_at)) }}</td>
+                                    </tr>
+                                </table>
+                            </div>
                             @endforeach
                         </form>
                     </div>
