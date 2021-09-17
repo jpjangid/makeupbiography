@@ -20,7 +20,6 @@ class CartController extends Controller
     //adding product to cart
     public function add_to_cart(Request $request)
     {
-        dd($request->all());
         $cart = [];
         $minutes = 60 * 24 * 30;
         $user = auth()->user();
@@ -28,6 +27,7 @@ class CartController extends Controller
         $checkTrue = false;
         $message = ProductVariant::select('name')->where('id', $request->product_varient_id)->first();
         $product = Product::select('name')->where('id', $request->product_id)->first();
+        // dd($product);
         if ($product->status == 1 && $product->flag == 0) {
             $message = "";
             return response($message);
@@ -58,11 +58,12 @@ class CartController extends Controller
                         $cartItem->quantity += $request->product_quantity;
                         $existCookie = true;
                     }
-                    $cart[] = ['product_id' => $cartItem->product_id, 'product_variant_id' => $request->product_varient_id, 'quantity' => $cartItem->quantity];
+                    $cart[] = ['product_id' => $cartItem->product_id, 'product_variant_id' => $cartItem->product_variant_id, 'quantity' => $cartItem->quantity];
                 }
                 if (!$existCookie) {
                     $cart[] = ['product_id' => $request->product_id, 'product_variant_id' => $request->product_varient_id, 'quantity' => $request->product_quantity];
                 }
+                // dd($cart);
             } else {
                 $cart[] = ['product_id' => $request->product_id, 'product_variant_id' => $request->product_varient_id, 'quantity' => $request->product_quantity];
             }
@@ -111,15 +112,16 @@ class CartController extends Controller
             }
         } else {
             $minutes = 60;
+
             if (request()->hasCookie('makeup_biography')) {
                 $cartItems = json_decode(request()->cookie('makeup_biography'));
-
                 foreach ($cartItems  as $cartItem) {
                     if (empty(Product::where('id', $cartItem->product_id)->where(['status' => 0, 'flag' => 0])->orWhere('flag', 1)->first()) === true) {
                         $cart[] = ['product_id' => $cartItem->product_id, 'quantity' => $cartItem->quantity, 'product_variant_id' => $cartItem->product_variant_id];
                     }
                 }
             }
+
             if (empty($cart)) {
                 \Cookie::queue(\Cookie::forget('makeup_biography'));
             } else {
@@ -163,14 +165,8 @@ class CartController extends Controller
                     $data['totalQuantityItems'] = $totalQuantityItems;
                     $data['listItem'] = $listItem;
                 }
-            } else {    
-                if (count($cookieCartItems) > 0) {
-                    foreach ($cookieCartItems as $cookie_item) {
-                        if ($cookie_item['product'] != "") {
-                            $listItem .= $this->cookie_items($cookie_item);
-                        }
-                    }
-
+            } else { 
+                if (count($cookieCartItems) > 0) {                    
                     if (count($cookieCartItems) > 0) {
                         foreach ($cookieCartItems as $cookie_item) {
                             $listItem .= $this->cookie_items($cookie_item);

@@ -17,7 +17,7 @@ $(document).ready(function() {
                     var cartList = `<ul class="woocommerce-mini-cart cart_list c-product-list-widget"></ul>`;
                     $('.widget_shopping_cart_content').append(cartList);
                     $('.widget_shopping_cart_content').css('opacity','1');
-                    var listInProduct = data.listItem;                         
+                    var listInProduct = data.listItem;                     
                     $('.c-product-list-widget').append(listInProduct);
                     var baseUrl = $('#baseUrl').val();
                     var cartUrl = baseUrl+"/cart"; 
@@ -59,8 +59,8 @@ $(document).ready(function() {
         var productVarientId = $('#productVarientId').val();
         var productQuantity = $('.product-quantity').val();
 
-        if($(this).data('product_variant') != null) {
-            productId = $(this).data('product_variant');
+        if($(this).data('product_id') != null) {
+            productId = $(this).data('product_id');
         }
         if($(this).data('product_variant') != null) {
             productVarientId = $(this).data('product_variant');
@@ -68,6 +68,7 @@ $(document).ready(function() {
         if(productQuantity == null) {
             productQuantity = 1;
         }
+        
         $.ajax({
             type:'GET',
             url: mainUrl,

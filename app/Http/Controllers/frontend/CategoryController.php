@@ -28,7 +28,7 @@ class CategoryController extends Controller
         $brands = Brand::select('id','name')->where(['status' => 1,'flag' =>  0])->get();
         $product_category = array();
         $min_price_filter = 0;
-        $max_price_filter = DB::table('product_variants')->max('sale_price');
+        $max_price_filter = DB::table('product_variants')->max('sale_price')+100;
         $min_price_old = 0;
         $max_price_old = 0;
         if(!empty($request->min_price_filter)){
@@ -103,7 +103,7 @@ class CategoryController extends Controller
         if(!empty($request->orderby) && $request->orderby == "hightolow") {
             $products = $products->orderBy('sale_price','DESC');
         }   
-        $products = $products->paginate(1)->unique('product_id'); 
+        $products = $products->paginate(10)->unique('product_id'); 
 
         $product_details = array();
         $product_medias = array();
