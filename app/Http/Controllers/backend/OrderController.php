@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
-use App\Mail\OrderPlaced;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -12,7 +11,6 @@ use GuzzleHttp\Client;
 use App\Models\ProductVariantMedia;
 use App\Models\User;
 use Exception;
-use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
