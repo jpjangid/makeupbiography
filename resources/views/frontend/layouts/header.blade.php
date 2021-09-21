@@ -413,7 +413,7 @@
         <div class="c-header__col-right">
           <div class="c-header__col-right-wrap">
             <div class="c-header__search-button">
-              <a class="c-header__button-link c-header__button-link--search js-search-button" type="button" href="https://parkofideas.com/luchiana/demo/search/" onclick="return false;">
+              <a class="c-header__button-link c-header__button-link--search js-search-button" type="button" href="#" onclick="return false;">
                 <i class="ip-search">
                   <!-- -->
                 </i>
