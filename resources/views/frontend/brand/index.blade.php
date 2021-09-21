@@ -93,7 +93,7 @@
                     <div class="elementor-element elementor-element-3f62e69 elementor-widget elementor-widget-ideapark-brand-list" data-id="3f62e69" data-element_type="widget" data-widget_type="ideapark-brand-list.default">
                       <div class="elementor-widget-container">
                         <div class="c-ip-brand-list c-ip-brand-list--alpha">
-                          <ul class="c-ip-brand-list__list c-ip-brand-list__list--alpha" style="margin-top: 20px !imporant;">
+                          <ul class="c-ip-brand-list__list c-ip-brand-list__list--alpha" style="margin-top: 20px !important;">
                             @foreach($brandGroups as $key => $brandGroup)  
                             <li class="c-ip-brand-list__item-parent">
                               <ul class="c-ip-brand-list__list-inner">
