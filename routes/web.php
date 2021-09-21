@@ -231,6 +231,9 @@ Route::get('remove/cart/item/{id}/{variant_id}', [App\Http\Controllers\frontend\
 Route::get('add/to/cart', [App\Http\Controllers\frontend\CartController::class, 'add_to_cart']);
 Route::post('cart/items/update', [App\Http\Controllers\frontend\CartController::class, 'update_items']);
 
+//Route for brands page
+Route::get('brands',[App\Http\Controllers\frontend\BrandController::class, 'index']);
+Route::get('brands/{slug}',[App\Http\Controllers\frontend\BrandController::class, 'index_brands']);
 
 //Route for main home page
 Route::get('/', [App\Http\Controllers\frontend\HomeController::class, 'index']);

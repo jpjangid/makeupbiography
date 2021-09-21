@@ -28,7 +28,7 @@
                             <div class="row">
 
                                 <!-- Product Title -->
-                                <div class="col-md-6 mb-4">
+                                <div class="col-md-4 mb-4">
                                     <div class="form-group">
                                         <label class="required form-label" for="name">Name</label>
                                         <input type="text" class="form-control form-control-solid @error('name') is-invalid @enderror" name="name" id="name" placeholder="Please Enter Product Name" value="{{ $product->name }}">
@@ -39,7 +39,7 @@
                                 </div>
 
                                 <!-- slug -->
-                                <div class="col-md-6 mb-4">
+                                <div class="col-md-4 mb-4">
                                     <div class="form-group">
                                         <label class="required form-label" for="slug">Slug</label>
                                         <input type="text" class="form-control form-control-solid @error('slug') is-invalid @enderror" name="slug" value="{{ $product->slug }}" placeholder="Please enter slug of Product" />
@@ -47,7 +47,24 @@
                                         <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                </div>   
+                                </div>
+                                
+                                
+                                <!-- main brand -->
+                                <div class="col-md-4 mb-4">
+                                    <div class="form-group">
+                                        <label class="required form-label" for="main_cat">Brand</label>
+                                        <select name="brand" class="form-control form-control-solid @error('brand') is-invalid @enderror">
+                                            <option value="">Select Brand</option>
+                                            @foreach($brands as $brand)
+                                                <option value="{{ $brand->id }}" {{ $product->brand_id == $brand->id ? "selected" : "" }}>{{ $brand->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('brand')
+                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div> 
 
                                 <!-- main category -->
                                 <div class="col-md-4 mb-4">
@@ -56,11 +73,7 @@
                                         <select name="main_cat" class="form-control form-control-solid">
                                             <option value="">Select Main Category</option>
                                             @foreach($main_cats as $main_cat)
-                                                @php
-                                                    $selected = '';
-                                                    $selected = $product->parent_id == $main_cat->id ? 'selected' : '';
-                                                @endphp
-                                                <option value="{{ $main_cat->id }}" {{ $selected }} >{{ $main_cat->name }}</option>
+                                                <option value="{{ $main_cat->id }}" {{ $product->parent_id == $main_cat->id ? "selected" : "" }}>{{ $main_cat->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>

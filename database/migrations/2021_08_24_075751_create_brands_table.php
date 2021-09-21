@@ -29,6 +29,7 @@ class CreateBrandsTable extends Migration
             $table->text('og_description')->nullable();
             $table->text('og_image')->nullable();
             $table->string('og_alt')->nullable();
+            $table->tinyInteger('top_brand_status')->default('0');
             $table->tinyInteger('status')->default('0');
             $table->tinyInteger('flag')->default('0');
             $table->timestamps();

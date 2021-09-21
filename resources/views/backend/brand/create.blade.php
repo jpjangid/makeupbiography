@@ -177,13 +177,23 @@
                                 <hr>
                                 
                                 <!-- tags -->
-                                <div class="col-md-10 mb-4">
+                                <div class="col-md-8 mb-4">
                                     <div class="form-group">
                                         <label class="form-label" for="tags">Tags</label>
                                         <input type="text" class="form-control form-control-solid @error('tags') is-invalid @enderror" name="tags" id="tags" value="{{ old('tags')}}" placeholder="Please Enter Meta Tag" />
                                         @error('tags')
                                         <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
+                                    </div>
+                                </div>
+
+                                <!-- Top Brand Status -->
+                                <div class="col-md-2 mb-4">
+                                    <div class="form-group">
+                                        <label class="form-label" for="customSwitch1">Top Brand Status</label>
+                                        <div class="form-check form-switch form-check-custom form-check-solid mt-3">
+                                            <input type="checkbox" class="form-check-input" id="customSwitch1" name="top_brand_status" value="1">
+                                        </div>
                                     </div>
                                 </div>
 

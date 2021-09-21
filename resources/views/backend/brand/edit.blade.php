@@ -206,6 +206,16 @@
                                     </div>
                                 </div>
 
+                                <!-- Top Brand Status -->
+                                <div class="col-md-2 mb-4">
+                                    <div class="form-group">
+                                        <label class="form-label" for="customSwitch1">Top Brand Status</label>
+                                        <div class="form-check form-switch form-check-custom form-check-solid mt-3">
+                                            <input type="checkbox" class="form-check-input" id="customSwitch1" name="top_brand_status" value="1" {{ $brand->top_brand_status == 1 ? "checked" : "" }}>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <!-- Status -->
                                 <div class="col-md-2 mb-4">
                                     <div class="form-group">

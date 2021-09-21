@@ -3,28 +3,38 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductVariant;
 use App\Models\ProductVariantMedia;
-use App\Models\Brand;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use PhpParser\ErrorHandler\Collecting;
 
-class CategoryController extends Controller
+class BrandController extends Controller
 {
-
-    //for category page
-    public function index(Request $request,$slug)
+    public function index()
     {
-        // dd($request->all());
-        $main_category = Category::where('slug',$slug)->with('parent.parent')->first();
-        $parent_id = $this->findParent($main_category->id);
-        $sub_categories = Category::where('parent_id',$parent_id)->with('subcategory')->get();
-        $categories = Category::where('parent_id',$main_category->id)->get();
+        $brands = Brand::where(['top_brand_status' => 1,'status' => 1,'flag' => 0])->get();
+        $allBrands = Brand::where(['status' => 1,'flag' => 0])->orderBy('name')->get();
+
+        $brandGroups = $allBrands->groupBy(function($item,$key) {
+            return $item->name[0];     //treats the name string as an array
+        })
+        ->sortBy(function($item,$key){      //sorts A-Z at the top level
+                return $key;
+        });
+
+        return view('frontend.brand.index',compact('brands','brandGroups'));
+    }
+
+    public function index_brands(Request $request,$slug)
+    {
+        $sub_categories = Category::where(['parent_id' => null,'status' => 1,'flag' => 0])->with('subcategory.subcategory')->get();
+        $main_brand = Brand::where(['slug' => $slug,'status' => 1,'flag' => 0])->first();
         $brands = Brand::select('id','name')->where(['status' => 1,'flag' =>  0])->get();
         $product_category = array();
         $min_price_filter = 0;
@@ -47,20 +57,19 @@ class CategoryController extends Controller
         //brands filter begin 
         if(!empty($request->filter_brand) && count($request->filter_brand) > 0){
             $filter_brands = array_merge($filter_brands,$request->filter_brand);
-        }        
+        }
+        if(!in_array($main_brand->id,$filter_brands)) {
+            array_push($filter_brands,$main_brand->id);
+        }  
+               
         //brands filter end
 
-        if(empty($request->filter_category)) {
-            array_push($filter_old,$main_category->slug);
-            array_push($product_category,$main_category->id); 
-        }
-        
+        // if(empty($request->filter_category)) {
+        //     array_push($filter_old,$main_category->slug);
+        //     array_push($product_category,$main_category->id); 
+        // }
+      
         if(!empty($request->filter_category) && count($request->filter_category) > 0) {
-            if(in_array($main_category->slug,$request->filter_category)) {
-                array_push($filter_old,$main_category->slug);
-                array_push($product_category,$main_category->id);    
-            }
-
             $check_categories = Category::select('id')->whereIn('slug',$request->filter_category)->get()->toArray();
             $check_categories = array_column($check_categories,'id');
             $request->check_categories = $check_categories;
@@ -86,12 +95,11 @@ class CategoryController extends Controller
             }
         }
         //filter sorting end
-
-        $products1 = DB::table('products')->select('id')->whereIn('parent_id',$product_category)->where(['status'=>1,'flag'=>0]);
-
-       
-        if(count($filter_brands) > 0) {
-            $products = $products1->whereIn('brand_id',$filter_brands);
+        
+        $products1 = DB::table('products')->select('id')->whereIn('brand_id',$filter_brands)->where(['status'=>1,'flag'=>0]);
+        
+        if(count($product_category) > 0) {
+            $products1 = $products1->whereIn('parent_id',$product_category);
         }
         $products1 = $products1->get()->toArray();
 
@@ -106,7 +114,7 @@ class CategoryController extends Controller
             $products = $products->orderBy('sale_price','DESC');
         }   
         $products = $products->paginate(10)->unique('product_id'); 
-     
+
         $product_details = array();
         $product_medias = array();
         foreach($products as $pro) {
@@ -116,34 +124,6 @@ class CategoryController extends Controller
         $product_details = collect($product_details);
         $product_medias = collect($product_medias);
 
-        return view('frontend.product.category', compact('main_category','slug','sub_categories','categories','brands','products','product_medias','product_details','filter_old','filter_old_price','max_price_filter','min_price_filter','filter_sorting','filter_brands','min_price_old','max_price_old'));
+        return view('frontend.brand.brands', compact('slug','sub_categories','main_brand','brands','products','product_medias','product_details','filter_old','filter_old_price','max_price_filter','min_price_filter','filter_sorting','filter_brands','min_price_old','max_price_old'));
     }
-
-    static function findParent($id) {
-        $cat = Category::where('id',$id)->first();
-        if($cat->parent_id != null) {
-            $p = self::findParent($cat->parent_id);
-            return $p;
-        }
-         else {
-            return $cat->id;
-        }
-    }
-
-    //for shop page
-    public function shop()
-    {
-        $products = Product::where(['flag' => 0,'status' => 1])->with(['variants.medias'])->orderBy('updated_at','asc')->get();
-        
-        $variants = array();
-        $variant_ids = array();
-        foreach($products as $product){
-                $allvariants = ProductVariant::where(['product_id' => $product->id,'flag' => 0])->orderby('sequence','asc')->get();
-                array_push($variants, $allvariants[0]->slug);
-                array_push($variant_ids,$allvariants[0]->id);
-        }
-
-        return view('frontend.product.shop', compact('products','variants','variant_ids'));
-    }
-
 }
