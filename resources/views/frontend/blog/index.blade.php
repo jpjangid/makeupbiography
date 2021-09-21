@@ -84,7 +84,7 @@
             <article id="post-142" class="c-post-list c-post-list--standard c-post-list--grid c-post-list--sidebar c-post-list--with-thumb c-post-list--post js-post-item post-142 post type-post status-publish format-standard has-post-thumbnail hentry category-cosmetic category-fashion tag-cosmetic tag-trends">
               <div class="c-post-list__thumb c-post-list__thumb--standard c-post-list__thumb--grid">
                 <div class="c-post-list__thumb-inner c-post-list__thumb-inner--grid">
-                  <a href="{{ url('blogdetail',$blog->slug) }}">
+                  <a href="{{ url('blogs',['cat' => $blog->category,'slug' => $blog->slug]) }}">
                     <img class="c-post-list__img wp-post-image" src="{{ asset('storage/blogs/'.$blog->featured_image) }}" alt="{{ $blog->alt }}" title="{{ $blog->title }}" sizes="(max-width: 760px) 100vw, 760px" />
                   </a>
                 </div>
