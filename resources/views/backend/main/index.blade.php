@@ -354,7 +354,8 @@
 								<div class="fw-boldest fs-3 mb-2">Ecommerce Revenue</div>
 								<!--end::Title-->
 								<!--begin::Description-->
-								<div class="fw-bold fs-6 text-gray-400 mb-7 mt-7" id="total_revenue">&#8377; 0.00</div>
+								<div class="fw-bold fs-6 text-gray-400" id="current_total_revenue">&#8377; 0.00</div>
+								<div class="fw-bold fs-6 text-gray-400" id="prev_total_revenue">&#8377; 0.00</div>
 								<!--end::Description-->
 							</div>
 							<!--end::Card body-->
@@ -372,7 +373,8 @@
 								<div class="fw-boldest fs-3 mb-2">New Customers</div>
 								<!--end::Title-->
 								<!--begin::Description-->
-								<div class="fw-bold fs-6 text-gray-400 mb-7 mt-7" id="new_users">0</div>
+								<div class="fw-bold fs-6 text-gray-400" id="current_new_users">0</div>
+								<div class="fw-bold fs-6 text-gray-400" id="prev_new_users">0</div>
 								<!--end::Description-->
 							</div>
 							<!--end::Card body-->
@@ -390,7 +392,8 @@
 								<div class="fw-boldest fs-3 mb-2">Average Order Value</div>
 								<!--end::Title-->
 								<!--begin::Description-->
-								<div class="fw-bold fs-6 text-gray-400 mb-7 mt-7" id="average_revenue">&#8377; 0.00</div>
+								<div class="fw-bold fs-6 text-gray-400" id="current_average_revenue">&#8377; 0.00</div>
+								<div class="fw-bold fs-6 text-gray-400" id="prev_average_revenue">&#8377; 0.00</div>
 								<!--end::Description-->
 							</div>
 							<!--end::Card body-->
@@ -408,7 +411,8 @@
 								<div class="fw-boldest fs-3 mb-2">Total No. of Returns</div>
 								<!--end::Title-->
 								<!--begin::Description-->
-								<div class="fw-bold fs-6 text-gray-400 mb-7 mt-7" id="total_returns">0</div>
+								<div class="fw-bold fs-6 text-gray-400" id="current_total_returns">0</div>
+								<div class="fw-bold fs-6 text-gray-400" id="prev_total_returns">0</div>
 								<!--end::Description-->
 							</div>
 							<!--end::Card body-->
@@ -3016,10 +3020,17 @@
 			},
 			success: function(data) {
 				$('#top_sale').empty();
-				$('#total_returns').empty();
-				$('#average_revenue').empty();
-				$('#new_users').empty();
-				$('#total_revenue').empty();
+
+				$('#current_total_returns').empty();
+				$('#current_average_revenue').empty();
+				$('#current_new_users').empty();
+				$('#current_total_revenue').empty();
+
+				$('#prev_total_returns').empty();
+				$('#prev_average_revenue').empty();
+				$('#prev_new_users').empty();
+				$('#prev_total_revenue').empty();
+
 				$('#top_products').empty();
 				var top_sale = '';
 				var top_products = '';
@@ -3082,10 +3093,16 @@
 
 				$('#top_sale').html(top_sale);
 				$('#top_products').html(top_products);
-				$('#total_returns').html(data['total_return_qty']);
-				$('#average_revenue').html(data['avg_revenue']);
-				$('#new_users').html(data['new_users']);
-				$('#total_revenue').html(data['total_revenue']);
+
+				$('#current_total_returns').html(`Current: `+data['current_total_return_qty']);
+				$('#current_average_revenue').html(`Current: `+data['current_avg_revenue']);
+				$('#current_new_users').html(`Current: `+data['current_new_users']);
+				$('#current_total_revenue').html(`Current: `+data['current_total_revenue']);
+				
+				$('#prev_total_returns').html(`Previous: `+data['prev_total_return_qty']);
+				$('#prev_average_revenue').html(`Previous: `+data['prev_avg_revenue']);
+				$('#prev_new_users').html(`Previous: `+data['prev_new_users']);
+				$('#prev_total_revenue').html(`Previous: `+data['prev_total_revenue']);
 			}
 		});
 	}
