@@ -15,8 +15,10 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('login/facebook', [App\Http\Controllers\Auth\LoginController::class, 'facebookRedirect']);
-
 Route::get('login/facebook/callback', [App\Http\Controllers\Auth\LoginController::class, 'loginWithFacebook']);
+
+Route::get('login/google', [App\Http\Controllers\Auth\LoginController::class, 'googleRedirect']);
+Route::get('login/google/callback', [App\Http\Controllers\Auth\LoginController::class, 'loginWithGoogle']);
 
 Route::get('unauthorized', function () {
     return "unauthorized";
