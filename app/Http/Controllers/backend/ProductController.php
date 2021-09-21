@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Brand;
 use App\Models\Product;
 use App\Models\ProductVariant;
 use App\Models\ProductVariantMedia;
@@ -58,6 +59,7 @@ class ProductController extends Controller
     public function create()
     {
         $main_cats = Category::where(['flag' => '0', 'parent_id' => null])->get();
+        $brands = Brand::where(['status' => 1,'flag' => 0])->get();
         $labels = Label::where(['flag' => 0,'status' => 1])->get();
         $cats = new Collection;
         $sub_cats = new Collection;
@@ -82,7 +84,7 @@ class ProductController extends Controller
             }
         }
 
-        return view('backend.products.create', compact('main_cats', 'cats', 'sub_cats', 'labels'));
+        return view('backend.products.create', compact('main_cats', 'cats', 'sub_cats', 'labels','brands'));
     }
 
     public function store(Request $request)
@@ -92,11 +94,13 @@ class ProductController extends Controller
             'slug'                  =>  'required',
             'short_description'     =>  'required',
             'description'           =>  'required',
+            'brand'                 =>  'required',
         ], [
             'name.required'                 =>  'Name is Required',
             'slug.required'                 =>  'Slug is Required',
             'short_description.required'    =>  'Short Description is Required',
             'description.required'          =>  'Description is Required',
+            'brand.required'                =>  'Brand is required',
         ]);
 
         $category_id = '';
@@ -135,6 +139,7 @@ class ProductController extends Controller
             'name'                  =>  $request->name,
             'slug'                  =>  $request->slug,
             'parent_id'             =>  $category_id,
+            'brand_id'              =>  $request->brand,
             'short_description'     =>  $request->short_description,
             'description'           =>  $request->description,
             'alt'                   =>  $request->alt,
@@ -165,6 +170,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         $main_cats = Category::where(['flag' => '0', 'parent_id' => null])->get();
+        $brands = Brand::where(['status' => 1,'flag' => 0])->get();
         $labels = Label::where(['flag' => 0,'status' => 1])->get();
         $cats = new Collection;
         $sub_cats = new Collection;
@@ -191,7 +197,7 @@ class ProductController extends Controller
 
         $product = Product::find($id);
 
-        return view('backend.products.edit', compact('main_cats', 'cats', 'sub_cats', 'product','labels'));
+        return view('backend.products.edit', compact('main_cats', 'cats', 'sub_cats', 'product','labels','brands'));
     }
 
     public function update(Request $request, $id)
@@ -251,6 +257,7 @@ class ProductController extends Controller
         $product->slug                  =  $request->slug;
         $product->short_description     =  $request->short_description;
         $product->description           =  $request->description;
+        $product->brand_id              =  $request->brand;
         $product->alt                   =  $request->alt;
         $product->meta_title            =  $request->meta_title;
         $product->meta_keyword          =  $request->meta_keyword;

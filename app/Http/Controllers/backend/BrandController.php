@@ -65,13 +65,13 @@ class BrandController extends Controller
             'description'           =>  'required',
             'short_description'     =>  'required',
             'alt'                   =>  'required',
-            'slug'                  =>  'required|unique:brands,slug',
+            'slug'                  =>  'required|unique:brands,slug'
         ], [
             'name.required'                 =>  'Brand Name is required',
             'description.required'          =>  'Brand Description is required',
             'short_description.required'    =>  'Brand Short Description is required',
             'alt.required'                  =>  'Featured Image Alt text is required',
-            'slug.required'                 =>  'Brand Slug is required',
+            'slug.required'                 =>  'Brand Slug is required'
         ]);
 
         $featured_image = "";
@@ -97,6 +97,11 @@ class BrandController extends Controller
             $status = 1;
         }
 
+        $top_brand_status = 0;
+        if(isset($request->top_brand_status)){
+            $top_brand_status = 1;
+        }
+
         Brand::create([
             'slug'                      =>  $request->slug,
             'name'                      =>  $request->name,
@@ -109,6 +114,7 @@ class BrandController extends Controller
             'tags'                      =>  $request->tags,
             'alt'                       =>  $request->alt,
             'status'                    =>  $status,
+            'top_brand_status'          =>  $top_brand_status,
             'og_title'                  =>  $request->og_title,
             'og_description'            =>  $request->og_description,
             'og_image'                  =>  $og_image,
@@ -180,6 +186,11 @@ class BrandController extends Controller
             $status = 1;
         }
 
+        $top_brand_status = 0;
+        if(isset($request->top_brand_status)){
+            $top_brand_status = 1;
+        }
+        
         $brand->slug                     =  $request->slug;
         $brand->name                     =  $request->name;
         $brand->description              =  $request->description;
@@ -191,6 +202,7 @@ class BrandController extends Controller
         $brand->tags                     =  $request->tags;
         $brand->alt                      =  $request->alt;
         $brand->status                   =  $status;
+        $brand->top_brand_status         =  $top_brand_status;   
         $brand->og_title                 =  $request->og_title;
         $brand->og_description           =  $request->og_description;
         $brand->og_image                 =  $og_image;
