@@ -225,6 +225,11 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
 
 });
 
+//ROute for contact us page
+Route::view('contact-us','frontend.page.contactus');
+
+//Route for search bar 
+Route::post('search',[App\Http\Controllers\frontend\HomeController::class, 'search']);
 
 //Route for Add to Cart
 Route::get('cart', [App\Http\Controllers\frontend\CartController::class, 'list']);

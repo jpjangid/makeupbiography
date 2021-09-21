@@ -4117,40 +4117,41 @@ var requirejs, require, define;
             var $ideapark_search_clear = $('.js-search-clear', $ideapark_search);
             var $ideapark_search_loader = $('<i class="h-loading c-header-search__loading"></i>');
             var ideapark_search_input_filled = false;
-            var ajaxSearchFunction = ideapark_debounce(function() {
-                var search = $ideapark_search_input.val().trim();
-                if (ideapark_empty(search)) {
-                    $ideapark_search_result.html('');
-                } else {
-                    $ideapark_search_loader.insertBefore($ideapark_search_input);
-                    $.ajax({
-                        url: ideapark_wp_vars.ajaxUrl,
-                        type: 'POST',
-                        data: {
-                            action: 'ideapark_ajax_search',
-                            s: search,
-                            post_type: $ideapark_search_type.val(),
-                            lang: $('input[name="lang"]', $ideapark_search_form).val()
-                        },
-                        success: function(results) {
-                            $ideapark_search_loader.remove();
-                            $ideapark_search_result.html((ideapark_empty($ideapark_search_input.val().trim())) ? '' : results);
-                        }
-                    });
-                }
-            }, 500)
-            $ideapark_search_input.on('keydown', function(e) {
-                var $this = $(this);
-                var is_not_empty = !ideapark_empty($this.val().trim());
-                if (e.keyCode == 13) {
-                    e.preventDefault();
-                    if ($this.hasClass('no-ajax') && is_not_empty) {
-                        $this.closest('form').submit();
-                    }
-                } else if (e.keyCode == 27) {
-                    ideapark_search_popup(false);
-                }
-            }).on('input', function() {
+            // var ajaxSearchFunction = ideapark_debounce(function() {
+            //     var search = $ideapark_search_input.val().trim();
+            //     if (ideapark_empty(search)) {
+            //         $ideapark_search_result.html('');
+            //     } else {
+            //         $ideapark_search_loader.insertBefore($ideapark_search_input);
+            //         $.ajax({
+            //             url: ideapark_wp_vars.ajaxUrl,
+            //             type: 'POST',
+            //             data: {
+            //                 action: 'ideapark_ajax_search',
+            //                 s: search,
+            //                 post_type: $ideapark_search_type.val(),
+            //                 lang: $('input[name="lang"]', $ideapark_search_form).val()
+            //             },
+            //             success: function(results) {
+            //                 $ideapark_search_loader.remove();
+            //                 $ideapark_search_result.html((ideapark_empty($ideapark_search_input.val().trim())) ? '' : results);
+            //             }
+            //         });
+            //     }
+            // }, 500)
+        //     $ideapark_search_input.on('keydown', function(e) {
+        //         var $this = $(this);
+        //         var is_not_empty = !ideapark_empty($this.val().trim());
+        //         if (e.keyCode == 13) {
+        //             e.preventDefault();
+        //             if ($this.hasClass('no-ajax') && is_not_empty) {
+        //                 $this.closest('form').submit();
+        //             }
+        //         } else if (e.keyCode == 27) {
+        //             ideapark_search_popup(false);
+        //         }
+        // })
+        $ideapark_search_input.on('input', function() {
                 var $this = $(this);
                 var is_not_empty = !ideapark_empty($this.val().trim());
                 if (is_not_empty && !ideapark_search_input_filled) {
@@ -4160,10 +4161,11 @@ var requirejs, require, define;
                     ideapark_search_input_filled = false;
                     $('.js-search-clear').removeClass('active');
                 }
-                ajaxSearchFunction();
+                // ajaxSearchFunction();
             });
             $ideapark_search_clear.click(function() {
                 $ideapark_search_input.val('').trigger('input').focus();
+                $ideapark_search_result.html('');
             });
             $ideapark_search.removeClass('disabled');
         });

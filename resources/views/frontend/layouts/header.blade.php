@@ -34,100 +34,35 @@
           <li id="menu-item-17" class="c-mobile-menu__item menu-item-17">
             <a href="{{ url('/') }}">Home</a>
           </li>
+          <li id="menu-item-17" class="c-mobile-menu__item menu-item-17">
+            <a href="{{ url('/shop') }}">Shop</a>
+          </li>
+          @if(count($mains) > 0)
           <li id="menu-item-162" class="c-mobile-menu__item c-mobile-menu__item--has-children menu-item-162">
-            <a href="{{ url('shop') }}">Shop</a>
+            <a href="#">Category</a>
+            @foreach($mains as $main)
             <ul class="c-mobile-menu__submenu">
-              <li id="menu-item-557" class="c-mobile-menu__subitem c-mobile-menu__subitem--has-children menu-item-557">
-                <a>Shop layout</a>
-                <ul class="c-mobile-menu__submenu c-mobile-menu__submenu--inner">
-                  <li id="menu-item-2474" class="c-mobile-menu__subitem menu-item-2474">
-                    <a href="https://parkofideas.com/luchiana/demo/shop/?set=31">Categories in header</a>
-                  </li>
-                  <li id="menu-item-576" class="c-mobile-menu__subitem menu-item-576">
-                    <a href="https://parkofideas.com/luchiana/demo/shop/?set=30">Categories</a>
-                  </li>
-                  <li id="menu-item-559" class="c-mobile-menu__subitem menu-item-559">
-                    <a href="https://parkofideas.com/luchiana/demo/shop/?set=5">3 per row</a>
-                  </li>
-                  <li id="menu-item-560" class="c-mobile-menu__subitem menu-item-560">
-                    <a href="https://parkofideas.com/luchiana/demo/shop/?set=6">4 per row</a>
-                  </li>
-                  <li id="menu-item-561" class="c-mobile-menu__subitem menu-item-561">
-                    <a href="https://parkofideas.com/luchiana/demo/shop/?set=7">Compact</a>
-                  </li>
-                  <li id="menu-item-562" class="c-mobile-menu__subitem menu-item-562">
-                    <a href="https://parkofideas.com/luchiana/demo/shop/?set=8">3 per row (sidebar)</a>
-                  </li>
-                  <li id="menu-item-563" class="c-mobile-menu__subitem menu-item-563">
-                    <a href="https://parkofideas.com/luchiana/demo/shop/?set=9">4 per row (sidebar)</a>
-                  </li>
-                  <li id="menu-item-564" class="c-mobile-menu__subitem menu-item-564">
-                    <a href="https://parkofideas.com/luchiana/demo/shop/?set=10">Compact (sidebar)</a>
-                  </li>
-                  <li id="menu-item-2434" class="c-mobile-menu__subitem menu-item-2434">
-                    <a href="https://parkofideas.com/luchiana/demo/shop/?set=26">2 per row (on mobile)</a>
-                  </li>
-                </ul>
-              </li>
-              <li id="menu-item-558" class="c-mobile-menu__subitem c-mobile-menu__subitem--has-children menu-item-558">
-                <a>Product layout</a>
-                <ul class="c-mobile-menu__submenu c-mobile-menu__submenu--inner">
-                  <li id="menu-item-570" class="c-mobile-menu__subitem menu-item-570">
-                    <a href="https://parkofideas.com/luchiana/demo/shop/airbrush-matte/?set=11">Layout 1</a>
-                  </li>
-                  <li id="menu-item-571" class="c-mobile-menu__subitem menu-item-571">
-                    <a href="https://parkofideas.com/luchiana/demo/shop/airbrush-matte/?set=12">Layout 2</a>
-                  </li>
-                  <li id="menu-item-572" class="c-mobile-menu__subitem menu-item-572">
-                    <a href="https://parkofideas.com/luchiana/demo/shop/airbrush-matte/?set=13">Layout 3</a>
-                  </li>
-                  <li id="menu-item-573" class="c-mobile-menu__subitem menu-item-573">
-                    <a href="https://parkofideas.com/luchiana/demo/shop/airbrush-matte/?set=14">Layout 4</a>
-                  </li>
-                  <li id="menu-item-2016" class="c-mobile-menu__subitem menu-item-2016">
-                    <a href="https://parkofideas.com/luchiana/demo/shop/matte-revolution-lipstick/?set=15">Product image zoom</a>
-                  </li>
-                  <li id="menu-item-808" class="c-mobile-menu__subitem menu-item-808">
-                    <a href="https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/">Product video</a>
-                  </li>
-                </ul>
-              </li>
-              <li id="menu-item-565" class="c-mobile-menu__subitem c-mobile-menu__subitem--has-children menu-item-565">
-                <a>Product type</a>
-                <ul class="c-mobile-menu__submenu c-mobile-menu__submenu--inner">
-                  <li id="menu-item-567" class="c-mobile-menu__subitem menu-item-567">
-                    <a href="https://parkofideas.com/luchiana/demo/shop/airbrush-matte/">Simple product</a>
-                  </li>
-                  <li id="menu-item-568" class="c-mobile-menu__subitem menu-item-568">
-                    <a href="https://parkofideas.com/luchiana/demo/shop/flyliner-longwear-eyeliner/">Grouped product</a>
-                  </li>
-                  <li id="menu-item-566" class="c-mobile-menu__subitem menu-item-566">
-                    <a href="https://parkofideas.com/luchiana/demo/shop/hair-coloring/">Variable product</a>
-                  </li>
-                  <li id="menu-item-569" class="c-mobile-menu__subitem menu-item-569">
-                    <a href="https://parkofideas.com/luchiana/demo/shop/long-lash-serum/">External &#038; affiliate product</a>
-                  </li>
-                </ul>
-              </li>
-              <li id="menu-item-2468" class="c-mobile-menu__subitem c-mobile-menu__subitem--has-children menu-item-2468">
-                <a>Brands</a>
-                <ul class="c-mobile-menu__submenu c-mobile-menu__submenu--inner">
-                  <li id="menu-item-2469" class="c-mobile-menu__subitem menu-item-2469">
-                    <a href="https://parkofideas.com/luchiana/demo/brands-1/?set=27">Brand List 1</a>
-                  </li>
-                  <li id="menu-item-2470" class="c-mobile-menu__subitem menu-item-2470">
-                    <a href="https://parkofideas.com/luchiana/demo/brands-2/?set=28">Brand List 2</a>
-                  </li>
-                  <li id="menu-item-2471" class="c-mobile-menu__subitem menu-item-2471">
-                    <a href="https://parkofideas.com/luchiana/demo/shop/lactic-acid-treatment/?set=19">Brand (product page)</a>
-                  </li>
-                  <li id="menu-item-2394" class="c-mobile-menu__subitem menu-item-2394">
-                    <a href="https://parkofideas.com/luchiana/demo/shop/?set=19">Brands (product grid)</a>
-                  </li>
-                </ul>
+              <li id="menu-item-163" class="c-mobile-menu__item c-mobile-menu__item--has-children menu-item-162">
+                <a href="{{ url('category',['slug' => $main->slug]) }}">{{ $main->name }}</a>
+                @foreach($main->subcategory as $sub1)
+                <ul class="c-mobile-menu__submenu" style="margin-top: 10px !important">
+                  <li id="menu-item-163" class="c-mobile-menu__item c-mobile-menu__item--has-children menu-item-162">
+                  <a href="{{ url('category',['slug' => $sub1->slug]) }}">{{ $sub1->name }}</a>
+                    <ul class="c-mobile-menu__submenu">
+                      @foreach($sub1->subcategory as $sub2)
+                      <li id="menu-item-2474" class="c-mobile-menu__subitem menu-item-2474">
+                        <a href="{{ url('category',['slug' => $sub2->slug]) }}">{{ $sub2->name }}</a>
+                      </li>
+                      @endforeach
+                    </ul> 
+                  </li>  
+                </ul>  
+                @endforeach
               </li>
             </ul>
+            @endforeach
           </li>
+          @endif
           <li id="menu-item-804" class="c-mobile-menu__item c-mobile-menu__item--has-children menu-item-804">
             <a>Headers</a>
             <ul class="c-mobile-menu__submenu">
@@ -170,8 +105,11 @@
               </li>
             </ul>
           </li>
-          <li id="menu-item-19" class="c-mobile-menu__item c-mobile-menu__item--has-children menu-item-19">
-            <a href="{{ url('blogs/all') }}">Blog</a>>
+          <li id="menu-item-17" class="c-mobile-menu__item menu-item-17">
+            <a href="{{ url('brands') }}">Brand</a>
+          </li>
+          <li id="menu-item-17" class="c-mobile-menu__item menu-item-17">
+            <a href="{{ url('blogs/all') }}">Blog</a>
           </li>
           <li id="menu-item-163" class="c-mobile-menu__item c-mobile-menu__item--has-children menu-item-163">
             <a>Pages</a>
@@ -202,234 +140,8 @@
               </li>
             </ul>
           </li>
-          <li id="menu-item-1681" class="c-mobile-menu__item menu-item-1681 c-mobile-menu__item--has-children">
-            <a>Mega</a>
-            <div class="c-mobile-menu__submenu c-mobile-menu__submenu--content">
-              <div data-elementor-type="wp-post" data-elementor-id="1523" class="elementor elementor-1523" data-elementor-settings="[]">
-                <div class="elementor-inner">
-                  <div class="elementor-section-wrap">
-                    <section class="elementor-section elementor-top-section elementor-element elementor-element-94b0934 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="94b0934" data-element_type="section">
-                      <div class="elementor-container elementor-column-gap-no">
-                        <div class="elementor-row">
-                          <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-a5a1574" data-id="a5a1574" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                            <div class="elementor-column-wrap elementor-element-populated">
-                              <div class="elementor-widget-wrap">
-                                <div class="elementor-element elementor-element-bb54a11 elementor-widget elementor-widget-ideapark-mega-menu" data-id="bb54a11" data-element_type="widget" data-widget_type="ideapark-mega-menu.default">
-                                  <div class="elementor-widget-container">
-                                    <div class="c-ip-mega-menu">
-                                      <div class="c-ip-mega-menu__title ">Brands</div>
-                                      <ul class="c-ip-mega-menu__list">
-                                        <li class="c-ip-mega-menu__item">
-                                          <a class="c-ip-mega-menu__item-link" href="https://parkofideas.com/luchiana/demo/brands/aerin/">Aerin</a>
-                                        </li>
-                                        <li class="c-ip-mega-menu__item">
-                                          <a class="c-ip-mega-menu__item-link" href="https://parkofideas.com/luchiana/demo/brands/fablemane/">Fable&amp;Mane</a>
-                                        </li>
-                                        <li class="c-ip-mega-menu__item">
-                                          <a class="c-ip-mega-menu__item-link" href="https://parkofideas.com/luchiana/demo/brands/loreal/">Loreal</a>
-                                        </li>
-                                        <li class="c-ip-mega-menu__item">
-                                          <a class="c-ip-mega-menu__item-link" href="https://parkofideas.com/luchiana/demo/brands/mac/">Mac</a>
-                                        </li>
-                                        <li class="c-ip-mega-menu__item">
-                                          <a class="c-ip-mega-menu__item-link" href="https://parkofideas.com/luchiana/demo/brands/schwarzkopf/">Schwarzkopf</a>
-                                        </li>
-                                      </ul>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="elementor-element elementor-element-82bf165 elementor-widget elementor-widget-ideapark-mega-menu" data-id="82bf165" data-element_type="widget" data-widget_type="ideapark-mega-menu.default">
-                                  <div class="elementor-widget-container">
-                                    <div class="c-ip-mega-menu">
-                                      <div class="c-ip-mega-menu__title ">Capacity</div>
-                                      <ul class="c-ip-mega-menu__list">
-                                        <li class="c-ip-mega-menu__item">
-                                          <a class="c-ip-mega-menu__item-link" href="https://parkofideas.com/luchiana/demo/?taxonomy=pa_capacity&amp;term=30ml">30 mL</a>
-                                        </li>
-                                        <li class="c-ip-mega-menu__item">
-                                          <a class="c-ip-mega-menu__item-link" href="https://parkofideas.com/luchiana/demo/?taxonomy=pa_capacity&amp;term=40ml">40 mL</a>
-                                        </li>
-                                        <li class="c-ip-mega-menu__item">
-                                          <a class="c-ip-mega-menu__item-link" href="https://parkofideas.com/luchiana/demo/?taxonomy=pa_capacity&amp;term=50ml">50 mL</a>
-                                        </li>
-                                      </ul>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-1b19645" data-id="1b19645" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                            <div class="elementor-column-wrap elementor-element-populated">
-                              <div class="elementor-widget-wrap">
-                                <div class="elementor-element elementor-element-6103afb elementor-widget elementor-widget-ideapark-woocommerce-grid" data-id="6103afb" data-element_type="widget" data-widget_type="ideapark-woocommerce-grid.default">
-                                  <div class="elementor-widget-container">
-                                    <div class="c-ip-woocommerce-grid">
-                                      <div class="c-ip-woocommerce-grid__wrap">
-                                        <div class="woocommerce columns-3 ">
-                                          <div class="c-product-grid__wrap c-product-grid__wrap--4-per-row ">
-                                            <div class="c-product-grid__list c-ip-woocommerce-grid__listc-product-grid__list--4-per-row ">
-                                              <div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-464 status-publish first instock product_cat-fragrance product_tag-fragrance product_tag-warm has-post-thumbnail shipping-taxable purchasable product-type-simple">
-                                                <div class="c-product-grid__badges c-badge__list">
-                                                </div>
-                                                <!-- .c-product-grid__badges -->
-                                                <div class="c-product-grid__thumb-wrap">
-                                                  <a href="https://parkofideas.com/luchiana/demo/shop/eau-de-soleil-blanc-set/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                                    <img width="260" height="230" src="../wp-content/uploads/2020/10/luchiana-3000062647-260x230.jpg" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3000062647-260x230.jpg 260w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3000062647-520x460.jpg 520w" sizes="(max-width: 260px) 100vw, 260px" />
-                                                  </a>
-                                                  <div class="c-product-grid__thumb-button-list">
-                                                    <button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="464">
-                                                      <i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>
-                                                      <i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>
-                                                    </button>
-                                                    <button class="js-wishlist-btn c-wishlist__btn c-wishlist__item-464-btn h-cb c-product-grid__thumb-button" data-product-id="464" data-title="Wishlist">
-                                                      <i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
-                                                      <i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
-                                                    </button>
-                                                  </div>
-                                                </div>
-                                                <!-- .c-product-grid__thumb-wrap -->
-                                                <a href="index63e5.html?add-to-cart=464" data-quantity="1" class="h-cb c-product-grid__atc button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="464" data-product_sku="6549845315" aria-label="Add &ldquo;Flowerbomb&rdquo; to your cart" rel="nofollow">
-                                                  <i class="ip-plus c-product-grid__atc-icon"></i>
-                                                  <span class="c-product-grid__atc-text">Add to cart</span>
-                                                </a>
-                                                <div class="c-product-grid__details">
-                                                  <div class="c-product-grid__title-wrap">
-                                                    <a href="https://parkofideas.com/luchiana/demo/shop/eau-de-soleil-blanc-set/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                                      <h2 class="woocommerce-loop-product__title">Flowerbomb</h2>
-                                                    </a>
-                                                    <div class="c-product-grid__short-desc">
-                                                      <p>Vert de Bergamot, Coco de Mer Accord.</p>
-                                                    </div>
-                                                  </div>
-                                                  <!-- .c-product-grid__title-wrap -->
-                                                  <div class="c-product-grid__price-wrap">
-                                                    <span class="price">
-                                                      <span class="woocommerce-Price-amount amount">
-                                                        <bdi>
-                                                          <span class="woocommerce-Price-currencySymbol">&#36;</span>200.00</bdi>
-                                                      </span>
-                                                    </span>
-                                                  </div>
-                                                  <!-- .c-product-grid__price-wrap -->
-                                                </div>
-                                                <!-- .c-product-grid__details -->
-                                              </div>
-                                              <div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-511 status-publish instock product_cat-fragrance product_tag-perfume has-post-thumbnail featured shipping-taxable purchasable product-type-simple">
-                                                <div class="c-product-grid__badges c-badge__list">
-                                                  <span class="c-badge c-badge--featured">Featured</span>
-                                                  <span class="c-badge c-badge--new">New</span>
-                                                </div>
-                                                <!-- .c-product-grid__badges -->
-                                                <div class="c-product-grid__thumb-wrap">
-                                                  <a href="https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                                    <img width="260" height="230" src="../wp-content/uploads/2020/10/luchiana-3032395463-260x230.jpg" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3032395463-260x230.jpg 260w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3032395463-520x460.jpg 520w" sizes="(max-width: 260px) 100vw, 260px" />
-                                                  </a>
-                                                  <div class="c-product-grid__thumb-button-list">
-                                                    <button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="511">
-                                                      <i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>
-                                                      <i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>
-                                                    </button>
-                                                    <button class="js-wishlist-btn c-wishlist__btn c-wishlist__item-511-btn h-cb c-product-grid__thumb-button" data-product-id="511" data-title="Wishlist">
-                                                      <i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
-                                                      <i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
-                                                    </button>
-                                                  </div>
-                                                </div>
-                                                <!-- .c-product-grid__thumb-wrap -->
-                                                <a href="indexd5bb.html?add-to-cart=511" data-quantity="1" class="h-cb c-product-grid__atc button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="511" data-product_sku="65498453209" aria-label="Add &ldquo;Midnight Musk&rdquo; to your cart" rel="nofollow">
-                                                  <i class="ip-plus c-product-grid__atc-icon"></i>
-                                                  <span class="c-product-grid__atc-text">Add to cart</span>
-                                                </a>
-                                                <div class="c-product-grid__details">
-                                                  <div class="c-product-grid__title-wrap">
-                                                    <a href="https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                                      <h2 class="woocommerce-loop-product__title">Midnight Musk</h2>
-                                                    </a>
-                                                    <div class="c-product-grid__short-desc">
-                                                      <p>Earthy &amp; Woody.</p>
-                                                    </div>
-                                                  </div>
-                                                  <!-- .c-product-grid__title-wrap -->
-                                                  <div class="c-product-grid__price-wrap">
-                                                    <span class="price">
-                                                      <span class="woocommerce-Price-amount amount">
-                                                        <bdi>
-                                                          <span class="woocommerce-Price-currencySymbol">&#36;</span>150.00</bdi>
-                                                      </span>
-                                                    </span>
-                                                  </div>
-                                                  <!-- .c-product-grid__price-wrap -->
-                                                </div>
-                                                <!-- .c-product-grid__details -->
-                                              </div>
-                                              <div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-482 status-publish last instock product_cat-fragrance product_cat-skincare product_tag-cream product_tag-dry product_tag-skin has-post-thumbnail featured shipping-taxable purchasable product-type-simple">
-                                                <div class="c-product-grid__badges c-badge__list">
-                                                  <span class="c-badge c-badge--featured">Featured</span>
-                                                </div>
-                                                <!-- .c-product-grid__badges -->
-                                                <div class="c-product-grid__thumb-wrap">
-                                                  <a href="https://parkofideas.com/luchiana/demo/shop/purity-made-simple-cleanser/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                                    <img width="260" height="230" src="../wp-content/uploads/2020/10/luchiana-3025788510-260x230.jpg" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3025788510-260x230.jpg 260w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3025788510-520x460.jpg 520w" sizes="(max-width: 260px) 100vw, 260px" />
-                                                  </a>
-                                                  <div class="c-product-grid__thumb-button-list">
-                                                    <button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="482">
-                                                      <i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>
-                                                      <i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>
-                                                    </button>
-                                                    <button class="js-wishlist-btn c-wishlist__btn c-wishlist__item-482-btn h-cb c-product-grid__thumb-button" data-product-id="482" data-title="Wishlist">
-                                                      <i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
-                                                      <i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
-                                                    </button>
-                                                  </div>
-                                                </div>
-                                                <!-- .c-product-grid__thumb-wrap -->
-                                                <a href="index05f7.html?add-to-cart=482" data-quantity="1" class="h-cb c-product-grid__atc button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="482" data-product_sku="6549845399" aria-label="Add &ldquo;Purity Made Cleanser&rdquo; to your cart" rel="nofollow">
-                                                  <i class="ip-plus c-product-grid__atc-icon"></i>
-                                                  <span class="c-product-grid__atc-text">Add to cart</span>
-                                                </a>
-                                                <div class="c-product-grid__details">
-                                                  <div class="c-product-grid__title-wrap">
-                                                    <a href="https://parkofideas.com/luchiana/demo/shop/purity-made-simple-cleanser/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                                      <h2 class="woocommerce-loop-product__title">Purity Made Cleanser</h2>
-                                                    </a>
-                                                    <div class="c-product-grid__short-desc">
-                                                      <p>Top-selling facial cleanser.</p>
-                                                    </div>
-                                                  </div>
-                                                  <!-- .c-product-grid__title-wrap -->
-                                                  <div class="c-product-grid__price-wrap">
-                                                    <span class="price">
-                                                      <span class="woocommerce-Price-amount amount">
-                                                        <bdi>
-                                                          <span class="woocommerce-Price-currencySymbol">&#36;</span>60.00</bdi>
-                                                      </span>
-                                                    </span>
-                                                  </div>
-                                                  <!-- .c-product-grid__price-wrap -->
-                                                </div>
-                                                <!-- .c-product-grid__details -->
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
           <li id="menu-item-20" class="c-mobile-menu__item menu-item-20">
-            <a href="https://parkofideas.com/luchiana/demo/contact/">Contact</a>
+            <a href="{{ url('contact-us') }}">Contact</a>
           </li>
         </ul>
       </nav>
@@ -693,7 +405,7 @@
               </li>
              
               <li class="c-top-menu__item menu-item-20 js-menu-item">
-                <a href="https://parkofideas.com/luchiana/demo/contact/">Contact</a>
+                <a href="{{ url('contact-us') }}">Contact</a>
               </li>
             </ul>
           </nav>
@@ -701,7 +413,7 @@
         <div class="c-header__col-right">
           <div class="c-header__col-right-wrap">
             <div class="c-header__search-button">
-              <a class="c-header__button-link c-header__button-link--search js-search-button" type="button" href="https://parkofideas.com/luchiana/demo/search/" onclick="return false;">
+              <a class="c-header__button-link c-header__button-link--search js-search-button" type="button" href="#" onclick="return false;">
                 <i class="ip-search">
                   <!-- -->
                 </i>

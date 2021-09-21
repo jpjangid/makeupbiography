@@ -127,6 +127,7 @@
 <body class="page-template page-template-elementor_header_footer page page-id-1131 theme-luchiana woocommerce-no-js woo-variation-swatches wvs-theme-luchiana wvs-theme-child-luchiana wvs-style-rounded wvs-attr-behavior-blur wvs-tooltip wvs-css woocommerce-on h-ltr h-wpml elementor-default elementor-template-full-width elementor-kit-37 elementor-page elementor-page-1131">
   <input type="text" id="baseUrl" value="{{ url('/') }}" hidden>
   <input type="text" id="currentUrl" value="{{ url()->current() }}" hidden>
+  <input type="text" id="searchUrl" value="{{ url('search') }}" hidden>
   <input type="text" id="cartUrl" value="{{ url('cart') }}" hidden>
   <input type="text" id="tokken" value="{{ csrf_token() }}" hidden>
   <input type="text" id="userIdAuth" value="{{ !empty(auth()->user()->id) ? auth()->user()->id : '' }}" hidden>
@@ -136,16 +137,13 @@
       </div>
       <div class="c-header-search__form">
         <div class="c-header-search__tip">What you are looking for?</div>
-        <form role="search" class="js-search-form" method="get" action="https://parkofideas.com/luchiana/demo/">
           <div class="c-header-search__input-block">
-            <input class="js-ajax-search-input h-cb c-header-search__input" autocomplete="off" type="text" name="s" placeholder="Start typing..." value="" />
+            <input class="js-ajax-search-input h-cb c-header-search__input search-bar-input" autocomplete="off" type="text" name="s" placeholder="Start typing..." value="" />
             <button class="js-search-clear h-cb c-header-search__clear" type="button">
               <i class="ip-close-small c-header-search__clear-svg"></i>
               <span class="c-header-search__clear-text">Clear</span>
             </button>
           </div>
-          <input type="hidden" name="post_type" value="product" class="js-ajax-search-type" />
-        </form>
       </div>
       <div class="l-section l-section--container c-header-search__result js-ajax-search-result">
       </div>
@@ -271,5 +269,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script type='text/javascript' src='{{ asset("js/cart.js") }}' id='preloaded-modules-js'></script>
   <script type='text/javascript' src='{{ asset("js/favourite.js") }}' id='preloaded-modules-js'></script>
+  <script type='text/javascript' src='{{ asset("js/search.js") }}' id="preloaded-modules-js"></script>
   @yield('js')  
 </html>
