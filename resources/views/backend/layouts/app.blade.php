@@ -20,6 +20,11 @@
 	<!-- DataTable Css -->
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.11.2/css/jquery.dataTables.min.css">
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+	<style>
+		.c-product-list-widget {
+			max-height: calc(128vh - 350px) !important;
+		}
+	</style>
 	@yield('css')
 	<!--end::Global Stylesheets Bundle-->
 </head>

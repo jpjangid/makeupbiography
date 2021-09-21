@@ -277,7 +277,7 @@
                 <!-- .c-product-grid__thumb-wrap -->
       
                 @if($product->status == 1 && $product->flag == 0)
-                <button data-quantity="1" class="h-cb c-product-grid__atc button product_type_simple add-to-cart" data-product_id="{{ $product->id }}" data-product_variant="{{ $variant->id }}" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
+                <button data-quantity="1" class="h-cb c-product-grid__atc button product_type_simple add-to-cart" data-product_id="{{ $variant->product_id }}" data-product_variant="{{ $variant->id }}" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
                   <i class="ip-plus c-product-grid__atc-icon"></i>
                   <span class="c-product-grid__atc-text">Add to cart</span>
                 </button>
