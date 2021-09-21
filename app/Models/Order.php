@@ -28,4 +28,9 @@ class Order extends Model
     {
         return $this->belongsTo('App\Models\User', 'user_id');
     }
+
+    public function return()
+    {
+        return $this->belongsTo('App\OrderItemReturn','order_id','id');
+    }
 }

@@ -22,6 +22,43 @@ class DashboardController extends Controller
         $from = $request->from;
         $to = $request->to;
 
+        $fromDateTime = strtotime($from);
+        $toDateTime = strtotime($to);
+
+        $datediff = $toDateTime - $fromDateTime;
+        $difference = round($datediff / (60 * 60 * 24));
+
+        $toTimeDiff = $difference + 1;
+        $fromTimeDiff = $toTimeDiff + $difference;
+
+        $prevTo = date('Y-m-d', strtotime('-'.$toTimeDiff.' day'));
+        $prevFrom = date('Y-m-d', strtotime('-'.$fromTimeDiff.' day'));
+
+        $currentData = $this->calculation($from, $to);
+        $prevData = $this->calculation($prevFrom,$prevTo);
+
+        //Current Date Calculation
+        $data['current_total_revenue'] = $currentData['total_revenue'];
+        $data['current_avg_revenue'] = $currentData['avg_revenue'];
+        $data['current_new_users']  = $currentData['new_users'];
+        $data['current_total_return_qty'] = $currentData['total_return_qty'];
+
+        //Previous Date Calculation
+        $data['prev_total_revenue'] = $prevData['total_revenue'];
+        $data['prev_avg_revenue'] = $prevData['avg_revenue'];
+        $data['prev_new_users']  = $prevData['new_users'];
+        $data['prev_total_return_qty'] = $prevData['total_return_qty'];
+
+        $data['orders_to_show'] = $currentData['orders_to_show'];
+        $data['top_sold_products'] = $currentData['top_sold_products'];
+        $data['sold_items_no'] = $currentData['sold_items_no'];
+        $data['no_of_orders'] = $currentData['no_of_orders'];
+
+        return response()->json($data);
+    }
+
+    public function calculation($from, $to)
+    {
         $sold_items_no = 0;
         $total_revenue = 0;
         $no_of_orders = 0;
@@ -105,6 +142,6 @@ class DashboardController extends Controller
         $data['total_return_qty'] = $total_return_qty;
         $data['top_sold_products'] = $product;
 
-        return response()->json($data);
+        return $data;
     }
 }
