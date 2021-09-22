@@ -131,19 +131,93 @@ class CategoryController extends Controller
     }
 
     //for shop page
-    public function shop()
+    public function shop(Request $request)
     {
-        $products = Product::where(['flag' => 0,'status' => 1])->with(['variants.medias'])->orderBy('updated_at','asc')->get();
-        
-        $variants = array();
-        $variant_ids = array();
-        foreach($products as $product){
-                $allvariants = ProductVariant::where(['product_id' => $product->id,'flag' => 0])->orderby('sequence','asc')->get();
-                array_push($variants, $allvariants[0]->slug);
-                array_push($variant_ids,$allvariants[0]->id);
+        $sub_categories = Category::where(['parent_id' => null,'status' => 1,'flag' => 0])->with('subcategory.subcategory')->get();
+        $brands = Brand::select('id','name')->where(['status' => 1,'flag' =>  0])->get();
+        $product_category = array();
+        $min_price_filter = 0;
+        $max_price_filter = DB::table('product_variants')->max('sale_price')+100;
+        $min_price_old = 0;
+        $max_price_old = 0;
+        if(!empty($request->min_price_filter)){
+            $min_price_old = floatval($request->min_price_filter);
+        }
+        if(!empty($request->max_price_filter)){
+            $max_price_old = floatval($request->max_price_filter);
         }
 
-        return view('frontend.product.shop', compact('products','variants','variant_ids'));
+        //fiter function begin
+        $filter_old = array();
+        $filter_old_price = array();
+        $filter_sorting = "";
+        $filter_brands = array();
+        
+        //brands filter begin 
+        if(!empty($request->filter_brand) && count($request->filter_brand) > 0){
+            $filter_brands = array_merge($filter_brands,$request->filter_brand);
+        } 
+        //brands filter end
+      
+        if(!empty($request->filter_category) && count($request->filter_category) > 0) {
+            $check_categories = Category::select('id')->whereIn('slug',$request->filter_category)->get()->toArray();
+            $check_categories = array_column($check_categories,'id');
+            $request->check_categories = $check_categories;
+            $filter_old = $request->filter_category;   
+        }
+        
+        //filter function end
+        if(!empty($request->filter_category) && count($request->filter_category) > 0) {
+            $product_category = array_merge($product_category,$request->check_categories);
+        }
+
+        if(!empty($request->price_range) && count($request->price_range) > 0) {
+            $filter_old_price = array_merge($filter_old_price,$request->price_range);
+        }
+
+        //filter sorting begin
+        if(!empty($request->orderby)) {
+            if($request->orderby == "lowtohigh") {
+                $filter_sorting = "lowtohigh";
+            }
+            if($request->orderby == "hightolow") {
+                $filter_sorting = "hightolow";
+            }
+        }
+        //filter sorting end
+        
+        $products1 = DB::table('products')->select('id')->where(['status'=>1,'flag'=>0]);
+        if(!empty($filter_brands) && count($filter_brands) > 0) {
+            $products1 = $products1->whereIn('brand_id',$filter_brands);
+        }
+
+        if(count($product_category) > 0) {
+            $products1 = $products1->whereIn('parent_id',$product_category);
+        }
+        $products1 = $products1->get()->toArray();
+
+        $products = DB::table('product_variants')->distinct('product_id')->whereIn('product_id',array_column($products1,'id'));
+        if(!empty($request->min_price_filter) && !empty($request->max_price_filter)) {
+            $products = $products->whereBetween('sale_price',array(floatval($request->min_price_filter),floatval($request->max_price_filter)));
+        }
+        if(!empty($request->orderby) && $request->orderby == "lowtohigh") {
+            $products = $products->orderBy('sale_price','ASC');
+        }
+        if(!empty($request->orderby) && $request->orderby == "hightolow") {
+            $products = $products->orderBy('sale_price','DESC');
+        }   
+        $products = $products->paginate(10)->unique('product_id'); 
+
+        $product_details = array();
+        $product_medias = array();
+        foreach($products as $pro) {
+            array_push($product_details,Product::where('id',$pro->product_id)->first());
+            array_push($product_medias,ProductVariantMedia::where('product_variant_id',$pro->id)->where('flag',0)->first());
+        }
+        $product_details = collect($product_details);
+        $product_medias = collect($product_medias);
+
+        return view('frontend.product.shop', compact('sub_categories','brands','products','product_medias','product_details','filter_old','filter_old_price','max_price_filter','min_price_filter','filter_sorting','filter_brands','min_price_old','max_price_old'));
     }
 
 }
