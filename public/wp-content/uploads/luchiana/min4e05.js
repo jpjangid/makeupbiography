@@ -3097,7 +3097,7 @@ var requirejs, require, define;
                     $buttons = $('.c-wishlist__item-' + productId + '-btn');
                 $buttons.removeClass('c-wishlist__btn--added');
                 $buttons.ideapark_button('loading', 16, true);
-                alert();
+                
                 wishlistAjax = $.ajax({
                     type: 'POST',
                     url: ideapark_wp_vars.ajaxUrl,
@@ -3658,6 +3658,7 @@ var requirejs, require, define;
         }).on('click', ".js-mobile-modal", function(e) {
             $(this).parent().find(".js-product-modal").first().trigger('click');
         }).on('click', ".js-product-modal", function(e) {
+            
             e.preventDefault();
             var $button = $(this);
             var $play_button = $('.c-play', $button);

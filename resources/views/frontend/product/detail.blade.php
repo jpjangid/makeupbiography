@@ -85,47 +85,62 @@
             </div>
             <!-- .c-product__badges -->
             <div class="c-product__slider c-product__slider--carousel h-carousel h-carousel--inner h-carousel--hover h-carousel--dots-hide js-single-product-carousel">
+              @php $count = 0; use Illuminate\Support\Facades\Storage; @endphp
               @foreach($medias as $media)
-                @if($media->media_type == 'image')
-                <div class="c-product__slider-item c-product__slider-item--zoom woocommerce-product-gallery__image ">
-                  <a download href="{{ asset('storage/products/variants/'.$media->media) }}" class="c-product__image-link c-product__image-link--zoom js-product-modal" data-size="1201x1200" data-index="0" data-product-id="511" data-elementor-open-lightbox="no" onclick="return false;">
-                    <img width="460" height="460" src="{{ asset('storage/products/variants/'.$media->media) }}" class="c-product__slider-img c-product__slider-img--cover" alt="{{ $media->media_alt }}" sizes="(max-width: 460px) 100vw, 460px" />
-                    <span class="c-product__loading js-loading-wrap">
+              @if($media->media_type == 'image')
+              <div class="c-product__slider-item c-product__slider-item--zoom woocommerce-product-gallery__image ">
+                <a download href="{{ asset('storage/products/variants/'.$media->media) }}" class="c-product__image-link c-product__image-link--zoom js-product-modal" data-size="1200x1200" data-index="{{ $count }}" data-product-id="" data-elementor-open-lightbox="no" onclick="return false;">
+                  <div data-img="{{ asset('storage/products/variants/'.$media->media) }}" class="c-product__image-zoom js-product-zoom ">
+                    <img width="460" height="460" src="{{ asset('storage/products/variants/'.$media->media) }}" class="c-product__slider-img c-product__slider-img--cover" alt="product-1-3" srcset="{{ asset('storage/products/variants/'.$media->media) }}" sizes="(max-width: 460px) 100vw, 460px" />
+                  </div>
+                  <span class="c-product__loading js-loading-wrap">
+                  </span>
+                </a>
+                <button class='h-cb c-product__image-zoom-mobile js-mobile-modal'>
+                  <i class='ip-zoom'></i>
+                </button>
+              </div>
+              @endif
+              @if($media->media_type == 'video')
+              <div class="c-product__slider-item c-product__slider-item--video">
+                <a download href="{{ $media->media }}" class="c-product__image-link c-product__image-link--zoom js-product-modal" data-index="{{ $count }}" data-product-id="511" data-elementor-open-lightbox="no" onclick="return false;">
+                  <span class="c-product__slider--video" style="background-image: url()">
+                    <span class="c-product__video-mask">
                     </span>
-                  </a>
-                </div>
-                @endif
-                @if($media->media_type == 'video')
-                <div class="c-product__slider-item c-product__slider-item--video">
-                  <a download href="{{ $media->media }}" class="c-product__image-link c-product__image-link--zoom js-product-modal" data-index="3" data-product-id="511" data-elementor-open-lightbox="no" onclick="return false;">
-                    <span class="c-product__slider--video" style="background-image: url()">
-                      <span class="c-product__video-mask">
-                      </span>
-                    </span>
-                    <i class="c-play c-play--large c-play--disabled"></i>
-                  </a>
-                </div>
-                @endif
+                  </span>
+                  <i class="c-play c-play--large c-play--disabled"></i>
+                </a>
+              </div>
+              @endif
+              @php $count++; @endphp
               @endforeach
             </div>
             <div class="c-product__thumbs h-carousel h-carousel--nav-hide h-carousel--dots-hide js-product-thumbs-carousel">
-              @foreach($medias as $media)
+              @php $count1 = 0; @endphp
+              @foreach($medias as $key => $media)
+              @php 
+                $active_status = ""; 
+                if($key == 0) {
+                  $active_status = "active";
+                }
+              @endphp
               @if($media->media_type == 'image')
-              <div class="c-product__thumbs-item">
-                <button type="button" class="h-cb js-single-product-thumb " data-index="0">
+              <div class="c-product__thumbs-item {{ $active_status }}">
+                <button type="button" class="h-cb js-single-product-thumb " data-index="{{ $count1 }}">
                   <img width="115" height="115" src="{{ asset('storage/products/variants/'.$media->media) }}" sizes="(max-width: 115px) 100vw, 115px" />
                 </button>
               </div>
               @endif
               @if($media->media_type == 'video')
-              <div class="c-product__thumbs-item ">
-                <button type="button" class="h-cb js-single-product-thumb c-product__thumbs-video" data-index="3" style="background-image: url()">
+              <div class="c-product__thumbs-item {{ $active_status }}">
+                <button type="button" class="h-cb js-single-product-thumb c-product__thumbs-video" data-index="{{ $count1 }}" style="background-image: url()">
                   <span class="c-product__thumbs-video-mask">
                   </span>
                   <i class="c-play"></i>
                 </button>
               </div>
               @endif
+              @php $count1++; @endphp
               @endforeach
             </div>
           </div>
@@ -356,3 +371,4 @@
 </div>
 <!-- /.l-inner -->
 @endsection
+

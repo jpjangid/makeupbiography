@@ -233,6 +233,7 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::post('checkout/get/location',[App\Http\Controllers\frontend\MyAccountController::class, 'getMyAddress']);
 
 });
+Route::view('demo/test','frontend.producttest');
 
 //ROute for contact us page
 Route::view('contact-us','frontend.page.contactus');
