@@ -281,7 +281,8 @@ Route::view('contactus', 'frontend.page.contactus');
 // Route::view('aboutus','frontend.page.aboutus');
 Route::view('newlogin', 'auth.newlogin');
 
-Route::get('{slug}', [App\Http\Controllers\frontend\PageController::class, 'index']);
+Route::post('review/store', [App\Http\Controllers\frontend\ReviewController::class, 'index']);
+
 Route::get('blogs/{cat}', [App\Http\Controllers\frontend\BlogController::class, 'index']);
 Route::get('blogs/{cat}/{slug}', [App\Http\Controllers\frontend\BlogController::class, 'detail']);
 
@@ -292,5 +293,6 @@ Route::get('orders/thanks/{order_no}', [App\Http\Controllers\frontend\OrderContr
 Route::post('orders/return', [App\Http\Controllers\frontend\ReturnController::class, 'index']);
 
 Route::post('storecomment', [App\Http\Controllers\frontend\CommentController::class, 'store']);
+Route::get('{slug}', [App\Http\Controllers\frontend\PageController::class, 'index']);
 Route::view('404', '404');
 /* Route for front end End */
