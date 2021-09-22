@@ -35,6 +35,47 @@
 </script>
 @endsection
 
+@section('css')
+<style>
+    .arrows {
+        position: absolute;
+        top: 20%;
+        font-size: 60px;
+        font-weight: bold;
+        cursor: pointer;
+        left: .2%;
+        z-index: 1;
+    }
+
+    .arrows:nth-of-type(2) {
+        left: 99%;
+        text-align: right;
+    }
+
+    .arrows:hover {
+        background-color: powderblue;
+        border-radius: 5px;
+    }
+
+    .same {
+        position: relative;
+        left: 0;
+        transition: 0.5s;
+    }
+
+    .in-main {
+        width: 99%;
+        display: flex;
+        justify-content: left;
+        overflow-x: auto;
+    }
+
+    .in-main::-webkit-scrollbar {
+        visibility: hidden;
+    }
+</style>
+@endsection
+
 @section('content')
 <input type="text" id="csrfToken" value="{{ csrf_token() }}" hidden>
 <div class="l-inner">
@@ -310,65 +351,121 @@
       <!-- .js-sticky-sidebar -->
     </div>
     <!-- .c-product__wrap -->
-    @if($related_products->isNotEmpty())
-    <section class="c-product__products c-product__products--related">
-      <div class="c-product__products-title">Related products</div>
-      <div class="c-product-grid__wrap c-product-grid__wrap--4-per-row ">
-        @foreach($related_products as $key => $related)
-        <div class="c-product-grid__list c-product-grid__list--4-per-row c-ip-woocommerce-carousel__list c-ip-woocommerce-carousel__list--4-per-row c-ip-woocommerce-carousel__list--3 js-woocommerce-carousel h-carousel h-carousel--default-dots h-carousel--flex h-carousel--round-light h-carousel--outside h-carousel--dots-hide">
-          <div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal c-product-grid__item--hover product type-product post-459 status-publish first instock product_cat-fragrance product_tag-florals product_tag-fragrance product_tag-warm has-post-thumbnail featured shipping-taxable purchasable product-type-simple">
-            <div class="c-product-grid__badges c-badge__list">
-            </div>
-            <!-- .c-product-grid__badges -->
-            <div class="c-product-grid__thumb-wrap">
-              <a href="{{ url('products',['product' => $related->slug, 'variant' => $related_variants[$key] ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                <img width="260" height="230" src="{{ asset('storage/products/'.$related->main_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3042606786-260x230.jpg 260w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3042606786-520x460.jpg 520w" sizes="(max-width: 260px) 100vw, 260px" />
-              </a>
-              <div class="c-product-grid__thumb-button-list">
-                <button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="459">
-                  <i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>
-                  <i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>
-                </button>
-                <button class="js-wishlist-btn c-wishlist__btn c-wishlist__item-459-btn h-cb c-product-grid__thumb-button" data-product-id="459" data-title="Wishlist">
-                  <i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
-                  <i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
-                </button>
-              </div>
-            </div>
-            <!-- .c-product-grid__thumb-wrap -->
-            <a href="?add-to-cart=459" data-quantity="1" class="h-cb c-product-grid__atc button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="459" data-product_sku="6549845389" aria-label="Add &ldquo;Voce Viva Eau de Parfum&rdquo; to your cart" rel="nofollow">
-              <i class="ip-plus c-product-grid__atc-icon"></i>
-              <span class="c-product-grid__atc-text">Add to cart</span>
-            </a>
-            <div class="c-product-grid__details">
-              <div class="c-product-grid__title-wrap">
-                <a href="{{ url('products',['product' => $related->slug, 'variant' => $related_variants[$key] ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                  <h2 class="woocommerce-loop-product__title">{{ $related->name }}</h2>
-                </a>
-                <div class="c-product-grid__short-desc">
-                  <p>{{ $related->short_description }}</p>
+        @if($related_products->isNotEmpty())
+        <section class="c-product__products c-product__products--related">
+            <div class="c-product__products-title">Related products</div>
+            <div class="c-product-grid__wrap c-product-grid__wrap--4-per-row ">
+                <div class="c-product-grid__list c-product-grid__list--3-per-row ">
+
+
+                    <div class="in-main">
+                        @foreach($related_products as $key => $related)
+                        <div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal c-product-grid__item--hover product type-product post-459 status-publish first instock product_cat-fragrance product_tag-florals product_tag-fragrance product_tag-warm has-post-thumbnail featured shipping-taxable purchasable product-type-simple same">
+                            <div class="c-product-grid__badges c-badge__list">
+                            </div>
+                            <!-- .c-product-grid__badges -->
+                            <div class="c-product-grid__thumb-wrap">
+                                <a href="{{ url('products',['product' => $related->slug, 'variant' => $related_variants[$key] ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+                                    <img width="260" height="230" src="{{ asset('storage/products/variants/'.$related_images[$key]) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" sizes="(max-width: 260px) 100vw, 260px" />
+                                </a>
+                                <div class="c-product-grid__thumb-button-list">
+                                    <button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="459">
+                                        <i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>
+                                        <i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>
+                                    </button>
+                                    <button class="js-wishlist-btn c-wishlist__btn c-wishlist__item-459-btn h-cb c-product-grid__thumb-button" data-product-id="459" data-title="Wishlist">
+                                        <i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
+                                        <i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- .c-product-grid__thumb-wrap -->
+                            <a href="?add-to-cart=459" data-quantity="1" class="h-cb c-product-grid__atc button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="459" data-product_sku="6549845389" aria-label="Add &ldquo;Voce Viva Eau de Parfum&rdquo; to your cart" rel="nofollow">
+                                <i class="ip-plus c-product-grid__atc-icon"></i>
+                                <span class="c-product-grid__atc-text">Add to cart</span>
+                            </a>
+                            <div class="c-product-grid__details">
+                                <div class="c-product-grid__title-wrap">
+                                    <a href="{{ url('products',['product' => $related->slug, 'variant' => $related_variants[$key] ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+                                        <h2 class="woocommerce-loop-product__title">{{ $related->name }}</h2>
+                                    </a>
+                                    <div class="c-product-grid__short-desc">
+                                        <p>{{ $related->short_description }}</p>
+                                    </div>
+                                </div>
+                                <!-- .c-product-grid__title-wrap -->
+                                <div class="c-product-grid__price-wrap">
+                                    <span class="price">
+                                        <span class="woocommerce-Price-amount amount">
+                                            <bdi>
+                                                <span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $related_prices[$key] }}</bdi>
+                                        </span>
+                                    </span>
+                                </div>
+                                <!-- .c-product-grid__price-wrap -->
+                            </div>
+                            <!-- .c-product-grid__details -->
+                        </div>
+                        @endforeach
+                    </div>
+                    <span class="arrows" id="forward">&#139;</span>
+                    <span class="arrows" id="backward">&#155;</span>
                 </div>
-              </div>
-              <!-- .c-product-grid__title-wrap -->
-              <div class="c-product-grid__price-wrap">
-                <span class="price">
-                  <span class="woocommerce-Price-amount amount">
-                    <bdi>
-                      <span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $related_prices[$key] }}</bdi>
-                  </span>
-                </span>
-              </div>
-              <!-- .c-product-grid__price-wrap -->
             </div>
-            <!-- .c-product-grid__details -->
-          </div>
-        </div>
-        @endforeach
-      </div>
-    </section>
-    @endif
+        </section>
+        @endif
   </div>
 </div>
 <!-- /.l-inner -->
 @endsection
-
+@section('js')
+<script>
+    $(document).on('click', '#backward', function() {
+        var div = document.getElementsByClassName('same');
+        var l = 0;
+        l++;
+        for (var i of div) {
+            if (l == 0) {
+                i.style.left = "0px";
+            }
+            if (l == 1) {
+                i.style.left = "-740px";
+            }
+            if (l == 2) {
+                i.style.left = "-1480px";
+            }
+            if (l == 3) {
+                i.style.left = "-2220px";
+            }
+            if (l == 4) {
+                i.style.left = "-2960px";
+            }
+            if (l > 4) {
+                l = 4;
+            }
+        }
+    });
+    $(document).on('click', '#forward', function() {
+        var div = document.getElementsByClassName('same');
+        var l = 0;
+        l--;
+        for (var i of div) {
+            if (l == 0) {
+                i.style.left = "0px";
+            }
+            if (l == 1) {
+                i.style.left = "-740px";
+            }
+            if (l == 2) {
+                i.style.left = "-1480px";
+            }
+            if (l == 3) {
+                i.style.left = "-2220px";
+            }
+            if (l < 0) {
+                l = 0;
+            }
+        }
+    });
+</script>
+@endsection
