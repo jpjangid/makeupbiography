@@ -8,6 +8,7 @@ use App\Models\OrderItemReturn;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use App\Models\Notification;
 
 class ReturnController extends Controller
 {
@@ -43,7 +44,8 @@ class ReturnController extends Controller
                     'status'                =>  'Pending',
                 ]);
             }
-
+            Notification::create(['title' => "Order Return",'message' => 'Order returned with order no :'.$request->order_id.' from '.auth()->user()->email]);
+           
             return redirect('my-orders')->with('success','Product is Returned');
         }
         return redirect()->back()->with('danger','Please Select Product To Return');

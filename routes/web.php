@@ -36,6 +36,11 @@ Route::middleware(['auth', 'prevent-back-history', 'admin'])->prefix('admin')->g
     Route::get('/', [App\Http\Controllers\backend\DashboardController::class, 'index']);
     Route::post('/dashboard', [App\Http\Controllers\backend\DashboardController::class, 'dashboard']);
 
+    Route::prefix('notifications')->group(function () {
+        Route::get('/', [App\Http\Controllers\backend\NotificationController::class, 'index']);
+        Route::post('list',[App\Http\Controllers\backend\NotificationController::class, 'notificationListItems']);
+    });    
+
     Route::prefix('blogs')->group(function () {
         Route::get('/', [App\Http\Controllers\backend\BlogController::class, 'index']);
         Route::get('/create', [App\Http\Controllers\backend\BlogController::class, 'create']);
@@ -233,7 +238,6 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::post('checkout/get/location',[App\Http\Controllers\frontend\MyAccountController::class, 'getMyAddress']);
 
 });
-Route::view('demo/test','frontend.producttest');
 
 //ROute for contact us page
 Route::view('contact-us','frontend.page.contactus');
