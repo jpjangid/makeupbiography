@@ -336,7 +336,7 @@
         connect: true,
         range: {
             'min': 0,
-            'max': {{ $max_price_filter }}
+            'max': { $max_price_filter }
         },
         pips: {
           mode: 'steps',

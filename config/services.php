@@ -34,6 +34,12 @@ return [
         'client_id' => '2378595305769881', //Facebook API
         'client_secret' => '87860a48fea813028afc3be3db6d0d29', //Facebook Secret
         'redirect' => 'http://localhost:8000/auth/facebook/callback',
-     ],
+    ],
+
+    'google' => [
+        'client_id' => '613899556002-s3fh1bpn66fqfm2h51lndcksp2qavp5p.apps.googleusercontent.com', //Google API
+        'client_secret' => 'NryuEYrTMHFyLFzDJ9sX9Xgh', //Google Secret
+        'redirect' => 'https://28southventures.com/makeupbiographytest/',
+    ]
 
 ];

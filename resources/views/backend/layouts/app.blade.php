@@ -3,14 +3,14 @@
 <!--begin::Head-->
 
 <head>
-	<base href="">
 	<meta charset="utf-8" />
+	<link rel="icon" href="{{ asset('images/mbround.png') }}" type="image/gif" sizes="32x32">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 	<title>Makeupbiography | @yield('title','Home')</title>
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
 	<link rel="canonical" href="" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="shortcut icon" href="{{ asset('assets/media/logos/favicon.ico') }}" />
 	<!--begin::Fonts-->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" />
 	<!--end::Fonts-->

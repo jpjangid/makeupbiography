@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" href="{{ asset('images/mbround.png') }}" type="image/gif" sizes="32x32">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <title>Makeupbiograpy | @yield('title','Home')</title>
   <meta name="description" content="@yield('description','')" />
@@ -119,8 +120,6 @@
     </style>
   </noscript>
   @yield('css')
-  <link rel="icon" href="{{ asset('wp-content/uploads/2020/10/luchiana-1807981163-115x115.png') }}" sizes="32x32" />
-  <link rel="icon" href="{{ asset('wp-content/uploads/2020/10/luchiana-1807981163.png')}}" sizes="192x192" />
   <link rel="apple-touch-icon" href="{{ asset('wp-content/uploads/2020/10/luchiana-1807981163.png') }}" />
   <meta name="msapplication-TileImage" content="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-1807981163.png" />
 </head>

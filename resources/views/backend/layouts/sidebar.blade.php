@@ -123,6 +123,15 @@
               </a>
             </div>
             <div class="menu-item">
+              <a class="menu-link" href="{{ url('admin/related_products') }}">
+                <span class="menu-bullet">
+                  <span class="bullet bullet-dot">
+                  </span>
+                </span>
+                <span class="menu-title">Related Products</span>
+              </a>
+            </div>
+            <div class="menu-item">
               <a class="menu-link" href="{{ url('admin/footer/banners') }}">
                 <span class="menu-bullet">
                   <span class="bullet bullet-dot">
