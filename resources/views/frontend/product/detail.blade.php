@@ -86,26 +86,26 @@
             <!-- .c-product__badges -->
             <div class="c-product__slider c-product__slider--carousel h-carousel h-carousel--inner h-carousel--hover h-carousel--dots-hide js-single-product-carousel">
               @foreach($medias as $media)
-              @if($media->media_type == 'image')
-              <div class="c-product__slider-item c-product__slider-item--zoom woocommerce-product-gallery__image ">
-                <a download href="{{ asset('storage/products/variants/'.$media->media) }}" class="c-product__image-link c-product__image-link--zoom js-product-modal" data-size="1201x1200" data-index="0" data-product-id="511" data-elementor-open-lightbox="no" onclick="return false;">
-                  <img width="460" height="460" src="{{ asset('storage/products/variants/'.$media->media) }}" class="c-product__slider-img c-product__slider-img--cover" alt="{{ $media->media_alt }}" sizes="(max-width: 460px) 100vw, 460px" />
-                  <span class="c-product__loading js-loading-wrap">
-                  </span>
-                </a>
-              </div>
-              @endif
-              @if($media->media_type == 'video')
-              <div class="c-product__slider-item c-product__slider-item--video">
-                <a download href="{{ $media->media }}" class="c-product__image-link c-product__image-link--zoom js-product-modal" data-index="3" data-product-id="511" data-elementor-open-lightbox="no" onclick="return false;">
-                  <span class="c-product__slider--video" style="background-image: url()">
-                    <span class="c-product__video-mask">
+                @if($media->media_type == 'image')
+                <div class="c-product__slider-item c-product__slider-item--zoom woocommerce-product-gallery__image ">
+                  <a download href="{{ asset('storage/products/variants/'.$media->media) }}" class="c-product__image-link c-product__image-link--zoom js-product-modal" data-size="1201x1200" data-index="0" data-product-id="511" data-elementor-open-lightbox="no" onclick="return false;">
+                    <img width="460" height="460" src="{{ asset('storage/products/variants/'.$media->media) }}" class="c-product__slider-img c-product__slider-img--cover" alt="{{ $media->media_alt }}" sizes="(max-width: 460px) 100vw, 460px" />
+                    <span class="c-product__loading js-loading-wrap">
                     </span>
-                  </span>
-                  <i class="c-play c-play--large c-play--disabled"></i>
-                </a>
-              </div>
-              @endif
+                  </a>
+                </div>
+                @endif
+                @if($media->media_type == 'video')
+                <div class="c-product__slider-item c-product__slider-item--video">
+                  <a download href="{{ $media->media }}" class="c-product__image-link c-product__image-link--zoom js-product-modal" data-index="3" data-product-id="511" data-elementor-open-lightbox="no" onclick="return false;">
+                    <span class="c-product__slider--video" style="background-image: url()">
+                      <span class="c-product__video-mask">
+                      </span>
+                    </span>
+                    <i class="c-play c-play--large c-play--disabled"></i>
+                  </a>
+                </div>
+                @endif
               @endforeach
             </div>
             <div class="c-product__thumbs h-carousel h-carousel--nav-hide h-carousel--dots-hide js-product-thumbs-carousel">

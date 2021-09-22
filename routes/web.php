@@ -174,6 +174,15 @@ Route::middleware(['auth', 'prevent-back-history', 'admin'])->prefix('admin')->g
         Route::get('/delete/{id}', [App\Http\Controllers\backend\FooterBannerController::class, 'destroy']);
         Route::post('/update_status', [App\Http\Controllers\backend\FooterBannerController::class, 'update_status']);
     });
+    
+    Route::prefix('related_products')->group(function () {
+        Route::get('/', [App\Http\Controllers\backend\RelatedProductController::class, 'index']);
+        Route::get('/create', [App\Http\Controllers\backend\RelatedProductController::class, 'create']);
+        Route::post('/store', [App\Http\Controllers\backend\RelatedProductController::class, 'store']);
+        Route::get('/edit/{id}', [App\Http\Controllers\backend\RelatedProductController::class, 'edit']);
+        Route::put('/update/{id}', [App\Http\Controllers\backend\RelatedProductController::class, 'update']);
+        Route::get('/delete/{id}', [App\Http\Controllers\backend\RelatedProductController::class, 'destroy']);
+    });
 
     //route for profile update
     Route::get('profile', [App\Http\Controllers\Auth\ProfileController::class, 'edit']);
