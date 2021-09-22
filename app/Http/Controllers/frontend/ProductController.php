@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\ProductVariant;
 use App\Models\ProductVariantMedia;
+use App\Models\RelatedProducts;
 
 class ProductController extends Controller
 {
@@ -14,7 +15,28 @@ class ProductController extends Controller
         $product = Product::where('slug',$product)->with('variants.medias','category.parent.parent')->first();
         $variant = ProductVariant::where('slug',$variant)->first();
         $medias = ProductVariantMedia::where('product_variant_id',$variant->id)->orderby('sequence','asc')->get();
-        $related_products = Product::where([['parent_id','=',$product->parent_id],['id','!=',$product->id]])->take(3)->get();
+
+        $related_ids = array();
+        $related_data = RelatedProducts::where('main_id',$product->id)->orderby('sequence','asc')->get();
+        foreach($related_data as $related){
+            array_push($related_ids, $related->related_id);
+        }
+
+        $related_products = Product::whereIn('id', $related_ids)->get();
+        if($related_products->isEmpty()){
+            $related_products = Product::where([['parent_id','=',$product->parent_id],['id','!=',$product->id]])->get();
+        }
+
+        $data = $this->related($related_products);
+        $related_variants = $data['related_variants'];
+        $related_prices = $data['related_prices'];
+        $related_images = $data['related_images'];
+
+        return view('frontend.product.detail', compact('product','variant','medias','related_products','related_variants','related_prices','related_images'));
+    }
+
+    public function related($related_products)
+    {
         $related_variants = array();
         $related_prices = array();
         $related_images = array();
@@ -28,6 +50,10 @@ class ProductController extends Controller
             }
         }
 
-        return view('frontend.product.detail', compact('product','variant','medias','related_products','related_variants','related_prices','related_images'));
+        $data['related_variants'] = $related_variants;
+        $data['related_prices'] = $related_prices;
+        $data['related_images'] = $related_images;
+
+        return $data;
     }
 }
