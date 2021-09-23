@@ -37,8 +37,63 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('wp-content/uploads/elementor/css/post-8.css')  }}">
+<style>
+	.fa {
+		padding-left: 10px;
+		padding-right: 40px;
+		padding-top: 7px;
+		padding-bottom: 7px;
+
+		font-size: 30px;
+		width: 30px;
+		text-align: center;
+		text-decoration: none;
+		margin-left: 30px;
+		border-radius: 50%;
+	}
+
+	.fa:hover {
+		opacity: 0.7;
+	}
+
+	.fa-facebook {
+		background: #3B5998;
+		color: white;
+	}
+
+	.fa-twitter {
+		background: #55ACEE;
+		color: white;
+	}
+
+	.fa-google {
+		background: #dd4b39;
+		color: white;
+	}
+
+	.fa-instagram {
+		background: #125688;
+		color: white;
+	}
+
+	.elementor-spacer {
+		background: #ffff;
+
+		padding: 0px 40px 58px 40px;
+
+		margin-top: 40px;
+		margin-right: 30px;
+		margin-left: 30px;
+	}
+
+	.fa-facebook-f:before,
+	.fa-facebook:before {
+		content: "\f09a";
+		padding-left: 5px;
+	}
+</style>
 @endsection
 
 @section('content')
-	<?php echo $page->description; ?>
+<?php echo $page->description; ?>
 @endsection

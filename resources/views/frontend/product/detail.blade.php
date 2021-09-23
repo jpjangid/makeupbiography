@@ -323,7 +323,7 @@
 						<div class="product-shades c-product__atc-wrap">
 							<ul>
 								@foreach($product->variants as $variant)
-								<li><a href="{{ url('products',['product' => $product->slug, 'variant' => $variant->slug ]) }}" style="background-color: {{$variant->hex_code}}">&nbsp;</a></li>
+								<li><a href="{{ url('products',['product' => $product->slug, 'variant' => $variant->slug ]) }}" style="background-color: <?php echo $variant->hex_code ?>;">&nbsp;</a></li>
 								@endforeach
 							</ul>
 						</div>

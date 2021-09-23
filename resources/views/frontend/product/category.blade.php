@@ -339,10 +339,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function(){
+
     // $(document).on('click','#filterCategory',function(e){
     //   e.preventDefault();
     //   $('#categoryPageFrom').submit();
     // });
+
     $(document).on('change','#orderbyFilter', function(e) {
         e.preventDefault();    
         if($('#orderbyFilter').val() != "") {
@@ -361,7 +363,7 @@
         connect: true,
         range: {
             'min': 0,
-            'max': {{ $max_price_filter }}
+            'max': { $max_price_filter }
         },
         pips: {
           mode: 'steps',
