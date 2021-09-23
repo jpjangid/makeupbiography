@@ -37,6 +37,10 @@
 
 @section('css')
 <style>
+	.c-product__atc-wrap {
+		width: 100% !important;
+	}
+
 	.arrows {
 		position: absolute;
 		top: 20%;
@@ -72,6 +76,29 @@
 
 	.in-main::-webkit-scrollbar {
 		visibility: hidden;
+	}
+
+	.product-shades ul {
+		list-style-type: none;
+	}
+
+	.product-shades ul li {
+		float: left;
+	}
+
+	.product-shades ul li a {
+		width: 2rem;
+		height: 2rem;
+		border-radius: 50%;
+		text-align: center;
+		padding-top: 0px;
+		margin-left: 0px;
+		color: #000;
+		border: 1px solid;
+		border-color: transparent;
+		font-weight: 300;
+		display: inline-block;
+		font-size: 1.0625rem;
 	}
 </style>
 @endsection
@@ -261,7 +288,7 @@
 													<input id="email" name="email" type="email" value="" size="30" required placeholder="Email&nbsp;*">
 												</p>
 												<p class="form-submit">
-													<input type="submit" id="submit" class="submit"> 
+													<input type="submit" id="submit" class="submit">
 													<input type="hidden" name="product_id" value="{{ $product->id }}">
 													<input type="hidden" name="variant_id" value="{{ $variant->id }}">
 												</p>
@@ -289,9 +316,17 @@
 						<p class="price">
 							<span class="woocommerce-Price-amount amount">
 								<bdi>
-									<del>&#8377;{{ number_format((float)$variant->regular_price, 2, '.', '') }}</del><span class="woocommerce-Price-currencySymbol"> &#8377;</span>{{ number_format((float)$variant->sale_price, 2, '.', '') }}</bdi>
+									<del>&#8377;{{ number_format((float)$variant->regular_price, 2, '.', '') }}</del><span class="woocommerce-Price-currencySymbol"> &#8377;</span>{{ number_format((float)$variant->sale_price, 2, '.', '') }}
+								</bdi>
 							</span>
 						</p>
+						<div class="product-shades c-product__atc-wrap">
+							<ul>
+								@foreach($product->variants as $variant)
+								<li><a href="{{ url('products',['product' => $product->slug, 'variant' => $variant->slug ]) }}" style="background-color: {{$variant->hex_code}}">&nbsp;</a></li>
+								@endforeach
+							</ul>
+						</div>
 						<div class="c-product__atc-wrap">
 							<form class="cart" action="https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" method="post" enctype='multipart/form-data'>
 								<div class="c-product__quantity quantity">
@@ -412,8 +447,8 @@
 						</div>
 						@endforeach
 					</div>
-					<span class="arrows" id="forward">&#139;</span>
-					<span class="arrows" id="backward">&#155;</span>
+					<span class="arrows" id="forward" style="visibility: none;">&#139;</span>
+					<span class="arrows" id="backward" style="visibility: none;">&#155;</span>
 				</div>
 			</div>
 		</section>
@@ -442,53 +477,63 @@
 			},
 		}
 	});
-	$(document).on('click', '#backward', function() {
-		var div = document.getElementsByClassName('same');
-		var l = 0;
-		l++;
-		for (var i of div) {
-			if (l == 0) {
-				i.style.left = "0px";
+</script>
+<script>
+	var product = "{{count($related_products)}}";
+	if (product < 4) {
+		document.getElementById('forward').style.visibility = "hidden";
+		document.getElementById('backward').style.visibility = "hidden";
+	} else {
+		document.getElementById('forward').style.visibility = "visible";
+		document.getElementById('backward').style.visibility = "visible";
+		$(document).on('click', '#backward', function() {
+			var div = document.getElementsByClassName('same');
+			var l = 0;
+			l++;
+			for (var i of div) {
+				if (l == 0) {
+					i.style.left = "0px";
+				}
+				if (l == 1) {
+					i.style.left = "-740px";
+				}
+				if (l == 2) {
+					i.style.left = "-1480px";
+				}
+				if (l == 3) {
+					i.style.left = "-2220px";
+				}
+				if (l == 4) {
+					i.style.left = "-2960px";
+				}
+				if (l > 4) {
+					l = 4;
+				}
 			}
-			if (l == 1) {
-				i.style.left = "-740px";
+		});
+		$(document).on('click', '#forward', function() {
+			var div = document.getElementsByClassName('same');
+			var l = 0;
+			l--;
+			for (var i of div) {
+				if (l == 0) {
+					i.style.left = "0px";
+				}
+				if (l == 1) {
+					i.style.left = "-740px";
+				}
+				if (l == 2) {
+					i.style.left = "-1480px";
+				}
+				if (l == 3) {
+					i.style.left = "-2220px";
+				}
+				if (l < 0) {
+					l = 0;
+				}
 			}
-			if (l == 2) {
-				i.style.left = "-1480px";
-			}
-			if (l == 3) {
-				i.style.left = "-2220px";
-			}
-			if (l == 4) {
-				i.style.left = "-2960px";
-			}
-			if (l > 4) {
-				l = 4;
-			}
-		}
-	});
-	$(document).on('click', '#forward', function() {
-		var div = document.getElementsByClassName('same');
-		var l = 0;
-		l--;
-		for (var i of div) {
-			if (l == 0) {
-				i.style.left = "0px";
-			}
-			if (l == 1) {
-				i.style.left = "-740px";
-			}
-			if (l == 2) {
-				i.style.left = "-1480px";
-			}
-			if (l == 3) {
-				i.style.left = "-2220px";
-			}
-			if (l < 0) {
-				l = 0;
-			}
-		}
-	});
+		});
+	}
 </script>
 <script>
 	$(document).on('click', '#tab-title-description', function() {

@@ -1,5 +1,14 @@
 @extends('frontend.main.index')
 
+@section('css')
+<style>
+  ul.c-ip-brand-list__list.c-ip-brand-list__list--alpha {
+    background: white;
+    padding: 40px;
+  }
+</style>
+@endsection
+
 @section('content')
 <div class="l-inner">
   <div data-elementor-type="wp-page" data-elementor-id="2451" class="elementor elementor-2451" data-elementor-settings="[]">
@@ -50,7 +59,7 @@
             </div>
           </div>
         </section>
-        <!-- Top Brands section Begin --> 
+        <!-- Top Brands section Begin -->
         <section class="elementor-section elementor-top-section elementor-element elementor-element-9327e66 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="9327e66" data-element_type="section" style="margin-top: 60px !important;">
           <div class="elementor-container elementor-column-gap-no">
             <div class="elementor-row">
@@ -61,7 +70,7 @@
                       <div class="elementor-widget-container">
                         <div class="c-ip-brand-list c-ip-brand-list--logos">
                           <ul class="c-ip-brand-list__list c-ip-brand-list__list--logos">
-                          @foreach($brands  as $brand)  
+                            @foreach($brands as $brand)
                             <li class="c-ip-brand-list__item c-ip-brand-list__item--logos">
                               <a class="c-ip-brand-list__link c-ip-brand-list__link--logos" href="{{ url('brands',['slug'=> $brand->slug]) }}">
                                 <div class="c-ip-brand-list__thumb">
@@ -70,7 +79,7 @@
                                 <div class="c-ip-brand-list__title c-ip-brand-list__title--logos">{{ $brand->name }}</div>
                               </a>
                             </li>
-                          @endforeach 
+                            @endforeach
                           </ul>
                         </div>
                       </div>
@@ -81,9 +90,9 @@
             </div>
           </div>
         </section>
-        <!-- Top Brands section End --> 
+        <!-- Top Brands section End -->
 
-        <!-- Top Brands List Section Begin --> 
+        <!-- Top Brands List Section Begin -->
         <section class="elementor-section elementor-top-section elementor-element elementor-element-9327e66 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="9327e66" data-element_type="section" style="margin-bottom: 60px !important;">
           <div class="elementor-container elementor-column-gap-no">
             <div class="elementor-row">
@@ -94,7 +103,7 @@
                       <div class="elementor-widget-container">
                         <div class="c-ip-brand-list c-ip-brand-list--alpha">
                           <ul class="c-ip-brand-list__list c-ip-brand-list__list--alpha" style="margin-top: 20px !important;">
-                            @foreach($brandGroups as $key => $brandGroup)  
+                            @foreach($brandGroups as $key => $brandGroup)
                             <li class="c-ip-brand-list__item-parent">
                               <ul class="c-ip-brand-list__list-inner">
                                 <li class="c-ip-brand-list__item--letter">{{ ucfirst($key) }}</li>
@@ -107,7 +116,7 @@
                                 @endforeach
                               </ul>
                             </li>
-                            @endforeach 
+                            @endforeach
                           </ul>
                         </div>
                       </div>
@@ -118,7 +127,7 @@
             </div>
           </div>
         </section>
-        <!-- Top Brands List Section End --> 
+        <!-- Top Brands List Section End -->
 
 
       </div>
