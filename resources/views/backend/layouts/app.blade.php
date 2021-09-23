@@ -33,6 +33,7 @@
 
 <body id="kt_body" class="header-fixed header-tablet-and-mobile-fixed aside-fixed">
 	<input type="text" id="csrfToken1" value="{{ csrf_token() }}" hidden>
+	<input type="text" id="baseUrl" value="{{ url('/') }}" hidden>
 	<!--begin::Main-->
 	<div class="d-flex flex-column flex-root">
 		<!--begin::Page-->
@@ -71,6 +72,7 @@
 	<!--begin::Page Custom Javascript(used by this page)-->
 	<script src="{{ asset('assets/js/custom/widgets.js') }}"></script>
 	<script src="{{ asset('js/admin_dashboard.js') }}"></script>
+	<script src="{{ asset('js/notification.js') }}"></script>
 
 	<!--end::Page Custom Javascript-->
 	<!--end::Javascript-->

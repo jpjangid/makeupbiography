@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Cart;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller
@@ -75,6 +76,8 @@ class RegisterController extends Controller
             'role' => 'user',
             'password' => Hash::make($data['password']),
         ]);
+
+        Notification::create(['title' => "New User",'message' => 'New User '.$user->email.' has beeen registered on your website.']);
 
         //cart code 
         $cart = [];
