@@ -112,7 +112,7 @@ class CartController extends Controller
             }
         } else {
             $minutes = 60;
-
+            
             if (request()->hasCookie('makeup_biography')) {
                 $cartItems = json_decode(request()->cookie('makeup_biography'));
                 foreach ($cartItems  as $cartItem) {
@@ -149,6 +149,7 @@ class CartController extends Controller
                     }
                 }
             }
+            $cartItems = [];  
         }
 
         if (request()->ajax()) {
