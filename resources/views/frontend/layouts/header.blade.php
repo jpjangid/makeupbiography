@@ -111,7 +111,7 @@
           <li id="menu-item-17" class="c-mobile-menu__item menu-item-17">
             <a href="{{ url('blogs/all') }}">Blog</a>
           </li>
-          <li id="menu-item-163" class="c-mobile-menu__item c-mobile-menu__item--has-children menu-item-163">
+          {{-- <li id="menu-item-163" class="c-mobile-menu__item c-mobile-menu__item--has-children menu-item-163">
             <a>Pages</a>
             <ul class="c-mobile-menu__submenu">
               <li id="menu-item-165" class="c-mobile-menu__subitem menu-item-165">
@@ -139,7 +139,7 @@
                 <a href="{{ url('terms-and-conditions') }}">Terms & Conditions</a>
               </li>
             </ul>
-          </li>
+          </li> --}}
           <li id="menu-item-20" class="c-mobile-menu__item menu-item-20">
             <a href="{{ url('contact-us') }}">Contact</a>
           </li>
@@ -371,7 +371,7 @@
               <li class="c-top-menu__item c-top-menu__item--has-children menu-item-19 js-menu-item">
                 <a href="{{ url('blogs/all') }}">Blog</a>
               </li>
-              <li class="c-top-menu__item c-top-menu__item--has-children menu-item-163 js-menu-item">
+              {{-- <li class="c-top-menu__item c-top-menu__item--has-children menu-item-163 js-menu-item">
                 <a>Pages</a>
                 <ul class="c-top-menu__submenu c-top-menu__submenu--columns-1">
                   <li class="c-top-menu__subitem menu-item-165 c-top-menu__subitem--collapse js-menu-item">
@@ -402,7 +402,7 @@
                     <a href="{{ url('terms-and-conditions') }}">Terms & Conditions</a>
                   </li>
                 </ul>
-              </li>
+              </li> --}}
              
               <li class="c-top-menu__item menu-item-20 js-menu-item">
                 <a href="{{ url('contact-us') }}">Contact</a>

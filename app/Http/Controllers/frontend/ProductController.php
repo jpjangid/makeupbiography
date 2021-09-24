@@ -10,6 +10,7 @@ use App\Models\RelatedProducts;
 
 class ProductController extends Controller
 {
+
     public function index($product,$variant)
     {
         $product = Product::where('slug',$product)->with('variants.medias','category.parent.parent')->first();
@@ -44,9 +45,9 @@ class ProductController extends Controller
             if(isset($related_product) && !empty($related_product)){
                 $allvariants = ProductVariant::where('product_id', $related_product->id)->orderby('sequence','asc')->get();
                 $media = ProductVariantMedia::where(['product_variant_id' => $allvariants[0]->id, 'media_type' => 'image'])->orderby('sequence', 'asc')->first();
-                array_push($related_variants, $allvariants[0]->slug);
-                array_push($related_prices, $allvariants[0]->sale_price);
-                array_push($related_images, $media->media);
+                array_push($related_variants, !empty($allvariants[0]->slug) ? $allvariants[0]->slug : "");
+                array_push($related_prices, !empty($allvariants[0]->sale_price) ? $allvariants[0]->sale_price : "");
+                array_push($related_images, !empty($media->media) ? $media->media: "" );
             }
         }
 

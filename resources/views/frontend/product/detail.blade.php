@@ -83,22 +83,80 @@
 	}
 
 	.product-shades ul li {
-		float: left;
+		float: left !important;
+		margin-left: -20px;
+		margin-right: 40px;
+		margin-top: -10px;
+		outline-offset: 2px;
+		padding-bottom: 20px;
 	}
 
 	.product-shades ul li a {
-		width: 2rem;
-		height: 2rem;
-		border-radius: 50%;
+		width: 1.5rem;
+		height: 1.5rem;
+    	border-radius: 3px;
 		text-align: center;
-		padding-top: 0px;
-		margin-left: 0px;
 		color: #000;
 		border: 1px solid;
 		border-color: transparent;
 		font-weight: 300;
 		display: inline-block;
 		font-size: 1.0625rem;
+		outline: 2px solid black;
+		outline-offset: 2px;
+	}
+
+	.palette-title {
+		text-transform: uppercase;
+		margin-bottom: 20px;
+		margin-top: 30px;
+	}
+
+	.column-additional-info, .column-reviews-tab {
+		float: left;
+		width: 50%;
+		padding: 10px;
+		text-align: center;
+	}
+
+	.row-additional-info-reviews:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+
+	.row-additional-info-reviews {
+		margin-top: 50px;
+	}
+
+	@media screen and (max-width: 600px) {
+		.column-additional-info, .column-reviews-tab {
+			width: 100%;
+		}
+	}
+
+	.write-review {
+		background-color: #3B9C9C !important;
+		color: white !important;
+		border: none;
+		cursor: pointer;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		text-align: center;
+		width: 250px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+
+	.price-div {
+		border-top: 2px solid #FFD700;
+		font-size: 20px;
+		font-family: "Times New Roman";
+		background-image: linear-gradient(to bottom, #43C6DB, #43BFC7);
+		padding-top: 10px;
+		padding-bottom: 10px;
+		text-align: center;
+		color: white;
 	}
 </style>
 @endsection
@@ -171,22 +229,13 @@
 							@endif
 							@if($media->media_type == 'video')
 							<div class="c-product__slider-item c-product__slider-item--video">
-								<div data-index="{{ $count }}" class="c-product__image-link c-product__image-link--zoom js-product-modal">
-									<div class="c-product__slider--video">
-										<div class="c-product__video-mask">
-											<iframe width="100%"  height="345" src="{{ $media->media }}" allowfullscreen>
-											</iframe>
-										</div>
-									</div>
-								</div>
-								
-								{{-- <a download href="{{ $media->media }}" class="c-product__image-link c-product__image-link--zoom js-product-modal" data-index="{{ $count }}" data-product-id="511" data-elementor-open-lightbox="no" onclick="return false;">
+								<a download href="{{ $media->media }}" class="c-product__image-link c-product__image-link--zoom js-product-modal" data-index="{{ $count }}" data-product-id="511" data-elementor-open-lightbox="no" onclick="return false;">
 									<span class="c-product__slider--video" style="background-image: url()">
 										<span class="c-product__video-mask">
 										</span>
 									</span>
 									<i class="c-play c-play--large c-play--disabled"></i>
-								</a> --}}
+								</a>
 							</div>
 							@endif
 							@php $count++; @endphp
@@ -224,91 +273,12 @@
 					<!-- .c-product__gallery -->
 					<div class="c-product__tabs woocommerce-tabs wc-tabs-wrapper  c-product__tabs--desktop">
 						<div class="c-product__tabs-wrap">
-							<ul class="c-product__tabs-list tabs wc-tabs js-tabs-list h-carousel h-carousel-small h-carousel--hover h-carousel--dots-hide" role="tablist">
-								<li class="c-product__tabs-item description_tab" id="tab-title-description" role="tab" aria-controls="tab-description">
-									<a data-index="0" class="c-product__tabs-item-link js-tabs-item-link" href="#tab-description">Description</a>
-								</li>
-								<li class="c-product__tabs-item additional_information_tab" id="tab-title-additional_information" role="tab" aria-controls="tab-additional_information">
-									<a data-index="1" class="c-product__tabs-item-link js-tabs-item-link" href="#tab-additional_information">Additional information</a>
-								</li>
-								<li class="c-product__tabs-item reviews_tab" id="tab-title-reviews" role="tab" aria-controls="tab-reviews">
-									<a data-index="2" class="c-product__tabs-item-link js-tabs-item-link" href="#tab-reviews">Reviews</a>
-								</li>
-							</ul>
+								<div class="c-product__tabs-item description_tab" id="tab-title-description" role="tab" aria-controls="tab-description" style="text-align: center; border-bottom: 1px solid lightgrey;">
+									<a data-index="0" class="c-product__tabs-item-link js-tabs-item-link" href="#tab-description" style="font-size: 20px; font-weight: bold; color: black; letter-spacing: 0.2em;">Description</a>
+								</div>
 						</div>
-						<div class="c-product__tabs-panel woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content wc-tab  current visible" id="tab-description" role="tabpanel" aria-labelledby="tab-title-description">
+						<div class="c-product__tabs-panel woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content wc-tab current visible" id="tab-description" role="tabpanel" aria-labelledby="tab-title-description" style="text-align: justify;">
 							<p><?php echo $product->description; ?></p>
-						</div>
-						<div class="c-product__tabs-panel woocommerce-Tabs-panel woocommerce-Tabs-panel--additional_information panel  wc-tab " id="tab-additional_information" role="tabpanel" aria-labelledby="tab-title-additional_information">
-							<table class="woocommerce-product-attributes shop_attributes">
-								<tr class="woocommerce-product-attributes-item woocommerce-product-attributes-item--attribute_pa_capacity">
-									<th class="woocommerce-product-attributes-item__label">{{ strtoupper($variant->p_type) }}</th>
-									<td class="woocommerce-product-attributes-item__value">
-										<p>{{ strtoupper($variant->variation) }}</p>
-									</td>
-								</tr>
-								<tr class="woocommerce-product-attributes-item woocommerce-product-attributes-item--attribute_pa_brands">
-									<th class="woocommerce-product-attributes-item__label">Brand</th>
-									<td class="woocommerce-product-attributes-item__value">
-										<p>
-											<a href="{{ url('brands',$product->brand->slug) }}" rel="tag">{{ $product->brand->name }}</a>
-										</p>
-									</td>
-								</tr>
-							</table>
-						</div>
-						<div class="c-product__tabs-panel woocommerce-Tabs-panel woocommerce-Tabs-panel--reviews panel  wc-tab " id="tab-reviews" role="tabpanel" aria-labelledby="tab-title-reviews">
-							<div id="reviews" class="woocommerce-Reviews">
-								<div id="comments">
-									<h2 class="woocommerce-Reviews-title">Reviews</h2>
-									<p class="woocommerce-noreviews">There are no reviews yet.</p>
-								</div>
-								<div id="review_form_wrapper">
-									<div id="review_form">
-										<div id="respond" class="comment-respond">
-											<span id="reply-title" class="comment-reply-title">Be the first to review &ldquo;{{ $product->name }} - {{ $variant->name }}&rdquo;
-												<small>
-													<a rel="nofollow" id="cancel-comment-reply-link" href="/luchiana/demo/shop/midnight-musk-amber/#respond" style="display:none;">Cancel reply</a>
-												</small>
-											</span>
-											<form action="{{ url('review/store') }}" method="post" id="commentform" class="comment-form" novalidate="">
-												@csrf
-												<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p>
-												<div class="comment-form-comment">
-													<select name="rating" id="rating" required style="width: 100%;">
-														<option value="">Your rating&hellip;</option>
-														<option value="5">Perfect</option>
-														<option value="4">Good</option>
-														<option value="3">Average</option>
-														<option value="2">Not that bad</option>
-														<option value="1">Very poor</option>
-													</select>
-												</div>
-												<p class="comment-form-comment">
-													<label for="comment">Your review&nbsp;<span class="required">*</span></label>
-													<textarea id="comment" name="comment" cols="45" rows="8" required placeholder="Your review&nbsp;*"></textarea>
-												</p>
-												<p class="comment-form-author">
-													<label for="author">Name&nbsp;<span class="required">*</span></label>
-													<input id="name" name="name" type="text" value="" size="30" required placeholder="Name&nbsp;*">
-												</p>
-												<p class="comment-form-email">
-													<label for="email">Email&nbsp;<span class="required">*</span></label>
-													<input id="email" name="email" type="email" value="" size="30" required placeholder="Email&nbsp;*">
-												</p>
-												<p class="form-submit">
-													<input type="submit" id="submit" class="submit">
-													<input type="hidden" name="product_id" value="{{ $product->id }}">
-													<input type="hidden" name="variant_id" value="{{ $variant->id }}">
-												</p>
-											</form>
-										</div>
-										<!-- #respond -->
-									</div>
-								</div>
-								<div class="clear">
-								</div>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -319,7 +289,7 @@
 				<div class="js-sticky-sidebar">
 					<div class="summary entry-summary">
 						<h1 class="c-product__title">{{ $product->name }} - {{ $variant->name }}</h1>
-						<div class="c-product__short-description">
+						<div class="c-product__short-description" style="text-align: justify;">
 							<p>{{ $product->short_description }}</p>
 						</div>
 						<p class="price">
@@ -329,15 +299,16 @@
 								</bdi>
 							</span>
 						</p>
-						<div class="product-shades c-product__atc-wrap">
-							<ul>
-								@foreach($product->variants as $variant)
-								<li><a href="{{ url('products',['product' => $product->slug, 'variant' => $variant->slug ]) }}" style="background-color: <?php echo $variant->hex_code ?>;">&nbsp;</a></li>
-								@endforeach
-							</ul>
+						<div class="product-shades" style="background-color: #f3f3f3;">
+							<h6 class="palette-title">Colour Palette</h6>
+								<ul>
+									@foreach($product->variants as $variant)
+									<li><a href="{{ url('products',['product' => $product->slug, 'variant' => $variant->slug ]) }}" style="background-color: <?php echo $variant->hex_code ?>;">&nbsp;</a></li>
+									@endforeach
+								</ul>
 						</div>
 						<div class="c-product__atc-wrap">
-							<form class="cart" action="https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" method="post" enctype='multipart/form-data'>
+							<form class="cart" action="https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" method="post" enctype='multipart/form-data' style="margin-left: 50px; margin-right: 50px;">
 								<div class="c-product__quantity quantity">
 									<label class="screen-reader-text" for="quantity_611f6fb23f9e0">Midnight Musk quantity</label>
 									<input type="number" id="quantity_611f6fb23f9e0" class="h-cb c-product__quantity-value qty product-quantity" step="1" min="1" name="quantity" value="1" title="Qty" placeholder="" inputmode="numeric" />
@@ -399,12 +370,100 @@
 			<!-- .js-sticky-sidebar -->
 		</div>
 		<!-- .c-product__wrap -->
+
+		<!-- Additional Information & Reviews -->
+		<div class="row-additional-info-reviews">
+			<div class="column-additional-info">
+				<div class="c-product__tabs-item additional_information_tab" id="tab-title-additional_information" role="tab" aria-controls="tab-additional_information">
+					<a data-index="1" class="c-product__tabs-item-link js-tabs-item-link" href="#tab-additional_information" style="font-size: 20px; font-weight: bold; color: black; letter-spacing: 0.2em;">Additional information</a>
+				</div>	
+				<div class="c-product__tabs-panel woocommerce-Tabs-panel woocommerce-Tabs-panel--additional_information panel  wc-tab " id="tab-additional_information" role="tabpanel" aria-labelledby="tab-title-additional_information">
+					<table class="woocommerce-product-attributes shop_attributes">
+						<tr class="woocommerce-product-attributes-item woocommerce-product-attributes-item--attribute_pa_capacity">
+							<th class="woocommerce-product-attributes-item__label">{{ strtoupper($variant->p_type) }}</th>
+							<td class="woocommerce-product-attributes-item__value">
+								<p>{{ strtoupper($variant->variation) }}</p>
+							</td>
+						</tr>
+						@if(!empty($product->brand))
+						<tr class="woocommerce-product-attributes-item woocommerce-product-attributes-item--attribute_pa_brands">
+							<th class="woocommerce-product-attributes-item__label">Brand</th>
+							<td class="woocommerce-product-attributes-item__value">
+								<p>
+									<a href="{{ url('brands',$product->brand->slug) }}" rel="tag">{{ $product->brand->name }}</a>
+								</p>
+							</td>
+						</tr>
+						@endif
+					</table>
+				</div>			
+			</div>
+			<div class="column-reviews-tab">
+				<div class="c-product__tabs-item reviews_tab" id="tab-title-reviews" role="tab" aria-controls="tab-reviews">
+					<a data-index="2" class="c-product__tabs-item-link js-tabs-item-link" href="#tab-reviews" style="font-size: 20px; font-weight: bold; color: black; letter-spacing: 0.2em;">Reviews</a>
+				</div>
+				<button class="write-review collapsible" id="review-write">Write Your Review</button>
+				<div class="c-product__tabs-panel woocommerce-Tabs-panel woocommerce-Tabs-panel--reviews panel  wc-tab " id="tab-reviews" role="tabpanel" aria-labelledby="tab-title-reviews" style="display: none; overflow: hidden;">
+				<div id="reviews" class="woocommerce-Reviews">
+					<div id="comments">
+						<h2 class="woocommerce-Reviews-title">Reviews</h2>
+						<p class="woocommerce-noreviews">There are no reviews yet.</p>
+					</div>
+					<div id="review_form_wrapper">
+						<div id="review_form">
+							<div id="respond" class="comment-respond">
+								<span id="reply-title" class="comment-reply-title">Be the first to review &ldquo;{{ $product->name }} - {{ $variant->name }}&rdquo;
+									<small>
+										<a rel="nofollow" id="cancel-comment-reply-link" href="/luchiana/demo/shop/midnight-musk-amber/#respond" style="display:none;">Cancel reply</a>
+									</small>
+								</span>
+								<form action="{{ url('review/store') }}" method="post" id="commentform" class="comment-form" novalidate="">
+									@csrf
+									<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p>
+									<div class="comment-form-comment">
+										<select name="rating" id="rating" required style="width: 100%;">
+											<option value="">Your rating&hellip;</option>
+											<option value="5">Perfect</option>
+											<option value="4">Good</option>
+											<option value="3">Average</option>
+											<option value="2">Not that bad</option>
+											<option value="1">Very poor</option>
+										</select>
+									</div>
+									<p class="comment-form-comment">
+										<label for="comment">Your review&nbsp;<span class="required">*</span></label>
+										<textarea id="comment" name="comment" cols="45" rows="8" required placeholder="Your review&nbsp;*"></textarea>
+									</p>
+									<p class="comment-form-author">
+										<label for="author">Name&nbsp;<span class="required">*</span></label>
+										<input id="name" name="name" type="text" value="" size="30" required placeholder="Name&nbsp;*">
+									</p>
+									<p class="comment-form-email">
+										<label for="email">Email&nbsp;<span class="required">*</span></label>
+										<input id="email" name="email" type="email" value="" size="30" required placeholder="Email&nbsp;*">
+									</p>
+									<p class="form-submit">
+										<input type="submit" id="submit" class="submit">
+										<input type="hidden" name="product_id" value="{{ $product->id }}">
+										<input type="hidden" name="variant_id" value="{{ $variant->id }}">
+									</p>
+								</form>
+							</div>
+							<!-- #respond -->
+						</div>
+					</div>
+					<div class="clear">
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+
 		@if($related_products->isNotEmpty())
 		<section class="c-product__products c-product__products--related">
-			<div class="c-product__products-title">Related products</div>
+			<div class="c-product__products-title" style="font-size: 25px; font-weight: bold; color: black; letter-spacing: 0.2em;">Related products</div>
 			<div class="c-product-grid__wrap c-product-grid__wrap--4-per-row ">
 				<div class="c-product-grid__list c-product-grid__list--3-per-row ">
-
 
 					<div class="in-main">
 						@foreach($related_products as $key => $related)
@@ -437,16 +496,15 @@
 									<a href="{{ url('products',['product' => $related->slug, 'variant' => $related_variants[$key] ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
 										<h2 class="woocommerce-loop-product__title">{{ $related->name }}</h2>
 									</a>
-									<div class="c-product-grid__short-desc">
+									<!-- <div class="c-product-grid__short-desc">
 										<p>{{ $related->short_description }}</p>
-									</div>
+									</div> -->
 								</div>
 								<!-- .c-product-grid__title-wrap -->
-								<div class="c-product-grid__price-wrap">
+								<div class="c-product-grid__price-wrap price-div">
 									<span class="price">
 										<span class="woocommerce-Price-amount amount">
-											<bdi>
-												<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $related_prices[$key] }}</bdi>
+											<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $related_prices[$key] }}</bdi>
 										</span>
 									</span>
 								</div>
@@ -545,22 +603,33 @@
 	}
 </script>
 <script>
-	$(document).on('click', '#tab-title-description', function() {
+	$(document).ready(function() {
 		$('#tab-description').show();
-		$('#tab-additional_information').hide();
-		$('#tab-reviews').hide();
-	});
-
-	$(document).on('click', '#tab-title-additional_information', function() {
-		$('#tab-description').hide();
 		$('#tab-additional_information').show();
 		$('#tab-reviews').hide();
 	});
 
-	$(document).on('click', '#tab-title-reviews', function() {
-		$('#tab-description').hide();
-		$('#tab-additional_information').hide();
-		$('#tab-reviews').show();
-	});
+	// var clickCheck = 0;
+	// if(clickCheck == 1)
+	// {
+	// 	$(document).on('click','#review-write', function(){
+	// 		$('#tab-reviews').show();
+	// 	});
+		
+	// }
+
+	var coll = document.getElementsByClassName("collapsible");
+	var i;
+	for (i = 0; i < coll.length; i++) {
+		coll[i].addEventListener("click", function() {
+			this.classList.toggle("active");
+			var content = this.nextElementSibling;
+			if (content.style.display === "block") {
+			content.style.display = "none";
+			} else {
+			content.style.display = "block";
+			}
+		});
+	}
 </script>
 @endsection

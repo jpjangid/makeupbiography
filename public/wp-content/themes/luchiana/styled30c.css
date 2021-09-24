@@ -3784,6 +3784,7 @@ abbr.required {
 .order-again .button {
 	background-color: #3B9C9C !important;
 	color:            white !important;
+	border: none;
 }
 
 .c-button--outline-white {
@@ -8319,7 +8320,7 @@ p + .woocommerce-order-details {
 	        justify-content:  space-between;
 	background-color: white;
 	position:         relative;
-	padding:          26px 30px 30px 30px;
+	/* padding:          26px 30px 30px 30px; */
 }
 
 .c-product-grid__thumb-wrap {
@@ -8383,6 +8384,9 @@ p + .woocommerce-order-details {
 
 .c-product-grid__title-wrap {
 	text-align: center;
+	padding-top: 26px;
+	padding-left: 30px;
+	padding-right: 30px;
 }
 
 .c-product-grid__item .woocommerce-loop-product__title {
@@ -8407,6 +8411,7 @@ p + .woocommerce-order-details {
 	line-height:    20px;
 	letter-spacing: 0.025em;
 	color:          var(--text-color);
+	text-align: justify;
 }
 
 .c-product-grid__short-desc ul {
@@ -8464,6 +8469,7 @@ p + .woocommerce-order-details {
 
 .c-product-grid__icon--hover {
 	display: none;
+	font-size: 20px;
 }
 
 .c-product-grid__price-wrap {
@@ -8486,16 +8492,17 @@ p + .woocommerce-order-details {
 
 .c-product-grid__atc {
 	display:          block;
-	border:           solid 1px currentColor;
+	border:           solid 1px #43BFC7;
 	font-weight:      400;
 	font-size:        12px;
 	line-height:      14px;
 	text-align:       center;
 	letter-spacing:   3.12px;
 	text-transform:   uppercase;
-	padding:          22px 15px 21px 15px;
-	background-color: white;
+	padding:          10px 15px 10px 15px;
+	background-color: #43BFC7;
 	z-index:          5;
+	color: white;
 }
 
 .c-product-grid__atc.added {
@@ -8821,8 +8828,8 @@ p + .woocommerce-order-details {
 
 	.c-product-grid__atc:hover {
 		color:            white !important;
-		background-color: var(--text-color);
-		border-color:     var(--text-color);
+		background-color: #48D1CC;
+		border-color:     #48D1CC;
 	}
 
 	.c-product-grid__brand:hover,
@@ -12050,6 +12057,8 @@ p + .woocommerce-order-details {
 
 .c-wishlist__btn-icon--hover {
 	display: none;
+	color: red !important;
+	font-size: 20px;
 }
 
 .c-wishlist__btn--added .c-wishlist__btn-icon {
