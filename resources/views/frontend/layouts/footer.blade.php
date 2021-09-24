@@ -63,11 +63,11 @@
                                     <div class="elementor-widget-container">
                                       <ul class="elementor-icon-list-items">
                                         <li class="elementor-icon-list-item">
-                                          <a href="tel:+1234889652">
+                                          <a href="tel:+081978 94448">
                                             <span class="elementor-icon-list-icon">
                                               <i aria-hidden="true" class="fibd21- fi-bd21-phone"></i>
                                             </span>
-                                            <span class="elementor-icon-list-text">+123 488 9652</span>
+                                            <span class="elementor-icon-list-text">+081978 94448</span>
                                           </a>
                                         </li>
                                         <li class="elementor-icon-list-item">
@@ -75,7 +75,7 @@
                                             <span class="elementor-icon-list-icon">
                                               <i aria-hidden="true" class="fibd21- fi-bd21-map-pin"></i>
                                             </span>
-                                            <span class="elementor-icon-list-text">25 West 21th Street, Miami FL, USA</span>
+                                            <span class="elementor-icon-list-text">Sri Complex, #45, Sajjan Rao Cir, Vishweshwarapura, Bengaluru, Karnataka 560004</span>
                                           </a>
                                         </li>
                                         <li class="elementor-icon-list-item">
@@ -83,14 +83,14 @@
                                             <span class="elementor-icon-list-icon">
                                               <i aria-hidden="true" class="fibd21- fi-bd21-subscribe"></i>
                                             </span>
-                                            <span class="elementor-icon-list-text">info@luchiana.com</span>
+                                            <span class="elementor-icon-list-text">makeupbiography@gmail.com</span>
                                           </a>
                                         </li>
                                         <li class="elementor-icon-list-item">
                                           <span class="elementor-icon-list-icon">
                                             <i aria-hidden="true" class="fibd21- fi-bd21-time"></i>
                                           </span>
-                                          <span class="elementor-icon-list-text">Mon-Fri: 10:00 - 18:00</span>
+                                          <span class="elementor-icon-list-text">Mon-Fri: 10:00 - 20:00</span>
                                         </li>
                                       </ul>
                                     </div>

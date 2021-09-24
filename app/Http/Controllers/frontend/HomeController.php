@@ -19,7 +19,6 @@ class HomeController extends Controller
         $main_popular_products = Product::where(['flag' => 0,'status' => 1])->where('tags','like','%'.'popular'.'%')->with(['variants' => function($query) { $query->where(['flag'=>0])->orderBy('sequence','asc'); }])->orderBy('created_at', 'DESC')->take(5)->get();
         $main_category_products = Product::where(['flag' => 0,'status' => 1])->where('tags','like','%'.'category'.'%')->with(['variants' => function($query) { $query->where(['flag'=>0])->orderBy('sequence','asc'); }])->orderBy('created_at', 'DESC')->take(5)->get();
         $main_brand_products = Product::where(['flag' => 0,'status' => 1])->where('tags','like','%'.'brand'.'%')->with(['variants' => function($query) { $query->where(['flag'=>0])->orderBy('sequence','asc'); }])->orderBy('created_at', 'DESC')->take(5)->get();
-        
         $big_offer_products = Product::where(['flag' => 0,'status' => 1])->where('tags','like','%'.'big discount'.'%')->with(['variants' => function($query) { $query->orderBy('sequence','DESC'); }])->orderBy('updated_at', 'DESC')->take(6)->get();
         $footer_banners = FooterBanner::where('image','!=',"")->where('status',1)->get();
        

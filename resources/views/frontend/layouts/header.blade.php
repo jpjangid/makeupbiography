@@ -31,7 +31,7 @@
       </div>
       <nav itemscope itemtype="http://schema.org/SiteNavigationElement" class="c-mobile-menu c-mobile-menu--top-menu js-mobile-top-menu">
         <ul id="mobile-top-menu" class="c-mobile-menu__list">
-          <li id="menu-item-17" class="c-mobile-menu__item menu-item-17">
+          <li id="menu-item-17" class="c-mobile-menu__item menu-item-17" style="margin-top: 15px !important;">
             <a href="{{ url('/') }}">Home</a>
           </li>
           <li id="menu-item-17" class="c-mobile-menu__item menu-item-17">
@@ -150,16 +150,16 @@
           <ul class="c-header__top-row-list c-header__top-row-list--blocks-first">
             <li class="c-header__top-row-item c-header__top-row-item--phone">
               <i class="ip-z-phone c-header__top-row-icon c-header__top-row-icon--phone"></i>
-              <a href="tel:+1234567890">+123 456 7890</a>
+              <a href="tel:+081978 94448">+081978 94448</a>
             </li>
             <li class="c-header__top-row-item c-header__top-row-item--email">
               <i class="ip-email c-header__top-row-icon c-header__top-row-icon--email"></i>
-              <a href="mailto:info@luchiana.com">info@luchiana.com</a>
+              <a href="mailto:makeupbiography@gmail.com">makeupbiography@gmail.com</a>
             </li>
             <li class="c-header__top-row-item c-header__top-row-item--address">
-              <i class="ip-z-map-pin c-header__top-row-icon c-header__top-row-icon--address"></i>25 West 21th Street, Miami FL, USA</li>
+              <i class="ip-z-map-pin c-header__top-row-icon c-header__top-row-icon--address"></i>Sri Complex, #45, Sajjan Rao Cir, Vishweshwarapura, Bengaluru, Karnataka 560004</li>
             <li class="c-header__top-row-item c-header__top-row-item--hours">
-              <i class="ip-z-time c-header__top-row-icon c-header__top-row-icon--hours"></i>Mon-Fri: 10:00 - 18:00</li>
+              <i class="ip-z-time c-header__top-row-icon c-header__top-row-icon--hours"></i>Mon-Fri: 10:00 - 20:00</li>
             <li class="c-header__top-row-item c-header__top-row-item--other">
               <ul class="c-top-bar-menu__list c-lang-demo">
                 <li class="c-top-bar-menu__item c-top-bar-menu__item--has-children">
@@ -272,16 +272,16 @@
           </li>
           <li class="c-header__top-row-item c-header__top-row-item--phone">
             <i class="ip-z-phone c-header__top-row-icon c-header__top-row-icon--phone"></i>
-            <a href="tel:+1234567890">+123 456 7890</a>
+            <a href="tel:+081978 94448">+081978 94448</a>
           </li>
           <li class="c-header__top-row-item c-header__top-row-item--email">
             <i class="ip-email c-header__top-row-icon c-header__top-row-icon--email"></i>
-            <a href="mailto:info@luchiana.com">info@luchiana.com</a>
+            <a href="mailto:makeupbiography@gmail.com">makeupbiography@gmail.com</a>
           </li>
           <li class="c-header__top-row-item c-header__top-row-item--address">
-            <i class="ip-z-map-pin c-header__top-row-icon c-header__top-row-icon--address"></i>25 West 21th Street, Miami FL, USA</li>
+            <i class="ip-z-map-pin c-header__top-row-icon c-header__top-row-icon--address"></i>Sri Complex, #45, Sajjan Rao Cir, Vishweshwarapura, Bengaluru, Karnataka 560004</li>
           <li class="c-header__top-row-item c-header__top-row-item--hours">
-            <i class="ip-z-time c-header__top-row-icon c-header__top-row-icon--hours"></i>Mon-Fri: 10:00 - 18:00</li>
+            <i class="ip-z-time c-header__top-row-icon c-header__top-row-icon--hours"></i>Mon-Fri: 10:00 - 20:00</li>
           <li class="c-header__top-row-item c-header__top-row-item--other">
             <ul class="c-top-bar-menu__list c-lang-demo">
               <li class="c-top-bar-menu__item c-top-bar-menu__item--has-children">
