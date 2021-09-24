@@ -1,3 +1,19 @@
+<style>
+  @media (max-width: 789px) {
+
+    .c-mobile-menu__item,
+    .c-mobile-menu__subitem {
+      font-size: 12px;
+      line-height: .1;
+      margin-left: -1px !important;
+      text-transform: none;
+    }
+
+    .c-ip-heading.c-ip-heading--default.c-ip-heading--right.c-ip-heading--tablet-.c-ip-heading--mobile-center.c-ip-heading--bullet-hide {
+      margin-left: 0px !important;
+    }
+  }
+</style>
 <footer class="l-section c-footer">
   <div class="l-section">
     <div data-elementor-type="wp-post" data-elementor-id="1052" class="elementor elementor-1052" data-elementor-settings="[]">
@@ -11,8 +27,8 @@
                     <div class="elementor-widget-wrap">
                       <div class="elementor-element elementor-element-33548589 elementor-widget elementor-widget-ideapark-inline-menu" data-id="33548589" data-element_type="widget" data-widget_type="ideapark-inline-menu.default">
                         <div class="elementor-widget-container">
-                        <img src="{{ asset('/images/golden-stroke.png') }}" height="5%" width="10%" style="float:left; margin-left: -5px; margin-top: -10px;">
-          <img src="{{ asset('/images/golden-stroke.png') }}" height="5%" width="10%" style="float:right; -webkit-transform: scaleX(-1); transform: scaleX(-1); margin-right: -5px; margin-top: -10px;">
+                          <img src="{{ asset('/images/golden-stroke.png') }}" height="5%" width="10%" style="float:left; margin-left: -5px; margin-top: -10px;">
+                          <img src="{{ asset('/images/golden-stroke.png') }}" height="5%" width="10%" style="float:right; -webkit-transform: scaleX(-1); transform: scaleX(-1); margin-right: -5px; margin-top: -10px;">
                           <div class="c-ip-inline-menu">
                             <span class="c-ip-inline-menu__item">
                               <a href="{{ url('about-us') }}">About us</a>
@@ -36,7 +52,7 @@
                           </div>
                         </div>
                       </div>
-                      
+
                       <section class="elementor-section elementor-inner-section elementor-element elementor-element-2b806726 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="2b806726" data-element_type="section">
                         <div class="elementor-container elementor-column-gap-no">
                           <div class="elementor-row">
@@ -89,7 +105,7 @@
                                     <div class="elementor-widget-container">
                                       <div class="elementor-image">
                                         <a href="#">
-                                        <img src="{{ asset('/images/mblogo.png') }}" style="width: 230px; height: 50px;">
+                                          <img src="{{ asset('/images/mblogo.png') }}" style="width: 230px; height: 50px;">
                                         </a>
                                       </div>
                                     </div>
@@ -128,17 +144,44 @@
                                 <div class="elementor-widget-wrap">
                                   <div class="elementor-element elementor-element-7195f8fe elementor-widget elementor-widget-ideapark-heading" data-id="7195f8fe" data-element_type="widget" data-widget_type="ideapark-heading.default">
                                     <div class="elementor-widget-container">
-                                      <div class="c-ip-heading c-ip-heading--default c-ip-heading--right c-ip-heading--tablet- c-ip-heading--mobile-center c-ip-heading--bullet-hide">
-                                        <span class="c-ip-heading__inner">Style too own civil out along. Perfectly offending attempted add arranging age gentleman. Get who uncommonly our expression ten increasing considered.</span>
+                                      <div class="c-ip-heading c-ip-heading--default c-ip-heading--right c-ip-heading--tablet- c-ip-heading--mobile-center c-ip-heading--bullet-hide" style="text-align:left; margin-left: 90px;">
+                                        <span class="c-ip-heading__inner">
+                                          <ul id="ftrlist" style="list-style-type: none;">
+                                            <li id="menu-item-165" class="c-mobile-menu__subitem menu-item-165">
+                                              <a href="{{ url('about-us') }}">About us</a>
+                                            </li>
+                                            <li id="menu-item-164" class="c-mobile-menu__subitem menu-item-164">
+                                              <a href="https://parkofideas.com/luchiana/demo/our-team/">Our team</a>
+                                            </li>
+                                            <li id="menu-item-185" class="c-mobile-menu__subitem menu-item-185">
+                                              <a href="{{ url('faq') }}">FAQ</a>
+                                            </li>
+                                            <li id="menu-item-2320" class="c-mobile-menu__subitem menu-item-2320">
+                                              <a href="{{ url('return-policy') }}">Return Policy</a>
+                                            </li>
+                                            <li id="menu-item-395" class="c-mobile-menu__subitem menu-item-395">
+                                              <a href="{{ url('shipping-policy') }}">Shipping Policy</a>
+                                            </li>
+                                            <li id="menu-item-396" class="c-mobile-menu__subitem menu-item-396">
+                                              <a href="{{ url('cancellation-policy') }}">Cancellation Policy</a>
+                                            </li>
+                                            <li class="c-mobile-menu__subitem menu-item-397">
+                                              <a href="{{ url('privacy-policy') }}">Privacy Policy</a>
+                                            </li>
+                                            <li class="c-mobile-menu__subitem menu-item-397">
+                                              <a href="{{ url('terms-and-conditions') }}">Terms & Conditions</a>
+                                            </li>
+                                          </ul>
+                                        </span>
                                       </div>
                                     </div>
                                   </div>
                                   <div class="elementor-element elementor-element-24cb5cec elementor-widget elementor-widget-ideapark-heading" data-id="24cb5cec" data-element_type="widget" data-widget_type="ideapark-heading.default">
                                     <div class="elementor-widget-container">
                                       <div class="c-ip-heading c-ip-heading--default c-ip-heading--right c-ip-heading--tablet- c-ip-heading--mobile-center c-ip-heading--bullet-hide">
-                                        <span class="c-ip-heading__inner">
+                                        <!-- <span class="c-ip-heading__inner">
                                           <a href="{{ url('about-us') }}">Read More</a>
-                                        </span>
+                                        </span> -->
                                       </div>
                                     </div>
                                   </div>

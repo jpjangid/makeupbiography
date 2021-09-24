@@ -27,6 +27,8 @@ class PageController extends Controller
                 return view('frontend.page.privacy_policy', compact('page'));
             }elseif($page->title == "Terms & Conditions"){
                 return view('frontend.page.terms&conditions', compact('page'));
+            }elseif($page->title == "Contact Us"){
+                return view('frontend.page.contactus', compact('page'));
             }else{
                 return view('404');
             }
