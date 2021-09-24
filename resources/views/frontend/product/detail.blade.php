@@ -144,13 +144,22 @@
 							@endif
 							@if($media->media_type == 'video')
 							<div class="c-product__slider-item c-product__slider-item--video">
-								<a download href="{{ $media->media }}" class="c-product__image-link c-product__image-link--zoom js-product-modal" data-index="{{ $count }}" data-product-id="511" data-elementor-open-lightbox="no" onclick="return false;">
+								<div data-index="{{ $count }}" class="c-product__image-link c-product__image-link--zoom js-product-modal">
+									<div class="c-product__slider--video">
+										<div class="c-product__video-mask">
+											<iframe width="100%"  height="345" src="{{ $media->media }}" allowfullscreen>
+											</iframe>
+										</div>
+									</div>
+								</div>
+								
+								{{-- <a download href="{{ $media->media }}" class="c-product__image-link c-product__image-link--zoom js-product-modal" data-index="{{ $count }}" data-product-id="511" data-elementor-open-lightbox="no" onclick="return false;">
 									<span class="c-product__slider--video" style="background-image: url()">
 										<span class="c-product__video-mask">
 										</span>
 									</span>
 									<i class="c-play c-play--large c-play--disabled"></i>
-								</a>
+								</a> --}}
 							</div>
 							@endif
 							@php $count++; @endphp
