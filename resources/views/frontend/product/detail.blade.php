@@ -37,9 +37,6 @@
 
 @section('css')
 <style>
-	.c-product__atc-wrap {
-		width: 100% !important;
-	}
 
 	.arrows {
 		position: absolute;
@@ -127,6 +124,8 @@
 
 	.row-additional-info-reviews {
 		margin-top: 50px;
+		margin-bottom: 50px;
+		height: 350px;
 	}
 
 	@media screen and (max-width: 600px) {
@@ -146,6 +145,7 @@
 		width: 250px;
 		padding-top: 10px;
 		padding-bottom: 10px;
+		margin-top: 20px;
 	}
 
 	.price-div {
@@ -158,10 +158,41 @@
 		text-align: center;
 		color: white;
 	}
+
+	.reviews-added-main {
+		background-color: white;
+		padding: 25px 25px 25px 25px;
+	}
+
+	.reviews-added-sub {
+		text-align: left;
+		border-bottom: 1px solid lightgrey;
+	}
+
+	.reviewer-name {
+		font-weight: bold;
+		font-size: 15px;
+		margin-right: 20px;
+	}
+
+	.reviewer-rating {
+		font-size: 15px;
+		display: inline-block;
+	}
+
+	.reviewer-review {
+		font-size: 12px;
+	}
+
+	.c-product__tabs-panel > * {
+		font-size: 15px !important;
+	}
 </style>
 @endsection
 
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <input type="text" id="csrfToken" value="{{ csrf_token() }}" hidden>
 <div class="l-inner">
 	<header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default c-page-header--product-page">
@@ -385,7 +416,7 @@
 								<p>{{ strtoupper($variant->variation) }}</p>
 							</td>
 						</tr>
-						@if(!empty($product->brand))
+						@if(!empty($product->brand))		
 						<tr class="woocommerce-product-attributes-item woocommerce-product-attributes-item--attribute_pa_brands">
 							<th class="woocommerce-product-attributes-item__label">Brand</th>
 							<td class="woocommerce-product-attributes-item__value">
@@ -394,7 +425,7 @@
 								</p>
 							</td>
 						</tr>
-						@endif
+						@endif		
 					</table>
 				</div>			
 			</div>
@@ -402,7 +433,32 @@
 				<div class="c-product__tabs-item reviews_tab" id="tab-title-reviews" role="tab" aria-controls="tab-reviews">
 					<a data-index="2" class="c-product__tabs-item-link js-tabs-item-link" href="#tab-reviews" style="font-size: 20px; font-weight: bold; color: black; letter-spacing: 0.2em;">Reviews</a>
 				</div>
-				<button class="write-review collapsible" id="review-write">Write Your Review</button>
+				<div class="reviews-added-main">
+					@foreach($reviews as $review)
+					<div class="reviews-added-sub">
+						<div>
+							<span class="reviewer-name"><i class="fa fa-user" aria-hidden="true"></i> {{ $review->name }}</span>
+							<span class="reviewer-rating" id="rate-review">
+								@php 
+									$rating = $review->rating;
+									$rating_view = "";
+									for ($x = 1; $x <= 5; $x++) {
+										if($rating < $x) {
+											$rating_view .= '<i class="fa fa-star" aria-hidden="true" style="letter-spacing: 0.2em;"></i>';
+										} else {
+											$rating_view .= '<i class="fa fa-star" aria-hidden="true" style="color: orange;letter-spacing: 0.2em;"></i>';
+										}	
+									}
+									echo $rating_view;
+								@endphp
+								
+							</span>
+						</div>
+						<div style="padding-bottom: 10px; text-align: justify;"><span class="reviewer-review">{{ $review->comment }}</span></div>
+					</div>
+					@endforeach
+				</div>
+				<button class="write-review collapsible" id="review-write"><i class="fa fa-edit"></i> Write Your Review</button>
 				<div class="c-product__tabs-panel woocommerce-Tabs-panel woocommerce-Tabs-panel--reviews panel  wc-tab " id="tab-reviews" role="tabpanel" aria-labelledby="tab-title-reviews" style="display: none; overflow: hidden;">
 				<div id="reviews" class="woocommerce-Reviews">
 					<div id="comments">
@@ -412,11 +468,11 @@
 					<div id="review_form_wrapper">
 						<div id="review_form">
 							<div id="respond" class="comment-respond">
-								<span id="reply-title" class="comment-reply-title">Be the first to review &ldquo;{{ $product->name }} - {{ $variant->name }}&rdquo;
+								<!-- <span id="reply-title" class="comment-reply-title">Be the first to review &ldquo;{{ $product->name }} - {{ $variant->name }}&rdquo;
 									<small>
 										<a rel="nofollow" id="cancel-comment-reply-link" href="/luchiana/demo/shop/midnight-musk-amber/#respond" style="display:none;">Cancel reply</a>
 									</small>
-								</span>
+								</span> -->
 								<form action="{{ url('review/store') }}" method="post" id="commentform" class="comment-form" novalidate="">
 									@csrf
 									<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p>
@@ -476,21 +532,21 @@
 									<img width="260" height="230" src="{{ asset('storage/products/variants/'.$related_images[$key]) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" sizes="(max-width: 260px) 100vw, 260px" />
 								</a>
 								<div class="c-product-grid__thumb-button-list">
-									<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="459">
-										<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>
-										<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>
-									</button>
-									<button class="js-wishlist-btn c-wishlist__btn c-wishlist__item-459-btn h-cb c-product-grid__thumb-button" data-product-id="459" data-title="Wishlist">
+									<!--<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="459">-->
+									<!--	<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>-->
+									<!--	<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>-->
+									<!--</button>-->
+									<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $related->id }}-btn h-cb c-product-grid__thumb-button" data-product_variant_id="{{ $related_variants_id[$key] }}" data-product-id="{{ $related->id }}" data-title="Wishlist">
 										<i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
 										<i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
 									</button>
 								</div>
 							</div>
 							<!-- .c-product-grid__thumb-wrap -->
-							<a href="?add-to-cart=459" data-quantity="1" class="h-cb c-product-grid__atc button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="459" data-product_sku="6549845389" aria-label="Add &ldquo;Voce Viva Eau de Parfum&rdquo; to your cart" rel="nofollow">
+							<button class="h-cb c-product-grid__atc button product_type_simple add-to-cart" data-product_id="{{ $related->id }}" data-product_variant="{{ $related_variants_id[$key] }}" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
 								<i class="ip-plus c-product-grid__atc-icon"></i>
 								<span class="c-product-grid__atc-text">Add to cart</span>
-							</a>
+							</button>                           
 							<div class="c-product-grid__details">
 								<div class="c-product-grid__title-wrap">
 									<a href="{{ url('products',['product' => $related->slug, 'variant' => $related_variants[$key] ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
@@ -546,61 +602,50 @@
 	});
 </script>
 <script>
-	var product = "{{count($related_products)}}";
-	if (product < 4) {
-		document.getElementById('forward').style.visibility = "hidden";
-		document.getElementById('backward').style.visibility = "hidden";
-	} else {
-		document.getElementById('forward').style.visibility = "visible";
-		document.getElementById('backward').style.visibility = "visible";
-		$(document).on('click', '#backward', function() {
-			var div = document.getElementsByClassName('same');
-			var l = 0;
-			l++;
-			for (var i of div) {
-				if (l == 0) {
-					i.style.left = "0px";
-				}
-				if (l == 1) {
-					i.style.left = "-740px";
-				}
-				if (l == 2) {
-					i.style.left = "-1480px";
-				}
-				if (l == 3) {
-					i.style.left = "-2220px";
-				}
-				if (l == 4) {
-					i.style.left = "-2960px";
-				}
-				if (l > 4) {
-					l = 4;
-				}
-			}
-		});
-		$(document).on('click', '#forward', function() {
-			var div = document.getElementsByClassName('same');
-			var l = 0;
-			l--;
-			for (var i of div) {
-				if (l == 0) {
-					i.style.left = "0px";
-				}
-				if (l == 1) {
-					i.style.left = "-740px";
-				}
-				if (l == 2) {
-					i.style.left = "-1480px";
-				}
-				if (l == 3) {
-					i.style.left = "-2220px";
-				}
-				if (l < 0) {
-					l = 0;
-				}
-			}
-		});
-	}
+    var product = "{{count($related_products)}}";
+    if (product < 4) {
+        document.getElementById('forward').style.visibility = "hidden";
+        document.getElementById('backward').style.visibility = "hidden";
+    } else {
+        document.getElementById('forward').style.visibility = "visible";
+        document.getElementById('backward').style.visibility = "visible";
+        var right = document.getElementById('forward');
+        var left = document.getElementById('backward');
+        var item = document.getElementsByClassName('same');
+        let product_page = Math.ceil(product/4);
+        let l = 0;
+        let movePer = 25.34;
+        let maxMove = 203;
+        // mobile_view  
+        let mob_view = window.matchMedia("(max-width: 768px)");
+        if (mob_view.matches)
+        {
+            movePer = 50.36;
+            maxMove = 504;
+        }
+
+        let right_mover = ()=>{
+            l = l + movePer;
+            if (item == 1){l = 0; }
+            for(const i of item)
+            {
+                if (l > maxMove){l = l - movePer;}
+                i.style.left = '-' + l + '%';
+            }
+
+        }
+        let left_mover = ()=>{
+            l = l - movePer;
+            if (l<=0){l = 0;}
+            for(const i of item){
+                if (product_page>1){
+                    i.style.left = '-' + l + '%';
+                }
+            }
+        }
+        left.onclick = ()=>{right_mover();}
+        right.onclick = ()=>{left_mover();}
+    }
 </script>
 <script>
 	$(document).ready(function() {
@@ -608,15 +653,6 @@
 		$('#tab-additional_information').show();
 		$('#tab-reviews').hide();
 	});
-
-	// var clickCheck = 0;
-	// if(clickCheck == 1)
-	// {
-	// 	$(document).on('click','#review-write', function(){
-	// 		$('#tab-reviews').show();
-	// 	});
-		
-	// }
 
 	var coll = document.getElementsByClassName("collapsible");
 	var i;

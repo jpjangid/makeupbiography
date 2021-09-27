@@ -1,6 +1,6 @@
 @php
  use \App\Models\Category;
- $mains = Category::select('id','slug','name')->where('flag',0)->where('parent_id',null)->with('subcategory')->get();
+ $mains = Category::select('id','slug','name')->where(['flag' => 0,'status' => 1])->where('parent_id',null)->with('subcategory')->get();
 
 @endphp
 <header class="l-section" id="main-header">
@@ -45,18 +45,22 @@
               <li id="menu-item-163" class="c-mobile-menu__item c-mobile-menu__item--has-children menu-item-162">
                 <a href="{{ url('category',['slug' => $main->slug]) }}">{{ $main->name }}</a>
                 @foreach($main->subcategory as $sub1)
+                @if($sub1->status === 1 && $sub1 === 0)
                 <ul class="c-mobile-menu__submenu" style="margin-top: 10px !important">
                   <li id="menu-item-163" class="c-mobile-menu__item c-mobile-menu__item--has-children menu-item-162">
                   <a href="{{ url('category',['slug' => $sub1->slug]) }}">{{ $sub1->name }}</a>
                     <ul class="c-mobile-menu__submenu">
                       @foreach($sub1->subcategory as $sub2)
+                      @if($sub2->status == 1 && $sub2->flag == 0)  
                       <li id="menu-item-2474" class="c-mobile-menu__subitem menu-item-2474">
                         <a href="{{ url('category',['slug' => $sub2->slug]) }}">{{ $sub2->name }}</a>
                       </li>
+                      @endif
                       @endforeach
                     </ul> 
                   </li>  
                 </ul>  
+                @endif
                 @endforeach
               </li>
             </ul>
@@ -160,7 +164,7 @@
               <i class="ip-z-map-pin c-header__top-row-icon c-header__top-row-icon--address"></i>Sri Complex, #45, Sajjan Rao Cir, Vishweshwarapura, Bengaluru, Karnataka 560004</li>
             <li class="c-header__top-row-item c-header__top-row-item--hours">
               <i class="ip-z-time c-header__top-row-icon c-header__top-row-icon--hours"></i>Mon-Fri: 10:00 - 20:00</li>
-            <li class="c-header__top-row-item c-header__top-row-item--other">
+            {{-- <li class="c-header__top-row-item c-header__top-row-item--other">
               <ul class="c-top-bar-menu__list c-lang-demo">
                 <li class="c-top-bar-menu__item c-top-bar-menu__item--has-children">
                   <a href="#" onclick="return false;">English</a>
@@ -176,7 +180,7 @@
                   </ul>
                 </li>
               </ul>
-            </li>
+            </li> --}}
           </ul>
           <div class="c-soc">
             <a href="#" class="c-soc__link" target="_blank">
@@ -282,7 +286,7 @@
             <i class="ip-z-map-pin c-header__top-row-icon c-header__top-row-icon--address"></i>Sri Complex, #45, Sajjan Rao Cir, Vishweshwarapura, Bengaluru, Karnataka 560004</li>
           <li class="c-header__top-row-item c-header__top-row-item--hours">
             <i class="ip-z-time c-header__top-row-icon c-header__top-row-icon--hours"></i>Mon-Fri: 10:00 - 20:00</li>
-          <li class="c-header__top-row-item c-header__top-row-item--other">
+          {{-- <li class="c-header__top-row-item c-header__top-row-item--other">
             <ul class="c-top-bar-menu__list c-lang-demo">
               <li class="c-top-bar-menu__item c-top-bar-menu__item--has-children">
                 <a href="#" onclick="return false;">English</a>
@@ -298,7 +302,7 @@
                 </ul>
               </li>
             </ul>
-          </li>
+          </li> --}}
         </ul>
       </div>
       <div class="c-header__row">
@@ -323,7 +327,7 @@
               @if(count($mains) > 0)
               <li class="c-top-menu__item c-top-menu__item--has-children menu-item-162 js-menu-item">
                 <a href="#">Category</a>
-                <ul class="c-top-menu__submenu c-top-menu__submenu--columns-4 c-top-menu__submenu--expand">
+                <ul class="c-top-menu__submenu c-top-menu__submenu--columns-4 c-top-menu__submenu--expand" style="display: flex;flex-direction: row;">
                 @foreach($mains as $main)  
                   <li class="c-top-menu__subitem menu-item-557 c-top-menu__subitem--expand js-menu-item">
                     <a href="{{ url('category',$main->slug) }}" >{{ $main->name }}</a>

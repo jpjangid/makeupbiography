@@ -100,7 +100,8 @@
                 <div class="c-post-list__meta-category">
                   <a class="c-post-list__categories-item-link" href="{{ url('blogs',$blog->category) }}" title="View all posts in Cosmetic">{{ $blog->category }}</a>
                 </div>
-                <a class="c-button c-button--outline c-post-list__continue" href="{{ url('blogdetail',$blog->slug) }}">Read More</a>
+                <a class="c-button c-button--outline c-post-list__continue" href="{{ url('blogs',['cat' => $blog->category,'slug' => $blog->slug]) }}">Read More</a>
+                {{-- <a class="c-button c-button--outline c-post-list__continue" href="{{ url('blogdetail',$blog->slug) }}">Read More</a> --}}
               </div>
             </article>
           @endforeach

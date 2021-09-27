@@ -245,7 +245,7 @@
                 <!-- .c-product-grid__badges -->
                 <div class="c-product-grid__thumb-wrap">
                   <a href="{{ url('category',$category->slug) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                    <img width="460" height="460" src="{{ asset('storage/category/'.$category->featured_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" sizes="(max-width: 460px) 100vw, 460px" />
+                    <img width="460" height="460" src="{{ asset('storage/category/'.$category->featured_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" sizes="(max-width: 460px) 100vw, 460px" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;"/>
                   </a>
                 </div>
                 <!-- .c-product-grid__thumb-wrap -->
@@ -275,7 +275,7 @@
                 <!-- .c-product-grid__badges -->
                 <div class="c-product-grid__thumb-wrap">
                   <a href="{{ url('products',['product' => $product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                    <img width="460" height="460" src="{{ asset('storage/products/'.$product->main_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" sizes="(max-width: 460px) 100vw, 460px" />
+                    <img width="460" height="460" src="{{ asset('storage/products/'.$product->main_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" sizes="(max-width: 460px) 100vw, 460px" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;"/>
                   </a>
                   <div class="c-product-grid__thumb-button-list">
                     <button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $product->id }}-btn h-cb c-product-grid__thumb-button" data-product_variant_id="{{ $variant->id }}" data-product-id="{{ $product->id }}" data-title="Wishlist">

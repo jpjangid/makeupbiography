@@ -91,6 +91,9 @@
 		content: "\f09a";
 		padding-left: 5px;
 	}
+	.elementor-element-92aadb1 {
+		background-image: url({{ asset('images/contactus.png') }});
+	}
 </style>
 @endsection
 
