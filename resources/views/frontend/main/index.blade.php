@@ -90,6 +90,31 @@
 		text-align: center;
 		color: white;
 	}
+	@media(max-width: 767px){
+		.elementor-1131 .elementor-element.elementor-element-d63423e {
+				margin-top: 25px;
+			margin-bottom: 0px;
+		}	
+		.c-ip-product-tabs__menu-item.active {
+			color: white;
+			border-bottom: 3px solid white;
+			margin-left: 9px;
+		}
+		.mb-video{
+			margin-top: -10px !important;
+		}
+		#vedio{
+			height:250px !important;
+		}
+		.elementor-1131 .elementor-element.elementor-element-5aaefc9 .c-ip-heading {
+			text-align: center;
+			margin-top: -32px;
+		}
+		.elementor-1052 .elementor-element.elementor-element-7195f8fe .c-ip-heading .c-ip-heading__inner {
+			max-width: 265px;
+			margin-left: -54px;
+		}
+	}
 </style>
 @endsection
 
@@ -101,11 +126,11 @@
 			<div class="elementor-section-wrap">
 				<div id="slider">
 					<figure>
-						<img src="{{ asset('/images/s1.jpg') }}">
-						<img src="{{ asset('/images/s2.jpg') }}">
-						<img src="{{ asset('/images/s3.jpg') }}">
-						<img src="{{ asset('/images/s4.jpg') }}">
-						<img src="{{ asset('/images/s5.jpg') }}">
+						<img src="{{ asset('/images/1.jpg') }}">
+						<img src="{{ asset('/images/2.jpg') }}">
+						<img src="{{ asset('/images/3.jpg') }}">
+						<img src="{{ asset('/images/1.jpg') }}">
+						<img src="{{ asset('/images/2.jpg') }}">
 					</figure>
 				</div>
 			</div>
@@ -612,9 +637,9 @@
 									</div>
 									<div class="elementor-element elementor-element-1f4d44c elementor-widget-mobile__width-initial elementor-absolute elementor-widget elementor-widget-image" data-id="1f4d44c" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="image.default">
 										<div class="elementor-widget-container">
-											<div class="elementor-image">
+											<!-- <div class="elementor-image">
 												<img width="264" height="255" src="../wp-content/uploads/2020/10/luchiana-2233701518.png" class="attachment-full size-full" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-2233701518.png 264w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-2233701518-150x145.png 150w" sizes="(max-width: 264px) 100vw, 264px" />
-											</div>
+											</div> -->
 										</div>
 									</div>
 								</div>
@@ -624,7 +649,7 @@
 				</div>
 			</section>
 
-			<section class="elementor-section elementor-top-section elementor-element elementor-element-071bf45 elementor-section-height-min-height elementor-section-boxed elementor-section-height-default elementor-section-items-middle" data-id="071bf45" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+			<!-- <section class="elementor-section elementor-top-section elementor-element elementor-element-071bf45 elementor-section-height-min-height elementor-section-boxed elementor-section-height-default elementor-section-items-middle" data-id="071bf45" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 				<div class="elementor-container elementor-column-gap-no">
 					<div class="elementor-row">
 						<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-2050a00" data-id="2050a00" data-element_type="column">
@@ -651,7 +676,14 @@
 						</div>
 					</div>
 				</div>
+			</section> -->
+			
+			<section class="mb-video" style="margin-top: 50px;">
+				<video id="vedio" height="401" width="1208" autoplay muted loop >
+					<source src="{{ asset('/images/MB_Home_page_banner.mp4') }}" type="video/mp4">
+				</video>
 			</section>
+			
 			<section class="elementor-section elementor-top-section elementor-element elementor-element-98b9ea0 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="98b9ea0" data-element_type="section">
 				<div class="elementor-container elementor-column-gap-no">
 					<div class="elementor-row">
@@ -672,7 +704,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="elementor-element elementor-element-abae348 elementor-widget elementor-widget-ideapark-countdown" data-id="abae348" data-element_type="widget" data-widget_type="ideapark-countdown.default">
+									{{-- <div class="elementor-element elementor-element-abae348 elementor-widget elementor-widget-ideapark-countdown" data-id="abae348" data-element_type="widget" data-widget_type="ideapark-countdown.default">
 										<div class="elementor-widget-container">
 											<script>
 												var
@@ -683,12 +715,12 @@
 													ideapark_countdown_minutes = 'Minutes',
 													ideapark_countdown_seconds = 'Seconds';
 											</script>
-											{{-- <div class="c-ip-countdown">
-                          <div class="c-ip-countdown__wrap js-countdown" data-date="2021-04-30 12:00" data-month="no" data-week="no">
-                          </div>
-                        </div> --}}
+											<div class="c-ip-countdown">
+												<div class="c-ip-countdown__wrap js-countdown" data-date="2021-04-30 12:00" data-month="no" data-week="no">
+												</div>
+												</div>
 										</div>
-									</div>
+									</div> --}}
 									<div class="elementor-element elementor-element-3eb76f9 elementor-widget elementor-widget-ideapark-heading" data-id="3eb76f9" data-element_type="widget" data-widget_type="ideapark-heading.default">
 										<div class="elementor-widget-container">
 											<div class="c-ip-heading c-ip-heading--default c-ip-heading--left c-ip-heading--tablet-center c-ip-heading--mobile-center c-ip-heading--bullet-hide">

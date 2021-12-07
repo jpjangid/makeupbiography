@@ -95,7 +95,7 @@ class CategoryController extends Controller
         }
         $products1 = $products1->get()->toArray();
 
-        $products = DB::table('product_variants')->distinct('product_id')->whereIn('product_id',array_column($products1,'id'));
+        $products = DB::table('product_variants')->select('product_id','id')->distinct('product_id')->whereIn('product_id',array_column($products1,'id'));
         if(!empty($request->min_price_filter) && !empty($request->max_price_filter)) {
             $products = $products->whereBetween('sale_price',array(floatval($request->min_price_filter),floatval($request->max_price_filter)));
         }
@@ -105,8 +105,20 @@ class CategoryController extends Controller
         if(!empty($request->orderby) && $request->orderby == "hightolow") {
             $products = $products->orderBy('sale_price','DESC');
         }   
-        $products = $products->paginate(10)->unique('product_id'); 
-     
+        $products = $products->get()->unique('product_id')->toArray();
+        
+        $products = DB::table('product_variants')->whereIn('id',array_column($products,'id'));
+        if(!empty($request->min_price_filter) && !empty($request->max_price_filter)) {
+            $products = $products->whereBetween('sale_price',array(floatval($request->min_price_filter),floatval($request->max_price_filter)));
+        }
+        if(!empty($request->orderby) && $request->orderby == "lowtohigh") {
+            $products = $products->orderBy('sale_price','ASC');
+        }
+        if(!empty($request->orderby) && $request->orderby == "hightolow") {
+            $products = $products->orderBy('sale_price','DESC');
+        }   
+        $products = $products->paginate(5); 
+
         $product_details = array();
         $product_medias = array();
         foreach($products as $pro) {

@@ -22,6 +22,11 @@
     max-height: 3.6em;
     line-height: 1.8em;
   }
+  a > svg {
+    height: 20px !important;
+    padding-top: 7px;
+  }
+
 </style>
 @endsection
 
@@ -314,6 +319,7 @@
 
               @endforeach
             </div>
+            {{ $products->links() }}
           </div>
         </div>
         <nav class="woocommerce-pagination">
