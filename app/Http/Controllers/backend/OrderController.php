@@ -17,7 +17,7 @@ class OrderController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $allorders = Order::with('items', 'user')->orderby('created_at', 'desc')->get();
+            $allorders = Order::where('flag','0')->with('items', 'user')->orderby('created_at', 'desc')->get();
 
             $orders = new Collection;
             foreach ($allorders as $order) {
