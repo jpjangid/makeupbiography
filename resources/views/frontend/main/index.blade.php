@@ -70,6 +70,26 @@
 			left: -400%;
 		}
 	}
+
+	.short-description {
+		display: block;/* or inline-block */
+		text-overflow: ellipsis;
+		word-wrap: break-word;
+		overflow: hidden;
+		max-height: 3.6em;
+		line-height: 1.8em;
+	}
+
+	.price-div {
+		border-top: 2px solid #FFD700;
+		font-size: 20px;
+		font-family: "Times New Roman";
+		background-image: linear-gradient(to bottom, #43C6DB, #43BFC7);
+		padding-top: 10px;
+		padding-bottom: 10px;
+		text-align: center;
+		color: white;
+	}
 </style>
 @endsection
 
@@ -206,15 +226,15 @@
 																		@endif
 
 																		<!-- .c-product-grid__badges -->
-																		<div class="c-product-grid__thumb-wrap">
-																			<a href="https://parkofideas.com/luchiana/demo/shop/airbrush-matte/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-																				<img width="260" height="230" src="../wp-content/uploads/2020/10/luchiana-3022279061-260x230.jpg" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-260x230.jpg 260w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-520x460.jpg 520w" sizes="(max-width: 260px) 100vw, 260px" />
+																		<div class="c-product-grid__thumb-wrap" style="width: auto;">
+																			<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+																				<img src="{{ asset('storage/products/'.$main_newest_product->main_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ asset('storage/products/'.$main_newest_product->main_image) }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
 																			</a>
 																			<div class="c-product-grid__thumb-button-list">
-																				<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="438">
-																					<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>
-																					<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>
-																				</button>
+																				<!--<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="438">-->
+																				<!--	<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>-->
+																				<!--	<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>-->
+																				<!--</button>-->
 																				<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button" data-product_variant_id="{{ $variant->id }}" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
 																					<i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
 																					<i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
@@ -231,16 +251,16 @@
 																				<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
 																					<h2 class="woocommerce-loop-product__title">{{ $main_newest_product->name."-".$variant->name }}</h2>
 																				</a>
-																				<div class="c-product-grid__short-desc">
-																					<p>{{ $main_newest_product->short_description }}</p>
-																				</div>
+																				<!-- <div class="c-product-grid__short-desc">
+																					<p class="short-description">{{ $main_newest_product->short_description }}</p>
+																				</div> -->
 																				<div class="star-rating" role="img" aria-label="Rated 4.00 out of 5">
 																					<span style="width:80%">Rated
-																						<strong class="rating">4.00</strong>out of 5</span>
+																						<strong class="rating" style="font-size: 16px;">4.00</strong>out of 5</span>
 																				</div>
 																			</div>
 																			<!-- .c-product-grid__title-wrap -->
-																			<div class="c-product-grid__price-wrap">
+																			<div class="c-product-grid__price-wrap price-div">
 																				<span class="price">
 																					@if(!empty($variant->discount) && $variant->discount > 0)
 																					<del aria-hidden="true">
@@ -284,8 +304,8 @@
 																<div class="c-product-grid__list c-ip-product-tabs__list c-ip-product-tabs__list--4-per-row c-ip-product-tabs__list--grid c-product-grid__list--4-per-row ">
 
 																	<!-- Top Popular Product List Item Begin -->
-																	@if(!empty($main_newest_products))
-																	@foreach($main_newest_products as $main_newest_product)
+																	@if(!empty($main_popular_products))
+																	@foreach($main_popular_products as $main_newest_product)
 																	@if(!empty($main_newest_product->variants) && count($main_newest_product->variants) > 0)
 																	@php
 																	$variant = $main_newest_product->variants[0];
@@ -310,15 +330,15 @@
 																		</div>
 																		@endif
 																		<!-- .c-product-grid__badges -->
-																		<div class="c-product-grid__thumb-wrap">
-																			<a href="https://parkofideas.com/luchiana/demo/shop/airbrush-matte/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-																				<img width="260" height="230" src="../wp-content/uploads/2020/10/luchiana-3022279061-260x230.jpg" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-260x230.jpg 260w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-520x460.jpg 520w" sizes="(max-width: 260px) 100vw, 260px" />
+																		<div class="c-product-grid__thumb-wrap" style="width: auto;">
+																			<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+																				<img src="{{ asset('storage/products/'.$main_newest_product->main_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ asset('storage/products/'.$main_newest_product->main_image) }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
 																			</a>
 																			<div class="c-product-grid__thumb-button-list">
-																				<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="438">
-																					<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>
-																					<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>
-																				</button>
+																				<!--<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="438">-->
+																				<!--	<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>-->
+																				<!--	<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>-->
+																				<!--</button>-->
 																				<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button" data-product_variant_id="{{ $variant->id }}" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
 																					<i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
 																					<i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
@@ -335,16 +355,16 @@
 																				<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
 																					<h2 class="woocommerce-loop-product__title">{{ $main_newest_product->name."-".$variant->name }}</h2>
 																				</a>
-																				<div class="c-product-grid__short-desc">
-																					<p>{{ $main_newest_product->short_description }}</p>
-																				</div>
+																				<!-- <div class="c-product-grid__short-desc">
+																					<p class="short-description">{{ $main_newest_product->short_description }}</p>
+																				</div> -->
 																				<div class="star-rating" role="img" aria-label="Rated 4.00 out of 5">
 																					<span style="width:80%">Rated
-																						<strong class="rating">4.00</strong>out of 5</span>
+																						<strong class="rating" style="font-size: 16px;">4.00</strong>out of 5</span>
 																				</div>
 																			</div>
 																			<!-- .c-product-grid__title-wrap -->
-																			<div class="c-product-grid__price-wrap">
+																			<div class="c-product-grid__price-wrap price-div">
 																				<span class="price">
 																					@if(!empty($variant->discount) && $variant->discount > 0)
 																					<del aria-hidden="true">
@@ -387,8 +407,8 @@
 																<div class="c-product-grid__list c-ip-product-tabs__list c-ip-product-tabs__list--4-per-row c-ip-product-tabs__list--grid c-product-grid__list--4-per-row ">
 
 																	<!-- Top Category Product List Item Begin -->
-																	@if(!empty($main_newest_products))
-																	@foreach($main_newest_products as $main_newest_product)
+																	@if(!empty($main_category_products))
+																	@foreach($main_category_products as $main_newest_product)
 																	@if(!empty($main_newest_product->variants) && count($main_newest_product->variants) > 0)
 																	@php
 																	$variant = $main_newest_product->variants[0];
@@ -413,15 +433,15 @@
 																		</div>
 																		@endif
 																		<!-- .c-product-grid__badges -->
-																		<div class="c-product-grid__thumb-wrap">
-																			<a href="https://parkofideas.com/luchiana/demo/shop/airbrush-matte/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-																				<img width="260" height="230" src="../wp-content/uploads/2020/10/luchiana-3022279061-260x230.jpg" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-260x230.jpg 260w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-520x460.jpg 520w" sizes="(max-width: 260px) 100vw, 260px" />
+																		<div class="c-product-grid__thumb-wrap" style="width: auto;">
+																			<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+																				<img src="{{ asset('storage/products/'.$main_newest_product->main_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ asset('storage/products/'.$main_newest_product->main_image) }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
 																			</a>
 																			<div class="c-product-grid__thumb-button-list">
-																				<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="438">
-																					<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>
-																					<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>
-																				</button>
+																				<!--<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="438">-->
+																				<!--	<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>-->
+																				<!--	<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>-->
+																				<!--</button>-->
 																				<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button" data-product_variant_id="{{ $variant->id }}" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
 																					<i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
 																					<i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
@@ -438,16 +458,16 @@
 																				<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
 																					<h2 class="woocommerce-loop-product__title">{{ $main_newest_product->name."-".$variant->name }}</h2>
 																				</a>
-																				<div class="c-product-grid__short-desc">
-																					<p>{{ $main_newest_product->short_description }}</p>
-																				</div>
+																				<!-- <div class="c-product-grid__short-desc">
+																					<p class="short-description">{{ $main_newest_product->short_description }}</p>
+																				</div> -->
 																				<div class="star-rating" role="img" aria-label="Rated 4.00 out of 5">
 																					<span style="width:80%">Rated
-																						<strong class="rating">4.00</strong>out of 5</span>
+																						<strong class="rating" style="font-size: 16px;">4.00</strong>out of 5</span>
 																				</div>
 																			</div>
 																			<!-- .c-product-grid__title-wrap -->
-																			<div class="c-product-grid__price-wrap">
+																			<div class="c-product-grid__price-wrap price-div">
 																				<span class="price">
 																					@if(!empty($variant->discount) && $variant->discount > 0)
 																					<del aria-hidden="true">
@@ -490,8 +510,8 @@
 																<div class="c-product-grid__list c-ip-product-tabs__list c-ip-product-tabs__list--4-per-row c-ip-product-tabs__list--grid c-product-grid__list--4-per-row ">
 
 																	<!-- Top Brand Product List Item Begin -->
-																	@if(!empty($main_newest_products))
-																	@foreach($main_newest_products as $main_newest_product)
+																	@if(!empty($main_brand_products))
+																	@foreach($main_brand_products as $main_newest_product)
 																	@if(!empty($main_newest_product->variants) && count($main_newest_product->variants) > 0)
 																	@php
 																	$variant = $main_newest_product->variants[0];
@@ -516,15 +536,15 @@
 																		</div>
 																		@endif
 																		<!-- .c-product-grid__badges -->
-																		<div class="c-product-grid__thumb-wrap">
-																			<a href="https://parkofideas.com/luchiana/demo/shop/airbrush-matte/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-																				<img width="260" height="230" src="../wp-content/uploads/2020/10/luchiana-3022279061-260x230.jpg" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-260x230.jpg 260w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-520x460.jpg 520w" sizes="(max-width: 260px) 100vw, 260px" />
+																		<div class="c-product-grid__thumb-wrap" style="width: auto;">
+																			<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+																				<img src="{{ asset('storage/products/'.$main_newest_product->main_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ asset('storage/products/'.$main_newest_product->main_image) }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
 																			</a>
 																			<div class="c-product-grid__thumb-button-list">
-																				<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="438">
-																					<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>
-																					<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>
-																				</button>
+																				<!--<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="438">-->
+																				<!--	<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>-->
+																				<!--	<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>-->
+																				<!--</button>-->
 																				<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button" data-product_variant_id="{{ $variant->id }}" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
 																					<i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
 																					<i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
@@ -541,16 +561,16 @@
 																				<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
 																					<h2 class="woocommerce-loop-product__title">{{ $main_newest_product->name."-".$variant->name }}</h2>
 																				</a>
-																				<div class="c-product-grid__short-desc">
-																					<p>{{ $main_newest_product->short_description }}</p>
-																				</div>
+																				<!-- <div class="c-product-grid__short-desc">
+																					<p class="short-description">{{ $main_newest_product->short_description }}</p>
+																				</div> -->
 																				<div class="star-rating" role="img" aria-label="Rated 4.00 out of 5">
 																					<span style="width:80%">Rated
-																						<strong class="rating">4.00</strong>out of 5</span>
+																						<strong class="rating" style="font-size: 16px;">4.00</strong>out of 5</span>
 																				</div>
 																			</div>
 																			<!-- .c-product-grid__title-wrap -->
-																			<div class="c-product-grid__price-wrap">
+																			<div class="c-product-grid__price-wrap price-div">
 																				<span class="price">
 																					@if(!empty($variant->discount) && $variant->discount > 0)
 																					<del aria-hidden="true">
@@ -688,6 +708,7 @@
 								</div>
 							</div>
 						</div>
+						
 						<!-- Big Discount Begin -->
 						@if(!empty($big_offer_products) && count($big_offer_products) > 0)
 						<div class="elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-457d5c0" data-id="457d5c0" data-element_type="column">
@@ -727,15 +748,15 @@
 
 
 																	<!-- .c-product-grid__badges -->
-																	<div class="c-product-grid__thumb-wrap">
-																		<a href="https://parkofideas.com/luchiana/demo/shop/airbrush-matte/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-																			<img width="460" height="460" src="../wp-content/uploads/2020/10/luchiana-3022279061-460x460.jpg" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-460x460.jpg 460w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-115x115.jpg 115w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-760x760.jpg 760w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-920x920.jpg 920w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-145x145.jpg 145w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061-290x290.jpg 290w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3022279061.jpg 1200w" sizes="(max-width: 460px) 100vw, 460px" />
+																	<div class="c-product-grid__thumb-wrap" style="width: auto;">
+																		<a href="{{ url('products',['product' => $big_offer_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+																			<img src="{{ asset('storage/products/'.$big_offer_product->main_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ asset('storage/products/'.$big_offer_product->main_image) }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
 																		</a>
 																		<div class="c-product-grid__thumb-button-list">
-																			<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="438">
-																				<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>
-																				<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>
-																			</button>
+																			<!--<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="438">-->
+																			<!--	<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>-->
+																			<!--	<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>-->
+																			<!--</button>-->
 																			<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button" data-product_variant_id="{{ $variant->id }}" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
 																				<i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
 																				<i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
@@ -752,16 +773,16 @@
 																			<a href="{{ url('products',['product' => $big_offer_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
 																				<h2 class="woocommerce-loop-product__title">{{ $big_offer_product->name."-".$variant->name }}</h2>
 																			</a>
-																			<div class="c-product-grid__short-desc">
+																			<!-- <div class="c-product-grid__short-desc">
 																				<p>{{ $big_offer_product->short_description }}</p>
-																			</div>
+																			</div> -->
 																			<div class="star-rating" role="img" aria-label="Rated 4.00 out of 5">
 																				<span style="width:80%">Rated
-																					<strong class="rating">4.00</strong>out of 5</span>
+																					<strong class="rating" style="font-size: 16px;">4.00</strong>out of 5</span>
 																			</div>
 																		</div>
 																		<!-- .c-product-grid__title-wrap -->
-																		<div class="c-product-grid__price-wrap">
+																		<div class="c-product-grid__price-wrap price-div">
 																			<span class="price">
 																				@if($variant->discount_type != "")
 																				<del aria-hidden="true">

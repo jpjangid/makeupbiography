@@ -15,11 +15,14 @@ class HomeController extends Controller
     public function index()
     {
         $main_categories = Category::where(['flag' => 0,'status' => 1])->where('parent_id',null)->get();
-        $main_newest_products = Product::where(['flag' => 0,'status' => 1])->where('tags','like','%'.'newest'.'%')->orWhere('tags','like','%'.'popular'.'%')->orWhere('tags','like','%'.'category'.'%')->orWhere('tags','like','%'.'brand'.'%')->with(['variants' => function($query) { $query->where(['flag'=>0])->orderBy('sequence','asc')->first(); }])->orderBy('created_at', 'DESC')->take(5)->get();
-        $big_offer_products = Product::where(['flag' => 0,'status' => 1])->where('tags','like','%'.'big discount'.'%')->with(['variants' => function($query) { $query->where(['flag'=>0])->where('discount','>',0)->orderBy('sequence','asc')->first(); }])->orderBy('updated_at', 'DESC')->take(6)->get();
+        $main_newest_products = Product::where(['flag' => 0,'status' => 1])->where('tags','like','%'.'newest'.'%')->with(['variants' => function($query) { $query->where(['flag'=>0])->orderBy('sequence','asc'); }])->orderBy('created_at', 'DESC')->take(5)->get();
+        $main_popular_products = Product::where(['flag' => 0,'status' => 1])->where('tags','like','%'.'popular'.'%')->with(['variants' => function($query) { $query->where(['flag'=>0])->orderBy('sequence','asc'); }])->orderBy('created_at', 'DESC')->take(5)->get();
+        $main_category_products = Product::where(['flag' => 0,'status' => 1])->where('tags','like','%'.'category'.'%')->with(['variants' => function($query) { $query->where(['flag'=>0])->orderBy('sequence','asc'); }])->orderBy('created_at', 'DESC')->take(5)->get();
+        $main_brand_products = Product::where(['flag' => 0,'status' => 1])->where('tags','like','%'.'brand'.'%')->with(['variants' => function($query) { $query->where(['flag'=>0])->orderBy('sequence','asc'); }])->orderBy('created_at', 'DESC')->take(5)->get();
+        $big_offer_products = Product::where(['flag' => 0,'status' => 1])->where('tags','like','%'.'big discount'.'%')->with(['variants' => function($query) { $query->orderBy('sequence','DESC'); }])->orderBy('updated_at', 'DESC')->take(6)->get();
         $footer_banners = FooterBanner::where('image','!=',"")->where('status',1)->get();
-        
-        return view('frontend.main.index',compact('main_categories','main_newest_products','big_offer_products','footer_banners'));
+       
+        return view('frontend.main.index',compact('main_categories','main_newest_products','main_popular_products','main_category_products','main_brand_products','big_offer_products','footer_banners'));
     }
 
     public function search(Request $request)

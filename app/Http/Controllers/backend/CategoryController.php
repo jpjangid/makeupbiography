@@ -66,13 +66,13 @@ class CategoryController extends Controller
             'name'                  =>  'required|unique:categories,name',
             'description'           =>  'required',
             'short_description'     =>  'required',
-            'alt'                   =>  'required',
+            // 'alt'                   =>  'required',
             'slug'                  =>  'required|unique:categories,slug',
         ], [
             'name.required'                 =>  'Category Name is required',
             'description.required'          =>  'Category Description is required',
             'short_description.required'    =>  'Category Short Description is required',
-            'alt.required'                  =>  'Category Image Alt text is required',
+            // 'alt.required'                  =>  'Category Image Alt text is required',
             'slug.required'                 =>  'Category Slug is required',
         ]);
 
@@ -117,7 +117,7 @@ class CategoryController extends Controller
             'og_alt'                    =>  $request->og_alt,
         ]);
 
-        return redirect('categories')->with('success', 'Category added successfully');
+        return redirect('admin/categories')->with('success', 'Category added successfully');
     }
 
     public function update_status(Request $request)
@@ -146,13 +146,13 @@ class CategoryController extends Controller
             'name'                  =>  'required|unique:categories,name,' . $id,
             'description'           =>  'required',
             'short_description'     =>  'required',
-            'alt'                   =>  'required',
+            // 'alt'                   =>  'required',
             'slug'                  =>  'required|unique:categories,slug,' . $id,
         ], [
             'name.required'                 =>  'Category Name is required',
             'description.required'          =>  'Category Description is required',
             'short_description.required'    =>  'Category Short Description is required',
-            'alt.required'                  =>  'Category Image Alt text is required',
+            // 'alt.required'                  =>  'Category Image Alt text is required',
             'slug.required'                 =>  'Category Slug is required',
         ]);
 
@@ -203,7 +203,7 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         Category::where('id', $id)->update(['flag' => 1]);
-        return redirect('categories')->with('danger', 'Category deleted successfully');
+        return redirect('admin/categories')->with('danger', 'Category deleted successfully');
     }
 
     //level 2 code for sub category
@@ -263,7 +263,7 @@ class CategoryController extends Controller
 
     public function edit_sub1($id)
     {
-        $categories = Category::where('parent_id', null)->where('flag', 0)->get();
+        $categories = Category::where('parent_id', null)->where(['flag' => 0,'status' => 1])->get();
         $category = Category::where('id', $id)->first();
         return view('backend.category.sub1.edit', compact('category', 'categories'));
     }
@@ -274,13 +274,13 @@ class CategoryController extends Controller
             'name'                  =>  'required|unique:categories,name,' . $id,
             'description'           =>  'required',
             'short_description'     =>  'required',
-            'alt'                   =>  'required',
+            // 'alt'                   =>  'required',
             'slug'                  =>  'required|unique:categories,slug,' . $id,
         ], [
             'name.required'                 =>  'Category Name is required',
             'description.required'          =>  'Category Description is required',
             'short_description.required'    =>  'Category Short Description is required',
-            'alt.required'                  =>  'Category Image Alt text is required',
+            // 'alt.required'                  =>  'Category Image Alt text is required',
             'slug.required'                 =>  'Category Slug is required',
         ]);
 
@@ -331,7 +331,7 @@ class CategoryController extends Controller
 
     public function create_sub1()
     {
-        $categories = Category::where('parent_id', null)->where('flag', 0)->get();
+        $categories = Category::where('parent_id', null)->where(['flag' => 0,'status' => 1])->get();
         return view('backend.category.sub1.create', compact('categories'));
     }
 
@@ -341,13 +341,13 @@ class CategoryController extends Controller
             'name'                  =>  'required|unique:categories,name',
             'description'           =>  'required',
             'short_description'     =>  'required',
-            'alt'                   =>  'required',
+            // 'alt'                   =>  'required',
             'slug'                  =>  'required|unique:categories,slug',
         ], [
             'name.required'                 =>  'Category Name is required',
             'description.required'          =>  'Category Description is required',
             'short_description.required'    =>  'Category Short Description is required',
-            'alt.required'                  =>  'Category Image Alt text is required',
+            // 'alt.required'                  =>  'Category Image Alt text is required',
             'slug.required'                 =>  'Category Slug is required',
         ]);
 
@@ -463,7 +463,7 @@ class CategoryController extends Controller
 
     public function create_sub2()
     {
-        $categories1 = Category::select('id')->where('flag', 0)->where('parent_id', null)->with('subcategory')->get();
+        $categories1 = Category::select('id')->where(['flag' => 0,'status' => 1])->where('parent_id', null)->with(['subcategory' => function($query){ $query->where(['flag' => 0,'status' => 1]); }])->get();
         $categories = new Collection;
         foreach ($categories1 as $cat1) {
             if (!empty($cat1->subcategory)) {
@@ -485,13 +485,13 @@ class CategoryController extends Controller
             'name'                  =>  'required|unique:categories,name',
             'description'           =>  'required',
             'short_description'     =>  'required',
-            'alt'                   =>  'required',
+            // 'alt'                   =>  'required',
             'slug'                  =>  'required|unique:categories,slug',
         ], [
             'name.required'                 =>  'Category Name is required',
             'description.required'          =>  'Category Description is required',
             'short_description.required'    =>  'Category Short Description is required',
-            'alt.required'                  =>  'Category Image Alt text is required',
+            // 'alt.required'                  =>  'Category Image Alt text is required',
             'slug.required'                 =>  'Category Slug is required',
         ]);
 
@@ -542,7 +542,7 @@ class CategoryController extends Controller
 
     public function edit_sub2($id)
     {
-        $categories1 = Category::select('id')->where('flag', 0)->where('parent_id', null)->with('subcategory')->get();
+        $categories1 = Category::select('id')->where(['flag' => 0,'status' => 1])->where('parent_id', null)->with(['subcategory' => function($query){ $query->where(['flag' => 0,'status' => 1]); }])->get();
         $categories = new Collection;
         foreach ($categories1 as $cat1) {
             if (!empty($cat1->subcategory)) {
@@ -565,13 +565,13 @@ class CategoryController extends Controller
             'name'                  =>  'required|unique:categories,name,' . $id,
             'description'           =>  'required',
             'short_description'     =>  'required',
-            'alt'                   =>  'required',
+            // 'alt'                   =>  'required',
             'slug'                  =>  'required|unique:categories,slug,' . $id,
         ], [
             'name.required'                 =>  'Category Name is required',
             'description.required'          =>  'Category Description is required',
             'short_description.required'    =>  'Category Short Description is required',
-            'alt.required'                  =>  'Category Image Alt text is required',
+            // 'alt.required'                  =>  'Category Image Alt text is required',
             'slug.required'                 =>  'Category Slug is required',
         ]);
 

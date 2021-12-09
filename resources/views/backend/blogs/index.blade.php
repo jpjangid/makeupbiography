@@ -110,11 +110,8 @@
             },
         ]
     });
-</script>
 
-<!-- Change Status -->
-<script>
-    $('.js-switch').change(function() {
+    $(document).on('change','.js-switch',function() {
         var row = $(this).closest('tr');
         let status = row.find('.js-switch').val();
         let blogId = row.find('.blog_id').val();
@@ -136,5 +133,4 @@
         });
     });
 </script>
-
 @endsection

@@ -4,6 +4,16 @@
 
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.css"/>
+<style>
+  .short-description {
+    display: block;/* or inline-block */
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    max-height: 3.6em;
+    line-height: 1.8em;
+  }
+</style>
 @endsection
 
 @section('content')
@@ -198,7 +208,7 @@
                 <!-- .c-product-grid__badges -->
                 <div class="c-product-grid__thumb-wrap">
                   <a href="{{ url('products',['product' => $product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                    <img width="460" height="460" src="{{ asset('storage/products/'.$product->main_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" sizes="(max-width: 460px) 100vw, 460px" />
+                    <img width="460" height="460" src="{{ asset('storage/products/'.$product->main_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" sizes="(max-width: 460px) 100vw, 460px" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;"/>
                   </a>
                   <div class="c-product-grid__thumb-button-list">
                     <button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $product->id }}-btn h-cb c-product-grid__thumb-button" data-product_variant_id="{{ $variant->id }}" data-product-id="{{ $product->id }}" data-title="Wishlist">
@@ -227,7 +237,7 @@
                       <h2 class="woocommerce-loop-product__title">{{ $product->name."-".$variant->name }}</h2>
                     </a>
                     <div class="c-product-grid__short-desc">
-                      <p>{{ $product->short_description }}</p>
+                      <p class="short-description">{{ $product->short_description }}</p>
                     </div>
                   </div>
                   <!-- .c-product-grid__price-wrap -->

@@ -13,6 +13,17 @@
       margin-left: 0px !important;
     }
   }
+  .zoom-href:hover {
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+    margin-left: 5px;
+  }
+  .zoom-icon:hover {
+    font-size: 25px;
+    font-weight: bold;
+    color: black;
+  }
 </style>
 <footer class="l-section c-footer">
   <div class="l-section">
@@ -26,7 +37,7 @@
                   <div class="elementor-column-wrap elementor-element-populated">
                     <div class="elementor-widget-wrap">
                       <div class="elementor-element elementor-element-33548589 elementor-widget elementor-widget-ideapark-inline-menu" data-id="33548589" data-element_type="widget" data-widget_type="ideapark-inline-menu.default">
-                        <div class="elementor-widget-container">
+                        {{-- <div class="elementor-widget-container">
                           <img src="{{ asset('/images/golden-stroke.png') }}" height="5%" width="10%" style="float:left; margin-left: -5px; margin-top: -10px;">
                           <img src="{{ asset('/images/golden-stroke.png') }}" height="5%" width="10%" style="float:right; -webkit-transform: scaleX(-1); transform: scaleX(-1); margin-right: -5px; margin-top: -10px;">
                           <div class="c-ip-inline-menu">
@@ -50,10 +61,12 @@
                               <a href="https://parkofideas.com/luchiana/demo/contact/">Contact</a>
                             </span>
                           </div>
-                        </div>
+                        </div> --}}
                       </div>
 
                       <section class="elementor-section elementor-inner-section elementor-element elementor-element-2b806726 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="2b806726" data-element_type="section">
+                        <img src="{{ asset('/images/golden-stroke.png') }}" height="5%" width="10%" style="float:left; margin-left: -5px; margin-top: -10px;">
+                        <img src="{{ asset('/images/golden-stroke.png') }}" height="5%" width="10%" style="float:right; -webkit-transform: scaleX(-1); transform: scaleX(-1); margin-right: -5px; margin-top: -10px;">
                         <div class="elementor-container elementor-column-gap-no">
                           <div class="elementor-row">
                             <div class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-10793382" data-id="10793382" data-element_type="column">
@@ -63,11 +76,11 @@
                                     <div class="elementor-widget-container">
                                       <ul class="elementor-icon-list-items">
                                         <li class="elementor-icon-list-item">
-                                          <a href="tel:+1234889652">
+                                          <a href="tel:+081978 94448">
                                             <span class="elementor-icon-list-icon">
                                               <i aria-hidden="true" class="fibd21- fi-bd21-phone"></i>
                                             </span>
-                                            <span class="elementor-icon-list-text">+123 488 9652</span>
+                                            <span class="elementor-icon-list-text">+081978 94448</span>
                                           </a>
                                         </li>
                                         <li class="elementor-icon-list-item">
@@ -75,7 +88,7 @@
                                             <span class="elementor-icon-list-icon">
                                               <i aria-hidden="true" class="fibd21- fi-bd21-map-pin"></i>
                                             </span>
-                                            <span class="elementor-icon-list-text">25 West 21th Street, Miami FL, USA</span>
+                                            <span class="elementor-icon-list-text">Sri Complex, #45, Sajjan Rao Cir, Vishweshwarapura, Bengaluru, Karnataka 560004</span>
                                           </a>
                                         </li>
                                         <li class="elementor-icon-list-item">
@@ -83,14 +96,14 @@
                                             <span class="elementor-icon-list-icon">
                                               <i aria-hidden="true" class="fibd21- fi-bd21-subscribe"></i>
                                             </span>
-                                            <span class="elementor-icon-list-text">info@luchiana.com</span>
+                                            <span class="elementor-icon-list-text">makeupbiography@gmail.com</span>
                                           </a>
                                         </li>
                                         <li class="elementor-icon-list-item">
                                           <span class="elementor-icon-list-icon">
                                             <i aria-hidden="true" class="fibd21- fi-bd21-time"></i>
                                           </span>
-                                          <span class="elementor-icon-list-text">Mon-Fri: 10:00 - 18:00</span>
+                                          <span class="elementor-icon-list-text">Mon-Fri: 10:00 - 20:00</span>
                                         </li>
                                       </ul>
                                     </div>
@@ -113,22 +126,22 @@
                                   <div class="elementor-element elementor-element-6b247977 elementor-align-center elementor-widget elementor-widget-ideapark-social" data-id="6b247977" data-element_type="widget" data-widget_type="ideapark-social.default">
                                     <div class="elementor-widget-container">
                                       <div class="c-ip-social">
-                                        <a href="#" class="c-ip-social__link">
+                                        <a href="#" class="c-ip-social__link zoom-icon">
                                           <i class="ip-facebook c-ip-social__icon c-ip-social__icon--facebook">
                                             <!-- -->
                                           </i>
                                         </a>
-                                        <a href="#" class="c-ip-social__link">
+                                        <a href="#" class="c-ip-social__link zoom-icon">
                                           <i class="ip-instagram c-ip-social__icon c-ip-social__icon--instagram">
                                             <!-- -->
                                           </i>
                                         </a>
-                                        <a href="#" class="c-ip-social__link">
+                                        <a href="#" class="c-ip-social__link zoom-icon">
                                           <i class="ip-twitter c-ip-social__icon c-ip-social__icon--twitter">
                                             <!-- -->
                                           </i>
                                         </a>
-                                        <a href="#" class="c-ip-social__link">
+                                        <a href="#" class="c-ip-social__link zoom-icon">
                                           <i class="ip-youtube c-ip-social__icon c-ip-social__icon--youtube">
                                             <!-- -->
                                           </i>
@@ -148,28 +161,28 @@
                                         <span class="c-ip-heading__inner">
                                           <ul id="ftrlist" style="list-style-type: none;">
                                             <li id="menu-item-165" class="c-mobile-menu__subitem menu-item-165">
-                                              <a href="{{ url('about-us') }}">About us</a>
+                                              <a class="zoom-href" href="{{ url('about-us') }}">-> About us</a>
                                             </li>
                                             <li id="menu-item-164" class="c-mobile-menu__subitem menu-item-164">
-                                              <a href="https://parkofideas.com/luchiana/demo/our-team/">Our team</a>
+                                              <a class="zoom-href" href="https://parkofideas.com/luchiana/demo/our-team/">-> Our team</a>
                                             </li>
                                             <li id="menu-item-185" class="c-mobile-menu__subitem menu-item-185">
-                                              <a href="{{ url('faq') }}">FAQ</a>
+                                              <a class="zoom-href" href="{{ url('faq') }}">-> FAQ</a>
                                             </li>
                                             <li id="menu-item-2320" class="c-mobile-menu__subitem menu-item-2320">
-                                              <a href="{{ url('return-policy') }}">Return Policy</a>
+                                              <a class="zoom-href" href="{{ url('return-policy') }}">-> Return Policy</a>
                                             </li>
                                             <li id="menu-item-395" class="c-mobile-menu__subitem menu-item-395">
-                                              <a href="{{ url('shipping-policy') }}">Shipping Policy</a>
+                                              <a class="zoom-href" href="{{ url('shipping-policy') }}">-> Shipping Policy</a>
                                             </li>
                                             <li id="menu-item-396" class="c-mobile-menu__subitem menu-item-396">
-                                              <a href="{{ url('cancellation-policy') }}">Cancellation Policy</a>
+                                              <a class="zoom-href" href="{{ url('cancellation-policy') }}">-> Cancellation Policy</a>
                                             </li>
                                             <li class="c-mobile-menu__subitem menu-item-397">
-                                              <a href="{{ url('privacy-policy') }}">Privacy Policy</a>
+                                              <a class="zoom-href" href="{{ url('privacy-policy') }}">-> Privacy Policy</a>
                                             </li>
                                             <li class="c-mobile-menu__subitem menu-item-397">
-                                              <a href="{{ url('terms-and-conditions') }}">Terms & Conditions</a>
+                                              <a class="zoom-href" href="{{ url('terms-and-conditions') }}">-> Terms & Conditions</a>
                                             </li>
                                           </ul>
                                         </span>

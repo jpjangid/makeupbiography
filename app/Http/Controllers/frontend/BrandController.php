@@ -113,7 +113,7 @@ class BrandController extends Controller
         if(!empty($request->orderby) && $request->orderby == "hightolow") {
             $products = $products->orderBy('sale_price','DESC');
         }   
-        $products = $products->paginate(10)->unique('product_id'); 
+        $products = $products->paginate(100)->unique('product_id'); 
 
         $product_details = array();
         $product_medias = array();
