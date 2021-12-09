@@ -112,7 +112,7 @@ class CartController extends Controller
             }
         } else {
             $minutes = 60;
-            
+
             if (request()->hasCookie('makeup_biography')) {
                 $cartItems = json_decode(request()->cookie('makeup_biography'));
                 foreach ($cartItems  as $cartItem) {
@@ -149,7 +149,7 @@ class CartController extends Controller
                     }
                 }
             }
-            $cartItems = [];  
+             $cartItems = []; 
         }
 
         if (request()->ajax()) {
@@ -318,6 +318,37 @@ class CartController extends Controller
         }
         return redirect('cart')->with('success', 'Cart Updated');
     }
+    
+    //New Update Function 
+    public function update_cart_items(Request $request) 
+    {
+        $user = auth()->user();
+        $minutes = 60;
+        if ($user) {
+            Cart::where('id', $request->cart_id)->update(['quantity' => $request->qty]);
+            return response()->json(['status' => 200]);
+        }
+        else {
+            if ($request->hasCookie('makeup_biography')) {
+                $cartItems = json_decode(request()->cookie('makeup_biography'));
+                $cartItems = collect($cartItems);
+                foreach($cartItems as $cat) {
+                    if($cat->product_id ==  $request->product_id && $cat->product_variant_id == $request->product_variant_id) {
+                        $cart[] = ['product_id' => $cat->product_id, 'quantity' => $request->qty, 'product_variant_id' => $cat->product_variant_id];
+                    } else {
+                        $cart[] = ['product_id' => $cat->product_id, 'quantity' => $cat->quantity, 'product_variant_id' => $cat->product_variant_id];
+                    }
+                }
+            }
+            if (empty($cart)) {
+                \Cookie::queue(\Cookie::forget('makeup_biography'));
+            } else {
+                $array_json = json_encode($cart);
+                \Cookie::queue('makeup_biography', $array_json, $minutes);
+            }
+            return response()->json(['status' => 200]);
+        }
+    }
 
     //checkout function
     public function checkout(Request $request)
@@ -351,6 +382,10 @@ class CartController extends Controller
                 $subtotal += round(floatval($vari->productVariant->sale_price) * $vari->quantity);
                 if ($vari->productVariant->discount > 0) {
                     $discount = round(floatval(floatval($vari->productVariant->regular_price) * $vari->quantity) - floatval(floatval($vari->productVariant->sale_price) * $vari->quantity));
+                    array_push($product_dis, $discount);
+                    $discountPrice += $discount;
+                }else{
+                    $discount = 0;
                     array_push($product_dis, $discount);
                     $discountPrice += $discount;
                 }
