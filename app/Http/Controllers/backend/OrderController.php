@@ -48,7 +48,7 @@ class OrderController extends Controller
 
     public function order_detail($id)
     {
-        $order = Order::where('id', $id)->with('items.variant.product', 'items.variant.medias', 'user')->first();
+        $order = Order::where('id', $id)->with('items.variant.product', 'items.variant.medias', 'items.return', 'user')->first();
         $user = User::find($order->user_id);
         $image = array();
         foreach ($order->items as $item) {

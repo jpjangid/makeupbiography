@@ -22,4 +22,9 @@ class OrderItem extends Model
     {
         return $this->belongsTo('App\Models\Order','order_id');
     }
+
+    public function return()
+    {
+        return $this->belongsTo('App\Models\OrderItemReturn','id','order_item_id');
+    }
 }

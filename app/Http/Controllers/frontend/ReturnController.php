@@ -46,9 +46,18 @@ class ReturnController extends Controller
                 ]);
             }
 
-            $order = Order::find($request->order_id);
-            $order->flag = '1';
-            $order->update();
+            $order = Order::where('id', $request->order_id)->with('items.return')->first();
+            $total_order_items = $order->items->count();
+            $return_items = 0;
+            foreach($order->items as $item){
+                if(!empty($item->return)){
+                    $return_items += 1;
+                }
+            }
+            if($total_order_items == $return_items){
+                $order->flag = 1;
+                $order->update();
+            }
             
             Notification::create(['title' => "Order Return", 'message' => 'Order returned with order no :' . $request->order_id . ' from ' . auth()->user()->email]);
 
