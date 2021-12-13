@@ -17,7 +17,7 @@ class OrderController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $allorders = Order::with('items', 'user')->orderby('created_at', 'desc')->get();
+            $allorders = Order::where('flag','0')->with('items', 'user')->orderby('created_at', 'desc')->get();
 
             $orders = new Collection;
             foreach ($allorders as $order) {
@@ -48,7 +48,7 @@ class OrderController extends Controller
 
     public function order_detail($id)
     {
-        $order = Order::where('id', $id)->with('items.variant.product', 'items.variant.medias', 'user')->first();
+        $order = Order::where('id', $id)->with('items.variant.product', 'items.variant.medias', 'items.return', 'user')->first();
         $user = User::find($order->user_id);
         $image = array();
         foreach ($order->items as $item) {

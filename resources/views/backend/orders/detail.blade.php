@@ -37,13 +37,14 @@
                             </div>
                             <div class="col-md-12 mb-4">
                                 <h4>Order Details</h4>
-                                <table class="table table-row-bordered table-hover text-nowrap">
+                                <table class="table table-row-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th colspan="2">Ordered Item</th>
                                             <th>Qty.</th>
                                             <th>Item Price</th>
                                             <th>Amount</th>
+                                            <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -55,6 +56,7 @@
                                                     <td>{{ $item->quantity }}</td>
                                                     <td>{{ $item->variant->sale_price }}</td>
                                                     <td>{{ $item->variant->sale_price * $item->quantity }}</td>
+                                                    <td>{{ !empty($item->return) ? 'Return' : '' }}</td>
                                                 </tr>
                                             @endif
                                         @endforeach

@@ -16,7 +16,7 @@ class Order extends Model
         'shipping_country', 'shipping_state', 'shipping_city', 'shipping_zip', 'shipping_landmark', 'order_status',
         'razorpay_order_id', 'razorpay_payment_id', 'payment_mode', 'payment_currency', 'payment_status', 'shiprocket_order_id',
         'shiprocket_shipment_id', 'coupon_id', 'shop', 'order_comments', 'payment_amount', 'wallet_amount',
-        'coupon_discount', 'shipping_email', 'billing_email'
+        'coupon_discount', 'shipping_email', 'billing_email','flag'
     ];
 
     public function items()

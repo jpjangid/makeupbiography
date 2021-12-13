@@ -39,12 +39,14 @@ class MyAccountController extends Controller
 
     public function order_detail($order_no)
     {
-        $order = Order::where('order_no',$order_no)->with('items.variant.product','items.variant.medias','user')->first();
+        $order = Order::where(['order_no' => $order_no, 'flag' => '0'])->with('items.variant.product','items.variant.medias', 'items.return','user')->first();
         $image = array();
         foreach($order->items as $item){
-            $media = ProductVariantMedia::where(['product_variant_id' => $item->variant->id, 'media_type' => 'image'])->orderby('sequence','asc')->first();
-            if(!empty($media)){
-                array_push($image, $media->media);
+            if(empty($item->return)){
+                $media = ProductVariantMedia::where(['product_variant_id' => $item->variant->id, 'media_type' => 'image'])->orderby('sequence','asc')->first();
+                if(!empty($media)){
+                    array_push($image, $media->media);
+                }
             }
         }
 
