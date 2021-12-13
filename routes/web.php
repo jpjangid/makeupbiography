@@ -247,6 +247,7 @@ Route::get('cart', [App\Http\Controllers\frontend\CartController::class, 'list']
 Route::get('remove/cart/item/{id}/{variant_id}', [App\Http\Controllers\frontend\CartController::class, 'remove_item']);
 Route::get('add/to/cart', [App\Http\Controllers\frontend\CartController::class, 'add_to_cart']);
 Route::post('cart/items/update', [App\Http\Controllers\frontend\CartController::class, 'update_items']);
+Route::post('cart/item/update/product',[App\Http\Controllers\frontend\CartController::class, 'update_cart_items'])->name('cartItemUpdate');
 
 //Route for brands page
 Route::get('brands',[App\Http\Controllers\frontend\BrandController::class, 'index']);

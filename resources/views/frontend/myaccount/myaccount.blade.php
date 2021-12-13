@@ -16,7 +16,7 @@
 		</div>
 		<div class="c-page-header__login-info">
 			<span class="c-page-header__login-text">Logged in as
-				<span class="c-page-header__login-name">xyz</span>
+				<span class="c-page-header__login-name">{{ auth()->user()->name }}</span>
 			</span>
 		</div>
 	</header>

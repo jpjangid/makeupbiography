@@ -50,8 +50,6 @@
           <div class="c-cart__wrap">
             <div class="c-cart__col-1">
               <div class=" js-sticky-sidebar-nearby ">
-                <form class="woocommerce-cart-form" action="{{ url('cart/items/update') }}" method="post">
-                  @csrf
                   <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents c-cart__shop-table" cellspacing="0">
                     <thead class="c-cart__shop-thead">
                       <tr>
@@ -96,11 +94,12 @@
                           <div class="c-product__quantity quantity">
                             <label class="screen-reader-text" for="quantity_611e40a1cb9f6">Airbrush Matte quantity</label>
                             <input type="number" id="quantity_611e40a1cb9f6" class="h-cb c-product__quantity-value qty" step="1" min="0" name="quantity[]" value="{{ $item->quantity }}" title="Qty" placeholder="" inputmode="numeric" />
-                            
-                            <button class="h-cb c-product__quantity-minus js-quantity-minus" type="button">
+                            <input type="hidden" name="cart_id" value="{{ $item->id }}" />
+                            <input type="hidden" name="update_url" value="{{ route('cartItemUpdate') }}" /> 
+                            <button class="h-cb c-product__quantity-minus js-quantity-minus1" type="button">
                               <i class="ip-minus"></i>
                             </button>
-                            <button class="h-cb c-product__quantity-plus js-quantity-plus" type="button">
+                            <button class="h-cb c-product__quantity-plus js-quantity-plus1" type="button">
                               <i class="ip-plus_big"></i>
                             </button>
                           </div>
@@ -160,11 +159,12 @@
                           <div class="c-product__quantity quantity">
                             <label class="screen-reader-text" for="quantity_611e40a1cb9f6">Airbrush Matte quantity</label>
                             <input type="number" id="quantity_611e40a1cb9f6" class="h-cb c-product__quantity-value qty" step="1" min="0" name="quantity[]" value="{{ $item['quantity'] }}" title="Qty" placeholder="" inputmode="numeric" />
-                            
-                            <button class="h-cb c-product__quantity-minus js-quantity-minus" type="button">
+                            <input type="hidden" name="product_id" value="{{ $item['product']->id }}" />
+                            <input type="hidden" name="product_variant_id" value="{{ $item['product_variant_id'] }}" /> 
+                            <button class="h-cb c-product__quantity-minus js-quantity-minus2" type="button">
                               <i class="ip-minus"></i>
                             </button>
-                            <button class="h-cb c-product__quantity-plus js-quantity-plus" type="button">
+                            <button class="h-cb c-product__quantity-plus js-quantity-plus2" type="button">
                               <i class="ip-plus_big"></i>
                             </button>
                           </div>
@@ -185,7 +185,7 @@
                       <tr class="c-cart__shop-tr c-cart__shop-tr--actions">
                         <td colspan="5" class="c-cart__shop-td c-cart__shop-td--actions">
                           <span class="c-cart__shop-update">
-                            <input type="submit" class="c-button c-button--outline c-cart__shop-update-button button" name="update_cart" value="Update cart" />
+                            
                           </span>
                           <input type="hidden" id="woocommerce-cart-nonce" name="woocommerce-cart-nonce" value="5d80b18e36" />
                           <input type="hidden" name="_wp_http_referer" value="/luchiana/demo/cart/" />
@@ -193,7 +193,6 @@
                       </tr>
                     </tbody>
                   </table>
-                </form>
               </div>
             </div>
             <div class="c-cart__col-2">
@@ -290,4 +289,119 @@
   @endif
 </div>
 <!-- /.l-inner -->
+@endsection
+
+@section('js') 
+<script>
+$(document).on('click', ".js-quantity-minus1", function(e) {
+    e.preventDefault();
+    var $button = $(this);
+    var cartId = $button.parent().find("input[name='cart_id']").val();
+    var url1 = $button.parent().find("input[name='update_url']").val();
+    var $input = $(this).parent().find('input[type=number]');
+    if($input.val() > 1) {
+      var quantity = $input.val().trim();
+      var min = $input.attr('min');
+      quantity--;
+      if (quantity < (min !== '' ? min : 1)) {
+          quantity = (min !== '' ? min : 1);
+      }
+      $input.val(quantity);
+      var newVal = quantity;
+      $.ajax({
+          type:'post',
+          url: url1,
+          data:{_token:"{{ csrf_token() }}",cart_id:cartId,qty:newVal},
+          dataType: 'JSON',
+          success:function(result){
+            location.reload();
+          }
+      });
+      $input.trigger('change');
+    }
+})
+$(document).on('click', ".js-quantity-plus1", function(e) {
+    e.preventDefault();
+    var $button = $(this);
+    var cartId = $button.parent().find("input[name='cart_id']").val();
+    var url1 = $button.parent().find("input[name='update_url']").val();
+    var $input = $(this).parent().find('input[type=number]');
+    var quantity = $input.val().trim();
+    var max = $input.attr('max');
+    quantity++;
+    if ((max !== '') && (quantity > max)) {
+        quantity = max;
+    }
+    if (quantity > 0) {
+      $.ajax({
+          type:'post',
+          url: url1,
+          data:{_token:"{{ csrf_token() }}",cart_id:cartId,qty:quantity},
+          dataType: 'JSON',
+          success:function(result){
+            location.reload();
+          }
+      });
+      $input.val(quantity);
+      $input.trigger('change');
+    }
+})
+
+$(document).on('click', ".js-quantity-minus2", function(e) {
+    e.preventDefault();
+    var $button = $(this);
+    var productId = $button.parent().find("input[name='product_id']").val();
+    var productVariantId = $button.parent().find("input[name='product_variant_id']").val();
+    var url1 = "{{ route('cartItemUpdate') }}";
+    var $input = $(this).parent().find('input[type=number]');
+
+    if($input.val() > 1) {
+      var quantity = $input.val().trim();
+      var min = $input.attr('min');
+      quantity--;
+      if (quantity < (min !== '' ? min : 1)) {
+          quantity = (min !== '' ? min : 1);
+      }
+      $input.val(quantity);
+      var newVal = quantity;
+      $.ajax({
+          type:'post',
+          url: url1,
+          data:{_token:"{{ csrf_token() }}",product_id:productId,qty:newVal,product_variant_id:productVariantId},
+          dataType: 'JSON',
+          success:function(result){
+            location.reload();
+          }
+      });
+      $input.trigger('change');
+    }
+})
+$(document).on('click', ".js-quantity-plus2", function(e) {
+    e.preventDefault();
+    var $button = $(this);
+    var productId = $button.parent().find("input[name='product_id']").val();
+    var productVariantId = $button.parent().find("input[name='product_variant_id']").val();
+    var url1 = "{{ route('cartItemUpdate') }}";
+    var $input = $(this).parent().find('input[type=number]');
+    var quantity = $input.val().trim();
+    var max = $input.attr('max');
+    quantity++;
+    if ((max !== '') && (quantity > max)) {
+        quantity = max;
+    }
+    if (quantity > 0) {
+      $.ajax({
+          type:'post',
+          url: url1,
+          data:{_token:"{{ csrf_token() }}",product_id:productId,qty:quantity,product_variant_id:productVariantId},
+          dataType: 'JSON',
+          success:function(result){
+            location.reload();
+          }
+      });
+      $input.val(quantity);
+      $input.trigger('change');
+    }
+})
+</script>
 @endsection
