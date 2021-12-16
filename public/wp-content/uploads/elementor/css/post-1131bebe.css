@@ -85,19 +85,20 @@
     margin: 50px 0px 0px 0px;
 }
 .elementor-1131 .elementor-element.elementor-element-d63423e {
-    margin-top: 80px; 
+    /* margin-top: 80px;  */
     margin-bottom: 0px;
 }
 .elementor-1131
     .elementor-element.elementor-element-f6c8514
     .c-ip-image-list-1__thumb {
-    background-color: pink;
+    background-color: powderblue;
 }
 .elementor-1131
     .elementor-element.elementor-element-f6c8514
     .c-ip-image-list-1__item:hover {
     color: black;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 10px;
 }
 .elementor-1131
     .elementor-element.elementor-element-f6c8514
@@ -108,10 +109,11 @@
 .elementor-1131
     .elementor-element.elementor-element-f6c8514
     .c-ip-image-list-1__title {
-    margin-top: 25px;
+    margin-top: 20px;
+    color: white;
 }
 .elementor-1131 .elementor-element.elementor-element-e52934a {
-    margin-top: 85px;
+    /* margin-top: 85px; */
     margin-bottom: 0px;
 }
 .elementor-1131 .elementor-element.elementor-element-34b38e3 .c-ip-heading {
@@ -197,7 +199,7 @@ body.rtl .elementor-1131 .elementor-element.elementor-element-1f4d44c {
     margin: 30px 0px 0px 0px;
 }
 .elementor-1131 .elementor-element.elementor-element-98b9ea0 {
-    margin-top: 85px;
+    /* margin-top: 85px; */
     margin-bottom: 00px;
 }
 .elementor-1131
@@ -248,7 +250,7 @@ body.rtl .elementor-1131 .elementor-element.elementor-element-1f4d44c {
 .elementor-1131
     .elementor-element.elementor-element-3eb76f9
     > .elementor-widget-container {
-    margin: 40px 0px 0px 0px;
+    /* margin: 40px 0px 0px 0px; */
 }
 .elementor-1131
     .elementor-element.elementor-element-796391d
@@ -261,7 +263,7 @@ body.rtl .elementor-1131 .elementor-element.elementor-element-1f4d44c {
     padding: 0px 55px 0px 0px;
 }
 .elementor-1131 .elementor-element.elementor-element-3d1ff9f {
-    margin-top: 85px;
+    margin-top: 40px;
     margin-bottom: 0px;
 }
 .elementor-1131
@@ -584,7 +586,7 @@ body.rtl .elementor-1131 .elementor-element.elementor-element-1f4d44c {
     .elementor-1131
         .elementor-element.elementor-element-796391d
         > .elementor-widget-container {
-        margin: 30px 0px 0px 0px;
+        margin: 0px 0px 0px 0px;
     }
     .elementor-1131
         .elementor-element.elementor-element-457d5c0

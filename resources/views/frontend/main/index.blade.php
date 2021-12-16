@@ -2,7 +2,113 @@
 
 @section('css')
 <style>
-	@media (max-width: 567px) {
+	@media screen and (max-width: 465px){
+		.c-ip-image-list-1__list {
+			margin: 0px;
+		}
+	}
+
+	@media screen and (max-width: 350px){
+		.c-product-grid__item--normal
+		{
+			width: 140px !important;
+			margin: 10px !important;
+			padding-bottom: 50px !important;
+		}
+	}
+
+	@media screen and (max-width: 380px){
+		.c-product-grid__item--normal
+		{
+			width: 160px !important;
+			margin: 10px !important;
+			padding-bottom: 50px !important;
+		}
+	}
+
+	@media (min-width: 760px) and (max-width: 770px) {
+		.c-product-grid__item--normal
+		{
+			width: 160px !important;
+			margin: 10px !important;
+			padding-bottom: 35px !important;
+		}
+	}
+
+	@media (min-width: 560px) and (max-width: 590px) {
+		.c-product-grid__item--normal
+		{
+			width: 160px !important;
+			margin: 10px !important;
+			padding-bottom: 50px !important;
+		}
+	}
+	
+	@media screen and (max-width: 768px){
+		.c-ip-heading--default {
+			font-size: 15px;
+    		line-height: 25px;
+		}
+
+		.elementor-1131 .elementor-element.elementor-element-f6c8514 .c-ip-image-list-1__item:hover{
+			box-shadow: none !important;
+		}
+
+		.elementor-1131.elementor-element.elementor-element-e52934a {
+			margin-top: 90px;
+		}
+
+		.mb-video {
+			margin-top: 30px;
+		}
+
+		.c-ip-product-tabs__wrap {
+			padding-top: 10px;
+		}
+
+		.c-ip-product-tabs__menu-item {
+			font-weight: bold;
+			font-size: 12px;
+			line-height: 8px;
+			letter-spacing: 0.06em;
+			margin-top: 15px;
+		}
+
+		.c-ip-heading.c-ip-heading--medium.c-ip-heading--center.c-ip-heading--tablet-.c-ip-heading--mobile-.c-ip-heading--bullet-hide {
+			margin-top: -80px;
+		}
+
+		.c-product-grid__item--normal {
+			width: 180px;
+			margin: 10px;
+			padding-bottom: 35px;
+		}
+
+		.c-product-grid__item--normal .woocommerce-loop-product__title{
+			line-height: 15px;
+			letter-spacing: 0.1em;
+			padding-left: 0.21em;
+			font-size: 08px;
+		}
+
+		.elementor-column.elementor-col-33.elementor-top-column.elementor-element.elementor-element-8b0a55a {
+			margin-top: -40px;
+		}
+
+		.c-ip-banners__button {
+			width: 28%;
+			font-size: 10px;
+			padding: 10px;
+		}
+		.c-ip-banners__item, .c-ip-banners__list {
+			flex-direction: column;
+		}
+		/* .c-ip-banners__image {
+			object-fit: unset;
+		} */
+	}
+
+	@media screen and (max-width: 567px) {
 		.elementor-1131 .elementor-element.elementor-element-f6c8514 .c-ip-image-list-1__item {
 			width: 85px;
 			font-size: 13px;
@@ -13,6 +119,12 @@
 	@media screen and (min-width: 480px) {
 		.image-stroke {
 			width: 35%;
+		}
+	}
+
+	@media screen and (max-width: 480px) {
+		.image-stroke {
+			width: 55%;
 		}
 	}
 
@@ -81,39 +193,162 @@
 	}
 
 	.price-div {
-		border-top: 2px solid #FFD700;
-		font-size: 20px;
-		font-family: "Times New Roman";
-		background-image: linear-gradient(to bottom, #43C6DB, #43BFC7);
-		padding-top: 10px;
-		padding-bottom: 10px;
+		/* border-top: 2px solid goldenrod; */
+		font-size: 17px;
+		font-family: "Marcellus", sans-serif;
+		padding-top: 5px;
+		padding-bottom: 5px;
 		text-align: center;
 		color: white;
+		margin-top: 5px;
+		background-image: linear-gradient(to bottom, #666362, #413839);
 	}
-	@media(max-width: 767px){
-		.elementor-1131 .elementor-element.elementor-element-d63423e {
-				margin-top: 25px;
-			margin-bottom: 0px;
-		}	
-		.c-ip-product-tabs__menu-item.active {
-			color: white;
-			border-bottom: 3px solid white;
-			margin-left: 9px;
+
+	/* @media screen and (max-width: 768px){
+		.price-div{
+			margin-bottom: 10px;
 		}
-		.mb-video{
-			margin-top: -10px !important;
+		.c-product-grid__atc {
+			margin-bottom: 10px;
 		}
-		#vedio{
-			height:250px !important;
+	} */
+
+	/* .blue-left-stroke {
+		-webkit-transform: scaleX(-1);
+		transform: scaleX(-1);
+		height: 4%; 
+		width: 9%;
+	} */
+
+	/* .blue-right-stroke {
+		float: right; 
+		padding-top: 0px;
+		height: 4%; 
+		width: 9%;
+	} */
+
+	/* @media screen and (max-width: 700px) {
+		.blue-right-stroke {
+			padding-top: 10px;
+			width: 12%;
+			height: 6%;
 		}
-		.elementor-1131 .elementor-element.elementor-element-5aaefc9 .c-ip-heading {
-			text-align: center;
-			margin-top: -32px;
+		.blue-left-stroke {
+			padding-bottom: 10px;
+			width: 12%;
+			height: 6%;
 		}
-		.elementor-1052 .elementor-element.elementor-element-7195f8fe .c-ip-heading .c-ip-heading__inner {
-			max-width: 265px;
-			margin-left: -54px;
+	} */
+
+	/* @media screen and (max-width: 455px) {
+		.blue-right-stroke {
+			width: 15%;
+			height: 10%;
 		}
+		.blue-left-stroke {
+			width: 15%;
+			height: 10%;
+		}
+	} */
+
+	.mb-video {
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+
+	.owl-carousel.owl-loaded {
+		padding-left: 20px;
+	}
+
+	@media (max-width: 619px) and (min-width: 360px) {
+		.c-ip-woocommerce-carousel__list--3-per-row{
+			padding-right: 12px;
+		}
+	}
+
+	@media screen and (max-width: 565px) {
+		.c-ip-image-list-1__list {
+			margin: -20px 0 0 0;
+		}
+	}
+
+	@media screen and (max-width: 380px) {
+		.c-ip-image-list-1__list {
+			margin: 0;
+		}
+		.c-ip-image-list-1__wrap.c-ip-image-list-1__wrap--carousel {
+			margin: 0;
+		}
+	}
+
+	@media screen and (max-width: 330px) {
+		.c-ip-image-list-1__list {
+			margin: 0;
+		}
+		.c-ip-image-list-1__wrap.c-ip-image-list-1__wrap--carousel {
+			margin: 0;
+		}
+	}
+
+	@media screen and (max-width: 650px) {
+		.elementor-1131 .elementor-element.elementor-element-e52934a{
+			margin-top: 80px;
+		}
+		.elementor-1131 .elementor-element.elementor-element-3d1ff9f {
+			margin-top: -30px;
+		}
+	}
+
+	@media screen and (min-width: 1175px) {
+		.img-stroke {
+			padding-left: 100px;
+		}
+		.image-stroke {
+			width: 40% !important;
+		}
+	}
+
+	@media (min-width: 650px) and (max-width: 768px) {
+		.elementor-1131 .elementor-element.elementor-element-e52934a {
+			margin-top: 85px;
+		}
+	}
+
+	@media screen and (max-width: 380px) {
+		.c-ip-product-tabs__menu .owl-stage-outer .owl-stage .owl-item {
+			margin-right: 35px !important;
+		}
+	}
+
+	@media screen and (max-width: 360px) {
+		.c-ip-product-tabs__menu .owl-stage-outer .owl-stage .owl-item {
+			margin-right: 20px !important;
+		}
+	}
+
+	.c-product-grid__title-wrap .woocommerce-LoopProduct-link .woocommerce-loop-product__title {
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		height: 3em;
+	}
+
+	.c-product-grid__badges {
+		margin-left: -10px;
+	}
+
+	.c-badge--sale {
+		border-radius: 70px !important;
+		height: 45px !important;
+		width: 45px !important;
+		padding-top: 15px !important;
+		display: inline !important;
+	}
+	
+	.c-badge--featured {
+		height: 25px !important;
+    	margin-right: -10px !important;
 	}
 </style>
 @endsection
@@ -122,7 +357,7 @@
 <input type="text" id="csrfToken" value="{{ csrf_token() }}" hidden>
 <div class="l-inner">
 	<div data-elementor-type="wp-page" data-elementor-id="1131" class="elementor elementor-1131" data-elementor-settings="[]">
-		<div class="elementor-inner" style="background-color: #e0ffff;">
+		<div class="elementor-inner" style="background-color: #E5E4E2;">
 			<div class="elementor-section-wrap">
 				<div id="slider">
 					<figure>
@@ -134,8 +369,8 @@
 					</figure>
 				</div>
 			</div>
-			<section class="elementor-section elementor-top-section elementor-element elementor-element-d63423e elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="d63423e" data-element_type="section" style="background-image: linear-gradient(to right, #C19A6B, #FFE5B4); padding-bottom:30px;">
-				<img src="{{ asset('/images/paint-stroke.png') }}" height="4%" width="9%" style="margin-top: -20px; -webkit-transform: scaleX(-1); transform: scaleX(-1);">
+			<section class="elementor-section elementor-top-section elementor-element elementor-element-d63423e elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="d63423e" data-element_type="section" style="background-image: linear-gradient(to top, #666362, #413839); padding-bottom:30px; padding-top: 30px; margin-bottom: 20px;">
+				<!-- <img class="blue-left-stroke" src="{{ asset('/images/paint-stroke.png') }}"> -->
 				<div class="elementor-container elementor-column-gap-no">
 					<div class="elementor-row">
 						<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-83255c5" data-id="83255c5" data-element_type="column">
@@ -168,9 +403,9 @@
 						</div>
 					</div>
 				</div>
-				<img src="{{ asset('/images/paint-stroke.png') }}" height="4%" width="9%" style="float:right; padding-top: 10px;">
+				<!-- <img class="blue-right-stroke" src="{{ asset('/images/paint-stroke.png') }}"> -->
 			</section>
-			<section class="elementor-section elementor-top-section elementor-element elementor-element-e52934a elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="e52934a" data-element_type="section">
+			<!-- <section class="elementor-section elementor-top-section elementor-element elementor-element-e52934a elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="e52934a" data-element_type="section">
 				<div class="elementor-container elementor-column-gap-no">
 					<div class="elementor-row">
 						<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-ce406a4" data-id="ce406a4" data-element_type="column">
@@ -178,7 +413,7 @@
 								<div class="elementor-widget-wrap">
 									<div class="elementor-element elementor-element-34b38e3 elementor-widget elementor-widget-ideapark-heading" data-id="34b38e3" data-element_type="widget" data-widget_type="ideapark-heading.default">
 										<div class="elementor-widget-container">
-											<div class="c-ip-heading c-ip-heading--medium c-ip-heading--center c-ip-heading--tablet- c-ip-heading--mobile- c-ip-heading--bullet-hide">
+											<div class="img-stroke c-ip-heading c-ip-heading--medium c-ip-heading--center c-ip-heading--tablet- c-ip-heading--mobile- c-ip-heading--bullet-hide">
 												<img src="{{ asset('/images/paint-brush-stroke-new.png') }}" class="image-stroke">
 											</div>
 										</div>
@@ -188,7 +423,7 @@
 						</div>
 					</div>
 				</div>
-			</section>
+			</section> -->
 			<section class="elementor-section elementor-top-section elementor-element elementor-element-d57b645 elementor-section-full_width elementor-section-height-default" style="margin-top: -50px;" data-id="d57b645" data-element_type="section">
 				<div class="elementor-container elementor-column-gap-no">
 					<div class="elementor-row">
@@ -230,7 +465,462 @@
 																	$variant = $main_newest_product->variants[0];
 																	@endphp
 																	@if(str_contains($main_newest_product->tags,'newest'))
-																	<div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple">
+																	<div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple" style="background-color: white;">
+
+																		@if($variant->discount_type == "percentage")
+																		<div class="c-product-grid__badges c-badge__list">
+																			@if(!empty($main_newest_product->label_name))
+																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
+																			@endif
+																			<span class="c-badge c-badge--sale">-{{ $variant->discount }}%</span>
+																		</div>
+																		@endif
+
+																		@if($variant->discount_type == "flat")
+																		<div class="c-product-grid__badges c-badge__list">
+																			@if(!empty($main_newest_product->label_name))
+																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
+																			@endif
+																			<span class="c-badge c-badge--sale">- &#8377; {{ $variant->regular_price - $variant->sale_price }}</span>
+																		</div>
+																		@endif
+
+																		<!-- .c-product-grid__badges -->
+																		<div class="c-product-grid__thumb-wrap" style="width: auto;">
+																			<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+																				<img src="{{ asset('storage/products/'.$main_newest_product->main_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ asset('storage/products/'.$main_newest_product->main_image) }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
+																			</a>
+																			<div class="c-product-grid__thumb-button-list">
+																				<!--<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="438">-->
+																				<!--	<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>-->
+																				<!--	<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>-->
+																				<!--</button>-->
+																				<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button" data-product_variant_id="{{ $variant->id }}" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
+																					<i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
+																					<i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
+																				</button>
+																			</div>
+																		</div>
+																		<!-- .c-product-grid__thumb-wrap -->
+																		<button class="h-cb c-product-grid__atc button product_type_simple add-to-cart" data-product_id="{{ $main_newest_product->id }}" data-product_variant="{{ $variant->id }}" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
+																			<i class="ip-plus c-product-grid__atc-icon"></i>
+																			<span class="c-product-grid__atc-text">Add to cart</span>
+																		</button>
+																		<div class="c-product-grid__details">
+																			<div class="c-product-grid__title-wrap">
+																				<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+																					<h2 class="woocommerce-loop-product__title">{{ $main_newest_product->name."-".$variant->name }}</h2>
+																				</a>
+																				<!-- <div class="c-product-grid__short-desc">
+																					<p class="short-description">{{ $main_newest_product->short_description }}</p>
+																				</div> -->
+																				<div class="star-rating" role="img" aria-label="Rated 4.00 out of 5">
+																					<span style="width:80%">Rated
+																						<strong class="rating" style="font-size: 16px;">4.00</strong>out of 5</span>
+																				</div>
+																			</div>
+																			<!-- .c-product-grid__title-wrap -->
+																			<div class="c-product-grid__price-wrap price-div">
+																				<span class="price">
+																					@if(!empty($variant->discount) && $variant->discount > 0)
+																					<del aria-hidden="true">
+																						<span class="woocommerce-Price-amount amount">
+																							<bdi>
+																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->regular_price }}</bdi>
+																						</span>
+																					</del>
+																					@endif
+																					<ins>
+																						<span class="woocommerce-Price-amount amount">
+																							<bdi>
+																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->sale_price }}</bdi>
+																						</span>
+																					</ins>
+																				</span>
+																			</div>
+																			<!-- .c-product-grid__price-wrap -->
+																		</div>
+																		<!-- .c-product-grid__details -->
+																	</div>
+																	@endif
+																	@endif
+																	@endforeach
+																	@endif
+																	<!-- Top Newest Product List Item End -->
+
+																	<!-- Top Newest Product List Item Begin -->
+																	@if(!empty($main_newest_products))
+																	@foreach($main_newest_products as $main_newest_product)
+																	@if(!empty($main_newest_product->variants) && count($main_newest_product->variants) > 0)
+																	@php
+																	$variant = $main_newest_product->variants[0];
+																	@endphp
+																	@if(str_contains($main_newest_product->tags,'newest'))
+																	<div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple" style="background-color: white;">
+
+																		@if($variant->discount_type == "percentage")
+																		<div class="c-product-grid__badges c-badge__list">
+																			@if(!empty($main_newest_product->label_name))
+																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
+																			@endif
+																			<span class="c-badge c-badge--sale">-{{ $variant->discount }}%</span>
+																		</div>
+																		@endif
+
+																		@if($variant->discount_type == "flat")
+																		<div class="c-product-grid__badges c-badge__list">
+																			@if(!empty($main_newest_product->label_name))
+																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
+																			@endif
+																			<span class="c-badge c-badge--sale">- &#8377; {{ $variant->regular_price - $variant->sale_price }}</span>
+																		</div>
+																		@endif
+
+																		<!-- .c-product-grid__badges -->
+																		<div class="c-product-grid__thumb-wrap" style="width: auto;">
+																			<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+																				<img src="{{ asset('storage/products/'.$main_newest_product->main_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ asset('storage/products/'.$main_newest_product->main_image) }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
+																			</a>
+																			<div class="c-product-grid__thumb-button-list">
+																				<!--<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="438">-->
+																				<!--	<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>-->
+																				<!--	<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>-->
+																				<!--</button>-->
+																				<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button" data-product_variant_id="{{ $variant->id }}" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
+																					<i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
+																					<i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
+																				</button>
+																			</div>
+																		</div>
+																		<!-- .c-product-grid__thumb-wrap -->
+																		<button class="h-cb c-product-grid__atc button product_type_simple add-to-cart" data-product_id="{{ $main_newest_product->id }}" data-product_variant="{{ $variant->id }}" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
+																			<i class="ip-plus c-product-grid__atc-icon"></i>
+																			<span class="c-product-grid__atc-text">Add to cart</span>
+																		</button>
+																		<div class="c-product-grid__details">
+																			<div class="c-product-grid__title-wrap">
+																				<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+																					<h2 class="woocommerce-loop-product__title">{{ $main_newest_product->name."-".$variant->name }}</h2>
+																				</a>
+																				<!-- <div class="c-product-grid__short-desc">
+																					<p class="short-description">{{ $main_newest_product->short_description }}</p>
+																				</div> -->
+																				<div class="star-rating" role="img" aria-label="Rated 4.00 out of 5">
+																					<span style="width:80%">Rated
+																						<strong class="rating" style="font-size: 16px;">4.00</strong>out of 5</span>
+																				</div>
+																			</div>
+																			<!-- .c-product-grid__title-wrap -->
+																			<div class="c-product-grid__price-wrap price-div">
+																				<span class="price">
+																					@if(!empty($variant->discount) && $variant->discount > 0)
+																					<del aria-hidden="true">
+																						<span class="woocommerce-Price-amount amount">
+																							<bdi>
+																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->regular_price }}</bdi>
+																						</span>
+																					</del>
+																					@endif
+																					<ins>
+																						<span class="woocommerce-Price-amount amount">
+																							<bdi>
+																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->sale_price }}</bdi>
+																						</span>
+																					</ins>
+																				</span>
+																			</div>
+																			<!-- .c-product-grid__price-wrap -->
+																		</div>
+																		<!-- .c-product-grid__details -->
+																	</div>
+																	@endif
+																	@endif
+																	@endforeach
+																	@endif
+																	<!-- Top Newest Product List Item End -->
+
+																	<!-- Top Newest Product List Item Begin -->
+																	@if(!empty($main_newest_products))
+																	@foreach($main_newest_products as $main_newest_product)
+																	@if(!empty($main_newest_product->variants) && count($main_newest_product->variants) > 0)
+																	@php
+																	$variant = $main_newest_product->variants[0];
+																	@endphp
+																	@if(str_contains($main_newest_product->tags,'newest'))
+																	<div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple" style="background-color: white;">
+
+																		@if($variant->discount_type == "percentage")
+																		<div class="c-product-grid__badges c-badge__list">
+																			@if(!empty($main_newest_product->label_name))
+																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
+																			@endif
+																			<span class="c-badge c-badge--sale">-{{ $variant->discount }}%</span>
+																		</div>
+																		@endif
+
+																		@if($variant->discount_type == "flat")
+																		<div class="c-product-grid__badges c-badge__list">
+																			@if(!empty($main_newest_product->label_name))
+																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
+																			@endif
+																			<span class="c-badge c-badge--sale">- &#8377; {{ $variant->regular_price - $variant->sale_price }}</span>
+																		</div>
+																		@endif
+
+																		<!-- .c-product-grid__badges -->
+																		<div class="c-product-grid__thumb-wrap" style="width: auto;">
+																			<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+																				<img src="{{ asset('storage/products/'.$main_newest_product->main_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ asset('storage/products/'.$main_newest_product->main_image) }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
+																			</a>
+																			<div class="c-product-grid__thumb-button-list">
+																				<!--<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="438">-->
+																				<!--	<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>-->
+																				<!--	<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>-->
+																				<!--</button>-->
+																				<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button" data-product_variant_id="{{ $variant->id }}" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
+																					<i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
+																					<i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
+																				</button>
+																			</div>
+																		</div>
+																		<!-- .c-product-grid__thumb-wrap -->
+																		<button class="h-cb c-product-grid__atc button product_type_simple add-to-cart" data-product_id="{{ $main_newest_product->id }}" data-product_variant="{{ $variant->id }}" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
+																			<i class="ip-plus c-product-grid__atc-icon"></i>
+																			<span class="c-product-grid__atc-text">Add to cart</span>
+																		</button>
+																		<div class="c-product-grid__details">
+																			<div class="c-product-grid__title-wrap">
+																				<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+																					<h2 class="woocommerce-loop-product__title">{{ $main_newest_product->name."-".$variant->name }}</h2>
+																				</a>
+																				<!-- <div class="c-product-grid__short-desc">
+																					<p class="short-description">{{ $main_newest_product->short_description }}</p>
+																				</div> -->
+																				<div class="star-rating" role="img" aria-label="Rated 4.00 out of 5">
+																					<span style="width:80%">Rated
+																						<strong class="rating" style="font-size: 16px;">4.00</strong>out of 5</span>
+																				</div>
+																			</div>
+																			<!-- .c-product-grid__title-wrap -->
+																			<div class="c-product-grid__price-wrap price-div">
+																				<span class="price">
+																					@if(!empty($variant->discount) && $variant->discount > 0)
+																					<del aria-hidden="true">
+																						<span class="woocommerce-Price-amount amount">
+																							<bdi>
+																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->regular_price }}</bdi>
+																						</span>
+																					</del>
+																					@endif
+																					<ins>
+																						<span class="woocommerce-Price-amount amount">
+																							<bdi>
+																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->sale_price }}</bdi>
+																						</span>
+																					</ins>
+																				</span>
+																			</div>
+																			<!-- .c-product-grid__price-wrap -->
+																		</div>
+																		<!-- .c-product-grid__details -->
+																	</div>
+																	@endif
+																	@endif
+																	@endforeach
+																	@endif
+																	<!-- Top Newest Product List Item End -->
+
+																	<!-- Top Newest Product List Item Begin -->
+																	@if(!empty($main_newest_products))
+																	@foreach($main_newest_products as $main_newest_product)
+																	@if(!empty($main_newest_product->variants) && count($main_newest_product->variants) > 0)
+																	@php
+																	$variant = $main_newest_product->variants[0];
+																	@endphp
+																	@if(str_contains($main_newest_product->tags,'newest'))
+																	<div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple" style="background-color: white;">
+
+																		@if($variant->discount_type == "percentage")
+																		<div class="c-product-grid__badges c-badge__list">
+																			@if(!empty($main_newest_product->label_name))
+																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
+																			@endif
+																			<span class="c-badge c-badge--sale">-{{ $variant->discount }}%</span>
+																		</div>
+																		@endif
+
+																		@if($variant->discount_type == "flat")
+																		<div class="c-product-grid__badges c-badge__list">
+																			@if(!empty($main_newest_product->label_name))
+																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
+																			@endif
+																			<span class="c-badge c-badge--sale">- &#8377; {{ $variant->regular_price - $variant->sale_price }}</span>
+																		</div>
+																		@endif
+
+																		<!-- .c-product-grid__badges -->
+																		<div class="c-product-grid__thumb-wrap" style="width: auto;">
+																			<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+																				<img src="{{ asset('storage/products/'.$main_newest_product->main_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ asset('storage/products/'.$main_newest_product->main_image) }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
+																			</a>
+																			<div class="c-product-grid__thumb-button-list">
+																				<!--<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="438">-->
+																				<!--	<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>-->
+																				<!--	<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>-->
+																				<!--</button>-->
+																				<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button" data-product_variant_id="{{ $variant->id }}" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
+																					<i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
+																					<i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
+																				</button>
+																			</div>
+																		</div>
+																		<!-- .c-product-grid__thumb-wrap -->
+																		<button class="h-cb c-product-grid__atc button product_type_simple add-to-cart" data-product_id="{{ $main_newest_product->id }}" data-product_variant="{{ $variant->id }}" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
+																			<i class="ip-plus c-product-grid__atc-icon"></i>
+																			<span class="c-product-grid__atc-text">Add to cart</span>
+																		</button>
+																		<div class="c-product-grid__details">
+																			<div class="c-product-grid__title-wrap">
+																				<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+																					<h2 class="woocommerce-loop-product__title">{{ $main_newest_product->name."-".$variant->name }}</h2>
+																				</a>
+																				<!-- <div class="c-product-grid__short-desc">
+																					<p class="short-description">{{ $main_newest_product->short_description }}</p>
+																				</div> -->
+																				<div class="star-rating" role="img" aria-label="Rated 4.00 out of 5">
+																					<span style="width:80%">Rated
+																						<strong class="rating" style="font-size: 16px;">4.00</strong>out of 5</span>
+																				</div>
+																			</div>
+																			<!-- .c-product-grid__title-wrap -->
+																			<div class="c-product-grid__price-wrap price-div">
+																				<span class="price">
+																					@if(!empty($variant->discount) && $variant->discount > 0)
+																					<del aria-hidden="true">
+																						<span class="woocommerce-Price-amount amount">
+																							<bdi>
+																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->regular_price }}</bdi>
+																						</span>
+																					</del>
+																					@endif
+																					<ins>
+																						<span class="woocommerce-Price-amount amount">
+																							<bdi>
+																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->sale_price }}</bdi>
+																						</span>
+																					</ins>
+																				</span>
+																			</div>
+																			<!-- .c-product-grid__price-wrap -->
+																		</div>
+																		<!-- .c-product-grid__details -->
+																	</div>
+																	@endif
+																	@endif
+																	@endforeach
+																	@endif
+																	<!-- Top Newest Product List Item End -->
+
+																	<!-- Top Newest Product List Item Begin -->
+																	@if(!empty($main_newest_products))
+																	@foreach($main_newest_products as $main_newest_product)
+																	@if(!empty($main_newest_product->variants) && count($main_newest_product->variants) > 0)
+																	@php
+																	$variant = $main_newest_product->variants[0];
+																	@endphp
+																	@if(str_contains($main_newest_product->tags,'newest'))
+																	<div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple" style="background-color: white;">
+
+																		@if($variant->discount_type == "percentage")
+																		<div class="c-product-grid__badges c-badge__list">
+																			@if(!empty($main_newest_product->label_name))
+																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
+																			@endif
+																			<span class="c-badge c-badge--sale">-{{ $variant->discount }}%</span>
+																		</div>
+																		@endif
+
+																		@if($variant->discount_type == "flat")
+																		<div class="c-product-grid__badges c-badge__list">
+																			@if(!empty($main_newest_product->label_name))
+																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
+																			@endif
+																			<span class="c-badge c-badge--sale">- &#8377; {{ $variant->regular_price - $variant->sale_price }}</span>
+																		</div>
+																		@endif
+
+																		<!-- .c-product-grid__badges -->
+																		<div class="c-product-grid__thumb-wrap" style="width: auto;">
+																			<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+																				<img src="{{ asset('storage/products/'.$main_newest_product->main_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ asset('storage/products/'.$main_newest_product->main_image) }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
+																			</a>
+																			<div class="c-product-grid__thumb-button-list">
+																				<!--<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="438">-->
+																				<!--	<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>-->
+																				<!--	<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>-->
+																				<!--</button>-->
+																				<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button" data-product_variant_id="{{ $variant->id }}" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
+																					<i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
+																					<i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
+																				</button>
+																			</div>
+																		</div>
+																		<!-- .c-product-grid__thumb-wrap -->
+																		<button class="h-cb c-product-grid__atc button product_type_simple add-to-cart" data-product_id="{{ $main_newest_product->id }}" data-product_variant="{{ $variant->id }}" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
+																			<i class="ip-plus c-product-grid__atc-icon"></i>
+																			<span class="c-product-grid__atc-text">Add to cart</span>
+																		</button>
+																		<div class="c-product-grid__details">
+																			<div class="c-product-grid__title-wrap">
+																				<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+																					<h2 class="woocommerce-loop-product__title">{{ $main_newest_product->name."-".$variant->name }}</h2>
+																				</a>
+																				<!-- <div class="c-product-grid__short-desc">
+																					<p class="short-description">{{ $main_newest_product->short_description }}</p>
+																				</div> -->
+																				<div class="star-rating" role="img" aria-label="Rated 4.00 out of 5">
+																					<span style="width:80%">Rated
+																						<strong class="rating" style="font-size: 16px;">4.00</strong>out of 5</span>
+																				</div>
+																			</div>
+																			<!-- .c-product-grid__title-wrap -->
+																			<div class="c-product-grid__price-wrap price-div">
+																				<span class="price">
+																					@if(!empty($variant->discount) && $variant->discount > 0)
+																					<del aria-hidden="true">
+																						<span class="woocommerce-Price-amount amount">
+																							<bdi>
+																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->regular_price }}</bdi>
+																						</span>
+																					</del>
+																					@endif
+																					<ins>
+																						<span class="woocommerce-Price-amount amount">
+																							<bdi>
+																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->sale_price }}</bdi>
+																						</span>
+																					</ins>
+																				</span>
+																			</div>
+																			<!-- .c-product-grid__price-wrap -->
+																		</div>
+																		<!-- .c-product-grid__details -->
+																	</div>
+																	@endif
+																	@endif
+																	@endforeach
+																	@endif
+																	<!-- Top Newest Product List Item End -->
+
+																	<!-- Top Newest Product List Item Begin -->
+																	@if(!empty($main_newest_products))
+																	@foreach($main_newest_products as $main_newest_product)
+																	@if(!empty($main_newest_product->variants) && count($main_newest_product->variants) > 0)
+																	@php
+																	$variant = $main_newest_product->variants[0];
+																	@endphp
+																	@if(str_contains($main_newest_product->tags,'newest'))
+																	<div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple" style="background-color: white;">
 
 																		@if($variant->discount_type == "percentage")
 																		<div class="c-product-grid__badges c-badge__list">
@@ -678,8 +1368,8 @@
 				</div>
 			</section> -->
 			
-			<section class="mb-video" style="margin-top: 50px;">
-				<video id="vedio" height="401" width="1208" autoplay muted loop >
+			<section class="mb-video">
+				<video playsinline autoplay muted loop>
 					<source src="{{ asset('/images/MB_Home_page_banner.mp4') }}" type="video/mp4">
 				</video>
 			</section>
@@ -704,7 +1394,7 @@
 											</div>
 										</div>
 									</div>
-									{{-- <div class="elementor-element elementor-element-abae348 elementor-widget elementor-widget-ideapark-countdown" data-id="abae348" data-element_type="widget" data-widget_type="ideapark-countdown.default">
+									<!-- <div class="elementor-element elementor-element-abae348 elementor-widget elementor-widget-ideapark-countdown" data-id="abae348" data-element_type="widget" data-widget_type="ideapark-countdown.default">
 										<div class="elementor-widget-container">
 											<script>
 												var
@@ -715,23 +1405,25 @@
 													ideapark_countdown_minutes = 'Minutes',
 													ideapark_countdown_seconds = 'Seconds';
 											</script>
-											<div class="c-ip-countdown">
-												<div class="c-ip-countdown__wrap js-countdown" data-date="2021-04-30 12:00" data-month="no" data-week="no">
-												</div>
-												</div>
+											 <div class="c-ip-countdown">
+                          <div class="c-ip-countdown__wrap js-countdown" data-date="2021-04-30 12:00" data-month="no" data-week="no">
+                          </div>
+                        </div> 
 										</div>
-									</div> --}}
+									</div> -->
 									<div class="elementor-element elementor-element-3eb76f9 elementor-widget elementor-widget-ideapark-heading" data-id="3eb76f9" data-element_type="widget" data-widget_type="ideapark-heading.default">
 										<div class="elementor-widget-container">
 											<div class="c-ip-heading c-ip-heading--default c-ip-heading--left c-ip-heading--tablet-center c-ip-heading--mobile-center c-ip-heading--bullet-hide">
-												<span class="c-ip-heading__inner">Name were we at hope. Remainder household direction zealously the unwilling bed sex. Lose and gay ham sake met that. Stood her place one ten.</span>
+												<!-- <span class="c-ip-heading__inner" style="text-align: justify;">
+													Excited about getting your hands on new and exclusive beauty product launches — the need to have trendiest makeup and skincare essentials is never-ending and at discounted prices.
+												</span> -->
 											</div>
 										</div>
 									</div>
 									<div class="elementor-element elementor-element-796391d elementor-tablet-align-center elementor-widget elementor-widget-ideapark-button" data-id="796391d" data-element_type="widget" data-widget_type="ideapark-button.default">
 										<div class="elementor-widget-container">
 											<div class="c-ip-button__wrap">
-												<a href="{{ url('shop') }}" class="c-button c-ip-button c-button--outline" role="button">
+												<a href="{{ url('shop') }}" class="c-button c-ip-button c-button--outline" role="button" style="margin-top: 10px;">
 													<span class="c-ip-button__text">Explore</span>
 												</a>
 											</div>
@@ -758,7 +1450,7 @@
 																@foreach($big_offer_products as $big_offer_product)
 																@php $variant = $big_offer_product->variants[0]; @endphp
 																<!-- Big Discount list itms Begin -->
-																<div class="c-product-grid__item c-product-grid__item--3-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple">
+																<div class="c-product-grid__item c-product-grid__item--3-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple" style="background-color: white;">
 
 																	<div class="c-product-grid__badges c-badge__list">
 																		@if($big_offer_product->label_name != "")
@@ -857,6 +1549,7 @@
 					</div>
 				</div>
 			</section>
+			
 			@if(!empty($footer_banners) && count($footer_banners) > 0)
 			<section class="elementor-section elementor-top-section elementor-element elementor-element-3d1ff9f elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="3d1ff9f" data-element_type="section">
 				<div class="elementor-container elementor-column-gap-no">
@@ -868,22 +1561,27 @@
 										<div class="elementor-widget-container">
 											<div class="c-ip-banners">
 												<div class="c-ip-banners__list c-ip-banners__list--9 js-ip-banners" data-animation="banners-fade" data-animation-timeout="5000">
-													@foreach($footer_banners as $footer_banner)
+
+													<!-- @foreach($footer_banners as $footer_banner)
 													<div data-id="1440-0fe75f30" class="c-ip-banners__item c-ip-banners__item--left elementor-repeater-item-830896d">
-														<a href="{{ $footer_banner->url }}" class="c-ip-banners__link">
-															<img class="c-ip-banners__image" width="760" height="407" src="{{ asset('storage/footer_images/'.$footer_banner->image) }}" srcset="{{ asset('storage/footer_images/'.$footer_banner->image) }}" sizes="(max-width: 760px) 100vw, 760px" alt="banner-9@2x" loading="lazy" />
-															<div class="c-ip-banners__wrap c-ip-banners__wrap--stretch c-ip-banners__wrap--left">
-																{{-- <div class="c-ip-banners__subheader">Skincare Tops</div>
-																<div class="c-ip-banners__header">
-																	<span class="c-ip-banners__header-size">15% OFF</span>
+															<a href="{{ $footer_banner->url }}" class="c-ip-banners__link">
+																<img class="c-ip-banners__image" src="{{ asset('storage/footer_images/'.$footer_banner->image) }}" srcset="{{ asset('storage/footer_images/'.$footer_banner->image) }}" sizes="(max-width: 760px) 100vw, 760px" alt="banner-9@2x" loading="lazy" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
+																<div class="c-ip-banners__wrap c-ip-banners__wrap--stretch c-ip-banners__wrap--left">
+																	<div class="c-ip-banners__subheader">Skincare Tops</div>
+																	<div class="c-ip-banners__header">
+																		<span class="c-ip-banners__header-size">15% OFF</span>
+																	</div>
+																	<div class="c-ip-banners__space">
+																	</div> 
+																	<span class="c-button c-button--outline c-ip-banners__button">Explore</span>
 																</div>
-																<div class="c-ip-banners__space">
-																</div> --}}
-																<span class="c-button c-button--outline c-ip-banners__button">Explore</span>
-															</div>
-														</a>
+															</a>
 													</div>
-													@endforeach
+													@endforeach -->
+
+													<div data-id="1440-0fe75f30" class="c-ip-banners__item c-ip-banners__item--left">
+														<img class="c-ip-banners__image" src="{{ asset('images/s1.jpg') }}" srcset="{{ asset('images/s1.jpg') }}" alt="banner-9@2x" loading="lazy"/>
+													</div>
 												</div>
 											</div>
 										</div>

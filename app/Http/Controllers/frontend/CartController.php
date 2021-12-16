@@ -320,35 +320,35 @@ class CartController extends Controller
     }
     
     //New Update Function 
-    public function update_cart_items(Request $request) 
-    {
-        $user = auth()->user();
-        $minutes = 60;
-        if ($user) {
-            Cart::where('id', $request->cart_id)->update(['quantity' => $request->qty]);
-            return response()->json(['status' => 200]);
-        }
-        else {
-            if ($request->hasCookie('makeup_biography')) {
-                $cartItems = json_decode(request()->cookie('makeup_biography'));
-                $cartItems = collect($cartItems);
-                foreach($cartItems as $cat) {
-                    if($cat->product_id ==  $request->product_id && $cat->product_variant_id == $request->product_variant_id) {
-                        $cart[] = ['product_id' => $cat->product_id, 'quantity' => $request->qty, 'product_variant_id' => $cat->product_variant_id];
-                    } else {
-                        $cart[] = ['product_id' => $cat->product_id, 'quantity' => $cat->quantity, 'product_variant_id' => $cat->product_variant_id];
-                    }
-                }
-            }
-            if (empty($cart)) {
-                \Cookie::queue(\Cookie::forget('makeup_biography'));
-            } else {
-                $array_json = json_encode($cart);
-                \Cookie::queue('makeup_biography', $array_json, $minutes);
-            }
-            return response()->json(['status' => 200]);
-        }
-    }
+    // public function update_cart_items(Request $request) 
+    // {
+    //     $user = auth()->user();
+    //     $minutes = 60;
+    //     if ($user) {
+    //         Cart::where('id', $request->cart_id)->update(['quantity' => $request->qty]);
+    //         return response()->json(['status' => 200]);
+    //     }
+    //     else {
+    //         if ($request->hasCookie('makeup_biography')) {
+    //             $cartItems = json_decode(request()->cookie('makeup_biography'));
+    //             $cartItems = collect($cartItems);
+    //             foreach($cartItems as $cat) {
+    //                 if($cat->product_id ==  $request->product_id && $cat->product_variant_id == $request->product_variant_id) {
+    //                     $cart[] = ['product_id' => $cat->product_id, 'quantity' => $request->qty, 'product_variant_id' => $cat->product_variant_id];
+    //                 } else {
+    //                     $cart[] = ['product_id' => $cat->product_id, 'quantity' => $cat->quantity, 'product_variant_id' => $cat->product_variant_id];
+    //                 }
+    //             }
+    //         }
+    //         if (empty($cart)) {
+    //             \Cookie::queue(\Cookie::forget('makeup_biography'));
+    //         } else {
+    //             $array_json = json_encode($cart);
+    //             \Cookie::queue('makeup_biography', $array_json, $minutes);
+    //         }
+    //         return response()->json(['status' => 200]);
+    //     }
+    // }
 
     //New Update Function 
     public function update_cart_items(Request $request) 
