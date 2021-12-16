@@ -145,6 +145,10 @@ class CategoryController extends Controller
     //for shop page
     public function shop(Request $request)
     {
+        // dd($request->all());
+        $from = 0;
+        $to = 10;
+        $total_counts = 0;
         $sub_categories = Category::where(['parent_id' => null,'status' => 1,'flag' => 0])->with('subcategory.subcategory')->get();
         $brands = Brand::select('id','name')->where(['status' => 1,'flag' =>  0])->get();
         $product_category = array();
@@ -157,6 +161,11 @@ class CategoryController extends Controller
         }
         if(!empty($request->max_price_filter)){
             $max_price_old = floatval($request->max_price_filter);
+        }
+
+        if(!empty($request->from) || !empty($request->to)) {
+            $from = intval($request->from);
+            $to = intval($request->to);
         }
 
         //fiter function begin
@@ -209,7 +218,8 @@ class CategoryController extends Controller
         $products1 = $products1->get()->toArray();
 
         $products = DB::table('product_variants')->distinct('product_id')->whereIn('product_id',array_column($products1,'id'));
-        if(!empty($request->min_price_filter) && !empty($request->max_price_filter)) {
+     
+        if(!empty($request->min_price_filter) && !empty($request->max_price_filter) && $request->max_price_filter > floatval(0)) {
             $products = $products->whereBetween('sale_price',array(floatval($request->min_price_filter),floatval($request->max_price_filter)));
         }
         if(!empty($request->orderby) && $request->orderby == "lowtohigh") {
@@ -218,7 +228,14 @@ class CategoryController extends Controller
         if(!empty($request->orderby) && $request->orderby == "hightolow") {
             $products = $products->orderBy('sale_price','DESC');
         }   
-        $products = $products->paginate(100)->unique('product_id'); 
+        $products = $products->paginate(10000)->unique('product_id')->toArray();
+        $total_counts = count($products);
+        if($to > $total_counts) {
+            $from = $request->to - 10;
+            $to = $request->to;
+        }
+
+        $products = array_slice($products,$from,10);
 
         $product_details = array();
         $product_medias = array();
@@ -229,7 +246,7 @@ class CategoryController extends Controller
         $product_details = collect($product_details);
         $product_medias = collect($product_medias);
 
-        return view('frontend.product.shop', compact('sub_categories','brands','products','product_medias','product_details','filter_old','filter_old_price','max_price_filter','min_price_filter','filter_sorting','filter_brands','min_price_old','max_price_old'));
+        return view('frontend.product.shop', compact('sub_categories','brands','products','product_medias','product_details','filter_old','filter_old_price','max_price_filter','min_price_filter','filter_sorting','filter_brands','min_price_old','max_price_old','total_counts','from','to'));
     }
 
 }

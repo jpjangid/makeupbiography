@@ -64,6 +64,8 @@
           <!-- Filter sidebar for computer begin --> 
           <form action="{{ url('shop') }}" method="get" id="categoryPageFrom">
             <input type="text" hidden name="pagination" id="paggination" value="">
+            <input type="hidden" id="paginateFrom" name="from" value="{{ $from }}">
+            <input type="hidden" id="paginateTo" name="to" value="{{ $to }}">
             @if(!empty($sub_categories) && count($sub_categories) > 0)
               <aside id="woocommerce_product_categories-2" class="widget woocommerce widget_product_categories">
                 <div class="widget-title">Product categories</div>
@@ -71,7 +73,7 @@
                 @foreach($sub_categories as $pet_cat)
                   <li class="cat-item cat-item-50 cat-parent">
             
-                    <input type="checkbox" name="filter_category[]" id="filterCategory" class="filter_category" value="{{$pet_cat->slug}}" {{ !empty($filter_old) && in_array($pet_cat->slug,$filter_old) ? "checked" : "" }}> 
+                    <input type="checkbox" name="filter_category[]" id="filterCategory" class="parent-category filter_category" value="{{$pet_cat->slug}}" {{ !empty($filter_old) && in_array($pet_cat->slug,$filter_old) ? "checked" : "" }}> 
                     <label for="" >{{ $pet_cat->name }}</label>
 
                     @if(!empty($pet_cat->subcategory)  && count($pet_cat->subcategory) > 0)
@@ -175,7 +177,7 @@
 
         <div class="c-catalog-ordering  c-catalog-ordering--desktop-filter ">
           <div class="c-catalog-ordering__col c-catalog-ordering__col--result">
-            <p class="woocommerce-result-count">Showing 1&ndash;12 of 21 results</p>
+            <p class="woocommerce-result-count">Showing {{ $from }}&ndash;{{ $to > $total_counts ? $total_counts : $to }} of {{ $total_counts }} results</p>
           </div>
           <div class="c-catalog-ordering__col c-catalog-ordering__col--ordering">
             <select name="orderby" class="orderby" id="orderbyFilter" aria-label="Shop order">
@@ -252,17 +254,17 @@
         <nav class="woocommerce-pagination">
           <ul class='page-numbers'>
             <li>
-              <a class="next page-numbers" href="">
-                <i class="ip-menu-right page-numbers__prev-ico"></i>
-              </a>
+              <button class="next paginate-previous page-numbers" >
+                <i class="ip-menu-left page-numbers__prev-ico"></i>
+              </button>
             </li>
             <li>
-              <a class="page-numbers" href="" onclick="return false;">1</a>
+              <a class="page-numbers">{{ rtrim($to, "0"); }}</a>
             </li>
             <li>
-              <a class="next page-numbers" href="">
-                <i class="ip-menu-right page-numbers__prev-ico"></i>
-              </a>
+              <button class="next paginate-next page-numbers">
+                <i class="ip-menu-right paginate-next page-numbers__prev-ico" ></i>
+              </button>
             </li>
           </ul>
         </nav>
@@ -281,6 +283,8 @@
 @section('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.js"></script>
 <script type="text/javascript">
+  let to = '{{ $to }}'; 
+  let totalCount = '{{ $total_counts }}';
   $(document).ready(function(){
     // $(document).on('click','#filterCategory',function(e){
     //   e.preventDefault();
@@ -321,6 +325,40 @@
       $('#min_price_filter').val(min_price);
       $('#max_price_filter').val(max_price);
     }
+
+    $(document).on('click','.paginate-previous',function(e){
+      e.preventDefault();
+      if("{{ $from }}" <= 0) {
+
+      } else {
+        $('#paginateFrom').val(parseInt($('#paginateFrom').val())-10);
+        $('#paginateTo').val(parseInt($('#paginateTo').val())-10);
+        $('#categoryPageFrom').submit();
+      }
+    });
+
+    $(document).on('click','.paginate-next',function(e){
+      e.preventDefault();
+      if(parseInt(to) > parseInt(totalCount)) {
+        console.log();
+      } else {
+        $('#paginateFrom').val(parseInt($('#paginateFrom').val())+10);
+        $('#paginateTo').val(parseInt($('#paginateTo').val())+10);
+        $('#categoryPageFrom').submit();
+      }
+    });
+
+    // $(document).on('change','.parent-category', function() {
+    //   if($(this).is(":checked") == true) {
+    //     $(this).parent().css( "background-color", "red" );
+
+    //     $.map( $(this).parent().find('ul .children'), function( val, i ) {
+    //       console.log(val);
+    //     });   
+    //     console.log();
+    //   } 
+
+    // });
   });
 </script>
 @endsection
