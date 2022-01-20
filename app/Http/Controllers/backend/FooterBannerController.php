@@ -7,47 +7,46 @@ use App\Models\FooterBanner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
-use Yajra\DataTables\Services\DataTable;
-use DataTables;
+use Yajra\DataTables\DataTables;
 use Illuminate\Support\Collection;
 
 class FooterBannerController extends Controller
 {
     public function index()
     {
-        
+
         if (request()->ajax()) {
             $footers1 = FooterBanner::where(['status' => 1])->get();
 
             $footers = new Collection;
-            foreach($footers1 as $footer) {
+            foreach ($footers1 as $footer) {
                 $footers->push([
                     'id'    => $footer->id,
                     'name'  => $footer->name,
                     'url'   => $footer->url,
-                    'status'=> $footer->status 
-                ]);    
+                    'status' => $footer->status
+                ]);
             }
 
             return Datatables::of($footers)
-                    ->addIndexColumn()
-                    ->addColumn('active', function($row) {
-                        $checked = $row['status'] == '1' ? 'checked' : '';
-                        $active  = '<div class="form-check form-switch form-check-custom form-check-solid">
-                                        <input type="hidden" value="'.$row['id'].'" class="footer_id">
-                                        <input type="checkbox" class="form-check-input js-switch  h-20px w-30px" id="customSwitch1" name="status" value="'.$row['status'].'" '.$checked.'>
+                ->addIndexColumn()
+                ->addColumn('active', function ($row) {
+                    $checked = $row['status'] == '1' ? 'checked' : '';
+                    $active  = '<div class="form-check form-switch form-check-custom form-check-solid">
+                                        <input type="hidden" value="' . $row['id'] . '" class="footer_id">
+                                        <input type="checkbox" class="form-check-input js-switch  h-20px w-30px" id="customSwitch1" name="status" value="' . $row['status'] . '" ' . $checked . '>
                                     </div>';
 
-                      return $active;
-                    })
-                    ->addColumn('action', function($row) {
-                           $delete_url = url('admin/footer/banners/delete',$row['id']);
-                           $edit_url = url('admin/footer/banners/edit',$row['id']);
-                           $btn = '<a class="btn btn-primary btn-sm ml-1" href="'.$edit_url.'"><i class="fas fa-edit"></i></a>';
-                           return $btn;
-                    })
-                    ->rawColumns(['action','active'])
-                    ->make(true);
+                    return $active;
+                })
+                ->addColumn('action', function ($row) {
+                    $delete_url = url('admin/footer/banners/delete', $row['id']);
+                    $edit_url = url('admin/footer/banners/edit', $row['id']);
+                    $btn = '<a class="btn btn-primary btn-sm ml-1" href="' . $edit_url . '"><i class="fas fa-edit"></i></a>';
+                    return $btn;
+                })
+                ->rawColumns(['action', 'active'])
+                ->make(true);
         }
         return view('backend.footer_banner.index');
     }
@@ -63,8 +62,8 @@ class FooterBannerController extends Controller
 
     public function edit($id)
     {
-        $footer = FooterBanner::where('id',$id)->first();
-        return view('backend.footer_banner.edit',compact('footer'));
+        $footer = FooterBanner::where('id', $id)->first();
+        return view('backend.footer_banner.edit', compact('footer'));
     }
 
     public function update(Request $request, $id)
@@ -86,12 +85,12 @@ class FooterBannerController extends Controller
             $file = $request->file('image');
             $fileNameString = (string) Str::uuid();
             $image = $fileNameString . time() . "." . $extension;
-            $path = Storage::putFileAs('public/footer_images/', $file, $image);
+            Storage::putFileAs('public/footer_images/', $file, $image);
             $footer->image = $image;
         }
 
         $status = 0;
-        if(isset($request->status)){
+        if (isset($request->status)) {
             $status = 1;
         }
 
@@ -100,7 +99,7 @@ class FooterBannerController extends Controller
         $footer->status                  =  $status;
         $footer->update();
 
-        return redirect('admin/footer/banners')->with('success','Footer Banner Updated Successfully');
+        return redirect('admin/footer/banners')->with('success', 'Footer Banner Updated Successfully');
     }
 
     public function destroy($id)

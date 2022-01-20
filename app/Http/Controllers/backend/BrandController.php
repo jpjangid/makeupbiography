@@ -1,54 +1,54 @@
 <?php
 
 namespace App\Http\Controllers\backend;
+
 use App\Http\Controllers\Controller;
 
 use App\Models\Brand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
-use Yajra\DataTables\Services\DataTable;
-use DataTables;
+use Yajra\DataTables\DataTables;
 use Illuminate\Support\Collection;
 
 class BrandController extends Controller
 {
     public function index()
     {
-        
+
         if (request()->ajax()) {
-            $brands1 = Brand::where(['flag' => 0,'status' => 1])->get();
+            $brands1 = Brand::where(['flag' => 0, 'status' => 1])->get();
 
             $brands = new Collection;
-            foreach($brands1 as $brand) {
+            foreach ($brands1 as $brand) {
                 $brands->push([
                     'id'    => $brand->id,
                     'name'  => $brand->name,
                     'slug'  => $brand->slug,
-                    'status'=> $brand->status 
-                ]);    
+                    'status' => $brand->status
+                ]);
             }
 
             return Datatables::of($brands)
-                    ->addIndexColumn()
-                    ->addColumn('active', function($row) {
-                        $checked = $row['status'] == '1' ? 'checked' : '';
-                        $active  = '<div class="form-check form-switch form-check-custom form-check-solid">
-                                        <input type="hidden" value="'.$row['id'].'" class="category_id">
-                                        <input type="checkbox" class="form-check-input js-switch  h-20px w-30px" id="customSwitch1" name="status" value="'.$row['status'].'" '.$checked.'>
+                ->addIndexColumn()
+                ->addColumn('active', function ($row) {
+                    $checked = $row['status'] == '1' ? 'checked' : '';
+                    $active  = '<div class="form-check form-switch form-check-custom form-check-solid">
+                                        <input type="hidden" value="' . $row['id'] . '" class="category_id">
+                                        <input type="checkbox" class="form-check-input js-switch  h-20px w-30px" id="customSwitch1" name="status" value="' . $row['status'] . '" ' . $checked . '>
                                     </div>';
 
-                      return $active;
-                    })
-                    ->addColumn('action', function($row) {
-                           $delete_url = url('admin/brands/delete',$row['id']);
-                           $edit_url = url('admin/brands/edit',$row['id']);
-                           $btn = '<a class="btn btn-primary btn-sm ml-1" href="'.$edit_url.'"><i class="fas fa-edit"></i></a>';
-                           $btn .= '<a class="btn btn-info btn-sm ml-1" href="'.$delete_url.'"><i class="fa fa-trash"></i></a>'; 
-                           return $btn;
-                    })
-                    ->rawColumns(['action','active'])
-                    ->make(true);
+                    return $active;
+                })
+                ->addColumn('action', function ($row) {
+                    $delete_url = url('admin/brands/delete', $row['id']);
+                    $edit_url = url('admin/brands/edit', $row['id']);
+                    $btn = '<a class="btn btn-primary btn-sm ml-1" href="' . $edit_url . '"><i class="fas fa-edit"></i></a>';
+                    $btn .= '<a class="btn btn-info btn-sm ml-1" href="' . $delete_url . '"><i class="fa fa-trash"></i></a>';
+                    return $btn;
+                })
+                ->rawColumns(['action', 'active'])
+                ->make(true);
         }
         return view('backend.brand.index');
     }
@@ -93,12 +93,12 @@ class BrandController extends Controller
         }
 
         $status = 0;
-        if(isset($request->status)){
+        if (isset($request->status)) {
             $status = 1;
         }
 
         $top_brand_status = 0;
-        if(isset($request->top_brand_status)){
+        if (isset($request->top_brand_status)) {
             $top_brand_status = 1;
         }
 
@@ -121,7 +121,7 @@ class BrandController extends Controller
             'og_alt'                    =>  $request->og_alt,
         ]);
 
-        return redirect('admin/brands')->with('success','Brand Created Successfully');
+        return redirect('admin/brands')->with('success', 'Brand Created Successfully');
     }
 
     public function update_status(Request $request)
@@ -140,19 +140,18 @@ class BrandController extends Controller
 
     public function edit($id)
     {
-        $brand = Brand::where('id',$id)->first();
-        return view('backend.brand.edit',compact('brand'));
-
+        $brand = Brand::where('id', $id)->first();
+        return view('backend.brand.edit', compact('brand'));
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name'                  =>  'required|unique:brands,name,'.$id,
+            'name'                  =>  'required|unique:brands,name,' . $id,
             'description'           =>  'required',
             'short_description'     =>  'required',
             'alt'                   =>  'required',
-            'slug'                  =>  'required|unique:brands,slug,'.$id,
+            'slug'                  =>  'required|unique:brands,slug,' . $id,
         ], [
             'name.required'                 =>  'Brand Name is required',
             'description.required'          =>  'Brand Description is required',
@@ -182,15 +181,15 @@ class BrandController extends Controller
         }
 
         $status = 0;
-        if(isset($request->status)){
+        if (isset($request->status)) {
             $status = 1;
         }
 
         $top_brand_status = 0;
-        if(isset($request->top_brand_status)){
+        if (isset($request->top_brand_status)) {
             $top_brand_status = 1;
         }
-        
+
         $brand->slug                     =  $request->slug;
         $brand->name                     =  $request->name;
         $brand->description              =  $request->description;
@@ -202,14 +201,14 @@ class BrandController extends Controller
         $brand->tags                     =  $request->tags;
         $brand->alt                      =  $request->alt;
         $brand->status                   =  $status;
-        $brand->top_brand_status         =  $top_brand_status;   
+        $brand->top_brand_status         =  $top_brand_status;
         $brand->og_title                 =  $request->og_title;
         $brand->og_description           =  $request->og_description;
         $brand->og_image                 =  $og_image;
         $brand->og_alt                   =  $request->og_alt;
         $brand->update();
 
-        return redirect('admin/brands')->with('success','Brand Updated Successfully');
+        return redirect('admin/brands')->with('success', 'Brand Updated Successfully');
     }
 
     public function destroy($id)

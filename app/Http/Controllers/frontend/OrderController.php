@@ -9,7 +9,7 @@ use App\Models\Coupon;
 use App\Models\CouponUsedBy;
 use App\Models\Order;
 use App\Models\OrderItem;
-use App\Models\ProductVariantMedia;
+use App\Models\ProductMedia;
 use App\Models\User;
 use App\Models\UserAddress;
 use App\Models\Wallet;
@@ -28,7 +28,7 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         $user = auth()->user();
-        $cartItems = Cart::where('user_id', $user->id)->with('product', 'productVariant.medias')->get();
+        $cartItems = Cart::where('user_id', $user->id)->with('product', 'product.medias')->get();
 
         $online_payment = "fail";
 
@@ -174,7 +174,6 @@ class OrderController extends Controller
             OrderItem::create([
                 'order_id'              =>  $order->id,
                 'product_id'            =>  $item->product_id,
-                'product_variant_id'    =>  $item->product_variant_id,
                 'quantity'              =>  $item->quantity,
             ]);
         }
@@ -218,11 +217,11 @@ class OrderController extends Controller
                 $item->delete();
             }
 
-            $recent_order = Order::where('id', $order->id)->with('items.variant.product', 'items.variant.medias', 'user')->first();
+            $recent_order = Order::where('id', $order->id)->with('items.product.medias', 'user')->first();
             $user = User::find($recent_order->user_id);
             $image = array();
             foreach ($recent_order->items as $item) {
-                $media = ProductVariantMedia::where(['product_variant_id' => $item->variant->id, 'media_type' => 'image'])->orderby('sequence', 'asc')->first();
+                $media = ProductMedia::where(['product_id' => $item->product->id, 'media_type' => 'image'])->orderby('sequence', 'asc')->first();
                 if (!empty($media)) {
                     array_push($image, $media->media);
                 }
@@ -249,7 +248,8 @@ class OrderController extends Controller
 
     public function thankyou_page($order_no)
     {
-        $order = Order::where('order_no', $order_no)->with('items.variant.product', 'items.variant.medias', 'user')->first();
+        $order = Order::where('order_no', $order_no)->with('items.product.medias', 'user')->first();
+        // dd($order);
 
         return view('frontend.order.ordersuccess', compact('order'));
     }
@@ -277,16 +277,16 @@ class OrderController extends Controller
         # Shiprocket auth token
         $token = $auth_response->token;
         # Creating order params
-        $order = Order::where('id', $order_id)->with('items')->first();
+        $order = Order::where('id', $order_id)->with('items.product')->first();
         $payment_mode = $order->payment_mode == 'cod' ? 'COD' : 'Prepaid';
         $items = new Collection();
         foreach ($order->items as $order_item) {
             $items->push([
-                'name'          => $order_item->variant->product->name . ' - ' . $order_item->variant->name,
-                'sku'           => $order_item->variant->sku,
-                'units'         => $order_item->quantity,
-                'selling_price' => $order_item->variant->sale_price,
-                'hsn'           => $order_item->variant->product->hsn
+                'name'              => $order_item->product->item_shade_name,
+                'sku'               => $order_item->product->sku,
+                'units'             => $order_item->quantity,
+                'selling_price'     => $order_item->product->sale_price,
+                'hsn'               => $order_item->product->hsn
             ]);
         }
         $order_params = array(

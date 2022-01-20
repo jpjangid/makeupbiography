@@ -1,6 +1,9 @@
 @extends('backend.layouts.app')
 
 @section('title','Edit Related Product')
+@section('css')
+<link href="{{ asset('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
+@endsection
 
 @section('content')
 
@@ -50,7 +53,7 @@
                             <div class="col-md-12 mb-4">
                                 <div class="form-group">
                                     <label class="required form-label" for="main_id">Main Product</label>
-                                    <input type="text" value="{{ $main_product->main->name }}" class="form-control form-control-solid" disabled>
+                                    <input type="text" value="{{ $main_product->main->item_shade_name }}" class="form-control form-control-solid" disabled>
                                 </div>
                             </div>
 
@@ -66,30 +69,30 @@
                                     </thead>
                                     <tbody>
                                         @foreach($related_products as $related_product)
-                                            <form action="{{ url('admin/related_products/update', $related_product->id) }}" method="post" enctype="multipart/form-data">
-                                                @csrf
-                                                @method('PUT')
-                                                <tr>
-                                                    <td>
-                                                        <select name="related_id" class="form-select form-select-solid">
-                                                            <option value="">Select Related Product</option>
-                                                            @foreach($products as $product)
-                                                                @php
-                                                                    $selected = $product->id === $related_product->related_id ? 'selected' : '';
-                                                                @endphp
-                                                                <option value="{{ $product->id }}" {{$selected}}>{{ $product->name }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                        <input type="number" name="sequence" class="form-control form-control-solid" value="{{ $related_product->sequence }}">
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-primary btn-sm">Update</button>
-                                                        <a class="btn btn-danger btn-sm" href="{{ url('admin/related_products/delete', $related_product->id) }}" role="button"><i class="fa fa-trash"></i></a>
-                                                    </td>
-                                                </tr>
-                                            </form>
+                                        <form action="{{ url('admin/related_products/update', $related_product->id) }}" method="post" enctype="multipart/form-data">
+                                            @csrf
+                                            @method('PUT')
+                                            <tr>
+                                                <td>
+                                                    <select name="related_id" class="form-select form-select-solid" data-control="select2" data-placeholder="Select Related Product">
+                                                        <option></option>
+                                                        @foreach($products as $product)
+                                                        @php
+                                                        $selected = $product->id === $related_product->related_id ? 'selected' : '';
+                                                        @endphp
+                                                        <option value="{{ $product->id }}" {{$selected}}>{{ $product->item_shade_name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <input type="number" name="sequence" class="form-control form-control-solid" value="{{ $related_product->sequence }}">
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-primary btn-sm">Update</button>
+                                                    <a class="btn btn-danger btn-sm" href="{{ url('admin/related_products/delete', $related_product->id) }}" role="button"><i class="fa fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                        </form>
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -111,10 +114,10 @@
                                             <input type="hidden" name="main_id" value="{{ $main_product->main_id }}">
                                             <tr>
                                                 <td>
-                                                    <select name="related_products[]" class="form-select form-select-solid">
-                                                        <option value="">Select Related Product</option>
+                                                    <select name="related_products[]" class="form-select form-select-solid" data-control="select2" data-placeholder="Select Related Product">
+                                                        <option></option>
                                                         @foreach($products as $product)
-                                                        <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                                        <option value="{{ $product->id }}">{{ $product->item_shade_name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </td>
@@ -152,6 +155,7 @@
 @endsection
 
 @section('js')
+<script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
 <script>
     $(document).on('click', '.add_row', function() {
         var table = $('#relatedtbl'),

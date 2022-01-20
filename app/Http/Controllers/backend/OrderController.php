@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Yajra\DataTables\DataTables;
 use GuzzleHttp\Client;
-use App\Models\ProductVariantMedia;
+use App\Models\ProductMedia;
 use App\Models\User;
 use Exception;
 
@@ -48,11 +48,11 @@ class OrderController extends Controller
 
     public function order_detail($id)
     {
-        $order = Order::where('id', $id)->with('items.variant.product', 'items.variant.medias', 'items.return', 'user')->first();
+        $order = Order::where('id', $id)->with('items.product.medias', 'items.return', 'user')->first();
         $user = User::find($order->user_id);
         $image = array();
         foreach ($order->items as $item) {
-            $media = ProductVariantMedia::where(['product_variant_id' => $item->variant->id, 'media_type' => 'image'])->orderby('sequence', 'asc')->first();
+            $media = ProductMedia::where(['product_id' => $item->product->id, 'media_type' => 'image'])->orderby('sequence', 'asc')->first();
             if (!empty($media)) {
                 array_push($image, $media->media);
             }
@@ -101,11 +101,11 @@ class OrderController extends Controller
         $items = new Collection();
         foreach ($order->items as $order_item) {
             $items->push([
-                'name'          => $order_item->variant->product->name . ' - ' . $order_item->variant->name,
-                'sku'           => $order_item->variant->sku,
-                'units'         => $order_item->quantity,
-                'selling_price' => $order_item->variant->sale_price,
-                'hsn'           => $order_item->variant->product->hsn
+                'name'              => $order_item->product->item_shade_name,
+                'sku'               => $order_item->product->sku,
+                'units'             => $order_item->quantity,
+                'selling_price'     => $order_item->product->sale_price,
+                'hsn'               => $order_item->product->hsn
             ]);
         }
         $order_params = array(

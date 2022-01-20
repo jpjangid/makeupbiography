@@ -60,7 +60,6 @@ class LoginController extends Controller
     public function loginWithFacebook()
     {
         try {
-
             $user = Socialite::driver('facebook')->user();
             $isUser = User::where('fb_id', $user->id)->first();
 
@@ -129,14 +128,14 @@ class LoginController extends Controller
                 $cookieValues = json_decode($request->cookie('makeup_biography'));
 
                 foreach ($cookieValues  as $cookieValue) {
-                    $cart[] = ['product_id' => $cookieValue->product_id, 'quantity' => $cookieValue->quantity, 'product_variant_id' => $cookieValue->product_variant_id];
+                    $cart[] = ['product_id' => $cookieValue->product_id, 'quantity' => $cookieValue->quantity];
                 }
 
                 \Cookie::queue(\Cookie::forget('makeup_biography'));
 
                 foreach ($cartItems  as $cartItem) {
                     foreach ($cart  as $key => $cartValue) {
-                        if ($cartValue['product_id'] == $cartItem->product_id && $cartValue['product_variant_id'] == $cartItem->product_variant_id) {
+                        if ($cartValue['product_id'] == $cartItem->product_id) {
                             /// Update data
                             Cart::where('id', $cartItem->id)
                                 ->update(['quantity' =>  $cartItem->quantity + $cartValue['quantity']]);
@@ -147,7 +146,6 @@ class LoginController extends Controller
                 foreach ($cart  as $key => $cartValue) {
                     $CartTable = new Cart;
                     $CartTable->product_id = $cartValue['product_id'];
-                    $CartTable->product_variant_id = $cartValue['product_variant_id'];
                     $CartTable->user_id = $user->id;
                     $CartTable->quantity = $cartValue['quantity'];
                     $CartTable->save();

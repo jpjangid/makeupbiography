@@ -1,6 +1,7 @@
 @extends('backend.layouts.app')
 
 @section('title','Products')
+@section('header_title','Products')
 
 @section('css')
 <!-- Status message -->
@@ -43,7 +44,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-tools mt-4">
-                            <a href="{{ url('admin/products/create') }}" class="btn btn-active-light-primary">
+                            <a href="{{ url('admin/products/create') }}" class="btn btn-light-primary">
                                 + Add Product
                             </a>
                         </div>

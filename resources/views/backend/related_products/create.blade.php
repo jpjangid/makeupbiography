@@ -1,6 +1,9 @@
 @extends('backend.layouts.app')
 
 @section('title','Add Related Product')
+@section('css')
+<link href="{{ asset('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
+@endsection
 
 @section('content')
 
@@ -26,10 +29,10 @@
                                 <div class="col-md-12 mb-4">
                                     <div class="form-group">
                                         <label class="required form-label" for="main_id">Main Product</label>
-                                        <select name="main_id" class="form-select form-select-solid">
-                                            <option value="">Select Main Product</option>
+                                        <select name="main_id" class="form-select form-select-solid" data-control="select2" data-placeholder="Select Main Product">
+                                            <option></option>
                                             @foreach($products as $product)
-                                            <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                            <option value="{{ $product->id }}">{{ $product->item_shade_name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -47,10 +50,10 @@
                                         <tbody>
                                             <tr>
                                                 <td>
-                                                    <select name="related_products[]" class="form-select form-select-solid">
-                                                        <option value="">Select Related Product</option>
+                                                    <select name="related_products[]" class="form-select form-select-solid" data-control="select2" data-placeholder="Select Related Product">
+                                                        <option></option>
                                                         @foreach($products as $product)
-                                                        <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                                        <option value="{{ $product->id }}">{{ $product->item_shade_name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </td>
@@ -71,7 +74,7 @@
                         <!-- /.card-body -->
 
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-light-primary" style="float: right;">Add Related Product</button>
+                            <button type="submit" class="btn btn-light-primary" style="float: right;">Add</button>
                             <a href="{{ url('admin/related_products') }}" class="btn btn-light-danger"> Cancel </a>
                         </div>
 
@@ -88,6 +91,7 @@
 @endsection
 
 @section('js')
+<script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
 <script>
     $(document).on('click', '.add_row', function() {
         var table = $('#relatedtbl'),

@@ -5,13 +5,12 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use Illuminate\Http\Request;
-use App\Models\ProductVariant;
 use App\Models\Product;
 use App\Models\UserAddress;
 use App\Models\Coupon;
+use App\Models\ProductMedia;
 use Razorpay\Api\Api;
 use App\Models\User;
-use App\Models\ProductVariantMedia;
 use App\Models\Wallet;
 use Illuminate\Support\Collection;
 
@@ -25,8 +24,7 @@ class CartController extends Controller
         $user = auth()->user();
         $existCookie = false;
         $checkTrue = false;
-        $message = ProductVariant::select('name')->where('id', $request->product_varient_id)->first();
-        $product = Product::select('name')->where('id', $request->product_id)->first();
+        $product = Product::select('item_shade_name')->where('id', $request->product_id)->first();
         // dd($product);
         if ($product->status == 1 && $product->flag == 0) {
             $message = "";
@@ -34,7 +32,7 @@ class CartController extends Controller
         }
 
         if ($user) {
-            $cartItems = Cart::where('user_id', $user->id)->where('product_id', $request->product_id)->where('product_variant_id', $request->product_varient_id)->first();
+            $cartItems = Cart::where('user_id', $user->id)->where('product_id', $request->product_id)->first();
 
             if ($cartItems) {
                 //update data
@@ -44,7 +42,6 @@ class CartController extends Controller
                 // Insert data
                 $CartTable = new Cart;
                 $CartTable->product_id = $request->product_id;
-                $CartTable->product_variant_id = $request->product_varient_id;
                 $CartTable->user_id = $user->id;
                 $CartTable->quantity = $request->product_quantity;
                 $CartTable->save();
@@ -54,24 +51,24 @@ class CartController extends Controller
                 $cartItems = json_decode(request()->cookie('makeup_biography'));
 
                 foreach ($cartItems  as $cartItem) {
-                    if ($cartItem->product_id == $request->product_id && $cartItem->product_variant_id  == $request->product_varient_id) {
+                    if ($cartItem->product_id == $request->product_id) {
                         $cartItem->quantity += $request->product_quantity;
                         $existCookie = true;
                     }
-                    $cart[] = ['product_id' => $cartItem->product_id, 'product_variant_id' => $cartItem->product_variant_id, 'quantity' => $cartItem->quantity];
+                    $cart[] = ['product_id' => $cartItem->product_id, 'quantity' => $cartItem->quantity];
                 }
                 if (!$existCookie) {
-                    $cart[] = ['product_id' => $request->product_id, 'product_variant_id' => $request->product_varient_id, 'quantity' => $request->product_quantity];
+                    $cart[] = ['product_id' => $request->product_id, 'quantity' => $request->product_quantity];
                 }
                 // dd($cart);
             } else {
-                $cart[] = ['product_id' => $request->product_id, 'product_variant_id' => $request->product_varient_id, 'quantity' => $request->product_quantity];
+                $cart[] = ['product_id' => $request->product_id, 'quantity' => $request->product_quantity];
             }
             $array_json = json_encode($cart);
             \Cookie::queue('makeup_biography', $array_json, $minutes);
         }
 
-        $message = $product->name . "-" . $message->name . " has been added to your cart.";
+        $message = $product->item_shade_name. " has been added to your cart.";
         return response($message);
     }
 
@@ -93,7 +90,7 @@ class CartController extends Controller
                 'product' => function ($query) {
                     $query->where(['status' => 1, 'flag' => 0]);
                 },
-                'productVariant.medias'
+                'product.medias'
             ])->get();
 
             $totalQuantityItems = Cart::where('user_id', $user->id)->sum('quantity');
@@ -102,9 +99,9 @@ class CartController extends Controller
                     if (Product::where('id', $vari->product_id)->where(['status' => 0, 'flag' => 0])->orWhere('flag', 1)->first()) {
                         Cart::where(['product_id' => $vari->product_id, 'user_id' => $vari->user_id])->delete();
                     } else {
-                        $subtotal += round(floatval($vari->productVariant->sale_price) * $vari->quantity);
-                        if ($vari->productVariant->discount > 0) {
-                            $discountPrice = round(floatval(floatval($vari->productVariant->regular_price) * $vari->quantity) - floatval(floatval($vari->productVariant->sale_price) * $vari->quantity));
+                        $subtotal += round(floatval($vari->product->sale_price) * $vari->quantity);
+                        if ($vari->product->discount > 0) {
+                            $discountPrice = round(floatval(floatval($vari->product->regular_price) * $vari->quantity) - floatval(floatval($vari->product->sale_price) * $vari->quantity));
                         }
                     }
                     $totalCartItems = count($cartItems);
@@ -117,7 +114,7 @@ class CartController extends Controller
                 $cartItems = json_decode(request()->cookie('makeup_biography'));
                 foreach ($cartItems  as $cartItem) {
                     if (empty(Product::where('id', $cartItem->product_id)->where(['status' => 0, 'flag' => 0])->orWhere('flag', 1)->first()) === true) {
-                        $cart[] = ['product_id' => $cartItem->product_id, 'quantity' => $cartItem->quantity, 'product_variant_id' => $cartItem->product_variant_id];
+                        $cart[] = ['product_id' => $cartItem->product_id, 'quantity' => $cartItem->quantity];
                     }
                 }
             }
@@ -134,22 +131,19 @@ class CartController extends Controller
                 $totalCartItems = count($cookieItems);
                 foreach ($cookieItems as $cookieItem) {
                     if ($cookieItem->product_id) {
-                        $variantId = $cookieItem->product_variant_id;
-                        $cookie_products = Product::with(['variants' => function ($query) use ($variantId) {
-                            $query->where('id', $variantId)->first();
-                        }])->where([
+                        $cookie_product = Product::with('medias')->where([
                             ['products.status', '=', 1],
                             ['products.id', '=', $cookieItem->product_id],
                             ['products.flag', '=', 0]
                         ])->first();
                         $totalQuantityItems += $cookieItem->quantity;
-                        if ($cookie_products != "") {
-                            $cookieCartItems[] = ['quantity' => $cookieItem->quantity, 'product' => $cookie_products, 'product_variant_id' => $cookieItem->product_variant_id];
+                        if ($cookie_product != "") {
+                            $cookieCartItems[] = ['quantity' => $cookieItem->quantity, 'product' => $cookie_product];
                         }
                     }
                 }
             }
-             $cartItems = []; 
+            $cartItems = []; 
         }
 
         if (request()->ajax()) {
@@ -189,15 +183,15 @@ class CartController extends Controller
     //html cookie item for html page from cookie
     public function cookie_items($product)
     {
-        $variant = $product['product']['variants'][0];
+        $product = $product['product'];
         $product_image = "";
-        if (ProductVariantMedia::where('product_variant_id', $variant->id)->where('flag', 0)->orderby('sequence', 'asc')->first()) {
-            $pro_img = ProductVariantMedia::where('product_variant_id', $variant->id)->orderby('sequence', 'asc')->first();
+        if (ProductMedia::where('product_id', $product->id)->where('flag', 0)->orderby('sequence', 'asc')->first()) {
+            $pro_img = ProductMedia::where(['product_id' => $product->id, 'media_type' => 'image'])->orderby('sequence', 'asc')->first();
             $product_image = asset('storage/products/variants/' . $pro_img->media);
         }
 
         // $image = asset('storage/product/'.$product->);
-        $removeItem = url('remove/cart/item', ['id' => $product['product']->id, 'variant_id' => $product['product_variant_id']]);
+        $removeItem = url('remove/cart/item', ['id' => $product['product']->id]);
         $item = '<li class="woocommerce-mini-cart-item c-product-list-widget__item mini_cart_item">
                     <div class="c-product-list-widget__wrap">
                         <div class="c-product-list-widget__thumb-col">
@@ -205,10 +199,10 @@ class CartController extends Controller
                         </div>
                         <div class="c-product-list-widget__title-col">
                             <div class="c-product-list-widget__title">
-                                ' . $product['product']['name'] . '-' . $variant->name . '								
+                                ' . $product['product']['item_shade_name'] . '								
                             </div>
                             <div class="c-product-list-widget__price">
-                                <span class="quantity">' . $product['quantity'] . ' × <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>' . $variant->sale_price . '</bdi></span></span>								
+                                <span class="quantity">' . $product['quantity'] . ' × <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>' . $product->sale_price . '</bdi></span></span>								
                             </div>
                         </div>
                         <button data-remove-url="' . $removeItem . '" class="remove-product-drop c-product-list-widget__remove remove" aria-label="Remove this item"><i class="ip-close-small c-product-list-widget__remove-icon"></i></button>						
@@ -221,10 +215,10 @@ class CartController extends Controller
     //html list item for html page from cart db
     public function list_items($product)
     {
-        $removeItem = url('remove/cart/item', ['id' => $product->id, 'variant_id' => $product->product_variant_id]);
+        $removeItem = url('remove/cart/item', ['id' => $product->id]);
         $product_image = "";
-        if (ProductVariantMedia::where('product_variant_id', $product->productVariant->id)->where('flag', 0)->orderby('sequence', 'asc')->first()) {
-            $pro_img = ProductVariantMedia::where('product_variant_id', $product->productVariant->id)->orderby('sequence', 'asc')->first();
+        if (ProductMedia::where('product_variant_id', $product->id)->where('flag', 0)->orderby('sequence', 'asc')->first()) {
+            $pro_img = ProductMedia::where(['product_id' => $product->id, 'media_type' => 'image'])->orderby('sequence', 'asc')->first();
             $product_image = asset('storage/products/variants/' . $pro_img->media);
         }
 
@@ -235,10 +229,10 @@ class CartController extends Controller
                         </div>
                         <div class="c-product-list-widget__title-col">
                             <div class="c-product-list-widget__title">
-                                ' . $product->product->name . '-' . $product->productVariant->name . '								
+                                ' . $product->product->item_shade_name . '								
                             </div>
                             <div class="c-product-list-widget__price">
-                                <span class="quantity">' . $product->quantity . ' × <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>' . $product->productVariant->sale_price . '</bdi></span></span>								
+                                <span class="quantity">' . $product->quantity . ' × <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>' . $product->sale_price . '</bdi></span></span>								
                             </div>
                         </div>
                         <button data-remove-url="' . $removeItem . '" class="remove-product-drop c-product-list-widget__remove remove" aria-label="Remove this item"><i class="ip-close-small c-product-list-widget__remove-icon"></i></button>						
@@ -249,7 +243,7 @@ class CartController extends Controller
     }
 
     //remove item form cart
-    public function remove_item(Request $request, $id, $variant_id)
+    public function remove_item(Request $request, $id)
     {
         $user = auth()->user();
         $cartItem = Cart::where('id', $id)->first();
@@ -267,8 +261,8 @@ class CartController extends Controller
                 $cartItems = json_decode(request()->cookie('makeup_biography'));
 
                 foreach ($cartItems  as $cartItem) {
-                    if ($cartItem->product_id != $id && $cartItem->product_variant_id != $variant_id) {
-                        $cart[] = ['product_id' => $id, 'quantity' => $cartItem->quantity, 'product_variant_id' => $cartItem->product_variant_id];
+                    if ($cartItem->product_id != $id) {
+                        $cart[] = ['product_id' => $id, 'quantity' => $cartItem->quantity];
                     }
                 }
             }
@@ -302,9 +296,9 @@ class CartController extends Controller
                 $cartItems = json_decode(request()->cookie('makeup_biography'));
                 $cartItems = collect($cartItems);
                 foreach ($request->product_id as $key => $p_id) {
-                    if ($cartItems->where(['product_id' => $p_id, 'product_variant_id' => $request->product_variant_id[$key]])) {
+                    if ($cartItems->where(['product_id' => $p_id])) {
                         if ($request->quantity[$key] != 0) {
-                            $cart[] = ['product_id' => $p_id, 'quantity' => $request->quantity[$key], 'product_variant_id' => $request->product_variant_id[$key]];
+                            $cart[] = ['product_id' => $p_id, 'quantity' => $request->quantity[$key]];
                         }
                     }
                 }
@@ -364,10 +358,10 @@ class CartController extends Controller
                 $cartItems = json_decode(request()->cookie('makeup_biography'));
                 $cartItems = collect($cartItems);
                 foreach($cartItems as $cat) {
-                    if($cat->product_id ==  $request->product_id && $cat->product_variant_id == $request->product_variant_id) {
-                        $cart[] = ['product_id' => $cat->product_id, 'quantity' => $request->qty, 'product_variant_id' => $cat->product_variant_id];
+                    if($cat->product_id ==  $request->product_id) {
+                        $cart[] = ['product_id' => $cat->product_id, 'quantity' => $request->qty];
                     } else {
-                        $cart[] = ['product_id' => $cat->product_id, 'quantity' => $cat->quantity, 'product_variant_id' => $cat->product_variant_id];
+                        $cart[] = ['product_id' => $cat->product_id, 'quantity' => $cat->quantity];
                     }
                 }
             }
@@ -398,7 +392,7 @@ class CartController extends Controller
         $totalPrice = 0.00;
         $no_items = 0;
         $product_dis = array();
-        $cartItems = Cart::where('user_id', $user->id)->with('product', 'productVariant.medias')->get();
+        $cartItems = Cart::where('user_id', $user->id)->with('product.medias')->get();
         $totalQuantityItems = Cart::where('user_id', $user->id)->sum('quantity');
         if ($request->session()->has('_code')) {
             $external_code = $request->session()->get('_code');
@@ -410,9 +404,9 @@ class CartController extends Controller
         if ($cartItems) {
             foreach ($cartItems as $vari) {
                 $no_items += 1;
-                $subtotal += round(floatval($vari->productVariant->sale_price) * $vari->quantity);
-                if ($vari->productVariant->discount > 0) {
-                    $discount = round(floatval(floatval($vari->productVariant->regular_price) * $vari->quantity) - floatval(floatval($vari->productVariant->sale_price) * $vari->quantity));
+                $subtotal += round(floatval($vari->product->sale_price) * $vari->quantity);
+                if ($vari->product->discount > 0) {
+                    $discount = round(floatval(floatval($vari->product->regular_price) * $vari->quantity) - floatval(floatval($vari->product->sale_price) * $vari->quantity));
                     array_push($product_dis, $discount);
                     $discountPrice += $discount;
                 }else{
@@ -485,11 +479,11 @@ class CartController extends Controller
                 $coupon_disc = 0.00;
                 $user = auth()->user();
                 $checkout_items = array();
-                $cartItems = Cart::where('user_id', $user->id)->with('product.category.parent.parent', 'productVariant.medias')->get();
+                $cartItems = Cart::where('user_id', $user->id)->with('product.category.parent.parent', 'product.medias')->get();
                 if ($cartItems) {
                     $cart_value = 0.00;
                     foreach ($cartItems as $vari) {
-                        $cart_value += $vari->productVariant->sale_price * $vari->quantity;
+                        $cart_value += $vari->product->sale_price * $vari->quantity;
                     }
                     foreach ($cartItems as $vari) {
                         if ($cart_value > $coupon->min_order_amount) {
@@ -816,35 +810,35 @@ class CartController extends Controller
         $disc_amt = 0.00;
         if (!empty($coupon)) {
             if ($coupon->disc_type == 'percent') {
-                $disc = floatval((floatval($vari->productVariant->sale_price) * $coupon->discount) / 100);
+                $disc = floatval((floatval($vari->product->sale_price) * $coupon->discount) / 100);
                 if ($disc > $coupon->max_order_amount) {
                     $disc = $coupon->max_order_amount;
                 }
-                $sale = (floatval($vari->productVariant->sale_price) - floatval($disc)) * $vari->quantity;
+                $sale = (floatval($vari->product->sale_price) - floatval($disc)) * $vari->quantity;
                 $disc_amt = $disc * $vari->quantity;
             }
             if ($coupon->disc_type == 'amount') {
                 $disc = $coupon->discount;
-                if ($vari->productVariant->sale_price < $disc) {
+                if ($vari->product->sale_price < $disc) {
                     $disc_amt = $disc * $vari->quantity;
-                    $sale = (floatval($vari->productVariant->sale_price) - $coupon->discount) * $vari->quantity;
+                    $sale = (floatval($vari->product->sale_price) - $coupon->discount) * $vari->quantity;
                 } else {
-                    $sale = floatval($vari->productVariant->sale_price) * $vari->quantity;
+                    $sale = floatval($vari->product->sale_price) * $vari->quantity;
                 }
             }
         } else {
-            $sale = floatval($vari->productVariant->sale_price) * $vari->quantity;
+            $sale = floatval($vari->product->sale_price) * $vari->quantity;
         }
-        $total_disc = (floatval($vari->productVariant->regular_price) - floatval($vari->productVariant->sale_price)) + $disc_amt;
+        $total_disc = (floatval($vari->product->regular_price) - floatval($vari->product->sale_price)) + $disc_amt;
 
         $checkout_items->push([
             'coupon_disc'       =>  $disc_amt,
-            'product_disc'      =>  floatval($vari->productVariant->regular_price) - floatval($vari->productVariant->sale_price),
-            'product_name'      =>  $vari->product->name . "-" . $vari->productVariant->name,
+            'product_disc'      =>  floatval($vari->product->regular_price) - floatval($vari->product->sale_price),
+            'product_name'      =>  $vari->product->name . "-" . $vari->product->name,
             'sale'              =>  $sale,
             'cart_id'           =>  $vari->id,
             'qty'               =>  $vari->quantity,
-            'regular'           =>  floatval($vari->productVariant->regular_price) * $vari->quantity,
+            'regular'           =>  floatval($vari->product->regular_price) * $vari->quantity,
             'total_disc'        => $total_disc * $vari->quantity,
         ]);
 

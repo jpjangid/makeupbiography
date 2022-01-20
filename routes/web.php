@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Route::get('test', [App\Http\Controllers\ApiTestController::class, 'index']);
+
 Route::get('login/facebook', [App\Http\Controllers\Auth\LoginController::class, 'facebookRedirect']);
 Route::get('login/facebook/callback', [App\Http\Controllers\Auth\LoginController::class, 'loginWithFacebook']);
 
@@ -40,6 +42,11 @@ Route::middleware(['auth', 'prevent-back-history', 'admin'])->prefix('admin')->g
         Route::get('/', [App\Http\Controllers\backend\NotificationController::class, 'index']);
         Route::post('list',[App\Http\Controllers\backend\NotificationController::class, 'notificationListItems']);
     });    
+
+    Route::prefix('bulkupload')->group(function () {
+        Route::get('/', [App\Http\Controllers\backend\BulkUploadController::class, 'index']);
+        Route::post('upload',[App\Http\Controllers\backend\BulkUploadController::class, 'upload']);
+    });  
 
     Route::prefix('blogs')->group(function () {
         Route::get('/', [App\Http\Controllers\backend\BlogController::class, 'index']);
@@ -126,10 +133,8 @@ Route::middleware(['auth', 'prevent-back-history', 'admin'])->prefix('admin')->g
         Route::put('/update/{id}', [App\Http\Controllers\backend\ProductController::class, 'update']);
         Route::get('/delete/{id}', [App\Http\Controllers\backend\ProductController::class, 'destroy']);
         Route::post('/update_status', [App\Http\Controllers\backend\ProductController::class, 'update_status']);
-        Route::get('/variants/{id}', [App\Http\Controllers\backend\ProductController::class, 'variants']);
-        Route::post('/variants/store', [App\Http\Controllers\backend\ProductController::class, 'store_variants']);
-        Route::get('/variants/edit/{id}', [App\Http\Controllers\backend\ProductController::class, 'edit_variant']);
-        Route::put('/variants/update/{id}', [App\Http\Controllers\backend\ProductController::class, 'update_variant']);
+        Route::post('/cat', [App\Http\Controllers\backend\ProductController::class, 'cat']);
+        Route::get('/mediadelete/{id}', [App\Http\Controllers\backend\ProductController::class, 'mediadelete']);
     });
 
     Route::prefix('coupons')->group(function () {
@@ -266,7 +271,7 @@ Route::view('wishlist/empty', 'frontend.wishlist.empty');
 Route::view('cart/empty', 'frontend.cart.empty');
 
 Route::view('myaccount', 'frontend.myaccount.myaccount');
-Route::get('shop', [App\Http\Controllers\frontend\CategoryController::class, 'shop']);
+Route::get('shop/{tag}', [App\Http\Controllers\frontend\CategoryController::class, 'shop']);
 Route::view('brand', 'frontend.brand.index');
 Route::view('contactus', 'frontend.page.contactus');
 
@@ -285,7 +290,7 @@ Route::get('blogs/{cat}', [App\Http\Controllers\frontend\BlogController::class, 
 Route::get('blogs/{cat}/{slug}', [App\Http\Controllers\frontend\BlogController::class, 'detail']);
 
 Route::get('category/{slug}', [App\Http\Controllers\frontend\CategoryController::class, 'index']);
-Route::get('products/{product}/{variant}', [App\Http\Controllers\frontend\ProductController::class, 'index']);
+Route::get('products/{product}', [App\Http\Controllers\frontend\ProductController::class, 'index']);
 Route::post('orders',[App\Http\Controllers\frontend\OrderController::class, 'index']);
 Route::get('orders/thanks/{order_no}', [App\Http\Controllers\frontend\OrderController::class, 'thankyou_page']);
 Route::post('orders/return', [App\Http\Controllers\frontend\ReturnController::class, 'index']);

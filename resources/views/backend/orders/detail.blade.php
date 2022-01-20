@@ -48,17 +48,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @php $image = ''; @endphp
                                         @foreach($order->items as $key => $item)
-                                            @if($item->flag == '0')
-                                                <tr>
-                                                    <td><img src="{{ asset('storage/products/variants/'.$image[$key]) }}" alt="{{ $image[$key] }}" style="height: 5rem;"></td>
-                                                    <td>{{ $item->variant->product->name }} - {{ $item->variant->name }}</td>
-                                                    <td>{{ $item->quantity }}</td>
-                                                    <td>{{ $item->variant->sale_price }}</td>
-                                                    <td>{{ $item->variant->sale_price * $item->quantity }}</td>
-                                                    <td>{{ !empty($item->return) ? 'Return' : '' }}</td>
-                                                </tr>
-                                            @endif
+                                        @php $image = isset($image[$key]) ? $image[$key] : 'Product Image'; @endphp
+                                        @if($item->flag == '0')
+                                        <tr>
+                                            <td><img src="{{ asset('storage/products/variants/'.$image) }}" alt="{{ $image }}" style="height: 5rem;"></td>
+                                            <td>{{ $item->product->item_shade_name }}</td>
+                                            <td>{{ $item->quantity }}</td>
+                                            <td>{{ $item->product->sale_price }}</td>
+                                            <td>{{ $item->product->sale_price * $item->quantity }}</td>
+                                            <td>{{ !empty($item->return) ? 'Return' : '' }}</td>
+                                        </tr>
+                                        @php $image = ''; @endphp
+                                        @endif
                                         @endforeach
                                     </tbody>
                                 </table>

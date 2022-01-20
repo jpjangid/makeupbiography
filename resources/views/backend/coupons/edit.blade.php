@@ -135,7 +135,7 @@
                                             $selected = '';
                                             $selected = $product->id == $coupon->product_id ? 'selected' : '';
                                             @endphp
-                                            <option value="{{ $product->id }}" {{ $selected }}>{{ $product->name }}</option>
+                                            <option value="{{ $product->id }}" {{ $selected }}>{{ $product->item_shade_name }}</option>
                                             @endforeach
                                         </select>
                                     </div>

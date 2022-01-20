@@ -14,16 +14,16 @@ class WalletController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $allusers = User::where('role','user')->with('wallets')->get();
+            $allusers = User::where('role', 'user')->with('wallets')->get();
             $users = new Collection();
-            foreach($allusers as $user){
+            foreach ($allusers as $user) {
                 $credit = 0;
                 $debit = 0;
-                foreach($user->wallets as $wallet){
-                    if($wallet->status == 'credited'){
+                foreach ($user->wallets as $wallet) {
+                    if ($wallet->status == 'credited') {
                         $credit += $wallet->amount;
                     }
-                    if($wallet->status == 'debited'){
+                    if ($wallet->status == 'debited') {
                         $debit += $wallet->amount;
                     }
                 }
@@ -52,16 +52,16 @@ class WalletController extends Controller
 
     public function edit($id)
     {
-        $wallets = Wallet::where('user_id', $id)->orderby('created_at','desc')->get();
+        $wallets = Wallet::where('user_id', $id)->orderby('created_at', 'desc')->get();
 
-        return view('backend.wallets.edit', compact('wallets','id'));
+        return view('backend.wallets.edit', compact('wallets', 'id'));
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
             'amount'    =>  'required|numeric',
-        ],[
+        ], [
             'amount.required'   =>  'Please Enter Amount',
             'amount.numeric'    =>  'Please Enter Amount in Number',
         ]);
@@ -73,11 +73,6 @@ class WalletController extends Controller
             'status'        =>  'credited',
         ]);
 
-        return redirect()->back()->with('success','Amount Added Successfully');
-    }
-
-    public function destroy($id)
-    {
-        //
+        return redirect()->back()->with('success', 'Amount Added Successfully');
     }
 }

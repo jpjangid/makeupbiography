@@ -10,7 +10,7 @@ class OrderItemReturn extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id','order_id','order_item_id','product_id','product_variant_id','quantity','amount','reason',
+        'user_id','order_id','order_item_id','product_id','quantity','amount','reason',
         'description','status','return_no','shiprocket_order_id', 'shiprocket_shipment_id'
     ];
 
@@ -29,8 +29,8 @@ class OrderItemReturn extends Model
         return $this->belongsTo('App\Models\User','user_id');
     }
 
-    public function variant()
+    public function product()
     {
-        return $this->belongsTo('App\Models\ProductVariant', 'product_variant_id');
+        return $this->belongsTo('App\Models\Product', 'product_id');
     }
 }

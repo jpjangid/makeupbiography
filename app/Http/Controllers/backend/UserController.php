@@ -22,11 +22,11 @@ class UserController extends Controller
             foreach ($allusers as $user) {
                 $credit = 0;
                 $debit = 0;
-                foreach($user->wallets as $wallet){
-                    if($wallet->status == 'credited'){
+                foreach ($user->wallets as $wallet) {
+                    if ($wallet->status == 'credited') {
                         $credit += $wallet->amount;
                     }
-                    if($wallet->status == 'debited'){
+                    if ($wallet->status == 'debited') {
                         $debit += $wallet->amount;
                     }
                 }
@@ -51,7 +51,7 @@ class UserController extends Controller
                     $btn = '<a class="btn btn-primary btn-sm ml-1" href="' . $edit_url . '"><i class="fas fa-edit"></i></a>';
                     return $btn;
                 })
-                ->rawColumns(['action','wallet'])
+                ->rawColumns(['action', 'wallet'])
                 ->make(true);
         }
         return view('backend.users.index');
@@ -70,7 +70,7 @@ class UserController extends Controller
             'mobile'        =>  'required',
             'email'         =>  'required',
             'password'      =>  'required',
-        ],[
+        ], [
             'name.required'         =>  'Name is required',
             'role.required'         =>  'Role is required',
             'mobile.required'       =>  'Mobile No. is required',
@@ -78,7 +78,7 @@ class UserController extends Controller
             'password.required'     =>  'Password is required',
         ]);
 
-        
+
         $image = "";
         if ($request->hasFile('image')) {
             $extension = $request->file('image')->extension();
@@ -99,12 +99,7 @@ class UserController extends Controller
             'image'         =>  $image,
         ]);
 
-        return redirect('admin/users')->with('success','User Registered Successfully');
-    }
-
-    public function show($id)
-    {
-        //
+        return redirect('admin/users')->with('success', 'User Registered Successfully');
     }
 
     public function edit($id)
@@ -121,7 +116,7 @@ class UserController extends Controller
             'role'          =>  'required',
             'mobile'        =>  'required',
             'email'         =>  'required',
-        ],[
+        ], [
             'name.required'         =>  'Name is required',
             'role.required'         =>  'Role is required',
             'mobile.required'       =>  'Mobile No. is required',
@@ -129,7 +124,7 @@ class UserController extends Controller
         ]);
 
         $user = User::find($id);
-        
+
         $image = '';
         if ($request->hasFile('image')) {
             $extension = $request->file('image')->extension();
@@ -137,13 +132,13 @@ class UserController extends Controller
             $fileNameString = (string) Str::uuid();
             $image = $fileNameString . time() . "." . $extension;
             Storage::putFileAs('public/users/', $file, $image);
-        }else{
+        } else {
             $image = $user->image;
         }
 
-        if(!empty($request->password)){
+        if (!empty($request->password)) {
             $password = Hash::make($request->password);
-        }else{
+        } else {
             $password = $user->password;
         }
 
@@ -155,11 +150,6 @@ class UserController extends Controller
         $user->image          =   $image;
         $user->update();
 
-        return redirect('admin/users')->with('success','User Updated Successfully');
-    }
-
-    public function destroy($id)
-    {
-        //
+        return redirect('admin/users')->with('success', 'User Updated Successfully');
     }
 }

@@ -10,6 +10,6 @@ class ProductReview extends Model
     use HasFactory;
 
     protected $fillable = [
-        'rating','comment','name','email','product_id','product_variant_id'
+        'rating','comment','name','email','product_id'
     ];
 }

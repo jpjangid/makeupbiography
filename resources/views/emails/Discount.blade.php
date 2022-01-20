@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +8,13 @@
     <title>Discount Card</title>
     <style>
         .card {
-          width: 500px;
-          text-align: center;
-          margin: auto;
-          background-image: linear-gradient(to bottom, #008B8B, #20B2AA);
-          border: 1px solid #008B8B;
+            width: 500px;
+            text-align: center;
+            margin: auto;
+            background-image: linear-gradient(to bottom, #008B8B, #20B2AA);
+            border: 1px solid #008B8B;
         }
+
         .inner-card {
             max-width: 450px;
             margin: 20px;
@@ -21,10 +23,12 @@
             border: 1px solid #008B8B;
             font-family: 'Times New Roman', Times, serif;
         }
+
         .head-line {
             font-size: 15px;
             text-align: center;
         }
+
         .offer {
             font-size: 35px;
             text-transform: uppercase;
@@ -33,6 +37,7 @@
             background-color: #43BFC7;
             padding: 10px;
         }
+
         .promo {
             text-transform: uppercase;
             font-size: 30px;
@@ -42,20 +47,24 @@
             text-align: center;
             padding: 10px;
         }
+
         .foot-line {
             font-size: 15px;
             text-align: center;
         }
+
         .btn {
-            color:white;
+            color: white;
             background-color: #20B2AA;
             border: none;
             padding: 10px;
             cursor: pointer;
         }
+
         .btn:hover {
             opacity: 0.7;
         }
+
         .image-section {
             font-size: 30px;
             text-align: center;
@@ -63,9 +72,9 @@
             background-color: #20B2AA;
             vertical-align: middle;
         }
-        
     </style>
 </head>
+
 <body>
     <div class="card">
         <div class="inner-card">
@@ -86,4 +95,5 @@
         </div>
     </div>
 </body>
+
 </html>

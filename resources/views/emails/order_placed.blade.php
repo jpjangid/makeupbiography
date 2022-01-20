@@ -67,14 +67,16 @@
                 <p style="text-align: center; padding-left:20px; padding-right:20px;">{{ $message }}</p>
             </section>
             <p class="summary-head">Order Summary</p>
+            @php $image = ''; @endphp
             @foreach($order->items as $key => $item)
+            @php $image = isset($image[$key]) ? $image[$key] : ''; @endphp
             <table class="table-sm table-borderless productTable">
                 <tr>
-                    <td rowspan="12"><img src="{{ asset('storage/products/variants/'.$image[$key]) }}" style="float:left; height:60%; width:60%;"></td>
+                    <td rowspan="12"><img src="{{ asset('storage/products/variants/'.$image) }}" style="float:left; height:60%; width:60%;"></td>
                 </tr>
                 <tr>
                     <th style="width:35%;">Product</th>
-                    <td style="width:35%;">{{ $item->variant->product->name }} - {{ $item->variant->name }}</td>
+                    <td style="width:35%;">{{ $item->product->item_shade_name }}</td>
                 </tr>
                 <tr>
                     <th style="width:35%;">Quantity</th>
@@ -82,18 +84,19 @@
                 </tr>
                 <tr>
                     <th style="width:35%;">Price</th>
-                    <td style="width:35%;">&#8377; {{ number_format((float)$item->variant->regular_price, 2, '.', '') }}</td>
+                    <td style="width:35%;">&#8377; {{ number_format((float)$item->product->regular_price, 2, '.', '') }}</td>
                 </tr>
                 <tr>
                     <th style="width:35%;">Sub Total</th>
-                    <td style="width:35%;">&#8377; {{ number_format((float)$item->variant->regular_price * $item->quantity, 2, '.', '') }}</td>
+                    <td style="width:35%;">&#8377; {{ number_format((float)$item->product->regular_price * $item->quantity, 2, '.', '') }}</td>
                 </tr>
                 <tr>
                     <th style="width:35%;">Total Amount</th>
-                    <td style="width:35%;">&#8377; {{ number_format((float)$item->variant->regular_price * $item->quantity, 2, '.', '') }}</td>
+                    <td style="width:35%;">&#8377; {{ number_format((float)$item->product->regular_price * $item->quantity, 2, '.', '') }}</td>
                 </tr>
             </table>
             <hr>
+            @php $image = ''; @endphp
             @endforeach
             <table width="100%" style="margin: 1rem;">
                 <tr>

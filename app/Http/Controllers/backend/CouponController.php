@@ -10,7 +10,7 @@ use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
-use DataTables;
+use Yajra\DataTables\DataTables;
 
 class CouponController extends Controller
 {
@@ -110,7 +110,7 @@ class CouponController extends Controller
             'type.required'     =>  'Coupon Type is required',
         ]);
 
-        $days = implode(",",$request->days);
+        $days = implode(",", $request->days);
 
         Coupon::create([
             'name'                  =>  $request->name,
@@ -234,8 +234,8 @@ class CouponController extends Controller
         $coupon = Coupon::find($id);
 
         $days = $coupon->days;
-        if(!empty($request->days)){
-            $days = implode(",",$request->days);
+        if (!empty($request->days)) {
+            $days = implode(",", $request->days);
         }
 
         $coupon->name                   =  $request->name;

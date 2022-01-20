@@ -7,7 +7,7 @@ use App\Mail\ReturnMail;
 use App\Models\Coupon;
 use Illuminate\Http\Request;
 use App\Models\OrderItemReturn;
-use App\Models\ProductVariantMedia;
+use App\Models\ProductMedia;
 use Illuminate\Support\Collection;
 use Yajra\DataTables\DataTables;
 use GuzzleHttp\Client;
@@ -24,14 +24,14 @@ class ReturnController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $all_return_orders = OrderItemReturn::with('item.order', 'user', 'variant')->orderby('created_at', 'desc')->get();
+            $all_return_orders = OrderItemReturn::with('item.order', 'user', 'product')->orderby('created_at', 'desc')->get();
 
             $return_orders = new Collection;
             foreach ($all_return_orders as $return_order) {
                 $return_orders->push([
                     'id'                => $return_order->id,
                     'order_no'          => '#' . $return_order->item->order->order_no,
-                    'sku'               => $return_order->variant->sku,
+                    'sku'               => $return_order->product->sku,
                     'return_no'         => $return_order->return_no,
                     'client'            => $return_order->user->name,
                     'reason'            => $return_order->reason,
@@ -55,16 +55,16 @@ class ReturnController extends Controller
 
     public function return_detail($id)
     {
-        $return_order = OrderItemReturn::where('id', $id)->with('item', 'order', 'user', 'variant')->first();
-        $media = ProductVariantMedia::where(['product_variant_id' => $return_order->variant->id, 'media_type' => 'image'])->orderby('sequence', 'asc')->first();
-        $image = $media->media != '' ? $media->media : '';
+        $return_order = OrderItemReturn::where('id', $id)->with('item', 'order', 'user', 'product')->first();
+        $media = ProductMedia::where(['product_id' => $return_order->product->id, 'media_type' => 'image'])->orderby('sequence', 'asc')->first();
+        $image = isset($media->media) ? $media->media : 'Product Image';
         $order_id = $return_order->order_id;
-        $order = Order::where('id', $order_id)->with('items')->first();
+        $order = Order::where('id', $order_id)->with('items.product')->first();
         $total = 0.00;
         $itemtotal = 0.00;
         foreach ($order->items as $order_item) {
             if ($order_item->id == $return_order->order_item_id) {
-                $itemtotal = $order_item->variant->sale_price * $order_item->quantity;
+                $itemtotal = $order_item->product->sale_price * $order_item->quantity;
             }
         }
 
@@ -84,7 +84,7 @@ class ReturnController extends Controller
         $return_order->status = $request->status;
         $return_order->update();
 
-        $update_order = OrderItem::where('id', $return_order->order_item_id)->with('variant.product')->first();
+        $update_order = OrderItem::where('id', $return_order->order_item_id)->with('product')->first();
         $update_order->item_status = $return_order->status;
         $update_order->flag = '1';
         $update_order->update();
@@ -113,12 +113,12 @@ class ReturnController extends Controller
 
         if ($request->status == 'Refund Completed via Acc') {
             $order_id = $return_order->order_id;
-            $order = Order::where('id', $order_id)->with('items')->first();
+            $order = Order::where('id', $order_id)->with('items.product')->first();
             $total = 0.00;
             $itemtotal = 0.00;
             foreach ($order->items as $order_item) {
                 if ($order_item->id == $return_order->order_item_id) {
-                    $itemtotal = $order_item->variant->sale_price * $order_item->quantity;
+                    $itemtotal = $order_item->product->sale_price * $order_item->quantity;
                 }
             }
 
@@ -139,12 +139,12 @@ class ReturnController extends Controller
 
         if ($request->status == 'Refund Completed via Voucher') {
             $order_id = $return_order->order_id;
-            $order = Order::where('id', $order_id)->with('items')->first();
+            $order = Order::where('id', $order_id)->with('items.product')->first();
             $total = 0.00;
             $itemtotal = 0.00;
             foreach ($order->items as $order_item) {
                 if ($order_item->id == $return_order->order_item_id) {
-                    $itemtotal = $order_item->variant->sale_price * $order_item->quantity;
+                    $itemtotal = $order_item->product->sale_price * $order_item->quantity;
                 }
             }
 
@@ -199,8 +199,8 @@ class ReturnController extends Controller
         }
 
         $status = $request->status;
-        $media = ProductVariantMedia::where(['product_variant_id' => $return_order->variant->id, 'media_type' => 'image'])->orderby('sequence', 'asc')->first();
-        $image = $media->media != '' ? $media->media : '';
+        $media = ProductMedia::where(['product_variant_id' => $return_order->product->id, 'media_type' => 'image'])->orderby('sequence', 'asc')->first();
+        $image = isset($media->media) ? $media->media : '';
 
         Mail::to($placed_order->billing_email)
             ->cc(['lakhansharma.webanix@gmail.com', 'mohsinwebanix@gmail.com'])
@@ -236,21 +236,20 @@ class ReturnController extends Controller
         //$token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMyOTY4OSwiaXNzIjoiaHR0cHM6Ly9hcGl2Mi5zaGlwcm9ja2V0LmluL3YxL2V4dGVybmFsL2F1dGgvbG9naW4iLCJpYXQiOjE1Nzc0OTQzNzEsImV4cCI6MTU3ODM1ODM3MSwibmJmIjoxNTc3NDk0MzcxLCJqdGkiOiJrUGVNTmxhTnRFc3dodXBXIn0.M5KlLjOoZL-QrDmiSQ23jTCt0uDUAHYhZzP0vbQG8Qs';
         # Creating order params
         $order_id = $return_order->order_id;
-        $order = Order::where('id', $order_id)->with('items')->first();
-
+        $order = Order::where('id', $order_id)->with('items.product')->first();
         $payment_mode = $order->payment_mode == 'cod' ? 'COD' : 'Prepaid';
         $items = new Collection();
         $total = 0.00;
         $itemtotal = 0.00;
         foreach ($order->items as $order_item) {
             if ($order_item->id == $return_order->order_item_id) {
-                $itemtotal = $order_item->variant->sale_price * $order_item->quantity;
+                $itemtotal = $order_item->product->sale_price * $order_item->quantity;
                 $items->push([
-                    'name'          => $order_item->variant->product->name . ' - ' . $order_item->variant->name,
-                    'sku'           => $order_item->variant->sku,
-                    'units'         => $order_item->quantity,
-                    'selling_price' => $order_item->variant->sale_price,
-                    'hsn'           => $order_item->variant->product->hsn
+                    'name'              => $order_item->product->item_shade_name,
+                    'sku'               => $order_item->product->sku,
+                    'units'             => $order_item->quantity,
+                    'selling_price'     => $order_item->product->sale_price,
+                    'hsn'               => $order_item->product->hsn
                 ]);
             }
         }
@@ -379,15 +378,15 @@ class ReturnController extends Controller
         $sale = 0.00;
         if (!empty($coupon)) {
             if ($coupon->disc_type == 'percent') {
-                $disc = floatval((floatval($item->variant->sale_price) * $coupon->discount) / 100);
-                $sale = (floatval($item->variant->sale_price) - floatval($disc)) * $item->quantity;
+                $disc = floatval((floatval($item->product->sale_price) * $coupon->discount) / 100);
+                $sale = (floatval($item->product->sale_price) - floatval($disc)) * $item->quantity;
             }
             if ($coupon->disc_type == 'amount') {
                 $disc = $coupon->discount;
-                $sale = (floatval($item->variant->sale_price) - $coupon->discount) * $item->quantity;
+                $sale = (floatval($item->product->sale_price) - $coupon->discount) * $item->quantity;
             }
         } else {
-            $sale = floatval($item->variant->sale_price) * $item->quantity;
+            $sale = floatval($item->product->sale_price) * $item->quantity;
         }
 
         return $sale;

@@ -63,10 +63,10 @@
                                     <tbody>
                                         <tr>
                                             <td><img src="{{ asset('storage/products/variants/'.$image) }}" alt="{{ $image }}" style="height: 5rem;"></td>
-                                            <td>{{ $return_order->variant->product->name }} - {{ $return_order->variant->name }}</td>
+                                            <td>{{ $return_order->product->item_shade_name }}}</td>
                                             <td>{{ $return_order->quantity }}</td>
-                                            <td>{{ number_format((float)$return_order->variant->sale_price, 2, '.', '') }}</td>
-                                            <td>{{ number_format((float)$return_order->variant->sale_price * $return_order->quantity, 2, '.', '') }}</td>
+                                            <td>{{ number_format((float)$return_order->product->sale_price, 2, '.', '') }}</td>
+                                            <td>{{ number_format((float)$return_order->product->sale_price * $return_order->quantity, 2, '.', '') }}</td>
                                             <td>{{ $return_order->reason }}</td>
                                             <td>{{ $return_order->description }}</td>
                                             <td>{{ number_format((float)$total, 2, '.', '') }}</td>

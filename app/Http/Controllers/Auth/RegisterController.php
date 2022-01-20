@@ -91,7 +91,7 @@ class RegisterController extends Controller
 
                 foreach($cookieValues  as $cookieValue)
                 {
-                    $cart[]=['product_id'=>$cookieValue->product_id,'quantity'=>$cookieValue->quantity,'product_variant_id'=>$cookieValue->product_variant_id];
+                    $cart[]=['product_id'=>$cookieValue->product_id,'quantity'=>$cookieValue->quantity];
                 }
 
                 \Cookie::queue(\Cookie::forget('makeup_biography'));

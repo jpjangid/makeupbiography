@@ -13,14 +13,14 @@ class RelatedProductController extends Controller
 {
     public function index()
     {
-        $related = RelatedProducts::select('main_id')->with('main:id,name')->groupby('main_id')->get();
+        $related = RelatedProducts::select('main_id')->with('main:id,item_shade_name')->groupby('main_id')->get();
         
         if (request()->ajax()) {
             $related_products = new Collection;
             foreach ($related as $relate) {
                 $related_products->push([
                     'id'    => $relate->main->id,
-                    'name'  => $relate->main->name,
+                    'name'  => $relate->main->item_shade_name,
                 ]);
             }
 

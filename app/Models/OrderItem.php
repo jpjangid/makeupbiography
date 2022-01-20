@@ -10,12 +10,12 @@ class OrderItem extends Model
     use HasFactory;
 
     protected $fillable = [
-        'order_id', 'product_id', 'product_variant_id', 'quantity', 'item_status', 'flag'
+        'order_id', 'product_id', 'quantity', 'item_status', 'flag'
     ];
 
-    public function variant()
+    public function product()
     {
-        return $this->belongsTo('App\Models\ProductVariant', 'product_variant_id');
+        return $this->belongsTo('App\Models\Product', 'product_id');
     }
 
     public function order()

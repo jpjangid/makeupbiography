@@ -7,7 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
-use DataTables;
+use Yajra\DataTables\DataTables;
 use Illuminate\Support\Collection;
 
 class CategoryController extends Controller

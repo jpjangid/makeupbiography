@@ -113,7 +113,7 @@
 														<abbr class="required" title="required">*</abbr>
 													</label>
 													<span class="woocommerce-input-wrapper">
-														<input type="email" class="input-text" name="billing_email" id="billing_email" placeholder="" value="" autocomplete="given-name" />
+														<input type="email" class="input-text" name="billing_email" id="billing_email" placeholder="" value="{{ auth()->user()->email }}" autocomplete="given-name" />
 													</span>
 												</p>
 												<p class="form-row form-row-first validate-required" data-priority="10">
@@ -287,19 +287,19 @@
 											@php $regular_price = 0; @endphp
 											@foreach($cartItems as $key => $item)
 											<tr class="c-cart__totals-product cart_item">
-												<td class="c-cart__totals-product-name">{{ $item->product->name."-".$item->productVariant->name }}&nbsp;
+												<td class="c-cart__totals-product-name">{{ $item->product->item_shade_name }}&nbsp;
 													<strong class="c-cart__totals-product-quantity product-quantity">&times;&nbsp;{{ $item->quantity }}</strong>
 												</td>
 												<td class="c-cart__totals-price">
 													<span class="woocommerce-Price-amount amount">
 														<bdi>
-															<span class="woocommerce-Price-currencySymbol">&#8377;</span><input type="text" name="sale_price" class="sale_price" value="{{ $item->productVariant->sale_price * $item->quantity }}" readonly></bdi>
-														<p>&#8377;{{ $item->productVariant->regular_price * $item->quantity }}</p>
+															<span class="woocommerce-Price-currencySymbol">&#8377;</span><input type="text" name="sale_price" class="sale_price" value="{{ $item->product->sale_price * $item->quantity }}" readonly></bdi>
+														<p>&#8377;{{ $item->product->regular_price * $item->quantity }}</p>
 														<p>&#8377;{{ $product_dis[$key] }}</p>
 													</span>
 												</td>
 											</tr>
-											@php $regular_price += $item->productVariant->regular_price * $item->quantity; @endphp
+											@php $regular_price += $item->product->regular_price * $item->quantity; @endphp
 											@endforeach
 										</tbody>
 										<tfoot>

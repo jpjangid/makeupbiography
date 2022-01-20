@@ -2,24 +2,22 @@
 
 @section('css')
 <style>
-	@media screen and (max-width: 465px){
+	@media screen and (max-width: 465px) {
 		.c-ip-image-list-1__list {
 			margin: 0px;
 		}
 	}
 
-	@media screen and (max-width: 350px){
-		.c-product-grid__item--normal
-		{
+	@media screen and (max-width: 350px) {
+		.c-product-grid__item--normal {
 			width: 140px !important;
 			margin: 10px !important;
 			padding-bottom: 50px !important;
 		}
 	}
 
-	@media screen and (max-width: 380px){
-		.c-product-grid__item--normal
-		{
+	@media screen and (max-width: 380px) {
+		.c-product-grid__item--normal {
 			width: 160px !important;
 			margin: 10px !important;
 			padding-bottom: 50px !important;
@@ -27,8 +25,7 @@
 	}
 
 	@media (min-width: 760px) and (max-width: 770px) {
-		.c-product-grid__item--normal
-		{
+		.c-product-grid__item--normal {
 			width: 160px !important;
 			margin: 10px !important;
 			padding-bottom: 35px !important;
@@ -36,21 +33,20 @@
 	}
 
 	@media (min-width: 560px) and (max-width: 590px) {
-		.c-product-grid__item--normal
-		{
+		.c-product-grid__item--normal {
 			width: 160px !important;
 			margin: 10px !important;
 			padding-bottom: 50px !important;
 		}
 	}
-	
-	@media screen and (max-width: 768px){
+
+	@media screen and (max-width: 768px) {
 		.c-ip-heading--default {
 			font-size: 15px;
-    		line-height: 25px;
+			line-height: 25px;
 		}
 
-		.elementor-1131 .elementor-element.elementor-element-f6c8514 .c-ip-image-list-1__item:hover{
+		.elementor-1131 .elementor-element.elementor-element-f6c8514 .c-ip-image-list-1__item:hover {
 			box-shadow: none !important;
 		}
 
@@ -84,7 +80,7 @@
 			padding-bottom: 35px;
 		}
 
-		.c-product-grid__item--normal .woocommerce-loop-product__title{
+		.c-product-grid__item--normal .woocommerce-loop-product__title {
 			line-height: 15px;
 			letter-spacing: 0.1em;
 			padding-left: 0.21em;
@@ -100,9 +96,12 @@
 			font-size: 10px;
 			padding: 10px;
 		}
-		.c-ip-banners__item, .c-ip-banners__list {
+
+		.c-ip-banners__item,
+		.c-ip-banners__list {
 			flex-direction: column;
 		}
+
 		/* .c-ip-banners__image {
 			object-fit: unset;
 		} */
@@ -184,7 +183,8 @@
 	}
 
 	.short-description {
-		display: block;/* or inline-block */
+		display: block;
+		/* or inline-block */
 		text-overflow: ellipsis;
 		word-wrap: break-word;
 		overflow: hidden;
@@ -261,7 +261,7 @@
 	}
 
 	@media (max-width: 619px) and (min-width: 360px) {
-		.c-ip-woocommerce-carousel__list--3-per-row{
+		.c-ip-woocommerce-carousel__list--3-per-row {
 			padding-right: 12px;
 		}
 	}
@@ -276,6 +276,7 @@
 		.c-ip-image-list-1__list {
 			margin: 0;
 		}
+
 		.c-ip-image-list-1__wrap.c-ip-image-list-1__wrap--carousel {
 			margin: 0;
 		}
@@ -285,15 +286,17 @@
 		.c-ip-image-list-1__list {
 			margin: 0;
 		}
+
 		.c-ip-image-list-1__wrap.c-ip-image-list-1__wrap--carousel {
 			margin: 0;
 		}
 	}
 
 	@media screen and (max-width: 650px) {
-		.elementor-1131 .elementor-element.elementor-element-e52934a{
+		.elementor-1131 .elementor-element.elementor-element-e52934a {
 			margin-top: 80px;
 		}
+
 		.elementor-1131 .elementor-element.elementor-element-3d1ff9f {
 			margin-top: -30px;
 		}
@@ -303,6 +306,7 @@
 		.img-stroke {
 			padding-left: 100px;
 		}
+
 		.image-stroke {
 			width: 40% !important;
 		}
@@ -345,10 +349,10 @@
 		padding-top: 15px !important;
 		display: inline !important;
 	}
-	
+
 	.c-badge--featured {
 		height: 25px !important;
-    	margin-right: -10px !important;
+		margin-right: -10px !important;
 	}
 </style>
 @endsection
@@ -456,60 +460,55 @@
 														<div class="woocommerce columns-4 ">
 															<div class="c-product-grid__wrap c-product-grid__wrap--4-per-row ">
 																<div class="c-product-grid__list c-ip-product-tabs__list c-ip-product-tabs__list--4-per-row c-ip-product-tabs__list--grid c-product-grid__list--4-per-row ">
-
 																	<!-- Top Newest Product List Item Begin -->
 																	@if(!empty($main_newest_products))
 																	@foreach($main_newest_products as $main_newest_product)
-																	@if(!empty($main_newest_product->variants) && count($main_newest_product->variants) > 0)
-																	@php
-																	$variant = $main_newest_product->variants[0];
-																	@endphp
 																	@if(str_contains($main_newest_product->tags,'newest'))
 																	<div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple" style="background-color: white;">
 
-																		@if($variant->discount_type == "percentage")
+																		@if($main_newest_product->discount_type == "percentage")
 																		<div class="c-product-grid__badges c-badge__list">
 																			@if(!empty($main_newest_product->label_name))
 																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
 																			@endif
-																			<span class="c-badge c-badge--sale">-{{ $variant->discount }}%</span>
+																			<span class="c-badge c-badge--sale">-{{ $main_newest_product->discount }}%</span>
 																		</div>
 																		@endif
 
-																		@if($variant->discount_type == "flat")
+																		@if($main_newest_product->discount_type == "flat")
 																		<div class="c-product-grid__badges c-badge__list">
 																			@if(!empty($main_newest_product->label_name))
 																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
 																			@endif
-																			<span class="c-badge c-badge--sale">- &#8377; {{ $variant->regular_price - $variant->sale_price }}</span>
+																			<span class="c-badge c-badge--sale">- &#8377; {{ $main_newest_product->regular_price - $main_newest_product->sale_price }}</span>
 																		</div>
 																		@endif
 
 																		<!-- .c-product-grid__badges -->
 																		<div class="c-product-grid__thumb-wrap" style="width: auto;">
-																			<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-																				<img src="{{ asset('storage/products/'.$main_newest_product->main_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ asset('storage/products/'.$main_newest_product->main_image) }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
+																			<a href="{{ url('products',['product' => $main_newest_product->slug]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+																				<img src="{{ isset($main_newest_product->medias[0]->media) ? asset('storage/products/variants/'.$main_newest_product->medias[0]->media) : '' }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ isset($main_newest_product->medias[0]->media) ? asset('storage/products/variants/'.$main_newest_product->medias[0]->media) : '' }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
 																			</a>
 																			<div class="c-product-grid__thumb-button-list">
 																				<!--<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="438">-->
 																				<!--	<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>-->
 																				<!--	<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>-->
 																				<!--</button>-->
-																				<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button" data-product_variant_id="{{ $variant->id }}" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
+																				<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button" data-product_variant_id="{{ $main_newest_product->id }}" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
 																					<i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
 																					<i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
 																				</button>
 																			</div>
 																		</div>
 																		<!-- .c-product-grid__thumb-wrap -->
-																		<button class="h-cb c-product-grid__atc button product_type_simple add-to-cart" data-product_id="{{ $main_newest_product->id }}" data-product_variant="{{ $variant->id }}" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
+																		<button class="h-cb c-product-grid__atc button product_type_simple add-to-cart" data-product_id="{{ $main_newest_product->id }}" data-product_variant="{{ $main_newest_product->id }}" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
 																			<i class="ip-plus c-product-grid__atc-icon"></i>
 																			<span class="c-product-grid__atc-text">Add to cart</span>
 																		</button>
 																		<div class="c-product-grid__details">
 																			<div class="c-product-grid__title-wrap">
-																				<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-																					<h2 class="woocommerce-loop-product__title">{{ $main_newest_product->name."-".$variant->name }}</h2>
+																				<a href="{{ url('products',['product' => $main_newest_product->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+																					<h2 class="woocommerce-loop-product__title">{{ $main_newest_product->item_shade_name }}</h2>
 																				</a>
 																				<!-- <div class="c-product-grid__short-desc">
 																					<p class="short-description">{{ $main_newest_product->short_description }}</p>
@@ -522,18 +521,18 @@
 																			<!-- .c-product-grid__title-wrap -->
 																			<div class="c-product-grid__price-wrap price-div">
 																				<span class="price">
-																					@if(!empty($variant->discount) && $variant->discount > 0)
+																					@if(!empty($main_newest_product->discount) && $main_newest_product->discount > 0)
 																					<del aria-hidden="true">
 																						<span class="woocommerce-Price-amount amount">
 																							<bdi>
-																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->regular_price }}</bdi>
+																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $main_newest_product->regular_price }}</bdi>
 																						</span>
 																					</del>
 																					@endif
 																					<ins>
 																						<span class="woocommerce-Price-amount amount">
 																							<bdi>
-																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->sale_price }}</bdi>
+																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $main_newest_product->sale_price }}</bdi>
 																						</span>
 																					</ins>
 																				</span>
@@ -543,471 +542,14 @@
 																		<!-- .c-product-grid__details -->
 																	</div>
 																	@endif
-																	@endif
 																	@endforeach
 																	@endif
 																	<!-- Top Newest Product List Item End -->
-
-																	<!-- Top Newest Product List Item Begin -->
-																	@if(!empty($main_newest_products))
-																	@foreach($main_newest_products as $main_newest_product)
-																	@if(!empty($main_newest_product->variants) && count($main_newest_product->variants) > 0)
-																	@php
-																	$variant = $main_newest_product->variants[0];
-																	@endphp
-																	@if(str_contains($main_newest_product->tags,'newest'))
-																	<div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple" style="background-color: white;">
-
-																		@if($variant->discount_type == "percentage")
-																		<div class="c-product-grid__badges c-badge__list">
-																			@if(!empty($main_newest_product->label_name))
-																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
-																			@endif
-																			<span class="c-badge c-badge--sale">-{{ $variant->discount }}%</span>
-																		</div>
-																		@endif
-
-																		@if($variant->discount_type == "flat")
-																		<div class="c-product-grid__badges c-badge__list">
-																			@if(!empty($main_newest_product->label_name))
-																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
-																			@endif
-																			<span class="c-badge c-badge--sale">- &#8377; {{ $variant->regular_price - $variant->sale_price }}</span>
-																		</div>
-																		@endif
-
-																		<!-- .c-product-grid__badges -->
-																		<div class="c-product-grid__thumb-wrap" style="width: auto;">
-																			<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-																				<img src="{{ asset('storage/products/'.$main_newest_product->main_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ asset('storage/products/'.$main_newest_product->main_image) }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
-																			</a>
-																			<div class="c-product-grid__thumb-button-list">
-																				<!--<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="438">-->
-																				<!--	<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>-->
-																				<!--	<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>-->
-																				<!--</button>-->
-																				<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button" data-product_variant_id="{{ $variant->id }}" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
-																					<i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
-																					<i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
-																				</button>
-																			</div>
-																		</div>
-																		<!-- .c-product-grid__thumb-wrap -->
-																		<button class="h-cb c-product-grid__atc button product_type_simple add-to-cart" data-product_id="{{ $main_newest_product->id }}" data-product_variant="{{ $variant->id }}" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
-																			<i class="ip-plus c-product-grid__atc-icon"></i>
-																			<span class="c-product-grid__atc-text">Add to cart</span>
-																		</button>
-																		<div class="c-product-grid__details">
-																			<div class="c-product-grid__title-wrap">
-																				<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-																					<h2 class="woocommerce-loop-product__title">{{ $main_newest_product->name."-".$variant->name }}</h2>
-																				</a>
-																				<!-- <div class="c-product-grid__short-desc">
-																					<p class="short-description">{{ $main_newest_product->short_description }}</p>
-																				</div> -->
-																				<div class="star-rating" role="img" aria-label="Rated 4.00 out of 5">
-																					<span style="width:80%">Rated
-																						<strong class="rating" style="font-size: 16px;">4.00</strong>out of 5</span>
-																				</div>
-																			</div>
-																			<!-- .c-product-grid__title-wrap -->
-																			<div class="c-product-grid__price-wrap price-div">
-																				<span class="price">
-																					@if(!empty($variant->discount) && $variant->discount > 0)
-																					<del aria-hidden="true">
-																						<span class="woocommerce-Price-amount amount">
-																							<bdi>
-																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->regular_price }}</bdi>
-																						</span>
-																					</del>
-																					@endif
-																					<ins>
-																						<span class="woocommerce-Price-amount amount">
-																							<bdi>
-																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->sale_price }}</bdi>
-																						</span>
-																					</ins>
-																				</span>
-																			</div>
-																			<!-- .c-product-grid__price-wrap -->
-																		</div>
-																		<!-- .c-product-grid__details -->
-																	</div>
-																	@endif
-																	@endif
-																	@endforeach
-																	@endif
-																	<!-- Top Newest Product List Item End -->
-
-																	<!-- Top Newest Product List Item Begin -->
-																	@if(!empty($main_newest_products))
-																	@foreach($main_newest_products as $main_newest_product)
-																	@if(!empty($main_newest_product->variants) && count($main_newest_product->variants) > 0)
-																	@php
-																	$variant = $main_newest_product->variants[0];
-																	@endphp
-																	@if(str_contains($main_newest_product->tags,'newest'))
-																	<div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple" style="background-color: white;">
-
-																		@if($variant->discount_type == "percentage")
-																		<div class="c-product-grid__badges c-badge__list">
-																			@if(!empty($main_newest_product->label_name))
-																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
-																			@endif
-																			<span class="c-badge c-badge--sale">-{{ $variant->discount }}%</span>
-																		</div>
-																		@endif
-
-																		@if($variant->discount_type == "flat")
-																		<div class="c-product-grid__badges c-badge__list">
-																			@if(!empty($main_newest_product->label_name))
-																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
-																			@endif
-																			<span class="c-badge c-badge--sale">- &#8377; {{ $variant->regular_price - $variant->sale_price }}</span>
-																		</div>
-																		@endif
-
-																		<!-- .c-product-grid__badges -->
-																		<div class="c-product-grid__thumb-wrap" style="width: auto;">
-																			<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-																				<img src="{{ asset('storage/products/'.$main_newest_product->main_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ asset('storage/products/'.$main_newest_product->main_image) }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
-																			</a>
-																			<div class="c-product-grid__thumb-button-list">
-																				<!--<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="438">-->
-																				<!--	<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>-->
-																				<!--	<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>-->
-																				<!--</button>-->
-																				<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button" data-product_variant_id="{{ $variant->id }}" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
-																					<i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
-																					<i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
-																				</button>
-																			</div>
-																		</div>
-																		<!-- .c-product-grid__thumb-wrap -->
-																		<button class="h-cb c-product-grid__atc button product_type_simple add-to-cart" data-product_id="{{ $main_newest_product->id }}" data-product_variant="{{ $variant->id }}" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
-																			<i class="ip-plus c-product-grid__atc-icon"></i>
-																			<span class="c-product-grid__atc-text">Add to cart</span>
-																		</button>
-																		<div class="c-product-grid__details">
-																			<div class="c-product-grid__title-wrap">
-																				<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-																					<h2 class="woocommerce-loop-product__title">{{ $main_newest_product->name."-".$variant->name }}</h2>
-																				</a>
-																				<!-- <div class="c-product-grid__short-desc">
-																					<p class="short-description">{{ $main_newest_product->short_description }}</p>
-																				</div> -->
-																				<div class="star-rating" role="img" aria-label="Rated 4.00 out of 5">
-																					<span style="width:80%">Rated
-																						<strong class="rating" style="font-size: 16px;">4.00</strong>out of 5</span>
-																				</div>
-																			</div>
-																			<!-- .c-product-grid__title-wrap -->
-																			<div class="c-product-grid__price-wrap price-div">
-																				<span class="price">
-																					@if(!empty($variant->discount) && $variant->discount > 0)
-																					<del aria-hidden="true">
-																						<span class="woocommerce-Price-amount amount">
-																							<bdi>
-																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->regular_price }}</bdi>
-																						</span>
-																					</del>
-																					@endif
-																					<ins>
-																						<span class="woocommerce-Price-amount amount">
-																							<bdi>
-																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->sale_price }}</bdi>
-																						</span>
-																					</ins>
-																				</span>
-																			</div>
-																			<!-- .c-product-grid__price-wrap -->
-																		</div>
-																		<!-- .c-product-grid__details -->
-																	</div>
-																	@endif
-																	@endif
-																	@endforeach
-																	@endif
-																	<!-- Top Newest Product List Item End -->
-
-																	<!-- Top Newest Product List Item Begin -->
-																	@if(!empty($main_newest_products))
-																	@foreach($main_newest_products as $main_newest_product)
-																	@if(!empty($main_newest_product->variants) && count($main_newest_product->variants) > 0)
-																	@php
-																	$variant = $main_newest_product->variants[0];
-																	@endphp
-																	@if(str_contains($main_newest_product->tags,'newest'))
-																	<div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple" style="background-color: white;">
-
-																		@if($variant->discount_type == "percentage")
-																		<div class="c-product-grid__badges c-badge__list">
-																			@if(!empty($main_newest_product->label_name))
-																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
-																			@endif
-																			<span class="c-badge c-badge--sale">-{{ $variant->discount }}%</span>
-																		</div>
-																		@endif
-
-																		@if($variant->discount_type == "flat")
-																		<div class="c-product-grid__badges c-badge__list">
-																			@if(!empty($main_newest_product->label_name))
-																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
-																			@endif
-																			<span class="c-badge c-badge--sale">- &#8377; {{ $variant->regular_price - $variant->sale_price }}</span>
-																		</div>
-																		@endif
-
-																		<!-- .c-product-grid__badges -->
-																		<div class="c-product-grid__thumb-wrap" style="width: auto;">
-																			<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-																				<img src="{{ asset('storage/products/'.$main_newest_product->main_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ asset('storage/products/'.$main_newest_product->main_image) }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
-																			</a>
-																			<div class="c-product-grid__thumb-button-list">
-																				<!--<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="438">-->
-																				<!--	<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>-->
-																				<!--	<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>-->
-																				<!--</button>-->
-																				<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button" data-product_variant_id="{{ $variant->id }}" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
-																					<i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
-																					<i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
-																				</button>
-																			</div>
-																		</div>
-																		<!-- .c-product-grid__thumb-wrap -->
-																		<button class="h-cb c-product-grid__atc button product_type_simple add-to-cart" data-product_id="{{ $main_newest_product->id }}" data-product_variant="{{ $variant->id }}" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
-																			<i class="ip-plus c-product-grid__atc-icon"></i>
-																			<span class="c-product-grid__atc-text">Add to cart</span>
-																		</button>
-																		<div class="c-product-grid__details">
-																			<div class="c-product-grid__title-wrap">
-																				<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-																					<h2 class="woocommerce-loop-product__title">{{ $main_newest_product->name."-".$variant->name }}</h2>
-																				</a>
-																				<!-- <div class="c-product-grid__short-desc">
-																					<p class="short-description">{{ $main_newest_product->short_description }}</p>
-																				</div> -->
-																				<div class="star-rating" role="img" aria-label="Rated 4.00 out of 5">
-																					<span style="width:80%">Rated
-																						<strong class="rating" style="font-size: 16px;">4.00</strong>out of 5</span>
-																				</div>
-																			</div>
-																			<!-- .c-product-grid__title-wrap -->
-																			<div class="c-product-grid__price-wrap price-div">
-																				<span class="price">
-																					@if(!empty($variant->discount) && $variant->discount > 0)
-																					<del aria-hidden="true">
-																						<span class="woocommerce-Price-amount amount">
-																							<bdi>
-																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->regular_price }}</bdi>
-																						</span>
-																					</del>
-																					@endif
-																					<ins>
-																						<span class="woocommerce-Price-amount amount">
-																							<bdi>
-																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->sale_price }}</bdi>
-																						</span>
-																					</ins>
-																				</span>
-																			</div>
-																			<!-- .c-product-grid__price-wrap -->
-																		</div>
-																		<!-- .c-product-grid__details -->
-																	</div>
-																	@endif
-																	@endif
-																	@endforeach
-																	@endif
-																	<!-- Top Newest Product List Item End -->
-
-																	<!-- Top Newest Product List Item Begin -->
-																	@if(!empty($main_newest_products))
-																	@foreach($main_newest_products as $main_newest_product)
-																	@if(!empty($main_newest_product->variants) && count($main_newest_product->variants) > 0)
-																	@php
-																	$variant = $main_newest_product->variants[0];
-																	@endphp
-																	@if(str_contains($main_newest_product->tags,'newest'))
-																	<div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple" style="background-color: white;">
-
-																		@if($variant->discount_type == "percentage")
-																		<div class="c-product-grid__badges c-badge__list">
-																			@if(!empty($main_newest_product->label_name))
-																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
-																			@endif
-																			<span class="c-badge c-badge--sale">-{{ $variant->discount }}%</span>
-																		</div>
-																		@endif
-
-																		@if($variant->discount_type == "flat")
-																		<div class="c-product-grid__badges c-badge__list">
-																			@if(!empty($main_newest_product->label_name))
-																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
-																			@endif
-																			<span class="c-badge c-badge--sale">- &#8377; {{ $variant->regular_price - $variant->sale_price }}</span>
-																		</div>
-																		@endif
-
-																		<!-- .c-product-grid__badges -->
-																		<div class="c-product-grid__thumb-wrap" style="width: auto;">
-																			<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-																				<img src="{{ asset('storage/products/'.$main_newest_product->main_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ asset('storage/products/'.$main_newest_product->main_image) }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
-																			</a>
-																			<div class="c-product-grid__thumb-button-list">
-																				<!--<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="438">-->
-																				<!--	<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>-->
-																				<!--	<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>-->
-																				<!--</button>-->
-																				<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button" data-product_variant_id="{{ $variant->id }}" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
-																					<i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
-																					<i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
-																				</button>
-																			</div>
-																		</div>
-																		<!-- .c-product-grid__thumb-wrap -->
-																		<button class="h-cb c-product-grid__atc button product_type_simple add-to-cart" data-product_id="{{ $main_newest_product->id }}" data-product_variant="{{ $variant->id }}" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
-																			<i class="ip-plus c-product-grid__atc-icon"></i>
-																			<span class="c-product-grid__atc-text">Add to cart</span>
-																		</button>
-																		<div class="c-product-grid__details">
-																			<div class="c-product-grid__title-wrap">
-																				<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-																					<h2 class="woocommerce-loop-product__title">{{ $main_newest_product->name."-".$variant->name }}</h2>
-																				</a>
-																				<!-- <div class="c-product-grid__short-desc">
-																					<p class="short-description">{{ $main_newest_product->short_description }}</p>
-																				</div> -->
-																				<div class="star-rating" role="img" aria-label="Rated 4.00 out of 5">
-																					<span style="width:80%">Rated
-																						<strong class="rating" style="font-size: 16px;">4.00</strong>out of 5</span>
-																				</div>
-																			</div>
-																			<!-- .c-product-grid__title-wrap -->
-																			<div class="c-product-grid__price-wrap price-div">
-																				<span class="price">
-																					@if(!empty($variant->discount) && $variant->discount > 0)
-																					<del aria-hidden="true">
-																						<span class="woocommerce-Price-amount amount">
-																							<bdi>
-																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->regular_price }}</bdi>
-																						</span>
-																					</del>
-																					@endif
-																					<ins>
-																						<span class="woocommerce-Price-amount amount">
-																							<bdi>
-																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->sale_price }}</bdi>
-																						</span>
-																					</ins>
-																				</span>
-																			</div>
-																			<!-- .c-product-grid__price-wrap -->
-																		</div>
-																		<!-- .c-product-grid__details -->
-																	</div>
-																	@endif
-																	@endif
-																	@endforeach
-																	@endif
-																	<!-- Top Newest Product List Item End -->
-
-																	<!-- Top Newest Product List Item Begin -->
-																	@if(!empty($main_newest_products))
-																	@foreach($main_newest_products as $main_newest_product)
-																	@if(!empty($main_newest_product->variants) && count($main_newest_product->variants) > 0)
-																	@php
-																	$variant = $main_newest_product->variants[0];
-																	@endphp
-																	@if(str_contains($main_newest_product->tags,'newest'))
-																	<div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple" style="background-color: white;">
-
-																		@if($variant->discount_type == "percentage")
-																		<div class="c-product-grid__badges c-badge__list">
-																			@if(!empty($main_newest_product->label_name))
-																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
-																			@endif
-																			<span class="c-badge c-badge--sale">-{{ $variant->discount }}%</span>
-																		</div>
-																		@endif
-
-																		@if($variant->discount_type == "flat")
-																		<div class="c-product-grid__badges c-badge__list">
-																			@if(!empty($main_newest_product->label_name))
-																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
-																			@endif
-																			<span class="c-badge c-badge--sale">- &#8377; {{ $variant->regular_price - $variant->sale_price }}</span>
-																		</div>
-																		@endif
-
-																		<!-- .c-product-grid__badges -->
-																		<div class="c-product-grid__thumb-wrap" style="width: auto;">
-																			<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-																				<img src="{{ asset('storage/products/'.$main_newest_product->main_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ asset('storage/products/'.$main_newest_product->main_image) }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
-																			</a>
-																			<div class="c-product-grid__thumb-button-list">
-																				<!--<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="438">-->
-																				<!--	<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>-->
-																				<!--	<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>-->
-																				<!--</button>-->
-																				<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button" data-product_variant_id="{{ $variant->id }}" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
-																					<i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
-																					<i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
-																				</button>
-																			</div>
-																		</div>
-																		<!-- .c-product-grid__thumb-wrap -->
-																		<button class="h-cb c-product-grid__atc button product_type_simple add-to-cart" data-product_id="{{ $main_newest_product->id }}" data-product_variant="{{ $variant->id }}" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
-																			<i class="ip-plus c-product-grid__atc-icon"></i>
-																			<span class="c-product-grid__atc-text">Add to cart</span>
-																		</button>
-																		<div class="c-product-grid__details">
-																			<div class="c-product-grid__title-wrap">
-																				<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-																					<h2 class="woocommerce-loop-product__title">{{ $main_newest_product->name."-".$variant->name }}</h2>
-																				</a>
-																				<!-- <div class="c-product-grid__short-desc">
-																					<p class="short-description">{{ $main_newest_product->short_description }}</p>
-																				</div> -->
-																				<div class="star-rating" role="img" aria-label="Rated 4.00 out of 5">
-																					<span style="width:80%">Rated
-																						<strong class="rating" style="font-size: 16px;">4.00</strong>out of 5</span>
-																				</div>
-																			</div>
-																			<!-- .c-product-grid__title-wrap -->
-																			<div class="c-product-grid__price-wrap price-div">
-																				<span class="price">
-																					@if(!empty($variant->discount) && $variant->discount > 0)
-																					<del aria-hidden="true">
-																						<span class="woocommerce-Price-amount amount">
-																							<bdi>
-																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->regular_price }}</bdi>
-																						</span>
-																					</del>
-																					@endif
-																					<ins>
-																						<span class="woocommerce-Price-amount amount">
-																							<bdi>
-																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->sale_price }}</bdi>
-																						</span>
-																					</ins>
-																				</span>
-																			</div>
-																			<!-- .c-product-grid__price-wrap -->
-																		</div>
-																		<!-- .c-product-grid__details -->
-																	</div>
-																	@endif
-																	@endif
-																	@endforeach
-																	@endif
-																	<!-- Top Newest Product List Item End -->
-
 																</div>
 															</div>
 														</div>
 														<div class="c-ip-product-tabs__button-wrap">
-															<a href="{{ url('shop') }}" class="c-button c-button--outline c-ip-product-tabs__button">View All</a>
+															<a href="{{ url('shop/newest') }}" class="c-button c-button--outline c-ip-product-tabs__button">View All</a>
 														</div>
 													</div>
 													<!-- Top Products Newest End -->
@@ -1021,54 +563,52 @@
 																	<!-- Top Popular Product List Item Begin -->
 																	@if(!empty($main_popular_products))
 																	@foreach($main_popular_products as $main_newest_product)
-																	@if(!empty($main_newest_product->variants) && count($main_newest_product->variants) > 0)
-																	@php
-																	$variant = $main_newest_product->variants[0];
-																	@endphp
 																	@if(str_contains($main_newest_product->tags,'popular'))
-																	<div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple">
-																		@if($variant->discount_type == "percentage")
+																	<div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple" style="background-color: white;">
+
+																		@if($main_newest_product->discount_type == "percentage")
 																		<div class="c-product-grid__badges c-badge__list">
 																			@if(!empty($main_newest_product->label_name))
 																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
 																			@endif
-																			<span class="c-badge c-badge--sale">-{{ $variant->discount }}%</span>
+																			<span class="c-badge c-badge--sale">-{{ $main_newest_product->discount }}%</span>
 																		</div>
 																		@endif
 
-																		@if($variant->discount_type == "flat")
+																		@if($main_newest_product->discount_type == "flat")
 																		<div class="c-product-grid__badges c-badge__list">
 																			@if(!empty($main_newest_product->label_name))
 																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
 																			@endif
-																			<span class="c-badge c-badge--sale">- &#8377; {{ $variant->regular_price - $variant->sale_price }}</span>
+																			<span class="c-badge c-badge--sale">- &#8377; {{ $main_newest_product->regular_price - $main_newest_product->sale_price }}</span>
 																		</div>
 																		@endif
+
 																		<!-- .c-product-grid__badges -->
 																		<div class="c-product-grid__thumb-wrap" style="width: auto;">
-																			<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-																				<img src="{{ asset('storage/products/'.$main_newest_product->main_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ asset('storage/products/'.$main_newest_product->main_image) }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
+																			<a href="{{ url('products',['product' => $main_newest_product->slug]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+																				<img src="{{ isset($main_newest_product->medias[0]->media) ? asset('storage/products/variants/'.$main_newest_product->medias[0]->media) : '' }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ isset($main_newest_product->medias[0]->media) ? asset('storage/products/variants/'.$main_newest_product->medias[0]->media) : '' }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
 																			</a>
 																			<div class="c-product-grid__thumb-button-list">
 																				<!--<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="438">-->
 																				<!--	<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>-->
 																				<!--	<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>-->
 																				<!--</button>-->
-																				<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button" data-product_variant_id="{{ $variant->id }}" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
+																				<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button" data-product_variant_id="{{ $main_newest_product->id }}" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
 																					<i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
 																					<i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
 																				</button>
 																			</div>
 																		</div>
 																		<!-- .c-product-grid__thumb-wrap -->
-																		<button class="h-cb c-product-grid__atc button product_type_simple add-to-cart" data-product_id="{{ $main_newest_product->id }}" data-product_variant="{{ $variant->id }}" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
+																		<button class="h-cb c-product-grid__atc button product_type_simple add-to-cart" data-product_id="{{ $main_newest_product->id }}" data-product_variant="{{ $main_newest_product->id }}" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
 																			<i class="ip-plus c-product-grid__atc-icon"></i>
 																			<span class="c-product-grid__atc-text">Add to cart</span>
 																		</button>
 																		<div class="c-product-grid__details">
 																			<div class="c-product-grid__title-wrap">
-																				<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-																					<h2 class="woocommerce-loop-product__title">{{ $main_newest_product->name."-".$variant->name }}</h2>
+																				<a href="{{ url('products',['product' => $main_newest_product->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+																					<h2 class="woocommerce-loop-product__title">{{ $main_newest_product->item_shade_name }}</h2>
 																				</a>
 																				<!-- <div class="c-product-grid__short-desc">
 																					<p class="short-description">{{ $main_newest_product->short_description }}</p>
@@ -1081,18 +621,18 @@
 																			<!-- .c-product-grid__title-wrap -->
 																			<div class="c-product-grid__price-wrap price-div">
 																				<span class="price">
-																					@if(!empty($variant->discount) && $variant->discount > 0)
+																					@if(!empty($main_newest_product->discount) && $main_newest_product->discount > 0)
 																					<del aria-hidden="true">
 																						<span class="woocommerce-Price-amount amount">
 																							<bdi>
-																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->regular_price }}</bdi>
+																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $main_newest_product->regular_price }}</bdi>
 																						</span>
 																					</del>
 																					@endif
 																					<ins>
 																						<span class="woocommerce-Price-amount amount">
 																							<bdi>
-																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->sale_price }}</bdi>
+																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $main_newest_product->sale_price }}</bdi>
 																						</span>
 																					</ins>
 																				</span>
@@ -1102,7 +642,6 @@
 																		<!-- .c-product-grid__details -->
 																	</div>
 																	@endif
-																	@endif
 																	@endforeach
 																	@endif
 																	<!-- Top Popular Product List Item End -->
@@ -1111,7 +650,7 @@
 															</div>
 														</div>
 														<div class="c-ip-product-tabs__button-wrap">
-															<a href="{{ url('shop') }}" class="c-button c-button--outline c-ip-product-tabs__button">View All</a>
+															<a href="{{ url('shop/popular') }}" class="c-button c-button--outline c-ip-product-tabs__button">View All</a>
 														</div>
 													</div>
 													<!-- Top Products Popular End -->
@@ -1124,54 +663,52 @@
 																	<!-- Top Category Product List Item Begin -->
 																	@if(!empty($main_category_products))
 																	@foreach($main_category_products as $main_newest_product)
-																	@if(!empty($main_newest_product->variants) && count($main_newest_product->variants) > 0)
-																	@php
-																	$variant = $main_newest_product->variants[0];
-																	@endphp
 																	@if(str_contains($main_newest_product->tags,'category'))
-																	<div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple">
-																		@if($variant->discount_type == "percentage")
+																	<div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple" style="background-color: white;">
+
+																		@if($main_newest_product->discount_type == "percentage")
 																		<div class="c-product-grid__badges c-badge__list">
 																			@if(!empty($main_newest_product->label_name))
 																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
 																			@endif
-																			<span class="c-badge c-badge--sale">-{{ $variant->discount }}%</span>
+																			<span class="c-badge c-badge--sale">-{{ $main_newest_product->discount }}%</span>
 																		</div>
 																		@endif
 
-																		@if($variant->discount_type == "flat")
+																		@if($main_newest_product->discount_type == "flat")
 																		<div class="c-product-grid__badges c-badge__list">
 																			@if(!empty($main_newest_product->label_name))
 																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
 																			@endif
-																			<span class="c-badge c-badge--sale">- &#8377; {{ $variant->regular_price - $variant->sale_price }}</span>
+																			<span class="c-badge c-badge--sale">- &#8377; {{ $main_newest_product->regular_price - $main_newest_product->sale_price }}</span>
 																		</div>
 																		@endif
+
 																		<!-- .c-product-grid__badges -->
 																		<div class="c-product-grid__thumb-wrap" style="width: auto;">
-																			<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-																				<img src="{{ asset('storage/products/'.$main_newest_product->main_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ asset('storage/products/'.$main_newest_product->main_image) }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
+																			<a href="{{ url('products',['product' => $main_newest_product->slug]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+																				<img src="{{ isset($main_newest_product->medias[0]->media) ? asset('storage/products/variants/'.$main_newest_product->medias[0]->media) : '' }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ isset($main_newest_product->medias[0]->media) ? asset('storage/products/variants/'.$main_newest_product->medias[0]->media) : '' }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
 																			</a>
 																			<div class="c-product-grid__thumb-button-list">
 																				<!--<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="438">-->
 																				<!--	<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>-->
 																				<!--	<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>-->
 																				<!--</button>-->
-																				<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button" data-product_variant_id="{{ $variant->id }}" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
+																				<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button" data-product_variant_id="{{ $main_newest_product->id }}" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
 																					<i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
 																					<i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
 																				</button>
 																			</div>
 																		</div>
 																		<!-- .c-product-grid__thumb-wrap -->
-																		<button class="h-cb c-product-grid__atc button product_type_simple add-to-cart" data-product_id="{{ $main_newest_product->id }}" data-product_variant="{{ $variant->id }}" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
+																		<button class="h-cb c-product-grid__atc button product_type_simple add-to-cart" data-product_id="{{ $main_newest_product->id }}" data-product_variant="{{ $main_newest_product->id }}" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
 																			<i class="ip-plus c-product-grid__atc-icon"></i>
 																			<span class="c-product-grid__atc-text">Add to cart</span>
 																		</button>
 																		<div class="c-product-grid__details">
 																			<div class="c-product-grid__title-wrap">
-																				<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-																					<h2 class="woocommerce-loop-product__title">{{ $main_newest_product->name."-".$variant->name }}</h2>
+																				<a href="{{ url('products',['product' => $main_newest_product->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+																					<h2 class="woocommerce-loop-product__title">{{ $main_newest_product->item_shade_name }}</h2>
 																				</a>
 																				<!-- <div class="c-product-grid__short-desc">
 																					<p class="short-description">{{ $main_newest_product->short_description }}</p>
@@ -1184,18 +721,18 @@
 																			<!-- .c-product-grid__title-wrap -->
 																			<div class="c-product-grid__price-wrap price-div">
 																				<span class="price">
-																					@if(!empty($variant->discount) && $variant->discount > 0)
+																					@if(!empty($main_newest_product->discount) && $main_newest_product->discount > 0)
 																					<del aria-hidden="true">
 																						<span class="woocommerce-Price-amount amount">
 																							<bdi>
-																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->regular_price }}</bdi>
+																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $main_newest_product->regular_price }}</bdi>
 																						</span>
 																					</del>
 																					@endif
 																					<ins>
 																						<span class="woocommerce-Price-amount amount">
 																							<bdi>
-																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->sale_price }}</bdi>
+																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $main_newest_product->sale_price }}</bdi>
 																						</span>
 																					</ins>
 																				</span>
@@ -1205,7 +742,6 @@
 																		<!-- .c-product-grid__details -->
 																	</div>
 																	@endif
-																	@endif
 																	@endforeach
 																	@endif
 																	<!-- Top Category Product List Item End -->
@@ -1214,7 +750,7 @@
 															</div>
 														</div>
 														<div class="c-ip-product-tabs__button-wrap">
-															<a href="{{ url('shop') }}" class="c-button c-button--outline c-ip-product-tabs__button">View All</a>
+															<a href="{{ url('shop/category') }}" class="c-button c-button--outline c-ip-product-tabs__button">View All</a>
 														</div>
 													</div>
 													<!-- Top Products Category End -->
@@ -1227,54 +763,52 @@
 																	<!-- Top Brand Product List Item Begin -->
 																	@if(!empty($main_brand_products))
 																	@foreach($main_brand_products as $main_newest_product)
-																	@if(!empty($main_newest_product->variants) && count($main_newest_product->variants) > 0)
-																	@php
-																	$variant = $main_newest_product->variants[0];
-																	@endphp
 																	@if(str_contains($main_newest_product->tags,'brand'))
-																	<div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple">
-																		@if($variant->discount_type == "percentage")
+																	<div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple" style="background-color: white;">
+
+																		@if($main_newest_product->discount_type == "percentage")
 																		<div class="c-product-grid__badges c-badge__list">
 																			@if(!empty($main_newest_product->label_name))
 																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
 																			@endif
-																			<span class="c-badge c-badge--sale">-{{ $variant->discount }}%</span>
+																			<span class="c-badge c-badge--sale">-{{ $main_newest_product->discount }}%</span>
 																		</div>
 																		@endif
 
-																		@if($variant->discount_type == "flat")
+																		@if($main_newest_product->discount_type == "flat")
 																		<div class="c-product-grid__badges c-badge__list">
 																			@if(!empty($main_newest_product->label_name))
 																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
 																			@endif
-																			<span class="c-badge c-badge--sale">- &#8377; {{ $variant->regular_price - $variant->sale_price }}</span>
+																			<span class="c-badge c-badge--sale">- &#8377; {{ $main_newest_product->regular_price - $main_newest_product->sale_price }}</span>
 																		</div>
 																		@endif
+
 																		<!-- .c-product-grid__badges -->
 																		<div class="c-product-grid__thumb-wrap" style="width: auto;">
-																			<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-																				<img src="{{ asset('storage/products/'.$main_newest_product->main_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ asset('storage/products/'.$main_newest_product->main_image) }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
+																			<a href="{{ url('products',['product' => $main_newest_product->slug]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+																				<img src="{{ isset($main_newest_product->medias[0]->media) ? asset('storage/products/variants/'.$main_newest_product->medias[0]->media) : '' }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ isset($main_newest_product->medias[0]->media) ? asset('storage/products/variants/'.$main_newest_product->medias[0]->media) : '' }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
 																			</a>
 																			<div class="c-product-grid__thumb-button-list">
 																				<!--<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="438">-->
 																				<!--	<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>-->
 																				<!--	<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>-->
 																				<!--</button>-->
-																				<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button" data-product_variant_id="{{ $variant->id }}" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
+																				<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button" data-product_variant_id="{{ $main_newest_product->id }}" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
 																					<i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
 																					<i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
 																				</button>
 																			</div>
 																		</div>
 																		<!-- .c-product-grid__thumb-wrap -->
-																		<button class="h-cb c-product-grid__atc button product_type_simple add-to-cart" data-product_id="{{ $main_newest_product->id }}" data-product_variant="{{ $variant->id }}" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
+																		<button class="h-cb c-product-grid__atc button product_type_simple add-to-cart" data-product_id="{{ $main_newest_product->id }}" data-product_variant="{{ $main_newest_product->id }}" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
 																			<i class="ip-plus c-product-grid__atc-icon"></i>
 																			<span class="c-product-grid__atc-text">Add to cart</span>
 																		</button>
 																		<div class="c-product-grid__details">
 																			<div class="c-product-grid__title-wrap">
-																				<a href="{{ url('products',['product' => $main_newest_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-																					<h2 class="woocommerce-loop-product__title">{{ $main_newest_product->name."-".$variant->name }}</h2>
+																				<a href="{{ url('products',['product' => $main_newest_product->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+																					<h2 class="woocommerce-loop-product__title">{{ $main_newest_product->item_shade_name }}</h2>
 																				</a>
 																				<!-- <div class="c-product-grid__short-desc">
 																					<p class="short-description">{{ $main_newest_product->short_description }}</p>
@@ -1287,18 +821,18 @@
 																			<!-- .c-product-grid__title-wrap -->
 																			<div class="c-product-grid__price-wrap price-div">
 																				<span class="price">
-																					@if(!empty($variant->discount) && $variant->discount > 0)
+																					@if(!empty($main_newest_product->discount) && $main_newest_product->discount > 0)
 																					<del aria-hidden="true">
 																						<span class="woocommerce-Price-amount amount">
 																							<bdi>
-																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->regular_price }}</bdi>
+																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $main_newest_product->regular_price }}</bdi>
 																						</span>
 																					</del>
 																					@endif
 																					<ins>
 																						<span class="woocommerce-Price-amount amount">
 																							<bdi>
-																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->sale_price }}</bdi>
+																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $main_newest_product->sale_price }}</bdi>
 																						</span>
 																					</ins>
 																				</span>
@@ -1308,7 +842,6 @@
 																		<!-- .c-product-grid__details -->
 																	</div>
 																	@endif
-																	@endif
 																	@endforeach
 																	@endif
 																	<!-- Top Brand Product List Item End -->
@@ -1317,7 +850,7 @@
 															</div>
 														</div>
 														<div class="c-ip-product-tabs__button-wrap">
-															<a href="{{ url('shop') }}" class="c-button c-button--outline c-ip-product-tabs__button">View All</a>
+															<a href="{{ url('shop/brand') }}" class="c-button c-button--outline c-ip-product-tabs__button">View All</a>
 														</div>
 													</div>
 													<!-- Top Products Brand End -->
@@ -1367,13 +900,13 @@
 					</div>
 				</div>
 			</section> -->
-			
+
 			<section class="mb-video">
 				<video playsinline autoplay muted loop>
 					<source src="{{ asset('/images/MB_Home_page_banner.mp4') }}" type="video/mp4">
 				</video>
 			</section>
-			
+
 			<section class="elementor-section elementor-top-section elementor-element elementor-element-98b9ea0 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="98b9ea0" data-element_type="section">
 				<div class="elementor-container elementor-column-gap-no">
 					<div class="elementor-row">
@@ -1423,7 +956,7 @@
 									<div class="elementor-element elementor-element-796391d elementor-tablet-align-center elementor-widget elementor-widget-ideapark-button" data-id="796391d" data-element_type="widget" data-widget_type="ideapark-button.default">
 										<div class="elementor-widget-container">
 											<div class="c-ip-button__wrap">
-												<a href="{{ url('shop') }}" class="c-button c-ip-button c-button--outline" role="button" style="margin-top: 10px;">
+												<a href="{{ url('shop/big discount') }}" class="c-button c-ip-button c-button--outline" role="button" style="margin-top: 10px;">
 													<span class="c-ip-button__text">Explore</span>
 												</a>
 											</div>
@@ -1432,7 +965,7 @@
 								</div>
 							</div>
 						</div>
-						
+
 						<!-- Big Discount Begin -->
 						@if(!empty($big_offer_products) && count($big_offer_products) > 0)
 						<div class="elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-457d5c0" data-id="457d5c0" data-element_type="column">
@@ -1448,7 +981,6 @@
 
 																@if(count($big_offer_products) > 0)
 																@foreach($big_offer_products as $big_offer_product)
-																@php $variant = $big_offer_product->variants[0]; @endphp
 																<!-- Big Discount list itms Begin -->
 																<div class="c-product-grid__item c-product-grid__item--3-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple" style="background-color: white;">
 
@@ -1456,8 +988,8 @@
 																		@if($big_offer_product->label_name != "")
 																		<span class="c-badge c-badge--featured">{{ $big_offer_product->label_name }}</span>
 																		@endif
-																		@if($variant->discount_type == "percentage")
-																		<span class="c-badge c-badge--sale">-{{ $variant->discount }}%</span>
+																		@if($big_offer_product->discount_type == "percentage")
+																		<span class="c-badge c-badge--sale">-{{ $big_offer_product->discount }}%</span>
 																		@endif
 																	</div>
 
@@ -1465,37 +997,37 @@
 																		@if($big_offer_product->label_name != "")
 																		<span class="c-badge c-badge--featured">{{ $big_offer_product->label_name }}</span>
 																		@endif
-																		@if($variant->discount_type == "flat")
-																		<span class="c-badge c-badge--sale">- &#8377;{{ $variant->regular_price - $variant->sale_price }} OFF</span>
+																		@if($big_offer_product->discount_type == "flat")
+																		<span class="c-badge c-badge--sale">- &#8377;{{ $big_offer_product->regular_price - $big_offer_product->sale_price }} OFF</span>
 																		@endif
 																	</div>
 
 
 																	<!-- .c-product-grid__badges -->
 																	<div class="c-product-grid__thumb-wrap" style="width: auto;">
-																		<a href="{{ url('products',['product' => $big_offer_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-																			<img src="{{ asset('storage/products/'.$big_offer_product->main_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ asset('storage/products/'.$big_offer_product->main_image) }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
+																		<a href="{{ url('products',['product' => $big_offer_product->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+																			<img src="{{ isset($big_offer_product->medias->media) ? asset('storage/products/variants/'.$big_offer_product->medias->media) : '' }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ isset($big_offer_product->medias->media) ? asset('storage/products/variants/'.$big_offer_product->medias->media) : '' }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
 																		</a>
 																		<div class="c-product-grid__thumb-button-list">
 																			<!--<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="438">-->
 																			<!--	<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>-->
 																			<!--	<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>-->
 																			<!--</button>-->
-																			<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button" data-product_variant_id="{{ $variant->id }}" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
+																			<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
 																				<i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
 																				<i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
 																			</button>
 																		</div>
 																	</div>
 																	<!-- .c-product-grid__thumb-wrap -->
-																	<button class="h-cb c-product-grid__atc button product_type_simple add-to-cart" data-product_id="{{ $big_offer_product->id }}" data-product_variant="{{ $variant->id }}" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
+																	<button class="h-cb c-product-grid__atc button product_type_simple add-to-cart" data-product_id="{{ $big_offer_product->id }}" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
 																		<i class="ip-plus c-product-grid__atc-icon"></i>
 																		<span class="c-product-grid__atc-text">Add to cart</span>
 																	</button>
 																	<div class="c-product-grid__details">
 																		<div class="c-product-grid__title-wrap">
-																			<a href="{{ url('products',['product' => $big_offer_product->slug, 'variant' => $variant->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-																				<h2 class="woocommerce-loop-product__title">{{ $big_offer_product->name."-".$variant->name }}</h2>
+																			<a href="{{ url('products',['product' => $big_offer_product->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+																				<h2 class="woocommerce-loop-product__title">{{ $big_offer_product->item_shade_name }}</h2>
 																			</a>
 																			<!-- <div class="c-product-grid__short-desc">
 																				<p>{{ $big_offer_product->short_description }}</p>
@@ -1508,18 +1040,18 @@
 																		<!-- .c-product-grid__title-wrap -->
 																		<div class="c-product-grid__price-wrap price-div">
 																			<span class="price">
-																				@if($variant->discount_type != "")
+																				@if($big_offer_product->discount_type != "")
 																				<del aria-hidden="true">
 																					<span class="woocommerce-Price-amount amount">
 																						<bdi>
-																							<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->regular_price }}</bdi>
+																							<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $big_offer_product->regular_price }}</bdi>
 																					</span>
 																				</del>
 																				@endif
 																				<ins>
 																					<span class="woocommerce-Price-amount amount">
 																						<bdi>
-																							<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $variant->sale_price }}</bdi>
+																							<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $big_offer_product->sale_price }}</bdi>
 																					</span>
 																				</ins>
 
@@ -1549,7 +1081,7 @@
 					</div>
 				</div>
 			</section>
-			
+
 			@if(!empty($footer_banners) && count($footer_banners) > 0)
 			<section class="elementor-section elementor-top-section elementor-element elementor-element-3d1ff9f elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="3d1ff9f" data-element_type="section">
 				<div class="elementor-container elementor-column-gap-no">
@@ -1580,7 +1112,7 @@
 													@endforeach -->
 
 													<div data-id="1440-0fe75f30" class="c-ip-banners__item c-ip-banners__item--left">
-														<img class="c-ip-banners__image" src="{{ asset('images/s1.jpg') }}" srcset="{{ asset('images/s1.jpg') }}" alt="banner-9@2x" loading="lazy"/>
+														<img class="c-ip-banners__image" src="{{ asset('images/s1.jpg') }}" srcset="{{ asset('images/s1.jpg') }}" alt="banner-9@2x" loading="lazy" />
 													</div>
 												</div>
 											</div>

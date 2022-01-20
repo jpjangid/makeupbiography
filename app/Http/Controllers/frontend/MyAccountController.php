@@ -9,7 +9,7 @@ use App\Models\Location;
 use App\Models\Order;
 use App\Models\OrderItemReturn;
 use App\Models\User;
-use App\Models\ProductVariantMedia;
+use App\Models\ProductMedia;
 
 class MyAccountController extends Controller
 {
@@ -32,20 +32,20 @@ class MyAccountController extends Controller
     public function myorders()
     {
         $user = auth()->user();
-        $orders = Order::where([['user_id',$user->id],['no_items','>','0'],['flag' ,'0']])->with('items.variant.product','user')->orderby('id','desc')->get();
+        $orders = Order::where([['user_id',$user->id],['no_items','>','0'],['flag' ,'0']])->with('items.product','user')->orderby('id','desc')->get();
 
         return view('frontend.myaccount.myorders', compact('orders'));
     }
 
     public function order_detail($order_no)
     {
-        $order = Order::where(['order_no' => $order_no, 'flag' => '0'])->with('items.variant.product','items.variant.medias', 'items.return','user')->first();
+        $order = Order::where(['order_no' => $order_no, 'flag' => '0'])->with('items.product.medias', 'items.return','user')->first();
         
         $image = array();
         if(!empty($order)) {
             foreach($order->items as $item){
                 if(empty($item->return)){
-                    $media = ProductVariantMedia::where(['product_variant_id' => $item->variant->id, 'media_type' => 'image'])->orderby('sequence','asc')->first();
+                    $media = ProductMedia::where(['product_id' => $item->product->id, 'media_type' => 'image'])->orderby('sequence','asc')->first();
                     if(!empty($media)){
                         array_push($image, $media->media);
                     }

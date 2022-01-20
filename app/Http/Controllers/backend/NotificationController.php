@@ -5,30 +5,28 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Models\Notification;
 use Illuminate\Http\Request;
-use Yajra\DataTables\Services\DataTable;
-use DataTables;
+use Yajra\DataTables\DataTables;
 use Illuminate\Support\Collection;
 
 class NotificationController extends Controller
 {
     public function index()
     {
-        
+
         if (request()->ajax()) {
-            $notifications1 = Notification::where('flag',0)->orderBy('created_at','desc')->get();
+            $notifications1 = Notification::where('flag', 0)->orderBy('created_at', 'desc')->get();
 
             $notifications = new Collection;
-            foreach($notifications1 as $notification) {
+            foreach ($notifications1 as $notification) {
                 $notifications->push([
                     'id'    => $notification->id,
                     'title'  => $notification->title,
                     'message'  => $notification->message,
                     'created_at' =>  date('d-m-Y', strtotime($notification->created_at))
-                ]);    
+                ]);
             }
 
-            return Datatables::of($notifications)
-                ->make(true);
+            return Datatables::of($notifications)->make(true);
         }
 
         return view('backend.notification.index');
@@ -36,21 +34,21 @@ class NotificationController extends Controller
 
     public function notificationListItems()
     {
-        $notifications1 = Notification::where('flag',0)->orderBy('created_at','desc')->get();
+        $notifications1 = Notification::where('flag', 0)->orderBy('created_at', 'desc')->get();
 
         $notifications = array();
-        foreach($notifications1 as $notification) {
-           if($notification->title == "New User") {
-              array_push($notifications,$this->newUserTemplate($notification));      
-           }     
-           if($notification->title == "New Order") {
-            array_push($notifications,$this->newOrderNotificationTemplate($notification));      
-           }  
-           if($notification->title == "Order Return") {
-            array_push($notifications,$this->returnTemplate($notification));      
-           }    
-        } 
-        
+        foreach ($notifications1 as $notification) {
+            if ($notification->title == "New User") {
+                array_push($notifications, $this->newUserTemplate($notification));
+            }
+            if ($notification->title == "New Order") {
+                array_push($notifications, $this->newOrderNotificationTemplate($notification));
+            }
+            if ($notification->title == "Order Return") {
+                array_push($notifications, $this->returnTemplate($notification));
+            }
+        }
+
         return response()->json($notifications);
     }
 
@@ -77,13 +75,13 @@ class NotificationController extends Controller
                     <!--end::Symbol-->
                     <!--begin::Title-->
                     <div class="mb-1 pe-3 flex-grow-1">
-                        <a href="#" class="fs-6 text-dark text-hover-primary fw-bold">'.$notification->message.'</a>
-                        <div class="text-gray-400 fw-bold fs-7">'.\Carbon\Carbon::parse($notification->created_at)->diffForhumans().'</div>
+                        <a href="#" class="fs-6 text-dark text-hover-primary fw-bold">' . $notification->message . '</a>
+                        <div class="text-gray-400 fw-bold fs-7">' . \Carbon\Carbon::parse($notification->created_at)->diffForhumans() . '</div>
                     </div>
                     <!--end::Title-->
                     </div>
                 <!--end::Item-->';
-        return $html;        
+        return $html;
     }
 
     public function newOrderNotificationTemplate($notification)
@@ -109,13 +107,13 @@ class NotificationController extends Controller
                     <!--end::Symbol-->
                     <!--begin::Title-->
                     <div class="mb-1 pe-3 flex-grow-1">
-                        <a href="#" class="fs-6 text-dark text-hover-primary fw-bold">'.$notification->message.'</a>
-                        <div class="text-gray-400 fw-bold fs-7">'.\Carbon\Carbon::parse($notification->created_at)->diffForhumans().'</div>
+                        <a href="#" class="fs-6 text-dark text-hover-primary fw-bold">' . $notification->message . '</a>
+                        <div class="text-gray-400 fw-bold fs-7">' . \Carbon\Carbon::parse($notification->created_at)->diffForhumans() . '</div>
                     </div>
                     <!--end::Title-->
                     </div>
                 <!--end::Item-->';
-        return $html;        
+        return $html;
     }
 
     public function returnTemplate($notification)
@@ -140,17 +138,12 @@ class NotificationController extends Controller
                 <!--end::Symbol-->
                 <!--begin::Title-->
                 <div class="mb-1 pe-3 flex-grow-1">
-                    <a href="#" class="fs-6 text-dark text-hover-primary fw-bold">'.$notification->message.'</a>
-                    <div class="text-gray-400 fw-bold fs-7">'.\Carbon\Carbon::parse($notification->created_at)->diffForhumans().'</div>
+                    <a href="#" class="fs-6 text-dark text-hover-primary fw-bold">' . $notification->message . '</a>
+                    <div class="text-gray-400 fw-bold fs-7">' . \Carbon\Carbon::parse($notification->created_at)->diffForhumans() . '</div>
                 </div>
                 <!--end::Title-->
                 </div>
                 <!--end::Item-->';
-        return $html;        
-    }
-
-    public function destroy(Notification $notification)
-    {
-        //
+        return $html;
     }
 }

@@ -114,7 +114,7 @@
                                         <select name="product_id" class="form-select form-select-solid">
                                             <option value="">Select Product</option>
                                             @foreach($products as $product)
-                                            <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                            <option value="{{ $product->id }}">{{ $product->item_shade_name }}</option>
                                             @endforeach
                                         </select>
                                     </div>

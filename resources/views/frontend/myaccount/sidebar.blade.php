@@ -12,13 +12,13 @@
     <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders {{ url('return-orders') == url()->current() ? 'is-active' : '' }}">
         <a class="c-account__navigation-link" href="{{ url('return-orders') }}"><i class='fas fa-truck'></i> Return Orders</a>
     </li>
-    <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--wishlist {{ url('my-wishlist') == url()->current() ? 'is-active' : '' }}">
-        <a class="c-account__navigation-link" href="{{ url('my-wishlist') }}"><i class='fas fa-heart'></i> My Wishlist</a>
+    <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--wishlist {{ url('wishlist') == url()->current() ? 'is-active' : '' }}">
+        <a class="c-account__navigation-link" href="{{ url('wishlist') }}"><i class='fas fa-heart'></i> My Wishlist</a>
     </li>
-    <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-address {{ url('my-wishlist') == url()->current() ? 'is-active' : '' }}">
+    <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-address {{ url('wishlist') == url()->current() ? 'is-active' : '' }}">
         <a class="c-account__navigation-link" href="{{ url('q&a') }}"><i class="fas fa-question-circle" aria-hidden="true"></i> Q&A</a>
     </li>
-    <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-address {{ url('my-wishlist') == url()->current() ? 'is-active' : '' }}">
+    <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-address {{ url('wishlist') == url()->current() ? 'is-active' : '' }}">
         <a class="c-account__navigation-link" href="{{ url('my-address') }}"><i class='fas fa-address-card'></i> My Addresses</a>
     </li>
     @if (Route::has('login'))
@@ -30,7 +30,7 @@
         </form>
     </li>
     @else
-    <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-address {{ url('my-wishlist') == url()->current() ? 'is-active' : '' }}">
+    <li class="c-account__navigation-item woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-address {{ url('wishlist') == url()->current() ? 'is-active' : '' }}">
         <a class="c-account__navigation-link" href="{{ route('login') }}"> Login</a>
     </li>
     @endauth

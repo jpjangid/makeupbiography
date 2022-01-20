@@ -38,7 +38,6 @@ class ReturnController extends Controller
                     'order_id'              =>  $request->order_id,
                     'order_item_id'         =>  $return_check,
                     'product_id'            =>  $item->product_id,
-                    'product_variant_id'    =>  $item->product_variant_id,
                     'quantity'              =>  $item->quantity,
                     'reason'                =>  $reason[$key]['status'],
                     'description'           =>  $reason[$key]['description'],

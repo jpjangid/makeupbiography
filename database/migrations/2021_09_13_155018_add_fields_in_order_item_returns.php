@@ -14,7 +14,7 @@ class AddFieldsInOrderItemReturns extends Migration
     public function up()
     {
         Schema::table('order_item_returns', function (Blueprint $table) {
-            $table->bigInteger('shiprocket_order_id')->after('product_variant_id')->nullable();
+            $table->bigInteger('shiprocket_order_id')->after('product_id')->nullable();
             $table->bigInteger('shiprocket_shipment_id')->after('shiprocket_order_id')->nullable();
         });
     }

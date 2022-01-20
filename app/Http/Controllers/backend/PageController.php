@@ -7,8 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Page;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
-use Yajra\DataTables\Services\DataTable;
-use DataTables;
+use Yajra\DataTables\DataTables;
 use Illuminate\Support\Collection;
 
 class PageController extends Controller
@@ -16,38 +15,38 @@ class PageController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $pages1 = Page::where(['flag' => '0','status' => 1])->get();
+            $pages1 = Page::where(['flag' => '0', 'status' => 1])->get();
 
             $pages = new Collection;
-            foreach($pages1 as $page) {
+            foreach ($pages1 as $page) {
                 $pages->push([
                     'id'    => $page->id,
                     'title'  => $page->title,
                     'slug'  => $page->slug,
-                    'status'=> $page->status 
-                ]);    
+                    'status' => $page->status
+                ]);
             }
 
             return Datatables::of($pages)
-                    ->addIndexColumn()
-                    ->addColumn('active', function($row) {
-                        $checked = $row['status'] == '1' ? 'checked' : '';
-                        $active  = '<div class="form-check form-switch form-check-custom form-check-solid">
-                                        <input type="hidden" value="'.$row['id'].'" class="category_id">
-                                        <input type="checkbox" class="form-check-input js-switch  h-20px w-30px" id="customSwitch1" name="status" value="'.$row['status'].'" '.$checked.'>
+                ->addIndexColumn()
+                ->addColumn('active', function ($row) {
+                    $checked = $row['status'] == '1' ? 'checked' : '';
+                    $active  = '<div class="form-check form-switch form-check-custom form-check-solid">
+                                        <input type="hidden" value="' . $row['id'] . '" class="category_id">
+                                        <input type="checkbox" class="form-check-input js-switch  h-20px w-30px" id="customSwitch1" name="status" value="' . $row['status'] . '" ' . $checked . '>
                                     </div>';
 
-                      return $active;
-                    })
-                    ->addColumn('action', function($row) {
-                           $delete_url = url('admin/pages/delete',$row['id']);
-                           $edit_url = url('admin/pages/edit',$row['id']);
-                           $btn = '<a class="btn btn-primary btn-sm ml-1" href="'.$edit_url.'"><i class="fas fa-edit"></i></a>';
-                           $btn .= '<a class="btn btn-info btn-sm ml-1" href="'.$delete_url.'"><i class="fa fa-trash"></i></a>'; 
-                           return $btn;
-                    })
-                    ->rawColumns(['action','active'])
-                    ->make(true);
+                    return $active;
+                })
+                ->addColumn('action', function ($row) {
+                    $delete_url = url('admin/pages/delete', $row['id']);
+                    $edit_url = url('admin/pages/edit', $row['id']);
+                    $btn = '<a class="btn btn-primary btn-sm ml-1" href="' . $edit_url . '"><i class="fas fa-edit"></i></a>';
+                    $btn .= '<a class="btn btn-info btn-sm ml-1" href="' . $delete_url . '"><i class="fa fa-trash"></i></a>';
+                    return $btn;
+                })
+                ->rawColumns(['action', 'active'])
+                ->make(true);
         }
 
         return view('backend.pages.index');
@@ -89,7 +88,7 @@ class PageController extends Controller
         }
 
         $status = 0;
-        if(isset($request->status)){
+        if (isset($request->status)) {
             $status = 1;
         }
 
@@ -162,7 +161,7 @@ class PageController extends Controller
         }
 
         $status = 0;
-        if(isset($request->status)){
+        if (isset($request->status)) {
             $status = 1;
         }
 

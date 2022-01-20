@@ -108,60 +108,60 @@
                             @csrf
                             @php $no = 0; @endphp
                             @foreach($order->items as $key => $item)
-                                @if(empty($item->return))
-                                    @if($item->flag == '0')
-                                    @php $no += 1; @endphp
-                                    <div class="card-view">
-                                        <table class="table" id="producttbl">
-                                            <thead>
-                                                <tr>
-                                                    <th colspan="2">Product Name</th>
-                                                    <th>Price</th>
-                                                    <th>Total</th>
-                                                    <th>Check If Return</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <input type="hidden" name="order_id" value="{{ $order->id }}">
-                                                <tr>
-                                                    <td><img src="{{ asset('storage/products/variants/'.$image[$key]) }}" alt="{{ $image[$key] }}" style="height: 4rem;"></td>
-                                                    <td>{{ $item->variant->product->name }} - {{ $item->variant->name }} X {{ $item->quantity }}</td>
-                                                    <td>{{ $item->variant->sale_price }}</td>
-                                                    <td>{{ $item->variant->sale_price * $item->quantity }}</td>
-                                                    <input type="hidden" class="orderitem_id" value="{{ $item->id }}">
-                                                    <td><input type="checkbox" class="form-control return_check" name="return_check[]" value="{{ $item->id }}"></td>
-                                                </tr>
-                                                <tr>
-                                                    <th colspan="5">Return/Exchange Request <span style="color: red;">*</span> </th>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="5">
-                                                        <select class="status" name="status[]">
-                                                            <option value="">Reason Of Return</option>
-                                                            <option value="Accidentally Placed Order">Accidentally Placed Order</option>
-                                                            <option value="Ordered Wrong Product">Ordered Wrong Product</option>
-                                                            <option value="Product is not good as per requirement">Product is not good as per requirement</option>
-                                                            <option value="Didn't like the Product">Didn't like the Product</option>
-                                                            <option value="Defective Product">Defective Product</option>
-                                                        </select>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th colspan="5">Please Describe the Issue <span style="color: red;">*</span> </th>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="5">
-                                                        <textarea name="description[]" class="description" cols="30" rows="2" placeholder="Please Enter..."></textarea>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    @endif
-                                @endif
+                            @if(empty($item->return))
+                            @if($item->flag == '0')
+                            @php $no += 1; @endphp
+                            <div class="card-view">
+                                <table class="table" id="producttbl">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2">Product Name</th>
+                                            <th>Price</th>
+                                            <th>Total</th>
+                                            <th>Check If Return</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <input type="hidden" name="order_id" value="{{ $order->id }}">
+                                        <tr>
+                                            <td><img src="{{ isset($image[$key]) ? asset('storage/products/variants/'.$image[$key]) : '' }}" alt="{{ isset($image[$key]) ? $image[$key] : 'Product Image' }}" style="height: 4rem;"></td>
+                                            <td>{{ $item->product->item_shade_name }} X {{ $item->quantity }}</td>
+                                            <td>{{ $item->product->sale_price }}</td>
+                                            <td>{{ $item->product->sale_price * $item->quantity }}</td>
+                                            <input type="hidden" class="orderitem_id" value="{{ $item->id }}">
+                                            <td><input type="checkbox" class="form-control return_check" name="return_check[]" value="{{ $item->id }}"></td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="5">Return/Exchange Request <span style="color: red;">*</span> </th>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="5">
+                                                <select class="status" name="status[]">
+                                                    <option value="">Reason Of Return</option>
+                                                    <option value="Accidentally Placed Order">Accidentally Placed Order</option>
+                                                    <option value="Ordered Wrong Product">Ordered Wrong Product</option>
+                                                    <option value="Product is not good as per requirement">Product is not good as per requirement</option>
+                                                    <option value="Didn't like the Product">Didn't like the Product</option>
+                                                    <option value="Defective Product">Defective Product</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="5">Please Describe the Issue <span style="color: red;">*</span> </th>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="5">
+                                                <textarea name="description[]" class="description" cols="30" rows="2" placeholder="Please Enter..."></textarea>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            @endif
+                            @endif
                             @endforeach
                             @if($no > 0)
-                            <button class="btn btn-primary return">Return</button>
+                            <button class="btn btn-primary return" disabled>Return</button>
                             @endif
                         </form>
                     </div>
@@ -181,14 +181,19 @@
         var status = statusrow.find('.status').val();
         var description = discriptionrow.find('.description').val();
         if ($(this).prop("checked") == true) {
+            $('.return').prop('disabled', false);
             if (description == '') {
                 swal("Please Describe the Issue");
                 $(this).removeAttr('checked');
+                $('.return').prop('disabled', true);
             }
             if (status == '') {
                 swal("Please Select Return/Exchange Request");
                 $(this).removeAttr('checked');
+                $('.return').prop('disabled', true);
             }
+        } else {
+            $('.return').prop('disabled', true);
         }
 
     });
