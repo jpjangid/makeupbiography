@@ -84,7 +84,7 @@ class CategoryController extends Controller
         }
         //filter sorting end
         
-        $products1 = DB::table('products')->select('id')->whereIn('parent_id', $product_category)->where(['status' => 1, 'flag' => 0]);
+        $products1 = DB::table('products')->select('id')->whereIn('parent_id', $product_category)->where(['status' => 1, 'flag' => 0])->where('ecom','ONLINE');
 
 
         if (count($filter_brands) > 0) {
@@ -92,7 +92,7 @@ class CategoryController extends Controller
         }
         $products1 = $products1->get()->toArray();
 
-        $products = DB::table('products')->select('id')->distinct('item_name')->whereIn('id', array_column($products1, 'id'));
+        $products = DB::table('products')->select('id')->whereIn('id', array_column($products1, 'id'))->where('ecom','ONLINE');
 
         if (!empty($request->min_price_filter) && !empty($request->max_price_filter)) {
             $products = $products->whereBetween('sale_price', array(floatval($request->min_price_filter), floatval($request->max_price_filter)));
@@ -106,7 +106,7 @@ class CategoryController extends Controller
 
         $products = $products->get()->toArray();
 
-        $products = DB::table('products')->whereIn('id', array_column($products, 'id'));
+        $products = DB::table('products')->whereIn('id', array_column($products, 'id'))->where('ecom','ONLINE');
         if (!empty($request->min_price_filter) && !empty($request->max_price_filter)) {
             $products = $products->whereBetween('sale_price', array(floatval($request->min_price_filter), floatval($request->max_price_filter)));
         }
@@ -172,7 +172,7 @@ class CategoryController extends Controller
         $brands = Brand::select('id', 'name')->where(['status' => 1, 'flag' =>  0])->get();
         $product_category = array();
         $min_price_filter = 0;
-        $max_price_filter = DB::table('products')->where('tags', 'like', '%' . $tag . '%')->max('sale_price') + 100;
+        $max_price_filter = DB::table('products')->where('tags', 'like', '%' . $tag . '%')->where('ecom','ONLINE')->max('sale_price') + 100;
         $min_price_old = 0;
         $max_price_old = 0;
         if (isset($request->min_price_filter) && !empty($request->min_price_filter)) {
@@ -226,7 +226,7 @@ class CategoryController extends Controller
         }
         //filter sorting end
 
-        $products1 = DB::table('products')->select('id')->where(['status' => 1, 'flag' => 0])->where('tags', 'like', '%' . $tag . '%');
+        $products1 = DB::table('products')->select('id')->where(['status' => 1, 'flag' => 0])->where('tags', 'like', '%' . $tag . '%')->where('ecom','ONLINE');
         if (!empty($filter_brands) && count($filter_brands) > 0) {
             $products1 = $products1->whereIn('brand_id', $filter_brands);
         }
@@ -236,7 +236,7 @@ class CategoryController extends Controller
         }
         $products1 = $products1->get()->toArray();
 
-        $products = DB::table('products')->distinct('item_name')->where('tags', 'like', '%' . $tag . '%')->whereIn('id', array_column($products1, 'id'));
+        $products = DB::table('products')->where('tags', 'like', '%' . $tag . '%')->whereIn('id', array_column($products1, 'id'))->where('ecom','ONLINE');
 
         if (!empty($request->min_price_filter) && !empty($request->max_price_filter) && $request->max_price_filter > floatval(0)) {
             $products = $products->whereBetween('sale_price', array(floatval($request->min_price_filter), floatval($request->max_price_filter)));

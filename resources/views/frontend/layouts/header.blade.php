@@ -136,7 +136,7 @@ $mains = Category::select('id','slug','name')->where(['flag' => 0,'status' => 1]
 						<a href="{{ url('/') }}">Home</a>
 					</li>
 					<li id="menu-item-17" class="c-mobile-menu__item menu-item-17">
-						<a href="{{ url('/shop') }}">Shop</a>
+						<a href="{{ url('/shop/all') }}">Shop</a>
 					</li>
 					@if(count($mains) > 0)
 					<li id="menu-item-162" class="c-mobile-menu__item c-mobile-menu__item--has-children menu-item-162">
@@ -425,7 +425,7 @@ $mains = Category::select('id','slug','name')->where(['flag' => 0,'status' => 1]
 								<a href="{{ url('/') }}">Home</a>
 							</li>
 							<li class="c-top-menu__item c-top-menu__item--has-children menu-item-162 js-menu-item">
-								<a href="{{ url('shop') }}">Shop</a>
+								<a href="{{ url('shop/all') }}">Shop</a>
 							</li>
 
 							<!-- category begin -->

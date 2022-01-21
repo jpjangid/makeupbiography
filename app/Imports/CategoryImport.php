@@ -2,7 +2,7 @@
 
 namespace App\Imports;
 
-use App\Models\Category;
+use App\Models\Product;
 use Maatwebsite\Excel\Concerns\ToModel;
 
 class CategoryImport implements ToModel
@@ -14,8 +14,11 @@ class CategoryImport implements ToModel
     */
     public function model(array $row)
     {
-        return new Category([
-            //
-        ]);
+        $product = Product::where('sku', $row[0])->first();
+        $product->hex_code = $row[1];
+        $product->description = $row[2];
+        $product->update();
+
+        return $product;
     }
 }

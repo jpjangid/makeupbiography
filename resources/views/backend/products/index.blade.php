@@ -56,6 +56,7 @@
                                 <tr class="fw-bold fs-6 text-muted">
                                     <th>Product</th>
                                     <th>Slug</th>
+                                    <th>Ecom</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -90,6 +91,10 @@
                 {
                     data: 'slug',
                     name: 'slug'
+                },
+                {
+                    data: 'ecom',
+                    name: 'ecom'
                 },
                 {
                     data: 'active',

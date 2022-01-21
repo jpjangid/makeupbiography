@@ -46,6 +46,8 @@ Route::middleware(['auth', 'prevent-back-history', 'admin'])->prefix('admin')->g
     Route::prefix('bulkupload')->group(function () {
         Route::get('/', [App\Http\Controllers\backend\BulkUploadController::class, 'index']);
         Route::post('upload',[App\Http\Controllers\backend\BulkUploadController::class, 'upload']);
+        Route::post('update',[App\Http\Controllers\backend\BulkUploadController::class, 'update']);
+        Route::get('imageupload', [App\Http\Controllers\backend\BulkUploadController::class, 'imageupload']);
     });  
 
     Route::prefix('blogs')->group(function () {

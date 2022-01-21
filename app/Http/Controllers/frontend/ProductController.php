@@ -4,7 +4,6 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
-use App\Models\ProductVariant;
 use App\Models\ProductMedia;
 use App\Models\RelatedProducts;
 use App\Models\ProductReview;
@@ -15,7 +14,7 @@ class ProductController extends Controller
     public function index($product)
     {
         $product = Product::where('slug',$product)->with('medias','category.parent.parent')->orderby('sequence','asc')->first();
-        $variants = Product::where('item_name', $product->item_name)->get();
+        $variants = Product::where('item_name', $product->item_name)->where('ecom','ONLINE')->get();
         $medias = ProductMedia::where('product_id',$product->id)->orderby('sequence','asc')->get();
         $reviews = ProductReview::where(['product_id' => $product->id])->orderBy('created_at','desc')->take(5)->get();
         $related_ids = array();
@@ -26,7 +25,7 @@ class ProductController extends Controller
 
         $related_products = Product::whereIn('id', $related_ids)->get();
         if($related_products->isEmpty()){
-            $related_products = Product::where([['parent_id','=',$product->parent_id],['id','!=',$product->id]])->get();
+            $related_products = Product::where([['parent_id','=',$product->parent_id],['id','!=',$product->id]])->where('ecom','ONLINE')->get();
         }
 
         $data = $this->related($related_products);
@@ -48,7 +47,7 @@ class ProductController extends Controller
         $related_images = array();
         foreach($related_products as $related_product){
             if(isset($related_product) && !empty($related_product)){
-                $allvariants = Product::where('item_name', $related_product->item_name)->orderby('sequence','asc')->get();
+                $allvariants = Product::where('item_name', $related_product->item_name)->where('ecom','ONLINE')->orderby('sequence','asc')->get();
                 $media = ProductMedia::where(['product_id' => $allvariants[0]->id, 'media_type' => 'image'])->orderby('sequence', 'asc')->first();
                 array_push($related_variants_id,!empty($allvariants[0]->id) ? $allvariants[0]->id : "");
                 array_push($related_variants, !empty($allvariants[0]->slug) ? $allvariants[0]->slug : "");

@@ -52,6 +52,12 @@ return [
             'endpoint' => env('AWS_ENDPOINT'),
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
         ],
+        'ftp' => [
+            'driver' => 'ftp',
+            'host' => '103.156.21.5',
+            'username' => '28user',
+            'password' => 'user@321',
+        ],
 
     ],
 

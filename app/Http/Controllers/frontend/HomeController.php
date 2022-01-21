@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
-use App\Models\ProductVariant;
 use App\Models\FooterBanner;
 use App\Models\ProductMedia;
 
@@ -16,19 +15,19 @@ class HomeController extends Controller
     public function index()
     {
         $main_categories = Category::where(['flag' => 0, 'status' => 1])->where('parent_id', null)->get();
-        $main_newest_products = Product::where(['flag' => 0, 'status' => 1])->where('tags', 'like', '%' . 'newest' . '%')->with(['medias' => function ($query) {
+        $main_newest_products = Product::where(['flag' => 0, 'status' => 1])->where('tags', 'like', '%' . 'newest' . '%')->where('ecom','ONLINE')->with(['medias' => function ($query) {
             $query->where(['flag' => 0,'media_type' => 'image'])->orderBy('sequence', 'asc');
         }])->orderBy('created_at', 'DESC')->take(25)->get();
-        $main_popular_products = Product::where(['flag' => 0, 'status' => 1])->where('tags', 'like', '%' . 'popular' . '%')->with(['medias' => function ($query) {
+        $main_popular_products = Product::where(['flag' => 0, 'status' => 1])->where('tags', 'like', '%' . 'popular' . '%')->where('ecom','ONLINE')->with(['medias' => function ($query) {
             $query->where(['flag' => 0,'media_type' => 'image'])->orderBy('sequence', 'asc');
         }])->orderBy('created_at', 'DESC')->take(25)->get();
-        $main_category_products = Product::where(['flag' => 0, 'status' => 1])->where('tags', 'like', '%' . 'category' . '%')->with(['medias' => function ($query) {
+        $main_category_products = Product::where(['flag' => 0, 'status' => 1])->where('tags', 'like', '%' . 'category' . '%')->where('ecom','ONLINE')->with(['medias' => function ($query) {
             $query->where(['flag' => 0,'media_type' => 'image'])->orderBy('sequence', 'asc');
         }])->orderBy('created_at', 'DESC')->take(25)->get();
-        $main_brand_products = Product::where(['flag' => 0, 'status' => 1])->where('tags', 'like', '%' . 'brand' . '%')->with(['medias' => function ($query) {
+        $main_brand_products = Product::where(['flag' => 0, 'status' => 1])->where('tags', 'like', '%' . 'brand' . '%')->where('ecom','ONLINE')->with(['medias' => function ($query) {
             $query->where(['flag' => 0,'media_type' => 'image'])->orderBy('sequence', 'asc');
         }])->orderBy('created_at', 'DESC')->take(25)->get();
-        $big_offer_products = Product::where(['flag' => 0, 'status' => 1])->where('tags', 'like', '%' . 'big discount' . '%')->with(['medias' => function ($query) {
+        $big_offer_products = Product::where(['flag' => 0, 'status' => 1])->where('tags', 'like', '%' . 'big discount' . '%')->where('ecom','ONLINE')->with(['medias' => function ($query) {
             $query->where(['flag' => 0,'media_type' => 'image'])->orderBy('sequence', 'asc')->first();
         }])->orderBy('updated_at', 'DESC')->take(10)->get();
         $footer_banners = FooterBanner::where('image', '!=', "")->where('status', 1)->get();
@@ -38,7 +37,7 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         //product search algo
-        $products = Product::where(['flag' => 0, 'status' => 1])->where('item_shade_name', 'like', '%' . $request->q . '%')->get();
+        $products = Product::where(['flag' => 0, 'status' => 1])->where('item_shade_name', 'like', '%' . $request->q . '%')->where('ecom','ONLINE')->get();
         $product_list_items = array();
         foreach ($products as $product) {
             array_push($product_list_items, $this->searchListItems($product));

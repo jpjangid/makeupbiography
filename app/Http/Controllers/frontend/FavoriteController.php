@@ -7,7 +7,6 @@ use App\Models\Favorite;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Cart;
-use App\Models\ProductVariant;
 
 class FavoriteController extends Controller
 {

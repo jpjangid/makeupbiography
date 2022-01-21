@@ -21,7 +21,7 @@ class ProductController extends Controller
     {
         if (request()->ajax()) {
             // $allproducts = Product::where(['flag' => '0', 'ecom' => 'ONLINE'])->get();
-            $allproducts = DB::table('products')->select('id','item_shade_name','slug','status')->where(['flag' => '0', 'ecom' => 'ONLINE'])->get();
+            $allproducts = DB::table('products')->select('id','item_shade_name','slug','status','ecom')->where(['flag' => '0'])->get();
 
             $products = new Collection;
             foreach ($allproducts as $product) {
@@ -29,7 +29,8 @@ class ProductController extends Controller
                     'id'        => $product->id,
                     'name'      => $product->item_shade_name,
                     'slug'      => $product->slug,
-                    'status'    => $product->status
+                    'status'    => $product->status,
+                    'ecom'      => $product->ecom
                 ]);
             }
 

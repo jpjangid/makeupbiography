@@ -347,7 +347,7 @@
 								</bdi>
 							</span>
 						</p>
-						@if($product->p_type == 'Shades')
+						<!-- @if($product->p_type == 'Shades')
 						<div class="product-shades" style="background-color: #f3f3f3;">
 							<h6 class="palette-title">Colour Palette</h6>
 							<ul>
@@ -370,7 +370,7 @@
 								@endif
 							</ul>
 						</div>
-						@endif
+						@endif -->
 						<div class="c-product__atc-wrap">
 							<form class="cart" action="https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" method="post" enctype='multipart/form-data' style="margin-left: 50px; margin-right: 50px;">
 								<div class="c-product__quantity quantity">

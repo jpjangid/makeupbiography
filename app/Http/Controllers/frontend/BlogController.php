@@ -11,7 +11,6 @@ class BlogController extends Controller
 {
     public function index($cat)
     {
-
         $page = Page::where('slug','blogs')->first();
 
         if(empty($page)){

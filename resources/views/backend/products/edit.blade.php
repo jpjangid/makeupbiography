@@ -32,7 +32,7 @@
                                         <a class="nav-link btn btn-active-warning btn-active-color-warning-700 btn-color-warning-400 py-2 px-5 fs-6 fw-bold" data-bs-toggle="tab" href="#kt_charts_widget_3_tab_pane_2" id="media_show">Product Media</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link btn btn-active-warning btn-active-color-warning-700 btn-color-warning-400 py-2 px-5 fs-6 fw-bold" href="{{ url('admin/products') }}" >Back</a>
+                                        <a class="nav-link btn btn-active-warning btn-active-color-warning-700 btn-color-warning-400 py-2 px-5 fs-6 fw-bold" href="{{ url('admin/products') }}">Back</a>
                                     </li>
                                 </ul>
                                 <!--end::Tabs-->
@@ -184,6 +184,18 @@
                                             <div class="form-group">
                                                 <label class="form-label" for="sequence">Product Sequence</label>
                                                 <input type="text" class="form-control form-control-solid" name="main_sequence" id="sequence" placeholder="Please Enter Product Sequence" value="{{ $product->sequence }}">
+                                            </div>
+                                        </div>
+
+                                        <!-- Product Ecom Status -->
+                                        <div class="col-md-4 mb-2">
+                                            <div class="form-group">
+                                                <label class="form-label" for="sale_price">Product Ecom Status</label>
+                                                <select name="ecom" id="ecom" class="form-select form-select-solid @error('ecom') is-invalid @enderror">
+                                                    <option value="">Select Ecom Status</option>
+                                                    <option value="ONLINE" {{ $product->ecom == 'ONLINE' ? 'selected' : '' }}>ONLINE</option>
+                                                    <option value="OFFLINE" {{ $product->ecom == 'OFFLINE' ? 'selected' : '' }}>OFFLINE</option>
+                                                </select>
                                             </div>
                                         </div>
 

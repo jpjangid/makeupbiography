@@ -39,7 +39,7 @@ class RelatedProductController extends Controller
 
     public function create()
     {
-        $products = Product::all();
+        $products = Product::where('ecom','ONLINE')->get();
 
         return view('backend.related_products.create', compact('products'));
     }
@@ -68,7 +68,7 @@ class RelatedProductController extends Controller
     public function edit($id)
     {
         $main_product = RelatedProducts::where('main_id',$id)->with('main')->first();
-        $products = Product::all();
+        $products = Product::where('ecom','ONLINE')->get();
         $related_products = RelatedProducts::where(['main_id' => $id, 'flag' => '0'])->get();
 
         return view('backend.related_products.edit', compact('main_product','products','related_products'));

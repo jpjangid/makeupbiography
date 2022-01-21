@@ -23,9 +23,7 @@ class CartController extends Controller
         $minutes = 60 * 24 * 30;
         $user = auth()->user();
         $existCookie = false;
-        $checkTrue = false;
         $product = Product::select('item_shade_name')->where('id', $request->product_id)->first();
-        // dd($product);
         if ($product->status == 1 && $product->flag == 0) {
             $message = "";
             return response($message);
@@ -60,7 +58,6 @@ class CartController extends Controller
                 if (!$existCookie) {
                     $cart[] = ['product_id' => $request->product_id, 'quantity' => $request->product_quantity];
                 }
-                // dd($cart);
             } else {
                 $cart[] = ['product_id' => $request->product_id, 'quantity' => $request->product_quantity];
             }
@@ -174,6 +171,7 @@ class CartController extends Controller
             }    
             return response()->json($data);
         }
+        dd($subtotal);
 
         $totalPrice = $subtotal;
 
