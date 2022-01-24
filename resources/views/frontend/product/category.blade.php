@@ -58,8 +58,7 @@
 @section('content')
 <input type="text" id="csrfToken" value="{{ csrf_token() }}" hidden>
 <div class="l-inner">
-	<header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default
- c-page-header--product-list">
+	<header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default c-page-header--product-list">
 		<div class="c-page-header__wrap">
 			<h1 class="c-page-header__title">{{ $main_category->name }}</h1>
 		</div>
@@ -224,7 +223,7 @@
 
 				<div class="c-catalog-ordering  c-catalog-ordering--desktop-filter ">
 					<div class="c-catalog-ordering__col c-catalog-ordering__col--result">
-						<p class="woocommerce-result-count">Showing 1&ndash;12 of 21 results</p>
+						<!-- <p class="woocommerce-result-count">Showing 1&ndash;12 of 21 results</p> -->
 					</div>
 					<div class="c-catalog-ordering__col c-catalog-ordering__col--ordering">
 						<select name="orderby" class="orderby" id="orderbyFilter" aria-label="Shop order">
@@ -325,7 +324,7 @@
 				<nav class="woocommerce-pagination">
 					<ul class='page-numbers'>
 						<li>
-							<a class="prev page-numbers" href="{{ url('category/'.$slug.'?page=1') }}"   onclick="return <?php echo $prev; ?>;">
+							<a class="prev page-numbers" href="{{ url('category/'.$slug.'?page=1') }}" onclick="return <?php echo $prev; ?>;">
 								<i class="ip-menu-left page-numbers__prev-ico"></i>
 							</a>
 						</li>
@@ -335,7 +334,7 @@
 						</li>
 						@endforeach
 						<li>
-							<a class="next page-numbers" href="{{ url('category/'.$slug.'?page='.$products->lastPage()) }}"  onclick="return <?php echo $next; ?>;">
+							<a class="next page-numbers" href="{{ url('category/'.$slug.'?page='.$products->lastPage()) }}" onclick="return <?php echo $next; ?>;">
 								<i class="ip-menu-right page-numbers__prev-ico"></i>
 							</a>
 						</li>

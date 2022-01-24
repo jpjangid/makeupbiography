@@ -7,14 +7,14 @@ use App\Models\Notification;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class NotificationController extends Controller
 {
     public function index()
     {
-
         if (request()->ajax()) {
-            $notifications1 = Notification::where('flag', 0)->orderBy('created_at', 'desc')->get();
+            $notifications1 = DB::table('notifications')->where('flag', 0)->orderBy('created_at', 'desc')->get();
 
             $notifications = new Collection;
             foreach ($notifications1 as $notification) {
@@ -34,7 +34,7 @@ class NotificationController extends Controller
 
     public function notificationListItems()
     {
-        $notifications1 = Notification::where('flag', 0)->orderBy('created_at', 'desc')->get();
+        $notifications1 = DB::table('notifications')->where('flag', 0)->orderBy('created_at', 'desc')->get();
 
         $notifications = array();
         foreach ($notifications1 as $notification) {

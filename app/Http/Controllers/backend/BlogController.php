@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 
 class BlogController extends Controller
@@ -15,7 +16,7 @@ class BlogController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $blogs1 = Blog::where('flag', '0')->get();
+            $blogs1 = DB::table('blogs')->where('flag', '0')->get();
 
             $blogs = new Collection;
             foreach ($blogs1 as $blog) {
@@ -133,7 +134,7 @@ class BlogController extends Controller
 
     public function edit($id)
     {
-        $blog = Blog::find($id);
+        $blog = DB::table('blogs')->find($id);
 
         return view('backend.blogs.edit', compact('blog'));
     }

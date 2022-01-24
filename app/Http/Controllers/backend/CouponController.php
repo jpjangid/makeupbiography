@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 
 class CouponController extends Controller
@@ -17,7 +18,7 @@ class CouponController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $allcoupons = Coupon::where('flag', '0')->get();
+            $allcoupons = DB::table('coupons')->where('flag', '0')->get();
 
             $coupons = new Collection;
             foreach ($allcoupons as $coupon) {
@@ -61,21 +62,21 @@ class CouponController extends Controller
 
     public function create()
     {
-        $users = User::where('role', 'user')->get();
-        $brands = Brand::where('flag', '0')->get();
-        $products = Product::where('flag', '0')->get();
-        $main_cats = Category::where(['flag' => '0', 'parent_id' => null])->get();
+        $users = DB::table('users')->where('role', 'user')->get();
+        $brands = DB::table('brands')->where('flag', '0')->get();
+        $products = DB::table('products')->where(['ecom' => 'ONLINE', 'status' => 1,'flag' => 0])->get();
+        $main_cats = DB::table('categories')->where(['flag' => '0', 'parent_id' => null])->get();
         $cats = new Collection;
         $sub_cats = new Collection;
         foreach ($main_cats as $cat) {
-            $subs = Category::where(['parent_id' => $cat->id, 'flag' => 0])->get();
+            $subs = DB::table('categories')->where(['parent_id' => $cat->id, 'flag' => 0])->get();
             if ($subs->isNotEmpty()) {
                 foreach ($subs as $sub) {
                     $cats->push([
                         'id'    => $sub->id,
                         'name'  => $sub->name,
                     ]);
-                    $sub_subs = Category::where(['parent_id' => $sub->id, 'flag' => 0])->get();
+                    $sub_subs = DB::table('categories')->where(['parent_id' => $sub->id, 'flag' => 0])->get();
                     if ($sub_subs->isNotEmpty()) {
                         foreach ($sub_subs as $sub_sub) {
                             $sub_cats->push([
@@ -139,22 +140,22 @@ class CouponController extends Controller
 
     public function show($id)
     {
-        $coupon = Coupon::find($id);
-        $users = User::where('role', 'user')->get();
-        $brands = Brand::where('flag', '0')->get();
-        $products = Product::where('flag', '0')->get();
-        $main_cats = Category::where(['flag' => '0', 'parent_id' => null])->get();
+        $coupon = DB::table('coupons')->find($id);
+        $users = DB::table('users')->where('role', 'user')->get();
+        $brands = DB::table('brands')->where('flag', '0')->get();
+        $products = DB::table('products')->where(['ecom' => 'ONLINE', 'status' => 1,'flag' => 0])->get();
+        $main_cats = DB::table('categories')->where(['flag' => '0', 'parent_id' => null])->get();
         $cats = new Collection;
         $sub_cats = new Collection;
         foreach ($main_cats as $cat) {
-            $subs = Category::where(['parent_id' => $cat->id, 'flag' => 0])->get();
+            $subs = DB::table('categories')->where(['parent_id' => $cat->id, 'flag' => 0])->get();
             if ($subs->isNotEmpty()) {
                 foreach ($subs as $sub) {
                     $cats->push([
                         'id'    => $sub->id,
                         'name'  => $sub->name,
                     ]);
-                    $sub_subs = Category::where(['parent_id' => $sub->id, 'flag' => 0])->get();
+                    $sub_subs = DB::table('categories')->where(['parent_id' => $sub->id, 'flag' => 0])->get();
                     if ($sub_subs->isNotEmpty()) {
                         foreach ($sub_subs as $sub_sub) {
                             $sub_cats->push([
@@ -180,22 +181,22 @@ class CouponController extends Controller
 
     public function edit($id)
     {
-        $coupon = Coupon::find($id);
-        $users = User::where('role', 'user')->get();
-        $brands = Brand::where('flag', '0')->get();
-        $products = Product::where('flag', '0')->get();
-        $main_cats = Category::where(['flag' => '0', 'parent_id' => null])->get();
+        $coupon = DB::table('coupons')->find($id);
+        $users = DB::table('users')->where('role', 'user')->get();
+        $brands = DB::table('brands')->where('flag', '0')->get();
+        $products = DB::table('products')->where(['ecom' => 'ONLINE', 'status' => 1,'flag' => 0])->get();
+        $main_cats = DB::table('categories')->where(['flag' => '0', 'parent_id' => null])->get();
         $cats = new Collection;
         $sub_cats = new Collection;
         foreach ($main_cats as $cat) {
-            $subs = Category::where(['parent_id' => $cat->id, 'flag' => 0])->get();
+            $subs = DB::table('categories')->where(['parent_id' => $cat->id, 'flag' => 0])->get();
             if ($subs->isNotEmpty()) {
                 foreach ($subs as $sub) {
                     $cats->push([
                         'id'    => $sub->id,
                         'name'  => $sub->name,
                     ]);
-                    $sub_subs = Category::where(['parent_id' => $sub->id, 'flag' => 0])->get();
+                    $sub_subs = DB::table('categories')->where(['parent_id' => $sub->id, 'flag' => 0])->get();
                     if ($sub_subs->isNotEmpty()) {
                         foreach ($sub_subs as $sub_sub) {
                             $sub_cats->push([

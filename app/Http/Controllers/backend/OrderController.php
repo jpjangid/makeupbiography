@@ -11,6 +11,7 @@ use GuzzleHttp\Client;
 use App\Models\ProductMedia;
 use App\Models\User;
 use Exception;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -49,10 +50,10 @@ class OrderController extends Controller
     public function order_detail($id)
     {
         $order = Order::where('id', $id)->with('items.product.medias', 'items.return', 'user')->first();
-        $user = User::find($order->user_id);
+        $user = DB::table('users')->find($order->user_id);
         $image = array();
         foreach ($order->items as $item) {
-            $media = ProductMedia::where(['product_id' => $item->product->id, 'media_type' => 'image'])->orderby('sequence', 'asc')->first();
+            $media = DB::table('product_media')->where(['product_id' => $item->product->id, 'media_type' => 'image'])->orderby('sequence', 'asc')->first();
             if (!empty($media)) {
                 array_push($image, $media->media);
             }

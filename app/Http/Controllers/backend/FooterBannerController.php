@@ -9,14 +9,14 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class FooterBannerController extends Controller
 {
     public function index()
     {
-
         if (request()->ajax()) {
-            $footers1 = FooterBanner::where(['status' => 1])->get();
+            $footers1 = DB::table('footer_banners')->where(['status' => 1])->get();
 
             $footers = new Collection;
             foreach ($footers1 as $footer) {
@@ -62,7 +62,7 @@ class FooterBannerController extends Controller
 
     public function edit($id)
     {
-        $footer = FooterBanner::where('id', $id)->first();
+        $footer = DB::table('footer_banners')->where('id', $id)->first();
         return view('backend.footer_banner.edit', compact('footer'));
     }
 

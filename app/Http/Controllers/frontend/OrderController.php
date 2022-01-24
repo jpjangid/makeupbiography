@@ -22,6 +22,7 @@ use Illuminate\Support\Collection;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Notification;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -123,7 +124,7 @@ class OrderController extends Controller
         $coupon = '';
         if ($request->coupon_discount != 0) {
             $discount = $request->coupon_discount + $request->product_discount;
-            $coupon = Coupon::where('code', $request->coupon_code)->first();
+            $coupon = DB::table('coupons')->where('code', $request->coupon_code)->first();
             $coupon_id = $coupon->id;
         } else {
             $discount = $request->product_discount;
@@ -218,10 +219,10 @@ class OrderController extends Controller
             }
 
             $recent_order = Order::where('id', $order->id)->with('items.product.medias', 'user')->first();
-            $user = User::find($recent_order->user_id);
+            $user = DB::table('users')->find($recent_order->user_id);
             $image = array();
             foreach ($recent_order->items as $item) {
-                $media = ProductMedia::where(['product_id' => $item->product->id, 'media_type' => 'image'])->orderby('sequence', 'asc')->first();
+                $media = DB::table('product_media')->where(['product_id' => $item->product->id, 'media_type' => 'image'])->orderby('sequence', 'asc')->first();
                 if (!empty($media)) {
                     array_push($image, $media->media);
                 }
@@ -249,7 +250,6 @@ class OrderController extends Controller
     public function thankyou_page($order_no)
     {
         $order = Order::where('order_no', $order_no)->with('items.product.medias', 'user')->first();
-        // dd($order);
 
         return view('frontend.order.ordersuccess', compact('order'));
     }
@@ -257,7 +257,7 @@ class OrderController extends Controller
     public function order_no()
     {
         $no = Str::random(8);
-        $order = Order::where('order_no', $no)->first();
+        $order = DB::table('orders')->where('order_no', $no)->first();
         if (!empty($order)) {
             return $this->order_no();
         } else {

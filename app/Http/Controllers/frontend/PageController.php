@@ -5,12 +5,13 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
 {
     public function index($slug)
     {
-        $page = Page::where('slug',$slug)->first();
+        $page = DB::table('pages')->where('slug',$slug)->first();
 
         if(!empty($page)){
             if($page->title == "About"){

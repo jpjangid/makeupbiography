@@ -126,7 +126,7 @@ class BulkUploadController extends Controller
     // public function imageupload(Request $request)
     // {
     //     $brand = array('BBLUNT', 'KAY BEAUTY', 'LAKME', 'MAMAEARTH', 'WAHL');
-    //     $products = DB::table('products')->select('brand_name', 'sku')->whereIn('brand_name', $brand)->get();
+    //     $products = DB::table('products')->select('brand_name', 'sku')->whereIn('brand_name', $brand) ->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->get();
 
     //     foreach ($products as $product) {
     //         // $ftp = Storage::createFtpDriver([

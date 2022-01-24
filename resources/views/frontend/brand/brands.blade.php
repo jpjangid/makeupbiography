@@ -31,7 +31,7 @@
 	{
 		"@context": "https://schema.org",
 		"@type": "BlogPosting",
-		"headline": "{{ $main_brand->title }}",
+		"headline": "{{ $main_brand->name }}",
 		"image": "{{ asset('storage/brands/'.$main_brand->featured_image) }}",
 		"author": {
 			"@type": "Organization",
@@ -45,7 +45,7 @@
 				"url": ""
 			}
 		},
-		"datePublished": "{{ $main_brand->publish_date }}"
+		"datePublished": "{{ $main_brand->created_at }}"
 	}
 </script>
 @endsection
@@ -79,8 +79,6 @@
 					<a itemprop="item" title="Shop" href="{{ url('brands',$main_brand->slug) }}">
 						<span itemprop="name">{{ $main_brand->name }}</span>
 					</a>
-					<i class="ip-breadcrumb c-breadcrumbs__separator"></i>
-					<meta itemprop="position" content="3">
 				</li>
 			</ol>
 		</nav>
@@ -294,15 +292,17 @@
 				<nav class="woocommerce-pagination">
 					<ul class='page-numbers'>
 						<li>
-							<a class="next page-numbers" href="">
-								<i class="ip-menu-right page-numbers__prev-ico"></i>
+							<a class="prev page-numbers" href="{{ url('brands/'.$slug.'?page=1') }}" onclick="return <?php echo $prev; ?>;">
+								<i class="ip-menu-left page-numbers__prev-ico"></i>
 							</a>
 						</li>
+						@foreach($no_of_pages as $page)
 						<li>
-							<a class="page-numbers" href="" onclick="return false;">1</a>
+							<a class="page-numbers" href="{{ url('brands/'.$slug.'?page='.$page) }}">{{ $page }}</a>
 						</li>
+						@endforeach
 						<li>
-							<a class="next page-numbers" href="">
+							<a class="next page-numbers" href="{{ url('brands/'.$slug.'?page='.$products->lastPage()) }}" onclick="return <?php echo $next; ?>;">
 								<i class="ip-menu-right page-numbers__prev-ico"></i>
 							</a>
 						</li>

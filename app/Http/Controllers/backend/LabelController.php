@@ -6,15 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Models\Label;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 
 class LabelController extends Controller
 {
     public function index()
     {
-
         if (request()->ajax()) {
-            $labels1 = Label::where(['flag' => 0])->get();
+            $labels1 = DB::table('labels')->where(['flag' => 0])->get();
 
             $labels = new Collection;
             foreach ($labels1 as $label) {
@@ -87,7 +87,7 @@ class LabelController extends Controller
 
     public function edit($id)
     {
-        $label = Label::where('id', $id)->first();
+        $label = DB::table('labels')->where('id', $id)->first();
         return view('backend.labels.edit', compact('label'));
     }
 

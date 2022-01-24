@@ -6,13 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Models\UserAddress;
 use App\Models\Coupon;
-use App\Models\ProductMedia;
 use Razorpay\Api\Api;
-use App\Models\User;
-use App\Models\Wallet;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
@@ -23,14 +20,14 @@ class CartController extends Controller
         $minutes = 60 * 24 * 30;
         $user = auth()->user();
         $existCookie = false;
-        $product = Product::select('item_shade_name')->where('id', $request->product_id)->first();
-        if ($product->status == 1 && $product->flag == 0) {
+        $product = DB::table('products')->select('item_shade_name','status','flag','ecom')->where('id', $request->product_id)->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->first();
+        if ($product->status == 0 || $product->flag == 1 || $product->ecom == 'OFFLINE') {
             $message = "";
             return response($message);
         }
 
         if ($user) {
-            $cartItems = Cart::where('user_id', $user->id)->where('product_id', $request->product_id)->first();
+            $cartItems = DB::table('carts')->where('user_id', $user->id)->where('product_id', $request->product_id)->first();
 
             if ($cartItems) {
                 //update data
@@ -82,7 +79,7 @@ class CartController extends Controller
         $discountPrice = 0.00;
         $totalPrice = 0.00;
         if ($user) {
-            User::where('id', auth()->user()->id)->update(['auto_page' => 'cart', 'auto_email' => 0, 'auto_datetime' => date('y-m-d H:i:s')]);
+            DB::table('users')->where('id', auth()->user()->id)->update(['auto_page' => 'cart', 'auto_email' => 0, 'auto_datetime' => date('y-m-d H:i:s')]);
             $cartItems = Cart::where('user_id', $user->id)->with([
                 'product' => function ($query) {
                     $query->where(['status' => 1, 'flag' => 0]);
@@ -90,11 +87,11 @@ class CartController extends Controller
                 'product.medias'
             ])->get();
 
-            $totalQuantityItems = Cart::where('user_id', $user->id)->sum('quantity');
+            $totalQuantityItems = DB::table('carts')->where('user_id', $user->id)->sum('quantity');
             if ($cartItems) {
                 foreach ($cartItems as $vari) {
-                    if (Product::where('id', $vari->product_id)->where(['status' => 0, 'flag' => 0])->orWhere('flag', 1)->first()) {
-                        Cart::where(['product_id' => $vari->product_id, 'user_id' => $vari->user_id])->delete();
+                    if (DB::table('products')->where(['id' => $vari->product_id,'status' => 0,'flag' => 1, 'ecom' => 'ONLINE'])->first()) {
+                        DB::table('carts')->where(['product_id' => $vari->product_id, 'user_id' => $vari->user_id])->delete();
                     } else {
                         $subtotal += round(floatval($vari->product->sale_price) * $vari->quantity);
                         if ($vari->product->discount > 0) {
@@ -110,8 +107,13 @@ class CartController extends Controller
             if (request()->hasCookie('makeup_biography')) {
                 $cartItems = json_decode(request()->cookie('makeup_biography'));
                 foreach ($cartItems  as $cartItem) {
-                    if (empty(Product::where('id', $cartItem->product_id)->where(['status' => 0, 'flag' => 0])->orWhere('flag', 1)->first()) === true) {
+                    if (!empty(DB::table('products')->where(['id' => $cartItem->product_id,'status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->first())) {
+                        $product = DB::table('products')->where(['id' => $cartItem->product_id,'status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->first();
+                        $subtotal += $product->sale_price;
                         $cart[] = ['product_id' => $cartItem->product_id, 'quantity' => $cartItem->quantity];
+                    }else{
+                        $message = "";
+                        return response($message);
                     }
                 }
             }
@@ -171,7 +173,6 @@ class CartController extends Controller
             }    
             return response()->json($data);
         }
-        dd($subtotal);
 
         $totalPrice = $subtotal;
 
@@ -183,8 +184,8 @@ class CartController extends Controller
     {
         $product = $product['product'];
         $product_image = "";
-        if (ProductMedia::where('product_id', $product->id)->where('flag', 0)->orderby('sequence', 'asc')->first()) {
-            $pro_img = ProductMedia::where(['product_id' => $product->id, 'media_type' => 'image'])->orderby('sequence', 'asc')->first();
+        if (DB::table('product_media')->where(['product_id' => $product->id, 'media_type' => 'image'])->where('flag', 0)->orderby('sequence', 'asc')->first()) {
+            $pro_img = DB::table('product_media')->where(['product_id' => $product->id, 'media_type' => 'image'])->orderby('sequence', 'asc')->first();
             $product_image = asset('storage/products/variants/' . $pro_img->media);
         }
 
@@ -215,8 +216,8 @@ class CartController extends Controller
     {
         $removeItem = url('remove/cart/item', ['id' => $product->id]);
         $product_image = "";
-        if (ProductMedia::where('product_variant_id', $product->id)->where('flag', 0)->orderby('sequence', 'asc')->first()) {
-            $pro_img = ProductMedia::where(['product_id' => $product->id, 'media_type' => 'image'])->orderby('sequence', 'asc')->first();
+        if (DB::table('product_media')->where(['product_id' => $product->id, 'media_type' => 'image'])->where('flag', 0)->orderby('sequence', 'asc')->first()) {
+            $pro_img = DB::table('product_media')->where(['product_id' => $product->id, 'media_type' => 'image'])->orderby('sequence', 'asc')->first();
             $product_image = asset('storage/products/variants/' . $pro_img->media);
         }
 
@@ -244,11 +245,11 @@ class CartController extends Controller
     public function remove_item(Request $request, $id)
     {
         $user = auth()->user();
-        $cartItem = Cart::where('id', $id)->first();
+        $cartItem = DB::table('carts')->where('id', $id)->first();
         $minutes = 60;
         if ($user) {
             if (!empty($cartItem) && $cartItem->user_id == auth()->user()->id) {
-                Cart::where('id', $id)->delete();
+                DB::table('carts')->where('id', $id)->delete();
                 if (request()->ajax()) {
                     return response()->json(['status' => 200]);
                 }
@@ -284,9 +285,9 @@ class CartController extends Controller
             if (count($request->cart_id) > 0) {
                 foreach ($request->cart_id as $key => $item) {
                     if ($request->quantity[$key] == 0) {
-                        Cart::where('id', $item)->delete();
+                        DB::table('carts')->where('id', $item)->delete();
                     }
-                    Cart::where('id', $item)->update(['quantity' => $request->quantity[$key]]);
+                    DB::table('carts')->where('id', $item)->update(['quantity' => $request->quantity[$key]]);
                 }
             }
         } else {
@@ -348,7 +349,7 @@ class CartController extends Controller
         $user = auth()->user();
         $minutes = 60;
         if ($user) {
-            Cart::where('id', $request->cart_id)->update(['quantity' => $request->qty]);
+            DB::table('carts')->where('id', $request->cart_id)->update(['quantity' => $request->qty]);
             return response()->json(['status' => 200]);
         }
         else {
@@ -377,7 +378,7 @@ class CartController extends Controller
     public function checkout(Request $request)
     {
 
-        User::where('id', auth()->user()->id)->update(['auto_page' => 'checkout', 'auto_datetime' => date('y-m-d H:i:s'), 'auto_email' => 0]);
+        DB::table('users')->where('id', auth()->user()->id)->update(['auto_page' => 'checkout', 'auto_datetime' => date('y-m-d H:i:s'), 'auto_email' => 0]);
         $external_code = "";
         $user = auth()->user();
         $cartItems = [];
@@ -391,7 +392,7 @@ class CartController extends Controller
         $no_items = 0;
         $product_dis = array();
         $cartItems = Cart::where('user_id', $user->id)->with('product.medias')->get();
-        $totalQuantityItems = Cart::where('user_id', $user->id)->sum('quantity');
+        $totalQuantityItems = DB::table('carts')->where('user_id', $user->id)->sum('quantity');
         if ($request->session()->has('_code')) {
             $external_code = $request->session()->get('_code');
         }
@@ -417,7 +418,7 @@ class CartController extends Controller
             $totalCartItems = count($cartItems);
         }
         $totalPrice = $subtotal;
-        $locations = UserAddress::where('user_id', auth()->user()->id)->get();
+        $locations = DB::table('user_addresses')->where('user_id', auth()->user()->id)->get();
 
         $user_coupons = $this->coupons($cartItems);
 
@@ -426,7 +427,7 @@ class CartController extends Controller
         $wallet = 0.00;
         $credit = 0.00;
         $debit = 0.00;
-        $user_wallets = Wallet::where('user_id', $user->id)->get();
+        $user_wallets = DB::table('wallets')->where('user_id', $user->id)->get();
         if ($user_wallets->isNotEmpty()) {
             foreach ($user_wallets as $user_wallet) {
                 if ($user_wallet->status == 'credited') {
@@ -871,7 +872,7 @@ class CartController extends Controller
         if (auth()->user()) {
             $request->session()->forget('_code');
             if (isset($request->_code)) {
-                if (Coupon::where(['code' => $request->_code, 'user_id' => auth()->user()->id, 'times_applied' => null])->first()) {
+                if (DB::table('coupons')->where(['code' => $request->_code, 'user_id' => auth()->user()->id, 'times_applied' => null])->first()) {
                     $request->session()->put('_code', $request->_code);
                 }
                 return redirect('checkout');

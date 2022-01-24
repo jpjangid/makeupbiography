@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\RelatedProducts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 
 class RelatedProductController extends Controller
@@ -39,7 +40,7 @@ class RelatedProductController extends Controller
 
     public function create()
     {
-        $products = Product::where('ecom','ONLINE')->get();
+        $products = DB::table('products')->where(['ecom' => 'ONLINE', 'status' => 1,'flag' => 0])->get();
 
         return view('backend.related_products.create', compact('products'));
     }
@@ -68,7 +69,7 @@ class RelatedProductController extends Controller
     public function edit($id)
     {
         $main_product = RelatedProducts::where('main_id',$id)->with('main')->first();
-        $products = Product::where('ecom','ONLINE')->get();
+        $products = DB::table('products')->where(['ecom' => 'ONLINE', 'status' => 1,'flag' => 0])->get();
         $related_products = RelatedProducts::where(['main_id' => $id, 'flag' => '0'])->get();
 
         return view('backend.related_products.edit', compact('main_product','products','related_products'));

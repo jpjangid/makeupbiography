@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Brand;
 use App\Models\Product;
 use App\Models\ProductMedia;
 use Illuminate\Http\Request;
@@ -12,7 +10,6 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Yajra\DataTables\DataTables;
-use App\Models\Label;
 use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
@@ -20,8 +17,7 @@ class ProductController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            // $allproducts = Product::where(['flag' => '0', 'ecom' => 'ONLINE'])->get();
-            $allproducts = DB::table('products')->select('id','item_shade_name','slug','status','ecom')->where(['flag' => '0'])->get();
+            $allproducts = DB::table('products')->select('id','item_shade_name','slug','status','ecom')->where(['ecom' => 'ONLINE', 'status' => 1,'flag' => 0])->get();
 
             $products = new Collection;
             foreach ($allproducts as $product) {
@@ -60,9 +56,9 @@ class ProductController extends Controller
 
     public function create()
     {
-        $main_cats = Category::where(['flag' => '0', 'parent_id' => null])->get();
-        $brands = Brand::where(['status' => 1, 'flag' => 0])->get();
-        $labels = Label::where(['flag' => 0, 'status' => 1])->get();
+        $main_cats  = DB::table('categories')->where(['flag' => '0', 'parent_id' => null])->get();
+        $brands     = DB::table('brands')->where(['status' => 1, 'flag' => 0])->get();
+        $labels     = DB::table('labels')->where(['flag' => 0, 'status' => 1])->get();
 
         return view('backend.products.create', compact('main_cats', 'labels', 'brands'));
     }
@@ -217,19 +213,19 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        $main_cats = Category::where(['flag' => '0', 'parent_id' => null])->get();
-        $brands = Brand::where(['status' => 1, 'flag' => 0])->get();
-        $labels = Label::where(['status' => 1, 'flag' => 0])->get();
+        $main_cats = DB::table('categories')->where(['flag' => '0', 'parent_id' => null])->get();
+        $brands = DB::table('brands')->where(['status' => 1, 'flag' => 0])->get();
+        $labels = DB::table('labels')->where(['flag' => 0, 'status' => 1])->get();
 
-        $product = Product::find($id);
-        $cat = Category::find($product->parent_id);
+        $product = DB::table('products')->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->find($id);
+        $cat = DB::table('categories')->find($product->parent_id);
         $cat1 = '';
         $cat2 = '';
         $cat3 = '';
         if ($cat->parent_id == '' || $cat->parent_id == NULL) {
             $cat1 = $cat->id;
         } else {
-            $other_cat = Category::find($cat->parent_id);
+            $other_cat = DB::table('categories')->find($cat->parent_id);
             if ($other_cat->parent_id == '' || $other_cat->parent_id == NULL) {
                 $cat1 = $other_cat->id;
                 $cat2 = $cat->id;
@@ -240,7 +236,7 @@ class ProductController extends Controller
             }
         }
 
-        $medias = ProductMedia::where('product_id', $id)->get();
+        $medias = DB::table('product_media')->where('product_id', $id)->get();
 
         return view('backend.products.edit', compact('main_cats', 'product', 'labels', 'brands', 'cat1', 'cat2', 'cat3', 'medias'));
     }
@@ -392,7 +388,7 @@ class ProductController extends Controller
 
     public function cat(Request $request)
     {
-        $cat = Category::where('parent_id', $request->id)->get();
+        $cat = DB::table('categories')->where('parent_id', $request->id)->get();
         return $cat;
     }
 

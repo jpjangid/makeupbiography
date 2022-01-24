@@ -14,15 +14,14 @@ class BrandController extends Controller
 {
     public function index()
     {
-        $brands = Brand::where(['top_brand_status' => 1, 'status' => 1, 'flag' => 0])->get();
-        $allBrands = Brand::where(['status' => 1, 'flag' => 0])->orderBy('name')->get();
+        $brands = DB::table('brands')->where(['top_brand_status' => 1, 'status' => 1, 'flag' => 0])->get();
+        $allBrands = DB::table('brands')->where(['status' => 1, 'flag' => 0])->orderBy('name')->get();
 
         $brandGroups = $allBrands->groupBy(function ($item, $key) {
             return $item->name[0];     //treats the name string as an array
-        })
-            ->sortBy(function ($item, $key) {      //sorts A-Z at the top level
-                return $key;
-            });
+        })->sortBy(function ($item, $key) {      //sorts A-Z at the top level
+            return $key;
+        });
 
         return view('frontend.brand.index', compact('brands', 'brandGroups'));
     }
@@ -30,11 +29,11 @@ class BrandController extends Controller
     public function index_brands(Request $request, $slug)
     {
         $sub_categories = Category::where(['parent_id' => null, 'status' => 1, 'flag' => 0])->with('subcategory.subcategory')->get();
-        $main_brand = Brand::where(['slug' => $slug, 'status' => 1, 'flag' => 0])->first();
-        $brands = Brand::select('id', 'name')->where(['status' => 1, 'flag' =>  0])->get();
+        $main_brand = DB::table('brands')->where(['slug' => $slug, 'status' => 1, 'flag' => 0])->first();
+        $brands = DB::table('brands')->select('id', 'name')->where(['status' => 1, 'flag' =>  0])->get();
         $product_category = array();
         $min_price_filter = 0;
-        $max_price_filter = DB::table('products')->max('sale_price') + 100;
+        $max_price_filter = DB::table('products')->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->max('sale_price') + 100;
         $min_price_old = 0;
         $max_price_old = 0;
         if (!empty($request->min_price_filter)) {
@@ -66,7 +65,7 @@ class BrandController extends Controller
         // }
 
         if (!empty($request->filter_category) && count($request->filter_category) > 0) {
-            $check_categories = Category::select('id')->whereIn('slug', $request->filter_category)->get()->toArray();
+            $check_categories = DB::table('categories')->select('id')->whereIn('slug', $request->filter_category)->get()->toArray();
             $check_categories = array_column($check_categories, 'id');
             $request->check_categories = $check_categories;
             $filter_old = $request->filter_category;
@@ -91,12 +90,12 @@ class BrandController extends Controller
             }
         }
         //filter sorting end
-        $products = DB::table('products')->whereIn('brand_id', $filter_brands)->where(['status' => 1, 'flag' => 0])->get()->groupBy('item_name');
+        $products = DB::table('products')->whereIn('brand_id', $filter_brands)->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE']);
 
         if (count($product_category) > 0) {
             $products = $products->whereIn('parent_id', $product_category);
         }
-        
+
         if (!empty($request->min_price_filter) && !empty($request->max_price_filter)) {
             $products = $products->whereBetween('sale_price', array(floatval($request->min_price_filter), floatval($request->max_price_filter)));
         }
@@ -106,16 +105,34 @@ class BrandController extends Controller
         if (!empty($request->orderby) && $request->orderby == "hightolow") {
             $products = $products->orderBy('sale_price', 'DESC');
         }
-
+        $products = $products->paginate(12);
         $product_details = array();
         $product_medias = array();
         foreach ($products as $pro) {
-            array_push($product_details, Product::where('id', $pro[0]->id)->first());
-            array_push($product_medias, ProductMedia::where('product_id', $pro[0]->id)->where(['flag' => 0, 'media_type' => 'image'])->orderby('sequence','asc')->first());
+            array_push($product_details, DB::table('products')->where('id', $pro->id)->first());
+            array_push($product_medias, DB::table('product_media')->where('product_id', $pro->id)->where(['flag' => 0, 'media_type' => 'image'])->orderby('sequence', 'asc')->first());
         }
         $product_details = collect($product_details);
         $product_medias = collect($product_medias);
+        $last_page = $products->lastPage();
+        $current_page = $products->currentPage();
+        $no_of_pages = array();
+        for($i = $current_page; $i <= $current_page+3; $i++){
+            if($i <= $last_page){
+                array_push($no_of_pages, $i);
+            }
+        }
 
-        return view('frontend.brand.brands', compact('slug', 'sub_categories', 'main_brand', 'brands', 'products', 'product_medias', 'product_details', 'filter_old', 'filter_old_price', 'max_price_filter', 'min_price_filter', 'filter_sorting', 'filter_brands', 'min_price_old', 'max_price_old'));
+        $prev = 'true';
+        if($products->currentPage() == 1){
+            $prev = 'false';
+        }
+
+        $next = 'true';
+        if($products->lastPage() == $products->currentPage()){
+            $next = 'false';
+        }
+
+        return view('frontend.brand.brands', compact('slug', 'sub_categories', 'main_brand', 'brands', 'products', 'product_medias', 'product_details', 'filter_old', 'filter_old_price', 'max_price_filter', 'min_price_filter', 'filter_sorting', 'filter_brands', 'min_price_old', 'max_price_old','no_of_pages','next','prev'));
     }
 }

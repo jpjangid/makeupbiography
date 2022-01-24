@@ -9,15 +9,15 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
     //code for main parent category 
     public function index()
     {
-        //
         if (request()->ajax()) {
-            $categories1 = Category::select('id', 'name', 'slug', 'status')->where('flag', 0)->where('parent_id',null)->get();
+            $categories1 = DB::table('categories')->select('id', 'name', 'slug', 'status')->where('flag', 0)->where('parent_id',null)->get();
 
             $categories = new Collection;
             foreach ($categories1 as $category1) {
@@ -56,7 +56,7 @@ class CategoryController extends Controller
     public function create()
     {
 
-        $categories = Category::where('flag', 0)->get();
+        $categories = DB::table('categories')->where('flag', 0)->get();
         return view('backend.category.create', compact('categories'));
     }
 
@@ -82,7 +82,7 @@ class CategoryController extends Controller
             $file = $request->file('featured_image');
             $fileNameString = (string) Str::uuid();
             $featured_image = $fileNameString . time() . "." . $extension;
-            $path = Storage::putFileAs('public/category/', $file, $featured_image);
+            Storage::putFileAs('public/category/', $file, $featured_image);
         }
 
         $og_image = "";
@@ -91,7 +91,7 @@ class CategoryController extends Controller
             $file = $request->file('og_image');
             $fileNameString = (string) Str::uuid();
             $og_image = $fileNameString . time() . "." . $extension;
-            $path = Storage::putFileAs('public/category/og_images', $file, $og_image);
+            Storage::putFileAs('public/category/og_images', $file, $og_image);
         }
 
         $status = 0;
@@ -136,7 +136,7 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
-        $category = Category::where('id', $id)->first();
+        $category = DB::table('categories')->where('id', $id)->first();
         return view('backend.category.edit', compact('category'));
     }
 
@@ -162,7 +162,7 @@ class CategoryController extends Controller
             $file = $request->file('featured_image');
             $fileNameString = (string) Str::uuid();
             $featured_image = $fileNameString . time() . "." . $extension;
-            $path = Storage::putFileAs('public/category/', $file, $featured_image);
+            Storage::putFileAs('public/category/', $file, $featured_image);
         }
 
         $og_image = "";
@@ -171,7 +171,7 @@ class CategoryController extends Controller
             $file = $request->file('og_image');
             $fileNameString = (string) Str::uuid();
             $og_image = $fileNameString . time() . "." . $extension;
-            $path = Storage::putFileAs('public/category/og_images', $file, $og_image);
+            Storage::putFileAs('public/category/og_images', $file, $og_image);
         }
 
         $status = 0;
@@ -179,7 +179,7 @@ class CategoryController extends Controller
             $status = 1;
         }
 
-        Category::where('id', $id)->update([
+        DB::table('categories')->where('id', $id)->update([
             'slug'                      =>  $request->slug,
             'name'                      =>  $request->name,
             'description'               =>  $request->description,
@@ -202,7 +202,7 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {
-        Category::where('id', $id)->update(['flag' => 1]);
+        DB::table('categories')->where('id', $id)->update(['flag' => 1]);
         return redirect('admin/categories')->with('danger', 'Category deleted successfully');
     }
 
@@ -263,8 +263,8 @@ class CategoryController extends Controller
 
     public function edit_sub1($id)
     {
-        $categories = Category::where('parent_id', null)->where(['flag' => 0,'status' => 1])->get();
-        $category = Category::where('id', $id)->first();
+        $categories = DB::table('categories')->where('parent_id', null)->where(['flag' => 0,'status' => 1])->get();
+        $category = DB::table('categories')->where('id', $id)->first();
         return view('backend.category.sub1.edit', compact('category', 'categories'));
     }
 
@@ -290,7 +290,7 @@ class CategoryController extends Controller
             $file = $request->file('featured_image');
             $fileNameString = (string) Str::uuid();
             $featured_image = $fileNameString . time() . "." . $extension;
-            $path = Storage::putFileAs('public/category/', $file, $featured_image);
+            Storage::putFileAs('public/category/', $file, $featured_image);
         }
 
         $og_image = "";
@@ -299,7 +299,7 @@ class CategoryController extends Controller
             $file = $request->file('og_image');
             $fileNameString = (string) Str::uuid();
             $og_image = $fileNameString . time() . "." . $extension;
-            $path = Storage::putFileAs('public/category/og_images', $file, $og_image);
+            Storage::putFileAs('public/category/og_images', $file, $og_image);
         }
 
         $status = 0;
@@ -307,7 +307,7 @@ class CategoryController extends Controller
             $status = 1;
         }
 
-        Category::where('id', $id)->update([
+        DB::table('categories')->where('id', $id)->update([
             'slug'                      =>  $request->slug,
             'name'                      =>  $request->name,
             'parent_id'                 =>  $request->parent_id,
@@ -331,7 +331,7 @@ class CategoryController extends Controller
 
     public function create_sub1()
     {
-        $categories = Category::where('parent_id', null)->where(['flag' => 0,'status' => 1])->get();
+        $categories = DB::table('categories')->where('parent_id', null)->where(['flag' => 0,'status' => 1])->get();
         return view('backend.category.sub1.create', compact('categories'));
     }
 
@@ -357,7 +357,7 @@ class CategoryController extends Controller
             $file = $request->file('featured_image');
             $fileNameString = (string) Str::uuid();
             $featured_image = $fileNameString . time() . "." . $extension;
-            $path = Storage::putFileAs('public/category/', $file, $featured_image);
+            Storage::putFileAs('public/category/', $file, $featured_image);
         }
 
         $og_image = "";
@@ -366,7 +366,7 @@ class CategoryController extends Controller
             $file = $request->file('og_image');
             $fileNameString = (string) Str::uuid();
             $og_image = $fileNameString . time() . "." . $extension;
-            $path = Storage::putFileAs('public/category/og_images', $file, $og_image);
+            Storage::putFileAs('public/category/og_images', $file, $og_image);
         }
 
         $status = 0;
@@ -398,7 +398,7 @@ class CategoryController extends Controller
 
     public function destroy_sub1($id)
     {
-        Category::where('id', $id)->update(['flag' => 1]);
+        DB::table('categories')->where('id', $id)->update(['flag' => 1]);
         return redirect('admin/sub/categories')->with('danger', 'Category deleted successfully');
     }
 
@@ -411,9 +411,9 @@ class CategoryController extends Controller
             foreach ($categories1 as $cat1) {
                 if (!empty($cat1->subcategory)) {
                     foreach ($cat1->subcategory as $cat2) {
-                        $main = Category::select('name')->where('id', $cat1->id)->first();
-                        $sub = Category::select('name')->where('id', $cat2->id)->first();
-                        $subs1 = Category::where('parent_id', $cat2->id)->where('flag', 0)->get();
+                        $main = DB::table('categories')->select('name')->where('id', $cat1->id)->first();
+                        $sub = DB::table('categories')->select('name')->where('id', $cat2->id)->first();
+                        $subs1 = DB::table('categories')->where('parent_id', $cat2->id)->where('flag', 0)->get();
                         foreach ($subs1 as $sub1) {
                             $categories->push([
                                 'id'    => $sub1->id,
@@ -501,7 +501,7 @@ class CategoryController extends Controller
             $file = $request->file('featured_image');
             $fileNameString = (string) Str::uuid();
             $featured_image = $fileNameString . time() . "." . $extension;
-            $path = Storage::putFileAs('public/category/', $file, $featured_image);
+            Storage::putFileAs('public/category/', $file, $featured_image);
         }
 
         $og_image = "";
@@ -510,7 +510,7 @@ class CategoryController extends Controller
             $file = $request->file('og_image');
             $fileNameString = (string) Str::uuid();
             $og_image = $fileNameString . time() . "." . $extension;
-            $path = Storage::putFileAs('public/category/og_images', $file, $og_image);
+            Storage::putFileAs('public/category/og_images', $file, $og_image);
         }
 
         $status = 0;
@@ -555,7 +555,7 @@ class CategoryController extends Controller
             }
         }
 
-        $category = Category::where('id', $id)->first();
+        $category = DB::table('categories')->where('id', $id)->first();
         return view('backend.category.sub2.edit', compact('category', 'categories'));
     }
 
@@ -581,7 +581,7 @@ class CategoryController extends Controller
             $file = $request->file('featured_image');
             $fileNameString = (string) Str::uuid();
             $featured_image = $fileNameString . time() . "." . $extension;
-            $path = Storage::putFileAs('public/category/', $file, $featured_image);
+            Storage::putFileAs('public/category/', $file, $featured_image);
         }
 
         $og_image = "";
@@ -590,7 +590,7 @@ class CategoryController extends Controller
             $file = $request->file('og_image');
             $fileNameString = (string) Str::uuid();
             $og_image = $fileNameString . time() . "." . $extension;
-            $path = Storage::putFileAs('public/category/og_images', $file, $og_image);
+            Storage::putFileAs('public/category/og_images', $file, $og_image);
         }
 
         $status = 0;
@@ -622,7 +622,7 @@ class CategoryController extends Controller
 
     public function destroy_sub2($id)
     {
-        Category::where('id', $id)->update(['flag' => 1]);
+        DB::table('categories')->where('id', $id)->update(['flag' => 1]);
         return redirect('admin/sub/sub/categories')->with('danger', 'Category deleted successfully');
     }
 }

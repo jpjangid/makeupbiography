@@ -4,11 +4,9 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
-use App\Models\OrderItemReturn;
-use App\Models\ProductMedia;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -84,7 +82,7 @@ class DashboardController extends Controller
                 $sold_items_no += $item->quantity;
                 $products['name'] = $item->product->item_shade_name;
                 $products['qty'] = $item->quantity;
-                $media = ProductMedia::where(['product_id' => $item->product->id, 'media_type' => 'image'])->orderby('sequence', 'asc')->first();
+                $media = DB::table('product_media')->where(['product_id' => $item->product->id, 'media_type' => 'image'])->orderby('sequence', 'asc')->first();
                 $products['image'] = isset($media->media) ? $media->media : '';
                 $products['brand'] = $item->product->brand->name;
                 array_push($purchased_products, $products);
@@ -123,14 +121,14 @@ class DashboardController extends Controller
             return $b['amount'] <=> $a['amount'];
         });
 
-        $returns = OrderItemReturn::where([['created_at', '>=', $from], ['created_at', '<=', $to]])->get();
+        $returns = DB::table('order_item_returns')->where([['created_at', '>=', $from], ['created_at', '<=', $to]])->get();
         $total_return_qty = 0;
         foreach ($returns as $return) {
             $total_return_qty += $return->quantity;
         }
 
         $total_users = 0;
-        $users = User::where([['created_at', '>=', $from], ['created_at', '<=', $to]])->get();
+        $users = DB::table('users')->where([['created_at', '>=', $from], ['created_at', '<=', $to]])->get();
         $total_users = count($users);
 
         $data['total_revenue'] = '&#8377; ' . number_format((float)$total_revenue, 2, '.', '');

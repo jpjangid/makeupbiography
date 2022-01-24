@@ -4,12 +4,8 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use App\Models\Product;
-use App\Models\Brand;
-use App\Models\ProductMedia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use phpDocumentor\Reflection\Types\Null_;
 
 class CategoryController extends Controller
 {
@@ -20,12 +16,12 @@ class CategoryController extends Controller
         $main_category = Category::where('slug', $slug)->with('parent.parent')->first();
         $parent_id = $this->findParent($main_category->id);
         $sub_categories = Category::where('parent_id', $parent_id)->with('subcategory')->get();
-        $categories = Category::where('parent_id', $main_category->id)->get();
-        $brands = Brand::select('id', 'name')->where(['status' => 1, 'flag' =>  0])->get();
+        $categories = DB::table('categories')->where('parent_id', $main_category->id)->get();
+        $brands = DB::table('brands')->select('id', 'name')->where(['status' => 1, 'flag' =>  0])->get();
 
         $product_category = array();
         $min_price_filter = 0;
-        $max_price_filter = DB::table('products')->max('sale_price') + 100;
+        $max_price_filter = DB::table('products')->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->max('sale_price') + 100;
         $min_price_old = 0;
         $max_price_old = 0;
         if (!empty($request->min_price_filter)) {
@@ -58,7 +54,7 @@ class CategoryController extends Controller
                 array_push($product_category, $main_category->id);
             }
 
-            $check_categories = Category::select('id')->whereIn('slug', $request->filter_category)->get()->toArray();
+            $check_categories = DB::table('categories')->select('id')->whereIn('slug', $request->filter_category)->get()->toArray();
             $check_categories = array_column($check_categories, 'id');
             $request->check_categories = $check_categories;
             $filter_old = $request->filter_category;
@@ -84,7 +80,7 @@ class CategoryController extends Controller
         }
         //filter sorting end
         
-        $products1 = DB::table('products')->select('id')->whereIn('parent_id', $product_category)->where(['status' => 1, 'flag' => 0])->where('ecom','ONLINE');
+        $products1 = DB::table('products')->select('id')->whereIn('parent_id', $product_category)->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE']);
 
 
         if (count($filter_brands) > 0) {
@@ -92,7 +88,7 @@ class CategoryController extends Controller
         }
         $products1 = $products1->get()->toArray();
 
-        $products = DB::table('products')->select('id')->whereIn('id', array_column($products1, 'id'))->where('ecom','ONLINE');
+        $products = DB::table('products')->select('id')->whereIn('id', array_column($products1, 'id'))->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE']);
 
         if (!empty($request->min_price_filter) && !empty($request->max_price_filter)) {
             $products = $products->whereBetween('sale_price', array(floatval($request->min_price_filter), floatval($request->max_price_filter)));
@@ -106,7 +102,7 @@ class CategoryController extends Controller
 
         $products = $products->get()->toArray();
 
-        $products = DB::table('products')->whereIn('id', array_column($products, 'id'))->where('ecom','ONLINE');
+        $products = DB::table('products')->whereIn('id', array_column($products, 'id'))->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE']);
         if (!empty($request->min_price_filter) && !empty($request->max_price_filter)) {
             $products = $products->whereBetween('sale_price', array(floatval($request->min_price_filter), floatval($request->max_price_filter)));
         }
@@ -121,8 +117,8 @@ class CategoryController extends Controller
         $product_details = array();
         $product_medias = array();
         foreach ($products as $pro) {
-            array_push($product_details, Product::where('id', $pro->id)->first());
-            array_push($product_medias, ProductMedia::where('product_id', $pro->id)->where(['flag' => 0, 'media_type' => 'image'])->orderBy('sequence','asc')->first());
+            array_push($product_details, DB::table('products')->where('id', $pro->id)->first());
+            array_push($product_medias, DB::table('product_media')->where('product_id', $pro->id)->where(['flag' => 0, 'media_type' => 'image'])->orderBy('sequence','asc')->first());
         }
         $product_details = collect($product_details);
         $product_medias = collect($product_medias);
@@ -150,7 +146,7 @@ class CategoryController extends Controller
 
     static function findParent($id)
     {
-        $cat = Category::where('id', $id)->first();
+        $cat = DB::table('categories')->select('parent_id','id')->where('id', $id)->first();
         if ($cat->parent_id != null) {
             $p = self::findParent($cat->parent_id);
             return $p;
@@ -169,10 +165,10 @@ class CategoryController extends Controller
         $to = 10;
         $total_counts = 0;
         $sub_categories = Category::where(['parent_id' => null, 'status' => 1, 'flag' => 0])->with('subcategory.subcategory')->get();
-        $brands = Brand::select('id', 'name')->where(['status' => 1, 'flag' =>  0])->get();
+        $brands = DB::table('brands')->select('id', 'name')->where(['status' => 1, 'flag' =>  0])->get();
         $product_category = array();
         $min_price_filter = 0;
-        $max_price_filter = DB::table('products')->where('tags', 'like', '%' . $tag . '%')->where('ecom','ONLINE')->max('sale_price') + 100;
+        $max_price_filter = DB::table('products')->where('tags', 'like', '%' . $tag . '%')->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->max('sale_price') + 100;
         $min_price_old = 0;
         $max_price_old = 0;
         if (isset($request->min_price_filter) && !empty($request->min_price_filter)) {
@@ -200,7 +196,7 @@ class CategoryController extends Controller
         //brands filter end
 
         if (!empty($request->filter_category) && count($request->filter_category) > 0) {
-            $check_categories = Category::select('id')->whereIn('slug', $request->filter_category)->get()->toArray();
+            $check_categories = DB::table('categories')->select('id')->whereIn('slug', $request->filter_category)->get()->toArray();
             $check_categories = array_column($check_categories, 'id');
             $request->check_categories = $check_categories;
             $filter_old = $request->filter_category;
@@ -226,7 +222,7 @@ class CategoryController extends Controller
         }
         //filter sorting end
 
-        $products1 = DB::table('products')->select('id')->where(['status' => 1, 'flag' => 0])->where('tags', 'like', '%' . $tag . '%')->where('ecom','ONLINE');
+        $products1 = DB::table('products')->select('id')->where(['status' => 1, 'flag' => 0])->where('tags', 'like', '%' . $tag . '%')->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE']);
         if (!empty($filter_brands) && count($filter_brands) > 0) {
             $products1 = $products1->whereIn('brand_id', $filter_brands);
         }
@@ -236,7 +232,7 @@ class CategoryController extends Controller
         }
         $products1 = $products1->get()->toArray();
 
-        $products = DB::table('products')->where('tags', 'like', '%' . $tag . '%')->whereIn('id', array_column($products1, 'id'))->where('ecom','ONLINE');
+        $products = DB::table('products')->where('tags', 'like', '%' . $tag . '%')->whereIn('id', array_column($products1, 'id'))->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE']);
 
         if (!empty($request->min_price_filter) && !empty($request->max_price_filter) && $request->max_price_filter > floatval(0)) {
             $products = $products->whereBetween('sale_price', array(floatval($request->min_price_filter), floatval($request->max_price_filter)));
@@ -259,8 +255,8 @@ class CategoryController extends Controller
         $product_details = array();
         $product_medias = array();
         foreach ($products as $pro) {
-            array_push($product_details, Product::where('id', $pro->id)->first());
-            array_push($product_medias, ProductMedia::where('product_id', $pro->id)->where(['flag' => 0, 'media_type' => 'image'])->orderBy('sequence','asc')->first());
+            array_push($product_details, DB::table('products')->where('id', $pro->id)->first());
+            array_push($product_medias, DB::table('product_media')->where('product_id', $pro->id)->where(['flag' => 0, 'media_type' => 'image'])->orderBy('sequence','asc')->first());
         }
         $product_details = collect($product_details);
         $product_medias = collect($product_medias);

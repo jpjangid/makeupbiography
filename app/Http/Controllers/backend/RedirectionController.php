@@ -7,14 +7,14 @@ use App\Models\Redirection;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class RedirectionController extends Controller
 {
     public function index()
     {
-
         if (request()->ajax()) {
-            $redirections1 = Redirection::get();
+            $redirections1 = DB::table('redirections')->get();
 
             $redirections = new Collection;
             foreach ($redirections1 as $redirection) {
@@ -64,7 +64,7 @@ class RedirectionController extends Controller
 
     public function destroy($id)
     {
-        Redirection::where('id', $id)->delete();
+        DB::table('redirections')->where('id', $id)->delete();
         return redirect('admin/redirections')->with('danger', 'Redirection deleted successfully');
     }
 }

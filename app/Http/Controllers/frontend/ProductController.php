@@ -4,9 +4,7 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
-use App\Models\ProductMedia;
-use App\Models\RelatedProducts;
-use App\Models\ProductReview;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -14,18 +12,18 @@ class ProductController extends Controller
     public function index($product)
     {
         $product = Product::where('slug',$product)->with('medias','category.parent.parent')->orderby('sequence','asc')->first();
-        $variants = Product::where('item_name', $product->item_name)->where('ecom','ONLINE')->get();
-        $medias = ProductMedia::where('product_id',$product->id)->orderby('sequence','asc')->get();
-        $reviews = ProductReview::where(['product_id' => $product->id])->orderBy('created_at','desc')->take(5)->get();
+        $variants = DB::table('products')->where('item_name', $product->item_name)->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->get();
+        $medias = DB::table('product_media')->where('product_id',$product->id)->orderby('sequence','asc')->get();
+        $reviews = DB::table('product_reviews')->where(['product_id' => $product->id])->orderBy('created_at','desc')->take(5)->get();
         $related_ids = array();
-        $related_data = RelatedProducts::where('main_id',$product->id)->orderby('sequence','asc')->get();
+        $related_data = DB::table('related_products')->where('main_id',$product->id)->orderby('sequence','asc')->get();
         foreach($related_data as $related){
             array_push($related_ids, $related->related_id);
         }
 
-        $related_products = Product::whereIn('id', $related_ids)->get();
+        $related_products = DB::table('products')->whereIn('id', $related_ids)->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->get();
         if($related_products->isEmpty()){
-            $related_products = Product::where([['parent_id','=',$product->parent_id],['id','!=',$product->id]])->where('ecom','ONLINE')->get();
+            $related_products = DB::table('products')->where([['parent_id','=',$product->parent_id],['id','!=',$product->id]])->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->get();
         }
 
         $data = $this->related($related_products);
@@ -47,8 +45,8 @@ class ProductController extends Controller
         $related_images = array();
         foreach($related_products as $related_product){
             if(isset($related_product) && !empty($related_product)){
-                $allvariants = Product::where('item_name', $related_product->item_name)->where('ecom','ONLINE')->orderby('sequence','asc')->get();
-                $media = ProductMedia::where(['product_id' => $allvariants[0]->id, 'media_type' => 'image'])->orderby('sequence', 'asc')->first();
+                $allvariants = DB::table('products')->where('item_name', $related_product->item_name)->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->orderby('sequence','asc')->get();
+                $media = DB::table('product_media')->where(['product_id' => $allvariants[0]->id, 'media_type' => 'image'])->orderby('sequence', 'asc')->first();
                 array_push($related_variants_id,!empty($allvariants[0]->id) ? $allvariants[0]->id : "");
                 array_push($related_variants, !empty($allvariants[0]->slug) ? $allvariants[0]->slug : "");
                 array_push($related_regular_prices, !empty($allvariants[0]->regular_price) ? $allvariants[0]->regular_price : "");

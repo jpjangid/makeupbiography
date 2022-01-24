@@ -10,14 +10,14 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class BrandController extends Controller
 {
     public function index()
     {
-
         if (request()->ajax()) {
-            $brands1 = Brand::where(['flag' => 0, 'status' => 1])->get();
+            $brands1 = DB::table('brands')->where(['flag' => 0, 'status' => 1])->get();
 
             $brands = new Collection;
             foreach ($brands1 as $brand) {
@@ -133,14 +133,9 @@ class BrandController extends Controller
         return response()->json(['message' => 'Brand status updated successfully.']);
     }
 
-    public function show(Brand $brand)
-    {
-        //
-    }
-
     public function edit($id)
     {
-        $brand = Brand::where('id', $id)->first();
+        $brand = DB::table('brands')->where('id', $id)->first();
         return view('backend.brand.edit', compact('brand'));
     }
 

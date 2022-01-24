@@ -8,8 +8,7 @@ use App\Models\UserAddress;
 use App\Models\Location;
 use App\Models\Order;
 use App\Models\OrderItemReturn;
-use App\Models\User;
-use App\Models\ProductMedia;
+use Illuminate\Support\Facades\DB;
 
 class MyAccountController extends Controller
 {
@@ -45,7 +44,7 @@ class MyAccountController extends Controller
         if(!empty($order)) {
             foreach($order->items as $item){
                 if(empty($item->return)){
-                    $media = ProductMedia::where(['product_id' => $item->product->id, 'media_type' => 'image'])->orderby('sequence','asc')->first();
+                    $media = DB::table('product_media')->where(['product_id' => $item->product->id, 'media_type' => 'image'])->orderby('sequence','asc')->first();
                     if(!empty($media)){
                         array_push($image, $media->media);
                     }
@@ -89,8 +88,8 @@ class MyAccountController extends Controller
         //getting location for ajax request
         if(request()->ajax()) {
             $data['location'] = "";
-            if(!empty($request->pincode) && Location::where('zip',$request->pincode)->first()) {
-                $data['location'] = Location::where('zip',$request->pincode)->first();
+            if(!empty($request->pincode) && DB::table('locations')->where('zip',$request->pincode)->first()) {
+                $data['location'] = DB::table('locations')->where('zip',$request->pincode)->first();
             }
             return response()->json($data);
         }
@@ -126,7 +125,7 @@ class MyAccountController extends Controller
         $state = "";
         $city = "";
         if(!empty($request->postcode)) {
-            $location = Location::where('zip',$request->postcode)->first();
+            $location = DB::table('locations')->where('zip',$request->postcode)->first();
             if(!empty($location)) {
                 $state = $location->state;
                 $city = $location->city;
@@ -193,7 +192,7 @@ class MyAccountController extends Controller
         $state = "";
         $city = "";
         if(!empty($request->postcode)) {
-            $location = Location::where('zip',$request->postcode)->first();
+            $location = DB::table('locations')->where('zip',$request->postcode)->first();
             if(!empty($location)) {
                 $state = $location->state;
                 $city = $location->city;
@@ -204,7 +203,7 @@ class MyAccountController extends Controller
             }
         }
 
-        $address = UserAddress::where('id',$id)->first();
+        $address = DB::table('user_addresses')->where('id',$id)->first();
         $address->name = $request->name;
         $address->email = $request->email;
         $address->mobile = $request->mobile_no; 
@@ -221,7 +220,7 @@ class MyAccountController extends Controller
     //get address from db 
     public function getMyAddress(Request $request)
     {
-        $location = UserAddress::find($request->location_id);
+        $location = DB::table('user_addresses')->find($request->location_id);
         return response()->json(['status' => 200,'data' => $location]);
     }
 
