@@ -38,7 +38,8 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         //product search algo
-        $products = DB::table('products')->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->where('item_shade_name', 'like', '%' . $request->q . '%')->where('ecom','ONLINE')->get();
+        $word = str_replace(" ","%",$request->q);
+        $products = DB::table('products')->select('id','item_shade_name','item_name','regular_price','sale_price','slug','short_description','status','flag','ecom')->where('item_shade_name', 'like', '%' . $word . '%')->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->take(50)->get();
         $product_list_items = array();
         foreach ($products as $product) {
             array_push($product_list_items, $this->searchListItems($product));

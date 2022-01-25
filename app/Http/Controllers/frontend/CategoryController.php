@@ -15,9 +15,11 @@ class CategoryController extends Controller
     {
         $main_category = Category::where('slug', $slug)->with('parent.parent')->first();
         $parent_id = $this->findParent($main_category->id);
-        $sub_categories = Category::where('parent_id', $parent_id)->with('subcategory')->get();
-        $categories = DB::table('categories')->where('parent_id', $main_category->id)->get();
-        $brands = DB::table('brands')->select('id', 'name')->where(['status' => 1, 'flag' =>  0])->get();
+        $sub_categories = Category::where('parent_id', $parent_id)->with(['subcategory' => function ($q) {
+            $q->orderBy('name','asc');
+        }])->orderBy('name','asc')->get();
+        $categories = DB::table('categories')->where('parent_id', $main_category->id)->orderBy('name','asc')->get();
+        $brands = DB::table('brands')->select('id', 'name')->where(['status' => 1, 'flag' =>  0])->orderBy('name','asc')->get();
 
         $product_category = array();
         $min_price_filter = 0;

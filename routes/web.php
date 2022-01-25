@@ -32,7 +32,7 @@ Route::get('/admin', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\frontend\HomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth', 'prevent-back-history', 'admin'])->prefix('admin')->group(function () {
     Route::get('/', [App\Http\Controllers\backend\DashboardController::class, 'index']);
