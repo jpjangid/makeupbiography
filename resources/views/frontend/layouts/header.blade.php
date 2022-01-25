@@ -1,7 +1,6 @@
 @php
 use \App\Models\Category;
-$mains = Category::select('id','slug','name')->where(['flag' => 0,'status' => 1])->where('parent_id',null)->with('subcategory')->get();
-
+$mains = Category::select('id','slug','name')->where(['flag' => 0,'status' => 1])->where('parent_id',null)->with(['subcategory' => function($q) {$q->where(['flag' => 0,'status' => 1]);},'subcategory.subcategory' => function($q) {$q->where(['flag' => 0,'status' => 1]);}])->orderBy('name','asc')->get();
 @endphp
 <style>
 	.logo-non-desktop {
@@ -44,7 +43,7 @@ $mains = Category::select('id','slug','name')->where(['flag' => 0,'status' => 1]
 	}
 
 	/* .mz-title .mz-title-content {
-      margin-bottom: 30px;
+		margin-bottom: 30px;
     } */
 
 	.mz-title .mz-title-content:before {
@@ -146,22 +145,26 @@ $mains = Category::select('id','slug','name')->where(['flag' => 0,'status' => 1]
 							<li id="menu-item-163" class="c-mobile-menu__item c-mobile-menu__item--has-children menu-item-162">
 								<a href="{{ url('category',['slug' => $main->slug]) }}">{{ $main->name }}</a>
 								@foreach($main->subcategory as $sub1)
-								@if($sub1->status === 1 && $sub1 === 0)
+								<?php
+								$childrenarrowclass = $sub1->subcategory->isNotEmpty() ? 'c-mobile-menu__item--has-children' : '';
+								?>
 								<ul class="c-mobile-menu__submenu" style="margin-top: 10px !important">
-									<li id="menu-item-163" class="c-mobile-menu__item c-mobile-menu__item--has-children menu-item-162">
+									<li id="menu-item-163" class="c-mobile-menu__item <?php echo $childrenarrowclass ?> menu-item-162">
 										<a href="{{ url('category',['slug' => $sub1->slug]) }}">{{ $sub1->name }}</a>
+										@if($sub1->subcategory->isNotEmpty())
 										<ul class="c-mobile-menu__submenu">
-											@foreach($sub1->subcategory as $sub2)
-											@if($sub2->status == 1 && $sub2->flag == 0)
+											@php
+											$sorted = $sub1->subcategory->sortBy([['name','asc']]);
+											@endphp
+											@foreach($sorted as $sub2)
 											<li id="menu-item-2474" class="c-mobile-menu__subitem menu-item-2474">
 												<a href="{{ url('category',['slug' => $sub2->slug]) }}">{{ $sub2->name }}</a>
 											</li>
-											@endif
 											@endforeach
 										</ul>
+										@endif
 									</li>
 								</ul>
-								@endif
 								@endforeach
 							</li>
 						</ul>
@@ -217,10 +220,10 @@ $mains = Category::select('id','slug','name')->where(['flag' => 0,'status' => 1]
 						<a href="{{ url('blogs/all') }}">Blog</a>
 					</li>
 					{{-- <li id="menu-item-163" class="c-mobile-menu__item c-mobile-menu__item--has-children menu-item-163">
-            <a>Pages</a>
-            <ul class="c-mobile-menu__submenu">
-              <li id="menu-item-165" class="c-mobile-menu__subitem menu-item-165">
-                <a href="{{ url('about-us') }}">About us</a>
+					<a>Pages</a>
+					<ul class="c-mobile-menu__submenu">
+						<li id="menu-item-165" class="c-mobile-menu__subitem menu-item-165">
+							<a href="{{ url('about-us') }}">About us</a>
 					</li>
 					<li id="menu-item-164" class="c-mobile-menu__subitem menu-item-164">
 						<a href="https://parkofideas.com/luchiana/demo/our-team/">Our team</a>
@@ -254,15 +257,16 @@ $mains = Category::select('id','slug','name')->where(['flag' => 0,'status' => 1]
 				<div class="c-header__top js-mobile-blocks">
 					<ul class="c-header__top-row-list c-header__top-row-list--blocks-first">
 						<!-- <li class="c-header__top-row-item c-header__top-row-item--phone">
-              <i class="ip-z-phone c-header__top-row-icon c-header__top-row-icon--phone"></i>
-              <a href="tel:+081978 94448">+081978 94448</a>
-            </li> -->
+							<i class="ip-z-phone c-header__top-row-icon c-header__top-row-icon--phone"></i>
+							<a href="tel:+081978 94448">+081978 94448</a>
+						</li> -->
 						<li class="c-header__top-row-item c-header__top-row-item--email">
 							<i class="ip-email c-header__top-row-icon c-header__top-row-icon--email"></i>
 							<a href="mailto:makeupbiography@gmail.com">makeupbiography@gmail.com</a>
 						</li>
 						<!-- <li class="c-header__top-row-item c-header__top-row-item--address">
-              <i class="ip-z-map-pin c-header__top-row-icon c-header__top-row-icon--address"></i>Sri Complex, #45, Sajjan Rao Cir, Vishweshwarapura, Bengaluru, Karnataka 560004</li> -->
+							<i class="ip-z-map-pin c-header__top-row-icon c-header__top-row-icon--address"></i>Sri Complex, #45, Sajjan Rao Cir, Vishweshwarapura, Bengaluru, Karnataka 560004
+						</li> -->
 						<li class="c-header__top-row-item c-header__top-row-item--hours">
 							<i class="ip-z-time c-header__top-row-icon c-header__top-row-icon--hours"></i>Mon-Fri: 10:00 - 20:00
 						</li>
@@ -270,22 +274,22 @@ $mains = Category::select('id','slug','name')->where(['flag' => 0,'status' => 1]
 							<i class="ip-z-map-pin c-header__top-row-icon c-header__top-row-icon--address"></i>Free Delivery on orders above &#8377; 500
 						</li>
 						{{-- <li class="c-header__top-row-item c-header__top-row-item--other">
-              <ul class="c-top-bar-menu__list c-lang-demo">
-                <li class="c-top-bar-menu__item c-top-bar-menu__item--has-children">
-                  <a href="#" onclick="return false;">English</a>
-                  <ul class="c-top-bar-menu__submenu">
-                    <li class="c-top-bar-menu__subitem">
-                      <a href="#" onclick="return false;">English</i>
-                      </a>
-                    </li>
-                    <li class="c-top-bar-menu__subitem">
-                      <a href="#" onclick="return false;">German</i>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </li> --}}
+							<ul class="c-top-bar-menu__list c-lang-demo">
+								<li class="c-top-bar-menu__item c-top-bar-menu__item--has-children">
+								<a href="#" onclick="return false;">English</a>
+								<ul class="c-top-bar-menu__submenu">
+									<li class="c-top-bar-menu__subitem">
+									<a href="#" onclick="return false;">English</i>
+									</a>
+									</li>
+									<li class="c-top-bar-menu__subitem">
+									<a href="#" onclick="return false;">German</i>
+									</a>
+									</li>
+								</ul>
+								</li>
+							</ul>
+						</li> --}}
 					</ul>
 					<div class="c-soc">
 						<a href="#" class="c-soc__link" target="_blank">
@@ -374,15 +378,16 @@ $mains = Category::select('id','slug','name')->where(['flag' => 0,'status' => 1]
 						</div>
 					</li>
 					<!-- <li class="c-header__top-row-item c-header__top-row-item--phone">
-            <i class="ip-z-phone c-header__top-row-icon c-header__top-row-icon--phone"></i>
-            <a href="tel:+081978 94448">+081978 94448</a>
-          </li> -->
+						<i class="ip-z-phone c-header__top-row-icon c-header__top-row-icon--phone"></i>
+						<a href="tel:+081978 94448">+081978 94448</a>
+					</li> -->
 					<li class="c-header__top-row-item c-header__top-row-item--email">
 						<i class="ip-email c-header__top-row-icon c-header__top-row-icon--email"></i>
 						<a href="mailto:makeupbiography@gmail.com">makeupbiography@gmail.com</a>
 					</li>
 					<!-- <li class="c-header__top-row-item c-header__top-row-item--address">
-            <i class="ip-z-map-pin c-header__top-row-icon c-header__top-row-icon--address"></i>Sri Complex, #45, Sajjan Rao Cir, Vishweshwarapura, Bengaluru, Karnataka 560004</li> -->
+						<i class="ip-z-map-pin c-header__top-row-icon c-header__top-row-icon--address"></i>Sri Complex, #45, Sajjan Rao Cir, Vishweshwarapura, Bengaluru, Karnataka 560004
+					</li> -->
 					<li class="c-header__top-row-item c-header__top-row-item--hours">
 						<i class="ip-z-time c-header__top-row-icon c-header__top-row-icon--hours"></i>Mon-Fri: 10:00 - 20:00
 					</li>
@@ -390,22 +395,22 @@ $mains = Category::select('id','slug','name')->where(['flag' => 0,'status' => 1]
 						<i class="ip-z-map-pin c-header__top-row-icon c-header__top-row-icon--address"></i>Free Delivery on orders above &#8377; 500
 					</li>
 					{{-- <li class="c-header__top-row-item c-header__top-row-item--other">
-            <ul class="c-top-bar-menu__list c-lang-demo">
-              <li class="c-top-bar-menu__item c-top-bar-menu__item--has-children">
-                <a href="#" onclick="return false;">English</a>
-                <ul class="c-top-bar-menu__submenu">
-                  <li class="c-top-bar-menu__subitem">
-                    <a href="#" onclick="return false;">English</i>
-                    </a>
-                  </li>
-                  <li class="c-top-bar-menu__subitem">
-                    <a href="#" onclick="return false;">German</i>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li> --}}
+						<ul class="c-top-bar-menu__list c-lang-demo">
+						<li class="c-top-bar-menu__item c-top-bar-menu__item--has-children">
+							<a href="#" onclick="return false;">English</a>
+							<ul class="c-top-bar-menu__submenu">
+							<li class="c-top-bar-menu__subitem">
+								<a href="#" onclick="return false;">English</i>
+								</a>
+							</li>
+							<li class="c-top-bar-menu__subitem">
+								<a href="#" onclick="return false;">German</i>
+								</a>
+							</li>
+							</ul>
+						</li>
+						</ul>
+					</li> --}}
 				</ul>
 			</div>
 			<div class="c-header__row">
@@ -434,18 +439,19 @@ $mains = Category::select('id','slug','name')->where(['flag' => 0,'status' => 1]
 								<a href="#">Category</a>
 								<ul class="c-top-menu__submenu c-top-menu__submenu--columns-4 c-top-menu__submenu--expand" style="display: flex;flex-direction: row;">
 									@foreach($mains as $main)
-									<li class="c-top-menu__subitem menu-item-557 c-top-menu__subitem--expand js-menu-item">
-										<a href="{{ url('category',$main->slug) }}">{{ $main->name }}</a>
-										<ul class="c-top-menu__submenu c-top-menu__submenu--columns-1 c-top-menu__submenu--expand c-top-menu__submenu--inner">
+									<li class="c-top-menu__subitem menu-item-2474 c-top-menu__subitem--collapse js-menu-item c-top-menu__subitem--has-children">
+										<a href="{{ url('category',$main->slug) }}"><b>{{ $main->name }}</b></a>
+										<ul class="c-top-menu__submenu c-top-menu__submenu--columns-1 c-top-menu__submenu--inner">
 											@if(!empty($main->subcategory))
 											@foreach($main->subcategory as $subcategory)
-											@if($subcategory->status == 1 && $subcategory->flag == 0)
 											@php
-											$subcategories = Category::select('id','name','slug')->where('flag',0)->where('status',1)->where('parent_id',$subcategory->id)->get();
+											$subcategories = Category::select('id','name','slug')->where(['flag' => 0,'status' => 1])->where('parent_id',$subcategory->id)->orderBy('name','asc')->get();
+
+											$childrenarrowclass = count($subcategories) > 0 ? 'c-top-menu__subitem--has-children' : '';
 											@endphp
-											@if(count($subcategories) > 0)
-											<li class="c-top-menu__subitem c-top-menu__subitem--has-children menu-item-2042 c-top-menu__subitem--collapse js-menu-item">
+											<li class="c-top-menu__subitem menu-item-805 c-top-menu__subitem--collapse js-menu-item  <?php echo $childrenarrowclass; ?>">
 												<a href="{{ url('category',$subcategory->slug) }}">{{ $subcategory->name }}</a>
+												@if(count($subcategories) > 0)
 												<ul class="c-top-menu__submenu c-top-menu__submenu--columns-1 c-top-menu__submenu--inner">
 													@foreach($subcategories as $sub)
 													<li class="c-top-menu__subitem menu-item-805 c-top-menu__subitem--collapse js-menu-item">
@@ -453,13 +459,8 @@ $mains = Category::select('id','slug','name')->where(['flag' => 0,'status' => 1]
 													</li>
 													@endforeach
 												</ul>
+												@endif
 											</li>
-											@else
-											<li class="c-top-menu__subitem menu-item-2474 c-top-menu__subitem--collapse js-menu-item">
-												<a href="{{ url('category',$subcategory->slug) }}">{{ $subcategory->name }}</a>
-											</li>
-											@endif
-											@endif
 											@endforeach
 											@endif
 										</ul>
@@ -481,41 +482,40 @@ $mains = Category::select('id','slug','name')->where(['flag' => 0,'status' => 1]
 								<a href="{{ url('blogs/all') }}">Blog</a>
 							</li>
 							{{-- <li class="c-top-menu__item c-top-menu__item--has-children menu-item-163 js-menu-item">
-                <a>Pages</a>
-                <ul class="c-top-menu__submenu c-top-menu__submenu--columns-1">
-                  <li class="c-top-menu__subitem menu-item-165 c-top-menu__subitem--collapse js-menu-item">
-                    <a href="{{ url('about-us') }}">About us</a>
+								<a>Pages</a>
+								<ul class="c-top-menu__submenu c-top-menu__submenu--columns-1">
+									<li class="c-top-menu__subitem menu-item-165 c-top-menu__subitem--collapse js-menu-item">
+										<a href="{{ url('about-us') }}">About us</a>
+									</li>
+									<li class="c-top-menu__subitem menu-item-2320 c-top-menu__subitem--collapse js-menu-item">
+										<a href="https://parkofideas.com/luchiana/demo/service/">Service</a>
+									</li>
+									<li class="c-top-menu__subitem menu-item-164 c-top-menu__subitem--collapse js-menu-item">
+										<a href="https://parkofideas.com/luchiana/demo/our-team/">Our team</a>
+									</li>
+									<li class="c-top-menu__subitem menu-item-185 c-top-menu__subitem--collapse js-menu-item">
+										<a href="{{ url('faq') }}">FAQ</a>
+									</li>
+									<li id="menu-item-2320" class="c-top-menu__subitem menu-item-2320  c-top-menu__subitem--collapse js-menu-item">
+										<a href="{{ url('return-policy') }}">Return Policy</a>
+									</li>
+									<li id="menu-item-395" class="c-top-menu__subitem menu-item-395  c-top-menu__subitem--collapse js-menu-item">
+										<a href="{{ url('shipping-policy') }}">Shipping Policy</a>
+									</li>
+									<li id="menu-item-396" class="c-top-menu__subitem menu-item-396  c-top-menu__subitem--collapse js-menu-item">
+										<a href="{{ url('cancellation-policy') }}">Cancellation Policy</a>
+									</li>
+									<li class="c-top-menu__subitem menu-item-397 c-top-menu__subitem--collapse js-menu-item">
+										<a href="{{ url('privacy-policy') }}">Privacy Policy</a>
+									</li>
+									<li class="c-top-menu__subitem menu-item-397 c-top-menu__subitem--collapse js-menu-item">
+										<a href="{{ url('terms-and-conditions') }}">Terms & Conditions</a>
+									</li>
+								</ul>
+							</li> --}}
+							<li class="c-top-menu__item menu-item-20 js-menu-item">
+								<a href="{{ url('contact-us') }}">Contact</a>
 							</li>
-							<li class="c-top-menu__subitem menu-item-2320 c-top-menu__subitem--collapse js-menu-item">
-								<a href="https://parkofideas.com/luchiana/demo/service/">Service</a>
-							</li>
-							<li class="c-top-menu__subitem menu-item-164 c-top-menu__subitem--collapse js-menu-item">
-								<a href="https://parkofideas.com/luchiana/demo/our-team/">Our team</a>
-							</li>
-							<li class="c-top-menu__subitem menu-item-185 c-top-menu__subitem--collapse js-menu-item">
-								<a href="{{ url('faq') }}">FAQ</a>
-							</li>
-							<li id="menu-item-2320" class="c-top-menu__subitem menu-item-2320  c-top-menu__subitem--collapse js-menu-item">
-								<a href="{{ url('return-policy') }}">Return Policy</a>
-							</li>
-							<li id="menu-item-395" class="c-top-menu__subitem menu-item-395  c-top-menu__subitem--collapse js-menu-item">
-								<a href="{{ url('shipping-policy') }}">Shipping Policy</a>
-							</li>
-							<li id="menu-item-396" class="c-top-menu__subitem menu-item-396  c-top-menu__subitem--collapse js-menu-item">
-								<a href="{{ url('cancellation-policy') }}">Cancellation Policy</a>
-							</li>
-							<li class="c-top-menu__subitem menu-item-397 c-top-menu__subitem--collapse js-menu-item">
-								<a href="{{ url('privacy-policy') }}">Privacy Policy</a>
-							</li>
-							<li class="c-top-menu__subitem menu-item-397 c-top-menu__subitem--collapse js-menu-item">
-								<a href="{{ url('terms-and-conditions') }}">Terms & Conditions</a>
-							</li>
-						</ul>
-						</li> --}}
-
-						<li class="c-top-menu__item menu-item-20 js-menu-item">
-							<a href="{{ url('contact-us') }}">Contact</a>
-						</li>
 						</ul>
 					</nav>
 				</div>

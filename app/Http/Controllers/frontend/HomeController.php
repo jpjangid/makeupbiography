@@ -15,7 +15,7 @@ class HomeController extends Controller
     //home page frontend function 
     public function index()
     {
-        $main_categories = DB::table('categories')->where(['flag' => 0, 'status' => 1])->where('parent_id', null)->get();
+        $main_categories = DB::table('categories')->where(['flag' => 0, 'status' => 1])->where('parent_id', null)->orderBy('name','asc')->get();
         $main_newest_products = Product::where(['flag' => 0, 'status' => 1, 'ecom' => 'ONLINE'])->where('tags', 'like', '%' . 'newest' . '%')->where('ecom','ONLINE')->with(['medias' => function ($query) {
             $query->where(['flag' => 0,'media_type' => 'image'])->orderBy('sequence', 'asc');
         }])->orderBy('created_at', 'DESC')->take(25)->get();
