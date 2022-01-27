@@ -122,6 +122,31 @@ class BrandController extends Controller
                 array_push($no_of_pages, $i);
             }
         }
+        if(count($no_of_pages) < 4){
+            if(isset($no_of_pages[0]) && $last_page == $no_of_pages[0]){
+                for($i = 1; $i <= 3; $i++){
+                    $new = $no_of_pages[0] - $i;
+                    if($new > 0){
+                        array_push($no_of_pages, $new);
+                    }
+                }
+            }
+            if(isset($no_of_pages[1]) && $last_page == $no_of_pages[1]){
+                for($i = 1; $i <= 2; $i++){
+                    $new = $no_of_pages[0] - $i;
+                    if($new > 0){
+                        array_push($no_of_pages, $new);
+                    }
+                }
+            }
+            if(isset($no_of_pages[2]) && $last_page == $no_of_pages[2]){
+                $new = $no_of_pages[0] - 1;
+                if($new > 0){
+                    array_push($no_of_pages, $new);
+                }
+            }
+        }
+        sort($no_of_pages);
 
         $prev = 'true';
         if($products->currentPage() == 1){

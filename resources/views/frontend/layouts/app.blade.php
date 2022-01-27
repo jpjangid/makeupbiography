@@ -403,13 +403,16 @@
 			</div>
 			<div class="c-header-search__form">
 				<div class="c-header-search__tip">What you are looking for?</div>
-				<div class="c-header-search__input-block">
-					<input class="js-ajax-search-input h-cb c-header-search__input search-bar-input" autocomplete="off" type="text" name="s" placeholder="Start typing..." value="" />
-					<button class="js-search-clear h-cb c-header-search__clear" type="button">
-						<i class="ip-close-small c-header-search__clear-svg"></i>
-						<span class="c-header-search__clear-text">Clear</span>
-					</button>
-				</div>
+				<form action="{{ url('search/results') }}" method="post" id="searchform">
+					@csrf
+					<div class="c-header-search__input-block">
+						<input class="js-ajax-search-input h-cb c-header-search__input search-bar-input" autocomplete="off" type="text" id="searchInput" name="s" placeholder="Start typing..." value="" />
+						<button class="js-search-clear h-cb c-header-search__clear" type="button">
+							<i class="ip-close-small c-header-search__clear-svg"></i>
+							<span class="c-header-search__clear-text">Clear</span>
+						</button>
+					</div>
+				</form>
 			</div>
 			<div class="l-section l-section--container c-header-search__result js-ajax-search-result">
 			</div>
@@ -688,6 +691,14 @@
 	<script type='text/javascript' src='{{ asset("js/cart.js") }}' id='preloaded-modules-js'></script>
 	<script type='text/javascript' src='{{ asset("js/favourite.js") }}' id='preloaded-modules-js'></script>
 	<script type='text/javascript' src='{{ asset("js/search.js") }}' id="preloaded-modules-js"></script>
+	<script>
+		$('#searchform').on('submit', function(e) {
+			var search = $('#searchInput').val();
+			var url = "{{ url('search/result/') }}";
+			window.location.href = url+"/"+search;
+			e.preventDefault();
+		});
+	</script>
 	@yield('js')
 
 </html>

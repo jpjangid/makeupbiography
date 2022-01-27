@@ -248,6 +248,7 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
 
 //Route for search bar 
 Route::post('search',[App\Http\Controllers\frontend\HomeController::class, 'search']);
+Route::get('search/result/{slug}',[App\Http\Controllers\frontend\HomeController::class, 'results']);
 
 //Route for Add to Cart
 Route::get('cart', [App\Http\Controllers\frontend\CartController::class, 'list']);

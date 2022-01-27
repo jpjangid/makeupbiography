@@ -76,4 +76,66 @@ class HomeController extends Controller
                 </a>';
         return $html;
     }
+
+    public function results($slug)
+    {
+        $word = str_replace(" ","%",$slug);
+        $products = DB::table('products')->select('id','item_shade_name','item_name','regular_price','sale_price','slug','short_description','status','flag','ecom')->where('item_shade_name', 'like', '%' . $word . '%')->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE']);
+
+        $products = $products->paginate(12);
+
+        $product_details = array();
+        $product_medias = array();
+        foreach ($products as $pro) {
+            array_push($product_details, DB::table('products')->where('id', $pro->id)->first());
+            array_push($product_medias, DB::table('product_media')->where('product_id', $pro->id)->where(['flag' => 0, 'media_type' => 'image'])->orderBy('sequence','asc')->first());
+        }
+        $product_details = collect($product_details);
+        $product_medias = collect($product_medias);
+        $last_page = $products->lastPage();
+        $current_page = $products->currentPage();
+        $no_of_pages = array();
+        for($i = $current_page; $i <= $current_page+3; $i++){
+            if($i <= $last_page){
+                array_push($no_of_pages, $i);
+            }
+        }
+        if(count($no_of_pages) < 4){
+            if(isset($no_of_pages[0]) && $last_page == $no_of_pages[0]){
+                for($i = 1; $i <= 3; $i++){
+                    $new = $no_of_pages[0] - $i;
+                    if($new > 0){
+                        array_push($no_of_pages, $new);
+                    }
+                }
+            }
+            if(isset($no_of_pages[1]) && $last_page == $no_of_pages[1]){
+                for($i = 1; $i <= 2; $i++){
+                    $new = $no_of_pages[0] - $i;
+                    if($new > 0){
+                        array_push($no_of_pages, $new);
+                    }
+                }
+            }
+            if(isset($no_of_pages[2]) && $last_page == $no_of_pages[2]){
+                $new = $no_of_pages[0] - 1;
+                if($new > 0){
+                    array_push($no_of_pages, $new);
+                }
+            }
+        }
+        sort($no_of_pages);
+
+        $prev = 'true';
+        if($products->currentPage() == 1){
+            $prev = 'false';
+        }
+
+        $next = 'true';
+        if($products->lastPage() == $products->currentPage()){
+            $next = 'false';
+        }
+
+        return view('frontend.product.search', compact('slug', 'products', 'product_medias', 'product_details','no_of_pages','next','prev'));
+    }
 }
