@@ -216,7 +216,6 @@
 
 				<div class="c-catalog-ordering  c-catalog-ordering--desktop-filter ">
 					<div class="c-catalog-ordering__col c-catalog-ordering__col--result">
-						<p class="woocommerce-result-count">Showing 1&ndash;12 of 21 results</p>
 					</div>
 					<div class="c-catalog-ordering__col c-catalog-ordering__col--ordering">
 						<select name="orderby" class="orderby" id="orderbyFilter" aria-label="Shop order">

@@ -174,38 +174,79 @@ class BulkUploadController extends Controller
     //     }
     // }
 
+    // public function imageupload(Request $request)
+    // {
+    //     $brands = array('BBLUNT', 'KAY BEAUTY', 'LAKME', 'MAMAEARTH', 'WAHL');
+        
+    //     foreach ($brands as $brand) {
+    //         $ftp_server = "103.156.21.5";
+    //         $conn_id = ftp_connect($ftp_server) or die("Couldn't connect to $ftp_server");
+    //         ftp_login($conn_id, "28user", "user@321");
+    //         $path = "/" . $brand . "/";
+    //         $contents = ftp_nlist($conn_id, $path);
+    //         dd($contents);
+    //         foreach ($contents as $content) {
+    //             $file_name = current(array_reverse(explode('/', $content)));
+    //             $expload = explode('.',$file_name);
+    //             $product = Product::where('sku',$expload[0])->first();
+    //             $productmedia = ProductMedia::where('product_id',$product->id)->first();
+    //             if(!empty($productmedia)){
+    //                 $productmedia->media        = $file_name;
+    //                 $productmedia->media_alt    = $file_name;
+    //                 $productmedia->update();
+    //             }else{
+    //                 ProductMedia::create([
+    //                     'product_id'    =>  $product->id,
+    //                     'media'         =>  $file_name,
+    //                     'media_alt'     =>  $file_name,
+    //                     'media_type'    =>  'image',
+    //                     'sequence'      =>  '1'
+    //                 ]);
+    //             }
+    //             $file = Storage::disk('ftp')->get($content);
+    //             Storage::disk('local')->put('public/products/variants/' . $file_name, $file);
+    //         }
+    //     }
+    //     dd("done");
+    // }
+
     public function imageupload(Request $request)
     {
-        $brands = array('BBLUNT', 'KAY BEAUTY', 'LAKME', 'MAMAEARTH', 'WAHL');
+        $brands = array('KAY BEAUTY');
+        $products = DB::table('products')->select('sku','brand_name')->whereIn('brand_name',$brands)->get();
         
-        foreach ($brands as $brand) {
+        foreach ($products as $product) {
             $ftp_server = "103.156.21.5";
             $conn_id = ftp_connect($ftp_server) or die("Couldn't connect to $ftp_server");
             ftp_login($conn_id, "28user", "user@321");
-            $path = "/" . $brand . "/";
+            $path = "/" . $product->brand_name . "/".$product->sku;
             $contents = ftp_nlist($conn_id, $path);
-            foreach ($contents as $content) {
-                $file_name = current(array_reverse(explode('/', $content)));
-                $expload = explode('.',$file_name);
-                $product = Product::where('sku',$expload[0])->first();
-                $productmedia = ProductMedia::where('product_id',$product->id)->first();
-                if(!empty($productmedia)){
-                    $productmedia->media        = $file_name;
-                    $productmedia->media_alt    = $file_name;
-                    $productmedia->update();
-                }else{
-                    ProductMedia::create([
-                        'product_id'    =>  $product->id,
-                        'media'         =>  $file_name,
-                        'media_alt'     =>  $file_name,
-                        'media_type'    =>  'image',
-                        'sequence'      =>  '1'
-                    ]);
+            $i = 1;
+            if(!empty($contents)){
+                foreach ($contents as $content) {
+                    $file_name = current(array_reverse(explode('/', $content)));
+                    $product = Product::where('sku',$product->sku)->first();
+                    $productmedia = ProductMedia::where(['product_id' => $product->id, 'media' => $file_name])->first();
+                    if(!empty($productmedia)){
+                        $productmedia->media        = $file_name;
+                        $productmedia->media_alt    = $file_name;
+                        $productmedia->sequence     = $i;
+                        $productmedia->update();
+                    }else{
+                        ProductMedia::create([
+                            'product_id'    =>  $product->id,
+                            'media'         =>  $file_name,
+                            'media_alt'     =>  $file_name,
+                            'media_type'    =>  'image',
+                            'sequence'      =>  $i
+                        ]);
+                    }
+                    $file = Storage::disk('ftp')->get($content);
+                    Storage::disk('local')->put('public/products/variants/' . $file_name, $file);
+                    $i += 1;
                 }
-                $file = Storage::disk('ftp')->get($content);
-                Storage::disk('local')->put('public/products/variants/' . $file_name, $file);
             }
         }
-        dd("done");
+        return redirect()->back()->with('success','Image Uploaded Successfully');
     }
 }
