@@ -2644,7 +2644,7 @@ var requirejs, require, define;
                             if ((r = getOwn(h, l.slice(0, a).join("/"))) && (r = getOwn(r, s))) {
                                 c = r, d = o;
                                 break e
-                            }! p && m && getOwn(m, s) && (p = getOwn(m, s), f = o)
+                            }!p && m && getOwn(m, s) && (p = getOwn(m, s), f = o)
                 }!c && p && (c = p, d = f),
                 c && (n.splice(0, d, c), e = n.join("/"))
             }
@@ -3032,7 +3032,8 @@ var requirejs, require, define;
                         if (s = getOwn(r, n.slice(0, o).join("/"))) {
                             isArray(s) && (s = s[0]), n.splice(0, o, s);
                             break
-                        } a = n.join("/"), a = ("/" === (a += t || (/^data\:|^blob\:|\?/.test(a) || i ? "" : ".js")).charAt(0) || a.match(/^[\w\+\.\-]+:/) ? "" : g.baseUrl) + a
+                        }
+                    a = n.join("/"), a = ("/" === (a += t || (/^data\:|^blob\:|\?/.test(a) || i ? "" : ".js")).charAt(0) || a.match(/^[\w\+\.\-]+:/) ? "" : g.baseUrl) + a
                 }
                 return g.urlArgs && !/^blob\:/.test(a) ? a + g.urlArgs(e, a) : a
             },
@@ -3097,7 +3098,7 @@ var requirejs, require, define;
                     $buttons = $('.c-wishlist__item-' + productId + '-btn');
                 $buttons.removeClass('c-wishlist__btn--added');
                 $buttons.ideapark_button('loading', 16, true);
-                
+
                 wishlistAjax = $.ajax({
                     type: 'POST',
                     url: ideapark_wp_vars.ajaxUrl,
@@ -3124,7 +3125,7 @@ var requirejs, require, define;
                             $('body').trigger('wishlist_removed_item');
                             $buttons.attr('title', ideapark_wp_vars.wishlistTitleAdd);
                         }
-                  
+
                     }
                 });
             });
@@ -3301,7 +3302,7 @@ var requirejs, require, define;
     };
     root.ideapark_loadScript = function(src, cb, async) {
         var script = document.createElement('script');
-        script.async = !!(typeof async !=='undefined' && async);
+        script.async = !!(typeof async !== 'undefined' && async);
         script.src = src;
         script.onerror = function() {
             if (typeof cb !== 'undefined') {
@@ -3658,7 +3659,7 @@ var requirejs, require, define;
         }).on('click', ".js-mobile-modal", function(e) {
             $(this).parent().find(".js-product-modal").first().trigger('click');
         }).on('click', ".js-product-modal", function(e) {
-            
+
             e.preventDefault();
             var $button = $(this);
             var $play_button = $('.c-play', $button);
@@ -4140,19 +4141,19 @@ var requirejs, require, define;
             //         });
             //     }
             // }, 500)
-        //     $ideapark_search_input.on('keydown', function(e) {
-        //         var $this = $(this);
-        //         var is_not_empty = !ideapark_empty($this.val().trim());
-        //         if (e.keyCode == 13) {
-        //             e.preventDefault();
-        //             if ($this.hasClass('no-ajax') && is_not_empty) {
-        //                 $this.closest('form').submit();
-        //             }
-        //         } else if (e.keyCode == 27) {
-        //             ideapark_search_popup(false);
-        //         }
-        // })
-        $ideapark_search_input.on('input', function() {
+            //     $ideapark_search_input.on('keydown', function(e) {
+            //         var $this = $(this);
+            //         var is_not_empty = !ideapark_empty($this.val().trim());
+            //         if (e.keyCode == 13) {
+            //             e.preventDefault();
+            //             if ($this.hasClass('no-ajax') && is_not_empty) {
+            //                 $this.closest('form').submit();
+            //             }
+            //         } else if (e.keyCode == 27) {
+            //             ideapark_search_popup(false);
+            //         }
+            // })
+            $ideapark_search_input.on('input', function() {
                 var $this = $(this);
                 var is_not_empty = !ideapark_empty($this.val().trim());
                 if (is_not_empty && !ideapark_search_input_filled) {
@@ -5905,7 +5906,7 @@ var requirejs, require, define;
                                 $banners_order.push($banners[i]);
                             }
                             $a.data("timestamp") - $b.data("timestamp")
-                     
+
                             var timestamp = Math.round(new Date() / 1000);
                             var $old_banner = $banners_visible[0];
                             if (typeof $old_banner === "undefined") {
@@ -5923,7 +5924,7 @@ var requirejs, require, define;
                             );
                             ideapark_on_animation_end_callback(
                                 $new_banner,
-                                function () {
+                                function() {
                                     $new_banner
                                         .css({ order: old_order })
                                         .data("timestamp", timestamp);
@@ -5943,8 +5944,7 @@ var requirejs, require, define;
                             $new_banner
                                 .addClass(animation + "-in")
                                 .css({
-                                    left:
-                                        $old_banner.offset().left -
+                                    left: $old_banner.offset().left -
                                         $list.offset().left +
                                         "px",
                                     height: $old_banner.outerHeight() + "px",

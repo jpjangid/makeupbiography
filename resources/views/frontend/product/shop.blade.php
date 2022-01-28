@@ -67,7 +67,7 @@
 					</div>
 					<div class="c-shop-sidebar__content c-shop-sidebar__content--desktop-filter js-shop-sidebar-content-desktop">
 						<!-- Filter sidebar for computer begin -->
-						<form action="{{ url('shop') }}" method="get" id="categoryPageFrom">
+						<form action="{{ url('shop', $tag) }}" method="get" id="categoryPageFrom">
 							<input type="text" hidden name="pagination" id="paggination" value="">
 							<input type="hidden" id="paginateFrom" name="from" value="{{ $from }}">
 							<input type="hidden" id="paginateTo" name="to" value="{{ $to }}">
@@ -310,15 +310,14 @@
 		});
 
 		var slider = document.getElementById('slider');
+		var max_price_filter = "{{ $max_price_filter }}";
 		noUiSlider.create(slider, {
 			start: ["{{ $min_price_old }}", "{{ $max_price_old }}"],
 			connect: true,
 			range: {
 				'min': 0,
 				'max': {
-					{
-						$max_price_filter
-					}
+					max_price_filter
 				}
 			},
 			pips: {

@@ -22,7 +22,7 @@
 	<meta name="twitter:image" content="@yield('twitter_image','')" />
 	<meta name="twitter:creator" content="Makeup Biography" />
 
-	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inter%3A200%2Cregular%2C500%2C600%2C700%2C900%7CMarcellus%3Aregular%26subset%3Dlatin%2Clatin-ext&amp;display=swap">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A200%2Cregular%2C500%2C600%2C700%2C900%7CMarcellus%3Aregular%26subset%3Dlatin%2Clatin-ext&amp;display=swap">
 	<link rel="stylesheet" href="{{ asset('wp-content/themes/luchiana/assets/font/theme-icons9d3f.css?ver=1614106825')}}">
 	<link rel="stylesheet" href="{{ asset('css/frontend.css')}}">
 	<link rel='dns-prefetch' href='http://s.w.org/' />
@@ -255,7 +255,7 @@
 		.c-page-header--default {
 			color: #FFFFFF;
 			background-color: #88BAB5;
-			background-image: url("../wp-content/uploads/2020/10/luchiana-1911690231.png");
+			background-image: url("{{ asset('wp-content/uploads/2020/10/luchiana-1911690231.png') }}");
 			background-repeat: repeat;
 			background-position: center;
 			background-size: 290px 290px;
@@ -263,7 +263,7 @@
 
 		.c-page-header--post {
 			background-color: #d6acb1;
-			background-image: url("../wp-content/uploads/2020/10/luchiana-1911589804.png");
+			background-image: url("{{ asset('wp-content/uploads/2020/10/luchiana-1911589804.png') }}");
 			background-repeat: repeat;
 			background-position: center;
 			background-size: 290px 290px;
@@ -271,7 +271,7 @@
 
 		.c-page-header--wc {
 			background-color: #dfc7b3;
-			background-image: url("../wp-content/uploads/2020/10/luchiana-1911948555.png");
+			background-image: url("{{ asset('wp-content/uploads/2020/10/luchiana-1911948555.png') }}");
 			background-repeat: repeat;
 			background-position: center;
 			background-size: 290px 290px;
@@ -331,7 +331,7 @@
 	<script type="text/template" id="tmpl-unavailable-variation-template">
 		<p>Sorry, this product is unavailable. Please choose a different combination.</p>
 	</script>
-	<script type='text/javascript' src='{{ asset("wp-includes/js/jquery/jquery.minaf6c.js?ver=3.6.0") }}' id='jquery-core-js'></script>
+	<script type='text/javascript' src='{{ asset("wp-includes/js/jquery/jquery.minaf6c.js") }}' id='jquery-core-js'></script>
 	<script type='text/javascript' src='{{ asset("wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min44fd.js?ver=2.70") }}' id='jquery-blockui-js'></script>
 	<script type='text/javascript' src='{{ asset("wp-includes/js/underscore.min4511.js?ver=1.8.3") }}' id='underscore-js'></script>
 	<script type='text/javascript' id='wp-util-js-extra'>

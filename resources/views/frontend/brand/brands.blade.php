@@ -340,13 +340,14 @@
 		});
 
 		var slider = document.getElementById('slider');
+		var max_price_filter = "{{ $max_price_filter }}";
 		noUiSlider.create(slider, {
 			start: ["{{ $min_price_old }}", "{{ $max_price_old }}"],
 			connect: true,
 			range: {
 				'min': 0,
 				'max': {
-					$max_price_filter
+					max_price_filter
 				}
 			},
 			pips: {

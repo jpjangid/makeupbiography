@@ -390,7 +390,7 @@
 														<div class="c-ip-image-list-1__item c-ip-image-list-1__item--carousel">
 															<a href="{{ url('category',['slug' => $main_category->slug]) }}" class="c-ip-image-list-1__link">
 																<div class="c-ip-image-list-1__thumb">
-																	<img class="c-ip-image-list-1__image" width="115" height="50vh" src="{{ asset('storage/category/'.$main_category->featured_image) }}" srcset="{{ asset('storage/category/'.$main_category->featured_image) }} 180w" sizes="(max-width: 115px) 100vw, 115px" alt="{{ $main_category->alt }}" loading="lazy" />
+																	<img class="c-ip-image-list-1__image" width="115" height="50vh" src="{{ isset($main_category->featured_image) ? asset('storage/category/'.$main_category->featured_image) : '' }}" srcset="{{ isset($main_category->featured_image) ? asset('storage/category/'.$main_category->featured_image) : '' }} 180w" sizes="(max-width: 115px) 100vw, 115px" alt="{{ $main_category->alt }}" loading="lazy" />
 																</div>
 																<div class="c-ip-image-list-1__title">{{ $main_category->name }}</div>
 															</a>
@@ -861,7 +861,7 @@
 									<div class="elementor-element elementor-element-1f4d44c elementor-widget-mobile__width-initial elementor-absolute elementor-widget elementor-widget-image" data-id="1f4d44c" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="image.default">
 										<div class="elementor-widget-container">
 											<!-- <div class="elementor-image">
-												<img width="264" height="255" src="../wp-content/uploads/2020/10/luchiana-2233701518.png" class="attachment-full size-full" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-2233701518.png 264w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-2233701518-150x145.png 150w" sizes="(max-width: 264px) 100vw, 264px" />
+												<img width="264" height="255" src{{ asset('wp-content/uploads/2020/10/luchiana-2233701518.png') }}" class="attachment-full size-full" alt="" loading="lazy" srcset="https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-2233701518.png 264w, https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-2233701518-150x145.png 150w" sizes="(max-width: 264px) 100vw, 264px" />
 											</div> -->
 										</div>
 									</div>

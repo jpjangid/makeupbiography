@@ -251,7 +251,7 @@
 								<!-- .c-product-grid__badges -->
 								<div class="c-product-grid__thumb-wrap">
 									<a href="{{ url('category',$category->slug) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-										<img width="460" height="460" src="{{ asset('storage/category/'.$category->featured_image) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" sizes="(max-width: 460px) 100vw, 460px" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
+										<img width="460" height="460" src="{{ isset($category->featured_image) ? asset('storage/category/'.$category->featured_image) : '' }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" sizes="(max-width: 460px) 100vw, 460px" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
 									</a>
 								</div>
 								<!-- .c-product-grid__thumb-wrap -->
@@ -375,13 +375,14 @@
 		});
 
 		var slider = document.getElementById('slider');
+		var max_price_filter = "{{ $max_price_filter }}";
 		noUiSlider.create(slider, {
 			start: ["{{ $min_price_old }}", "{{ $max_price_old }}"],
 			connect: true,
 			range: {
 				'min': 0,
 				'max': {
-					$max_price_filter
+					max_price_filter
 				}
 			},
 			pips: {

@@ -87,7 +87,7 @@
                                     <div class="form-group">
                                         <label class="form-label" for="featured_image">Featured Image Preview</label>
                                         <br>
-                                            <img src="{{ asset('storage/category/'.$category->featured_image) }}" alt="{{ $category->alt }}" style="height:4rem;width:12rem;">
+                                            <img src="{{ isset($category->featured_image) ? asset('storage/category/'.$category->featured_image) : '' }}" alt="{{ $category->alt }}" style="height:4rem;width:12rem;">
                                     </div>
                                 </div>
                                 @endif
@@ -170,7 +170,7 @@
                                     <div class="form-group">
                                         <label class="form-label" for="og_image">OG Image Preview</label>
                                         <br>
-                                        <img src="{{ asset('storage/category/og_images/'.$category->og_image) }}" alt="{{ $category->og_alt }}" style="height:4rem;width:12rem;">
+                                        <img src="{{  isset($category->og_image) ? asset('storage/category/og_images/'.$category->og_image) : '' }}" alt="{{ $category->og_alt }}" style="height:4rem;width:12rem;">
                                     </div>
                                 </div>
                                 @endif
