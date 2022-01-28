@@ -68,7 +68,7 @@ class ReturnController extends Controller
 
     public function order_no()
     {
-        $no = Str::random(8);
+        $no = strtoupper(Str::random(8));
         $order = DB::table('order_item_returns')->where('return_no', $no)->first();
         if (!empty($order)) {
             return $this->order_no();

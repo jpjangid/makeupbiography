@@ -179,7 +179,7 @@ class OrderController extends Controller
             ]);
         }
 
-        if ($order->payment_mode == 'online') {
+        // if ($order->payment_mode == 'online') {
             $response = $this->create_shiprocket_order($order->id);
             if (!empty($response) && $response->status == 'NEW') {
                 $update_order = Order::find($order->id);
@@ -187,7 +187,7 @@ class OrderController extends Controller
                 $update_order->shiprocket_shipment_id = $response->shipment_id;
                 $update_order->update();
             }
-        }
+        // }
 
         if (!empty($coupon) && $request->coupon_discount != 0) {
             if ($coupon->type == 'merchandise' || $coupon->type == 'global' || $coupon->type == 'personal_code' || $coupon->type == 'cart_value_discount') {
@@ -256,7 +256,7 @@ class OrderController extends Controller
 
     public function order_no()
     {
-        $no = Str::random(8);
+        $no = strtoupper(Str::random(8));
         $order = DB::table('orders')->where('order_no', $no)->first();
         if (!empty($order)) {
             return $this->order_no();
