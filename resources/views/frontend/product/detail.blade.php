@@ -347,7 +347,7 @@
 								</bdi>
 							</span>
 						</p>
-						<!-- @if($product->p_type == 'Shades')
+						@if($product->p_type == 'HEX SHADE')
 						<div class="product-shades" style="background-color: #f3f3f3;">
 							<h6 class="palette-title">Colour Palette</h6>
 							<ul>
@@ -359,7 +359,7 @@
 							</ul>
 						</div>
 						@endif
-						@if($product->p_type == 'NOS')
+						<!-- @if($product->p_type == 'NOS')
 						<div>
 							<h6 class="palette-title">Packs</h6>
 							<ul>

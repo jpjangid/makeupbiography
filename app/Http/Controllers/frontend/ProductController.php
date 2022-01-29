@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductMedia;
 use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
@@ -12,7 +14,8 @@ class ProductController extends Controller
     public function index($product)
     {
         $product = Product::where('slug',$product)->with('medias','category.parent.parent')->orderby('sequence','asc')->first();
-        $variants = DB::table('products')->where('item_name', $product->item_name)->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->get();
+        $product_name = explode('-',$product->item_name);
+        $variants = DB::table('products')->where('item_name','like','%'.$product_name[0].'%')->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->get();
         $medias = DB::table('product_media')->where('product_id',$product->id)->orderby('sequence','asc')->get();
         $reviews = DB::table('product_reviews')->where(['product_id' => $product->id])->orderBy('created_at','desc')->take(5)->get();
         $related_ids = array();

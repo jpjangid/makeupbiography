@@ -29,7 +29,7 @@ class HomeController extends Controller
             $query->where(['flag' => 0,'media_type' => 'image'])->orderBy('sequence', 'asc');
         }])->orderBy('created_at', 'DESC')->take(25)->get();
         $big_offer_products = Product::where(['flag' => 0, 'status' => 1, 'ecom' => 'ONLINE'])->where('tags', 'like', '%' . 'big discount' . '%')->where('ecom','ONLINE')->with(['medias' => function ($query) {
-            $query->where(['flag' => 0,'media_type' => 'image'])->orderBy('sequence', 'asc')->first();
+            $query->where(['flag' => 0,'media_type' => 'image'])->orderBy('sequence', 'asc');
         }])->orderBy('updated_at', 'DESC')->take(10)->get();
         $footer_banners = DB::table('footer_banners')->where('image', '!=', "")->where('status', 1)->get();
         return view('frontend.main.index', compact('main_categories', 'main_newest_products', 'main_popular_products', 'main_category_products', 'main_brand_products', 'big_offer_products', 'footer_banners'));

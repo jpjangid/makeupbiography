@@ -365,11 +365,11 @@
 			<div class="elementor-section-wrap">
 				<div id="slider">
 					<figure>
-						<img src="{{ asset('/images/1.jpg') }}">
-						<img src="{{ asset('/images/2.jpg') }}">
-						<img src="{{ asset('/images/3.jpg') }}">
-						<img src="{{ asset('/images/1.jpg') }}">
-						<img src="{{ asset('/images/2.jpg') }}">
+						<img src="{{ asset('/images/1.webp') }}">
+						<img src="{{ asset('/images/2.webp') }}">
+						<img src="{{ asset('/images/3.webp') }}">
+						<img src="{{ asset('/images/1.webp') }}">
+						<img src="{{ asset('/images/2.webp') }}">
 					</figure>
 				</div>
 			</div>
@@ -938,10 +938,10 @@
 													ideapark_countdown_minutes = 'Minutes',
 													ideapark_countdown_seconds = 'Seconds';
 											</script>
-											 <div class="c-ip-countdown">
-                          <div class="c-ip-countdown__wrap js-countdown" data-date="2021-04-30 12:00" data-month="no" data-week="no">
-                          </div>
-                        </div> 
+										<div class="c-ip-countdown">
+									<div class="c-ip-countdown__wrap js-countdown" data-date="2021-04-30 12:00" data-month="no" data-week="no">
+									</div>
+									</div> 
 										</div>
 									</div> -->
 									<div class="elementor-element elementor-element-3eb76f9 elementor-widget elementor-widget-ideapark-heading" data-id="3eb76f9" data-element_type="widget" data-widget_type="ideapark-heading.default">
@@ -1006,7 +1006,7 @@
 																	<!-- .c-product-grid__badges -->
 																	<div class="c-product-grid__thumb-wrap" style="width: auto;">
 																		<a href="{{ url('products',['product' => $big_offer_product->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-																			<img src="{{ isset($big_offer_product->medias->media) ? asset('storage/products/variants/'.$big_offer_product->medias->media) : '' }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ isset($big_offer_product->medias->media) ? asset('storage/products/variants/'.$big_offer_product->medias->media) : '' }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
+																			<img src="{{ isset($big_offer_product->medias[0]->media) ? asset('storage/products/variants/'.$big_offer_product->medias[0]->media) : '' }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ isset($big_offer_product->medias[0]->media) ? asset('storage/products/variants/'.$big_offer_product->medias[0]->media) : '' }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
 																		</a>
 																		<div class="c-product-grid__thumb-button-list">
 																			<!--<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="438">-->

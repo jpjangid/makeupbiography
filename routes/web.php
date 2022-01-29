@@ -196,6 +196,15 @@ Route::middleware(['auth', 'prevent-back-history', 'admin'])->prefix('admin')->g
         Route::get('/delete/{id}', [App\Http\Controllers\backend\RelatedProductController::class, 'destroy']);
     });
 
+    Route::prefix('newsletters')->group(function () {
+        Route::get('/', [App\Http\Controllers\backend\NewsLetterController::class, 'index']);
+        Route::get('/create', [App\Http\Controllers\backend\NewsLetterController::class, 'create']);
+        Route::post('/store', [App\Http\Controllers\backend\NewsLetterController::class, 'store']);
+        Route::get('/edit/{id}', [App\Http\Controllers\backend\NewsLetterController::class, 'edit']);
+        Route::put('/update/{id}', [App\Http\Controllers\backend\NewsLetterController::class, 'update']);
+        Route::get('/delete/{id}', [App\Http\Controllers\backend\NewsLetterController::class, 'destroy']);
+    });
+
     //route for profile update
     Route::get('profile', [App\Http\Controllers\Auth\ProfileController::class, 'edit']);
 });
@@ -299,6 +308,7 @@ Route::get('orders/thanks/{order_no}', [App\Http\Controllers\frontend\OrderContr
 Route::post('orders/return', [App\Http\Controllers\frontend\ReturnController::class, 'index']);
 
 Route::post('storecomment', [App\Http\Controllers\frontend\CommentController::class, 'store']);
+Route::post('newsletter', [App\Http\Controllers\frontend\NewsLetterController::class, 'store']);
 Route::get('{slug}', [App\Http\Controllers\frontend\PageController::class, 'index']);
 Route::view('404', '404');
 /* Route for front end End */
