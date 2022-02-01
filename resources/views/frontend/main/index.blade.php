@@ -108,6 +108,22 @@
 		} */
 	}
 
+	@media (max-width: 420px) {
+		.c-product-grid__item--normal {
+			width: 150px !important;
+			margin: 16px !important;
+			padding-bottom: 35px;
+		}
+	}
+
+	@media (max-width: 320px) {
+		.c-product-grid__item--normal {
+			width: 220px !important;
+			margin: 16px !important;
+			padding-bottom: 35px;
+		}
+	}
+
 	@media screen and (max-width: 567px) {
 		.elementor-1131 .elementor-element.elementor-element-f6c8514 .c-ip-image-list-1__item {
 			width: 85px;
@@ -336,7 +352,13 @@
 		display: -webkit-box;
 		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
-		height: 2em;
+		height: 3em;
+	}
+
+	@media screen and (max-width: 480px) {
+		.c-product-grid__title-wrap .woocommerce-LoopProduct-link .woocommerce-loop-product__title {
+			height: 2em;
+		}
 	}
 
 	.c-product-grid__badges {
@@ -491,10 +513,6 @@
 																				<img src="{{ isset($main_newest_product->medias[0]->media) ? asset('storage/products/variants/'.$main_newest_product->medias[0]->media) : '' }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ isset($main_newest_product->medias[0]->media) ? asset('storage/products/variants/'.$main_newest_product->medias[0]->media) : '' }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
 																			</a>
 																			<div class="c-product-grid__thumb-button-list">
-																				<!--<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="438">-->
-																				<!--	<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>-->
-																				<!--	<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>-->
-																				<!--</button>-->
 																				<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button" data-product_variant_id="{{ $main_newest_product->id }}" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
 																					<i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
 																					<i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
