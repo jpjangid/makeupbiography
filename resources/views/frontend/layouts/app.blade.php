@@ -261,6 +261,18 @@
 			background-size: 290px 290px;
 		}
 
+		@media (max-width: 768px) {
+			.c-page-header--default {
+				color: #FFFFFF;
+				background-color: white;
+				background-image: none;
+				background-repeat: repeat;
+				background-position: center;
+				background-size: 290px 290px;
+				color: black;
+			}
+		}
+
 		.c-page-header--post {
 			background-color: #d6acb1;
 			background-image: url("{{ asset('wp-content/uploads/2020/10/luchiana-1911589804.png') }}");
@@ -312,6 +324,14 @@
 			transform: scale(1.2);
 			box-shadow: 10px 5px 12px rgba(0, 0, 0, 0.2);
 		}
+
+		.c-header__menu-button-icon {
+			height: 18px;
+			width: 38px;
+			font-size: 14px;
+			line-height: 1.7;
+		}
+
 
 		@media (max-width: 767px) {
 			.ip-buy-now {
@@ -695,7 +715,7 @@
 		$('#searchform').on('submit', function(e) {
 			var search = $('#searchInput').val();
 			var url = "{{ url('search/result/') }}";
-			window.location.href = url+"/"+search;
+			window.location.href = url + "/" + search;
 			e.preventDefault();
 		});
 	</script>

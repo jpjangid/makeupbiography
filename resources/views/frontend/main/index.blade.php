@@ -68,6 +68,7 @@
 			line-height: 8px;
 			letter-spacing: 0.06em;
 			margin-top: 15px;
+			/* padding-bottom: 10px; */
 		}
 
 		.c-ip-heading.c-ip-heading--medium.c-ip-heading--center.c-ip-heading--tablet-.c-ip-heading--mobile-.c-ip-heading--bullet-hide {
@@ -76,7 +77,7 @@
 
 		.c-product-grid__item--normal {
 			width: 180px;
-			margin: 10px;
+			margin: 16px !important;
 			padding-bottom: 35px;
 		}
 
@@ -335,7 +336,7 @@
 		display: -webkit-box;
 		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
-		height: 3em;
+		height: 2em;
 	}
 
 	.c-product-grid__badges {

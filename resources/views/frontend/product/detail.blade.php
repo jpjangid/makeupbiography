@@ -201,6 +201,26 @@
 		margin-top: 5px;
 		background-image: linear-gradient(to bottom, #666362, #413839);
 	}
+
+	.ip-zoom {
+		display: none;
+	}
+
+	@media (max-width: 768px) {
+		p.price {
+			text-align: center;
+			/* margin: 0 auto; */
+		}
+
+		.c-product__quantity>* {
+			height: 40px;
+		}
+
+		.owl-carousel.owl-loaded {
+			display: none;
+		}
+
+	}
 </style>
 @endsection
 
@@ -234,10 +254,8 @@
 				@if(isset($product->category->name) && !empty($product->category))
 				<li class="c-breadcrumbs__item">
 					<a href="{{ url('category',$product->category->slug) }}">{{ $product->category->name }}</a>
-					<i class="ip-breadcrumb c-breadcrumbs__separator"></i>
 				</li>
 				@endif
-				<li class="c-breadcrumbs__item">{{ $product->item_shade_name }}</li>
 			</ol>
 		</nav>
 	</header>
@@ -333,7 +351,7 @@
 			<div class="c-product__col-2">
 				<div class="js-sticky-sidebar">
 					<div class="summary entry-summary">
-						<h1 class="c-product__title">{{ $product->item_shade_name }}</h1>
+						<!-- <h1 class="c-product__title">{{ $product->item_shade_name }}</h1> -->
 						<div class="c-product__short-description" style="text-align: justify;">
 							<p>{{ $product->short_description }}</p>
 						</div>
@@ -435,7 +453,7 @@
 		<!-- .c-product__wrap -->
 
 		<!-- Additional Information & Reviews -->
-		<div class="row-additional-info-reviews">
+		<!-- <div class="row-additional-info-reviews">
 			<div class="column-additional-info">
 				<div class="c-product__tabs-item additional_information_tab" id="tab-title-additional_information" role="tab" aria-controls="tab-additional_information">
 					<a data-index="1" class="c-product__tabs-item-link js-tabs-item-link" href="#tab-additional_information" style="font-size: 20px; font-weight: bold; color: black; letter-spacing: 0.2em;">Additional information</a>
@@ -489,13 +507,13 @@
 						</div>
 						<div id="review_form_wrapper">
 							<div id="review_form">
-								<div id="respond" class="comment-respond">
-									<!-- <span id="reply-title" class="comment-reply-title">Be the first to review &ldquo;{{ $product->item_shade_name }}&rdquo;
+								<div id="respond" class="comment-respond"> -->
+		<!-- <span id="reply-title" class="comment-reply-title">Be the first to review &ldquo;{{ $product->item_shade_name }}&rdquo;
 									<small>
 										<a rel="nofollow" id="cancel-comment-reply-link" href="/luchiana/demo/shop/midnight-musk-amber/#respond" style="display:none;">Cancel reply</a>
 									</small>
 								</span> -->
-									<form action="{{ url('review/store') }}" method="post" id="commentform" class="comment-form" novalidate="">
+		<!-- <form action="{{ url('review/store') }}" method="post" id="commentform" class="comment-form" novalidate="">
 										@csrf
 										<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p>
 										<div class="comment-form-comment">
@@ -525,16 +543,16 @@
 											<input type="hidden" name="product_id" value="{{ $product->id }}">
 										</p>
 									</form>
-								</div>
-								<!-- #respond -->
-							</div>
+								</div> -->
+		<!-- #respond -->
+		<!-- </div>
 						</div>
 						<div class="clear">
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 
 		@if($related_products->isNotEmpty())
 		<section class="c-product__products c-product__products--related">

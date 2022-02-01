@@ -61,7 +61,7 @@
 
 		.c-mobile-menu__item,
 		.c-mobile-menu__subitem {
-			font-size: 10px !important;
+			font-size: 15px !important;
 			text-transform: capitalize;
 			line-height: 0.9;
 		}
