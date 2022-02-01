@@ -18,16 +18,16 @@ class HomeController extends Controller
         $main_categories = DB::table('categories')->where(['flag' => 0, 'status' => 1])->where('parent_id', null)->orderBy('name','asc')->get();
         $main_newest_products = Product::where(['flag' => 0, 'status' => 1, 'ecom' => 'ONLINE'])->where('tags', 'like', '%' . 'newest' . '%')->where('ecom','ONLINE')->with(['medias' => function ($query) {
             $query->where(['flag' => 0,'media_type' => 'image'])->orderBy('sequence', 'asc');
-        }])->orderBy('created_at', 'DESC')->take(25)->get();
+        }])->orderBy('created_at', 'DESC')->take(10)->get();
         $main_popular_products = Product::where(['flag' => 0, 'status' => 1, 'ecom' => 'ONLINE'])->where('tags', 'like', '%' . 'popular' . '%')->where('ecom','ONLINE')->with(['medias' => function ($query) {
             $query->where(['flag' => 0,'media_type' => 'image'])->orderBy('sequence', 'asc');
-        }])->orderBy('created_at', 'DESC')->take(25)->get();
+        }])->orderBy('created_at', 'DESC')->take(10)->get();
         $main_category_products = Product::where(['flag' => 0, 'status' => 1, 'ecom' => 'ONLINE'])->where('tags', 'like', '%' . 'category' . '%')->where('ecom','ONLINE')->with(['medias' => function ($query) {
             $query->where(['flag' => 0,'media_type' => 'image'])->orderBy('sequence', 'asc');
-        }])->orderBy('created_at', 'DESC')->take(25)->get();
+        }])->orderBy('created_at', 'DESC')->take(10)->get();
         $main_brand_products = Product::where(['flag' => 0, 'status' => 1, 'ecom' => 'ONLINE'])->where('tags', 'like', '%' . 'brand' . '%')->where('ecom','ONLINE')->with(['medias' => function ($query) {
             $query->where(['flag' => 0,'media_type' => 'image'])->orderBy('sequence', 'asc');
-        }])->orderBy('created_at', 'DESC')->take(25)->get();
+        }])->orderBy('created_at', 'DESC')->take(10)->get();
         $big_offer_products = Product::where(['flag' => 0, 'status' => 1, 'ecom' => 'ONLINE'])->where('tags', 'like', '%' . 'big discount' . '%')->where('ecom','ONLINE')->with(['medias' => function ($query) {
             $query->where(['flag' => 0,'media_type' => 'image'])->orderBy('sequence', 'asc');
         }])->orderBy('updated_at', 'DESC')->take(10)->get();

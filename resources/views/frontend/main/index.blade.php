@@ -58,10 +58,6 @@
 			margin-top: 30px;
 		}
 
-		.c-ip-product-tabs__wrap {
-			padding-top: 10px;
-		}
-
 		.c-ip-product-tabs__menu-item {
 			font-weight: bold;
 			font-size: 12px;
