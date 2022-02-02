@@ -36,9 +36,9 @@ class CreateProductsTable extends Migration
             $table->string('p_type')->nullable();
             $table->string('variation')->nullable();
             $table->string('discount_type')->nullable();
-            $table->integer('discount')->nullable();
-            $table->integer('regular_price')->nullable();
-            $table->integer('sale_price')->nullable();
+            $table->float('discount')->nullable();
+            $table->float('regular_price')->nullable();
+            $table->float('sale_price')->nullable();
             $table->string('meta_title')->nullable();
             $table->text('meta_keyword')->nullable();
             $table->text('meta_description')->nullable();
