@@ -377,18 +377,22 @@
 							</ul>
 						</div>
 						@endif
-						<!-- @if($product->p_type == 'NOS')
+						@if($product->p_type == 'EYESHADOW')
 						<div>
-							<h6 class="palette-title">Packs</h6>
-							<ul>
+							<h6 class="palette-title">All Shades</h6>
+
+							<ul style="white-space:nowrap !important;">
+								<li style="display: inline;"><img src="{{ asset('storage/products/shades/'.$product->hex_code) }}" alt="{{$product->hex_code}}" height="50px"></li>
 								@if($variants->isNotEmpty())
 								@foreach($variants as $variant)
-								<li><a href="{{ url('products',['product' => $variant->slug ]) }}" style="text-decoration: none;">{{$variant->variation}}</a></li>
+								@if($variant->id !== $product->id)
+								<li style="display: inline;"><a href="{{ url('products',['product' => $variant->slug ]) }}" style="text-decoration: none;"><img src="{{ asset('storage/products/shades/'.$variant->hex_code) }}" alt="{{$variant->hex_code}}" height="30px"></a></li>
+								@endif
 								@endforeach
 								@endif
 							</ul>
 						</div>
-						@endif -->
+						@endif
 						<div class="c-product__atc-wrap">
 							<form class="cart" action="https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" method="post" enctype='multipart/form-data' style="margin-left: 50px; margin-right: 50px;">
 								<div class="c-product__quantity quantity">
