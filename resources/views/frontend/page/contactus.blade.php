@@ -38,7 +38,7 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('wp-content/uploads/elementor/css/post-8.css')  }}">
 <style>
-	.fa {
+	/* .fa {
 		padding-left: 10px;
 		padding-right: 40px;
 		padding-top: 7px;
@@ -50,7 +50,7 @@
 		text-decoration: none;
 		margin-left: 30px;
 		border-radius: 50%;
-	}
+	} */
 
 	.fa:hover {
 		opacity: 0.7;
@@ -91,8 +91,13 @@
 		content: "\f09a";
 		padding-left: 5px;
 	}
+
 	.elementor-element-92aadb1 {
-		background-image: url({{ asset('images/contactus.png') }});
+		background-image: url({{ asset('images/contactus.png')
+	}
+	}
+
+	);
 	}
 </style>
 @endsection
