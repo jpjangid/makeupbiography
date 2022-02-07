@@ -212,6 +212,15 @@
 								<span class="menu-title">News Letter</span>
 							</a>
 						</div>
+						<div class="menu-item">
+							<a class="menu-link" href="{{ url('admin/contact_us') }}">
+								<span class="menu-bullet">
+									<span class="bullet bullet-dot">
+									</span>
+								</span>
+								<span class="menu-title">Contact Us</span>
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>

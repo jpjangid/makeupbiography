@@ -16,7 +16,7 @@ class PageController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $pages1 = DB::table('blogs')->where(['flag' => '0', 'status' => 1])->get();
+            $pages1 = DB::table('pages')->where(['flag' => '0', 'status' => 1])->get();
 
             $pages = new Collection;
             foreach ($pages1 as $page) {
@@ -124,7 +124,7 @@ class PageController extends Controller
 
     public function edit($id)
     {
-        $page = DB::table('blogs')->find($id);
+        $page = DB::table('pages')->find($id);
 
         return view('backend.pages.edit', compact('page'));
     }

@@ -40,15 +40,15 @@ Route::middleware(['auth', 'prevent-back-history', 'admin'])->prefix('admin')->g
 
     Route::prefix('notifications')->group(function () {
         Route::get('/', [App\Http\Controllers\backend\NotificationController::class, 'index']);
-        Route::post('list',[App\Http\Controllers\backend\NotificationController::class, 'notificationListItems']);
-    });    
+        Route::post('list', [App\Http\Controllers\backend\NotificationController::class, 'notificationListItems']);
+    });
 
     Route::prefix('bulkupload')->group(function () {
         Route::get('/', [App\Http\Controllers\backend\BulkUploadController::class, 'index']);
-        Route::post('upload',[App\Http\Controllers\backend\BulkUploadController::class, 'upload']);
-        Route::post('update',[App\Http\Controllers\backend\BulkUploadController::class, 'update']);
+        Route::post('upload', [App\Http\Controllers\backend\BulkUploadController::class, 'upload']);
+        Route::post('update', [App\Http\Controllers\backend\BulkUploadController::class, 'update']);
         Route::get('imageupload', [App\Http\Controllers\backend\BulkUploadController::class, 'imageupload']);
-    });  
+    });
 
     Route::prefix('blogs')->group(function () {
         Route::get('/', [App\Http\Controllers\backend\BlogController::class, 'index']);
@@ -58,6 +58,15 @@ Route::middleware(['auth', 'prevent-back-history', 'admin'])->prefix('admin')->g
         Route::put('/update/{id}', [App\Http\Controllers\backend\BlogController::class, 'update']);
         Route::get('/delete/{id}', [App\Http\Controllers\backend\BlogController::class, 'destroy']);
         Route::post('/update_status', [App\Http\Controllers\backend\BlogController::class, 'update_status']);
+    });
+
+    Route::prefix('contact_us')->group(function () {
+        Route::get('/', [App\Http\Controllers\backend\ContactUsController::class, 'index']);
+        Route::get('/create', [App\Http\Controllers\backend\ContactUsController::class, 'create']);
+        Route::post('/store', [App\Http\Controllers\backend\ContactUsController::class, 'store']);
+        Route::get('/edit/{id}', [App\Http\Controllers\backend\ContactUsController::class, 'edit']);
+        Route::put('/update/{id}', [App\Http\Controllers\backend\ContactUsController::class, 'update']);
+        Route::get('/delete/{id}', [App\Http\Controllers\backend\ContactUsController::class, 'destroy']);
     });
 
     Route::prefix('pages')->group(function () {
@@ -178,7 +187,7 @@ Route::middleware(['auth', 'prevent-back-history', 'admin'])->prefix('admin')->g
         Route::get('/return_detail/{id}', [App\Http\Controllers\backend\ReturnController::class, 'return_detail']);
         Route::post('/update', [App\Http\Controllers\backend\ReturnController::class, 'update']);
     });
-    
+
     Route::prefix('footer/banners')->group(function () {
         Route::get('/', [App\Http\Controllers\backend\FooterBannerController::class, 'index']);
         Route::get('/edit/{id}', [App\Http\Controllers\backend\FooterBannerController::class, 'edit']);
@@ -186,7 +195,7 @@ Route::middleware(['auth', 'prevent-back-history', 'admin'])->prefix('admin')->g
         Route::get('/delete/{id}', [App\Http\Controllers\backend\FooterBannerController::class, 'destroy']);
         Route::post('/update_status', [App\Http\Controllers\backend\FooterBannerController::class, 'update_status']);
     });
-    
+
     Route::prefix('related_products')->group(function () {
         Route::get('/', [App\Http\Controllers\backend\RelatedProductController::class, 'index']);
         Route::get('/create', [App\Http\Controllers\backend\RelatedProductController::class, 'create']);
@@ -230,12 +239,12 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
 
     //Route for Cart
     Route::get('checkout', [App\Http\Controllers\frontend\CartController::class, 'checkout']);
-    Route::post('checkout/apply_coupon',[App\Http\Controllers\frontend\CartController::class, 'couponApply']);
-    Route::post('checkout/razorpay',[App\Http\Controllers\frontend\CartController::class, 'create_razorpay_order']);
+    Route::post('checkout/apply_coupon', [App\Http\Controllers\frontend\CartController::class, 'couponApply']);
+    Route::post('checkout/razorpay', [App\Http\Controllers\frontend\CartController::class, 'create_razorpay_order']);
     Route::get('checkout/coupon/apply', [App\Http\Controllers\frontend\CartController::class, 'checkoutCouponGet']);
 
     //Store Order
-    Route::post('order/orderstore',[App\Http\Controllers\frontend\OrderController::class, 'index']);
+    Route::post('order/orderstore', [App\Http\Controllers\frontend\OrderController::class, 'index']);
 
     //Route for myaddress
     Route::get('my-address', [App\Http\Controllers\frontend\MyAccountController::class, 'myaddress']);
@@ -245,30 +254,29 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::patch('my-address/update/{id}', [App\Http\Controllers\frontend\MyAccountController::class, 'myAddressUpdate']);
 
     //Route for favrouite
-    Route::post('wishlist/add',[App\Http\Controllers\frontend\FavoriteController::class, 'store']);
-    Route::get('wishlist/delete/{id}',[App\Http\Controllers\frontend\FavoriteController::class, 'destroy']);
-    Route::get('wishlist',[App\Http\Controllers\frontend\FavoriteController::class, 'index']);
-    Route::post('wishlist/add/to/cart',[App\Http\Controllers\frontend\FavoriteController::class, 'addToCart']);
+    Route::post('wishlist/add', [App\Http\Controllers\frontend\FavoriteController::class, 'store']);
+    Route::get('wishlist/delete/{id}', [App\Http\Controllers\frontend\FavoriteController::class, 'destroy']);
+    Route::get('wishlist', [App\Http\Controllers\frontend\FavoriteController::class, 'index']);
+    Route::post('wishlist/add/to/cart', [App\Http\Controllers\frontend\FavoriteController::class, 'addToCart']);
 
     //Route get location
-    Route::post('checkout/get/location',[App\Http\Controllers\frontend\MyAccountController::class, 'getMyAddress']);
-
+    Route::post('checkout/get/location', [App\Http\Controllers\frontend\MyAccountController::class, 'getMyAddress']);
 });
 
 //Route for search bar 
-Route::post('search',[App\Http\Controllers\frontend\HomeController::class, 'search']);
-Route::get('search/result/{slug}',[App\Http\Controllers\frontend\HomeController::class, 'results']);
+Route::post('search', [App\Http\Controllers\frontend\HomeController::class, 'search']);
+Route::get('search/result/{slug}', [App\Http\Controllers\frontend\HomeController::class, 'results']);
 
 //Route for Add to Cart
 Route::get('cart', [App\Http\Controllers\frontend\CartController::class, 'list']);
 Route::get('remove/cart/item/{id}', [App\Http\Controllers\frontend\CartController::class, 'remove_item']);
 Route::get('add/to/cart', [App\Http\Controllers\frontend\CartController::class, 'add_to_cart']);
 Route::post('cart/items/update', [App\Http\Controllers\frontend\CartController::class, 'update_items']);
-Route::post('cart/item/update/product',[App\Http\Controllers\frontend\CartController::class, 'update_cart_items'])->name('cartItemUpdate');
+Route::post('cart/item/update/product', [App\Http\Controllers\frontend\CartController::class, 'update_cart_items'])->name('cartItemUpdate');
 
 //Route for brands page
-Route::get('brands',[App\Http\Controllers\frontend\BrandController::class, 'index']);
-Route::get('brands/{slug}',[App\Http\Controllers\frontend\BrandController::class, 'index_brands']);
+Route::get('brands', [App\Http\Controllers\frontend\BrandController::class, 'index']);
+Route::get('brands/{slug}', [App\Http\Controllers\frontend\BrandController::class, 'index_brands']);
 
 //Route for main home page
 Route::get('/', [App\Http\Controllers\frontend\HomeController::class, 'index']);
@@ -303,12 +311,13 @@ Route::get('blogs/{cat}/{slug}', [App\Http\Controllers\frontend\BlogController::
 
 Route::get('category/{slug}', [App\Http\Controllers\frontend\CategoryController::class, 'index']);
 Route::get('products/{product}', [App\Http\Controllers\frontend\ProductController::class, 'index']);
-Route::post('orders',[App\Http\Controllers\frontend\OrderController::class, 'index']);
+Route::post('orders', [App\Http\Controllers\frontend\OrderController::class, 'index']);
 Route::get('orders/thanks/{order_no}', [App\Http\Controllers\frontend\OrderController::class, 'thankyou_page']);
 Route::post('orders/return', [App\Http\Controllers\frontend\ReturnController::class, 'index']);
 
 Route::post('storecomment', [App\Http\Controllers\frontend\CommentController::class, 'store']);
 Route::post('newsletter', [App\Http\Controllers\frontend\NewsLetterController::class, 'store']);
+Route::post('contact', [App\Http\Controllers\frontend\ContactUsController::class, 'store']);
 Route::get('{slug}', [App\Http\Controllers\frontend\PageController::class, 'index']);
 Route::view('404', '404');
 /* Route for front end End */
