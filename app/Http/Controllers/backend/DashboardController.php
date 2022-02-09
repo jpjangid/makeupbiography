@@ -7,6 +7,8 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
+use Analytics;
+use Spatie\Analytics\Period;
 
 class DashboardController extends Controller
 {
@@ -35,6 +37,37 @@ class DashboardController extends Controller
         $currentData = $this->calculation($from, $to);
         $prevData = $this->calculation($prevFrom, $prevTo);
 
+        // Google Analytic Data
+        $period = Period::days($difference);
+        //Fetching most Visited Pages
+        $toppages = Analytics::fetchMostVisitedPages($period)->toArray();
+        //Fetching User Types
+        $usertypes = Analytics::fetchUserTypes($period)->toArray();
+
+        //Fetching Sources form which traffic generated
+        $metrics_traffic = 'ga:sessions';
+        $dimensions = [
+            'dimensions' => 'ga:source,ga:medium',
+        ];
+        $traffic = Analytics::performQuery($period, $metrics_traffic, $dimensions);
+
+        /*
+        For laravel-analytics quries visit
+        https://github.com/spatie/laravel-analytics
+        For more queries visit this site
+        https://developers.google.com/analytics/devguides/reporting/core/v3/common-queries
+        */
+
+        /*
+        This query returns information on revenue generated through the site for the given time span, sorted by sessions in descending order.
+        */
+        // $metrics_traffic = 'ga:sessions,ga:transactionRevenue,ga:transactions,ga:uniquePurchases';
+        // $dimensions = [
+        //     'dimensions' => 'ga:source,ga:medium',
+        //     'sort' => '-ga:sessions'
+        // ];
+        // $traffic = Analytics::performQuery($period, $metrics_traffic, $dimensions);
+
         //Current Date Calculation
         $data['current_total_revenue'] = $currentData['total_revenue'];
         $data['current_avg_revenue'] = $currentData['avg_revenue'];
@@ -51,6 +84,9 @@ class DashboardController extends Controller
         $data['top_sold_products'] = $currentData['top_sold_products'];
         $data['sold_items_no'] = $currentData['sold_items_no'];
         $data['no_of_orders'] = $currentData['no_of_orders'];
+        $data['toppages'] = array_slice($toppages, 0, 10); //Showing only top 10 pages
+        $data['usertypes'] = $usertypes;
+        $data['traffic'] = $traffic->rows;
 
         return response()->json($data);
     }

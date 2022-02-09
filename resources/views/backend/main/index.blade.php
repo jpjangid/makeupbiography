@@ -46,162 +46,6 @@
 								<!--end::Section-->
 							</div>
 							<!--end::Tab pane-->
-							<!--begin::Tab pane-->
-							<div class="tab-pane fade" id="kt_lists_widget_3_tab_pane_2">
-								<!--begin::Chart-->
-								<div id="kt_lists_widget_3_chart" style="height: 350px">
-								</div>
-								<!--end::Chart-->
-							</div>
-							<!--end::Tab pane-->
-							<!--begin::Tab pane-->
-							<div class="tab-pane fade" id="kt_lists_widget_3_tab_pane_3">
-								<!--begin::Items-->
-								<div class="mb-0">
-									<!--begin::Item-->
-									<div class="d-flex align-items-sm-center mb-7">
-										<!--begin::Symbol-->
-										<div class="symbol symbol-50px symbol-circle me-5">
-											<span class="symbol-label">
-												<img src="assets/media/svg/brand-logos/plurk.svg" class="h-50 align-self-center" alt="" />
-											</span>
-										</div>
-										<!--end::Symbol-->
-										<!--begin::Section-->
-										<div class="d-flex align-items-center flex-row-fluid flex-wrap">
-											<div class="flex-grow-1 me-2">
-												<a href="#" class="text-gray-800 text-hover-primary fs-6 fw-bolder">Top Authors</a>
-												<span class="text-muted fw-bold d-block fs-7">Mark, Rowling, Esther</span>
-											</div>
-											<span class="badge badge-light fw-bolder my-2">+82$</span>
-										</div>
-										<!--end::Section-->
-									</div>
-									<!--end::Item-->
-									<!--begin::Item-->
-									<div class="d-flex align-items-sm-center mb-7">
-										<!--begin::Symbol-->
-										<div class="symbol symbol-50px symbol-circle me-5">
-											<span class="symbol-label">
-												<img src="assets/media/svg/brand-logos/telegram.svg" class="h-50 align-self-center" alt="" />
-											</span>
-										</div>
-										<!--end::Symbol-->
-										<!--begin::Section-->
-										<div class="d-flex align-items-center flex-row-fluid flex-wrap">
-											<div class="flex-grow-1 me-2">
-												<a href="#" class="text-gray-800 text-hover-primary fs-6 fw-bolder">Popular Authors</a>
-												<span class="text-muted fw-bold d-block fs-7">Randy, Steve, Mike</span>
-											</div>
-											<span class="badge badge-light fw-bolder my-2">+280$</span>
-										</div>
-										<!--end::Section-->
-									</div>
-									<!--end::Item-->
-									<!--begin::Item-->
-									<div class="d-flex align-items-sm-center mb-7">
-										<!--begin::Symbol-->
-										<div class="symbol symbol-50px symbol-circle me-5">
-											<span class="symbol-label">
-												<img src="assets/media/svg/brand-logos/vimeo.svg" class="h-50 align-self-center" alt="" />
-											</span>
-										</div>
-										<!--end::Symbol-->
-										<!--begin::Section-->
-										<div class="d-flex align-items-center flex-row-fluid flex-wrap">
-											<div class="flex-grow-1 me-2">
-												<a href="#" class="text-gray-800 text-hover-primary fs-6 fw-bolder">New Users</a>
-												<span class="text-muted fw-bold d-block fs-7">John, Pat, Jimmy</span>
-											</div>
-											<span class="badge badge-light fw-bolder my-2">+4500$</span>
-										</div>
-										<!--end::Section-->
-									</div>
-									<!--end::Item-->
-									<!--begin::Item-->
-									<div class="d-flex align-items-sm-center mb-7">
-										<!--begin::Symbol-->
-										<div class="symbol symbol-50px symbol-circle me-5">
-											<span class="symbol-label">
-												<img src="assets/media/svg/brand-logos/treva.svg" class="h-50 align-self-center" alt="" />
-											</span>
-										</div>
-										<!--end::Symbol-->
-										<!--begin::Section-->
-										<div class="d-flex align-items-center flex-row-fluid flex-wrap">
-											<div class="flex-grow-1 me-2">
-												<a href="#" class="text-gray-800 text-hover-primary fs-6 fw-bolder">Premium Themes</a>
-												<span class="text-muted fw-bold d-block fs-7">Alex, Kate, Dave</span>
-											</div>
-											<span class="badge badge-light fw-bolder my-2">+1500$</span>
-										</div>
-										<!--end::Section-->
-									</div>
-									<!--end::Item-->
-									<!--begin::Item-->
-									<div class="d-flex align-items-sm-center mb-7">
-										<!--begin::Symbol-->
-										<div class="symbol symbol-50px symbol-circle me-5">
-											<span class="symbol-label">
-												<img src="assets/media/svg/brand-logos/bebo.svg" class="h-50 align-self-center" alt="" />
-											</span>
-										</div>
-										<!--end::Symbol-->
-										<!--begin::Section-->
-										<div class="d-flex align-items-center flex-row-fluid flex-wrap">
-											<div class="flex-grow-1 me-2">
-												<a href="#" class="text-gray-800 text-hover-primary fs-6 fw-bolder">Active Customers</a>
-												<span class="text-muted fw-bold d-block fs-7">Mark, Rowling, Esther</span>
-											</div>
-											<span class="badge badge-light fw-bolder my-2">+4500$</span>
-										</div>
-										<!--end::Section-->
-									</div>
-									<!--end::Item-->
-									<!--begin::Item-->
-									<div class="d-flex align-items-sm-center mb-7">
-										<!--begin::Symbol-->
-										<div class="symbol symbol-50px symbol-circle me-5">
-											<span class="symbol-label">
-												<img src="assets/media/svg/brand-logos/kickstarter.svg" class="h-50 align-self-center" alt="" />
-											</span>
-										</div>
-										<!--end::Symbol-->
-										<!--begin::Section-->
-										<div class="d-flex align-items-center flex-row-fluid flex-wrap">
-											<div class="flex-grow-1 me-2">
-												<a href="#" class="text-gray-800 text-hover-primary fs-6 fw-bolder">Bestseller Theme</a>
-												<span class="text-muted fw-bold d-block fs-7">Disco, Retro, Sports</span>
-											</div>
-											<span class="badge badge-light fw-bolder my-2">+4500$</span>
-										</div>
-										<!--end::Section-->
-									</div>
-									<!--end::Item-->
-									<!--begin::Item-->
-									<div class="d-flex align-items-sm-center">
-										<!--begin::Symbol-->
-										<div class="symbol symbol-50px symbol-circle me-5">
-											<span class="symbol-label">
-												<img src="assets/media/svg/brand-logos/fox-hub.svg" class="h-50 align-self-center" alt="" />
-											</span>
-										</div>
-										<!--end::Symbol-->
-										<!--begin::Section-->
-										<div class="d-flex align-items-center flex-row-fluid flex-wrap">
-											<div class="flex-grow-1 me-2">
-												<a href="#" class="text-gray-800 text-hover-primary fs-6 fw-bolder">Fox Broker App</a>
-												<span class="text-muted fw-bold d-block fs-7">Finance, Corporate, Apps</span>
-											</div>
-											<span class="badge badge-light fw-bolder my-2">+4500$</span>
-										</div>
-										<!--end::Section-->
-									</div>
-									<!--end::Item-->
-								</div>
-								<!--end::Items-->
-							</div>
-							<!--end::Tab pane-->
 						</div>
 						<!--end:Tab content-->
 					</div>
@@ -215,20 +59,6 @@
 						<h3 class="card-title align-items-start flex-column">
 							<span class="fw-boldest text-dark fs-2">Top Sold Products</span>
 						</h3>
-						<div class="card-toolbar">
-							<!--begin::Svg Icon | path: icons/duotone/Layout/Layout-4-blocks-2.svg-->
-							<span class="svg-icon svg-icon-2">
-								<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-									<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-										<rect x="5" y="5" width="5" height="5" rx="1" fill="#000000" />
-										<rect x="14" y="5" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-										<rect x="5" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-										<rect x="14" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-									</g>
-								</svg>
-							</span>
-							<!--end::Svg Icon-->
-						</div>
 					</div>
 					<!--end::Header-->
 					<!--begin::Body-->
@@ -239,101 +69,15 @@
 				<!--end::List Widget 4-->
 				<!--begin::Slider Widget 1-->
 				<div class="card mb-5 mb-xl-8">
+					<!--begin::Header-->
+					<div class="card-header align-items-center border-0 mt-5">
+						<h3 class="card-title align-items-start flex-column">
+							<span class="fw-boldest text-dark fs-2">Site Visit by Traffic Sources</span>
+						</h3>
+					</div>
+					<!--end::Header-->
 					<!--begin::Body-->
-					<div class="card-body pt-5">
-						<div id="kt_stats_widget_8_carousel" class="carousel carousel-custom carousel-stretch slide" data-bs-ride="carousel" data-bs-interval="8000">
-							<!--begin::Heading-->
-							<div class="d-flex flex-stack flex-wrap">
-								<span class="fs-4 text-gray-400 fw-boldest pe-2">Announcements</span>
-								<!--begin::Carousel Indicators-->
-								<ol class="p-0 m-0 carousel-indicators carousel-indicators-dots">
-									<li data-bs-target="#kt_stats_widget_8_carousel" data-bs-slide-to="0" class="ms-1 active">
-									</li>
-									<li data-bs-target="#kt_stats_widget_8_carousel" data-bs-slide-to="1" class="ms-1">
-									</li>
-									<li data-bs-target="#kt_stats_widget_8_carousel" data-bs-slide-to="2" class="ms-1">
-									</li>
-									<li data-bs-target="#kt_stats_widget_8_carousel" data-bs-slide-to="3" class="ms-1">
-									</li>
-								</ol>
-								<!--end::Carousel Indicators-->
-							</div>
-							<!--end::Heading-->
-							<!--begin::Carousel-->
-							<div class="carousel-inner pt-6">
-								<!--begin::Item-->
-								<div class="carousel-item active">
-									<div class="carousel-wrapper">
-										<div class="d-flex flex-column justify-content-between flex-grow-1">
-											<a href="" class="fs-2 text-gray-800 text-hover-primary fw-boldest">Rider Admin Launch Day</a>
-											<p class="text-gray-600 fs-6 fw-bold pt-4 mb-0">To start a blog, think of a topic about and first brainstorm ways to write details</p>
-										</div>
-										<!--begin::Info-->
-										<div class="d-flex flex-stack pt-8">
-											<span class="badge badge-light-primary fs-7 fw-boldest me-2">OCT 05, 10</span>
-											<a href="#" class="btn btn-light btn-sm btn-color-muted fs-7 fw-boldest px-5" data-bs-toggle="modal" data-bs-target="#kt_modal_create_account">Join</a>
-										</div>
-										<!--end::Info-->
-									</div>
-								</div>
-								<!--end::Item-->
-								<!--begin::Item-->
-								<div class="carousel-item">
-									<div class="carousel-wrapper">
-										<!--begin::Title-->
-										<div class="d-flex flex-column justify-content-between flex-grow-1">
-											<a href="" class="fs-2 text-gray-800 text-hover-primary fw-boldest">Rider Dashboard Launch</a>
-											<p class="text-gray-600 fs-6 fw-bold pt-4 mb-0">To start a blog, think of a topic about and first brainstorm ways to write details</p>
-										</div>
-										<!--end::Title-->
-										<!--begin::Info-->
-										<div class="d-flex flex-stack pt-8">
-											<span class="badge badge-light-primary fs-7 fw-boldest me-2">DEC 03, 20</span>
-											<a href="#" class="btn btn-light btn-sm btn-color-muted fs-7 fw-boldest px-5" data-bs-toggle="modal" data-bs-target="#kt_modal_create_account">Join</a>
-										</div>
-										<!--end::Info-->
-									</div>
-								</div>
-								<!--end::Item-->
-								<!--begin::Item-->
-								<div class="carousel-item">
-									<div class="carousel-wrapper">
-										<!--begin::Title-->
-										<div class="d-flex flex-column justify-content-between flex-grow-1">
-											<a href="" class="fs-2 text-gray-800 text-hover-primary fw-boldest">Reached 50,000 Sales</a>
-											<p class="text-gray-600 fs-6 fw-bold pt-4 mb-0">To start a blog, think of a topic about and first brainstorm ways to write details</p>
-										</div>
-										<!--end::Title-->
-										<!--begin::Info-->
-										<div class="d-flex flex-stack pt-8">
-											<span class="badge badge-light-primary fs-7 fw-boldest me-2">NOV 06, 23</span>
-											<a href="#" class="btn btn-light btn-sm btn-color-muted fs-7 fw-boldest px-5" data-bs-toggle="modal" data-bs-target="#kt_modal_create_account">Join</a>
-										</div>
-										<!--end::Info-->
-									</div>
-								</div>
-								<!--end::Item-->
-								<!--begin::Item-->
-								<div class="carousel-item">
-									<div class="carousel-wrapper">
-										<!--begin::Title-->
-										<div class="d-flex flex-column justify-content-between flex-grow-1">
-											<a href="" class="fs-2 text-gray-800 text-hover-primary fw-boldest">Reached 50,000 Sales</a>
-											<p class="text-gray-600 fs-6 fw-bold pt-4 mb-0">To start a blog, think of a topic about and first brainstorm ways to write details</p>
-										</div>
-										<!--end::Title-->
-										<!--begin::Info-->
-										<div class="d-flex flex-stack pt-8">
-											<span class="badge badge-light-primary fs-7 fw-boldest me-2">AUG 01, 13</span>
-											<a href="#" class="btn btn-light btn-sm btn-color-muted fs-7 fw-boldest px-5" data-bs-toggle="modal" data-bs-target="#kt_modal_create_account">Join</a>
-										</div>
-										<!--end::Info-->
-									</div>
-								</div>
-								<!--end::Item-->
-							</div>
-							<!--end::Carousel-->
-						</div>
+					<div class="card-body pt-5" id="traffic_sources">
 					</div>
 					<!--end::Body-->
 				</div>
@@ -425,563 +169,22 @@
 				<!--begin::Row-->
 				<div class="row g-xl-8">
 					<!--begin:::Col-->
-					<div class="col">
-						<!--begin::Table Widget 1-->
-						<div class="card card-xxl-stretch mb-5 mb-xl-3">
-							<!--begin::Header-->
-							<div class="card-header border-0 pt-5 pb-3">
-								<!--begin::Card title-->
-								<h3 class="card-title align-items-start flex-column">
-									<span class="card-label fw-boldest text-gray-800 fs-2">Teams Progress</span>
-									<span class="text-gray-400 fw-bold mt-2 fs-6">890,344 Sales</span>
-								</h3>
-								<!--end::Card title-->
-								<!--begin::Card toolbar-->
-								<div class="card-toolbar">
-									<!--begin::Search-->
-									<div class="position-relative pe-6 my-1">
-										<!--begin::Svg Icon | path: icons/duotone/General/Search.svg-->
-										<span class="svg-icon svg-icon-3 svg-icon-gray-500 position-absolute top-50 translate-middle ms-6">
-											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-													<rect x="0" y="0" width="24" height="24" />
-													<path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
-													<path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z" fill="#000000" fill-rule="nonzero" />
-												</g>
-											</svg>
-										</span>
-										<!--end::Svg Icon-->
-										<input type="text" class="w-150px form-control form-control-sm form-control-solid ps-10" name="search" value="" placeholder="Search" />
-									</div>
-									<!--end::Search-->
-									<div class="my-1">
-										<!--begin::Select-->
-										<select class="form-select form-select-sm form-select-solid fw-bolder w-125px" data-control="select2" data-placeholder="All Users" data-hide-search="true">
-											<option value="1" selected="selected">All Users</option>
-											<option value="2">Active users</option>
-											<option value="3">Pending users</option>
-										</select>
-										<!--end::Select-->
-									</div>
-								</div>
-								<!--end::Card toolbar-->
-							</div>
-							<!--end::Header-->
-							<!--begin::Body-->
-							<div class="card-body py-0">
-								<!--begin::Table-->
-								<div class="table-responsive">
-									<table class="table align-middle table-row-bordered table-row-dashed gy-5" id="kt_table_widget_1">
-										<!--begin::Table body-->
-										<tbody>
-											<!--begin::Table row-->
-											<tr class="text-start text-gray-400 fw-boldest fs-7 text-uppercase">
-												<th class="w-20px ps-0">
-													<div class="form-check form-check-sm form-check-custom form-check-solid me-5">
-														<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_table_widget_1 .form-check-input" value="1" />
-													</div>
-												</th>
-												<th class="min-w-200px px-0">Authors</th>
-												<th class="min-w-125px">Company</th>
-												<th class="min-w-125px">Progress</th>
-												<th class="text-end pe-2 min-w-70px">Action</th>
-											</tr>
-											<!--end::Table row-->
-											<!--begin::Table row-->
-											<tr>
-												<!--begin::Checkbox-->
-												<td class="p-0">
-													<div class="form-check form-check-sm form-check-custom form-check-solid">
-														<input class="form-check-input" type="checkbox" value="1" />
-													</div>
-												</td>
-												<!--end::Checkbox-->
-												<!--begin::Author=-->
-												<td class="p-0">
-													<div class="d-flex align-items-center">
-														<!--begin::Logo-->
-														<div class="symbol symbol-circle symbol-50px me-2">
-															<span class="symbol-label">
-																<img alt="" class="w-25px" src="assets/media/svg/brand-logos/aven.svg" />
-															</span>
-														</div>
-														<!--end::Logo-->
-														<div class="ps-3">
-															<a href="#" class="text-gray-800 fw-boldest fs-5 text-hover-primary mb-1">Brad Simmons</a>
-															<span class="text-gray-400 fw-bold d-block">HTML, JS, ReactJS</span>
-														</div>
-													</div>
-												</td>
-												<!--end::Author=-->
-												<!--begin::Company=-->
-												<td>
-													<span class="text-gray-800 fw-boldest fs-5 d-block">Intertico</span>
-													<span class="text-gray-400 fw-bold">Web, UI/UX Design</span>
-												</td>
-												<!--end::Company=-->
-												<!--begin::Progress=-->
-												<td>
-													<div class="d-flex flex-column w-100 me-2 mt-2">
-														<span class="text-gray-400 me-2 fw-boldest mb-2">65%</span>
-														<div class="progress bg-light-danger w-100 h-5px">
-															<div class="progress-bar bg-danger" role="progressbar" style="width: 65%">
-															</div>
-														</div>
-													</div>
-												</td>
-												<!--end::Company=-->
-												<!--begin::Action=-->
-												<td class="pe-0 text-end">
-													<a href="#" class="btn btn-light text-muted fw-boldest btn-sm px-5">View</a>
-												</td>
-												<!--end::Action=-->
-											</tr>
-											<!--end::Table row-->
-											<!--begin::Table row-->
-											<tr>
-												<!--begin::Checkbox-->
-												<td class="p-0">
-													<div class="form-check form-check-sm form-check-custom form-check-solid">
-														<input class="form-check-input" type="checkbox" value="1" />
-													</div>
-												</td>
-												<!--end::Checkbox-->
-												<!--begin::Author=-->
-												<td class="p-0">
-													<div class="d-flex align-items-center">
-														<!--begin::Logo-->
-														<div class="symbol symbol-circle symbol-50px me-2">
-															<span class="symbol-label">
-																<img alt="" class="w-25px" src="assets/media/svg/brand-logos/leaf.svg" />
-															</span>
-														</div>
-														<!--end::Logo-->
-														<div class="ps-3">
-															<a href="#" class="text-gray-800 fw-boldest fs-5 text-hover-primary mb-1">Jessie Clarcson</a>
-															<span class="text-gray-400 fw-bold d-block">C#, ASP.NET, MS SQL</span>
-														</div>
-													</div>
-												</td>
-												<!--end::Author=-->
-												<!--begin::Company=-->
-												<td>
-													<span class="text-gray-800 fw-boldest fs-5 d-block">Agoda</span>
-													<span class="text-gray-400 fw-bold">Houses &amp; Hotels</span>
-												</td>
-												<!--end::Company=-->
-												<!--begin::Progress=-->
-												<td>
-													<div class="d-flex flex-column w-100 me-2 mt-2">
-														<span class="text-gray-400 me-2 fw-boldest mb-2">85%</span>
-														<div class="progress bg-light-danger w-100 h-5px">
-															<div class="progress-bar bg-primary" role="progressbar" style="width: 85%">
-															</div>
-														</div>
-													</div>
-												</td>
-												<!--end::Company=-->
-												<!--begin::Action=-->
-												<td class="pe-0 text-end">
-													<a href="#" class="btn btn-light text-muted fw-boldest btn-sm px-5">View</a>
-												</td>
-												<!--end::Action=-->
-											</tr>
-											<!--end::Table row-->
-											<!--begin::Table row-->
-											<tr>
-												<!--begin::Checkbox-->
-												<td class="p-0">
-													<div class="form-check form-check-sm form-check-custom form-check-solid">
-														<input class="form-check-input" type="checkbox" value="1" />
-													</div>
-												</td>
-												<!--end::Checkbox-->
-												<!--begin::Author=-->
-												<td class="p-0">
-													<div class="d-flex align-items-center">
-														<!--begin::Logo-->
-														<div class="symbol symbol-circle symbol-50px me-2">
-															<span class="symbol-label">
-																<img alt="" class="w-25px" src="assets/media/svg/brand-logos/atica.svg" />
-															</span>
-														</div>
-														<!--end::Logo-->
-														<div class="ps-3">
-															<a href="#" class="text-gray-800 fw-boldest fs-5 text-hover-primary mb-1">Lebron Wayde</a>
-															<span class="text-gray-400 fw-bold d-block">PHP, Laravel, VueJS</span>
-														</div>
-													</div>
-												</td>
-												<!--end::Author=-->
-												<!--begin::Company=-->
-												<td>
-													<span class="text-gray-800 fw-boldest fs-5 d-block">RoadGee</span>
-													<span class="text-gray-400 fw-bold">Transportation</span>
-												</td>
-												<!--end::Company=-->
-												<!--begin::Progress=-->
-												<td>
-													<div class="d-flex flex-column w-100 me-2 mt-2">
-														<span class="text-gray-400 me-2 fw-boldest mb-2">40%</span>
-														<div class="progress bg-light-danger w-100 h-5px">
-															<div class="progress-bar bg-success" role="progressbar" style="width: 40%">
-															</div>
-														</div>
-													</div>
-												</td>
-												<!--end::Company=-->
-												<!--begin::Action=-->
-												<td class="pe-0 text-end">
-													<a href="#" class="btn btn-light text-muted fw-boldest btn-sm px-5">View</a>
-												</td>
-												<!--end::Action=-->
-											</tr>
-											<!--end::Table row-->
-											<!--begin::Table row-->
-											<tr>
-												<!--begin::Checkbox-->
-												<td class="p-0">
-													<div class="form-check form-check-sm form-check-custom form-check-solid">
-														<input class="form-check-input" type="checkbox" value="1" />
-													</div>
-												</td>
-												<!--end::Checkbox-->
-												<!--begin::Author=-->
-												<td class="p-0">
-													<div class="d-flex align-items-center">
-														<!--begin::Logo-->
-														<div class="symbol symbol-circle symbol-50px me-2">
-															<span class="symbol-label">
-																<img alt="" class="w-25px" src="assets/media/svg/brand-logos/volicity-9.svg" />
-															</span>
-														</div>
-														<!--end::Logo-->
-														<div class="ps-3">
-															<a href="#" class="text-gray-800 fw-boldest fs-5 text-hover-primary mb-1">Natali Trump</a>
-															<span class="text-gray-400 fw-bold d-block">Python, ReactJS</span>
-														</div>
-													</div>
-												</td>
-												<!--end::Author=-->
-												<!--begin::Company=-->
-												<td>
-													<span class="text-gray-800 fw-boldest fs-5 d-block">The Hill</span>
-													<span class="text-gray-400 fw-bold">Insurance</span>
-												</td>
-												<!--end::Company=-->
-												<!--begin::Progress=-->
-												<td>
-													<div class="d-flex flex-column w-100 me-2 mt-2">
-														<span class="text-gray-400 me-2 fw-boldest mb-2">71%</span>
-														<div class="progress bg-light-danger w-100 h-5px">
-															<div class="progress-bar bg-info" role="progressbar" style="width: 71%">
-															</div>
-														</div>
-													</div>
-												</td>
-												<!--end::Company=-->
-												<!--begin::Action=-->
-												<td class="pe-0 text-end">
-													<a href="#" class="btn btn-light text-muted fw-boldest btn-sm px-5">View</a>
-												</td>
-												<!--end::Action=-->
-											</tr>
-											<!--end::Table row-->
-											<!--begin::Table row-->
-											<tr>
-												<!--begin::Checkbox-->
-												<td class="p-0">
-													<div class="form-check form-check-sm form-check-custom form-check-solid">
-														<input class="form-check-input" type="checkbox" value="1" />
-													</div>
-												</td>
-												<!--end::Checkbox-->
-												<!--begin::Author=-->
-												<td class="p-0">
-													<div class="d-flex align-items-center">
-														<!--begin::Logo-->
-														<div class="symbol symbol-circle symbol-50px me-2">
-															<span class="symbol-label">
-																<img alt="" class="w-25px" src="assets/media/svg/brand-logos/aven.svg" />
-															</span>
-														</div>
-														<!--end::Logo-->
-														<div class="ps-3">
-															<a href="#" class="text-gray-800 fw-boldest fs-5 text-hover-primary mb-1">Brad Simmons</a>
-															<span class="text-gray-400 fw-bold d-block">HTML, JS, ReactJS</span>
-														</div>
-													</div>
-												</td>
-												<!--end::Author=-->
-												<!--begin::Company=-->
-												<td>
-													<span class="text-gray-800 fw-boldest fs-5 d-block">Intertico</span>
-													<span class="text-gray-400 fw-bold">Web, UI/UX Design</span>
-												</td>
-												<!--end::Company=-->
-												<!--begin::Progress=-->
-												<td>
-													<div class="d-flex flex-column w-100 me-2 mt-2">
-														<span class="text-gray-400 me-2 fw-boldest mb-2">65%</span>
-														<div class="progress bg-light-danger w-100 h-5px">
-															<div class="progress-bar bg-danger" role="progressbar" style="width: 65%">
-															</div>
-														</div>
-													</div>
-												</td>
-												<!--end::Company=-->
-												<!--begin::Action=-->
-												<td class="pe-0 text-end">
-													<a href="#" class="btn btn-light text-muted fw-boldest btn-sm px-5">View</a>
-												</td>
-												<!--end::Action=-->
-											</tr>
-											<!--end::Table row-->
-										</tbody>
-										<!--end::Table body-->
-									</table>
-								</div>
-								<!--end::Table-->
-							</div>
-							<!--end::Body-->
-						</div>
-						<!--end::Table Widget 1-->
-					</div>
-					<!--end:::Col-->
-				</div>
-				<!--end::Row-->
-				<!--begin::Row-->
-				<div class="row g-xl-8">
-					<!--begin:::Col-->
 					<div class="col-xl-6">
-						<!--begin::List Widget 1-->
+						<!--begin::List Widget 2-->
 						<div class="card card-xl-stretch mb-5 mb-xl-8">
 							<!--begin::Header-->
 							<div class="card-header align-items-center border-0 mt-5">
-								<!--begin::Heading-->
 								<h3 class="card-title align-items-start flex-column">
-									<span class="fw-boldest text-dark fs-2">My Competitors</span>
-									<span class="text-gray-400 mt-2 fw-bold fs-6">More than 400+ new members</span>
+									<span class="fw-boldest text-dark fs-2">Types of Users visits Site</span>
 								</h3>
-								<!--end::Heading-->
-								<!--begin::Toolbar-->
-								<div class="card-toolbar">
-									<!--begin::Menu-->
-									<button type="button" class="btn btn-sm btn-icon btn-icon-primary btn-active-light-primary me-n3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-flip="top-end">
-										<!--begin::Svg Icon | path: icons/duotone/Layout/Layout-4-blocks-2.svg-->
-										<span class="svg-icon svg-icon-2">
-											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-													<rect x="5" y="5" width="5" height="5" rx="1" fill="#000000" />
-													<rect x="14" y="5" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-													<rect x="5" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-													<rect x="14" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-												</g>
-											</svg>
-										</span>
-										<!--end::Svg Icon-->
-									</button>
-									<!--begin::Menu 1-->
-									<div class="menu menu-sub menu-sub-dropdown w-250px w-md-300px" data-kt-menu="true">
-										<!--begin::Header-->
-										<div class="px-7 py-5">
-											<div class="fs-5 text-dark fw-bolder">Filter Options</div>
-										</div>
-										<!--end::Header-->
-										<!--begin::Menu separator-->
-										<div class="separator border-gray-200">
-										</div>
-										<!--end::Menu separator-->
-										<!--begin::Form-->
-										<div class="px-7 py-5">
-											<!--begin::Input group-->
-											<div class="mb-10">
-												<!--begin::Label-->
-												<label class="form-label fw-bold">Status:</label>
-												<!--end::Label-->
-												<!--begin::Input-->
-												<div>
-													<select class="form-select form-select-solid" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true">
-														<option>
-														</option>
-														<option value="1">Approved</option>
-														<option value="2">Pending</option>
-														<option value="2">In Process</option>
-														<option value="2">Rejected</option>
-													</select>
-												</div>
-												<!--end::Input-->
-											</div>
-											<!--end::Input group-->
-											<!--begin::Input group-->
-											<div class="mb-10">
-												<!--begin::Label-->
-												<label class="form-label fw-bold">Member Type:</label>
-												<!--end::Label-->
-												<!--begin::Options-->
-												<div class="d-flex">
-													<!--begin::Options-->
-													<label class="form-check form-check-sm form-check-custom form-check-solid me-5">
-														<input class="form-check-input" type="checkbox" value="1" />
-														<span class="form-check-label">Author</span>
-													</label>
-													<!--end::Options-->
-													<!--begin::Options-->
-													<label class="form-check form-check-sm form-check-custom form-check-solid">
-														<input class="form-check-input" type="checkbox" value="2" checked="checked" />
-														<span class="form-check-label">Customer</span>
-													</label>
-													<!--end::Options-->
-												</div>
-												<!--end::Options-->
-											</div>
-											<!--end::Input group-->
-											<!--begin::Input group-->
-											<div class="mb-10">
-												<!--begin::Label-->
-												<label class="form-label fw-bold">Notifications:</label>
-												<!--end::Label-->
-												<!--begin::Switch-->
-												<div class="form-check form-switch form-switch-sm form-check-custom form-check-solid">
-													<input class="form-check-input" type="checkbox" value="" name="notifications" checked="checked" />
-													<label class="form-check-label">Enabled</label>
-												</div>
-												<!--end::Switch-->
-											</div>
-											<!--end::Input group-->
-											<!--begin::Actions-->
-											<div class="d-flex justify-content-end">
-												<button type="reset" class="btn btn-sm btn-white btn-active-light-primary me-2" data-kt-menu-dismiss="true">Reset</button>
-												<button type="submit" class="btn btn-sm btn-primary" data-kt-menu-dismiss="true">Apply</button>
-											</div>
-											<!--end::Actions-->
-										</div>
-										<!--end::Form-->
-									</div>
-									<!--end::Menu 1-->
-									<!--end::Menu-->
-								</div>
-								<!--end::Toolbar-->
 							</div>
 							<!--end::Header-->
 							<!--begin::Body-->
-							<div class="card-body pt-5">
-								<!--begin::Item-->
-								<div class="d-flex mb-6">
-									<!--begin::Symbol-->
-									<div class="symbol symbol-60px symbol-2by3 me-4">
-										<img src="assets/media/stock/600x400/img-17.jpg" class="mw-100" alt="" />
-									</div>
-									<!--end::Symbol-->
-									<!--begin::Section-->
-									<div class="d-flex align-items-center flex-wrap flex-grow-1 mt-n2 mt-lg-n1">
-										<!--begin::Title-->
-										<div class="d-flex flex-column flex-grow-1 my-lg-0 my-2 pe-3">
-											<a href="#" class="fs-5 text-gray-800 text-hover-primary fw-boldest">Cup &amp; Green</a>
-											<span class="text-gray-400 fw-bold fs-7 my-1">Study highway types</span>
-											<span class="text-gray-400 fw-bold fs-7">By:
-												<a href="#" class="text-primary fw-bold">CoreAd</a>
-											</span>
-										</div>
-										<!--end::Title-->
-										<!--begin::Info-->
-										<div class="text-end py-lg-0 py-2">
-											<span class="text-gray-800 fw-boldest fs-3">24,900</span>
-											<span class="text-gray-400 fs-7 fw-bold d-block">Sales</span>
-										</div>
-										<!--end::Info-->
-									</div>
-									<!--end::Section-->
-								</div>
-								<!--end::Item-->
-								<!--begin::Item-->
-								<div class="d-flex mb-6">
-									<!--begin::Symbol-->
-									<div class="symbol symbol-60px symbol-2by3 me-4">
-										<img src="assets/media/stock/600x400/img-10.jpg" class="mw-100" alt="" />
-									</div>
-									<!--end::Symbol-->
-									<!--begin::Section-->
-									<div class="d-flex align-items-center flex-wrap flex-grow-1 mt-n2 mt-lg-n1">
-										<!--begin::Title-->
-										<div class="d-flex flex-column flex-grow-1 my-lg-0 my-2 pe-3">
-											<a href="#" class="fs-5 text-gray-800 text-hover-primary fw-boldest">Yellow Hearts</a>
-											<span class="text-gray-400 fw-bold fs-7 my-1">Study highway types</span>
-											<span class="text-gray-400 fw-bold fs-7">By:
-												<a href="#" class="text-primary fw-bold">KeenThemes</a>
-											</span>
-										</div>
-										<!--end::Title-->
-										<!--begin::Info-->
-										<div class="text-end py-lg-0 py-2">
-											<span class="text-gray-800 fw-boldest fs-3">70,380</span>
-											<span class="text-gray-400 fs-7 fw-bold d-block">Sales</span>
-										</div>
-										<!--end::Info-->
-									</div>
-									<!--end::Section-->
-								</div>
-								<!--end::Item-->
-								<!--begin::Item-->
-								<div class="d-flex mb-6">
-									<!--begin::Symbol-->
-									<div class="symbol symbol-60px symbol-2by3 me-4">
-										<img src="assets/media/stock/600x400/img-1.jpg" class="mw-100" alt="" />
-									</div>
-									<!--end::Symbol-->
-									<!--begin::Section-->
-									<div class="d-flex align-items-center flex-wrap flex-grow-1 mt-n2 mt-lg-n1">
-										<!--begin::Title-->
-										<div class="d-flex flex-column flex-grow-1 my-lg-0 my-2 pe-3">
-											<a href="#" class="fs-5 text-gray-800 text-hover-primary fw-boldest">Nike &amp; Blue</a>
-											<span class="text-gray-400 fw-bold fs-7 my-1">Study highway types</span>
-											<span class="text-gray-400 fw-bold fs-7">By:
-												<a href="#" class="text-primary fw-bold">Invision Inc.</a>
-											</span>
-										</div>
-										<!--end::Title-->
-										<!--begin::Info-->
-										<div class="text-end py-lg-0 py-2">
-											<span class="text-gray-800 fw-boldest fs-3">7,200</span>
-											<span class="text-gray-400 fs-7 fw-bold d-block">Sales</span>
-										</div>
-										<!--end::Info-->
-									</div>
-									<!--end::Section-->
-								</div>
-								<!--end::Item-->
-								<!--begin::Item-->
-								<div class="d-flex mb-">
-									<!--begin::Symbol-->
-									<div class="symbol symbol-60px symbol-2by3 me-4">
-										<img src="assets/media/stock/600x400/img-9.jpg" class="mw-100" alt="" />
-									</div>
-									<!--end::Symbol-->
-									<!--begin::Section-->
-									<div class="d-flex align-items-center flex-wrap flex-grow-1 mt-n2 mt-lg-n1">
-										<!--begin::Title-->
-										<div class="d-flex flex-column flex-grow-1 my-lg-0 my-2 pe-3">
-											<a href="#" class="fs-5 text-gray-800 text-hover-primary fw-boldest">Red Boots</a>
-											<span class="text-gray-400 fw-bold fs-7 my-1">Study highway types</span>
-											<span class="text-gray-400 fw-bold fs-7">By:
-												<a href="#" class="text-primary fw-bold">Figma Studio</a>
-											</span>
-										</div>
-										<!--end::Title-->
-										<!--begin::Info-->
-										<div class="text-end py-lg-0 py-2">
-											<span class="text-gray-800 fw-boldest fs-3">36,450</span>
-											<span class="text-gray-400 fs-7 fw-bold d-block">Sales</span>
-										</div>
-										<!--end::Info-->
-									</div>
-									<!--end::Section-->
-								</div>
-								<!--end::Item-->
+							<div class="card-body pt-5" id="user_types">
 							</div>
 							<!--end::Body-->
 						</div>
-						<!--end::List Widget 1-->
+						<!--end::List Widget 2-->
 					</div>
 					<!--end:::Col-->
 					<!--begin:::Col-->
@@ -991,270 +194,17 @@
 							<!--begin::Header-->
 							<div class="card-header align-items-center border-0 mt-5">
 								<h3 class="card-title align-items-start flex-column">
-									<span class="fw-boldest text-dark fs-2">My Agents</span>
-									<span class="text-gray-400 mt-2 fw-bold fs-6">More than 400+ new members</span>
+									<span class="fw-boldest text-dark fs-2">Top Pages Visited</span>
+									<span class="text-gray-400 mt-2 fw-bold fs-6">Max 10 results</span>
 								</h3>
-								<div class="card-toolbar">
-									<!--begin::Menu-->
-									<button type="button" class="btn btn-sm btn-icon btn-icon-primary btn-active-light-primary me-n3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-flip="top-end">
-										<!--begin::Svg Icon | path: icons/duotone/Layout/Layout-4-blocks-2.svg-->
-										<span class="svg-icon svg-icon-2">
-											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-													<rect x="5" y="5" width="5" height="5" rx="1" fill="#000000" />
-													<rect x="14" y="5" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-													<rect x="5" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-													<rect x="14" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-												</g>
-											</svg>
-										</span>
-										<!--end::Svg Icon-->
-									</button>
-									<!--begin::Menu 2-->
-									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold w-200px" data-kt-menu="true">
-										<!--begin::Menu item-->
-										<div class="menu-item px-3">
-											<div class="menu-content fs-6 text-dark fw-bolder px-3 py-4">Quick Actions</div>
-										</div>
-										<!--end::Menu item-->
-										<!--begin::Menu separator-->
-										<div class="separator mb-3 opacity-75">
-										</div>
-										<!--end::Menu separator-->
-										<!--begin::Menu item-->
-										<div class="menu-item px-3">
-											<a href="#" class="menu-link px-3">New Ticket</a>
-										</div>
-										<!--end::Menu item-->
-										<!--begin::Menu item-->
-										<div class="menu-item px-3">
-											<a href="#" class="menu-link px-3">New Customer</a>
-										</div>
-										<!--end::Menu item-->
-										<!--begin::Menu item-->
-										<div class="menu-item px-3" data-kt-menu-trigger="hover" data-kt-menu-placement="right-start" data-kt-menu-flip="left-start, top">
-											<!--begin::Menu item-->
-											<a href="#" class="menu-link px-3">
-												<span class="menu-title">New Group</span>
-												<span class="menu-arrow">
-												</span>
-											</a>
-											<!--end::Menu item-->
-											<!--begin::Menu sub-->
-											<div class="menu-sub menu-sub-dropdown w-175px py-4">
-												<!--begin::Menu item-->
-												<div class="menu-item px-3">
-													<a href="#" class="menu-link px-3">Admin Group</a>
-												</div>
-												<!--end::Menu item-->
-												<!--begin::Menu item-->
-												<div class="menu-item px-3">
-													<a href="#" class="menu-link px-3">Staff Group</a>
-												</div>
-												<!--end::Menu item-->
-												<!--begin::Menu item-->
-												<div class="menu-item px-3">
-													<a href="#" class="menu-link px-3">Member Group</a>
-												</div>
-												<!--end::Menu item-->
-											</div>
-											<!--end::Menu sub-->
-										</div>
-										<!--end::Menu item-->
-										<!--begin::Menu item-->
-										<div class="menu-item px-3">
-											<a href="#" class="menu-link px-3">New Contact</a>
-										</div>
-										<!--end::Menu item-->
-										<!--begin::Menu separator-->
-										<div class="separator mt-3 opacity-75">
-										</div>
-										<!--end::Menu separator-->
-										<!--begin::Menu item-->
-										<div class="menu-item px-3">
-											<div class="menu-content px-3 py-3">
-												<a class="btn btn-primary btn-sm px-4" href="#">Generate Reports</a>
-											</div>
-										</div>
-										<!--end::Menu item-->
-									</div>
-									<!--end::Menu 2-->
-									<!--end::Menu-->
-								</div>
 							</div>
 							<!--end::Header-->
 							<!--begin::Body-->
-							<div class="card-body pt-5">
-								<!--begin::Item-->
-								<div class="d-flex flex-stack mb-7">
-									<!--begin::Section-->
-									<div class="d-flex align-items-center">
-										<!--begin::Symbol-->
-										<div class="symbol symbol-circle symbol-40px me-4">
-											<img src="assets/media/avatars/150-3.jpg" alt="" />
-										</div>
-										<!--end::Symbol-->
-										<!--begin::Title-->
-										<div class="ps-1">
-											<a href="#" class="fs-6 text-gray-800 text-hover-primary fw-boldest">Anne Clarc</a>
-											<div class="fs-7 text-gray-400 fw-bold mt-1">HTML, CSS, Laravel</div>
-										</div>
-										<!--end::Title-->
-									</div>
-									<!--end::Section-->
-									<!--begin::Label-->
-									<a href="#" class="btn btn-light btn-color-muted fw-boldest btn-sm px-5">Details</a>
-									<!--end::Label-->
-								</div>
-								<!--end::Item-->
-								<!--begin::Item-->
-								<div class="d-flex flex-stack mb-7">
-									<!--begin::Section-->
-									<div class="d-flex align-items-center">
-										<!--begin::Symbol-->
-										<div class="symbol symbol-circle symbol-40px me-4">
-											<img src="assets/media/avatars/150-2.jpg" alt="" />
-										</div>
-										<!--end::Symbol-->
-										<!--begin::Title-->
-										<div class="ps-1">
-											<a href="#" class="fs-6 text-gray-800 text-hover-primary fw-boldest">Brad Simmons</a>
-											<div class="fs-7 text-gray-400 fw-bold mt-1">HTML, JS, ReactJS</div>
-										</div>
-										<!--end::Title-->
-									</div>
-									<!--end::Section-->
-									<!--begin::Label-->
-									<a href="#" class="btn btn-light btn-color-muted fw-boldest btn-sm px-5">Details</a>
-									<!--end::Label-->
-								</div>
-								<!--end::Item-->
-								<!--begin::Item-->
-								<div class="d-flex flex-stack mb-7">
-									<!--begin::Section-->
-									<div class="d-flex align-items-center">
-										<!--begin::Symbol-->
-										<div class="symbol symbol-circle symbol-40px me-4">
-											<img src="assets/media/avatars/150-4.jpg" alt="" />
-										</div>
-										<!--end::Symbol-->
-										<!--begin::Title-->
-										<div class="ps-1">
-											<a href="#" class="fs-6 text-gray-800 text-hover-primary fw-boldest">Randy Trent</a>
-											<div class="fs-7 text-gray-400 fw-bold mt-1">C#, ASP.NET, MS SQL</div>
-										</div>
-										<!--end::Title-->
-									</div>
-									<!--end::Section-->
-									<!--begin::Label-->
-									<a href="#" class="btn btn-light btn-color-muted fw-boldest btn-sm px-5">Details</a>
-									<!--end::Label-->
-								</div>
-								<!--end::Item-->
-								<!--begin::Item-->
-								<div class="d-flex flex-stack mb-7">
-									<!--begin::Section-->
-									<div class="d-flex align-items-center">
-										<!--begin::Symbol-->
-										<div class="symbol symbol-circle symbol-40px me-4">
-											<img src="assets/media/avatars/150-5.jpg" alt="" />
-										</div>
-										<!--end::Symbol-->
-										<!--begin::Title-->
-										<div class="ps-1">
-											<a href="#" class="fs-6 text-gray-800 text-hover-primary fw-boldest">Ricky Hunt</a>
-											<div class="fs-7 text-gray-400 fw-bold mt-1">PHP, Laravel, VueJS</div>
-										</div>
-										<!--end::Title-->
-									</div>
-									<!--end::Section-->
-									<!--begin::Label-->
-									<a href="#" class="btn btn-light btn-color-muted fw-boldest btn-sm px-5">Details</a>
-									<!--end::Label-->
-								</div>
-								<!--end::Item-->
-								<!--begin::Item-->
-								<div class="d-flex flex-stack mb-">
-									<!--begin::Section-->
-									<div class="d-flex align-items-center">
-										<!--begin::Symbol-->
-										<div class="symbol symbol-circle symbol-40px me-4">
-											<img src="assets/media/avatars/150-6.jpg" alt="" />
-										</div>
-										<!--end::Symbol-->
-										<!--begin::Title-->
-										<div class="ps-1">
-											<a href="#" class="fs-6 text-gray-800 text-hover-primary fw-boldest">Jessie Clarcson</a>
-											<div class="fs-7 text-gray-400 fw-bold mt-1">ReactJS</div>
-										</div>
-										<!--end::Title-->
-									</div>
-									<!--end::Section-->
-									<!--begin::Label-->
-									<a href="#" class="btn btn-light btn-color-muted fw-boldest btn-sm px-5">Details</a>
-									<!--end::Label-->
-								</div>
-								<!--end::Item-->
+							<div class="card-body pt-5" id="top_pages">
 							</div>
 							<!--end::Body-->
 						</div>
 						<!--end::List Widget 2-->
-					</div>
-					<!--end:::Col-->
-				</div>
-				<!--end::Row-->
-				<!--begin::Row-->
-				<div class="row g-xl-8">
-					<!--begin:::Col-->
-					<div class="col">
-						<!--begin::Chart widget 2-->
-						<div class="card card-xl-stretch mb-5 mb-xl-8">
-							<!--begin::Body-->
-							<div class="card-body pb-0 px-0">
-								<!--begin::Header-->
-								<div class="d-flex flex-stack px-9">
-									<!--begin::Info-->
-									<div class="d-flex flex-column">
-										<h2 class="text-dark mb-1 fs-2 fw-boldest">Sales Summary</h2>
-										<span class="text-gray-400 fw-bold fs-6">27 New Deals</span>
-									</div>
-									<!--end::Info-->
-									<!--begin::Tabs-->
-									<ul class="nav nav-pills nav-line-pills border rounded p-1">
-										<li class="nav-item me-2">
-											<a class="nav-link btn btn-active-light btn-active-color-gray-700 btn-color-gray-400 py-2 px-5 fs-6 fw-bold active" data-bs-toggle="tab" id="kt_charts_widget_3_tab_1" data-day="today">Day</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link btn btn-active-light btn-active-color-gray-700 btn-color-gray-400 py-2 px-5 fs-6 fw-bold" data-bs-toggle="tab" id="kt_charts_widget_3_tab_2" data-day="month">Month</a>
-										</li>
-									</ul>
-									<!--end::Tabs-->
-								</div>
-								<!--end::Header-->
-								<!--begin::Tab content-->
-								<div class="tab-content pt-8">
-									<!--begin::Tab pane-->
-									<div class="tab-pane fade active show" id="kt_charts_widget_3_tab_pane_1">
-										<!--begin::Chart-->
-										<div id="kt_charts_widget_3_chart_1" style="height: 350px">
-										</div>
-										<!--end::Chart-->
-									</div>
-									<!--end::Tab pane-->
-									<!--begin::Tab pane-->
-									<div class="tab-pane fade" id="kt_charts_widget_3_tab_pane_2">
-										<!--begin::Chart-->
-										<div id="kt_charts_widget_3_chart_2" style="height: 350px">
-										</div>
-										<!--end::Chart-->
-									</div>
-									<!--end::Tab pane-->
-								</div>
-								<!--end::Tab content-->
-							</div>
-							<!--end::Body-->
-						</div>
-						<!--end::Chart widget 2-->
 					</div>
 					<!--end:::Col-->
 				</div>
@@ -3034,31 +1984,49 @@
 				$('#top_products').empty();
 				var top_sale = '';
 				var top_products = '';
+				var sources = '';
+				var user_types = '';
+				var top_pages = '';
 
-				$.each(data['orders_to_show'], function( index, value ) {
+				$.each(data['orders_to_show'], function(index, value) {
 					top_sale += `
 						<div class="d-flex align-items-center mb-7">
 							<!--begin::Avatar-->
 							<div class="symbol symbol-40px symbol-circle me-4">
-								<span class="symbol-label bg-light-primary text-primary fw-boldest">`+value.first_letter+`</span>
+								<span class="symbol-label bg-light-primary text-primary fw-boldest">` + value.first_letter + `</span>
 							</div>
 							<!--end::Avatar-->
 							<!--begin::List content-->
 							<div class="d-flex flex-column min-w-150px me-4">
-								<a href="#" class="fw-boldest text-gray-800 text-hover-primary fs-4">`+value.user+`</a>
-								<div class="fw-bold fs-6 text-gray-400">`+value.order_no+`</div>
+								<a href="#" class="fw-boldest text-gray-800 text-hover-primary fs-4">` + value.user + `</a>
+								<div class="fw-bold fs-6 text-gray-400">` + value.order_no + `</div>
 							</div>
 							<!--end::List content-->
 							<!--begin::Price-->
-							<div class="ms-auto rounded-pill bg-light fw-bolder text-gray-600 py-1 px-3">&#8377;`+value.amount+`</div>
+							<div class="ms-auto rounded-pill bg-light fw-bolder text-gray-600 py-1 px-3">&#8377;` + value.amount + `</div>
 							<!--end::Price-->
 						</div>
 					`;
 				});
 
-				$.each(data['top_sold_products'], function( index, value ) {
+				$.each(data['traffic'], function(index, value) {
+					sources += `
+						<div class="d-flex flex-stack mb-7">
+							<div class="d-flex align-items-center">
+								<div class="ps-1">
+									<div href="#" class="fs-6 text-gray-800 text-hover-primary fw-boldest">` + value[0] + `</div>
+									<div class="fs-7 text-gray-400 fw-bold mt-1">` + value[1] + `</div>
+								</div>
+							</div>
+							<button class="btn btn-light btn-color-muted fw-boldest btn-sm px-5">` + value[2] + `</button>
+						</div>
+					`;
+				});
+
+
+				$.each(data['top_sold_products'], function(index, value) {
 					var url = "{{ url('') }}";
-					var image = url+'/storage/products/variants/'+value.image;
+					var image = url + '/storage/products/variants/' + value.image;
 					top_products += `
 						<!--begin::Item-->
 						<div class="d-flex flex-stack item-border-hover px-3 py-2 ms-n4 mb-3">
@@ -3069,7 +2037,7 @@
 									<span class="symbol-label bg-light-primary">
 										<!--begin::Svg Icon | path: icons/duotone/Clothes/Crown.svg-->
 										<span class="svg-icon svg-icon-1 svg-icon-primary">
-											<img src="`+image+`" alt="`+value.image+`" style="height: 4rem;border-radius: 10%;">
+											<img src="` + image + `" alt="` + value.image + `" style="height: 4rem;border-radius: 10%;">
 										</span>
 										<!--end::Svg Icon-->
 									</span>
@@ -3077,32 +2045,67 @@
 								<!--end::Symbol-->
 								<!--begin::Title-->
 								<div class="ps-1 mb-1">
-									<a href="#" class="fs-5 text-gray-800 text-hover-primary fw-boldest">`+value.name+`</a>
-									<div class="text-gray-400 fw-bold">`+value.brand+`</div>
+									<a href="#" class="fs-5 text-gray-800 text-hover-primary fw-boldest">` + value.name + `</a>
+									<div class="text-gray-400 fw-bold">` + value.brand + `</div>
 								</div>
 								<!--end::Title-->
 							</div>
 							<!--end::Section-->
 							<!--begin::Label-->
-							<span class="badge badge-light rounded-pill fs-7 fw-boldest">`+value.qty+`</span>
+							<span class="badge badge-light rounded-pill fs-7 fw-boldest">` + value.qty + `</span>
 							<!--end::Label-->
 						</div>
 						<!--end::Item-->
 					`;
 				});
 
+				$.each(data['toppages'], function(index, value) {
+					var url = value['url'];
+					var str = value['url'].length;
+					if (str > 20) {
+						url = url.slice(0, 17) + '...';
+					}
+					top_pages += `
+						<div class="d-flex flex-stack mb-7">
+							<div class="d-flex align-items-center">
+								<div class="ps-1">
+									<div href="#" class="fs-6 text-gray-800 text-hover-primary fw-boldest">` + value['pageTitle'] + `</div>
+									<div class="fs-7 text-gray-400 fw-bold mt-1">` + url + `</div>
+								</div>
+							</div>
+							<button class="btn btn-light btn-color-muted fw-boldest btn-sm px-5">` + value['pageViews'] + `</button>
+						</div>
+					`;
+				});
+
+				$.each(data['usertypes'], function(index, value) {
+					user_types += `
+						<div class="d-flex flex-stack mb-7">
+							<div class="d-flex align-items-center">
+								<div class="ps-1">
+									<div href="#" class="fs-6 text-gray-800 text-hover-primary fw-boldest">` + value['type'] + `</div>
+								</div>
+							</div>
+							<button class="btn btn-light btn-color-muted fw-boldest btn-sm px-5">` + value['sessions'] + `</button>
+						</div>
+					`;
+				});
+
 				$('#top_sale').html(top_sale);
 				$('#top_products').html(top_products);
+				$('#traffic_sources').html(sources);
+				$('#top_pages').html(top_pages);
+				$('#user_types').html(user_types);
 
-				$('#current_total_returns').html(`Current: `+data['current_total_return_qty']);
-				$('#current_average_revenue').html(`Current: `+data['current_avg_revenue']);
-				$('#current_new_users').html(`Current: `+data['current_new_users']);
-				$('#current_total_revenue').html(`Current: `+data['current_total_revenue']);
-				
-				$('#prev_total_returns').html(`Previous: `+data['prev_total_return_qty']);
-				$('#prev_average_revenue').html(`Previous: `+data['prev_avg_revenue']);
-				$('#prev_new_users').html(`Previous: `+data['prev_new_users']);
-				$('#prev_total_revenue').html(`Previous: `+data['prev_total_revenue']);
+				$('#current_total_returns').html(`Current: ` + data['current_total_return_qty']);
+				$('#current_average_revenue').html(`Current: ` + data['current_avg_revenue']);
+				$('#current_new_users').html(`Current: ` + data['current_new_users']);
+				$('#current_total_revenue').html(`Current: ` + data['current_total_revenue']);
+
+				$('#prev_total_returns').html(`Previous: ` + data['prev_total_return_qty']);
+				$('#prev_average_revenue').html(`Previous: ` + data['prev_avg_revenue']);
+				$('#prev_new_users').html(`Previous: ` + data['prev_new_users']);
+				$('#prev_total_revenue').html(`Previous: ` + data['prev_total_revenue']);
 			}
 		});
 	}
