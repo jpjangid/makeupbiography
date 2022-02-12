@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Analytics;
+use App\Models\Cart;
 use Spatie\Analytics\Period;
 
 class DashboardController extends Controller
@@ -36,6 +37,9 @@ class DashboardController extends Controller
 
         $currentData = $this->calculation($from, $to);
         $prevData = $this->calculation($prevFrom, $prevTo);
+
+        //Abandoned Cart
+        $abandoned_cart = Cart::with('product', 'user')->where([['created_at', '>=', $from], ['created_at', '<=', $to]])->orderby('quantity', 'desc')->get()->toArray();
 
         // Google Analytic Data
         $period = Period::days($difference);
@@ -69,24 +73,25 @@ class DashboardController extends Controller
         // $traffic = Analytics::performQuery($period, $metrics_traffic, $dimensions);
 
         //Current Date Calculation
-        $data['current_total_revenue'] = $currentData['total_revenue'];
-        $data['current_avg_revenue'] = $currentData['avg_revenue'];
-        $data['current_new_users']  = $currentData['new_users'];
-        $data['current_total_return_qty'] = $currentData['total_return_qty'];
+        $data['current_total_revenue'] = $currentData['total_revenue']; // Current Total Revenue
+        $data['current_avg_revenue'] = $currentData['avg_revenue']; // Current Average Revenue
+        $data['current_new_users']  = $currentData['new_users']; // Current New Users
+        $data['current_total_return_qty'] = $currentData['total_return_qty']; // Current Total Return Qty
 
         //Previous Date Calculation
-        $data['prev_total_revenue'] = $prevData['total_revenue'];
-        $data['prev_avg_revenue'] = $prevData['avg_revenue'];
-        $data['prev_new_users']  = $prevData['new_users'];
-        $data['prev_total_return_qty'] = $prevData['total_return_qty'];
+        $data['prev_total_revenue'] = $prevData['total_revenue']; // Previous Total Revenue
+        $data['prev_avg_revenue'] = $prevData['avg_revenue']; // Previous Average Revenue
+        $data['prev_new_users']  = $prevData['new_users']; // Previous New Users
+        $data['prev_total_return_qty'] = $prevData['total_return_qty']; // Previous Total Return
 
-        $data['orders_to_show'] = $currentData['orders_to_show'];
-        $data['top_sold_products'] = $currentData['top_sold_products'];
-        $data['sold_items_no'] = $currentData['sold_items_no'];
-        $data['no_of_orders'] = $currentData['no_of_orders'];
+        $data['orders_to_show'] = array_slice($currentData['orders_to_show'], 0, 10); // Showing only top 10 Orders
+        $data['top_sold_products'] = array_slice($currentData['top_sold_products']->toArray(), 0, 10); // Showing only top 10 Sold Products
+        $data['sold_items_no'] = $currentData['sold_items_no']; // Total Sold Items No.
+        $data['no_of_orders'] = $currentData['no_of_orders']; // Total No. of Orders
         $data['toppages'] = array_slice($toppages, 0, 10); //Showing only top 10 pages
-        $data['usertypes'] = $usertypes;
-        $data['traffic'] = $traffic->rows;
+        $data['usertypes'] = $usertypes; //User Types from GA
+        $data['traffic'] = $traffic->rows; //Traffic from GA
+        $data['carts'] = array_slice($abandoned_cart, 0, 10); //Showing only top 10 pages
 
         return response()->json($data);
     }

@@ -44,7 +44,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-tools mt-4">
-                            <a href="{{ url('admin/brands/create') }}" class="btn btn-light-primary">
+                            <a href="{{ asset('storage/sampledata.csv') }}" class="btn btn-light-primary" download>
                                 Download Sample
                             </a>
                         </div>
