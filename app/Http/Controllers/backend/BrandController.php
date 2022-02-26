@@ -34,7 +34,7 @@ class BrandController extends Controller
                 ->addColumn('active', function ($row) {
                     $checked = $row['status'] == '1' ? 'checked' : '';
                     $active  = '<div class="form-check form-switch form-check-custom form-check-solid">
-                                        <input type="hidden" value="' . $row['id'] . '" class="category_id">
+                                        <input type="hidden" value="' . $row['id'] . '" class="brand_id">
                                         <input type="checkbox" class="form-check-input js-switch  h-20px w-30px" id="customSwitch1" name="status" value="' . $row['status'] . '" ' . $checked . '>
                                     </div>';
 

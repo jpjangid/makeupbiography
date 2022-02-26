@@ -16,10 +16,10 @@ class CategoryController extends Controller
         $main_category = Category::where('slug', $slug)->with('parent.parent')->first();
         $parent_id = $this->findParent($main_category->id);
         $sub_categories = Category::where('parent_id', $parent_id)->with(['subcategory' => function ($q) {
-            $q->orderBy('name','asc');
-        }])->orderBy('name','asc')->get();
-        $categories = DB::table('categories')->where('parent_id', $main_category->id)->orderBy('name','asc')->get();
-        $brands = DB::table('brands')->select('id', 'name')->where(['status' => 1, 'flag' =>  0])->orderBy('name','asc')->get();
+            $q->orderBy('name', 'asc');
+        }])->orderBy('name', 'asc')->get();
+        $categories = DB::table('categories')->where('parent_id', $main_category->id)->orderBy('name', 'asc')->get();
+        $brands = DB::table('brands')->select('id', 'name')->where(['status' => 1, 'flag' =>  0])->orderBy('name', 'asc')->get();
 
         $product_category = array();
         $min_price_filter = 0;
@@ -81,7 +81,7 @@ class CategoryController extends Controller
             }
         }
         //filter sorting end
-        
+
         $products1 = DB::table('products')->select('id')->whereIn('parent_id', $product_category)->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE']);
 
 
@@ -120,38 +120,38 @@ class CategoryController extends Controller
         $product_medias = array();
         foreach ($products as $pro) {
             array_push($product_details, DB::table('products')->where('id', $pro->id)->first());
-            array_push($product_medias, DB::table('product_media')->where('product_id', $pro->id)->where(['flag' => 0, 'media_type' => 'image'])->orderBy('sequence','asc')->first());
+            array_push($product_medias, DB::table('product_media')->where('product_id', $pro->id)->where(['flag' => 0, 'media_type' => 'image'])->orderBy('sequence', 'asc')->first());
         }
         $product_details = collect($product_details);
         $product_medias = collect($product_medias);
         $last_page = $products->lastPage();
         $current_page = $products->currentPage();
         $no_of_pages = array();
-        for($i = $current_page; $i <= $current_page+3; $i++){
-            if($i <= $last_page){
+        for ($i = $current_page; $i <= $current_page + 3; $i++) {
+            if ($i <= $last_page) {
                 array_push($no_of_pages, $i);
             }
         }
-        if(count($no_of_pages) < 4){
-            if(isset($no_of_pages[0]) && $last_page == $no_of_pages[0]){
-                for($i = 1; $i <= 3; $i++){
+        if (count($no_of_pages) < 4) {
+            if (isset($no_of_pages[0]) && $last_page == $no_of_pages[0]) {
+                for ($i = 1; $i <= 3; $i++) {
                     $new = $no_of_pages[0] - $i;
-                    if($new > 0){
+                    if ($new > 0) {
                         array_push($no_of_pages, $new);
                     }
                 }
             }
-            if(isset($no_of_pages[1]) && $last_page == $no_of_pages[1]){
-                for($i = 1; $i <= 2; $i++){
+            if (isset($no_of_pages[1]) && $last_page == $no_of_pages[1]) {
+                for ($i = 1; $i <= 2; $i++) {
                     $new = $no_of_pages[0] - $i;
-                    if($new > 0){
+                    if ($new > 0) {
                         array_push($no_of_pages, $new);
                     }
                 }
             }
-            if(isset($no_of_pages[2]) && $last_page == $no_of_pages[2]){
+            if (isset($no_of_pages[2]) && $last_page == $no_of_pages[2]) {
                 $new = $no_of_pages[0] - 1;
-                if($new > 0){
+                if ($new > 0) {
                     array_push($no_of_pages, $new);
                 }
             }
@@ -159,21 +159,21 @@ class CategoryController extends Controller
         sort($no_of_pages);
 
         $prev = 'true';
-        if($products->currentPage() == 1){
+        if ($products->currentPage() == 1) {
             $prev = 'false';
         }
 
         $next = 'true';
-        if($products->lastPage() == $products->currentPage()){
+        if ($products->lastPage() == $products->currentPage()) {
             $next = 'false';
         }
 
-        return view('frontend.product.category', compact('main_category', 'slug', 'sub_categories', 'categories', 'brands', 'products', 'product_medias', 'product_details', 'filter_old', 'filter_old_price', 'max_price_filter', 'min_price_filter', 'filter_sorting', 'filter_brands', 'min_price_old', 'max_price_old','no_of_pages','next','prev'));
+        return view('frontend.product.category', compact('main_category', 'slug', 'sub_categories', 'categories', 'brands', 'products', 'product_medias', 'product_details', 'filter_old', 'filter_old_price', 'max_price_filter', 'min_price_filter', 'filter_sorting', 'filter_brands', 'min_price_old', 'max_price_old', 'no_of_pages', 'next', 'prev'));
     }
 
     static function findParent($id)
     {
-        $cat = DB::table('categories')->select('parent_id','id')->where('id', $id)->first();
+        $cat = DB::table('categories')->select('parent_id', 'id')->where('id', $id)->first();
         if ($cat->parent_id != null) {
             $p = self::findParent($cat->parent_id);
             return $p;
@@ -185,7 +185,7 @@ class CategoryController extends Controller
     //for shop page
     public function shop(Request $request, $tag)
     {
-        if($tag == 'all'){
+        if ($tag == 'all') {
             $tag = NULL;
         }
         $from = 0;
@@ -283,7 +283,7 @@ class CategoryController extends Controller
         $product_medias = array();
         foreach ($products as $pro) {
             array_push($product_details, DB::table('products')->where('id', $pro->id)->first());
-            array_push($product_medias, DB::table('product_media')->where('product_id', $pro->id)->where(['flag' => 0, 'media_type' => 'image'])->orderBy('sequence','asc')->first());
+            array_push($product_medias, DB::table('product_media')->where('product_id', $pro->id)->where(['flag' => 0, 'media_type' => 'image'])->orderBy('sequence', 'asc')->first());
         }
         $product_details = collect($product_details);
         $product_medias = collect($product_medias);
@@ -291,31 +291,31 @@ class CategoryController extends Controller
         $last_page = $products->lastPage();
         $current_page = $products->currentPage();
         $no_of_pages = array();
-        for($i = $current_page; $i <= $current_page+3; $i++){
-            if($i <= $last_page){
+        for ($i = $current_page; $i <= $current_page + 3; $i++) {
+            if ($i <= $last_page) {
                 array_push($no_of_pages, $i);
             }
         }
-        if(count($no_of_pages) < 4){
-            if(isset($no_of_pages[0]) && $last_page == $no_of_pages[0]){
-                for($i = 1; $i <= 3; $i++){
+        if (count($no_of_pages) < 4) {
+            if (isset($no_of_pages[0]) && $last_page == $no_of_pages[0]) {
+                for ($i = 1; $i <= 3; $i++) {
                     $new = $no_of_pages[0] - $i;
-                    if($new > 0){
+                    if ($new > 0) {
                         array_push($no_of_pages, $new);
                     }
                 }
             }
-            if(isset($no_of_pages[1]) && $last_page == $no_of_pages[1]){
-                for($i = 1; $i <= 2; $i++){
+            if (isset($no_of_pages[1]) && $last_page == $no_of_pages[1]) {
+                for ($i = 1; $i <= 2; $i++) {
                     $new = $no_of_pages[0] - $i;
-                    if($new > 0){
+                    if ($new > 0) {
                         array_push($no_of_pages, $new);
                     }
                 }
             }
-            if(isset($no_of_pages[2]) && $last_page == $no_of_pages[2]){
+            if (isset($no_of_pages[2]) && $last_page == $no_of_pages[2]) {
                 $new = $no_of_pages[0] - 1;
-                if($new > 0){
+                if ($new > 0) {
                     array_push($no_of_pages, $new);
                 }
             }
@@ -323,18 +323,18 @@ class CategoryController extends Controller
         sort($no_of_pages);
 
         $prev = 'true';
-        if($products->currentPage() == 1){
+        if ($products->currentPage() == 1) {
             $prev = 'false';
         }
 
         $next = 'true';
-        if($products->lastPage() == $products->currentPage()){
+        if ($products->lastPage() == $products->currentPage()) {
             $next = 'false';
         }
-        if($tag == Null){
+        if ($tag == Null) {
             $tag = 'all';
         }
 
-        return view('frontend.product.shop', compact('sub_categories', 'brands', 'products', 'product_medias', 'product_details', 'filter_old', 'filter_old_price', 'max_price_filter', 'min_price_filter', 'filter_sorting', 'filter_brands', 'min_price_old', 'max_price_old', 'total_counts', 'from', 'to','no_of_pages','prev','next','tag'));
+        return view('frontend.product.shop', compact('sub_categories', 'brands', 'products', 'product_medias', 'product_details', 'filter_old', 'filter_old_price', 'max_price_filter', 'min_price_filter', 'filter_sorting', 'filter_brands', 'min_price_old', 'max_price_old', 'total_counts', 'from', 'to', 'no_of_pages', 'prev', 'next', 'tag'));
     }
 }
