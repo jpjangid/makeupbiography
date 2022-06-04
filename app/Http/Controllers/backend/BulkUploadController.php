@@ -213,7 +213,7 @@ class BulkUploadController extends Controller
     public function imageupload(Request $request)
     {
         // $brands = array('KAY BEAUTY');
-        $brands = Brand::select('name')->where('name', 'FACES')->get()->toArray();
+        $brands = Brand::select('name')->where('name', 'lakme')->get()->toArray();
         $brands = array_column($brands, 'name');
         $products = DB::table('products')->select('sku', 'brand_name')->whereIn('brand_name', $brands)->get();
         // dd($products);
