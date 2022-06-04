@@ -17,7 +17,7 @@ class ProductController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $allproducts = DB::table('products')->select('id','item_shade_name','slug','status','ecom')->where(['ecom' => 'ONLINE', 'status' => 1,'flag' => 0])->get();
+            $allproducts = DB::table('products')->select('id', 'item_shade_name', 'slug', 'status', 'ecom')->where(['ecom' => 'ONLINE', 'status' => 1, 'flag' => 0])->get();
 
             $products = new Collection;
             foreach ($allproducts as $product) {

@@ -192,7 +192,7 @@
 																															<div class="elementor-widget-container">
 																																<div class="c-ip-heading c-ip-heading--default c-ip-heading--left c-ip-heading--bullet-hide">
 																																	<span class="c-ip-heading__inner">
-																																		081978 94448<br>
+																																		+91 81978 94448<br>
 
 																																	</span>
 																																</div>
@@ -215,7 +215,8 @@
 																															<div class="elementor-widget-container">
 																																<div class="c-ip-heading c-ip-heading--default c-ip-heading--left c-ip-heading--bullet-hide">
 																																	<span class="c-ip-heading__inner">
-																																		Sri Complex, #45, Sajjan Rao Cir,Vishweshwarapura,
+																																		#45, Sri Complex, Sajjan Rao Circle
+																																		Vishweshwarapura,
 																																		<br>
 																																		Bengaluru,<br>
 																																		Karnataka 560004
@@ -245,7 +246,7 @@
 																														<div class="elementor-element elementor-element-12e7c1e elementor-widget elementor-widget-ideapark-heading" data-id="12e7c1e" data-element_type="widget" data-widget_type="ideapark-heading.default">
 																															<div class="elementor-widget-container">
 																																<div class="c-ip-heading c-ip-heading--default c-ip-heading--left c-ip-heading--bullet-hide">
-																																	<span class="c-ip-heading__inner"><a href="mailto:makeupbiography@gmail.com">makeupbiography@gmail.com</a></span>
+																																	<span class="c-ip-heading__inner"><a href="mailto:Info@makeupbiography.com">Info@makeupbiography.com</a></span>
 																																</div>
 																															</div>
 																														</div>

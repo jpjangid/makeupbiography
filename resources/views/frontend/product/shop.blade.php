@@ -207,6 +207,7 @@
 							@foreach($products as $key => $product)
 							@php
 							$media = $product_medias->where('product_id',$product->id)->first();
+
 							@endphp
 
 							<div class="c-product-grid__item c-product-grid__item--3-per-row c-product-grid__item--normal c-product-grid__item--hover product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple">
@@ -259,17 +260,17 @@
 				<nav class="woocommerce-pagination">
 					<ul class='page-numbers'>
 						<li>
-							<a class="prev page-numbers" href="{{ url('shop/'.$tag.'?page=1') }}" onclick="return <?php echo $prev; ?>;">
+							<a class="prev page-numbers" href="{{ url('shop/'.$tag.'?page=1') }}{{ !empty($cutsom_url) ? '&'.$cutsom_url : '' }}" onclick="return <?php echo $prev; ?>;">
 								<i class="ip-menu-left page-numbers__prev-ico"></i>
 							</a>
 						</li>
 						@foreach($no_of_pages as $page)
 						<li>
-							<a class="page-numbers" href="{{ url('shop/'.$tag.'?page='.$page) }}">{{ $page }}</a>
+							<a class="page-numbers" href="{{ url('shop/'.$tag.'?page='.$page) }}{{ !empty($cutsom_url) ? '&'.$cutsom_url : '' }}">{{ $page }}</a>
 						</li>
 						@endforeach
 						<li>
-							<a class="next page-numbers" href="{{ url('shop/'.$tag.'?page='.$products->lastPage()) }}" onclick="return <?php echo $next; ?>;">
+							<a class="next page-numbers" href="{{ url('shop/'.$tag.'?page='.$products->lastPage()) }}{{ !empty($cutsom_url) ? '&'.$cutsom_url : '' }}" onclick="return <?php echo $next; ?>;">
 								<i class="ip-menu-right page-numbers__prev-ico"></i>
 							</a>
 						</li>
@@ -326,7 +327,7 @@
 				density: 4
 			}
 		});
-		
+
 		slider.noUiSlider.on('update', function(value) {
 			priceChangeFilter(value[0], value[1]);
 		});

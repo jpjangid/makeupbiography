@@ -180,13 +180,13 @@ class OrderController extends Controller
         }
 
         // if ($order->payment_mode == 'online') {
-            $response = $this->create_shiprocket_order($order->id);
-            if (!empty($response) && $response->status == 'NEW') {
-                $update_order = Order::find($order->id);
-                $update_order->shiprocket_order_id = $response->order_id;
-                $update_order->shiprocket_shipment_id = $response->shipment_id;
-                $update_order->update();
-            }
+        $response = $this->create_shiprocket_order($order->id);
+        if (!empty($response) && $response->status == 'NEW') {
+            $update_order = Order::find($order->id);
+            $update_order->shiprocket_order_id = $response->order_id;
+            $update_order->shiprocket_shipment_id = $response->shipment_id;
+            $update_order->update();
+        }
         // }
 
         if (!empty($coupon) && $request->coupon_discount != 0) {
@@ -239,11 +239,11 @@ class OrderController extends Controller
                         $image,
                         $status
                     )
-            );
+                );
 
             sendSms($recent_order->billing_mobile, "Thank you for placing an order with us. We will be processing it soon. For any assistance plz mail us at enquiry@vaibhavstores.in. Thank you, Vaibhav Stores. PH: +9180 41518183");
         }
-        Notification::create(['title' => "New Order",'message' => 'New Order has beeen placed by '.auth()->user()->email.' with order no: '.$order->order_no]);
+        Notification::create(['title' => "New Order", 'message' => 'New Order has beeen placed by ' . auth()->user()->email . ' with order no: ' . $order->order_no]);
         return redirect('orders/thanks/' . $order->order_no);
     }
 

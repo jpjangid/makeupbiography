@@ -17,7 +17,7 @@ class CategoryController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $categories1 = DB::table('categories')->select('id', 'name', 'slug', 'status')->where('flag', 0)->where('parent_id',null)->get();
+            $categories1 = DB::table('categories')->select('id', 'name', 'slug', 'status')->where('flag', 0)->where('parent_id', null)->get();
 
             $categories = new Collection;
             foreach ($categories1 as $category1) {
@@ -30,12 +30,12 @@ class CategoryController extends Controller
             }
 
             return Datatables::of($categories)
-                    ->addIndexColumn()
-                    ->addColumn('active', function($row) {
-                        $checked = $row['status'] == '1' ? 'checked' : '';
-                        $active  = '<div class="form-check form-switch form-check-custom form-check-solid">
-                                        <input type="hidden" value="'.$row['id'].'" class="category_id">
-                                        <input type="checkbox" class="form-check-input js-switch  h-20px w-30px" id="customSwitch1" name="status" value="'.$row['status'].'" '.$checked.'>
+                ->addIndexColumn()
+                ->addColumn('active', function ($row) {
+                    $checked = $row['status'] == '1' ? 'checked' : '';
+                    $active  = '<div class="form-check form-switch form-check-custom form-check-solid">
+                                        <input type="hidden" value="' . $row['id'] . '" class="category_id">
+                                        <input type="checkbox" class="form-check-input js-switch  h-20px w-30px" id="customSwitch1" name="status" value="' . $row['status'] . '" ' . $checked . '>
                                     </div>';
 
                     return $active;
@@ -263,7 +263,7 @@ class CategoryController extends Controller
 
     public function edit_sub1($id)
     {
-        $categories = DB::table('categories')->where('parent_id', null)->where(['flag' => 0,'status' => 1])->get();
+        $categories = DB::table('categories')->where('parent_id', null)->where(['flag' => 0, 'status' => 1])->get();
         $category = DB::table('categories')->where('id', $id)->first();
         return view('backend.category.sub1.edit', compact('category', 'categories'));
     }
@@ -331,7 +331,7 @@ class CategoryController extends Controller
 
     public function create_sub1()
     {
-        $categories = DB::table('categories')->where('parent_id', null)->where(['flag' => 0,'status' => 1])->get();
+        $categories = DB::table('categories')->where('parent_id', null)->where(['flag' => 0, 'status' => 1])->get();
         return view('backend.category.sub1.create', compact('categories'));
     }
 
@@ -463,7 +463,9 @@ class CategoryController extends Controller
 
     public function create_sub2()
     {
-        $categories1 = Category::select('id')->where(['flag' => 0,'status' => 1])->where('parent_id', null)->with(['subcategory' => function($query){ $query->where(['flag' => 0,'status' => 1]); }])->get();
+        $categories1 = Category::select('id')->where(['flag' => 0, 'status' => 1])->where('parent_id', null)->with(['subcategory' => function ($query) {
+            $query->where(['flag' => 0, 'status' => 1]);
+        }])->get();
         $categories = new Collection;
         foreach ($categories1 as $cat1) {
             if (!empty($cat1->subcategory)) {
@@ -542,7 +544,9 @@ class CategoryController extends Controller
 
     public function edit_sub2($id)
     {
-        $categories1 = Category::select('id')->where(['flag' => 0,'status' => 1])->where('parent_id', null)->with(['subcategory' => function($query){ $query->where(['flag' => 0,'status' => 1]); }])->get();
+        $categories1 = Category::select('id')->where(['flag' => 0, 'status' => 1])->where('parent_id', null)->with(['subcategory' => function ($query) {
+            $query->where(['flag' => 0, 'status' => 1]);
+        }])->get();
         $categories = new Collection;
         foreach ($categories1 as $cat1) {
             if (!empty($cat1->subcategory)) {

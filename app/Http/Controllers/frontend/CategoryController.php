@@ -4,6 +4,7 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -188,14 +189,27 @@ class CategoryController extends Controller
         if ($tag == 'all') {
             $tag = NULL;
         }
+        $cutsom_url = "";
+        if (count($request->all()) > 1) {
+            $url_check_values = $request->all();
+            $url_check_values = array_diff_key(
+                $url_check_values,
+                array_flip((array) ['page', 'pagination'])
+            );
+            $cutsom_url = http_build_query($url_check_values);
+        }
         $from = 0;
         $to = 10;
         $total_counts = 0;
         $sub_categories = Category::where(['parent_id' => null, 'status' => 1, 'flag' => 0])->with('subcategory.subcategory')->get();
-        $brands = DB::table('brands')->select('id', 'name')->where(['status' => 1, 'flag' =>  0])->get();
+
+        $brands = DB::table('brands')->select('id', 'name')->where(['top_brand_status' => 1, 'status' => 1, 'flag' =>  0])->get();
+        $brand_array = $brands->toArray();
+
         $product_category = array();
         $min_price_filter = 0;
         $max_price_filter = DB::table('products')->where('tags', 'like', '%' . $tag . '%')->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->max('sale_price') + 100;
+
         $min_price_old = 0;
         $max_price_old = 0;
         if (isset($request->min_price_filter) && !empty($request->min_price_filter)) {
@@ -249,17 +263,23 @@ class CategoryController extends Controller
         }
         //filter sorting end
 
-        $products1 = DB::table('products')->select('id')->where(['status' => 1, 'flag' => 0])->where('tags', 'like', '%' . $tag . '%')->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE']);
+        $brands1 = DB::table('brands')->select('id')->where(['top_brand_status' => 1, 'status' => 1, 'flag' =>  0]);
+
+        $brand_array = $brands1->get()->toArray();
+        $brands_array_data = array_column($brand_array, 'id');
+        // dd($brands_array_data);
+
+        $products = Product::with('first_medias')->whereHas("first_medias", function ($query) {
+            $query->where('media', '!=', '');
+        })->whereIn('brand_id', $brands_array_data)->where(['status' => 1, 'flag' => 0])->where('tags', 'like', '%' . $tag . '%')->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE']);
+
         if (!empty($filter_brands) && count($filter_brands) > 0) {
-            $products1 = $products1->whereIn('brand_id', $filter_brands);
+            $products = $products->whereIn('brand_id', $filter_brands);
         }
 
         if (count($product_category) > 0) {
-            $products1 = $products1->whereIn('parent_id', $product_category);
+            $products = $products->whereIn('parent_id', $product_category);
         }
-        $products1 = $products1->get()->toArray();
-
-        $products = DB::table('products')->where('tags', 'like', '%' . $tag . '%')->whereIn('id', array_column($products1, 'id'))->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE']);
 
         if (!empty($request->min_price_filter) && !empty($request->max_price_filter) && $request->max_price_filter > floatval(0)) {
             $products = $products->whereBetween('sale_price', array(floatval($request->min_price_filter), floatval($request->max_price_filter)));
@@ -271,21 +291,11 @@ class CategoryController extends Controller
             $products = $products->orderBy('sale_price', 'DESC');
         }
         $products = $products->paginate(12);
-        // $total_counts = count($products);
-        // if ($to > $total_counts) {
-        //     $from = $request->to - 10;
-        //     $to = $request->to;
-        // }
 
-        // $products = array_slice($products, $from, 10);
-
-        $product_details = array();
         $product_medias = array();
         foreach ($products as $pro) {
-            array_push($product_details, DB::table('products')->where('id', $pro->id)->first());
             array_push($product_medias, DB::table('product_media')->where('product_id', $pro->id)->where(['flag' => 0, 'media_type' => 'image'])->orderBy('sequence', 'asc')->first());
         }
-        $product_details = collect($product_details);
         $product_medias = collect($product_medias);
 
         $last_page = $products->lastPage();
@@ -335,6 +345,6 @@ class CategoryController extends Controller
             $tag = 'all';
         }
 
-        return view('frontend.product.shop', compact('sub_categories', 'brands', 'products', 'product_medias', 'product_details', 'filter_old', 'filter_old_price', 'max_price_filter', 'min_price_filter', 'filter_sorting', 'filter_brands', 'min_price_old', 'max_price_old', 'total_counts', 'from', 'to', 'no_of_pages', 'prev', 'next', 'tag'));
+        return view('frontend.product.shop', compact('sub_categories', 'brands', 'products', 'product_medias', 'filter_old', 'filter_old_price', 'max_price_filter', 'min_price_filter', 'filter_sorting', 'filter_brands', 'min_price_old', 'max_price_old', 'total_counts', 'from', 'to', 'no_of_pages', 'prev', 'next', 'tag', 'cutsom_url'));
     }
 }

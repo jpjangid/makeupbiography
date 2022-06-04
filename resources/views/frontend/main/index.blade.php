@@ -581,12 +581,12 @@
 																	@if(str_contains($main_newest_product->tags,'popular'))
 																	<div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple" style="background-color: white;">
 
-																		@if($main_newest_product->discount_type == "percentage")
+																		@if($main_newest_product->discount_type == "percentage" && $main_newest_product->discount > 0)
 																		<div class="c-product-grid__badges c-badge__list">
 																			@if(!empty($main_newest_product->label_name))
 																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
 																			@endif
-																			<span class="c-badge c-badge--sale">-{{ $main_newest_product->discount }}%</span>
+																			<span class="c-badge c-badge--sale">{{ $main_newest_product->discount }}%</span>
 																		</div>
 																		@endif
 

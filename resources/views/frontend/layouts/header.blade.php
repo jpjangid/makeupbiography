@@ -262,13 +262,13 @@ $mains = Category::select('id','slug','name')->where(['flag' => 0,'status' => 1]
 						</li> -->
 						<li class="c-header__top-row-item c-header__top-row-item--email">
 							<i class="ip-email c-header__top-row-icon c-header__top-row-icon--email"></i>
-							<a href="mailto:makeupbiography@gmail.com">makeupbiography@gmail.com</a>
+							<a href="mailto:Info@makeupbiography.com">Info@makeupbiography.com</a>
 						</li>
 						<!-- <li class="c-header__top-row-item c-header__top-row-item--address">
 							<i class="ip-z-map-pin c-header__top-row-icon c-header__top-row-icon--address"></i>Sri Complex, #45, Sajjan Rao Cir, Vishweshwarapura, Bengaluru, Karnataka 560004
 						</li> -->
 						<li class="c-header__top-row-item c-header__top-row-item--hours">
-							<i class="ip-z-time c-header__top-row-icon c-header__top-row-icon--hours"></i>Mon-Fri: 10:00 - 20:00
+							<!-- <i class="ip-z-time c-header__top-row-icon c-header__top-row-icon--hours"></i>Mon-Fri: 10:00 - 20:00 -->
 						</li>
 						<li class="c-header__top-row-item c-header__top-row-item--hours">
 							<i class="ip-z-map-pin c-header__top-row-icon c-header__top-row-icon--address"></i>Free Delivery on orders above &#8377; 500
@@ -383,14 +383,14 @@ $mains = Category::select('id','slug','name')->where(['flag' => 0,'status' => 1]
 					</li> -->
 					<li class="c-header__top-row-item c-header__top-row-item--email">
 						<i class="ip-email c-header__top-row-icon c-header__top-row-icon--email"></i>
-						<a href="mailto:makeupbiography@gmail.com">makeupbiography@gmail.com</a>
+						<a href="mailto:Info@makeupbiography.com">Info@makeupbiography.com</a>
 					</li>
 					<!-- <li class="c-header__top-row-item c-header__top-row-item--address">
 						<i class="ip-z-map-pin c-header__top-row-icon c-header__top-row-icon--address"></i>Sri Complex, #45, Sajjan Rao Cir, Vishweshwarapura, Bengaluru, Karnataka 560004
 					</li> -->
-					<li class="c-header__top-row-item c-header__top-row-item--hours">
+					<!-- <li class="c-header__top-row-item c-header__top-row-item--hours">
 						<i class="ip-z-time c-header__top-row-icon c-header__top-row-icon--hours"></i>Mon-Fri: 10:00 - 20:00
-					</li>
+					</li> -->
 					<li class="c-header__top-row-item c-header__top-row-item--hours">
 						<i class="ip-z-map-pin c-header__top-row-icon c-header__top-row-icon--address"></i>Free Delivery on orders above &#8377; 500
 					</li>
@@ -486,36 +486,36 @@ $mains = Category::select('id','slug','name')->where(['flag' => 0,'status' => 1]
 								<ul class="c-top-menu__submenu c-top-menu__submenu--columns-1">
 									<li class="c-top-menu__subitem menu-item-165 c-top-menu__subitem--collapse js-menu-item">
 										<a href="{{ url('about-us') }}">About us</a>
-									</li>
-									<li class="c-top-menu__subitem menu-item-2320 c-top-menu__subitem--collapse js-menu-item">
-										<a href="https://parkofideas.com/luchiana/demo/service/">Service</a>
-									</li>
-									<li class="c-top-menu__subitem menu-item-164 c-top-menu__subitem--collapse js-menu-item">
-										<a href="https://parkofideas.com/luchiana/demo/our-team/">Our team</a>
-									</li>
-									<li class="c-top-menu__subitem menu-item-185 c-top-menu__subitem--collapse js-menu-item">
-										<a href="{{ url('faq') }}">FAQ</a>
-									</li>
-									<li id="menu-item-2320" class="c-top-menu__subitem menu-item-2320  c-top-menu__subitem--collapse js-menu-item">
-										<a href="{{ url('return-policy') }}">Return Policy</a>
-									</li>
-									<li id="menu-item-395" class="c-top-menu__subitem menu-item-395  c-top-menu__subitem--collapse js-menu-item">
-										<a href="{{ url('shipping-policy') }}">Shipping Policy</a>
-									</li>
-									<li id="menu-item-396" class="c-top-menu__subitem menu-item-396  c-top-menu__subitem--collapse js-menu-item">
-										<a href="{{ url('cancellation-policy') }}">Cancellation Policy</a>
-									</li>
-									<li class="c-top-menu__subitem menu-item-397 c-top-menu__subitem--collapse js-menu-item">
-										<a href="{{ url('privacy-policy') }}">Privacy Policy</a>
-									</li>
-									<li class="c-top-menu__subitem menu-item-397 c-top-menu__subitem--collapse js-menu-item">
-										<a href="{{ url('terms-and-conditions') }}">Terms & Conditions</a>
-									</li>
-								</ul>
-							</li> --}}
-							<li class="c-top-menu__item menu-item-20 js-menu-item">
-								<a href="{{ url('contact-us') }}">Contact</a>
 							</li>
+							<li class="c-top-menu__subitem menu-item-2320 c-top-menu__subitem--collapse js-menu-item">
+								<a href="https://parkofideas.com/luchiana/demo/service/">Service</a>
+							</li>
+							<li class="c-top-menu__subitem menu-item-164 c-top-menu__subitem--collapse js-menu-item">
+								<a href="https://parkofideas.com/luchiana/demo/our-team/">Our team</a>
+							</li>
+							<li class="c-top-menu__subitem menu-item-185 c-top-menu__subitem--collapse js-menu-item">
+								<a href="{{ url('faq') }}">FAQ</a>
+							</li>
+							<li id="menu-item-2320" class="c-top-menu__subitem menu-item-2320  c-top-menu__subitem--collapse js-menu-item">
+								<a href="{{ url('return-policy') }}">Return Policy</a>
+							</li>
+							<li id="menu-item-395" class="c-top-menu__subitem menu-item-395  c-top-menu__subitem--collapse js-menu-item">
+								<a href="{{ url('shipping-policy') }}">Shipping Policy</a>
+							</li>
+							<li id="menu-item-396" class="c-top-menu__subitem menu-item-396  c-top-menu__subitem--collapse js-menu-item">
+								<a href="{{ url('cancellation-policy') }}">Cancellation Policy</a>
+							</li>
+							<li class="c-top-menu__subitem menu-item-397 c-top-menu__subitem--collapse js-menu-item">
+								<a href="{{ url('privacy-policy') }}">Privacy Policy</a>
+							</li>
+							<li class="c-top-menu__subitem menu-item-397 c-top-menu__subitem--collapse js-menu-item">
+								<a href="{{ url('terms-and-conditions') }}">Terms & Conditions</a>
+							</li>
+						</ul>
+						</li> --}}
+						<li class="c-top-menu__item menu-item-20 js-menu-item">
+							<a href="{{ url('contact-us') }}">Contact</a>
+						</li>
 						</ul>
 					</nav>
 				</div>

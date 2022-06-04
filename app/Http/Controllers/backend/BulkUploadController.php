@@ -177,7 +177,7 @@ class BulkUploadController extends Controller
     // public function imageupload(Request $request)
     // {
     //     $brands = array('BBLUNT', 'KAY BEAUTY', 'LAKME', 'MAMAEARTH', 'WAHL');
-        
+
     //     foreach ($brands as $brand) {
     //         $ftp_server = "103.156.21.5";
     //         $conn_id = ftp_connect($ftp_server) or die("Couldn't connect to $ftp_server");
@@ -212,41 +212,75 @@ class BulkUploadController extends Controller
 
     public function imageupload(Request $request)
     {
-        $brands = array('KAY BEAUTY');
-        $products = DB::table('products')->select('sku','brand_name')->whereIn('brand_name',$brands)->get();
-        
+        // $brands = array('KAY BEAUTY');
+        $brands = Brand::select('name')->where('name', 'FACES')->get()->toArray();
+        $brands = array_column($brands, 'name');
+        $products = DB::table('products')->select('sku', 'brand_name')->whereIn('brand_name', $brands)->get();
+        // dd($products);
+
         foreach ($products as $product) {
             $ftp_server = "103.156.21.5";
             $conn_id = ftp_connect($ftp_server) or die("Couldn't connect to $ftp_server");
             ftp_login($conn_id, "28user", "user@321");
-            $path = "/" . $product->brand_name . "/".$product->sku;
+            ftp_pasv($conn_id, true);
+            $path = "/" . $product->brand_name . "/" . $product->sku;
             $contents = ftp_nlist($conn_id, $path);
             $i = 1;
-            if(!empty($contents)){
+            if (!empty($contents)) {
                 foreach ($contents as $content) {
-                    $file_name = current(array_reverse(explode('/', $content)));
-                    $product = Product::where('sku',$product->sku)->first();
-                    $productmedia = ProductMedia::where(['product_id' => $product->id, 'media' => $file_name])->first();
-                    if(!empty($productmedia)){
-                        $productmedia->media        = $file_name;
-                        $productmedia->media_alt    = $file_name;
-                        $productmedia->sequence     = $i;
-                        $productmedia->update();
-                    }else{
-                        ProductMedia::create([
-                            'product_id'    =>  $product->id,
-                            'media'         =>  $file_name,
-                            'media_alt'     =>  $file_name,
-                            'media_type'    =>  'image',
-                            'sequence'      =>  $i
-                        ]);
+                    if (!empty(Storage::disk('ftp')->get($content))) {
+                        $file_name = current(array_reverse(explode('/', $content)));
+                        // dd($file_name);
+                        $fileNamewithout = substr($file_name, 0, strrpos($file_name, '.'));
+                        // dd($fileNamewithout);
+                        $extension = pathinfo($fileNamewithout . ".jpg");
+                        $new_extension_plus = $extension['basename'];
+                        $new_extension = str_replace('+', '-', $new_extension_plus);
+                        $product = Product::where('sku', $product->sku)->first();
+                        $productmedia = ProductMedia::where(['product_id' => $product->id, 'media' => $new_extension])->first();
+                        if (!empty($productmedia)) {
+                            $productmedia->media        = $new_extension;
+                            $productmedia->media_alt    = $new_extension;
+                            $productmedia->sequence     = $i;
+                            $productmedia->update();
+                        } else {
+                            ProductMedia::create([
+                                'product_id'    =>  $product->id,
+                                'media'         =>  $new_extension,
+                                'media_alt'     =>  $new_extension,
+                                'media_type'    =>  'image',
+                                'sequence'      =>  $i
+                            ]);
+                        }
+                        $file = Storage::disk('ftp')->get($content);
+                        \Artisan::call('optimize:clear');
+                        Storage::disk('local')->put('public/products/variants/' . $new_extension, $file);
+                        \Artisan::call('optimize:clear');
+                        $i += 1;
                     }
-                    $file = Storage::disk('ftp')->get($content);
-                    Storage::disk('local')->put('public/products/variants/' . $file_name, $file);
-                    $i += 1;
                 }
             }
         }
-        return redirect()->back()->with('success','Image Uploaded Successfully');
+        dd("data uploaded");
+        return redirect()->back()->with('success', 'Image Uploaded Successfully');
+    }
+
+    public function delete_media(Request $request)
+    {
+        $brands = Brand::select('name')->where('name', 'COLORBAR')->get()->toArray();
+
+        $brands = array_column($brands, 'name');
+        $products = DB::table('products')->select('id', 'sku', 'brand_name')->whereIn('brand_name', $brands)->get();
+        // dd($products);
+
+        foreach ($products as $product) {
+            $productmedia = ProductMedia::where('product_id', $product->id)->get();
+            dd($productmedia);
+            // foreach ($productmedia as $promedia) {
+            // }
+        }
+
+        dd("data uploaded");
+        return redirect()->back()->with('success', 'Image Uploaded Successfully');
     }
 }

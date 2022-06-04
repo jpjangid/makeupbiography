@@ -72,6 +72,7 @@ use App\Models\ProductMedia;
 										$product_image = asset('storage/products/variants/'.$pro_img->media);
 										}
 										@endphp
+										@if(!empty($item->product))
 										<tr class="c-cart__shop-tr cart_item">
 											<input type="number" name="cart_id[]" value="{{ $item->id }}" hidden>
 											<td class="c-cart__shop-td c-cart__shop-td--product-thumbnail">
@@ -112,6 +113,7 @@ use App\Models\ProductMedia;
 												</span>
 											</td>
 										</tr>
+										@endif
 										@endforeach
 
 										@foreach($cookieCartItems as $item)

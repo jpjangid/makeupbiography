@@ -246,7 +246,7 @@
 																					<span class="elementor-icon-list-icon">
 																						<i aria-hidden="true" class="fibd21- fi-bd21-phone"></i>
 																					</span>
-																					<span class="elementor-icon-list-text">+081978 94448</span>
+																					<span class="elementor-icon-list-text">+91 81978 94448</span>
 																				</a>
 																			</li>
 																			<li class="elementor-icon-list-item">
@@ -254,7 +254,9 @@
 																					<span class="elementor-icon-list-icon">
 																						<i aria-hidden="true" class="fibd21- fi-bd21-map-pin"></i>
 																					</span>
-																					<span class="elementor-icon-list-text">Sri Complex, #45, Sajjan Rao Cir, Vishweshwarapura, Bengaluru, Karnataka 560004</span>
+																					<span class="elementor-icon-list-text">#45, Sri Complex, Sajjan Rao Circle
+																						Vishweshwarapura
+																						Bangalore, Karnataka 560004</span>
 																				</a>
 																			</li>
 																			<li class="elementor-icon-list-item">
@@ -262,7 +264,7 @@
 																					<span class="elementor-icon-list-icon">
 																						<i aria-hidden="true" class="fibd21- fi-bd21-subscribe"></i>
 																					</span>
-																					<span class="elementor-icon-list-text">makeupbiography@gmail.com</span>
+																					<span class="elementor-icon-list-text">Info@makeupbiography.com</span>
 																				</a>
 																			</li>
 																			<li class="elementor-icon-list-item">
@@ -270,7 +272,7 @@
 																					<span class="elementor-icon-list-icon">
 																						<i aria-hidden="true" class="fibd21- fi-bd21-time"></i>
 																					</span>
-																					<span class="elementor-icon-list-text">Mon-Fri: 10:00 - 20:00</span>
+																					<span class="elementor-icon-list-text">Mon-Fri: 10:00 - 08:00</span>
 																				</a>
 																			</li>
 																		</ul>
@@ -452,25 +454,25 @@
 @section('js')
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
-	$(document).on('click','.subscribe-btn', function() {
+	$(document).on('click', '.subscribe-btn', function() {
 		var email = $('#email').val();
-        $.ajax({
-            url: "{{ url('newsletter') }}",
-            type: "POST",
-            dataType: "json",
-            data: {
-                email: email,
-                _token: '{{csrf_token()}}'
-            },
-            success: function(data) {
-				if(data.code === 200){
+		$.ajax({
+			url: "{{ url('newsletter') }}",
+			type: "POST",
+			dataType: "json",
+			data: {
+				email: email,
+				_token: '{{csrf_token()}}'
+			},
+			success: function(data) {
+				if (data.code === 200) {
 					swal("Success!", data.msg, "success");
 					$('#email').val("");
-				}else{
+				} else {
 					swal("Error!", data.msg, "error");
 				}
-            }
-        });
+			}
+		});
 	});
 </script>
 @endsection

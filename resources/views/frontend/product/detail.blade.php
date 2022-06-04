@@ -278,7 +278,7 @@
 							@foreach($medias as $media)
 							@if($media->media_type == 'image')
 							<div class="c-product__slider-item c-product__slider-item--zoom woocommerce-product-gallery__image ">
-								<a download href="{{ asset('storage/products/variants/'.$media->media) }}" class="c-product__image-link c-product__image-link--zoom js-product-modal" data-size="1200x1200" data-index="{{ $count }}" data-product-id="" data-elementor-open-lightbox="no" onclick="return false;">
+								<a download href="{{ asset('/storage/products/variants/'.$media->media) }}" class="c-product__image-link c-product__image-link--zoom js-product-modal" data-size="1200x1200" data-index="{{ $count }}" data-product-id="" data-elementor-open-lightbox="no" onclick="return false;">
 									<div data-img="{{ asset('storage/products/variants/'.$media->media) }}" class="c-product__image-zoom js-product-zoom ">
 										<img width="460" height="460" src="{{ asset('storage/products/variants/'.$media->media) }}" class="c-product__slider-img c-product__slider-img--cover" alt="product-1-3" srcset="{{ asset('storage/products/variants/'.$media->media) }}" sizes="(max-width: 460px) 100vw, 460px" />
 									</div>

@@ -10,6 +10,11 @@ class ProductMedia extends Model
     use HasFactory;
 
     protected $fillable = [
-        'product_id','media','media_type','sequence','flag','media_alt'
+        'product_id', 'media', 'media_type', 'sequence', 'flag', 'media_alt'
     ];
+
+    public function products()
+    {
+        return $this->belongsTo('App\Models\Product', 'id');
+    }
 }

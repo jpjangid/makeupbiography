@@ -117,31 +117,31 @@ class BrandController extends Controller
         $last_page = $products->lastPage();
         $current_page = $products->currentPage();
         $no_of_pages = array();
-        for($i = $current_page; $i <= $current_page+3; $i++){
-            if($i <= $last_page){
+        for ($i = $current_page; $i <= $current_page + 3; $i++) {
+            if ($i <= $last_page) {
                 array_push($no_of_pages, $i);
             }
         }
-        if(count($no_of_pages) < 4){
-            if(isset($no_of_pages[0]) && $last_page == $no_of_pages[0]){
-                for($i = 1; $i <= 3; $i++){
+        if (count($no_of_pages) < 4) {
+            if (isset($no_of_pages[0]) && $last_page == $no_of_pages[0]) {
+                for ($i = 1; $i <= 3; $i++) {
                     $new = $no_of_pages[0] - $i;
-                    if($new > 0){
+                    if ($new > 0) {
                         array_push($no_of_pages, $new);
                     }
                 }
             }
-            if(isset($no_of_pages[1]) && $last_page == $no_of_pages[1]){
-                for($i = 1; $i <= 2; $i++){
+            if (isset($no_of_pages[1]) && $last_page == $no_of_pages[1]) {
+                for ($i = 1; $i <= 2; $i++) {
                     $new = $no_of_pages[0] - $i;
-                    if($new > 0){
+                    if ($new > 0) {
                         array_push($no_of_pages, $new);
                     }
                 }
             }
-            if(isset($no_of_pages[2]) && $last_page == $no_of_pages[2]){
+            if (isset($no_of_pages[2]) && $last_page == $no_of_pages[2]) {
                 $new = $no_of_pages[0] - 1;
-                if($new > 0){
+                if ($new > 0) {
                     array_push($no_of_pages, $new);
                 }
             }
@@ -149,15 +149,15 @@ class BrandController extends Controller
         sort($no_of_pages);
 
         $prev = 'true';
-        if($products->currentPage() == 1){
+        if ($products->currentPage() == 1) {
             $prev = 'false';
         }
 
         $next = 'true';
-        if($products->lastPage() == $products->currentPage()){
+        if ($products->lastPage() == $products->currentPage()) {
             $next = 'false';
         }
 
-        return view('frontend.brand.brands', compact('slug', 'sub_categories', 'main_brand', 'brands', 'products', 'product_medias', 'product_details', 'filter_old', 'filter_old_price', 'max_price_filter', 'min_price_filter', 'filter_sorting', 'filter_brands', 'min_price_old', 'max_price_old','no_of_pages','next','prev'));
+        return view('frontend.brand.brands', compact('slug', 'sub_categories', 'main_brand', 'brands', 'products', 'product_medias', 'product_details', 'filter_old', 'filter_old_price', 'max_price_filter', 'min_price_filter', 'filter_sorting', 'filter_brands', 'min_price_old', 'max_price_old', 'no_of_pages', 'next', 'prev'));
     }
 }

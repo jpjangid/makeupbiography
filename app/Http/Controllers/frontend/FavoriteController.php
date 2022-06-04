@@ -32,7 +32,7 @@ class FavoriteController extends Controller
     //add item to wishlist
     public function store(Request $request)
     {
-        $product = DB::table('products')->select('item_shade_name')->where('id', $request->product_id)->first();
+        $product = DB::table('products')->select('item_shade_name','status','flag')->where('id', $request->product_id)->first();
         if ($product->status == 0 || $product->flag == 1) {
             $message = "Product " . $product->item_shade_name . " is not available right now";
             $count = DB::table('favorites')->where('user_id', auth()->user()->id)->count();

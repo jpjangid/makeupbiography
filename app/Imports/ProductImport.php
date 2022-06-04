@@ -15,7 +15,7 @@ class ProductImport implements ToModel
     public function model(array $row)
     {
         $discount = 0;
-        if(!empty($row[13])){
+        if (!empty($row[13])) {
             $str = $row[13];
             $pattern = "!\d+!";
             if (preg_match_all($pattern, $str, $matches)) {
@@ -24,7 +24,7 @@ class ProductImport implements ToModel
         }
 
         $gst = 0;
-        if(!empty($row[7])){
+        if (!empty($row[7])) {
             $str = $row[7];
             $pattern = "!\d+!";
             if (preg_match_all($pattern, $str, $matches)) {

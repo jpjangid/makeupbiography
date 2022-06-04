@@ -20,7 +20,7 @@ class CartController extends Controller
         $minutes = 60 * 24 * 30;
         $user = auth()->user();
         $existCookie = false;
-        $product = DB::table('products')->select('item_shade_name','status','flag','ecom')->where('id', $request->product_id)->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->first();
+        $product = DB::table('products')->select('item_shade_name', 'status', 'flag', 'ecom')->where('id', $request->product_id)->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->first();
         if ($product->status == 0 || $product->flag == 1 || $product->ecom == 'OFFLINE') {
             $message = "";
             return response($message);
@@ -62,7 +62,7 @@ class CartController extends Controller
             \Cookie::queue('makeup_biography', $array_json, $minutes);
         }
 
-        $message = $product->item_shade_name. " has been added to your cart.";
+        $message = $product->item_shade_name . " has been added to your cart.";
         return response($message);
     }
 
@@ -90,12 +90,14 @@ class CartController extends Controller
             $totalQuantityItems = DB::table('carts')->where('user_id', $user->id)->sum('quantity');
             if ($cartItems) {
                 foreach ($cartItems as $vari) {
-                    if (DB::table('products')->where(['id' => $vari->product_id,'status' => 0,'flag' => 1, 'ecom' => 'ONLINE'])->first()) {
+                    if (DB::table('products')->where(['id' => $vari->product_id, 'status' => 0, 'flag' => 1, 'ecom' => 'ONLINE'])->first()) {
                         DB::table('carts')->where(['product_id' => $vari->product_id, 'user_id' => $vari->user_id])->delete();
                     } else {
-                        $subtotal += round(floatval($vari->product->sale_price) * $vari->quantity);
-                        if ($vari->product->discount > 0) {
-                            $discountPrice = round(floatval(floatval($vari->product->regular_price) * $vari->quantity) - floatval(floatval($vari->product->sale_price) * $vari->quantity));
+                        if (!empty($vari->product)) {
+                            $subtotal += round(floatval($vari->product->sale_price) * $vari->quantity);
+                            if ($vari->product->discount > 0) {
+                                $discountPrice = round(floatval(floatval($vari->product->regular_price) * $vari->quantity) - floatval(floatval($vari->product->sale_price) * $vari->quantity));
+                            }
                         }
                     }
                     $totalCartItems = count($cartItems);
@@ -107,11 +109,11 @@ class CartController extends Controller
             if (request()->hasCookie('makeup_biography')) {
                 $cartItems = json_decode(request()->cookie('makeup_biography'));
                 foreach ($cartItems  as $cartItem) {
-                    if (!empty(DB::table('products')->where(['id' => $cartItem->product_id,'status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->first())) {
-                        $product = DB::table('products')->where(['id' => $cartItem->product_id,'status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->first();
+                    if (!empty(DB::table('products')->where(['id' => $cartItem->product_id, 'status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->first())) {
+                        $product = DB::table('products')->where(['id' => $cartItem->product_id, 'status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->first();
                         $subtotal += $product->sale_price;
                         $cart[] = ['product_id' => $cartItem->product_id, 'quantity' => $cartItem->quantity];
-                    }else{
+                    } else {
                         $message = "";
                         return response($message);
                     }
@@ -142,13 +144,13 @@ class CartController extends Controller
                     }
                 }
             }
-            $cartItems = []; 
+            $cartItems = [];
         }
 
         if (request()->ajax()) {
             $data = [];
             $listItem = "";
-            if($user) {
+            if ($user) {
                 if (count($cartItems) > 0) {
                     $cartItems = $cartItems->take(3);
                 }
@@ -159,8 +161,8 @@ class CartController extends Controller
                     $data['totalQuantityItems'] = $totalQuantityItems;
                     $data['listItem'] = $listItem;
                 }
-            } else { 
-                if (count($cookieCartItems) > 0) {                    
+            } else {
+                if (count($cookieCartItems) > 0) {
                     if (count($cookieCartItems) > 0) {
                         foreach ($cookieCartItems as $cookie_item) {
                             $listItem .= $this->cookie_items($cookie_item);
@@ -170,7 +172,7 @@ class CartController extends Controller
                     $data['totalQuantityItems'] = $totalQuantityItems;
                     $data['listItem'] = $listItem;
                 }
-            }    
+            }
             return response()->json($data);
         }
 
@@ -311,7 +313,7 @@ class CartController extends Controller
         }
         return redirect('cart')->with('success', 'Cart Updated');
     }
-    
+
     //New Update Function 
     // public function update_cart_items(Request $request) 
     // {
@@ -344,20 +346,19 @@ class CartController extends Controller
     // }
 
     //New Update Function 
-    public function update_cart_items(Request $request) 
+    public function update_cart_items(Request $request)
     {
         $user = auth()->user();
         $minutes = 60;
         if ($user) {
             DB::table('carts')->where('id', $request->cart_id)->update(['quantity' => $request->qty]);
             return response()->json(['status' => 200]);
-        }
-        else {
+        } else {
             if ($request->hasCookie('makeup_biography')) {
                 $cartItems = json_decode(request()->cookie('makeup_biography'));
                 $cartItems = collect($cartItems);
-                foreach($cartItems as $cat) {
-                    if($cat->product_id ==  $request->product_id) {
+                foreach ($cartItems as $cat) {
+                    if ($cat->product_id ==  $request->product_id) {
                         $cart[] = ['product_id' => $cat->product_id, 'quantity' => $request->qty];
                     } else {
                         $cart[] = ['product_id' => $cat->product_id, 'quantity' => $cat->quantity];
@@ -408,7 +409,7 @@ class CartController extends Controller
                     $discount = round(floatval(floatval($vari->product->regular_price) * $vari->quantity) - floatval(floatval($vari->product->sale_price) * $vari->quantity));
                     array_push($product_dis, $discount);
                     $discountPrice += $discount;
-                }else{
+                } else {
                     $discount = 0;
                     array_push($product_dis, $discount);
                     $discountPrice += $discount;
