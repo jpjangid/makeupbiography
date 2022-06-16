@@ -26,17 +26,17 @@
 
 	@media (min-width: 760px) and (max-width: 770px) {
 		.c-product-grid__item--normal {
-			width: 160px !important;
+			/* width: 160px !important;
 			margin: 10px !important;
-			padding-bottom: 35px !important;
+			padding-bottom: 35px !important; */
 		}
 	}
 
 	@media (min-width: 560px) and (max-width: 590px) {
 		.c-product-grid__item--normal {
-			width: 160px !important;
+			/* width: 160px !important; */
 			margin: 10px !important;
-			padding-bottom: 50px !important;
+			/* padding-bottom: 50px !important; */
 		}
 	}
 
@@ -71,11 +71,11 @@
 			margin-top: -80px;
 		}
 
-		.c-product-grid__item--normal {
+		/* .c-product-grid__item--normal {
 			width: 180px;
 			margin: 16px !important;
 			padding-bottom: 35px;
-		}
+		} */
 
 		.c-product-grid__item--normal .woocommerce-loop-product__title {
 			line-height: 15px;
@@ -504,7 +504,7 @@
 																		@endif
 
 																		<!-- .c-product-grid__badges -->
-																		<div class="c-product-grid__thumb-wrap" style="width: auto;">
+																		<div class="c-product-grid__thumb-wrap">
 																			<a href="{{ url('products',['product' => $main_newest_product->slug]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
 																				<img src="{{ isset($main_newest_product->medias[0]->media) ? asset('storage/products/variants/'.$main_newest_product->medias[0]->media) : '' }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ isset($main_newest_product->medias[0]->media) ? asset('storage/products/variants/'.$main_newest_product->medias[0]->media) : '' }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
 																			</a>
@@ -931,7 +931,7 @@
 									<div class="elementor-element elementor-element-5aaefc9 elementor-widget elementor-widget-ideapark-heading" data-id="5aaefc9" data-element_type="widget" data-widget_type="ideapark-heading.default">
 										<div class="elementor-widget-container">
 											<div class="c-ip-heading c-ip-heading--small c-ip-heading--left c-ip-heading--tablet-center c-ip-heading--mobile- c-ip-heading--bullet-after">
-												<span class="c-ip-heading__inner">Big</span>
+												<span class="c-ip-heading__inner">Big</span> 
 											</div>
 										</div>
 									</div>

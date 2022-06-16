@@ -14,6 +14,18 @@
 		max-height: 3.6em;
 		line-height: 1.8em;
 	}
+
+	.price-div {
+		/* border-top: 2px solid goldenrod; */
+		font-size: 17px;
+		font-family: "Marcellus", sans-serif;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		text-align: center;
+		color: white;
+		margin-top: 5px;
+		background-image: linear-gradient(to bottom, #666362, #413839);
+	}
 </style>
 @endsection
 
@@ -21,7 +33,7 @@
 <input type="text" id="csrfToken" value="{{ csrf_token() }}" hidden>
 <div class="l-inner">
 	<header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default c-page-header--product-list">
-		<div class="c-page-header__wrap">
+resources/views/frontend/page		<div class="c-page-header__wrap">
 			<h1 class="c-page-header__title">Shop</h1>
 		</div>
 		<nav class="c-breadcrumbs">
@@ -247,6 +259,25 @@
 										<div class="c-product-grid__short-desc">
 											<p class="short-description">{{ $product->short_description }}</p>
 										</div>
+									</div>
+									<div class="c-product-grid__price-wrap price-div">
+										<span class="price">
+											@if( $product->discount_type != "")
+											<del aria-hidden="true">
+												<span class="woocommerce-Price-amount amount">
+													<bdi>
+														<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $product->regular_price }}</bdi>
+												</span>
+											</del>
+											@endif
+											<ins>
+												<span class="woocommerce-Price-amount amount">
+													<bdi>
+														<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $product->sale_price }}</bdi>
+												</span>
+											</ins>
+
+										</span>
 									</div>
 									<!-- .c-product-grid__price-wrap -->
 								</div>
