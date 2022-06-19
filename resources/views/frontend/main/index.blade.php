@@ -134,6 +134,12 @@
 		}
 	}
 
+	@media(max-width:1188px){
+		.c-ip-heading__inner ul{
+				padding-left : 0;
+		}
+	}
+
 	@media screen and (max-width: 480px) {
 		.image-stroke {
 			width: 55%;

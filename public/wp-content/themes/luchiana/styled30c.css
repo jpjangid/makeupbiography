@@ -5797,7 +5797,7 @@ div.wpcf7 span.ajax-loader {
         position: relative;
         padding-bottom: 18px;
         /* padding-top:    18px; */
-        padding-right: 30px;
+        padding-right: 4px;
         font-weight: normal;
         font-size: 18px;
         line-height: 1.2;
@@ -6552,7 +6552,7 @@ p+.woocommerce-order-details {
 
 .c-page-header__title {
     font-weight: 300;
-    font-size: 54px;
+    font-size: 46px;
     line-height: 1;
     text-align: center;
     letter-spacing: 0.2em;
@@ -8413,10 +8413,10 @@ p+.woocommerce-order-details {
         visibility: visible;
     }
     .c-product-grid__item--4-per-row .c-product-grid__atc {
-        top: 230px;
+        top: 200px;
     }
     .c-product-grid__item--3-per-row .c-product-grid__atc {
-        top: 318px;
+        top: 200px;
     }
     .c-product-grid__item--3-per-row .c-product-grid__thumb-wrap {
         /* padding-bottom: 88.4615384%; */

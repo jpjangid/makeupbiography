@@ -26,6 +26,35 @@
 		margin-top: 5px;
 		background-image: linear-gradient(to bottom, #666362, #413839);
 	}
+
+	.c-product-grid__thumb-button-list-shop{
+		display : flex;
+		justify-content: space-between;
+	}
+	.c-product-grid__thumb-button-list-shop .discount{
+		z-index : 9;
+	}
+	.c-product-grid__thumb-button-list-shop .discount .c-product-grid__badges-shop .c-badge{
+		width: 40px;
+		height: 40px;
+		border-radius: 100%;
+		padding : 0;
+		justify-content: center;
+    	display: flex;
+    	align-items: center;
+	}
+	.c-product-grid__thumb-button-list-shop .c-wishlist__btn{
+		align-items : baseline;
+	}
+
+	.c-product-grid__icon-shop{
+		position: absolute;
+		top:9px;
+	}
+
+
+
+
 </style>
 @endsection
 
@@ -223,17 +252,28 @@ resources/views/frontend/page		<div class="c-page-header__wrap">
 							@endphp
 
 							<div class="c-product-grid__item c-product-grid__item--3-per-row c-product-grid__item--normal c-product-grid__item--hover product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple">
-								<div class="c-product-grid__badges c-badge__list">
-								</div>
+								<!-- <div class="c-product-grid__badges-shop c-badge__list">
+								</div> -->
 								<!-- .c-product-grid__badges -->
 								<div class="c-product-grid__thumb-wrap">
 									<a href="{{ url('products',['product' => $product->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
 										<img width="460" height="460" src="{{ isset($media->media) ? asset('storage/products/variants/'.$media->media) : '' }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" sizes="(max-width: 460px) 100vw, 460px" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
 									</a>
-									<div class="c-product-grid__thumb-button-list">
-										<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $product->id }}-btn h-cb c-product-grid__thumb-button" data-product-id="{{ $product->id }}" data-title="Wishlist">
-											<i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
-											<i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
+									<div class="c-product-grid__thumb-button-list-shop">
+										<div class="discount">
+												@if($product->discount_type == "percentage")
+												<div class="c-product-grid__badges-shop c-badge__list">
+													@if(!empty($product->label_name))
+													<span class="c-badge c-badge--featured">{{ $product->label_name }}</span>
+													@endif
+													<span class="c-badge c-badge--sale">-{{ $product->discount }}%</span>
+												</div>
+												@endif
+										</div>
+
+										<button class=" c-wishlist__btn c-wishlist__item-{{ $product->id }}-btn h-cb c-product-grid__thumb-button" data-product-id="{{ $product->id }}" data-title="Wishlist">
+											<i class="ip-heart c-product-grid__icon-shop c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
+											<i class="ip-heart_hover c-product-grid__icon-shop c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
 										</button>
 									</div>
 								</div>
