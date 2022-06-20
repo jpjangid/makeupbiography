@@ -253,28 +253,35 @@
 							@endphp
 
 							<div class="c-product-grid__item c-product-grid__item--3-per-row c-product-grid__item--normal c-product-grid__item--hover product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple">
-								<!-- <div class="c-product-grid__badges-shop c-badge__list">
-								</div> -->
+							<div class="c-product-grid__badges c-badge__list">
+								</div>
+
+								@if($product->discount_type == "percentage")
+									<div class="c-product-grid__badges c-badge__list">
+										@if(!empty($product->label_name))
+										<span class="c-badge c-badge--featured">{{ $product->label_name }}</span>
+										@endif
+										<span class="c-badge c-badge--sale">-{{ $product->discount }}%</span>
+									</div>
+									@endif
+
+									@if($product->discount_type == "flat")
+									<div class="c-product-grid__badges c-badge__list">
+										@if(!empty($product->label_name))
+										<span class="c-badge c-badge--featured">{{ $product->label_name }}</span>
+										@endif
+										<span class="c-badge c-badge--sale">- &#8377; {{ $product->regular_price - $product->sale_price }}</span>
+									</div>
+									@endif
 								<!-- .c-product-grid__badges -->
 								<div class="c-product-grid__thumb-wrap">
 									<a href="{{ url('products',['product' => $product->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
 										<img width="460" height="460" src="{{ isset($media->media) ? asset('storage/products/variants/'.$media->media) : '' }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" sizes="(max-width: 460px) 100vw, 460px" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
 									</a>
-									<div class="c-product-grid__thumb-button-list-shop">
-										<div class="discount">
-												@if($product->discount_type == "percentage")
-												<div class="c-product-grid__badges-shop c-badge__list">
-													@if(!empty($product->label_name))
-													<span class="c-badge c-badge--featured">{{ $product->label_name }}</span>
-													@endif
-													<span class="c-badge c-badge--sale">-{{ $product->discount }}%</span>
-												</div>
-												@endif
-										</div>
-
-										<button class=" c-wishlist__btn c-wishlist__item-{{ $product->id }}-btn h-cb c-product-grid__thumb-button" data-product-id="{{ $product->id }}" data-title="Wishlist">
-											<i class="ip-heart c-product-grid__icon-shop c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
-											<i class="ip-heart_hover c-product-grid__icon-shop c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
+									<div class="c-product-grid__thumb-button-list">
+										<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $product->id }}-btn h-cb c-product-grid__thumb-button" data-product-id="{{ $product->id }}" data-title="Wishlist">
+											<i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
+											<i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
 										</button>
 									</div>
 								</div>
