@@ -490,7 +490,14 @@
 																			@if(!empty($main_newest_product->label_name))
 																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
 																			@endif
-																			<span class="c-badge c-badge--sale">-{{ $main_newest_product->discount }}%</span>
+																			@if(!empty($main_newest_product->p_discount && $main_newest_product->p_discount > 0))
+																			<span class="c-badge c-badge--sale">
+																				-{{ $main_newest_product->p_discount }}%</span>
+																			@elseif($main_newest_product->discount >0)
+																			<span class="c-badge c-badge--sale">
+																				-{{ $main_newest_product->discount }}%</span>
+																			@endif
+
 																		</div>
 																		@endif
 
@@ -536,6 +543,26 @@
 																			<!-- .c-product-grid__title-wrap -->
 																			<div class="c-product-grid__price-wrap price-div">
 																				<span class="price">
+																					@php
+																					$discount = $main_newest_product->regular_price * $main_newest_product->p_discount/100;
+																					$dis_amount = $main_newest_product->regular_price - $discount;
+																					@endphp
+																					@if(!empty($main_newest_product->p_discount))
+																					@if($main_newest_product->p_discount > 0)
+																					<del aria-hidden="true">
+																						<span class="woocommerce-Price-amount amount">
+																							<bdi>
+																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $main_newest_product->regular_price }}</bdi>
+																						</span>
+																					</del>
+																					@endif
+																					<ins>
+																						<span class="woocommerce-Price-amount amount">
+																							<bdi>
+																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $dis_amount }}</bdi>
+																						</span>
+																					</ins>
+																					@else
 																					@if(!empty($main_newest_product->discount) && $main_newest_product->discount > 0)
 																					<del aria-hidden="true">
 																						<span class="woocommerce-Price-amount amount">
@@ -550,6 +577,7 @@
 																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $main_newest_product->sale_price }}</bdi>
 																						</span>
 																					</ins>
+																					@endif
 																				</span>
 																			</div>
 																			<!-- .c-product-grid__price-wrap -->

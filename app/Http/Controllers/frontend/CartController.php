@@ -80,26 +80,37 @@ class CartController extends Controller
         $totalPrice = 0.00;
         if ($user) {
             DB::table('users')->where('id', auth()->user()->id)->update(['auto_page' => 'cart', 'auto_email' => 0, 'auto_datetime' => date('y-m-d H:i:s')]);
-            $cartItems = Cart::where('user_id', $user->id)->with([
-                'product' => function ($query) {
-                    $query->where(['status' => 1, 'flag' => 0]);
-                },
-                'product.medias'
-            ])->get();
-
+            $cartItems = Cart::where('user_id', $user->id)->join('products', 'products.id', '=', 'carts.product_id')->select('carts.*', 'products.id as product_id', 'products.sale_price as sale_price', 'products.discount as discount', 'products.regular_price as regular_price', 'discount_details.discount_type as p_discount_type', 'discount_details.discount as p_discount')->leftjoin('discount_details', 'products.id', '=', 'discount_details.product_id')->get();
+            // dd($cartItems);
             $totalQuantityItems = DB::table('carts')->where('user_id', $user->id)->sum('quantity');
             if ($cartItems) {
                 foreach ($cartItems as $vari) {
-                    if (DB::table('products')->where(['id' => $vari->product_id, 'status' => 0, 'flag' => 1, 'ecom' => 'ONLINE'])->first()) {
-                        DB::table('carts')->where(['product_id' => $vari->product_id, 'user_id' => $vari->user_id])->delete();
+                    if (!empty($vari->p_discount)) {
+                        if (DB::table('products')->where(['id' => $vari->product_id, 'status' => 0, 'flag' => 1, 'ecom' => 'ONLINE'])->first()) {
+                            DB::table('carts')->where(['product_id' => $vari->product_id, 'user_id' => $vari->user_id])->delete();
+                        } else {
+                            if (!empty($vari->p_discount)) {
+                                $disc_amt = $vari->regular_price * $vari->p_discount / 100;
+                                $discount = $vari->regular_price - $disc_amt;
+                                $subtotal += round(floatval($discount) * $vari->quantity);
+                                if ($vari->product->discount > 0) {
+                                    $discountPrice = round(floatval(floatval($discount) * $vari->quantity) - floatval(floatval($discount) * $vari->quantity));
+                                }
+                            }
+                        }
                     } else {
-                        if (!empty($vari->product)) {
-                            $subtotal += round(floatval($vari->product->sale_price) * $vari->quantity);
-                            if ($vari->product->discount > 0) {
-                                $discountPrice = round(floatval(floatval($vari->product->regular_price) * $vari->quantity) - floatval(floatval($vari->product->sale_price) * $vari->quantity));
+                        if (DB::table('products')->where(['id' => $vari->product_id, 'status' => 0, 'flag' => 1, 'ecom' => 'ONLINE'])->first()) {
+                            DB::table('carts')->where(['product_id' => $vari->product_id, 'user_id' => $vari->user_id])->delete();
+                        } else {
+                            if (!empty($vari->product)) {
+                                $subtotal += round(floatval($vari->product->sale_price) * $vari->quantity);
+                                if ($vari->product->discount > 0) {
+                                    $discountPrice = round(floatval(floatval($vari->product->regular_price) * $vari->quantity) - floatval(floatval($vari->product->sale_price) * $vari->quantity));
+                                }
                             }
                         }
                     }
+
                     $totalCartItems = count($cartItems);
                 }
             }
@@ -110,9 +121,17 @@ class CartController extends Controller
                 $cartItems = json_decode(request()->cookie('makeup_biography'));
                 foreach ($cartItems  as $cartItem) {
                     if (!empty(DB::table('products')->where(['id' => $cartItem->product_id, 'status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->first())) {
-                        $product = DB::table('products')->where(['id' => $cartItem->product_id, 'status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->first();
-                        $subtotal += $product->sale_price;
-                        $cart[] = ['product_id' => $cartItem->product_id, 'quantity' => $cartItem->quantity];
+                        $product = DB::table('products')->select('products.*', 'discount_details.discount_type as p_discount_type', 'discount_details.discount as p_discount')->where(['products.id' => $cartItem->product_id, 'status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->leftJoin('discount_details', 'products.id', '=', 'discount_details.product_id')->first();
+                        if (!empty($product->p_discount)) {
+                            $disc_amt = $product->regular_price * $product->p_discount / 100;
+                            $discount = $product->regular_price - $disc_amt;
+                            $subtotal += $discount * $cartItem->quantity;
+                            $cart[] = ['product_id' => $cartItem->product_id, 'quantity' => $cartItem->quantity];
+                        } else {
+                            $subtotal += $product->sale_price * $cartItem->quantity;
+
+                            $cart[] = ['product_id' => $cartItem->product_id, 'quantity' => $cartItem->quantity];
+                        }
                     } else {
                         $message = "";
                         return response($message);
@@ -132,14 +151,18 @@ class CartController extends Controller
                 $totalCartItems = count($cookieItems);
                 foreach ($cookieItems as $cookieItem) {
                     if ($cookieItem->product_id) {
-                        $cookie_product = Product::with('medias')->where([
+                        $cookie_product = Product::select('products.*', 'discount_details.discount_type as p_discount_type', 'discount_details.discount as p_discount')->with('medias')->where([
                             ['products.status', '=', 1],
                             ['products.id', '=', $cookieItem->product_id],
                             ['products.flag', '=', 0]
-                        ])->first();
+                        ])->leftJoin('discount_details', 'products.id', '=', 'discount_details.product_id')->first();
                         $totalQuantityItems += $cookieItem->quantity;
                         if ($cookie_product != "") {
-                            $cookieCartItems[] = ['quantity' => $cookieItem->quantity, 'product' => $cookie_product];
+                            if (!empty($cookie_product->p_discount)) {
+                                $cookieCartItems[] = ['quantity' => $cookieItem->quantity, 'product' => $cookie_product];
+                            } else {
+                                $cookieCartItems[] = ['quantity' => $cookieItem->quantity, 'product' => $cookie_product];
+                            }
                         }
                     }
                 }
@@ -222,6 +245,7 @@ class CartController extends Controller
             $pro_img = DB::table('product_media')->where(['product_id' => $product->id, 'media_type' => 'image'])->orderby('sequence', 'asc')->first();
             $product_image = asset('storage/products/variants/' . $pro_img->media);
         }
+        // dd($product_image);
 
         $item = '<li class="woocommerce-mini-cart-item c-product-list-widget__item mini_cart_item">
                     <div class="c-product-list-widget__wrap">
@@ -392,7 +416,8 @@ class CartController extends Controller
         $totalPrice = 0.00;
         $no_items = 0;
         $product_dis = array();
-        $cartItems = Cart::where('user_id', $user->id)->with('product.medias')->get();
+        $cartItems = Cart::where('user_id', $user->id)->join('products', 'products.id', '=', 'carts.product_id')->select('carts.*', 'products.*', 'discount_details.discount_type as p_discount_type', 'discount_details.discount as p_discount')->leftjoin('discount_details', 'products.id', '=', 'discount_details.product_id')->get();
+        // dd($cartItems);
         $totalQuantityItems = DB::table('carts')->where('user_id', $user->id)->sum('quantity');
         if ($request->session()->has('_code')) {
             $external_code = $request->session()->get('_code');
@@ -403,22 +428,39 @@ class CartController extends Controller
 
         if ($cartItems) {
             foreach ($cartItems as $vari) {
-                $no_items += 1;
-                $subtotal += round(floatval($vari->product->sale_price) * $vari->quantity);
-                if ($vari->product->discount > 0) {
-                    $discount = round(floatval(floatval($vari->product->regular_price) * $vari->quantity) - floatval(floatval($vari->product->sale_price) * $vari->quantity));
-                    array_push($product_dis, $discount);
-                    $discountPrice += $discount;
+                if (!empty($vari->p_discount)) {
+                    $no_items += 1;
+                    $discount_details = $vari->regular_price * $vari->p_discount / 100;
+                    $t_amount = $vari->regular_price - $discount_details;
+                    $subtotal += round(floatval($t_amount) * $vari->quantity);
+                    if ($vari->p_discount > 0) {
+                        $discount = round(floatval(floatval($vari->product->regular_price) * $vari->quantity) - floatval(floatval($t_amount) * $vari->quantity));
+                        array_push($product_dis, $discount);
+                        $discountPrice += $discount;
+                    } else {
+                        $discount = 0;
+                        array_push($product_dis, $discount);
+                        $discountPrice += $discount;
+                    }
                 } else {
-                    $discount = 0;
-                    array_push($product_dis, $discount);
-                    $discountPrice += $discount;
+                    $no_items += 1;
+                    $subtotal += round(floatval($vari->product->sale_price) * $vari->quantity);
+                    if ($vari->product->discount > 0) {
+                        $discount = round(floatval(floatval($vari->product->regular_price) * $vari->quantity) - floatval(floatval($vari->product->sale_price) * $vari->quantity));
+                        array_push($product_dis, $discount);
+                        $discountPrice += $discount;
+                    } else {
+                        $discount = 0;
+                        array_push($product_dis, $discount);
+                        $discountPrice += $discount;
+                    }
                 }
             }
 
             $totalCartItems = count($cartItems);
         }
         $totalPrice = $subtotal;
+        // dd($totalPrice);
         $locations = DB::table('user_addresses')->where('user_id', auth()->user()->id)->get();
 
         $user_coupons = $this->coupons($cartItems);

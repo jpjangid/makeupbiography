@@ -55,6 +55,7 @@ class CreateOrdersTable extends Migration
             $table->string('coupon_id')->nullable();
             $table->float('coupon_discount')->nullable();
             $table->string('shop')->nullable();
+            $table->string('gst_no')->nullable();
             $table->tinyInteger('flag')->default(0);
             $table->timestamps();
         });

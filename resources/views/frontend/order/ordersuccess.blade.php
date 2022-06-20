@@ -68,18 +68,18 @@
                 </thead>
                 <tbody>
                   @foreach($order->items as $item)
-                    <tr class="woocommerce-table__line-item order_item">
-                      <td class="woocommerce-table__product-name product-name">
-                        <a href="https://parkofideas.com/luchiana/demo/shop/airbrush-matte/">{{ $item->product->item_shade_name }}</a>
-                        <strong class="product-quantity">&times;&nbsp;{{ $item->quantity }}</strong>
-                      </td>
-                      <td class="woocommerce-table__product-total product-total">
-                        <span class="woocommerce-Price-amount amount">
-                          <bdi>
-                            <span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $item->product->sale_price }}</bdi>
-                        </span>
-                      </td>
-                    </tr>
+                  <tr class="woocommerce-table__line-item order_item">
+                    <td class="woocommerce-table__product-name product-name">
+                      <a href="https://parkofideas.com/luchiana/demo/shop/airbrush-matte/">{{ $item->product->item_shade_name }}</a>
+                      <strong class="product-quantity">&times;&nbsp;{{ $item->quantity }}</strong>
+                    </td>
+                    <td class="woocommerce-table__product-total product-total">
+                      <span class="woocommerce-Price-amount amount">
+                        <bdi>
+                          <span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $item->sale_price }}</bdi>
+                      </span>
+                    </td>
+                  </tr>
                   @endforeach
                 </tbody>
                 <tfoot>

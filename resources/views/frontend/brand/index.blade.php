@@ -70,7 +70,7 @@
                       <div class="elementor-widget-container">
                         <div class="c-ip-brand-list c-ip-brand-list--logos">
                           <ul class="c-ip-brand-list__list c-ip-brand-list__list--logos">
-                            <!-- @foreach($brands as $brand)
+                            @foreach($brands as $brand)
                             <li class="c-ip-brand-list__item c-ip-brand-list__item--logos">
                               <a class="c-ip-brand-list__link c-ip-brand-list__link--logos" href="{{ url('brands',['slug'=> $brand->slug]) }}">
                                 <div class="c-ip-brand-list__thumb">
@@ -79,7 +79,7 @@
                                 <div class="c-ip-brand-list__title c-ip-brand-list__title--logos">{{ $brand->name }}</div>
                               </a>
                             </li>
-                            @endforeach -->
+                            @endforeach
                           </ul>
                         </div>
                       </div>

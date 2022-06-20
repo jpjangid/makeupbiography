@@ -28,8 +28,10 @@ class OrderController extends Controller
 {
     public function index(Request $request)
     {
+        // dd($request->all());
         $user = auth()->user();
-        $cartItems = Cart::where('user_id', $user->id)->with('product', 'product.medias')->get();
+        $cartItems = Cart::where('user_id', $user->id)->join('products', 'products.id', '=', 'carts.product_id')->select('carts.*', 'products.id as product_id', 'products.sale_price as sale_price', 'products.discount as discount', 'products.regular_price as regular_price', 'discount_details.discount_type as p_discount_type', 'discount_details.discount as p_discount')->leftjoin('discount_details', 'products.id', '=', 'discount_details.product_id')->get();
+        // dd($cartItems);
 
         $online_payment = "fail";
 
@@ -169,14 +171,27 @@ class OrderController extends Controller
             'order_comments'            => $request->order_comments,
             'payment_amount'            => $request->total,
             'wallet_amount'             => $request->wallet_amt,
+            'gst_no'                    => $request->gst_no,
         ]);
 
         foreach ($cartItems as $item) {
-            OrderItem::create([
-                'order_id'              =>  $order->id,
-                'product_id'            =>  $item->product_id,
-                'quantity'              =>  $item->quantity,
-            ]);
+            $discount = $item->regular_price * $item->p_discount / 100;
+            $discount_price = $item->regular_price - $discount;
+            if (!empty($item->p_discount)) {
+                OrderItem::create([
+                    'order_id'              =>  $order->id,
+                    'product_id'            =>  $item->product_id,
+                    'quantity'              =>  $item->quantity,
+                    'sale_price'            =>  $discount_price,
+                ]);
+            } else {
+                OrderItem::create([
+                    'order_id'              =>  $order->id,
+                    'product_id'            =>  $item->product_id,
+                    'quantity'              =>  $item->quantity,
+                    'sale_price'            =>  $item->sale_price,
+                ]);
+            }
         }
 
         // if ($order->payment_mode == 'online') {
@@ -187,22 +202,36 @@ class OrderController extends Controller
             $update_order->shiprocket_shipment_id = $response->shipment_id;
             $update_order->update();
         }
-        // }
 
-        if (!empty($coupon) && $request->coupon_discount != 0) {
-            if ($coupon->type == 'merchandise' || $coupon->type == 'global' || $coupon->type == 'personal_code' || $coupon->type == 'cart_value_discount') {
-                CouponUsedBy::create([
-                    'coupon_id'         =>  $coupon->id,
-                    'user_id'           =>  $user->id,
-                    'order_id'          =>  $order->id,
-                    'amount'            =>  $request->coupon_discount,
-                    'applied_times'     =>  1,
-                ]);
-            } else {
-                $coupon->times_applied  = $coupon->times_applied + 1;
-                $coupon->update();
-            }
-        }
+
+        // if (!empty($coupon) && $request->coupon_discount != 0) {
+        //     if ($coupon->type == 'merchandise' || $coupon->type == 'global' || $coupon->type == 'personal_code' || $coupon->type == 'cart_value_discount') {
+        //         CouponUsedBy::create([
+        //             'coupon_id'         =>  $coupon->id,
+        //             'user_id'           =>  $user->id,
+        //             'order_id'          =>  $order->id,
+        //             'amount'            =>  $request->coupon_discount,
+        //             'applied_times'     =>  1,
+        //         ]);
+
+        //         $couponUsed = CouponUsedBy::where('coupon_id', $coupon->id)->get();
+
+        //         if (
+        //             $coupon->coupon_limit == count($couponUsed)
+        //         ) {
+        //             $coupon->status = 1;
+        //             $coupon->update();
+        //         }
+        //     } else {
+        //         $coupon->times_applied  = $coupon->times_applied + 1;
+        //         if (
+        //             $coupon->coupon_limit == $coupon->times_applied + 1
+        //         ) {
+        //             $coupon->status = 1;
+        //         }
+        //         $coupon->update();
+        //     }
+        // }
 
         if ($request->wallet_amt != 0) {
             Wallet::create([
@@ -250,7 +279,38 @@ class OrderController extends Controller
     public function thankyou_page($order_no)
     {
         $order = Order::where('order_no', $order_no)->with('items.product.medias', 'user')->first();
+        $user_id = $order->user_id;
+        $curl = curl_init();
 
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://api.interakt.ai/v1/public/track/users/',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => '{
+                    "userId": "' . $user_id . '",
+                    "phoneNumber": "' . $order->user->mobile . '",
+                    "countryCode": "+91",
+                    "traits": {
+                        "name": "' . $order->user->name . '",
+                        "email": "' . $order->user->email . '"
+                    },
+                    "tags": ["sample-tag-1", "sample-tag-2"]
+                }',
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type: application/json',
+                'Authorization: Basic <SkJwX2NMSmlUU3M2cGh5cjJFWHptVjYtN1ZmOHlfaG5lMGNtaVNHckQxdzo=>'
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        // echo $response;
         return view('frontend.order.ordersuccess', compact('order'));
     }
 
@@ -272,6 +332,9 @@ class OrderController extends Controller
         $params = array(
             'form_params' => array('email' => 'ved@webanix.in', 'password' => 'Admin@@123#')
         );
+
+
+
         $response = $client->post('https://apiv2.shiprocket.in/v1/external/auth/login', $params);
         $auth_response = json_decode((string) $response->getBody());
         # Shiprocket auth token

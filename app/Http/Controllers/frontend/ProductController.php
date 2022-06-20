@@ -13,7 +13,7 @@ class ProductController extends Controller
 
     public function index($product)
     {
-        $product = Product::where('slug', $product)->with('medias', 'category.parent.parent')->orderby('sequence', 'asc')->first();
+        $product = Product::where('slug', $product)->select('products.*', 'discount_details.discount_type as p_discount_type', 'discount_details.discount as p_discount')->with('medias', 'category.parent.parent')->orderby('sequence', 'asc')->leftJoin('discount_details', 'products.id', '=', 'discount_details.product_id')->first();
         $product_name = explode('-', $product->item_name);
         $variants = DB::table('products')->where('item_name', 'like', '%' . $product_name[0] . '%')->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->get();
         $medias = DB::table('product_media')->where('product_id', $product->id)->orderby('sequence', 'asc')->get();

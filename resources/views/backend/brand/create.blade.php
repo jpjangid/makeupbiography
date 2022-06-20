@@ -151,7 +151,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                
+
                                 <!-- OG Title -->
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
@@ -175,7 +175,7 @@
                                 </div>
 
                                 <hr>
-                                
+
                                 <!-- tags -->
                                 <div class="col-md-8 mb-4">
                                     <div class="form-group">

@@ -31,8 +31,8 @@ class CreateCategoriesTable extends Migration
             $table->text('og_image')->nullable();
             $table->string('og_alt')->nullable();
             $table->string('type')->nullable();
-            $table->integer('status')->default(0); 
-            $table->integer('flag')->default(0); 
+            $table->integer('status')->default(0);
+            $table->integer('flag')->default(0);
             $table->timestamps();
         });
     }

@@ -100,7 +100,6 @@
                                         @enderror
                                     </div>
                                 </div>
-
                                 <hr>
                                 <h4>Meta Section</h4>
 

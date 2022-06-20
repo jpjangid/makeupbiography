@@ -357,12 +357,27 @@
 						</div>
 						<p class="price">
 							<span class="woocommerce-Price-amount amount">
+								@php
+								$discount = $product->regular_price * $product->p_discount/100;
+								$dis_amount = $product->regular_price - $discount;
+								@endphp
+								@if(!empty($product->p_discount))
+								<del>&#8377;{{ number_format((float)$product->regular_price, 2, '.', '') }}</del>
+								<span class="woocommerce-Price-currencySymbol"> &#8377;</span>{{ number_format((float)$dis_amount, 2, '.', '') }}
+								@else
 								<bdi>
 									@if($product->regular_price != $product->sale_price)
 									<del>&#8377;{{ number_format((float)$product->regular_price, 2, '.', '') }}</del>
 									@endif
 									<span class="woocommerce-Price-currencySymbol"> &#8377;</span>{{ number_format((float)$product->sale_price, 2, '.', '') }}
 								</bdi>
+								@endif
+								<!-- <bdi>
+									@if($product->regular_price != $product->sale_price)
+									<del>&#8377;{{ number_format((float)$product->regular_price, 2, '.', '') }}</del>
+									@endif
+									<span class="woocommerce-Price-currencySymbol"> &#8377;</span>{{ number_format((float)$product->sale_price, 2, '.', '') }}
+								</bdi> -->
 							</span>
 						</p>
 						@if($product->p_type == 'HEX SHADE')
