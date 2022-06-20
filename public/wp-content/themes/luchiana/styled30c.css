@@ -7911,7 +7911,7 @@ p+.woocommerce-order-details {
     -webkit-box-direction: normal;
     flex-direction: column;
     position: relative;
-    margin: 20px;
+    margin: 10px;
 }
 
 .c-product-grid__item--view-more {

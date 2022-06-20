@@ -39,7 +39,7 @@
 <style>
 	.arrows {
 		position: absolute;
-		top: 20%;
+		top: 30%;
 		font-size: 60px;
 		font-weight: bold;
 		cursor: pointer;
@@ -48,8 +48,8 @@
 	}
 
 	.arrows:nth-of-type(2) {
-		left: 99%;
-		text-align: right;
+		left: 97%;
+		/* text-align: right; */
 	}
 
 	.arrows:hover {
@@ -581,7 +581,7 @@
 		<section class="c-product__products c-product__products--related">
 			<div class="c-product__products-title" style="font-size: 25px; font-weight: bold; color: black; letter-spacing: 0.2em;">Related products</div>
 			<div class="c-product-grid__wrap c-product-grid__wrap--4-per-row ">
-				<div class="c-product-grid__list c-product-grid__list--3-per-row ">
+				<div class="c-product-grid__list c-product-grid__list--3-per-row " style="margin : 0 30px">
 
 					<div class="in-main">
 						@foreach($related_products as $key => $related)
