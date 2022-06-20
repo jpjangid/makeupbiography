@@ -34,7 +34,7 @@
 	.c-product-grid__thumb-button-list-shop .discount{
 		z-index : 9;
 	}
-	.c-product-grid__thumb-button-list-shop .discount .c-product-grid__badges-shop .c-badge{
+	.c-product-grid__thumb-button-list-shop .discount .c-product-grid__badges-shop .c-badge-shop{
 		width: 40px;
 		height: 40px;
 		border-radius: 100%;
@@ -42,7 +42,38 @@
 		justify-content: center;
     	display: flex;
     	align-items: center;
+		border-radius : 100%;
+		padding : 12px 5px;
 	}
+
+	.c-badge-shop {
+		-webkit-box-flex: 0;
+		flex: 0 0 auto;
+		display: inline-block;
+		text-transform: uppercase;
+		color: #FFF;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 10px;
+		line-height: 11px;
+		letter-spacing: 0.03em;
+		text-align: center;
+		margin-bottom: 5px;
+		border-radius : 100%;
+		width:40px;
+		height:40px;
+	}
+
+	.c-badge--sale {
+		display :flex;
+		align-items :center;
+		justify-content : center;
+		margin-left: -13px;
+    	margin-top: -13px;
+
+	}
+
+
 	.c-product-grid__thumb-button-list-shop .c-wishlist__btn{
 		align-items : baseline;
 	}
@@ -259,18 +290,18 @@
 								@if($product->discount_type == "percentage")
 									<div class="c-product-grid__badges c-badge__list">
 										@if(!empty($product->label_name))
-										<span class="c-badge c-badge--featured">{{ $product->label_name }}</span>
+										<span class="c-badge-shop c-badge--featured">{{ $product->label_name }}</span>
 										@endif
-										<span class="c-badge c-badge--sale">-{{ $product->discount }}%</span>
+										<span class="c-badge-shop c-badge--sale">-{{ $product->discount }}%</span>
 									</div>
 									@endif
 
 									@if($product->discount_type == "flat")
 									<div class="c-product-grid__badges c-badge__list">
 										@if(!empty($product->label_name))
-										<span class="c-badge c-badge--featured">{{ $product->label_name }}</span>
+										<span class="c-badge-shop c-badge--featured">{{ $product->label_name }}</span>
 										@endif
-										<span class="c-badge c-badge--sale">- &#8377; {{ $product->regular_price - $product->sale_price }}</span>
+										<span class="c-badge-shop c-badge--sale">- &#8377; {{ $product->regular_price - $product->sale_price }}</span>
 									</div>
 									@endif
 								<!-- .c-product-grid__badges -->
