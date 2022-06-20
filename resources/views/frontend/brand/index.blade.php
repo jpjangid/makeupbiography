@@ -6,6 +6,10 @@
     background: white;
     padding: 40px;
   }
+
+  .elementor-element-populated{
+    width:100%
+  }
 </style>
 @endsection
 
@@ -18,7 +22,7 @@
           <div class="elementor-container elementor-column-gap-no">
             <div class="elementor-row">
               <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-6613dc5" data-id="6613dc5" data-element_type="column">
-                <div class="elementor-column-wrap elementor-element-populated">
+                <div class="elementor-element-populated">
                   <div class="elementor-widget-wrap">
                     <div class="elementor-element elementor-element-c29fce2 elementor-widget elementor-widget-ideapark-page-header" data-id="c29fce2" data-element_type="widget" data-widget_type="ideapark-page-header.default">
                       <div class="elementor-widget-container">

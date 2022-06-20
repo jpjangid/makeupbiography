@@ -223,6 +223,25 @@
 		background-image: linear-gradient(to bottom, #666362, #413839);
 	}
 
+	.c-badge {
+		-webkit-box-flex: 0;
+		flex: 0 0 auto;
+		display: inline-block;
+		padding: 12px 5px;
+		text-transform: uppercase;
+		color: #FFF;
+		font-style: normal;
+		border-radius: 100%;
+		font-weight: bold;
+		font-size: 10px;
+		line-height: 11px;
+		/* margin-left: -13px; */
+		letter-spacing: 0.03em;
+		text-align: center;
+		margin-bottom: 5px;
+		background-color: var(--text-color);
+	}
+
 	/* @media screen and (max-width: 768px){
 		.price-div{
 			margin-bottom: 10px;
@@ -276,7 +295,7 @@
 	}
 
 	.owl-carousel.owl-loaded {
-		padding-left: 20px;
+		padding: 0 20px;
 	}
 
 	@media (max-width: 619px) and (min-width: 360px) {

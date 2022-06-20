@@ -23,6 +23,25 @@
 		max-height: 3.6em;
 		line-height: 1.8em;
 	}
+
+	.c-badge-category{
+		-webkit-box-flex: 0;
+		flex: 0 0 auto;
+		display: inline-block;
+		padding: 12px 5px;
+		text-transform: uppercase;
+		color: #FFF;
+		font-style: normal;
+		border-radius: 100%;
+		font-weight: bold;
+		font-size: 10px;
+		line-height: 11px;
+		margin-left: -5px;
+		letter-spacing: 0.03em;
+		text-align: center;
+		margin-bottom: 5px;
+		background-color: var(--text-color);
+	}
 </style>
 @endsection
 
@@ -244,6 +263,21 @@
 							<div class="c-product-grid__item c-product-grid__item--3-per-row c-product-grid__item--normal c-product-grid__item--hover product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple">
 								<div class="c-product-grid__badges c-badge__list">
 								</div>
+								<div class="c-product-grid__badges c-badge__list">
+										@if(!empty($product->label_name))
+										<span class="c-badge-category c-badge--featured">{{ $product->label_name }}</span>
+										@endif
+										<span class="c-badge-category c-badge--sale">-{{ $product->discount }}%</span>
+									</div>
+
+									@if($product->discount_type == "flat")
+									<div class="c-product-grid__badges c-badge__list">
+										@if(!empty($product->label_name))
+										<span class="c-badge-category c-badge--featured">{{ $product->label_name }}</span>
+										@endif
+										<span class="c-badge-category c-badge--sale">- &#8377; {{ $product->regular_price - $product->sale_price }}</span>
+									</div>
+									@endif
 								<!-- .c-product-grid__badges -->
 								<div class="c-product-grid__thumb-wrap">
 									<a href="{{ url('products',['product' => $product->slug]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">

@@ -62,7 +62,8 @@
 <input type="text" id="csrfToken" value="{{ csrf_token() }}" hidden>
 <div class="l-inner">
 	<header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default c-page-header--product-list">
-resources/views/frontend/page		<div class="c-page-header__wrap">
+	<!-- resources/views/frontend/page	 -->
+	<div class="c-page-header__wrap">
 			<h1 class="c-page-header__title">Shop</h1>
 		</div>
 		<nav class="c-breadcrumbs">
