@@ -38,6 +38,9 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('wp-content/uploads/elementor/css/post-8.css')  }}">
 <style>
+	.elementor-widget-container .elementor-column-wrap-contact .elementor-element-populated{
+		width:100;
+	}
 	/* .fa {
 		padding-left: 10px;
 		padding-right: 40px;
@@ -112,7 +115,7 @@
 					<div class="elementor-container elementor-column-gap-no">
 						<div class="elementor-row">
 							<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-39a8339" data-id="39a8339" data-element_type="column">
-								<div class="elementor-column-wrap elementor-element-populated">
+								<div class="elementor-column-wrap-contact elementor-element-populated" style="width: 100%;>
 									<div class="elementor-widget-wrap">
 										<div class="elementor-element elementor-element-8b2fbe9 elementor-widget elementor-widget-ideapark-page-header" data-id="8b2fbe9" data-element_type="widget" data-widget_type="ideapark-page-header.default">
 											<div class="elementor-widget-container">
@@ -166,7 +169,7 @@
 																			<div class="elementor-container elementor-column-gap-no">
 																				<div class="elementor-row">
 																					<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-79e7aa8" data-id="79e7aa8" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-																						<div class="elementor-column-wrap elementor-element-populated" style="background-color:white;padding: 50px 60px 50px 60px;">
+																						<div class="elementor-element-populated" style="background-color:white;padding: 50px 60px 50px 60px;">
 																							<div class="elementor-widget-wrap">
 																								<div class="elementor-element elementor-element-1b3ba0a elementor-widget elementor-widget-ideapark-heading" data-id="1b3ba0a" data-element_type="widget" data-widget_type="ideapark-heading.default">
 																									<div class="elementor-widget-container">
@@ -298,7 +301,7 @@
 																							</div>
 																						</div>
 																					</div>
-																					<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-57d6fa3" data-id="57d6fa3" data-element_type="column">
+																					<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-57d6fa3" data-id="57d6fa3" data-element_type="column" style="margin-top:10px;">
 																						<div class="elementor-column-wrap elementor-element-populated">
 																							<div class="elementor-widget-wrap">
 																								<div class="elementor-element elementor-element-02d85eb elementor-widget elementor-widget-html" data-id="02d85eb" data-element_type="widget" data-widget_type="html.default">

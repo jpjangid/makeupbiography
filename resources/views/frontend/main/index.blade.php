@@ -10,17 +10,17 @@
 
 	@media screen and (max-width: 350px) {
 		.c-product-grid__item--normal {
-			width: 140px !important;
-			margin: 10px !important;
-			padding-bottom: 50px !important;
+			/* width: 140px !important; */
+			margin: 10px 0 !important;
+			/* padding-bottom: 50px !important; */
 		}
 	}
 
 	@media screen and (max-width: 380px) {
 		.c-product-grid__item--normal {
-			width: 160px !important;
-			margin: 10px !important;
-			padding-bottom: 50px !important;
+			/* width: 160px !important; */
+			margin: 10px 0 !important;
+			/* padding-bottom: 50px !important; */
 		}
 	}
 
@@ -106,17 +106,17 @@
 
 	@media (max-width: 420px) {
 		.c-product-grid__item--normal {
-			width: 150px !important;
-			margin: 16px !important;
-			padding-bottom: 35px;
+			/* width: 150px !important; */
+			/* margin: 16px !important; */
+			/* padding-bottom: 35px; */
 		}
 	}
 
 	@media (max-width: 320px) {
 		.c-product-grid__item--normal {
-			width: 220px !important;
-			margin: 16px !important;
-			padding-bottom: 35px;
+			/* width: 220px !important; */
+			/* margin: 16px !important; */
+			/* padding-bottom: 35px; */
 		}
 	}
 
@@ -242,6 +242,28 @@
 		background-color: var(--text-color);
 	}
 
+	.owl-stage-outer .owl-stage{
+		width:100%!important;
+		/* height:100px; */
+		display:flex;
+	}
+
+	.woocommerce{
+		margin:20px 0;
+	}
+
+	@media (max-width:426px){
+		.subscribe-btn {
+			margin-top: 26.5px!important;
+			left: -17px!important;
+		}
+	}
+	@media (max-width:376px){
+		.subscribe-btn {
+			margin-top: 10px!important;
+			left: -8px!important;
+		}
+	}
 	/* @media screen and (max-width: 768px){
 		.price-div{
 			margin-bottom: 10px;
@@ -380,10 +402,14 @@
 		.c-product-grid__title-wrap .woocommerce-LoopProduct-link .woocommerce-loop-product__title {
 			height: 2em;
 		}
+		.c-ip-image-list-1__thumb{
+			width:70px;
+			height:70px;
+		}
 	}
 
 	.c-product-grid__badges {
-		margin-left: -10px;
+		left:-10px;
 	}
 
 	.c-badge--sale {
@@ -391,12 +417,19 @@
 		height: 45px !important;
 		width: 45px !important;
 		padding-top: 15px !important;
-		display: inline !important;
+		display: flex;
+   		align-items: center;
+    	justify-content: center;
 	}
 
 	.c-badge--featured {
 		height: 25px !important;
 		margin-right: -10px !important;
+	}
+
+	.elementor-column-wrap{
+		width:100%;
+		margin:0;
 	}
 </style>
 @endsection
@@ -428,7 +461,7 @@
 										<div class="elementor-widget-container">
 											<div class="c-ip-image-list-1 c-ip-image-list-1--carousel">
 												<div class="c-ip-image-list-1__wrap c-ip-image-list-1__wrap--carousel">
-													<div class="c-ip-image-list-1__list c-ip-image-list-1__list--carousel  js-image-list-1 h-carousel h-carousel--dots-hide h-carousel--nav-hide">
+													<div class="c-ip-image-list-1__list c-ip-image-list-1__list--carousel js-image-list-1 h-carousel h-carousel--dots-hide h-carousel--nav-hide">
 														@if(!empty($main_categories))
 														@foreach($main_categories as $main_category)
 														<div class="c-ip-image-list-1__item c-ip-image-list-1__item--carousel">
@@ -482,7 +515,7 @@
 										<div class="elementor-widget-container">
 											<div class="c-ip-product-tabs js-ip-tabs">
 												<div class="c-ip-product-tabs__wrap js-ip-tabs-wrap">
-													<div class="c-ip-product-tabs__menu js-ip-tabs-list h-carousel h-carousel--small h-carousel--hover h-carousel--mobile-arrows h-carousel--dots-hide">
+													<div style="display : grid; grid-template-columns : 25% 25% 25% 25%" class="c-ip-product-tabs__menu js-ip-tabs-list h-carousel h-carousel--hover">
 														<div class="c-ip-product-tabs__menu-item js-ip-tabs-menu-item active">
 															<a class="c-ip-product-tabs__menu-link js-ip-tabs-link" href="#tab-01406ee-1" data-index="0" onclick="return false;">Newest</a>
 														</div>
@@ -510,7 +543,7 @@
 																	@if(str_contains($main_newest_product->tags,'newest'))
 																	<div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple" style="background-color: white;">
 
-																		@if($main_newest_product->discount_type == "percentage")
+																	@if($main_newest_product->discount_type == "percentage")
 																		<div class="c-product-grid__badges c-badge__list">
 																			@if(!empty($main_newest_product->label_name))
 																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
@@ -1125,7 +1158,7 @@
 										<div class="elementor-widget-container">
 											<div class="c-ip-woocommerce-carousel">
 												<div class="c-ip-woocommerce-carousel__wrap">
-													<div class="woocommerce columns-4 ">
+													<div class="woocommerce columns-4">
 														<div class="c-product-grid__wrap c-product-grid__wrap--3-per-row ">
 															<div data-autoplay="no" class="c-product-grid__list c-ip-woocommerce-carousel__list c-ip-woocommerce-carousel__list--3-per-row js-woocommerce-carousel h-carousel h-carousel--default-dots h-carousel--flex h-carousel--round h-carousel--border h-carousel--dots-hide  c-product-grid__list--3-per-row ">
 
@@ -1244,7 +1277,7 @@
 				<div class="elementor-container elementor-column-gap-no">
 					<div class="elementor-row">
 						<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-935c41a" data-id="935c41a" data-element_type="column">
-							<div class="elementor-column-wrap elementor-element-populated">
+							<div class="elementor-column-wrap-banner elementor-element-populated" style="width:100%">
 								<div class="elementor-widget-wrap">
 									<div class="elementor-element elementor-element-91858e7 elementor-widget elementor-widget-ideapark-banners" data-id="91858e7" data-element_type="widget" data-widget_type="ideapark-banners.default">
 										<div class="elementor-widget-container">

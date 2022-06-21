@@ -75,6 +75,11 @@
 			text-transform: capitalize;
 			line-height: 0.9;
 		}
+
+		.elementor-widget-wrap-footer{
+			margin:0 10px;
+			width:100%;
+		}
 	}
 
 	.zoom-href {
@@ -119,7 +124,8 @@
 
 	@media(max-width : 1024px){
 		.subscribe-btn {
-			padding: 23px;
+			padding: 22.6px;
+			margin-top:10.5px;
 		}
 
 		.h-input, input[type="search"]:not(.h-cb), input[type="text"]:not(.h-cb), input[type="password"]:not(.h-cb), input[type="email"]:not(.h-cb), input[type="tel"]:not(.h-cb), input[type="number"]:not(.h-cb), input[type="url"]:not(.h-cb), input[type="date"]:not(.h-cb), textarea:not(.h-cb):not(.editor-post-title__input), .wpcf7-form .c-custom-selectInner, select:not(.h-cb) {
@@ -148,7 +154,9 @@
 		}
 
 		.subscribe-btn {
-			padding: 15px;
+			padding: 14.7px;
+			margin-top:10.6px;
+			left:0;
 		}
 	}
 
@@ -233,7 +241,7 @@
 							<div class="elementor-row">
 								<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-11148c13" data-id="11148c13" data-element_type="column">
 									<div class="elementor-column-wrap elementor-element-populated">
-										<div class="elementor-widget-wrap">
+										<div class="elementor-widget-wrap-footer">
 											<!-- <div class="elementor-element elementor-element-33548589 elementor-widget elementor-widget-ideapark-inline-menu" data-id="33548589" data-element_type="widget" data-widget_type="ideapark-inline-menu.default">
 												<div class="elementor-widget-container">
                           	<img src="{{ asset('/images/golden-stroke.png') }}" height="5%" width="10%" style="float:left; margin-left: -5px; margin-top: -10px;">
