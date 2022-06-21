@@ -242,28 +242,30 @@
 		background-color: var(--text-color);
 	}
 
-	.owl-stage-outer .owl-stage{
-		width:100%!important;
+	.owl-stage-outer .owl-stage {
+		width: 100% !important;
 		/* height:100px; */
-		display:flex;
+		display: flex;
 	}
 
-	.woocommerce{
-		margin:20px 0;
+	.woocommerce {
+		margin: 20px 0;
 	}
 
-	@media (max-width:426px){
+	@media (max-width:426px) {
 		.subscribe-btn {
-			margin-top: 26.5px!important;
-			left: -17px!important;
+			margin-top: 26.5px !important;
+			left: -17px !important;
 		}
 	}
-	@media (max-width:376px){
+
+	@media (max-width:376px) {
 		.subscribe-btn {
-			margin-top: 10px!important;
-			left: -8px!important;
+			margin-top: 10px !important;
+			left: -8px !important;
 		}
 	}
+
 	/* @media screen and (max-width: 768px){
 		.price-div{
 			margin-bottom: 10px;
@@ -402,14 +404,15 @@
 		.c-product-grid__title-wrap .woocommerce-LoopProduct-link .woocommerce-loop-product__title {
 			height: 2em;
 		}
-		.c-ip-image-list-1__thumb{
-			width:70px;
-			height:70px;
+
+		.c-ip-image-list-1__thumb {
+			width: 70px;
+			height: 70px;
 		}
 	}
 
 	.c-product-grid__badges {
-		left:-10px;
+		left: -10px;
 	}
 
 	.c-badge--sale {
@@ -418,8 +421,8 @@
 		width: 45px !important;
 		padding-top: 15px !important;
 		display: flex;
-   		align-items: center;
-    	justify-content: center;
+		align-items: center;
+		justify-content: center;
 	}
 
 	.c-badge--featured {
@@ -427,9 +430,9 @@
 		margin-right: -10px !important;
 	}
 
-	.elementor-column-wrap{
-		width:100%;
-		margin:0;
+	.elementor-column-wrap {
+		width: 100%;
+		margin: 0;
 	}
 </style>
 @endsection
@@ -543,7 +546,7 @@
 																	@if(str_contains($main_newest_product->tags,'newest'))
 																	<div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple" style="background-color: white;">
 
-																	@if($main_newest_product->discount_type == "percentage")
+																		@if($main_newest_product->discount_type == "percentage")
 																		<div class="c-product-grid__badges c-badge__list">
 																			@if(!empty($main_newest_product->label_name))
 																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
@@ -554,6 +557,8 @@
 																			@elseif($main_newest_product->discount >0)
 																			<span class="c-badge c-badge--sale">
 																				{{ $main_newest_product->discount }}% OFF</span>
+																			@else
+
 																			@endif
 
 																		</div>

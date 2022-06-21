@@ -298,12 +298,12 @@
 						<!-- .c-product__badges -->
 						<div class="c-product__slider c-product__slider--carousel h-carousel h-carousel--inner h-carousel--hover h-carousel--dots-hide js-single-product-carousel">
 							@php $count = 0; use Illuminate\Support\Facades\Storage; @endphp
-							<!-- @foreach($medias as $media) -->
-							<!-- @if($media->media_type == 'image') -->
+							@foreach($medias as $media)
+							@if($media->media_type == 'image')
 							<div class="c-product__slider-item c-product__slider-item--zoom woocommerce-product-gallery__image ">
-								<a download href="https://brandtalks.in/makeupbiographytest/storage/products/variants/asfghj.jpg" class="c-product__image-link c-product__image-link--zoom js-product-modal" data-size="1200x1200" data-index="https://brandtalks.in/makeupbiographytest/storage/products/variants/asfghj.jpg" data-product-id="" data-elementor-open-lightbox="no" onclick="return false;">
-									<div data-img="https://brandtalks.in/makeupbiographytest/storage/products/variants/asfghj.jpg" class="c-product__image-zoom js-product-zoom ">
-										<img width="460" height="460" src="https://brandtalks.in/makeupbiographytest/storage/products/variants/asfghj.jpg" class="c-product__slider-img c-product__slider-img--cover" alt="product-1-3" srcset="https://brandtalks.in/makeupbiographytest/storage/products/variants/asfghj.jpg" sizes="(max-width: 460px) 100vw, 460px" />
+								<a download href="{{ asset('/storage/products/variants/'.$media->media) }}" class="c-product__image-link c-product__image-link--zoom js-product-modal" data-size="1200x1200" data-index="{{ $count }}" data-product-id="" data-elementor-open-lightbox="no" onclick="return false;">
+									<div data-img="{{ asset('storage/products/variants/'.$media->media) }}" class="c-product__image-zoom js-product-zoom ">
+										<img width="460" height="460" src="{{ asset('storage/products/variants/'.$media->media) }}" class="c-product__slider-img c-product__slider-img--cover" alt="product-1-3" srcset="{{ asset('storage/products/variants/'.$media->media) }}" sizes="(max-width: 460px) 100vw, 460px" />
 									</div>
 									<span class="c-product__loading js-loading-wrap">
 									</span>
@@ -312,7 +312,7 @@
 									<i class='ip-zoom'></i>
 								</button>
 							</div>
-							<!-- @endif -->
+							@endif
 							@if($media->media_type == 'video')
 							<div class="c-product__slider-item c-product__slider-item--video">
 								<a download href="{{ $media->media }}" class="c-product__image-link c-product__image-link--zoom js-product-modal" data-index="{{ $count }}" data-product-id="511" data-elementor-open-lightbox="no" onclick="return false;">
@@ -376,7 +376,7 @@
 					<div class="summary entry-summary">
 						<!-- <h1 class="c-product__title">{{ $product->item_shade_name }}</h1> -->
 						<div class="c-product__short-description" style="text-align: justify;">
-							<p class="price">
+							<!-- <p class="price">
 								<span class="woocommerce-Price-amount amount">
 									<bdi>
 										@if($product->regular_price != $product->sale_price)
@@ -385,7 +385,7 @@
 										<span class="woocommerce-Price-currencySymbol"> &#8377;</span>{{ number_format((float)$product->sale_price, 2, '.', '') }}
 									</bdi>
 								</span>
-							</p>
+							</p> -->
 							<p>{{ $product->short_description }}</p>
 						</div>
 						<p class="price">
