@@ -124,7 +124,8 @@
 
 	@media(max-width : 1024px){
 		.subscribe-btn {
-			padding: 23px;
+			padding: 22.6px;
+			margin-top:10.5px;
 		}
 
 		.h-input, input[type="search"]:not(.h-cb), input[type="text"]:not(.h-cb), input[type="password"]:not(.h-cb), input[type="email"]:not(.h-cb), input[type="tel"]:not(.h-cb), input[type="number"]:not(.h-cb), input[type="url"]:not(.h-cb), input[type="date"]:not(.h-cb), textarea:not(.h-cb):not(.editor-post-title__input), .wpcf7-form .c-custom-selectInner, select:not(.h-cb) {
@@ -153,7 +154,9 @@
 		}
 
 		.subscribe-btn {
-			padding: 15px;
+			padding: 14.7px;
+			margin-top:10.6px;
+			left:0;
 		}
 	}
 
