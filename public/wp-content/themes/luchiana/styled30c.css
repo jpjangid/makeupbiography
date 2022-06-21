@@ -7957,7 +7957,7 @@ p+.woocommerce-order-details {
     position: relative;
     background-color: white;
     overflow: hidden;
-    height: 200px;
+    height: 250px;
     /* padding-bottom: 88.4615384%; */
 }
 
@@ -8414,7 +8414,7 @@ p+.woocommerce-order-details {
         visibility: visible;
     }
     .c-product-grid__item--4-per-row .c-product-grid__atc {
-        top: 200px;
+        top: 250px;
     }
     .c-product-grid__item--3-per-row .c-product-grid__atc {
         top: 200px;

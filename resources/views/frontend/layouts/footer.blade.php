@@ -75,6 +75,11 @@
 			text-transform: capitalize;
 			line-height: 0.9;
 		}
+
+		.elementor-widget-wrap-footer{
+			margin:0 10px;
+			width:100%;
+		}
 	}
 
 	.zoom-href {
@@ -233,7 +238,7 @@
 							<div class="elementor-row">
 								<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-11148c13" data-id="11148c13" data-element_type="column">
 									<div class="elementor-column-wrap elementor-element-populated">
-										<div class="elementor-widget-wrap">
+										<div class="elementor-widget-wrap-footer">
 											<!-- <div class="elementor-element elementor-element-33548589 elementor-widget elementor-widget-ideapark-inline-menu" data-id="33548589" data-element_type="widget" data-widget_type="ideapark-inline-menu.default">
 												<div class="elementor-widget-container">
                           	<img src="{{ asset('/images/golden-stroke.png') }}" height="5%" width="10%" style="float:left; margin-left: -5px; margin-top: -10px;">

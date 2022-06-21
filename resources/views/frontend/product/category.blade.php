@@ -32,9 +32,11 @@
 	.c-badge-category{
 		-webkit-box-flex: 0;
 		flex: 0 0 auto;
-		display: inline-block;
+		display: flex;
+		justify-content : center;
+		align-items : center;
 		width : 40px;
-		height : 30px;
+		height : 40px;
 		text-transform: uppercase;
 		color: #FFF;
 		font-style: normal;
