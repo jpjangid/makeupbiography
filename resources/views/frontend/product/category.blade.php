@@ -33,7 +33,8 @@
 		-webkit-box-flex: 0;
 		flex: 0 0 auto;
 		display: inline-block;
-		padding: 12px 5px;
+		width : 40px;
+		height : 30px;
 		text-transform: uppercase;
 		color: #FFF;
 		font-style: normal;

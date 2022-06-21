@@ -1110,8 +1110,8 @@ body.admin-bar .l-wrap {
     .l-section__container,
     .elementor-section.elementor-section-boxed:not(.elementor-inner-section)>.elementor-container {
         width: 100%;
-        padding-left: 30px;
-        padding-right: 30px;
+        /* padding-left: 30px;
+        padding-right: 30px; */
     }
     .l-section__sidebar {
         position: relative;
@@ -9284,8 +9284,11 @@ p+.woocommerce-order-details {
     background: white;
     padding: 30px;
     margin-top: 31px;
-    /*width:      100%;*/
-    max-width: 500px;
+    width: 100%;
+    /* max-width: 500px; */
+    /* text-align: center; */
+    /* justify-content: center;
+    display: flex; */
 }
 
 .c-product__atc-wrap:empty {

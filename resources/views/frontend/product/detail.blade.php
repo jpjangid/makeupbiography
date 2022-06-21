@@ -165,7 +165,8 @@
 		-webkit-box-flex: 0;
 		flex: 0 0 auto;
 		display: inline-block;
-		padding: 12px 5px;
+		width:40px;
+		height:40px;
 		text-transform: uppercase;
 		color: #FFF;
 		font-style: normal;
@@ -177,6 +178,9 @@
 		letter-spacing: 0.03em;
 		text-align: center;
 		margin-bottom: 5px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		background-color: var(--text-color);
 	}
 
@@ -294,12 +298,12 @@
 						<!-- .c-product__badges -->
 						<div class="c-product__slider c-product__slider--carousel h-carousel h-carousel--inner h-carousel--hover h-carousel--dots-hide js-single-product-carousel">
 							@php $count = 0; use Illuminate\Support\Facades\Storage; @endphp
-							@foreach($medias as $media)
-							@if($media->media_type == 'image')
+							<!-- @foreach($medias as $media) -->
+							<!-- @if($media->media_type == 'image') -->
 							<div class="c-product__slider-item c-product__slider-item--zoom woocommerce-product-gallery__image ">
-								<a download href="{{ asset('/storage/products/variants/'.$media->media) }}" class="c-product__image-link c-product__image-link--zoom js-product-modal" data-size="1200x1200" data-index="{{ $count }}" data-product-id="" data-elementor-open-lightbox="no" onclick="return false;">
-									<div data-img="{{ asset('storage/products/variants/'.$media->media) }}" class="c-product__image-zoom js-product-zoom ">
-										<img width="460" height="460" src="{{ asset('storage/products/variants/'.$media->media) }}" class="c-product__slider-img c-product__slider-img--cover" alt="product-1-3" srcset="{{ asset('storage/products/variants/'.$media->media) }}" sizes="(max-width: 460px) 100vw, 460px" />
+								<a download href="https://brandtalks.in/makeupbiographytest/storage/products/variants/asfghj.jpg" class="c-product__image-link c-product__image-link--zoom js-product-modal" data-size="1200x1200" data-index="https://brandtalks.in/makeupbiographytest/storage/products/variants/asfghj.jpg" data-product-id="" data-elementor-open-lightbox="no" onclick="return false;">
+									<div data-img="https://brandtalks.in/makeupbiographytest/storage/products/variants/asfghj.jpg" class="c-product__image-zoom js-product-zoom ">
+										<img width="460" height="460" src="https://brandtalks.in/makeupbiographytest/storage/products/variants/asfghj.jpg" class="c-product__slider-img c-product__slider-img--cover" alt="product-1-3" srcset="https://brandtalks.in/makeupbiographytest/storage/products/variants/asfghj.jpg" sizes="(max-width: 460px) 100vw, 460px" />
 									</div>
 									<span class="c-product__loading js-loading-wrap">
 									</span>
@@ -308,7 +312,7 @@
 									<i class='ip-zoom'></i>
 								</button>
 							</div>
-							@endif
+							<!-- @endif -->
 							@if($media->media_type == 'video')
 							<div class="c-product__slider-item c-product__slider-item--video">
 								<a download href="{{ $media->media }}" class="c-product__image-link c-product__image-link--zoom js-product-modal" data-index="{{ $count }}" data-product-id="511" data-elementor-open-lightbox="no" onclick="return false;">
@@ -372,18 +376,18 @@
 					<div class="summary entry-summary">
 						<!-- <h1 class="c-product__title">{{ $product->item_shade_name }}</h1> -->
 						<div class="c-product__short-description" style="text-align: justify;">
+							<p class="price">
+								<span class="woocommerce-Price-amount amount">
+									<bdi>
+										@if($product->regular_price != $product->sale_price)
+										<del>&#8377;{{ number_format((float)$product->regular_price, 2, '.', '') }}</del>
+										@endif
+										<span class="woocommerce-Price-currencySymbol"> &#8377;</span>{{ number_format((float)$product->sale_price, 2, '.', '') }}
+									</bdi>
+								</span>
+							</p>
 							<p>{{ $product->short_description }}</p>
 						</div>
-						<p class="price">
-							<span class="woocommerce-Price-amount amount">
-								<bdi>
-									@if($product->regular_price != $product->sale_price)
-									<del>&#8377;{{ number_format((float)$product->regular_price, 2, '.', '') }}</del>
-									@endif
-									<span class="woocommerce-Price-currencySymbol"> &#8377;</span>{{ number_format((float)$product->sale_price, 2, '.', '') }}
-								</bdi>
-							</span>
-						</p>
 						@if($product->p_type == 'HEX SHADE')
 						<div class="product-shades" style="background-color: #f3f3f3;">
 							<h6 class="palette-title">Colour Palette</h6>
@@ -431,6 +435,7 @@
 							</form>
 						</div>
 						<!-- .c-product__atc-wra -->
+						<div class="product_description_detail">
 						<div class="c-product__wishlist">
 							<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-511-btn h-cb c-product__wishlist-button" data-product-id="{{ $product->id }}">
 								<i class="ip-heart c-product__wishlist-icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
@@ -452,19 +457,20 @@
 						</div>
 						<div class="c-product__share">
 							<div class="c-product__share-title">Share</div>
-							<div class="c-post-share">
-								<a class="c-post-share__link" target="_blank" href="//www.facebook.com/sharer.php?u=https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" title="Share on Facebook">
-									<i class="ip-facebook c-post-share__icon c-post-share__icon--facebook"></i>
-								</a>
-								<a class="c-post-share__link" target="_blank" href="//twitter.com/share?url=https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" title="Share on Twitter">
-									<i class="ip-twitter c-post-share__icon c-post-share__icon--twitter"></i>
-								</a>
-								<a class="c-post-share__link" target="_blank" href="//pinterest.com/pin/create/button/?url=https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/&amp;media=https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3032395463.jpg&amp;description=Midnight+Musk" title="Pin on Pinterest">
-									<i class="ip-pinterest c-post-share__icon c-post-share__icon--pinterest"></i>
-								</a>
-								<a class="c-post-share__link" target="_blank" href="whatsapp://send?text=https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" title="Share on Whatsapp" data-action="share/whatsapp/share">
-									<i class="ip-whatsapp c-post-share__icon c-post-share__icon--whatsapp"></i>
-								</a>
+								<div class="c-post-share">
+									<a class="c-post-share__link" target="_blank" href="//www.facebook.com/sharer.php?u=https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" title="Share on Facebook">
+										<i class="ip-facebook c-post-share__icon c-post-share__icon--facebook"></i>
+									</a>
+									<a class="c-post-share__link" target="_blank" href="//twitter.com/share?url=https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" title="Share on Twitter">
+										<i class="ip-twitter c-post-share__icon c-post-share__icon--twitter"></i>
+									</a>
+									<a class="c-post-share__link" target="_blank" href="//pinterest.com/pin/create/button/?url=https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/&amp;media=https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3032395463.jpg&amp;description=Midnight+Musk" title="Pin on Pinterest">
+										<i class="ip-pinterest c-post-share__icon c-post-share__icon--pinterest"></i>
+									</a>
+									<a class="c-post-share__link" target="_blank" href="whatsapp://send?text=https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" title="Share on Whatsapp" data-action="share/whatsapp/share">
+										<i class="ip-whatsapp c-post-share__icon c-post-share__icon--whatsapp"></i>
+									</a>
+								</div>
 							</div>
 						</div>
 					</div>

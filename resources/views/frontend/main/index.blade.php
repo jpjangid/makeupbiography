@@ -391,12 +391,18 @@
 		height: 45px !important;
 		width: 45px !important;
 		padding-top: 15px !important;
-		display: inline !important;
+		display: flex;
+   		align-items: center;
+    	justify-content: center;
 	}
 
 	.c-badge--featured {
 		height: 25px !important;
 		margin-right: -10px !important;
+	}
+
+	.elementor-column-wrap{
+
 	}
 </style>
 @endsection
@@ -510,7 +516,7 @@
 																	@if(str_contains($main_newest_product->tags,'newest'))
 																	<div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple" style="background-color: white;">
 
-																		@if($main_newest_product->discount_type == "percentage")
+																	@if($main_newest_product->discount_type == "percentage")
 																		<div class="c-product-grid__badges c-badge__list">
 																			@if(!empty($main_newest_product->label_name))
 																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
@@ -1127,7 +1133,7 @@
 				<div class="elementor-container elementor-column-gap-no">
 					<div class="elementor-row">
 						<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-935c41a" data-id="935c41a" data-element_type="column">
-							<div class="elementor-column-wrap elementor-element-populated">
+							<div class="elementor-column-wrap-banner elementor-element-populated">
 								<div class="elementor-widget-wrap">
 									<div class="elementor-element elementor-element-91858e7 elementor-widget elementor-widget-ideapark-banners" data-id="91858e7" data-element_type="widget" data-widget_type="ideapark-banners.default">
 										<div class="elementor-widget-container">

@@ -69,7 +69,7 @@
 		align-items :center;
 		justify-content : center;
 		margin-left: -13px;
-    	margin-top: -13px;
+    	margin-top: -5px;
 
 	}
 
