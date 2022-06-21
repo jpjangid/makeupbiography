@@ -21,17 +21,17 @@ class HomeController extends Controller
                 $query->where('media', '!=', '');
             })->where(['status' => 1, 'flag' => 0])->where('tags', 'like', '%' . 'newest' . '%')->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->leftJoin('discount_details', 'products.id', '=', 'discount_details.product_id')->take(20)->get();
         $main_popular_products =
-            Product::with('first_medias')->whereHas("first_medias", function ($query) {
+            Product::with('first_medias')->select('products.*', 'discount_details.discount_type as p_discount_type', 'discount_details.discount as p_discount')->whereHas("first_medias", function ($query) {
                 $query->where('media', '!=', '');
-            })->where(['status' => 1, 'flag' => 0])->where('tags', 'like', '%' . 'popular' . '%')->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->take(20)->get();
+            })->where(['status' => 1, 'flag' => 0])->where('tags', 'like', '%' . 'popular' . '%')->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->leftJoin('discount_details', 'products.id', '=', 'discount_details.product_id')->take(20)->get();
         $main_category_products =
-            Product::with('first_medias')->whereHas("first_medias", function ($query) {
+            Product::with('first_medias')->select('products.*', 'discount_details.discount_type as p_discount_type', 'discount_details.discount as p_discount')->whereHas("first_medias", function ($query) {
                 $query->where('media', '!=', '');
-            })->where(['status' => 1, 'flag' => 0])->where('tags', 'like', '%' . 'category' . '%')->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->take(20)->get();
+            })->where(['status' => 1, 'flag' => 0])->where('tags', 'like', '%' . 'category' . '%')->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->leftJoin('discount_details', 'products.id', '=', 'discount_details.product_id')->take(20)->get();
         $main_brand_products =
-            Product::with('first_medias')->whereHas("first_medias", function ($query) {
+            Product::with('first_medias')->select('products.*', 'discount_details.discount_type as p_discount_type', 'discount_details.discount as p_discount')->whereHas("first_medias", function ($query) {
                 $query->where('media', '!=', '');
-            })->where(['status' => 1, 'flag' => 0])->where('tags', 'like', '%' . 'brand' . '%')->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->take(20)->get();
+            })->where(['status' => 1, 'flag' => 0])->where('tags', 'like', '%' . 'brand' . '%')->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->leftJoin('discount_details', 'products.id', '=', 'discount_details.product_id')->take(20)->get();
         // $main_category_products = Product::where(['flag' => 0, 'status' => 1, 'ecom' => 'ONLINE'])->where('tags', 'like', '%' . 'category' . '%')->where('ecom', 'ONLINE')->with(['medias' => function ($query) {
         //     $query->where(['flag' => 0, 'media_type' => 'image'])->orderBy('sequence', 'asc');
         // }])->orderBy('created_at', 'DESC')->take(10)->get();

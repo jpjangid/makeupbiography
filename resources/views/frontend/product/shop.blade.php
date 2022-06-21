@@ -14,6 +14,76 @@
 		max-height: 3.6em;
 		line-height: 1.8em;
 	}
+
+	.price-div {
+		/* border-top: 2px solid goldenrod; */
+		font-size: 17px;
+		font-family: "Marcellus", sans-serif;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		text-align: center;
+		color: white;
+		margin-top: 5px;
+		background-image: linear-gradient(to bottom, #666362, #413839);
+	}
+
+	.c-product-grid__thumb-button-list-shop {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.c-product-grid__thumb-button-list-shop .discount {
+		z-index: 9;
+	}
+
+	.c-product-grid__thumb-button-list-shop .discount .c-product-grid__badges-shop .c-badge-shop {
+		width: 40px;
+		height: 40px;
+		border-radius: 100%;
+		padding: 0;
+		justify-content: center;
+		display: flex;
+		align-items: center;
+		border-radius: 100%;
+		padding: 12px 5px;
+	}
+
+	.c-badge-shop {
+		-webkit-box-flex: 0;
+		flex: 0 0 auto;
+		display: inline-block;
+		text-transform: uppercase;
+		color: #FFF;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 10px;
+		line-height: 11px;
+		letter-spacing: 0.03em;
+		text-align: center;
+		margin-bottom: 5px;
+		border-radius: 100%;
+		width: 40px;
+		height: 40px;
+	}
+
+	.c-badge--sale {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-left: -13px;
+		margin-top: -13px;
+
+	}
+
+
+	.c-product-grid__thumb-button-list-shop .c-wishlist__btn {
+		align-items: baseline;
+	}
+
+	.c-product-grid__icon-shop {
+		position: absolute;
+		top: 9px;
+	}
 </style>
 @endsection
 
@@ -21,6 +91,7 @@
 <input type="text" id="csrfToken" value="{{ csrf_token() }}" hidden>
 <div class="l-inner">
 	<header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default c-page-header--product-list">
+		<!-- resources/views/frontend/page	 -->
 		<div class="c-page-header__wrap">
 			<h1 class="c-page-header__title">Shop</h1>
 		</div>
@@ -213,6 +284,28 @@
 							<div class="c-product-grid__item c-product-grid__item--3-per-row c-product-grid__item--normal c-product-grid__item--hover product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple">
 								<div class="c-product-grid__badges c-badge__list">
 								</div>
+
+								@if($product->discount_type == "percentage")
+								<div class="c-product-grid__badges c-badge__list">
+									@if(!empty($product->label_name))
+									<span class="c-badge-shop c-badge--featured">{{ $product->label_name }}</span>
+									@endif
+									@if(!empty($product->p_discount && $product->p_discount > 0))
+									<span class="c-badge-shop c-badge--sale">{{ $product->p_discount }}% OFF</span>
+									@elseif($product->discount > 0)
+									<span class="c-badge-shop c-badge--sale">{{ $product->discount }}% OFF</span>
+									@endif
+								</div>
+								@endif
+
+								@if($product->discount_type == "flat")
+								<div class="c-product-grid__badges c-badge__list">
+									@if(!empty($product->label_name))
+									<span class="c-badge-shop c-badge--featured">{{ $product->label_name }}</span>
+									@endif
+									<span class="c-badge-shop c-badge--sale">- &#8377; {{ $product->regular_price - $product->sale_price }}</span>
+								</div>
+								@endif
 								<!-- .c-product-grid__badges -->
 								<div class="c-product-grid__thumb-wrap">
 									<a href="{{ url('products',['product' => $product->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
@@ -247,6 +340,46 @@
 										<div class="c-product-grid__short-desc">
 											<p class="short-description">{{ $product->short_description }}</p>
 										</div>
+									</div>
+									<div class="c-product-grid__price-wrap price-div">
+										<span class="price">
+											@php
+											$discount = $product->regular_price * $product->p_discount/100;
+											$dis_amount = $product->regular_price - $discount;
+											@endphp
+
+											@if(!empty($product->p_discount))
+											@if($product->p_discount > 0)
+											<del aria-hidden="true">
+												<span class="woocommerce-Price-amount amount">
+													<bdi>
+														<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $product->regular_price }}</bdi>
+												</span>
+											</del>
+											@endif
+											<ins>
+												<span class="woocommerce-Price-amount amount">
+													<bdi>
+														<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $dis_amount }}</bdi>
+												</span>
+											</ins>
+											@else
+											@if( $product->discount_type != "")
+											<del aria-hidden="true">
+												<span class="woocommerce-Price-amount amount">
+													<bdi>
+														<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $product->regular_price }}</bdi>
+												</span>
+											</del>
+											@endif
+											<ins>
+												<span class="woocommerce-Price-amount amount">
+													<bdi>
+														<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $product->sale_price }}</bdi>
+												</span>
+											</ins>
+											@endif
+										</span>
 									</div>
 									<!-- .c-product-grid__price-wrap -->
 								</div>

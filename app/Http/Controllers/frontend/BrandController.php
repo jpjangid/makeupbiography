@@ -90,8 +90,11 @@ class BrandController extends Controller
             }
         }
         //filter sorting end
-        $products = DB::table('products')->whereIn('brand_id', $filter_brands)->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE']);
-
+        // $products = DB::table('products')->whereIn('brand_id', $filter_brands)->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE']);
+        $products = Product::with('first_medias')->select('products.*', 'discount_details.discount_type as p_discount_type', 'discount_details.discount as p_discount')->whereHas("first_medias", function ($query) {
+            $query->where('media', '!=', '');
+        })->whereIn('brand_id', $filter_brands)->where(['status' => 1, 'flag' => 0])->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->leftJoin('discount_details', 'products.id', '=', 'discount_details.product_id');
+        // dd($products->take(5)->get());
         if (count($product_category) > 0) {
             $products = $products->whereIn('parent_id', $product_category);
         }
@@ -106,13 +109,14 @@ class BrandController extends Controller
             $products = $products->orderBy('sale_price', 'DESC');
         }
         $products = $products->paginate(12);
-        $product_details = array();
+        // $product_details = array();
         $product_medias = array();
         foreach ($products as $pro) {
-            array_push($product_details, DB::table('products')->where('id', $pro->id)->first());
+            // array_push($product_details, DB::table('products')->select('products.*', 'discount_details.discount_type as p_discount_type', 'discount_details.discount as p_discount')->where('id', $pro->id)->leftJoin('discount_details', 'products.id', '=', 'discount_details.product_id')->first());
             array_push($product_medias, DB::table('product_media')->where('product_id', $pro->id)->where(['flag' => 0, 'media_type' => 'image'])->orderby('sequence', 'asc')->first());
         }
-        $product_details = collect($product_details);
+
+
         $product_medias = collect($product_medias);
         $last_page = $products->lastPage();
         $current_page = $products->currentPage();
@@ -157,7 +161,7 @@ class BrandController extends Controller
         if ($products->lastPage() == $products->currentPage()) {
             $next = 'false';
         }
-
+        $product_details = $products;
         return view('frontend.brand.brands', compact('slug', 'sub_categories', 'main_brand', 'brands', 'products', 'product_medias', 'product_details', 'filter_old', 'filter_old_price', 'max_price_filter', 'min_price_filter', 'filter_sorting', 'filter_brands', 'min_price_old', 'max_price_old', 'no_of_pages', 'next', 'prev'));
     }
 }
