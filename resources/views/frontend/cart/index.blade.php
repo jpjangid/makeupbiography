@@ -71,6 +71,8 @@ use App\Models\ProductMedia;
 										'media_type' => 'image'])->orderby('sequence','asc')->first();
 										$product_image = asset('storage/products/variants/'.$pro_img->media);
 										}
+										$discount = $item->regular_price * $item->p_discount/100;
+										$discount_amt = $item->regular_price - $discount;
 										@endphp
 										@if(!empty($item->product))
 										<tr class="c-cart__shop-tr cart_item">
@@ -88,7 +90,11 @@ use App\Models\ProductMedia;
 												<span class="c-cart__item-price">
 													<span class="woocommerce-Price-amount amount">
 														<bdi>
-															<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $item->product->sale_price }}</bdi>
+															@if(!empty($item->p_discount))
+															<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $discount_amt }}</bdi>
+														@else
+														<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $item->product->sale_price }}</bdi>
+														@endif
 													</span>
 												</span>
 											</td>
@@ -108,8 +114,17 @@ use App\Models\ProductMedia;
 											</td>
 											<td class="c-cart__shop-td c-cart__shop-td--product-price c-cart__shop-td--product-subtotal" data-title="Subtotal">
 												<span class="woocommerce-Price-amount amount">
-													<bdi>
-														<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $item->product->sale_price*$item->quantity }}</bdi>
+													<!-- <bdi>
+														<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $item->product->sale_price*$item->quantity }}</bdi> -->
+													<!-- @php
+													$dis_calculate =$item->product->regular_price * $item->p_discount /100;
+													$dis_amount = $item->product->regular_price - $dis_calculate;
+													@endphp -->
+													@if(!empty($item->p_discount))
+													<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $discount_amt * $item->quantity }}
+													@else
+													<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $item->sale_price*$item->quantity }}
+													@endif</bdi>
 												</span>
 											</td>
 										</tr>
@@ -118,6 +133,7 @@ use App\Models\ProductMedia;
 
 										@foreach($cookieCartItems as $item)
 										@php
+										$p_dis = $item['product']->p_discount;
 										$productName = "";
 										$productSlug = "";
 										$salePrice = 0.00;
@@ -148,7 +164,16 @@ use App\Models\ProductMedia;
 												<span class="c-cart__item-price">
 													<span class="woocommerce-Price-amount amount">
 														<bdi>
-															<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $salePrice }}</bdi>
+															@php
+															$dis_calculate =$item['product']->regular_price * $p_dis /100;
+															$dis_amount = $item['product']->regular_price - $dis_calculate;
+															@endphp
+															@if(!empty($p_dis))
+															<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $dis_amount }}
+															@else
+															<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $salePrice }}
+															@endif
+														</bdi>
 													</span>
 												</span>
 											</td>
@@ -168,7 +193,16 @@ use App\Models\ProductMedia;
 											<td class="c-cart__shop-td c-cart__shop-td--product-price c-cart__shop-td--product-subtotal" data-title="Subtotal">
 												<span class="woocommerce-Price-amount amount">
 													<bdi>
-														<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $salePrice*$item['quantity'] }}</bdi>
+
+														@php
+														$dis_calculate =$item['product']->regular_price * $p_dis /100;
+														$dis_amount = $item['product']->regular_price - $dis_calculate;
+														@endphp
+														@if(!empty($p_dis))
+														<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $dis_amount*$item['quantity'] }}
+														@else
+														<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $salePrice*$item['quantity'] }}
+														@endif</bdi>
 												</span>
 											</td>
 										</tr>

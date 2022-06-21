@@ -7,8 +7,8 @@
     padding: 40px;
   }
 
-  .elementor-element-populated{
-    width:100%
+  .elementor-element-populated {
+    width: 100%
   }
 </style>
 @endsection

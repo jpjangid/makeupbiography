@@ -570,9 +570,9 @@ $mains = Category::select('id','slug','name')->where(['flag' => 0,'status' => 1]
 								<span class="js-cart-info">
 								</span>
 							</a>
-							<div class="widget_shopping_cart_content">
+							<!-- <div class="widget_shopping_cart_content">
 
-							</div>
+							</div> -->
 						</div>
 					</div>
 				</div>

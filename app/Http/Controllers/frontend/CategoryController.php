@@ -269,9 +269,10 @@ class CategoryController extends Controller
         $brands_array_data = array_column($brand_array, 'id');
         // dd($brands_array_data);
 
-        $products = Product::with('first_medias')->whereHas("first_medias", function ($query) {
+        $products = Product::with('first_medias')->select('products.*', 'discount_details.discount_type as p_discount_type', 'discount_details.discount as p_discount')->whereHas("first_medias", function ($query) {
             $query->where('media', '!=', '');
-        })->whereIn('brand_id', $brands_array_data)->where(['status' => 1, 'flag' => 0])->where('tags', 'like', '%' . $tag . '%')->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE']);
+        })->whereIn('brand_id', $brands_array_data)->where(['status' => 1, 'flag' => 0])->where('tags', 'like', '%' . $tag . '%')->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->leftJoin('discount_details', 'products.id', '=', 'discount_details.product_id');
+        // dd($products->take(5)->get());
 
         if (!empty($filter_brands) && count($filter_brands) > 0) {
             $products = $products->whereIn('brand_id', $filter_brands);

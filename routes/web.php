@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use GuzzleHttp\Client;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,31 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Route::get('whatsapp', function () {
+    $client = new Client();
+    $headers = [
+        'Content-Type' => 'application/json',
+        'Authorization' => 'Basic SkJwX2NMSmlUU3M2cGh5cjJFWHptVjYtN1ZmOHlfaG5lMGNtaVNHckQxdzo=',
+        'email' => 'MARKETING@28SOUTHVENTURES.COM',
+        'password' => 'admin@28SVmarketing',
+    ];
+    $body = '{
+                "userId": "12035448-36a0-3aa24",
+                "phoneNumber": "8233943594",
+                "countryCode": "+91",
+                "traits": {
+                    "name": "John Doe",
+                    "email": "mohsinkhan6992@gmail.com"
+                },
+                "tags": [
+                    "sample-tag-1",
+                    "sample-tag-2"
+                ]
+                }';
+    $request = $client->post('https://api.interakt.ai/v1/public/track/users/', $headers, $body);
+    $res = $client->sendAsync($request)->wait();
+    echo $res->getBody();
+});
 Route::get('test', [App\Http\Controllers\ApiTestController::class, 'index']);
 
 Route::get('login/facebook', [App\Http\Controllers\Auth\LoginController::class, 'facebookRedirect']);
@@ -213,6 +239,15 @@ Route::middleware(['auth', 'prevent-back-history', 'admin'])->prefix('admin')->g
         Route::get('/edit/{id}', [App\Http\Controllers\backend\NewsLetterController::class, 'edit']);
         Route::put('/update/{id}', [App\Http\Controllers\backend\NewsLetterController::class, 'update']);
         Route::get('/delete/{id}', [App\Http\Controllers\backend\NewsLetterController::class, 'destroy']);
+    });
+    Route::prefix('discounts')->group(function () {
+        Route::get('/', [App\Http\Controllers\backend\DiscountController::class, 'index']);
+        Route::get('/create', [App\Http\Controllers\backend\DiscountController::class, 'create']);
+        Route::post('/store', [App\Http\Controllers\backend\DiscountController::class, 'store']);
+        Route::get('/edit/{id}', [App\Http\Controllers\backend\DiscountController::class, 'edit']);
+        Route::put('/update/{id}', [App\Http\Controllers\backend\DiscountController::class, 'update']);
+        Route::get('/delete/{id}', [App\Http\Controllers\backend\DiscountController::class, 'destroy']);
+        Route::post('discounton', [App\Http\Controllers\backend\DiscountController::class, 'discounton']);
     });
 
     //route for profile update

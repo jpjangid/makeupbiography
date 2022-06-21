@@ -24,7 +24,7 @@
 		line-height: 1.8em;
 	}
 
-	.c-badge-category{
+	.c-badge-category {
 		-webkit-box-flex: 0;
 		flex: 0 0 auto;
 		display: flex;
@@ -277,21 +277,28 @@
 							<div class="c-product-grid__item c-product-grid__item--3-per-row c-product-grid__item--normal c-product-grid__item--hover product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple">
 								<div class="c-product-grid__badges c-badge__list">
 								</div>
+								@if($product->discount_type == "percentage")
 								<div class="c-product-grid__badges c-badge__list">
-										@if(!empty($product->label_name))
-										<span class="c-badge-category c-badge--featured">{{ $product->label_name }}</span>
-										@endif
-										<span class="c-badge-category c-badge--sale">-{{ $product->discount }}%</span>
-									</div>
-
-									@if($product->discount_type == "flat")
-									<div class="c-product-grid__badges c-badge__list">
-										@if(!empty($product->label_name))
-										<span class="c-badge-category c-badge--featured">{{ $product->label_name }}</span>
-										@endif
-										<span class="c-badge-category c-badge--sale">- &#8377; {{ $product->regular_price - $product->sale_price }}</span>
-									</div>
+									@if(!empty($product->label_name))
+									<span class="c-badge-category c-badge--featured">{{ $product->label_name }}</span>
 									@endif
+									@if(!empty($product->p_discount &&$product->p_discount > 0))
+									<span class="c-badge-category c-badge--sale">{{ $product->p_discount }}%</span>
+									@elseif($product->discount > 0)
+									<span class="c-badge-category c-badge--sale">{{ $product->discount }}%</span>
+									@else
+
+									@endif
+								</div>
+								@endif
+								@if($product->discount_type == "flat")
+								<div class="c-product-grid__badges c-badge__list">
+									@if(!empty($product->label_name))
+									<span class="c-badge-category c-badge--featured">{{ $product->label_name }}</span>
+									@endif
+									<span class="c-badge-category c-badge--sale">- &#8377; {{ $product->regular_price - $product->sale_price }}</span>
+								</div>
+								@endif
 								<!-- .c-product-grid__badges -->
 								<div class="c-product-grid__thumb-wrap">
 									<a href="{{ url('products',['product' => $product->slug]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">

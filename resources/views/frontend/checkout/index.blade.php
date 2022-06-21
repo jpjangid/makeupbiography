@@ -144,6 +144,29 @@
 										</div>
 									</div>
 									<br>
+									<!--GST Details-->
+									<div class="col-md-12">
+										<div class="form-check">
+											<h3>
+												&nbsp<input type="checkbox" class="input-checkbox" name="Gst_Details" value="1" id="Gst_Details">
+												<label for="Gst_Details" class="checkbox"><i></i>GST</label>
+											</h3>
+										</div>
+									</div>
+									<div class="panel-body" id="GstDetails" style="display:none;">
+										<div class="card-body">
+											<div class="row">
+												<!-- Name -->
+												<div class="col-md-6">
+													<div class="form-group">
+														<label for="gst_no" class="">GST&nbsp;
+														</label>
+														<input name="gst_no" type="text" class="form-control" id="gst_no" placeholder="Enter GST No" value="">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
 									<div>
 										<label for="ship-to-different-address-checkbox" class="checkbox">
 											<h3 id="ship-to-different-address">
@@ -227,6 +250,7 @@
 												</div>
 											</div>
 										</div>
+
 										<div class="c-cart__form c-cart__form--additional-fields woocommerce-additional-fields">
 											<div class="c-cart__additional-fields woocommerce-additional-fields__field-wrapper">
 												<p class="form-row notes" id="order_comments_field" data-priority="">
@@ -286,6 +310,25 @@
 										<tbody id="product_tbody">
 											@php $regular_price = 0; @endphp
 											@foreach($cartItems as $key => $item)
+											@php
+											$check_discount = $item->regular_price * $item->p_discount/100;
+											$check_amount =$item->regular_price - $check_discount;
+											@endphp
+											@if(!empty($item->p_discount))
+											<tr class="c-cart__totals-product cart_item">
+												<td class="c-cart__totals-product-name">{{ $item->product->item_shade_name }}&nbsp;
+													<strong class="c-cart__totals-product-quantity product-quantity">&times;&nbsp;{{ $item->quantity }}</strong>
+												</td>
+												<td class="c-cart__totals-price">
+													<span class="woocommerce-Price-amount amount">
+														<bdi>
+															<span class="woocommerce-Price-currencySymbol">&#8377;</span><input type="text" name="sale_price" class="sale_price" value="{{ $check_amount * $item->quantity }}" readonly></bdi>
+														<p>&#8377;{{ $item->regular_price * $item->quantity }}</p>
+														<p>&#8377;{{ $check_discount* $item->quantity }}</p>
+													</span>
+												</td>
+											</tr>
+											@else
 											<tr class="c-cart__totals-product cart_item">
 												<td class="c-cart__totals-product-name">{{ $item->product->item_shade_name }}&nbsp;
 													<strong class="c-cart__totals-product-quantity product-quantity">&times;&nbsp;{{ $item->quantity }}</strong>
@@ -299,6 +342,7 @@
 													</span>
 												</td>
 											</tr>
+											@endif
 											@php $regular_price += $item->product->regular_price * $item->quantity; @endphp
 											@endforeach
 										</tbody>
@@ -693,5 +737,12 @@
 			$('#payment_title').show();
 		}
 	};
+	$('#Gst_Details').on('change', function(e) {
+		if ($(this).is(':checked')) {
+			$('#GstDetails').show();
+		} else {
+			$('#GstDetails').hide();
+		}
+	});
 </script>
 @endsection

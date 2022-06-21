@@ -46,7 +46,7 @@
                                         <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                </div>   
+                                </div>
 
                                 <!-- short_description -->
                                 <div class="col-md-12 mb-4">
@@ -91,7 +91,6 @@
                                         @enderror
                                     </div>
                                 </div>
-
                                 <hr>
                                 <h4>Meta Section</h4>
 
@@ -152,7 +151,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                
+
                                 <!-- OG Title -->
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
@@ -176,7 +175,7 @@
                                 </div>
 
                                 <hr>
-                                
+
                                 <!-- tags -->
                                 <div class="col-md-10 mb-4">
                                     <div class="form-group">

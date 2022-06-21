@@ -20,6 +20,7 @@ class CreateOrderItemsTable extends Migration
             $table->bigInteger('product_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('products');
             $table->integer('quantity');
+            $table->float('sale_price')->nullable();
             $table->string('item_status')->nullable();
             $table->timestamps();
         });
