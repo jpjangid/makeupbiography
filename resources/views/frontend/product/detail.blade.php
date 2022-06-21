@@ -416,60 +416,63 @@
 							</ul>
 						</div>
 						@endif
-						<div class="c-product__atc-wrap">
-							<form class="cart" action="https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" method="post" enctype='multipart/form-data' style="margin-left: 50px; margin-right: 50px;">
-								<div class="c-product__quantity quantity">
-									<label class="screen-reader-text" for="quantity_611f6fb23f9e0">Midnight Musk quantity</label>
-									<input type="number" id="quantity_611f6fb23f9e0" class="h-cb c-product__quantity-value qty product-quantity" step="1" min="1" name="quantity" value="1" title="Qty" placeholder="" inputmode="numeric" />
-									<input type="text" id="productId" value="{{ $product->id }}" hidden>
-									<button class="h-cb c-product__quantity-minus js-quantity-minus" type="button">
-										<i class="ip-minus"></i>
-									</button>
-									<button class="h-cb c-product__quantity-plus js-quantity-plus" type="button">
-										<i class="ip-plus_big"></i>
+						<div class="product_description">
+							<!-- .c-product__atc-wra -->
+							<div class="c-product__atc-wrap">
+								<form class="cart" action="https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" method="post" enctype='multipart/form-data' style="margin-left: 50px; margin-right: 50px;">
+									<div class="c-product__quantity quantity">
+										<label class="screen-reader-text" for="quantity_611f6fb23f9e0">Midnight Musk quantity</label>
+										<input type="number" id="quantity_611f6fb23f9e0" class="h-cb c-product__quantity-value qty product-quantity" step="1" min="1" name="quantity" value="1" title="Qty" placeholder="" inputmode="numeric" />
+										<input type="text" id="productId" value="{{ $product->id }}" hidden>
+										<button class="h-cb c-product__quantity-minus js-quantity-minus" type="button">
+											<i class="ip-minus"></i>
+										</button>
+										<button class="h-cb c-product__quantity-plus js-quantity-plus" type="button">
+											<i class="ip-plus_big"></i>
+										</button>
+									</div>
+									@if($product->status == 1 && $product->flag == 0)
+									<button type="button" name="add-to-cart" value="511" class="single_add_to_cart_button button alt add-to-cart">Add to cart</button>
+									@endif
+								</form>
+							</div>
+							<div class="product_description_detail">
+								<div class="c-product__wishlist">
+									<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-511-btn h-cb c-product__wishlist-button" data-product-id="{{ $product->id }}">
+										<i class="ip-heart c-product__wishlist-icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
+										<i class="ip-heart_hover c-product__wishlist-icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
+										<span class="c-product__wishlist-text">Add to Wishlist</span>
+										<span class="c-product__wishlist-text c-wishlist__btn-text-remove">Remove from Wishlist</span>
 									</button>
 								</div>
-								@if($product->status == 1 && $product->flag == 0)
-								<button type="button" name="add-to-cart" value="511" class="single_add_to_cart_button button alt add-to-cart">Add to cart</button>
-								@endif
-							</form>
-						</div>
-						<!-- .c-product__atc-wra -->
-						<div class="product_description_detail">
-						<div class="c-product__wishlist">
-							<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-511-btn h-cb c-product__wishlist-button" data-product-id="{{ $product->id }}">
-								<i class="ip-heart c-product__wishlist-icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
-								<i class="ip-heart_hover c-product__wishlist-icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
-								<span class="c-product__wishlist-text">Add to Wishlist</span>
-								<span class="c-product__wishlist-text c-wishlist__btn-text-remove">Remove from Wishlist</span>
-							</button>
-						</div>
-						<div class="product_meta">
-							<span class="sku_wrapper">SKU:
-								<span class="sku">{{ $product->sku }}</span>
-							</span>
-							<span class="posted_in">Category:
-								<a href="#" rel="tag">{{ isset($product->category->name) ? $product->category->name : '' }}</a>
-							</span>
-							<span class="tagged_as">Tag:
-								<a href="#" rel="tag">{{ $product->tags }}</a>
-							</span>
-						</div>
-						<div class="c-product__share">
-							<div class="c-product__share-title">Share</div>
-								<div class="c-post-share">
-									<a class="c-post-share__link" target="_blank" href="//www.facebook.com/sharer.php?u=https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" title="Share on Facebook">
-										<i class="ip-facebook c-post-share__icon c-post-share__icon--facebook"></i>
-									</a>
-									<a class="c-post-share__link" target="_blank" href="//twitter.com/share?url=https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" title="Share on Twitter">
-										<i class="ip-twitter c-post-share__icon c-post-share__icon--twitter"></i>
-									</a>
-									<a class="c-post-share__link" target="_blank" href="//pinterest.com/pin/create/button/?url=https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/&amp;media=https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3032395463.jpg&amp;description=Midnight+Musk" title="Pin on Pinterest">
-										<i class="ip-pinterest c-post-share__icon c-post-share__icon--pinterest"></i>
-									</a>
-									<a class="c-post-share__link" target="_blank" href="whatsapp://send?text=https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" title="Share on Whatsapp" data-action="share/whatsapp/share">
-										<i class="ip-whatsapp c-post-share__icon c-post-share__icon--whatsapp"></i>
-									</a>
+								<div class="product_meta">
+									<span class="sku_wrapper">SKU:
+										<span class="sku">{{ $product->sku }}</span>
+									</span>
+									<span class="posted_in">Category:
+										<a href="#" rel="tag">{{ isset($product->category->name) ? $product->category->name : '' }}</a>
+									</span>
+									<span class="tagged_as">Tag:
+										<a href="#" rel="tag">{{ $product->tags }}</a>
+									</span>
+								</div>
+								<div class="c-product__share">
+									<div class="c-product__share-title">Share</div>
+										<div class="c-post-share">
+											<a class="c-post-share__link" target="_blank" href="//www.facebook.com/sharer.php?u=https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" title="Share on Facebook">
+												<i class="ip-facebook c-post-share__icon c-post-share__icon--facebook"></i>
+											</a>
+											<a class="c-post-share__link" target="_blank" href="//twitter.com/share?url=https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" title="Share on Twitter">
+												<i class="ip-twitter c-post-share__icon c-post-share__icon--twitter"></i>
+											</a>
+											<a class="c-post-share__link" target="_blank" href="//pinterest.com/pin/create/button/?url=https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/&amp;media=https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3032395463.jpg&amp;description=Midnight+Musk" title="Pin on Pinterest">
+												<i class="ip-pinterest c-post-share__icon c-post-share__icon--pinterest"></i>
+											</a>
+											<a class="c-post-share__link" target="_blank" href="whatsapp://send?text=https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" title="Share on Whatsapp" data-action="share/whatsapp/share">
+												<i class="ip-whatsapp c-post-share__icon c-post-share__icon--whatsapp"></i>
+											</a>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>

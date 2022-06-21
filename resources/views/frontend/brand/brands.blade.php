@@ -27,8 +27,11 @@
 	.c-badge-category{
 		-webkit-box-flex: 0;
 		flex: 0 0 auto;
-		display: inline-block;
-		padding: 12px 5px;
+		display: flex;
+		width:40px;
+		height:40px;
+		justify-content : center;
+		align-items:center;
 		text-transform: uppercase;
 		color: #FFF;
 		font-style: normal;
@@ -41,6 +44,17 @@
 		text-align: center;
 		margin-bottom: 5px;
 		background-color: var(--text-color);
+	}
+
+	.price-div {
+		font-size: 17px;
+		font-family: "Marcellus", sans-serif;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		text-align: center;
+		color: white;
+		margin-top: 0;
+		background-image: linear-gradient(to bottom, #666362, #413839);
 	}
 </style>
 @endsection
@@ -316,6 +330,24 @@
 									<!-- .c-product-grid__price-wrap -->
 								</div>
 								<!-- .c-product-grid__details -->
+								<div class="c-product-grid__price-wrap price-div">
+									<span class="price">
+										@if(!empty($product->discount) && $product->discount > 0)
+										<del aria-hidden="true">
+											<span class="woocommerce-Price-amount amount">
+												<bdi>
+													<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $product->regular_price }}</bdi>
+											</span>
+										</del>
+										@endif
+										<ins>
+											<span class="woocommerce-Price-amount amount">
+												<bdi>
+													<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $product->sale_price }}</bdi>
+											</span>
+										</ins>
+									</span>
+								</div>
 							</div>
 
 							@endforeach

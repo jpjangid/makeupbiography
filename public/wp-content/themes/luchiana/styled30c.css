@@ -3210,6 +3210,7 @@ p+.woocommerce-Addresses {
     line-height: 18px;
     letter-spacing: 0.06em;
     text-transform: uppercase;
+    margin: 0 45px;
 }
 
 .c-catalog-ordering__col--result {
@@ -8417,7 +8418,7 @@ p+.woocommerce-order-details {
         top: 250px;
     }
     .c-product-grid__item--3-per-row .c-product-grid__atc {
-        top: 200px;
+        top: 250px;
     }
     .c-product-grid__item--3-per-row .c-product-grid__thumb-wrap {
         /* padding-bottom: 88.4615384%; */
