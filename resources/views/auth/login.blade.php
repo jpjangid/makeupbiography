@@ -22,6 +22,7 @@
 		border: 0.05rem solid black;
 		padding: 0.2rem;
 		border-radius: 0.5rem;
+		width:100%;
 	}
 
 	.social_button a {
@@ -38,9 +39,15 @@
 		height : 520px;
 	}
 
+	.c-login__bottom1{
+		display : grid;
+		grid-template-columns : 50% 50%;
+		grid-gap : 10px
+	}
+
 	.btn-outline-dark{
 		display: flex;
-		justify-content : space-between;
+		justify-content : center;
 		align-items : center;
 	}
 
@@ -141,14 +148,14 @@
 									<i class="ip-menu-right c-login__more-icon"></i>
 								</a>
 							</div>
-							<div class="c-login__bottom">
-								<div class="social_button" style="padding : 10px;">
+							<div class="c-login__bottom1" style="margin : 30px 0">
+								<div class="social_button">
 									<a class="btn btn-outline-dark" href="{{ url('login/google') }}" role="button" style="text-transform:none">
 										<img alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
 										<span style="margin:0 5px;">Login with Google</span>
 									</a>
 								</div>
-								<div class="social_button button1" style = "margin : 0 0 0 20px; padding : 10px;">
+								<div class="social_button button1">
 									<a class="btn btn-outline-dark" href="{{ url('login/facebook') }}" role="button" style="text-transform:none">
 										<img alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Facebook_f_logo_%282021%29.svg/150px-Facebook_f_logo_%282021%29.svg.png" />
 										<span style="margin:0 5px;">Login with Facebook</span>
