@@ -8958,6 +8958,7 @@ p+.woocommerce-order-details {
 .c-product__slider-item {
     display: block;
     width: 100%;
+    height:500px;
     /* padding-bottom: 88%; */
     overflow: hidden;
     position: relative;
