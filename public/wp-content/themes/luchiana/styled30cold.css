@@ -5585,11 +5585,11 @@ div.wpcf7 span.ajax-loader {
 	}
 
 	.c-header__menu-shadow {
-		position:         absolute;
-		left:             0;
+		position:         relative;
+		/* left:             0;
 		right:            0;
 		top:              0;
-		bottom:           0;
+		bottom:           0; */
 		background-color: var(--shadow-color-mobile);
 	}
 
@@ -10575,7 +10575,7 @@ p + .woocommerce-order-details {
 	}
 
 	.c-product__tabs--mobile {
-		display: block;
+		display: none;
 	}
 
 	.c-product__badges {

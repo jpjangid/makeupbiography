@@ -2164,7 +2164,7 @@
 }
 
 .c-ip-product-tabs__menu:not(.owl-carousel) .c-ip-product-tabs__menu-item:not(:last-child) {
-    margin-right: 60px;
+    /* margin-right: 60px; */
 }
 
 .h-rtl .c-ip-product-tabs__menu:not(.owl-carousel) .c-ip-product-tabs__menu-item:not(:last-child) {
@@ -2227,7 +2227,7 @@
         padding-bottom: 25px;
     }
     .c-ip-product-tabs__menu:not(.owl-carousel) .c-ip-product-tabs__menu-item:not(:last-child) {
-        margin-right: 46px;
+        /* margin-right: 46px; */
     }
     .h-rtl .c-ip-product-tabs__menu:not(.owl-carousel) .c-ip-product-tabs__menu-item:not(:last-child) {
         margin-right: 0;
