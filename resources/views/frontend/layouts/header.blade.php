@@ -100,7 +100,7 @@ $mains = Category::select('id','slug','name')->where(['flag' => 0,'status' => 1]
 		<div class="c-header c-header--sticky-support c-header--header-type-4 c-header--header-type-mobile-1 c-header--buttons-4 c-header--mobile js-header-mobile">
 			<div class="c-header__row">
 				<div class="dt-sc-title mz-title">
-					<a href="{{ url('/') }}" class="c-header__logo mz-title-content" style="background-image: linear-gradient(to bottom, #008B8B, #20B2AA);">
+					<a href= "{{ url('/') }}" class="c-header__logo mz-title-content" style="background-image: linear-gradient(to bottom, #008B8B, #20B2AA);">
 						<img class="logo-non-desktop" src="{{ asset('images/mblogo.png') }}">
 					</a>
 				</div>

@@ -145,18 +145,18 @@
 
 	@media screen and (max-width: 768px) {
 		.subscribe-section {
-			margin-right: 35px;
+			/* margin-right: 35px; */
 			/* margin-top: px; */
 		}
 
 		.c-ip-social {
-			margin-right: 200px !important;
+			/* margin-right: 200px !important; */
 		}
 
 		.subscribe-btn {
 			padding: 14.7px;
-			margin-top:10.6px;
-			left:0;
+			margin-top:10.10px;
+			left:-8px;
 		}
 	}
 
