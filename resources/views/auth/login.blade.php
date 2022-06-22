@@ -57,6 +57,10 @@
 			border-radius : 5px;
 			padding : 30px 20px;
 		}
+
+		.c-login__bottom1 {
+			grid-template-columns: 100%;
+		}
 	}
 	@media(max-width:325px){
 		#customer_login {
