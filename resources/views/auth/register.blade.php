@@ -5,11 +5,18 @@
 @section('css')
 <style>
   #customer_login{
-    box-shadow: 5px 10px #888888;
+    /* box-shadow: 5px 10px #888888; */
+    border : 1px solid #dedede;
+		border-radius : 5px;
+    padding: 30px;
   }  
 
  strong {
     color: red;
+ }
+
+ .l-section__content{
+  margin : 0 20px;
  }
 </style>
 @endsection
@@ -108,7 +115,7 @@
               <div class="c-login__bottom">
                 <div>
                 </div>
-                <a href="{{ url('login') }}" class="c-login__register ">Login
+                <a href="{{ url('login') }}" class="c-login__register" style="text-decoration:underline;">Login
                   <i class="ip-menu-right c-login__more-icon"></i>
                 </a>
               </div>

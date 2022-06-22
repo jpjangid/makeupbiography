@@ -5,11 +5,18 @@
 @section('css')
 <style>
 	#customer_login {
-		box-shadow: 5px 10px #888888;
+		/* box-shadow: 5px 10px #888888; */
+		border : 1px solid #dedede;
+		border-radius : 5px;
+		padding : 30px 50px;
 	}
 	.text-danger {
 		color: red;
 	}
+
+	.l-section__content{
+  		margin : 0 20px;
+ 	}
 
 	.social_button {
 		border: 0.05rem solid black;
@@ -20,12 +27,41 @@
 	.social_button a {
 		text-align: center;
 	}
-	.social_button :hover {
-		background-color: grey;
+	.social_button :hover .c-login__bottom{
+		background : #dedede;
 	}
 	img {
-		width: 2rem;
-		height: 2rem;
+		width: 1.5rem;
+		height: 1.5rem;
+	}
+	.c-login {
+		height : 520px;
+	}
+
+	.btn-outline-dark{
+		display: flex;
+		justify-content : space-between;
+		align-items : center;
+	}
+
+	@media(max-width:376px){
+		#customer_login {
+			border : 1px solid #dedede;
+			border-radius : 5px;
+			padding : 30px 20px;
+		}
+	}
+	@media(max-width:325px){
+		#customer_login {
+			border : 1px solid #dedede;
+			border-radius : 5px;
+			padding : 30px 10px;
+		}
+
+		.button1{
+			margin : 0 0 0 2px!important;
+
+		}
 	}
 </style>
 @endsection
@@ -99,23 +135,23 @@
 							</div>
 							<div class="c-login__bottom">
 								<div class="c-login__lost-password">
-									<a class="c-login__lost-password-link" href="https://parkofideas.com/luchiana/demo/my-account/lost-password/">Forgot password</a>
+									<a class="c-login__lost-password-link" href="https://parkofideas.com/luchiana/demo/my-account/lost-password/" style="text-decoration : underline;">Forgot password</a>
 								</div>
-								<a href="{{ url('register') }}" class="c-login__register">Register
+								<a href="{{ url('register') }}" class="c-login__register" style="text-decoration : underline;">Register
 									<i class="ip-menu-right c-login__more-icon"></i>
 								</a>
 							</div>
 							<div class="c-login__bottom">
-								<div class="social_button">
+								<div class="social_button" style="padding : 10px;">
 									<a class="btn btn-outline-dark" href="{{ url('login/google') }}" role="button" style="text-transform:none">
 										<img alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
-										<span>Login with Google</span>
+										<span style="margin:0 5px;">Login with Google</span>
 									</a>
 								</div>
-								<div class="social_button ml-2">
+								<div class="social_button button1" style = "margin : 0 0 0 20px; padding : 10px;">
 									<a class="btn btn-outline-dark" href="{{ url('login/facebook') }}" role="button" style="text-transform:none">
 										<img alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Facebook_f_logo_%282021%29.svg/150px-Facebook_f_logo_%282021%29.svg.png" />
-										<span>Login with Facebook</span>
+										<span style="margin:0 5px;">Login with Facebook</span>
 									</a>
 								</div>
 							</div>
