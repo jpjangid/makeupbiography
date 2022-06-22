@@ -24,6 +24,12 @@ $mains = Category::select('id','slug','name')->where(['flag' => 0,'status' => 1]
 		}
 	}
 
+	@media (max-width: 425px) {
+		.c-header__top-row-item {
+			font-size: 11px;
+		}
+	}
+
 	.mz-title {
 		overflow: hidden;
 		float: left;

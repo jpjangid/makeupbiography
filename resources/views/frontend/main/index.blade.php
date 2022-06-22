@@ -246,12 +246,19 @@
 		width:100%!important;
 		/* height:100px; */
 		display:flex;
-		justify-content : space-between;
+		justify-content : space-evenly;
 	}
 
 	.woocommerce{
 		margin:20px 0;
 	}
+
+	.js-ip-tabs-list{
+		display : flex;
+		justify-content : space-evenly; 
+		margin:0 230px;
+	}
+
 
 	@media (max-width:426px){
 		.subscribe-btn {
@@ -379,18 +386,30 @@
 		}
 	}
 
-	@media screen and (max-width: 768px) {
+	@media screen and (max-width: 768px) and (min-width: 500px) {
 		.js-ip-tabs-list{
 			display: flex;
-			justify-content: space-between;
+			justify-content: space-evenly;
+			margin : 0 110px;
 		}
 	}
 
-	@media screen and (max-width: 360px) {
-		.c-ip-product-tabs__menu .owl-stage-outer .owl-stage .owl-item {
-			/* margin-right: 20px !important; */
+	@media screen and (max-width: 500px) and (min-width: 361px) {
+		.js-ip-tabs-list{
+			display: flex;
+			justify-content: space-evenly;
+			margin : 0 50px;
 		}
 	}
+
+
+	@media screen and (max-width: 360px) {
+
+		.js-ip-tabs-list {
+			display: flex;
+			justify-content: space-between;
+			margin: 0 20px;
+		}
 
 	.c-product-grid__title-wrap .woocommerce-LoopProduct-link .woocommerce-loop-product__title {
 		overflow: hidden;
@@ -399,6 +418,7 @@
 		-webkit-box-orient: vertical;
 		height: 3em;
 	}
+}
 
 	@media screen and (max-width: 480px) {
 		.c-product-grid__title-wrap .woocommerce-LoopProduct-link .woocommerce-loop-product__title {
@@ -522,7 +542,7 @@
 										<div class="elementor-widget-container">
 											<div class="c-ip-product-tabs js-ip-tabs">
 												<div class="c-ip-product-tabs__wrap js-ip-tabs-wrap">
-													<div class="js-ip-tabs-list h-carousel h-carousel--small h-carousel--hover h-carousel--mobile-arrows h-carousel--dots-hide" style="display : flex; justify-content : space-between; margin:0 20px;">
+													<div class="js-ip-tabs-list h-carousel h-carousel--small h-carousel--hover h-carousel--mobile-arrows h-carousel--dots-hide">
 														<div class="c-ip-product-tabs__menu-item js-ip-tabs-menu-item active">
 															<a class="c-ip-product-tabs__menu-link js-ip-tabs-link" href="#tab-01406ee-1" data-index="0" onclick="return false;">Newest</a>
 														</div>

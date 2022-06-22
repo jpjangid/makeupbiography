@@ -3775,8 +3775,8 @@
     position: relative !important;
     margin: 0 auto;
     flex-wrap: nowrap !important;
-    -webkit-box-pack: start !important;
-    justify-content: flex-start !important;
+    /* -webkit-box-pack: start !important;
+    justify-content: flex-start !important; */
 }
 
 .c-ip-woocommerce-carousel__list:not(.owl-carousel) {
@@ -3972,7 +3972,7 @@
 @media (max-width: 360px) {
     .c-ip-woocommerce-carousel__list--3-per-row,
     .c-ip-woocommerce-carousel__list--4-per-row {
-        max-width: 300px !important;
+        /* max-width: 300px !important; */
     }
 }
 
