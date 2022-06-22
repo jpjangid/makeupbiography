@@ -243,7 +243,7 @@
 					<section class="elementor-section elementor-top-section elementor-element elementor-element-720db9e8 elementor-section-full_width elementor-section-height-default" data-id="720db9e8" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 						<div class="elementor-container elementor-column-gap-no">
 							<div class="elementor-row">
-								<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-11148c13" data-id="11148c13" data-element_type="column">
+								<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-11148c13" data-id="11148c13" data-element_type="column" style="margin : 0 20px">
 									<div class="elementor-column-wrap elementor-element-populated">
 										<div class="elementor-widget-wrap-footer">
 											<!-- <div class="elementor-element elementor-element-33548589 elementor-widget elementor-widget-ideapark-inline-menu" data-id="33548589" data-element_type="widget" data-widget_type="ideapark-inline-menu.default">
