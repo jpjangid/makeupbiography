@@ -7,6 +7,10 @@
 		text-align: center;
 	}
 
+	.elementor-column, .elementor-column-wrap{
+		display : grid;
+	}
+
 	@media screen and (max-width: 789px) {
 
 		.c-mobile-menu__item,
