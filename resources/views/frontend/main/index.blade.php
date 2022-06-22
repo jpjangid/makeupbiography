@@ -683,6 +683,7 @@
 																			@elseif($main_popular_product->discount >0)
 																			<span class="c-badge c-badge--sale">
 																				{{ $main_popular_product->discount }}% OFF</span>
+																			@else
 																			@endif
 																			<!-- <span class="c-badge c-badge--sale">{{ $main_popular_product->discount }}%</span> -->
 																		</div>
@@ -805,12 +806,14 @@
 																			@if(!empty($main_category_product->label_name))
 																			<span class="c-badge c-badge--featured">{{ $main_category_product->label_name }}</span>
 																			@endif
-																			@if(!empty($main_category_product->p_discount && $main_category_product->p_discount > 0))
+																			@if(!empty($main_category_product->p_discount))
 																			<span class="c-badge c-badge--sale">
 																				{{ $main_category_product->p_discount }}% OFF</span>
 																			@elseif($main_category_product->discount >0)
 																			<span class="c-badge c-badge--sale">
 																				{{ $main_category_product->discount }}% OFF</span>
+																			@else
+
 																			@endif
 																		</div>
 																		@endif
@@ -938,6 +941,7 @@
 																			@elseif($main_brand_product->discount >0)
 																			<span class="c-badge c-badge--sale">
 																				{{ $main_brand_product->discount }}% OFF</span>
+																			@else
 																			@endif
 																		</div>
 																		@endif
@@ -1184,6 +1188,7 @@
 																		@elseif($big_offer_product->discount >0)
 																		<span class="c-badge c-badge--sale">
 																			{{ $big_offer_product->discount }}% OFF</span>
+																		@else
 																		@endif
 																		@endif
 																	</div>

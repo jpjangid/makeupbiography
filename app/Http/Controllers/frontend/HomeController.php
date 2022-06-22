@@ -15,7 +15,8 @@ class HomeController extends Controller
     //home page frontend function 
     public function index()
     {
-        $main_categories = DB::table('categories')->where(['flag' => 0, 'status' => 0])->where('parent_id', null)->orderBy('name', 'asc')->get();
+        $cat = array('MAKEUP', 'SKIN CARE', 'HAIR CARE', 'NAILS', 'BODY CARE', 'FRAGRANCE', 'MENS FACE CARE');
+        $main_categories = DB::table('categories')->where(['flag' => 0, 'status' => 0])->whereIn('name', $cat)->orderBy('name', 'asc')->get();
         $main_newest_products =
             Product::with('first_medias')->select('products.*', 'discount_details.discount_type as p_discount_type', 'discount_details.discount as p_discount')->whereHas("first_medias", function ($query) {
                 $query->where('media', '!=', '');
