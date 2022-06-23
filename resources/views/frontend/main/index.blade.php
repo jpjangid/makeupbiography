@@ -245,8 +245,12 @@
 	.owl-stage-outer .owl-stage {
 		width: 100% !important;
 		/* height:100px; */
+<<<<<<< HEAD
 		display:flex;
 		justify-content : space-evenly;
+=======
+		display: flex;
+>>>>>>> 5e4ca4fc0c5175957e70343e0b948a33d2341fed
 	}
 
 	.woocommerce {
@@ -388,6 +392,7 @@
 		}
 	}
 
+<<<<<<< HEAD
 	@media screen and (max-width: 768px) and (min-width: 500px) {
 		.js-ip-tabs-list{
 			display: flex;
@@ -401,6 +406,17 @@
 			display: flex;
 			justify-content: space-evenly;
 			margin : 0 50px;
+=======
+	@media screen and (max-width: 380px) {
+		.c-ip-product-tabs__menu .owl-stage-outer .owl-stage .owl-item {
+			margin-right: 35px !important;
+		}
+	}
+
+	@media screen and (max-width: 360px) {
+		.c-ip-product-tabs__menu .owl-stage-outer .owl-stage .owl-item {
+			margin-right: 20px !important;
+>>>>>>> 5e4ca4fc0c5175957e70343e0b948a33d2341fed
 		}
 	}
 
@@ -456,11 +472,6 @@
 		width: 100%;
 		margin: 0;
 	}
-
-	.category-crousel {
-		display: grid;
-		grid-template-columns: 25% 25% 25% 25%
-	}
 </style>
 @endsection
 
@@ -491,7 +502,7 @@
 										<div class="elementor-widget-container">
 											<div class="c-ip-image-list-1 c-ip-image-list-1--carousel">
 												<div class="c-ip-image-list-1__wrap c-ip-image-list-1__wrap--carousel">
-													<div class="c-ip-image-list-1__list c-ip-image-list-1__list--carousel js-image-list-1 h-carousel h-carousel--dots-hide h-carousel--nav-hide ">
+													<div class="c-ip-image-list-1__list c-ip-image-list-1__list--carousel js-image-list-1 h-carousel h-carousel--dots-hide h-carousel--nav-hide">
 														@if(!empty($main_categories))
 														@foreach($main_categories as $main_category)
 														<div class="c-ip-image-list-1__item c-ip-image-list-1__item--carousel">
@@ -545,7 +556,11 @@
 										<div class="elementor-widget-container">
 											<div class="c-ip-product-tabs js-ip-tabs">
 												<div class="c-ip-product-tabs__wrap js-ip-tabs-wrap">
+<<<<<<< HEAD
 													<div class="js-ip-tabs-list h-carousel h-carousel--small h-carousel--hover h-carousel--mobile-arrows h-carousel--dots-hide">
+=======
+													<div style="display : grid; grid-template-columns : 25% 25% 25% 25%" class="c-ip-product-tabs__menu js-ip-tabs-list h-carousel h-carousel--hover">
+>>>>>>> 5e4ca4fc0c5175957e70343e0b948a33d2341fed
 														<div class="c-ip-product-tabs__menu-item js-ip-tabs-menu-item active">
 															<a class="c-ip-product-tabs__menu-link js-ip-tabs-link" href="#tab-01406ee-1" data-index="0" onclick="return false;">Newest</a>
 														</div>
@@ -578,7 +593,16 @@
 																			@if(!empty($main_newest_product->label_name))
 																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
 																			@endif
-																			<span class="c-badge c-badge--sale">-{{ $main_newest_product->discount }}%</span>
+																			@if(!empty($main_newest_product->p_discount && $main_newest_product->p_discount > 0))
+																			<span class="c-badge c-badge--sale">
+																				{{ $main_newest_product->p_discount }}% OFF</span>
+																			@elseif($main_newest_product->discount >0)
+																			<span class="c-badge c-badge--sale">
+																				{{ $main_newest_product->discount }}% OFF</span>
+																			@else
+
+																			@endif
+
 																		</div>
 																		@endif
 
@@ -624,6 +648,26 @@
 																			<!-- .c-product-grid__title-wrap -->
 																			<div class="c-product-grid__price-wrap price-div">
 																				<span class="price">
+																					@php
+																					$discount = $main_newest_product->regular_price * $main_newest_product->p_discount/100;
+																					$dis_amount = $main_newest_product->regular_price - $discount;
+																					@endphp
+																					@if(!empty($main_newest_product->p_discount))
+																					@if($main_newest_product->p_discount > 0)
+																					<del aria-hidden="true">
+																						<span class="woocommerce-Price-amount amount">
+																							<bdi>
+																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $main_newest_product->regular_price }}</bdi>
+																						</span>
+																					</del>
+																					@endif
+																					<ins>
+																						<span class="woocommerce-Price-amount amount">
+																							<bdi>
+																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $dis_amount }}</bdi>
+																						</span>
+																					</ins>
+																					@else
 																					@if(!empty($main_newest_product->discount) && $main_newest_product->discount > 0)
 																					<del aria-hidden="true">
 																						<span class="woocommerce-Price-amount amount">
@@ -638,6 +682,7 @@
 																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $main_newest_product->sale_price }}</bdi>
 																						</span>
 																					</ins>
+																					@endif
 																				</span>
 																			</div>
 																			<!-- .c-product-grid__price-wrap -->
@@ -682,7 +727,7 @@
 																				{{ $main_popular_product->discount }}% OFF</span>
 																			@else
 																			@endif
-																			<span class="c-badge c-badge--sale">{{ $main_popular_product->discount }}%</span>
+																			<!-- <span class="c-badge c-badge--sale">{{ $main_popular_product->discount }}%</span> -->
 																		</div>
 																		@endif
 
@@ -732,6 +777,26 @@
 																			<!-- .c-product-grid__title-wrap -->
 																			<div class="c-product-grid__price-wrap price-div">
 																				<span class="price">
+																					@php
+																					$discount = $main_popular_product->regular_price * $main_popular_product->p_discount/100;
+																					$dis_amount = $main_popular_product->regular_price - $discount;
+																					@endphp
+																					@if(!empty($main_popular_product->p_discount))
+																					@if($main_popular_product->p_discount > 0)
+																					<del aria-hidden="true">
+																						<span class="woocommerce-Price-amount amount">
+																							<bdi>
+																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $main_popular_product->regular_price }}</bdi>
+																						</span>
+																					</del>
+																					@endif
+																					<ins>
+																						<span class="woocommerce-Price-amount amount">
+																							<bdi>
+																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $dis_amount }}</bdi>
+																						</span>
+																					</ins>
+																					@else
 																					@if(!empty($main_popular_product->discount) && $main_popular_product->discount > 0)
 																					<del aria-hidden="true">
 																						<span class="woocommerce-Price-amount amount">
@@ -746,6 +811,7 @@
 																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $main_popular_product->sale_price }}</bdi>
 																						</span>
 																					</ins>
+																					@endif
 																				</span>
 																			</div>
 																			<!-- .c-product-grid__price-wrap -->
@@ -791,7 +857,6 @@
 																			@else
 
 																			@endif
-																			<span class="c-badge c-badge--sale">-{{ $main_category_product->discount }}%</span>
 																		</div>
 																		@endif
 
@@ -841,6 +906,26 @@
 																			<!-- .c-product-grid__title-wrap -->
 																			<div class="c-product-grid__price-wrap price-div">
 																				<span class="price">
+																					@php
+																					$discount = $main_category_product->regular_price * $main_category_product->p_discount/100;
+																					$dis_amount = $main_category_product->regular_price - $discount;
+																					@endphp
+																					@if(!empty($main_category_product->p_discount))
+																					@if($main_category_product->p_discount > 0)
+																					<del aria-hidden="true">
+																						<span class="woocommerce-Price-amount amount">
+																							<bdi>
+																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $main_category_product->regular_price }}</bdi>
+																						</span>
+																					</del>
+																					@endif
+																					<ins>
+																						<span class="woocommerce-Price-amount amount">
+																							<bdi>
+																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $dis_amount }}</bdi>
+																						</span>
+																					</ins>
+																					@else
 																					@if(!empty($main_category_product->discount) && $main_category_product->discount > 0)
 																					<del aria-hidden="true">
 																						<span class="woocommerce-Price-amount amount">
@@ -855,6 +940,7 @@
 																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $main_category_product->sale_price }}</bdi>
 																						</span>
 																					</ins>
+																					@endif
 																				</span>
 																			</div>
 																			<!-- .c-product-grid__price-wrap -->
@@ -899,7 +985,6 @@
 																				{{ $main_brand_product->discount }}% OFF</span>
 																			@else
 																			@endif
-																			<span class="c-badge c-badge--sale">-{{ $main_brand_product->discount }}%</span>
 																		</div>
 																		@endif
 
@@ -949,6 +1034,26 @@
 																			<!-- .c-product-grid__title-wrap -->
 																			<div class="c-product-grid__price-wrap price-div">
 																				<span class="price">
+																					@php
+																					$discount = $main_brand_product->regular_price * $main_brand_product->p_discount/100;
+																					$dis_amount = $main_brand_product->regular_price - $discount;
+																					@endphp
+																					@if(!empty($main_brand_product->p_discount))
+																					@if($main_brand_product->p_discount > 0)
+																					<del aria-hidden="true">
+																						<span class="woocommerce-Price-amount amount">
+																							<bdi>
+																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $main_brand_product->regular_price }}</bdi>
+																						</span>
+																					</del>
+																					@endif
+																					<ins>
+																						<span class="woocommerce-Price-amount amount">
+																							<bdi>
+																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $dis_amount }}</bdi>
+																						</span>
+																					</ins>
+																					@else
 																					@if(!empty($main_brand_product->discount) && $main_brand_product->discount > 0)
 																					<del aria-hidden="true">
 																						<span class="woocommerce-Price-amount amount">
@@ -963,6 +1068,7 @@
 																								<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $main_brand_product->sale_price }}</bdi>
 																						</span>
 																					</ins>
+																					@endif
 																				</span>
 																			</div>
 																			<!-- .c-product-grid__price-wrap -->
