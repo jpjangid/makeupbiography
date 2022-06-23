@@ -879,6 +879,9 @@ h1.entry-title {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    /* height: ; */
 }
 
 .elementor-widget-wrap>.elementor-element {
