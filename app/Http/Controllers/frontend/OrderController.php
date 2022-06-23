@@ -341,8 +341,10 @@ class OrderController extends Controller
         $token = $auth_response->token;
         # Creating order params
         $order = Order::where('id', $order_id)->with('items.product')->first();
+        dd($order);
         $payment_mode = $order->payment_mode == 'cod' ? 'COD' : 'Prepaid';
         $items = new Collection();
+        dd($order->items);
         foreach ($order->items as $order_item) {
             $items->push([
                 'name'              => $order_item->product->item_shade_name,

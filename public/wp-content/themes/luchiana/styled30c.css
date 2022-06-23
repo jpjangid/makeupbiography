@@ -7698,7 +7698,6 @@ p+.woocommerce-order-details {
         height: 30px;
         top: 4px;
     }
-
     .c-header__menu-content {
         top: 35px;
     }
@@ -9820,6 +9819,7 @@ p+.woocommerce-order-details {
 .woocommerce-variation-description> :last-child {
     margin-bottom: 0;
 }
+
 
 /* .woocommerce-variation-add-to-cart {
     margin-top: 25px;

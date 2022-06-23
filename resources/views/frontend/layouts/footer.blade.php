@@ -31,19 +31,19 @@
 			margin-left: 20px;
 		}*/
 
-		.elementor-column.elementor-col-33.elementor-inner-column.elementor-element.elementor-element-6e0ac925 .elementor-icon-list-text{
-			font-size : 11px;
+		.elementor-column.elementor-col-33.elementor-inner-column.elementor-element.elementor-element-6e0ac925 .elementor-icon-list-text {
+			font-size: 11px;
 		}
 
-		.elementor-1052 .elementor-element.elementor-element-6b247977 > .elementor-widget-container {
-    		margin: 5px 0px 0px 0px!important;
+		.elementor-1052 .elementor-element.elementor-element-6b247977>.elementor-widget-container {
+			margin: 5px 0px 0px 0px !important;
 		}
 
 		.subscribe-search {
-   			padding: 2px 5px !important;
+			padding: 2px 5px !important;
 		}
 
-		
+
 
 		/* .elementor-column.elementor-col-50.elementor-inner-column.elementor-element.elementor-element-175f259a {
 			margin-left: 20px;
@@ -80,9 +80,9 @@
 			line-height: 0.9;
 		}
 
-		.elementor-widget-wrap-footer{
-			margin:0 10px;
-			width:100%;
+		.elementor-widget-wrap-footer {
+			margin: 0 10px;
+			width: 100%;
 		}
 	}
 
@@ -126,20 +126,31 @@
 		display: inline-flex;
 	}
 
-	@media(max-width : 1024px){
+	@media(max-width : 1024px) {
 		.subscribe-btn {
 			padding: 22.6px;
-			margin-top:10.5px;
+			margin-top: 10.5px;
 		}
 
-		.h-input, input[type="search"]:not(.h-cb), input[type="text"]:not(.h-cb), input[type="password"]:not(.h-cb), input[type="email"]:not(.h-cb), input[type="tel"]:not(.h-cb), input[type="number"]:not(.h-cb), input[type="url"]:not(.h-cb), input[type="date"]:not(.h-cb), textarea:not(.h-cb):not(.editor-post-title__input), .wpcf7-form .c-custom-selectInner, select:not(.h-cb) {
+		.h-input,
+		input[type="search"]:not(.h-cb),
+		input[type="text"]:not(.h-cb),
+		input[type="password"]:not(.h-cb),
+		input[type="email"]:not(.h-cb),
+		input[type="tel"]:not(.h-cb),
+		input[type="number"]:not(.h-cb),
+		input[type="url"]:not(.h-cb),
+		input[type="date"]:not(.h-cb),
+		textarea:not(.h-cb):not(.editor-post-title__input),
+		.wpcf7-form .c-custom-selectInner,
+		select:not(.h-cb) {
 			padding: 10px 25px 10px 25px;
 		}
-		
+
 		input[type="email"]::placeholder {
 			font: 11px;
 		}
-	}	
+	}
 
 	@media screen and (min-width: 767px) {
 		.subscribe-section {
@@ -159,8 +170,11 @@
 
 		.subscribe-btn {
 			padding: 14.7px;
-			margin-top:10.10px;
-			left:-8px;
+			<<<<<<< HEAD margin-top: 10.6px;
+			left: 0;
+			=======margin-top: 10.10px;
+			left: -8px;
+			>>>>>>>bce4c1d7ba19cd2cbc864ea9388ad3039ece04ca
 		}
 	}
 
@@ -274,62 +288,62 @@
 											</div>
 										</div> -->
 
-										<section class="elementor-section elementor-inner-section elementor-element elementor-element-2b806726 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="2b806726" data-element_type="section">
-											<div class="elementor-container elementor-column-gap-no">
-												<div class="elementor-row">
-													<div class="elementor-column elementor-col-33 1 elementor-inner-column elementor-element elementor-element-6e0ac925 mx-3" data-id="10793382" data-element_type="column">
-														<div class="elementor-column-wrap elementor-element-populated">
-															<div class="elementor-widget-wrap">
-																<div class="elementor-element elementor-element-23ce4345 elementor-align-left elementor-widget-mobile__width-auto elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="23ce4345" data-element_type="widget" data-widget_type="icon-list.default">
-																	<div class="elementor-widget-container">
-																		<ul class="elementor-icon-list-items ">
-																			<li class="elementor-icon-list-item">
-																				<a href="tel:+081978 94448">
-																					<span class="elementor-icon-list-icon">
-																						<i aria-hidden="true" class="fibd21- fi-bd21-phone"></i>
-																					</span>
-																					<span class="elementor-icon-list-text">+91 81978 94448</span>
-																				</a>
-																			</li>
-																			<li class="elementor-icon-list-item " style="margin-top : 10px;">
-																				<a href="https://goo.gl/maps/Cbepvf2AZbxUMeSy6" target="_blank">
-																					<span class="elementor-icon-list-icon">
-																						<i aria-hidden="true" class="fibd21- fi-bd21-map-pin"></i>
-																					</span>
-																					<span class="elementor-icon-list-text">#45, Sri Complex, Sajjan Rao Circle
-																						Vishweshwarapura
-																						Bangalore, Karnataka 560004</span>
-																				</a>
-																			</li>
-																			<li class="elementor-icon-list-item " style="margin-top : 10px;">
-																				<a href="mailto:info@luchiana.com">
-																					<span class="elementor-icon-list-icon">
-																						<i aria-hidden="true" class="fibd21- fi-bd21-subscribe"></i>
-																					</span>
-																					<span class="elementor-icon-list-text">Info@makeupbiography.com</span>
-																				</a>
-																			</li>
-																			<li class="elementor-icon-list-item " style="margin-top : 10px;">
-																				<a>
-																					<span class="elementor-icon-list-icon">
-																						<i aria-hidden="true" class="fibd21- fi-bd21-time"></i>
-																					</span>
-																					<span class="elementor-icon-list-text">Mon-Fri: 10:00 - 08:00</span>
-																				</a>
-																			</li>
-																		</ul>
+											<section class="elementor-section elementor-inner-section elementor-element elementor-element-2b806726 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="2b806726" data-element_type="section">
+												<div class="elementor-container elementor-column-gap-no">
+													<div class="elementor-row">
+														<div class="elementor-column elementor-col-33 1 elementor-inner-column elementor-element elementor-element-6e0ac925 mx-3" data-id="10793382" data-element_type="column">
+															<div class="elementor-column-wrap elementor-element-populated">
+																<div class="elementor-widget-wrap">
+																	<div class="elementor-element elementor-element-23ce4345 elementor-align-left elementor-widget-mobile__width-auto elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="23ce4345" data-element_type="widget" data-widget_type="icon-list.default">
+																		<div class="elementor-widget-container">
+																			<ul class="elementor-icon-list-items ">
+																				<li class="elementor-icon-list-item">
+																					<a href="tel:+081978 94448">
+																						<span class="elementor-icon-list-icon">
+																							<i aria-hidden="true" class="fibd21- fi-bd21-phone"></i>
+																						</span>
+																						<span class="elementor-icon-list-text">+91 81978 94448</span>
+																					</a>
+																				</li>
+																				<li class="elementor-icon-list-item " style="margin-top : 10px;">
+																					<a href="https://goo.gl/maps/Cbepvf2AZbxUMeSy6" target="_blank">
+																						<span class="elementor-icon-list-icon">
+																							<i aria-hidden="true" class="fibd21- fi-bd21-map-pin"></i>
+																						</span>
+																						<span class="elementor-icon-list-text">#45, Sri Complex, Sajjan Rao Circle
+																							Vishweshwarapura
+																							Bangalore, Karnataka 560004</span>
+																					</a>
+																				</li>
+																				<li class="elementor-icon-list-item " style="margin-top : 10px;">
+																					<a href="mailto:info@luchiana.com">
+																						<span class="elementor-icon-list-icon">
+																							<i aria-hidden="true" class="fibd21- fi-bd21-subscribe"></i>
+																						</span>
+																						<span class="elementor-icon-list-text">Info@makeupbiography.com</span>
+																					</a>
+																				</li>
+																				<li class="elementor-icon-list-item " style="margin-top : 10px;">
+																					<a>
+																						<span class="elementor-icon-list-icon">
+																							<i aria-hidden="true" class="fibd21- fi-bd21-time"></i>
+																						</span>
+																						<span class="elementor-icon-list-text">Mon-Fri: 10:00 - 08:00</span>
+																					</a>
+																				</li>
+																			</ul>
+																		</div>
 																	</div>
 																</div>
 															</div>
 														</div>
-													</div>
-													<div class="elementor-column elementor-col-33 2 elementor-inner-column elementor-element elementor-element-6e0ac925 mx-3" data-id="6e0ac925" data-element_type="column">
-														<div class="elementor-column-wrap elementor-element-populated">
-															<div class="elementor-widget-wrap">
-																<div class="elementor-element elementor-element-7195f8fe elementor-widget elementor-widget-ideapark-heading" data-id="7195f8fe" data-element_type="widget" data-widget_type="ideapark-heading.default">
-																	<div class="elementor-widget-container">
-																		<div class="c-ip-heading--bullet-hide">
-																			<!-- <span class="c-ip-heading__inner"> -->
+														<div class="elementor-column elementor-col-33 2 elementor-inner-column elementor-element elementor-element-6e0ac925 mx-3" data-id="6e0ac925" data-element_type="column">
+															<div class="elementor-column-wrap elementor-element-populated">
+																<div class="elementor-widget-wrap">
+																	<div class="elementor-element elementor-element-7195f8fe elementor-widget elementor-widget-ideapark-heading" data-id="7195f8fe" data-element_type="widget" data-widget_type="ideapark-heading.default">
+																		<div class="elementor-widget-container">
+																			<div class="c-ip-heading--bullet-hide">
+																				<!-- <span class="c-ip-heading__inner"> -->
 																				<ul id="ftrlist" style="list-style-type: none; margin:0;padding-left : 0">
 																					<li id="menu-item-165" class="c-mobile-menu__subitem menu-item-165" style="padding-bottom: 10px;">
 
@@ -348,20 +362,20 @@
 																						<a class="zoom-href" href="{{ url('terms-and-conditions') }}"><i class="fa fa-sticky-note footer-icons"></i>Terms & Conditions</a>
 																					</li>
 																				</ul>
-																			<!-- </span> -->
+																				<!-- </span> -->
+																			</div>
 																		</div>
 																	</div>
 																</div>
 															</div>
 														</div>
-													</div>
-													<div class="elementor-column elementor-col-33 3 elementor-inner-column elementor-element elementor-element-6e0ac925 mx-3" data-id="6e0ac925" data-element_type="column">
-														<div class="elementor-column-wrap elementor-element-populated">
-															<div class="elementor-widget-wrap">
-																<div class="elementor-element elementor-element-7195f8fe elementor-widget elementor-widget-ideapark-heading" data-id="7195f8fe" data-element_type="widget" data-widget_type="ideapark-heading.default">
-																	<div class="elementor-widget-container">
-																		<div class=" c-ip-heading--bullet-hide">
-																			<!-- <span class="c-ip-heading__inner"> -->
+														<div class="elementor-column elementor-col-33 3 elementor-inner-column elementor-element elementor-element-6e0ac925 mx-3" data-id="6e0ac925" data-element_type="column">
+															<div class="elementor-column-wrap elementor-element-populated">
+																<div class="elementor-widget-wrap">
+																	<div class="elementor-element elementor-element-7195f8fe elementor-widget elementor-widget-ideapark-heading" data-id="7195f8fe" data-element_type="widget" data-widget_type="ideapark-heading.default">
+																		<div class="elementor-widget-container">
+																			<div class=" c-ip-heading--bullet-hide">
+																				<!-- <span class="c-ip-heading__inner"> -->
 																				<ul id="ftrlist" style="list-style-type: none; padding-left : 0 ; margin:0">
 																					<li id="menu-item-2320" class="c-mobile-menu__subitem menu-item-2320" style="padding-bottom: 10px;">
 
@@ -380,49 +394,50 @@
 																						<a class="zoom-href" href="{{ url('privacy-policy') }}"><i class="fa fa-sticky-note footer-icons"></i>Privacy Policy</a>
 																					</li>
 																				</ul>
-																			<!-- </span> -->
+																				<!-- </span> -->
+																			</div>
 																		</div>
 																	</div>
+
 																</div>
-																
+															</div>
 														</div>
-													</div>
-													</div>
-													<div class="elementor-column elementor-col-33 4 elementor-inner-column elementor-element elementor-element-6e0ac925 mx-3" data-id="615b3b69" data-element_type="column">
-														<div class="elementor-column-wrap elementor-element-populated">
-															<div class="elementor-widget-wrap">
-																<div class="elementor-element elementor-element-6b247977 elementor-align-center elementor-widget elementor-widget-ideapark-social" data-id="6b247977" data-element_type="widget" data-widget_type="ideapark-social.default">
-																	<div class="elementor-widget-container">
-																		<div class="subscribe-section">
-																			<div class="subscribe-text">
-																				<span class="subscribe-title">Subscribe to receive updates and access to exclusive deals.</span>
+														<div class="elementor-column elementor-col-33 4 elementor-inner-column elementor-element elementor-element-6e0ac925 mx-3" data-id="615b3b69" data-element_type="column">
+															<div class="elementor-column-wrap elementor-element-populated">
+																<div class="elementor-widget-wrap">
+																	<div class="elementor-element elementor-element-6b247977 elementor-align-center elementor-widget elementor-widget-ideapark-social" data-id="6b247977" data-element_type="widget" data-widget_type="ideapark-social.default">
+																		<div class="elementor-widget-container">
+																			<div class="subscribe-section">
+																				<div class="subscribe-text">
+																					<span class="subscribe-title">Subscribe to receive updates and access to exclusive deals.</span>
+																				</div>
+																				<div class="subscribe-field">
+																					<input type="text" id="email" placeholder="Enter your email address" class="subscribe-search">
+																					<button type="submit" class="subscribe-btn"><i class="fa fa-chevron-circle-right" style="position:absolute;"></i></button>
+																				</div>
 																			</div>
-																			<div class="subscribe-field">
-																				<input type="text" id="email" placeholder="Enter your email address" class="subscribe-search">
-																				<button type="submit" class="subscribe-btn"><i class="fa fa-chevron-circle-right" style="position:absolute;"></i></button>
+																			<div class="c-ip-social">
+																				<a href="#" class="c-ip-social__link zoom-icon">
+																					<i class="ip-facebook c-ip-social__icon c-ip-social__icon--facebook">
+																						<!-- -->
+																					</i>
+																				</a>
+																				<a href="#" class="c-ip-social__link zoom-icon">
+																					<i class="ip-instagram c-ip-social__icon c-ip-social__icon--instagram">
+																						<!-- -->
+																					</i>
+																				</a>
+																				<a href="#" class="c-ip-social__link zoom-icon">
+																					<i class="ip-twitter c-ip-social__icon c-ip-social__icon--twitter">
+																						<!-- -->
+																					</i>
+																				</a>
+																				<a href="#" class="c-ip-social__link zoom-icon">
+																					<i class="ip-youtube c-ip-social__icon c-ip-social__icon--youtube">
+																						<!-- -->
+																					</i>
+																				</a>
 																			</div>
-																		</div>
-																		<div class="c-ip-social">
-																			<a href="#" class="c-ip-social__link zoom-icon">
-																				<i class="ip-facebook c-ip-social__icon c-ip-social__icon--facebook">
-																					<!-- -->
-																				</i>
-																			</a>
-																			<a href="#" class="c-ip-social__link zoom-icon">
-																				<i class="ip-instagram c-ip-social__icon c-ip-social__icon--instagram">
-																					<!-- -->
-																				</i>
-																			</a>
-																			<a href="#" class="c-ip-social__link zoom-icon">
-																				<i class="ip-twitter c-ip-social__icon c-ip-social__icon--twitter">
-																					<!-- -->
-																				</i>
-																			</a>
-																			<a href="#" class="c-ip-social__link zoom-icon">
-																				<i class="ip-youtube c-ip-social__icon c-ip-social__icon--youtube">
-																					<!-- -->
-																				</i>
-																			</a>
 																		</div>
 																	</div>
 																</div>
@@ -430,41 +445,41 @@
 														</div>
 													</div>
 												</div>
-											</div>
-										</section>
-										<section class="elementor-section elementor-inner-section elementor-element elementor-element-31ac565f elementor-section-content-bottom elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="31ac565f" data-element_type="section">
-											<div class="elementor-container elementor-column-gap-no">
-												<div class="elementor-row">
-													<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-175f259a" data-id="175f259a" data-element_type="column">
-														<div class="elementor-column-wrap elementor-element-populated">
-															<div class="elementor-widget-wrap">
-																<div class="elementor-element elementor-element-70e42022 elementor-widget elementor-widget-ideapark-heading" data-id="70e42022" data-element_type="widget" data-widget_type="ideapark-heading.default">
-																	<div class="elementor-widget-container">
-																		<div class="c-ip-heading c-ip-heading--default c-ip-heading--left c-ip-heading--tablet- c-ip-heading--mobile-center c-ip-heading--bullet-hide">
-																			<span class="c-ip-heading__inner">© 2021 MakeUp Bipography. All rights reserved.</span>
+											</section>
+											<section class="elementor-section elementor-inner-section elementor-element elementor-element-31ac565f elementor-section-content-bottom elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="31ac565f" data-element_type="section">
+												<div class="elementor-container elementor-column-gap-no">
+													<div class="elementor-row">
+														<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-175f259a" data-id="175f259a" data-element_type="column">
+															<div class="elementor-column-wrap elementor-element-populated">
+																<div class="elementor-widget-wrap">
+																	<div class="elementor-element elementor-element-70e42022 elementor-widget elementor-widget-ideapark-heading" data-id="70e42022" data-element_type="widget" data-widget_type="ideapark-heading.default">
+																		<div class="elementor-widget-container">
+																			<div class="c-ip-heading c-ip-heading--default c-ip-heading--left c-ip-heading--tablet- c-ip-heading--mobile-center c-ip-heading--bullet-hide">
+																				<span class="c-ip-heading__inner">© 2021 MakeUp Bipography. All rights reserved.</span>
+																			</div>
 																		</div>
 																	</div>
 																</div>
 															</div>
 														</div>
-													</div>
-													<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-6588c572" data-id="6588c572" data-element_type="column">
-														<div class="elementor-column-wrap elementor-element-populated">
-															<div class="elementor-widget-wrap">
-																<div class="elementor-element elementor-element-52168518 elementor-widget elementor-widget-ideapark-inline-menu" data-id="52168518" data-element_type="widget" data-widget_type="ideapark-inline-menu.default">
-																	<div class="elementor-widget-container">
-																		<div class="c-ip-inline-menu">
-																			<span class="c-ip-inline-menu__item">
-																				<a href="{{ url('privacy-policy') }}">Privacy Policy</a>
-																			</span>
-																			<i class="ip-dot c-ip-inline-menu__separator c-ip-inline-menu__separator--dot"></i>
-																			<span class="c-ip-inline-menu__item">
-																				<a href="{{ url('terms-and-conditions') }}">Terms</a>
-																			</span>
-																			<i class="ip-dot c-ip-inline-menu__separator c-ip-inline-menu__separator--dot"></i>
-																			<span class="c-ip-inline-menu__item">
-																				<a href="{{ url('faq') }}">Faq</a>
-																			</span>
+														<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-6588c572" data-id="6588c572" data-element_type="column">
+															<div class="elementor-column-wrap elementor-element-populated">
+																<div class="elementor-widget-wrap">
+																	<div class="elementor-element elementor-element-52168518 elementor-widget elementor-widget-ideapark-inline-menu" data-id="52168518" data-element_type="widget" data-widget_type="ideapark-inline-menu.default">
+																		<div class="elementor-widget-container">
+																			<div class="c-ip-inline-menu">
+																				<span class="c-ip-inline-menu__item">
+																					<a href="{{ url('privacy-policy') }}">Privacy Policy</a>
+																				</span>
+																				<i class="ip-dot c-ip-inline-menu__separator c-ip-inline-menu__separator--dot"></i>
+																				<span class="c-ip-inline-menu__item">
+																					<a href="{{ url('terms-and-conditions') }}">Terms</a>
+																				</span>
+																				<i class="ip-dot c-ip-inline-menu__separator c-ip-inline-menu__separator--dot"></i>
+																				<span class="c-ip-inline-menu__item">
+																					<a href="{{ url('faq') }}">Faq</a>
+																				</span>
+																			</div>
 																		</div>
 																	</div>
 																</div>
@@ -472,17 +487,16 @@
 														</div>
 													</div>
 												</div>
-											</div>
-										</section>
+											</section>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+					</section>
 				</div>
-				</section>
 			</div>
 		</div>
-	</div>
 	</div>
 </footer>
 @section('js')
