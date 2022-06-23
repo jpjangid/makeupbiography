@@ -170,14 +170,21 @@
 
 		.subscribe-btn {
 			padding: 14.7px;
-			<<<<<<< HEAD margin-top: 10.6px;
-			left: 0;
-			=======margin-top: 10.10px;
+			margin-top: 10.10px;
 			left: -8px;
-			>>>>>>>bce4c1d7ba19cd2cbc864ea9388ad3039ece04ca
 		}
 	}
 
+	@media(max-width : 426px){
+		.subscribe-btn {
+			padding: 14.7px;
+			margin-top: 26.9px;
+			left: -10px;
+		}
+		.elementor-column {
+			    /* margin: 0 20px 0 -17px!important; */
+		}
+	}
 	/* @media screen and (max-width: 650px) {
 		.subscribe-section {
 			margin-right: 230px !important;
