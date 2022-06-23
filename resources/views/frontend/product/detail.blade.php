@@ -245,25 +245,16 @@
 		}
 
 		.c-product__quantity>* {
-			height: 40px;
+			height: 30px;
+			width: 30px;
 		}
 
 		.owl-carousel.owl-loaded {
 			display: none;
 		}
 
-	}
+		
 
-
-	@media(max-width:1188px){
-		.product_description {
-			display: grid;
-			grid-template-columns: 50% 50%;
-		}
-
-		.product_description_detail{
-			margin : 0 50px;
-		}
 	}
 
 </style>
@@ -458,7 +449,7 @@
 						<div class="product_description">
 							<!-- .c-product__atc-wra -->
 							<div class="c-product__atc-wrap">
-								<form class="cart" action="https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" method="post" enctype='multipart/form-data' style="margin-left: 50px; margin-right: 50px;">
+								<form class="cart" action="https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" method="post" enctype='multipart/form-data'>
 									<div class="c-product__quantity quantity">
 										<label class="screen-reader-text" for="quantity_611f6fb23f9e0">Midnight Musk quantity</label>
 										<input type="number" id="quantity_611f6fb23f9e0" class="h-cb c-product__quantity-value qty product-quantity" step="1" min="1" name="quantity" value="1" title="Qty" placeholder="" inputmode="numeric" />
@@ -518,6 +509,17 @@
 					</div>
 				</div>
 				<!-- .c-product__col-2 -->
+			</div>
+
+			<div class="c-product__tabs woocommerce-tabs wc-tabs-wrapper  c-product__tabs--desktop1">
+				<div class="c-product__tabs-wrap">
+					<div class="c-product__tabs-item description_tab" id="tab-title-description" role="tab" aria-controls="tab-description" style="text-align: center; border-bottom: 1px solid lightgrey;">
+						<a data-index="0" class="c-product__tabs-item-link js-tabs-item-link" href="#tab-description" style="font-size: 20px; font-weight: bold; color: black; letter-spacing: 0.2em;">Description</a>
+					</div>
+				</div>
+				<div class="c-product__tabs-panel woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content wc-tab current visible" id="tab-description" role="tabpanel" aria-labelledby="tab-title-description" style="text-align: justify;">
+					<p><?php echo $product->description; ?></p>
+				</div>
 			</div>
 			<!-- .js-sticky-sidebar -->
 		</div>
