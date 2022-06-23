@@ -263,8 +263,8 @@
 
 		@media (max-width: 768px) {
 			.c-page-header--default {
-				color: #FFFFFF;
-				background-color: white;
+				color: #FFFFFF!important;
+				/* background-color: white; */
 				background-image: none;
 				background-repeat: repeat;
 				background-position: center;

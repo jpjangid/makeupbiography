@@ -253,7 +253,7 @@
 			display: none;
 		}
 
-		
+
 
 	}
 
@@ -352,7 +352,7 @@
 							@if($media->media_type == 'image')
 							<div class="c-product__thumbs-item {{ $active_status }}">
 								<button type="button" class="h-cb js-single-product-thumb " data-index="{{ $count1 }}">
-									<img width="115" height="115" src="{{ asset('storage/products/variants/'.$media->media) }}" sizes="(max-width: 115px) 100vw, 115px" />
+									<img width="115" height="115" src="{{ asset('storage/products/variants/'.$media->media) }}" sizes="(max-width: 115px) 100vw, 115px" style="width : 125px"/>
 								</button>
 							</div>
 							@endif
@@ -629,7 +629,7 @@
 
 		@if($related_products->isNotEmpty())
 		<section class="c-product__products c-product__products--related">
-			<div class="c-product__products-title" style="font-size: 25px; font-weight: bold; color: black; letter-spacing: 0.2em;">Related products</div>
+			<div class="c-product__products-title" style="font-size: 25px; font-weight: bold; color: black; letter-spacing: 0.1em;">Related products</div>
 			<div class="c-product-grid__wrap c-product-grid__wrap--4-per-row ">
 				<div class="c-product-grid__list c-product-grid__list--3-per-row " style="margin : 0 50px">
 					<div class="in-main">

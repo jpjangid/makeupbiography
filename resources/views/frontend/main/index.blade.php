@@ -245,12 +245,8 @@
 	.owl-stage-outer .owl-stage {
 		width: 100% !important;
 		/* height:100px; */
-<<<<<<< HEAD
 		display:flex;
 		justify-content : space-evenly;
-=======
-		display: flex;
->>>>>>> 5e4ca4fc0c5175957e70343e0b948a33d2341fed
 	}
 
 	.woocommerce {
@@ -392,7 +388,6 @@
 		}
 	}
 
-<<<<<<< HEAD
 	@media screen and (max-width: 768px) and (min-width: 500px) {
 		.js-ip-tabs-list{
 			display: flex;
@@ -406,17 +401,6 @@
 			display: flex;
 			justify-content: space-evenly;
 			margin : 0 50px;
-=======
-	@media screen and (max-width: 380px) {
-		.c-ip-product-tabs__menu .owl-stage-outer .owl-stage .owl-item {
-			margin-right: 35px !important;
-		}
-	}
-
-	@media screen and (max-width: 360px) {
-		.c-ip-product-tabs__menu .owl-stage-outer .owl-stage .owl-item {
-			margin-right: 20px !important;
->>>>>>> 5e4ca4fc0c5175957e70343e0b948a33d2341fed
 		}
 	}
 
@@ -556,11 +540,7 @@
 										<div class="elementor-widget-container">
 											<div class="c-ip-product-tabs js-ip-tabs">
 												<div class="c-ip-product-tabs__wrap js-ip-tabs-wrap">
-<<<<<<< HEAD
 													<div class="js-ip-tabs-list h-carousel h-carousel--small h-carousel--hover h-carousel--mobile-arrows h-carousel--dots-hide">
-=======
-													<div style="display : grid; grid-template-columns : 25% 25% 25% 25%" class="c-ip-product-tabs__menu js-ip-tabs-list h-carousel h-carousel--hover">
->>>>>>> 5e4ca4fc0c5175957e70343e0b948a33d2341fed
 														<div class="c-ip-product-tabs__menu-item js-ip-tabs-menu-item active">
 															<a class="c-ip-product-tabs__menu-link js-ip-tabs-link" href="#tab-01406ee-1" data-index="0" onclick="return false;">Newest</a>
 														</div>
