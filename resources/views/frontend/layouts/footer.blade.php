@@ -7,8 +7,9 @@
 		text-align: center;
 	}
 
-	.elementor-column, .elementor-column-wrap{
-		display : grid;
+	.elementor-column,
+	.elementor-column-wrap {
+		display: grid;
 	}
 
 	@media screen and (max-width: 789px) {
@@ -43,6 +44,16 @@
 			padding: 2px 5px !important;
 		}
 
+		.subscribe-search::placeholder {
+			font-size: 10px!important;
+		}
+
+		.subscribe-btn {
+			padding: 15px !important;
+			margin-top: 10.5px !important;
+			left: -13px !important;
+		}
+
 
 
 		/* .elementor-column.elementor-col-50.elementor-inner-column.elementor-element.elementor-element-175f259a {
@@ -55,12 +66,6 @@
 		}  */
 	}
 
-	@media screen and (max-width: 600px) {
-		/* .elementor-column.elementor-col-33.elementor-inner-column.elementor-element.elementor-element-10793382 {
-			margin-left: 55px;
-		} */
-	}
-
 	@media screen and (max-width: 430px) {
 		/* .elementor-column.elementor-col-33.elementor-inner-column.elementor-element.elementor-element-10793382 {
 			margin-left: 50px;
@@ -69,6 +74,30 @@
 		.c-mobile-menu__subitem {
 			padding-left: 0px !important;
 		}
+	}
+
+	@media(max-width : 894px) and (min-width : 800px) {
+
+		.h-input,
+		input[type="search"]:not(.h-cb),
+		input[type="text"]:not(.h-cb),
+		input[type="password"]:not(.h-cb),
+		input[type="email"]:not(.h-cb),
+		input[type="tel"]:not(.h-cb),
+		input[type="number"]:not(.h-cb),
+		input[type="url"]:not(.h-cb),
+		input[type="date"]:not(.h-cb),
+		textarea:not(.h-cb):not(.editor-post-title__input),
+		.wpcf7-form .c-custom-selectInner,
+		select:not(.h-cb) {
+			padding: 10px 25px 6px 25px;
+		}
+
+		.subscribe-btn {
+			padding: 21px !important;
+		}
+
+
 	}
 
 	@media screen and (max-width: 1189px) {
@@ -84,6 +113,18 @@
 			margin: 0 10px;
 			width: 100%;
 		}
+
+		.subscribe-search {
+			padding: 5px;
+			font-size: 12px !important;
+			float: left;
+			width: 80%;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			background-color: transparent;
+		}
+
+
 	}
 
 	.zoom-href {
@@ -104,10 +145,14 @@
 		padding: 5px;
 		font-size: 12px !important;
 		float: left;
-		width: 80%;
+		width: 70%;
 		margin-top: 10px;
 		margin-bottom: 10px;
 		background-color: transparent;
+	}
+
+	.subscribe-search::placeholder {
+		font-size: 12px;
 	}
 
 	.subscribe-btn {
@@ -119,7 +164,7 @@
 		width: 15%;
 		padding: 25px;
 		font-size: 23px;
-		left: -9px;
+		left: -26px;
 		position: relative;
 		align-items: center;
 		justify-content: center;
@@ -128,8 +173,17 @@
 
 	@media(max-width : 1024px) {
 		.subscribe-btn {
-			padding: 22.6px;
-			margin-top: 10.5px;
+			border: none;
+			background-color: white;
+			color: black;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			width: 15%;
+			padding: 21px;
+		}
+
+		.subscribe-search::placeholder {
+			font-size: 11px;
 		}
 
 		.h-input,
@@ -144,7 +198,7 @@
 		textarea:not(.h-cb):not(.editor-post-title__input),
 		.wpcf7-form .c-custom-selectInner,
 		select:not(.h-cb) {
-			padding: 10px 25px 10px 25px;
+			padding: 6px 25px 10px 11px
 		}
 
 		input[type="email"]::placeholder {
@@ -158,33 +212,22 @@
 		}
 	}
 
-	@media screen and (max-width: 768px) {
-		.subscribe-section {
-			/* margin-right: 35px; */
-			/* margin-top: px; */
-		}
-
-		.c-ip-social {
-			/* margin-right: 200px !important; */
-		}
-
+	@media(max-width : 426px) {
 		.subscribe-btn {
 			padding: 14.7px;
-			margin-top: 10.10px;
-			left: -8px;
+			left: -50px !important;
+			margin-top: 46.5px!important;
 		}
 	}
 
-	@media(max-width : 426px){
+	@media(max-width : 380px) {
 		.subscribe-btn {
-			padding: 14.7px;
-			margin-top: 26.9px;
-			left: -10px;
-		}
-		.elementor-column {
-			    /* margin: 0 20px 0 -17px!important; */
+			margin-top: 10px !important;
+			left: -25px !important;
+			padding: 15px;
 		}
 	}
+
 	/* @media screen and (max-width: 650px) {
 		.subscribe-section {
 			margin-right: 230px !important;
@@ -241,6 +284,7 @@
 
 		.subscribe-title {
 			font-size: 11px !important;
+			padding: 10px 0;
 		}
 
 		.zoom-href {

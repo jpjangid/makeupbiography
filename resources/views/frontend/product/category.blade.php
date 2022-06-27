@@ -148,6 +148,47 @@
 							<i class="ip-close-small c-header__menu-close-svg"></i>
 						</button>
 					</div>
+					<div class="c-shop-sidebar__content c-shop-sidebar__content--mobile js-shop-sidebar-content">
+						<aside id="woocommerce_price_filter-3" class="widget woocommerce widget_price_filter">
+							<h2 class="widget-title">Price</h2>
+
+							<div class="price_slider_wrapper">
+								<div class="price_slider" style="display:none;">
+								</div>
+								<div class="price_slider_amount" data-step="10">
+									<input type="text" id="min_price" name="min_price" value="20" data-min="20" placeholder="Min price" />
+									<input type="text" id="max_price" name="max_price" value="200" data-max="200" placeholder="Max price" />
+									<button type="submit" class="button">Filter</button>
+									<div class="price_label" style="display:none;">Price:
+										<span class="from">
+										</span>&mdash;
+										<span class="to">
+										</span>
+									</div>
+									<input type="hidden" name="set" value="5" />
+									<div class="clear">
+									</div>
+								</div>
+							</div>
+						</aside>
+						<aside id="woocommerce_layered_nav-3" class="widget woocommerce widget_layered_nav woocommerce-widget-layered-nav">
+							<h2 class="widget-title">Capacity</h2>
+							<ul class="woocommerce-widget-layered-nav-list">
+								<li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
+									<a rel="nofollow" href="https://parkofideas.com/luchiana/demo/shop/?filter_capacity=30ml">30 mL</a>
+									<span class="count">(4)</span>
+								</li>
+								<li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
+									<a rel="nofollow" href="https://parkofideas.com/luchiana/demo/shop/?filter_capacity=40ml">40 mL</a>
+									<span class="count">(10)</span>
+								</li>
+								<li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
+									<a rel="nofollow" href="https://parkofideas.com/luchiana/demo/shop/?filter_capacity=50ml">50 mL</a>
+									<span class="count">(7)</span>
+								</li>
+							</ul>
+						</aside>
+					</div>
 					<div class="c-shop-sidebar__content c-shop-sidebar__content--desktop-filter js-shop-sidebar-content-desktop">
 						<!-- Filter sidebar for computer begin -->
 						<form action="{{ url('category',['slug' => $slug]); }}" method="get" id="categoryPageFrom">
@@ -205,48 +246,6 @@
 							</aside>
 
 							<!-- Filter sidebar for computer end -->
-					</div>
-					<div class="c-shop-sidebar__content c-shop-sidebar__content--mobile js-shop-sidebar-content">
-						<aside id="woocommerce_price_filter-3" class="widget woocommerce widget_price_filter">
-							<h2 class="widget-title">Price</h2>
-
-							<div class="price_slider_wrapper">
-								<div class="price_slider" style="display:none;">
-								</div>
-								<div class="price_slider_amount" data-step="10">
-									<input type="text" id="min_price" name="min_price" value="20" data-min="20" placeholder="Min price" />
-									<input type="text" id="max_price" name="max_price" value="200" data-max="200" placeholder="Max price" />
-									<button type="submit" class="button">Filter</button>
-									<div class="price_label" style="display:none;">Price:
-										<span class="from">
-										</span>&mdash;
-										<span class="to">
-										</span>
-									</div>
-									<input type="hidden" name="set" value="5" />
-									<div class="clear">
-									</div>
-								</div>
-							</div>
-
-						</aside>
-						<aside id="woocommerce_layered_nav-3" class="widget woocommerce widget_layered_nav woocommerce-widget-layered-nav">
-							<h2 class="widget-title">Capacity</h2>
-							<ul class="woocommerce-widget-layered-nav-list">
-								<li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
-									<a rel="nofollow" href="https://parkofideas.com/luchiana/demo/shop/?filter_capacity=30ml">30 mL</a>
-									<span class="count">(4)</span>
-								</li>
-								<li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
-									<a rel="nofollow" href="https://parkofideas.com/luchiana/demo/shop/?filter_capacity=40ml">40 mL</a>
-									<span class="count">(10)</span>
-								</li>
-								<li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
-									<a rel="nofollow" href="https://parkofideas.com/luchiana/demo/shop/?filter_capacity=50ml">50 mL</a>
-									<span class="count">(7)</span>
-								</li>
-							</ul>
-						</aside>
 					</div>
 				</div>
 			</div>

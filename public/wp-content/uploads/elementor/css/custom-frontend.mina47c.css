@@ -16,7 +16,7 @@
 }
 
 .dialog-type-lightbox {
-    position: fixed;
+    position: fixed;    
     height: 100%;
     width: 100%;
     bottom: 0;
@@ -879,7 +879,7 @@ h1.entry-title {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    overflow-x: scroll;
+    /* overflow-x: auto; */
     overflow-y: hidden;
     /* height: ; */
 }

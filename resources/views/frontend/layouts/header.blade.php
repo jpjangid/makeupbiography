@@ -143,7 +143,7 @@ $mains = Category::select('id','slug','name')->where(['flag' => 0,'status' => 1]
 					<li id="menu-item-17" class="c-mobile-menu__item menu-item-17">
 						<a href="{{ url('/shop/all') }}">Shop</a>
 					</li>
-					@if(count($mains) > 0)
+					<!-- @if(count($mains) > 0)
 					<li id="menu-item-162" class="c-mobile-menu__item c-mobile-menu__item--has-children menu-item-162">
 						<a href="#">Category</a>
 						@foreach($mains as $main)
@@ -176,8 +176,8 @@ $mains = Category::select('id','slug','name')->where(['flag' => 0,'status' => 1]
 						</ul>
 						@endforeach
 					</li>
-					@endif
-					<li id="menu-item-804" class="c-mobile-menu__item c-mobile-menu__item--has-children menu-item-804">
+					@endif -->
+					<!-- <li id="menu-item-804" class="c-mobile-menu__item c-mobile-menu__item--has-children menu-item-804">
 						<a>Headers</a>
 						<ul class="c-mobile-menu__submenu">
 							<li id="menu-item-2042" class="c-mobile-menu__subitem c-mobile-menu__subitem--has-children menu-item-2042">
@@ -218,7 +218,7 @@ $mains = Category::select('id','slug','name')->where(['flag' => 0,'status' => 1]
 								<a href="https://parkofideas.com/luchiana/demo/shop/?set=32">Special Offers</a>
 							</li>
 						</ul>
-					</li>
+					</li> -->
 					<li id="menu-item-17" class="c-mobile-menu__item menu-item-17">
 						<a href="{{ url('brands') }}">Brand</a>
 					</li>
@@ -440,7 +440,7 @@ $mains = Category::select('id','slug','name')->where(['flag' => 0,'status' => 1]
 							</li>
 
 							<!-- category begin -->
-							@if(count($mains) > 0)
+							<!-- @if(count($mains) > 0)
 							<li class="c-top-menu__item c-top-menu__item--has-children menu-item-162 js-menu-item">
 								<a href="#">Category</a>
 								<ul class="c-top-menu__submenu c-top-menu__submenu--columns-4 c-top-menu__submenu--expand" style="display: flex;flex-direction: row;">
@@ -475,7 +475,7 @@ $mains = Category::select('id','slug','name')->where(['flag' => 0,'status' => 1]
 
 								</ul>
 							</li>
-							@endif
+							@endif -->
 							<!-- category end -->
 
 							<!-- brand begin -->

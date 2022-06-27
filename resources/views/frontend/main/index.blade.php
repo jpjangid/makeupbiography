@@ -214,7 +214,7 @@
 	.price-div {
 		/* border-top: 2px solid goldenrod; */
 		font-size: 17px;
-		font-family: "Marcellus", sans-serif;
+		font-family: "roboto", sans-serif;
 		padding-top: 5px;
 		padding-bottom: 5px;
 		text-align: center;
@@ -243,7 +243,7 @@
 	}
 
 	.owl-stage-outer .owl-stage {
-		width: 100% !important;
+		/* width: 100% !important; */
 		/* height:100px; */
 		display:flex;
 		justify-content : space-evenly;

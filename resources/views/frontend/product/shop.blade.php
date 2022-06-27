@@ -18,7 +18,7 @@
 	.price-div {
 		/* border-top: 2px solid goldenrod; */
 		font-size: 17px;
-		font-family: "Marcellus", sans-serif;
+		font-family: "roboto", sans-serif;
 		padding-top: 5px;
 		padding-bottom: 5px;
 		text-align: center;
@@ -142,6 +142,12 @@
 							<input type="text" hidden name="pagination" id="paggination" value="">
 							<input type="hidden" id="paginateFrom" name="from" value="{{ $from }}">
 							<input type="hidden" id="paginateTo" name="to" value="{{ $to }}">
+							<aside id="woocommerce_price_filter-2" class="widget woocommerce widget_price_filter">
+								<div class="widget-title">Price Range : <span id="min_price_filter_text"><br>₹{{ $min_price_filter }}</span> - <span id="max_price_filter_text">₹{{ $max_price_filter }}</span></div>
+								<div class="price_slider_wrapper">
+									<div id="slider" wire:ignore></div>
+								</div>
+							</aside>
 							@if(!empty($sub_categories) && count($sub_categories) > 0)
 							<aside id="woocommerce_product_categories-2" class="widget woocommerce widget_product_categories">
 								<div class="widget-title">Product categories</div>
@@ -189,12 +195,6 @@
 								</ul>
 							</aside>
 
-							<aside id="woocommerce_price_filter-2" class="widget woocommerce widget_price_filter">
-								<div class="widget-title">Price <span id="min_price_filter_text">{{ $min_price_filter }}</span> - <span id="max_price_filter_text">{{ $max_price_filter }}</span></div>
-								<div class="price_slider_wrapper">
-									<div id="slider" wire:ignore></div>
-								</div>
-							</aside>
 
 							<aside id="woocommerce_layered_nav-2" style="margin-top: 20px;" class="widget woocommerce widget_layered_nav woocommerce-widget-layered-nav">
 								<input type="text" name="min_price_filter" id="min_price_filter" value="" hidden>
@@ -206,15 +206,15 @@
 					</div>
 					<div class="c-shop-sidebar__content c-shop-sidebar__content--mobile js-shop-sidebar-content">
 						<aside id="woocommerce_price_filter-3" class="widget woocommerce widget_price_filter">
-							<h2 class="widget-title">Price</h2>
+							<!-- <h2 class="widget-title">Price</h2> -->
 
 							<div class="price_slider_wrapper">
-								<div class="price_slider" style="display:none;">
-								</div>
-								<div class="price_slider_amount" data-step="10">
+								<div class="widget-title">Price Range : <span id="min_price_filter_text"><br>₹{{ $min_price_filter }}</span> - <span id="max_price_filter_text">₹{{ $max_price_filter }}</span></div>
+								<!-- <div class="price_slider" style="display:none;">
+								</div> -->
+								<!-- <div class="price_slider_amount" data-step="10">
 									<input type="text" id="min_price" name="min_price" value="20" data-min="20" placeholder="Min price" />
 									<input type="text" id="max_price" name="max_price" value="200" data-max="200" placeholder="Max price" />
-									<button type="submit" class="button">Filter</button>
 									<div class="price_label" style="display:none;">Price:
 										<span class="from">
 										</span>&mdash;
@@ -224,9 +224,8 @@
 									<input type="hidden" name="set" value="5" />
 									<div class="clear">
 									</div>
-								</div>
+								</div> -->
 							</div>
-
 						</aside>
 						<aside id="woocommerce_layered_nav-3" class="widget woocommerce widget_layered_nav woocommerce-widget-layered-nav">
 							<h2 class="widget-title">Capacity</h2>
@@ -245,13 +244,64 @@
 								</li>
 							</ul>
 						</aside>
+						@if(!empty($sub_categories) && count($sub_categories) > 0)
+						<aside id="woocommerce_product_categories-2" class="widget woocommerce widget_product_categories">
+							<div class="widget-title">Product categories</div>
+							<ul class="product-categories">
+								@foreach($sub_categories as $pet_cat)
+								<li class="cat-item cat-item-50 cat-parent">
+
+									<input type="checkbox" name="filter_category[]" id="filterCategory" class="parent-category filter_category" value="{{$pet_cat->slug}}" {{ !empty($filter_old) && in_array($pet_cat->slug,$filter_old) ? "checked" : "" }}>
+									<label for="">{{ $pet_cat->name }}</label>
+
+									@if(!empty($pet_cat->subcategory) && count($pet_cat->subcategory) > 0)
+									<ul class='children'>
+										@foreach($pet_cat->subcategory as $sub)
+										<li class="cat-item cat-item-58 cat-parent">
+											<input type="checkbox" name="filter_category[]" id="filterCategory" class="filter_category" value="{{$sub->slug}}" {{ !empty($filter_old) && in_array($sub->slug,$filter_old) ? "checked" : "" }}>
+											<label for="">{{ $sub->name }}</label>
+											@foreach($sub->subcategory as $su)
+											<ul class='children' style="margin-left: 15px !important;">
+												<li class="cat-item cat-item-50 cat-parent">
+													<input type="checkbox" name="filter_category[]" id="filterCategory" class="filter_category" value="{{$su->slug}}" {{ !empty($filter_old) && in_array($su->slug,$filter_old) ? "checked" : "" }}>
+													<label for="">{{ $su->name }}</label>
+												</li>
+											</ul>
+											@endforeach
+										</li>
+										@endforeach
+									</ul>
+									@endif
+								</li>
+								@endforeach
+
+							</ul>
+						</aside>
+						@endif
+
+						<aside id="woocommerce_product_categories-2" class="widget woocommerce widget_product_categories">
+							<div class="widget-title">Product Brands</div>
+							<ul class="product-categories">
+								@foreach($brands as $brand)
+								<li class="cat-item cat-item-50 cat-parent">
+									<input type="checkbox" name="filter_brand[]" id="filterBrand" class="filter_brand" value="{{ $brand->id }}" {{ !empty($filter_brands) && count($filter_brands) && in_array($brand->id,$filter_brands) ? "checked" : "" }}>
+									<label for="">{{ $brand->name }}</label>
+								</li>
+								@endforeach
+							</ul>
+						</aside>
+						<div class="price_slider_wrapper my-2" style="text-align: center; margin : 10px 0;">
+								<button type="submit" class="button" style="border: none; padding : 5px ; border : 1px solid #000; width:50%; background : #fff; ">Filter</button>
+								<input type="hidden" name="set" value="5" />
+								<div class="clear">
+								</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="l-section__content">
 			<div class="">
-
 				<div class="c-catalog-ordering  c-catalog-ordering--desktop-filter ">
 					<div class="c-catalog-ordering__col c-catalog-ordering__col--result">
 						<p class="woocommerce-result-count">Showing {{ $from }}&ndash;{{ $to > $total_counts ? $total_counts : $to }} of {{ $total_counts }} results</p>

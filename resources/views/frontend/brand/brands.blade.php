@@ -48,7 +48,7 @@
 
 	.price-div {
 		font-size: 17px;
-		font-family: "Marcellus", sans-serif;
+		font-family: "roboto", sans-serif;
 		padding-top: 5px;
 		padding-bottom: 5px;
 		text-align: center;

@@ -1178,7 +1178,7 @@
 
 .c-ip-image-list-1__wrap {
     position: relative;
-    margin-bottom: -20px;
+    /* margin-bottom: -20px; */
 }
 
 .c-ip-image-list-1__list {
