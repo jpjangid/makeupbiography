@@ -154,7 +154,7 @@
 			--accent-color: #E4C1B1;
 			--accent-color-dark: rgb(205, 174, 159);
 			--font-text: "Inter", sans-serif;
-			--font-header: "Marcellus", sans-serif;
+			--font-header: "roboto", sans-serif;
 			--logo-size: 205px;
 			--logo-size-mobile: 185px;
 			--shadow-color-desktop: rgba(255, 255, 255, 0.95);

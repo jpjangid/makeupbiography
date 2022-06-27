@@ -99,6 +99,10 @@ $mains = Category::select('id','slug','name')->where(['flag' => 0,'status' => 1]
 		font-size: 16px;
 		text-transform: uppercase;
 	}
+
+	.c-header__menu-wrap {
+		font-family: "roboto", sans-serif;
+	}
 </style>
 
 <header class="l-section" id="main-header">

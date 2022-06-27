@@ -256,7 +256,7 @@
 	.js-ip-tabs-list{
 		display : flex;
 		justify-content : space-evenly; 
-		margin:0 230px;
+		margin:0 150px;
 	}
 
 
@@ -400,7 +400,7 @@
 		.js-ip-tabs-list{
 			display: flex;
 			justify-content: space-evenly;
-			margin : 0 50px;
+			margin : 0 20px;
 		}
 	}
 
