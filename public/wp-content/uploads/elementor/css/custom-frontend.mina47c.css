@@ -840,6 +840,17 @@ h1.entry-title {
     }
 }
 
+@media (max-width : 1440px){
+    .elementor:not(.elementor-bc-flex-widget) .elementor-widget-wrap {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        /* overflow-x: auto; */
+        overflow-y: hidden;
+        /* height: ; */
+    }
+}
+
 .elementor-bc-flex-widget .elementor-section-content-top>.elementor-container>.elementor-column>.elementor-widget-wrap {
     -webkit-box-align: start;
     -ms-flex-align: start;
@@ -880,7 +891,7 @@ h1.entry-title {
     display: -ms-flexbox;
     display: flex;
     /* overflow-x: auto; */
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
     /* height: ; */
 }
 
