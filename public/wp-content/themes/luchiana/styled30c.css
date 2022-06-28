@@ -3878,6 +3878,7 @@ abbr.required {
     background-color: #3B9C9C !important;
     color: white !important;
     border: none;
+    border-radius : 2px;
 }
 
 .c-button--outline-white {

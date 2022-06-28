@@ -11,12 +11,27 @@
     padding: 30px;
   }  
 
+  .c-login__register{
+    font-weight : 400;
+    font-size : 15px;
+  }
+
  strong {
-    color: red;
+    color: #000;
  }
 
  .l-section__content{
   margin : 0 20px;
+ }
+
+ input::placeholder{
+  color : #9c9898!important;
+  font-weight : 200;
+ }
+
+ input {
+  color:#000;
+  font-weight : 400!important;
  }
 </style>
 @endsection
@@ -62,7 +77,6 @@
             <form class="c-form" method="POST" action="{{ route('register') }}">
               @csrf
               <div class="c-form__row">
-
                 <input type="text" placeholder="Name" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="name" id="name" autocomplete="name" value="{{ old('name') }}" />
                 @error('name')
                     <span class="invalid-feedback" role="alert">
@@ -101,6 +115,7 @@
                 <input type="password" placeholder="Re-enter Password" class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" name="password_confirmation" id="confirm" autocomplete="confirm" value="" />
               </div>
 
+              <div style="font-weight : 400;">
               <div class="c-form__row">A password will be sent to your email address.</div>
               <div class="woocommerce-privacy-policy-text">
                 <p>Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our
@@ -118,6 +133,7 @@
                 <a href="{{ url('login') }}" class="c-login__register" style="text-decoration:underline;">Login
                   <i class="ip-menu-right c-login__more-icon"></i>
                 </a>
+              </div>
               </div>
             </form>
           </div>

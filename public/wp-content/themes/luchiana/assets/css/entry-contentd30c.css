@@ -311,7 +311,7 @@ textarea {
     font-size: 13px;
     letter-spacing: 0.025em;
     text-overflow: ellipsis;
-    color: var(--text-color-light);
+    /* color: var(--text-color-light); */
 }
 
 .h-input,
@@ -330,13 +330,13 @@ select:not(.h-cb) {
     font-size: 13px;
     line-height: 24px;
     letter-spacing: 0.025em;
-    color: var(--text-color);
-    border: solid 1px var(--background-color);
-    padding: 11px 25px 13px 25px;
-
+    /* color: var(--text-color); */
+    /* border: solid 1px var(--background-color); */
+    border: 1px solid #9c9898;
+    padding: 11px 25px 13px 15px;
     height: auto !important;
     min-width: 0;
-    border-radius: 0;
+    border-radius: 2px;
 }
 
 .h-rtl .h-input,

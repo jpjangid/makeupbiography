@@ -6,12 +6,26 @@
 <style>
 	#customer_login {
 		/* box-shadow: 5px 10px #888888; */
-		border : 1px solid #dedede;
+		border : 1px solid #c7bcbc;
 		border-radius : 5px;
 		padding : 30px 50px;
 	}
 	.text-danger {
 		color: red;
+	}
+
+	input::placeholder{
+		color : #9c9898!important;
+		font-weight : 200;
+ 	}
+
+	input {
+		color:#000;
+		font-weight : 400!important;
+	}
+
+	.c-form__input::placeholder{
+		color : #000;
 	}
 
 	.l-section__content{
@@ -21,7 +35,7 @@
 	.social_button {
 		border: 0.05rem solid black;
 		padding: 0.2rem;
-		border-radius: 0.5rem;
+		border-radius: 0.2rem;
 		width:100%;
 	}
 
@@ -70,7 +84,7 @@
 		}
 
 		.button1{
-			margin : 0 0 0 2px!important;
+			margin : 0 0 0 0!important;
 
 		}
 	}
@@ -127,7 +141,7 @@
 								@enderror
 							</div>
 							<div class="c-form__row pass" style="width: 100%">
-								<input class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text" placeholder="Password" type="password" name="password" id="password" autocomplete="current-password" />
+								<input class="c-form__input c-form__input--full c-form__input--fill woocommerce-Input woocommerce-Input--text input-text fol" placeholder="Password" type="password" name="password" id="password" autocomplete="current-password" />
 								@error('password')
 								<span class="invalid-feedback" role="alert">
 									<strong class="text-danger">{{ $message }}</strong>
@@ -137,7 +151,7 @@
 							<div class="c-form__row c-form__row--inline c-login__remember">
 								<input type="hidden" id="woocommerce-login-nonce" name="woocommerce-login-nonce" value="934c87c088" />
 								<input type="hidden" name="_wp_http_referer" value="/luchiana/demo/my-account/" />
-								<label class="c-form__label">
+								<label class="c-form__label" style="font-weight : 400;">
 									<input class="c-form__checkbox" name="rememberme" type="checkbox" id="rememberme" value="forever" />
 									<i></i>Remember me</label>
 							</div>
@@ -146,9 +160,9 @@
 							</div>
 							<div class="c-login__bottom">
 								<div class="c-login__lost-password">
-									<a class="c-login__lost-password-link" href="https://parkofideas.com/luchiana/demo/my-account/lost-password/" style="text-decoration : underline;">Forgot password</a>
+									<a class="c-login__lost-password-link" href="https://parkofideas.com/luchiana/demo/my-account/lost-password/" style="text-decoration : underline; font-weight : 400;">Forgot password</a>
 								</div>
-								<a href="{{ url('register') }}" class="c-login__register" style="text-decoration : underline;">Register
+								<a href="{{ url('register') }}" class="c-login__register" style="text-decoration : underline; font-weight : 400;">Register
 									<i class="ip-menu-right c-login__more-icon"></i>
 								</a>
 							</div>
@@ -156,13 +170,13 @@
 								<div class="social_button">
 									<a class="btn btn-outline-dark" href="{{ url('login/google') }}" role="button" style="text-transform:none">
 										<img alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
-										<span style="margin:0 5px;">Login with Google</span>
+										<span style="margin:0 5px; font-weight : 400;">Login with Google</span>
 									</a>
 								</div>
 								<div class="social_button button1">
 									<a class="btn btn-outline-dark" href="{{ url('login/facebook') }}" role="button" style="text-transform:none">
 										<img alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Facebook_f_logo_%282021%29.svg/150px-Facebook_f_logo_%282021%29.svg.png" />
-										<span style="margin:0 5px;">Login with Facebook</span>
+										<span style="margin:0 5px; font-weight : 400;">Login with Facebook</span>
 									</a>
 								</div>
 							</div>
