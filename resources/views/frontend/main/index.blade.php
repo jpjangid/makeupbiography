@@ -17,29 +17,16 @@
 			margin: 10px 0 !important;
 			/* padding-bottom: 50px !important; */
 		}
-	}
 
-	@media screen and (max-width: 380px) {
-		.c-product-grid__item--normal {
-			/* width: 160px !important; */
-			margin: 10px 0 !important;
-			/* padding-bottom: 50px !important; */
+		.h-carousel__prev{
+			position : absolute;
+			left:20px;
 		}
-	}
 
-	@media (min-width: 760px) and (max-width: 770px) {
-		.c-product-grid__item--normal {
-			/* width: 160px !important;
-			margin: 10px !important;
-			padding-bottom: 35px !important; */
-		}
-	}
-
-	@media (min-width: 560px) and (max-width: 590px) {
-		.c-product-grid__item--normal {
-			/* width: 160px !important; */
-			margin: 10px !important;
-			/* padding-bottom: 50px !important; */
+		.h-carousel__next{
+			position : absolute;
+			right:20px;
+			
 		}
 	}
 
@@ -110,18 +97,29 @@
 	@media (max-width: 420px) {
 		.c-product-grid__item--normal {
 			width: 250px !important;
-			/* margin: 16px !important; */
+			margin: 16px 30px !important;
 			/* padding-bottom: 35px; */
 		}
+		.owl-carousel.owl-loaded {
+    		padding: 0;
+		}
+
+		.c-ip-woocommerce-carousel__list--3-per-row, .c-ip-woocommerce-carousel__list--4-per-row {
+    		max-width: 306px !important;
+		}
+/* 
+		.ip-right .h-carousel__prev{
+			position: absolute;
+    		left: 20px;
+		} */
 	}
 
-	@media (max-width: 320px) {
+	/* @media (max-width: 320px) {
 		.c-product-grid__item--normal {
 			width: 220px !important;
 			margin: 8px !important;
-			/* padding-bottom: 35px; */
 		}
-	}
+	} */
 
 	@media screen and (max-width: 567px) {
 		.elementor-1131 .elementor-element.elementor-element-f6c8514 .c-ip-image-list-1__item {
@@ -250,7 +248,7 @@
 		/* width: 100% !important; */
 		/* height:100px; */
 		display:flex;
-		justify-content : space-evenly;
+		/* justify-content : space-evenly; */
 	}
 
 	.woocommerce {
@@ -488,7 +486,7 @@
 										<div class="elementor-widget-container">
 											<div class="c-ip-image-list-1 c-ip-image-list-1--carousel">
 												<div class="c-ip-image-list-1__wrap c-ip-image-list-1__wrap--carousel" >
-													<div class="c-ip-image-list-1__list c-ip-image-list-1__list--carousel js-image-list-1 h-carousel h-carousel--dots-hide h-carousel--nav-hide" >
+													<div class="c-ip-image-list-1__list c-ip-image-list-1__list--carousel js-image-list-1 h-carousel h-carousel--dots-hide h-carousel--nav-hide" style="padding : 0 10px;">
 														@if(!empty($main_categories))
 														@foreach($main_categories as $main_category)
 														<a href="{{ url('category',['slug' => $main_category->slug]) }}">
