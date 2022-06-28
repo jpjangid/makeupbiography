@@ -515,7 +515,7 @@
 														</div>
 														<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-6588c572" data-id="6588c572" data-element_type="column">
 															<div class="elementor-column-wrap elementor-element-populated">
-																<div class="elementor-widget-wrap">
+																<div class="">
 																	<div class="elementor-element elementor-element-52168518 elementor-widget elementor-widget-ideapark-inline-menu" data-id="52168518" data-element_type="widget" data-widget_type="ideapark-inline-menu.default">
 																		<div class="elementor-widget-container">
 																			<div class="c-ip-inline-menu">
