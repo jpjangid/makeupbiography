@@ -362,7 +362,7 @@ div.wpcf7 span.ajax-loader:after {
 }
 
 .h-carousel.c-product-grid__list.h-carousel--border .owl-next {
-    right: -35px;
+    right: 0;
 }
 
 .h-carousel.c-product-grid__list.h-carousel--outside .owl-prev {
@@ -8662,7 +8662,7 @@ p+.woocommerce-order-details {
 }
 
 .c-product-grid__thumb-button-list {
-    z-index: 1000;
+    /* z-index: 1000; */
     display: -webkit-inline-box;
     display: inline-flex;
     position: absolute;
@@ -12197,6 +12197,7 @@ p+.woocommerce-order-details {
     background-color: transparent;
     padding: 10px 20px !important;
     font-size: 11px !important;
+    color : #000;
 }
 
 .c-wishlist__shop-td {
@@ -12504,6 +12505,7 @@ p+.woocommerce-order-details {
 
     .c-wishlist__button-wrap .button:hover {
         background-color: var(--text-color);
+        cursor : pointer;
     }
 
     .c-wishlist__shop-remove-icon:hover {

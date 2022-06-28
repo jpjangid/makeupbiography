@@ -2,6 +2,9 @@
 
 @section('css')
 <style>
+		.owl-carousel.owl-loaded {
+		padding: 0 50px;
+	}
 	@media screen and (max-width: 465px) {
 		.c-ip-image-list-1__list {
 			margin: 0px;
@@ -106,7 +109,7 @@
 
 	@media (max-width: 420px) {
 		.c-product-grid__item--normal {
-			/* width: 150px !important; */
+			width: 250px !important;
 			/* margin: 16px !important; */
 			/* padding-bottom: 35px; */
 		}
@@ -114,8 +117,8 @@
 
 	@media (max-width: 320px) {
 		.c-product-grid__item--normal {
-			/* width: 220px !important; */
-			/* margin: 16px !important; */
+			width: 220px !important;
+			margin: 8px !important;
 			/* padding-bottom: 35px; */
 		}
 	}
@@ -138,6 +141,7 @@
 		.c-ip-heading__inner ul {
 			padding-left: 0;
 		}
+		
 	}
 
 	@media screen and (max-width: 480px) {
@@ -326,9 +330,7 @@
 		margin-bottom: 20px;
 	}
 
-	.owl-carousel.owl-loaded {
-		padding: 0 20px;
-	}
+
 
 	@media (max-width: 619px) and (min-width: 360px) {
 		.c-ip-woocommerce-carousel__list--3-per-row {
@@ -485,18 +487,20 @@
 									<div class="elementor-element elementor-element-f6c8514 elementor-widget elementor-widget-ideapark-image-list-1" data-id="f6c8514" data-element_type="widget" data-widget_type="ideapark-image-list-1.default">
 										<div class="elementor-widget-container">
 											<div class="c-ip-image-list-1 c-ip-image-list-1--carousel">
-												<div class="c-ip-image-list-1__wrap c-ip-image-list-1__wrap--carousel">
-													<div class="c-ip-image-list-1__list c-ip-image-list-1__list--carousel js-image-list-1 h-carousel h-carousel--dots-hide h-carousel--nav-hide">
+												<div class="c-ip-image-list-1__wrap c-ip-image-list-1__wrap--carousel" >
+													<div class="c-ip-image-list-1__list c-ip-image-list-1__list--carousel js-image-list-1 h-carousel h-carousel--dots-hide h-carousel--nav-hide" >
 														@if(!empty($main_categories))
 														@foreach($main_categories as $main_category)
-														<div class="c-ip-image-list-1__item c-ip-image-list-1__item--carousel">
-															<a href="{{ url('category',['slug' => $main_category->slug]) }}" class="c-ip-image-list-1__link">
-																<div class="c-ip-image-list-1__thumb">
-																	<img class="c-ip-image-list-1__image" width="115" height="50vh" src="{{ isset($main_category->featured_image) ? asset('storage/category/'.$main_category->featured_image) : '' }}" srcset="{{ isset($main_category->featured_image) ? asset('storage/category/'.$main_category->featured_image) : '' }} 180w" sizes="(max-width: 115px) 100vw, 115px" alt="{{ $main_category->alt }}" loading="lazy" />
+														<a href="{{ url('category',['slug' => $main_category->slug]) }}">
+															<div class="c-ip-image-list-1__item c-ip-image-list-1__item--carousel">
+																<div class="c-ip-image-list-1__link">
+																	<div class="c-ip-image-list-1__thumb">
+																		<img class="c-ip-image-list-1__image" width="115" height="50vh" src="{{ isset($main_category->featured_image) ? asset('storage/category/'.$main_category->featured_image) : '' }}" srcset="{{ isset($main_category->featured_image) ? asset('storage/category/'.$main_category->featured_image) : '' }} 180w" sizes="(max-width: 115px) 100vw, 115px" alt="{{ $main_category->alt }}" loading="lazy" />
+																	</div>
+																	<div class="c-ip-image-list-1__title">{{ $main_category->name }}</div>
 																</div>
-																<div class="c-ip-image-list-1__title">{{ $main_category->name }}</div>
-															</a>
-														</div>
+															</div>
+														</a>
 														@endforeach
 														@endif
 													</div>
@@ -1283,6 +1287,181 @@
 																	</div>
 																	<!-- .c-product-grid__details -->
 																</div>
+																<div class="c-product-grid__item c-product-grid__item--3-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple" style="background-color: white;">
+
+																	<div class="c-product-grid__badges c-badge__list">
+																		@if($big_offer_product->label_name != "")
+																		<span class="c-badge c-badge--featured">{{ $big_offer_product->label_name }}</span>
+																		@endif
+																		@if($big_offer_product->discount_type == "percentage")
+																		<!-- <span class="c-badge c-badge--sale">-{{ $big_offer_product->discount }}%</span> -->
+																		@if(!empty($big_offer_product->p_discount && $big_offer_product->p_discount > 0))
+																		<span class="c-badge c-badge--sale">
+																			{{ $big_offer_product->p_discount }}% OFF</span>
+																		@elseif($big_offer_product->discount >0)
+																		<span class="c-badge c-badge--sale">
+																			{{ $big_offer_product->discount }}% OFF</span>
+																		@else
+																		@endif
+																		@endif
+																	</div>
+
+																	<div class="c-product-grid__badges c-badge__list">
+																		@if($big_offer_product->label_name != "")
+																		<span class="c-badge c-badge--featured">{{ $big_offer_product->label_name }}</span>
+																		@endif
+																		@if($big_offer_product->discount_type == "flat")
+																		<span class="c-badge c-badge--sale">- &#8377;{{ $big_offer_product->regular_price - $big_offer_product->sale_price }} OFF</span>
+																		@endif
+																	</div>
+
+
+																	<!-- .c-product-grid__badges -->
+																	<div class="c-product-grid__thumb-wrap" style="width: auto;">
+																		<a href="{{ url('products',['product' => $big_offer_product->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+																			<img src="{{ isset($big_offer_product->medias[0]->media) ? asset('storage/products/variants/'.$big_offer_product->medias[0]->media) : '' }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ isset($big_offer_product->medias[0]->media) ? asset('storage/products/variants/'.$big_offer_product->medias[0]->media) : '' }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
+																		</a>
+																		<div class="c-product-grid__thumb-button-list">
+																			<!--<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="438">-->
+																			<!--	<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>-->
+																			<!--	<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>-->
+																			<!--</button>-->
+																			<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
+																				<i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
+																				<i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
+																			</button>
+																		</div>
+																	</div>
+																	<!-- .c-product-grid__thumb-wrap -->
+																	<button class="h-cb c-product-grid__atc button product_type_simple add-to-cart" data-product_id="{{ $big_offer_product->id }}" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
+																		<i class="ip-plus c-product-grid__atc-icon"></i>
+																		<span class="c-product-grid__atc-text">Add to cart</span>
+																	</button>
+																	<div class="c-product-grid__details">
+																		<div class="c-product-grid__title-wrap">
+																			<a href="{{ url('products',['product' => $big_offer_product->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+																				<h2 class="woocommerce-loop-product__title">{{ $big_offer_product->item_shade_name }}</h2>
+																			</a>
+																			<!-- <div class="c-product-grid__short-desc">
+																				<p>{{ $big_offer_product->short_description }}</p>
+																			</div> -->
+																			<div class="star-rating" role="img" aria-label="Rated 4.00 out of 5">
+																				<span style="width:80%">Rated
+																					<strong class="rating" style="font-size: 16px;">4.00</strong>out of 5</span>
+																			</div>
+																		</div>
+																		<!-- .c-product-grid__title-wrap -->
+																		<div class="c-product-grid__price-wrap price-div">
+																			<span class="price">
+																				@if($big_offer_product->discount_type != "")
+																				<del aria-hidden="true">
+																					<span class="woocommerce-Price-amount amount">
+																						<bdi>
+																							<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $big_offer_product->regular_price }}</bdi>
+																					</span>
+																				</del>
+																				@endif
+																				<ins>
+																					<span class="woocommerce-Price-amount amount">
+																						<bdi>
+																							<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $big_offer_product->sale_price }}</bdi>
+																					</span>
+																				</ins>
+
+																			</span>
+																		</div>
+																		<!-- .c-product-grid__price-wrap -->
+																	</div>
+																	<!-- .c-product-grid__details -->
+																</div>
+																<div class="c-product-grid__item c-product-grid__item--3-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple" style="background-color: white;">
+
+																	<div class="c-product-grid__badges c-badge__list">
+																		@if($big_offer_product->label_name != "")
+																		<span class="c-badge c-badge--featured">{{ $big_offer_product->label_name }}</span>
+																		@endif
+																		@if($big_offer_product->discount_type == "percentage")
+																		<!-- <span class="c-badge c-badge--sale">-{{ $big_offer_product->discount }}%</span> -->
+																		@if(!empty($big_offer_product->p_discount && $big_offer_product->p_discount > 0))
+																		<span class="c-badge c-badge--sale">
+																			{{ $big_offer_product->p_discount }}% OFF</span>
+																		@elseif($big_offer_product->discount >0)
+																		<span class="c-badge c-badge--sale">
+																			{{ $big_offer_product->discount }}% OFF</span>
+																		@else
+																		@endif
+																		@endif
+																	</div>
+
+																	<div class="c-product-grid__badges c-badge__list">
+																		@if($big_offer_product->label_name != "")
+																		<span class="c-badge c-badge--featured">{{ $big_offer_product->label_name }}</span>
+																		@endif
+																		@if($big_offer_product->discount_type == "flat")
+																		<span class="c-badge c-badge--sale">- &#8377;{{ $big_offer_product->regular_price - $big_offer_product->sale_price }} OFF</span>
+																		@endif
+																	</div>
+
+
+																	<!-- .c-product-grid__badges -->
+																	<div class="c-product-grid__thumb-wrap" style="width: auto;">
+																		<a href="{{ url('products',['product' => $big_offer_product->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+																			<img src="{{ isset($big_offer_product->medias[0]->media) ? asset('storage/products/variants/'.$big_offer_product->medias[0]->media) : '' }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" srcset="{{ isset($big_offer_product->medias[0]->media) ? asset('storage/products/variants/'.$big_offer_product->medias[0]->media) : '' }}" style="max-width: 100% !important; height: 100% !important; object-fit: contain !important;" />
+																		</a>
+																		<div class="c-product-grid__thumb-button-list">
+																			<!--<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="438">-->
+																			<!--	<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>-->
+																			<!--	<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>-->
+																			<!--</button>-->
+																			<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $main_newest_product->id }}-btn h-cb c-product-grid__thumb-button" data-product-id="{{ $main_newest_product->id }}" data-title="Wishlist">
+																				<i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
+																				<i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
+																			</button>
+																		</div>
+																	</div>
+																	<!-- .c-product-grid__thumb-wrap -->
+																	<button class="h-cb c-product-grid__atc button product_type_simple add-to-cart" data-product_id="{{ $big_offer_product->id }}" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
+																		<i class="ip-plus c-product-grid__atc-icon"></i>
+																		<span class="c-product-grid__atc-text">Add to cart</span>
+																	</button>
+																	<div class="c-product-grid__details">
+																		<div class="c-product-grid__title-wrap">
+																			<a href="{{ url('products',['product' => $big_offer_product->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+																				<h2 class="woocommerce-loop-product__title">{{ $big_offer_product->item_shade_name }}</h2>
+																			</a>
+																			<!-- <div class="c-product-grid__short-desc">
+																				<p>{{ $big_offer_product->short_description }}</p>
+																			</div> -->
+																			<div class="star-rating" role="img" aria-label="Rated 4.00 out of 5">
+																				<span style="width:80%">Rated
+																					<strong class="rating" style="font-size: 16px;">4.00</strong>out of 5</span>
+																			</div>
+																		</div>
+																		<!-- .c-product-grid__title-wrap -->
+																		<div class="c-product-grid__price-wrap price-div">
+																			<span class="price">
+																				@if($big_offer_product->discount_type != "")
+																				<del aria-hidden="true">
+																					<span class="woocommerce-Price-amount amount">
+																						<bdi>
+																							<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $big_offer_product->regular_price }}</bdi>
+																					</span>
+																				</del>
+																				@endif
+																				<ins>
+																					<span class="woocommerce-Price-amount amount">
+																						<bdi>
+																							<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $big_offer_product->sale_price }}</bdi>
+																					</span>
+																				</ins>
+
+																			</span>
+																		</div>
+																		<!-- .c-product-grid__price-wrap -->
+																	</div>
+																	<!-- .c-product-grid__details -->
+																</div>
+
 																<!-- Big Discount list itms End -->
 																@endforeach
 																@endif

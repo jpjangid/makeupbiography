@@ -17,7 +17,7 @@
   }
 
  strong {
-    color: #000;
+    color: red;
  }
 
  .l-section__content{

@@ -363,7 +363,7 @@
 									</a>
 									<div class="c-product-grid__thumb-button-list">
 										<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $product->id }}-btn h-cb c-product-grid__thumb-button" data-product-id="{{ $product->id }}" data-title="Wishlist">
-											<i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
+											<i class="ip-heart c-product-grid__icon  c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
 											<i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
 										</button>
 									</div>
