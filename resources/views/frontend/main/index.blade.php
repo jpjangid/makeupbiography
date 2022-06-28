@@ -431,6 +431,10 @@
 			width: 70px;
 			height: 70px;
 		}
+
+		.c-ip-image-list-1__title {
+    		font-size: 9px;
+		}
 	}
 
 	.c-product-grid__badges {
