@@ -11224,7 +11224,9 @@ p+.woocommerce-order-details {
         display: -webkit-box;
         display: flex;
         -webkit-box-pack: end;
-        justify-content: flex-end;
+        /* justify-content: flex-end; */
+        float : right;
+        margin : 0 20px;
         -webkit-box-align: center;
         align-items: center;
         -webkit-box-flex: 0;

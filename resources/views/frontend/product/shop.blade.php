@@ -148,7 +148,7 @@
 									<div id="slider" wire:ignore></div>
 								</div>
 							</aside>
-							@if(!empty($sub_categories) && count($sub_categories) > 0)
+							<!-- @if(!empty($sub_categories) && count($sub_categories) > 0)
 							<aside id="woocommerce_product_categories-2" class="widget woocommerce widget_product_categories">
 								<div class="widget-title">Product categories</div>
 								<ul class="product-categories">
@@ -181,7 +181,7 @@
 
 								</ul>
 							</aside>
-							@endif
+							@endif -->
 
 							<aside id="woocommerce_product_categories-2" class="widget woocommerce widget_product_categories">
 								<div class="widget-title">Product Brands</div>
@@ -227,7 +227,7 @@
 								</div> -->
 							</div>
 						</aside>
-						<aside id="woocommerce_layered_nav-3" class="widget woocommerce widget_layered_nav woocommerce-widget-layered-nav">
+						<!-- <aside id="woocommerce_layered_nav-3" class="widget woocommerce widget_layered_nav woocommerce-widget-layered-nav">
 							<h2 class="widget-title">Capacity</h2>
 							<ul class="woocommerce-widget-layered-nav-list">
 								<li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
@@ -243,8 +243,8 @@
 									<span class="count">(7)</span>
 								</li>
 							</ul>
-						</aside>
-						@if(!empty($sub_categories) && count($sub_categories) > 0)
+						</aside> -->
+						<!-- @if(!empty($sub_categories) && count($sub_categories) > 0)
 						<aside id="woocommerce_product_categories-2" class="widget woocommerce widget_product_categories">
 							<div class="widget-title">Product categories</div>
 							<ul class="product-categories">
@@ -277,7 +277,7 @@
 
 							</ul>
 						</aside>
-						@endif
+						@endif -->
 
 						<aside id="woocommerce_product_categories-2" class="widget woocommerce widget_product_categories">
 							<div class="widget-title">Product Brands</div>
