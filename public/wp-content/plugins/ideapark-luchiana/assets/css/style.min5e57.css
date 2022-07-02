@@ -1238,8 +1238,8 @@
     flex: 0 0 auto;
     width: 90px !important;
     height: 90px !important;
-    -o-object-fit: cover;
-    object-fit: cover;
+    -o-object-fit: container;
+    object-fit: contain;
     -o-object-position: center;
     object-position: center;
 }

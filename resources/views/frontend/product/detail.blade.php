@@ -385,7 +385,7 @@
 			</div>
 			<!-- .js-sticky-sidebar-nearby -->
 			<div class="c-product__col-2">
-				<div class="js-sticky-sidebar">
+				<div class="">
 					<div class="summary entry-summary">
 						<!-- <h1 class="c-product__title">{{ $product->item_shade_name }}</h1> -->
 						<div>
@@ -512,7 +512,7 @@
 			</div>
 
 			<div class="c-product__tabs woocommerce-tabs wc-tabs-wrapper  c-product__tabs--desktop1">
-				<div class="c-product__tabs-wrap">
+				<div class="">
 					<div class="c-product__tabs-item description_tab" id="tab-title-description" role="tab" aria-controls="tab-description" style="text-align: center; border-bottom: 1px solid lightgrey;">
 						<a data-index="0" class="c-product__tabs-item-link js-tabs-item-link" href="#tab-description" style="font-size: 20px; font-weight: bold; color: black; letter-spacing: 0.2em;">Description</a>
 					</div>

@@ -115,7 +115,7 @@
 					<div class="elementor-container elementor-column-gap-no">
 						<div class="elementor-row">
 							<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-39a8339" data-id="39a8339" data-element_type="column">
-								<div class="elementor-column-wrap-contact elementor-element-populated" style="width: 100%;>
+								<div class="elementor-column-wrap-contact elementor-element-populated" style="width: 100%;">
 									<div class="elementor-widget-wrap">
 										<div class="elementor-element elementor-element-8b2fbe9 elementor-widget elementor-widget-ideapark-page-header" data-id="8b2fbe9" data-element_type="widget" data-widget_type="ideapark-page-header.default">
 											<div class="elementor-widget-container">
