@@ -83,7 +83,7 @@ class HomeController extends Controller
                                 <p>' . $product->short_description . '</p>
                             </div>
                             <div class="c-header-search__price">
-                                <del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>' . $product->regular_price . '</bdi></span></del> <ins><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>'. $product->regular_price .'</bdi></span></ins>
+                                <del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>45.00</bdi></span></del> <ins><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#8377;</span>40.00</bdi></span></ins>
                             </div>															    
                         </div>
                     </div>

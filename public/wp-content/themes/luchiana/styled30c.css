@@ -7755,7 +7755,7 @@ p+.woocommerce-order-details {
 
     .c-product-grid__item--normal {
         width: 249px !important;
-        height:350px!important;
+        /* height:350px!important; */
     }
 
     .c-product-grid__item--normal .star-rating {
@@ -10225,7 +10225,7 @@ p+.woocommerce-order-details {
     line-height: 18px;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    margin: 10px 0;
+    margin: 10px 0s;
     padding-bottom: 25px;
     border-bottom: solid 1px transparent;
     color: var(--text-color-light);
@@ -11011,7 +11011,7 @@ p+.woocommerce-order-details {
     }
 
     .c-product__image-zoom-mobile {
-        display: block;
+        display: none;
         position: absolute;
         right: 30px;
         bottom: 25px;
