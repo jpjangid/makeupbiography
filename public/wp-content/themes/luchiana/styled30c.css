@@ -9748,7 +9748,7 @@ p+.woocommerce-order-details {
     line-height: 30px;
     letter-spacing: 0.015em;
     opacity: 0.6;
-    margin-top: 15px;
+    /* margin-top: 15px; */
 }
 
 .c-product__short-description> :first-child {
@@ -9779,11 +9779,9 @@ p+.woocommerce-order-details {
     font-size: 21px;
     line-height: 20px;
     letter-spacing: 0.03em;
-    margin-top: 43px;
-    margin-bottom: 0;
-    font-family: roboto;
+    margin: 10px 0;
+    font-family: "roboto sans-serif";
 }
-
 .c-product__wrap .price:empty {
     display: none !important;
 }
@@ -9899,7 +9897,7 @@ p+.woocommerce-order-details {
 }
 
 .c-product__wrap .product_meta {
-    margin-top: 27px;
+    /* margin-top: 27px; */
     font-weight: 300;
     font-size: 12px;
     line-height: 20px;
@@ -9910,7 +9908,7 @@ p+.woocommerce-order-details {
 
 .c-product__wrap .product_meta>* {
     display: block;
-    margin-top: 8px;
+    /* margin-top: 8px; */
 }
 
 .c-product__wrap .product_meta a {
@@ -9923,7 +9921,7 @@ p+.woocommerce-order-details {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
-    margin-top: 30px;
+    margin: 15px 0;
 }
 
 .c-product__wishlist-icon {
@@ -9953,7 +9951,7 @@ p+.woocommerce-order-details {
     display: inline-block;
     background: white;
     padding: 30px;
-    margin-top: 20px;
+    /* margin-top: 20px; */
     width: 80%;
     /* max-width: 500px; */
     /* text-align: center; */
@@ -10433,7 +10431,7 @@ p+.woocommerce-order-details {
 }
 
 .c-product__share {
-    margin-top: 30px;
+    margin: 15px 0;
     display: -webkit-box;
     display: flex;
     -webkit-box-align: center;
@@ -11011,7 +11009,7 @@ p+.woocommerce-order-details {
     }
 
     .c-product__image-zoom-mobile {
-        display: none;
+        display: block;
         position: absolute;
         right: 30px;
         bottom: 25px;
@@ -14366,11 +14364,11 @@ body.admin-bar>.select2-container--open {
     }
 }
 
-@media(max-width : 1008px) {
+/* @media(max-width : 1008px) {
     .c-product__short-description {
         margin-top: 20px;
     }
-}
+} */
 
 
 /*- Woocommerce Notices -*/
@@ -14687,8 +14685,8 @@ a.woocommerce-store-notice__dismiss-link {
 
     .c-product__wrap .price,
     .woocommerce-grouped-product-list-item__price {
-        margin-top: 15px;
-        margin-bottom: 0;
+        margin: 15px 0;
+        /* margin-bottom: 0; */
     }
 
     .woocommerce-notices-wrapper {

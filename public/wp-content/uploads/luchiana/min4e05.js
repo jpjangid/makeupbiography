@@ -4998,7 +4998,9 @@ var requirejs, require, define;
         }
     };
     root.ideapark_init_zoom = function() {
-        if (ideapark_is_mobile_layout) {
+        // console.log(ideapark_is_mobile_layout)
+        if (!ideapark_is_mobile_layout) {
+            // console.log("Show Zooming");
             $(".js-product-zoom--mobile-hide.init").each(function() {
                 var $this = $(this);
                 $this.removeClass('init').trigger('zoom.destroy');
@@ -5016,20 +5018,22 @@ var requirejs, require, define;
                     }
                 });
             });
-        } else {
-            $(".js-product-zoom:not(.init)").each(function() {
-                var $this = $(this);
-                $this.addClass('init').zoom({
-                    url: $this.data('img'),
-                    duration: 0,
-                    onZoomIn: function() {
-                        $(this).parent().addClass('zooming');
-                    },
-                    onZoomOut: function() {
-                        $(this).parent().removeClass('zooming');
-                    }
-                });
-            });
+        } 
+        else {
+            // console.log("Not Zooming");
+            // $(".js-product-zoom:not(.init)").each(function() {
+            //     var $this = $(this);
+            //     $this.addClass('init').zoom({
+            //         url: $this.data('img'),
+            //         duration: 0,
+            //         onZoomIn: function() {
+            //             $(this).parent().addClass('zooming');
+            //         },
+            //         onZoomOut: function() {
+            //             $(this).parent().removeClass('zooming');
+            //         }
+            //     });
+            // });
         }
     }
     root.ideapark_init_subcat_carousel = function() {

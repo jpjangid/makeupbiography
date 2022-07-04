@@ -37,6 +37,17 @@
 
 @section('css')
 <style>
+	.c-page-header__title-product__description {
+		text-align: left;
+		display: flex;
+		width: 100%;
+	}
+
+	.c-page-header__title-product__description h1 {
+		font-size: 23px;
+		font-family: var(--font-header);
+	}
+
 	.arrows {
 		position: absolute;
 		top: 30%;
@@ -48,7 +59,7 @@
 	}
 
 	.summary {
-		margin : 0 20px;
+		margin: 0 20px;
 	}
 
 	.arrows:nth-of-type(2) {
@@ -140,9 +151,9 @@
 		}
 	}
 
-	@media(max-width : 700px){
+	@media(max-width : 700px) {
 		.product_description {
-			grid-template-columns : 100%!important;
+			grid-template-columns: 100% !important;
 		}
 	}
 
@@ -223,6 +234,10 @@
 		font-size: 15px !important;
 	}
 
+	.c-product__col-2 {
+		margin: 16px 0;
+	}
+
 	.price-div {
 		/* border-top: 2px solid goldenrod; */
 		font-size: 17px;
@@ -252,11 +267,81 @@
 		.owl-carousel.owl-loaded {
 			display: none;
 		}
-
-
-
 	}
 
+	@media(max-width:1024px) {
+		.c-product__col-2 {
+			margin: 56px 18px;
+		}
+
+		.c-product__atc-wrap {
+			width: 100%;
+		}
+	}
+
+	@media(max-width:768px) {
+		.c-product__col-2 {
+			margin: 45px 50px;
+		}
+
+		.c-page-header__title-product__description h1 {
+			font-size: 15.5px;
+		}
+
+		.c-product__short-description p {
+			font-size: 13px;
+			line-height: 18px;
+		}
+
+		.c-product__atc-wrap {
+			padding: 15px;
+		}
+
+		.c-product__wrap .product_meta {
+			font-size: 10px;
+		}
+	}
+
+	@media(max-width:426px) {
+		.c-product__col-2 {
+			margin: -60px 0;
+		}
+
+		.c-page-header__title-product__description h1 {
+			font-size: 15px;
+		}
+
+		.c-product__atc-wrap .button {
+			letter-spacing: 1px;
+		}
+		.c-product__products-title{
+			font-size: 20px!important;
+		}
+
+		.c-product__image-zoom{
+			top:-35px;
+		}
+	}
+
+	@media(max-width:376px) {
+		.c-product__image-zoom {
+			top: -55px;
+		}
+
+		.c-product__col-2 {
+			margin-top: -110px;
+		}
+	}
+
+	@media(max-width:320px) {
+		.c-product__image-zoom {
+			top: -80px;
+		}
+
+		.c-product__col-2 .desc-desc{
+			margin-top: -55px;
+		}
+	}
 </style>
 @endsection
 
@@ -265,7 +350,7 @@
 
 <input type="text" id="csrfToken" value="{{ csrf_token() }}" hidden>
 <div class="l-inner">
-	<header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default c-page-header--product-page">
+	<!-- <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default c-page-header--product-page">
 		<div class="c-page-header__wrap">
 			<div class="c-page-header__title">{{ $product->item_shade_name }}</div>
 		</div>
@@ -294,7 +379,7 @@
 				@endif
 			</ol>
 		</nav>
-	</header>
+	</header> -->
 	<div class="woocommerce-notices-wrapper">
 	</div>
 	<div class="woocommerce-notices-wrapper">
@@ -352,7 +437,7 @@
 							@if($media->media_type == 'image')
 							<div class="c-product__thumbs-item {{ $active_status }}">
 								<button type="button" class="h-cb js-single-product-thumb " data-index="{{ $count1 }}">
-									<img width="115" height="115" src="{{ asset('storage/products/variants/'.$media->media) }}" sizes="(max-width: 115px) 100vw, 115px" style="width : 125px"/>
+									<img width="115" height="115" src="{{ asset('storage/products/variants/'.$media->media) }}" sizes="(max-width: 115px) 100vw, 115px" style="width : 125px" />
 								</button>
 							</div>
 							@endif
@@ -385,148 +470,150 @@
 			</div>
 			<!-- .js-sticky-sidebar-nearby -->
 			<div class="c-product__col-2">
-				<div class="">
-					<div class="summary entry-summary">
-						<!-- <h1 class="c-product__title">{{ $product->item_shade_name }}</h1> -->
-						<div>
-						<div class="c-product__short-description" style="text-align: justify;">
-							<p>{{ $product->short_description }}</p>
-						</div>
-						<p class="price">
-							<span class="woocommerce-Price-amount amount">
-								@php
-								$discount = $product->regular_price * $product->p_discount/100;
-								$dis_amount = $product->regular_price - $discount;
-								@endphp
-								@if(!empty($product->p_discount))
+				<div class="desc-desc">
+					<!-- <div class="c-page-header__wrap"> -->
+					<div class="c-page-header__title-product__description">
+						<h1>{{ $product->item_shade_name }}</h1>
+					</div>
+					<!-- </div> -->
+					<div class="c-product__short-description" style="text-align: justify;">
+						<p>{{ $product->short_description }}</p>
+					</div>
+					<p class="price">
+						<span class="woocommerce-Price-amount amount">
+							@php
+							$discount = $product->regular_price * $product->p_discount/100;
+							$dis_amount = $product->regular_price - $discount;
+							@endphp
+							@if(!empty($product->p_discount))
+							<del>&#8377;{{ number_format((float)$product->regular_price, 2, '.', '') }}</del>
+							<span class="woocommerce-Price-currencySymbol"> &#8377;</span>{{ number_format((float)$dis_amount, 2, '.', '') }}
+							@else
+							<bdi>
+								@if($product->regular_price != $product->sale_price)
 								<del>&#8377;{{ number_format((float)$product->regular_price, 2, '.', '') }}</del>
-								<span class="woocommerce-Price-currencySymbol"> &#8377;</span>{{ number_format((float)$dis_amount, 2, '.', '') }}
-								@else
-								<bdi>
-									@if($product->regular_price != $product->sale_price)
-									<del>&#8377;{{ number_format((float)$product->regular_price, 2, '.', '') }}</del>
-									@endif
-									<span class="woocommerce-Price-currencySymbol"> &#8377;</span>{{ number_format((float)$product->sale_price, 2, '.', '') }}
-								</bdi>
 								@endif
-								<!-- <bdi>
+								<span class="woocommerce-Price-currencySymbol"> &#8377;</span>{{ number_format((float)$product->sale_price, 2, '.', '') }}
+							</bdi>
+							@endif
+							<!-- <bdi>
 									@if($product->regular_price != $product->sale_price)
 									<del>&#8377;{{ number_format((float)$product->regular_price, 2, '.', '') }}</del>
 									@endif
 									<span class="woocommerce-Price-currencySymbol"> &#8377;</span>{{ number_format((float)$product->sale_price, 2, '.', '') }}
 								</bdi> -->
+						</span>
+					</p>
+				</div>
+				@if($product->p_type == 'HEX SHADE')
+				<div class="product-shades" style="background-color: #f3f3f3;">
+					<h6 class="palette-title">Colour Palette</h6>
+					<ul>
+						@if($variants->isNotEmpty())
+						@foreach($variants as $variant)
+						<li><a href="{{ url('products',['product' => $variant->slug ]) }}" style="background-color: <?php echo $variant->hex_code ?>;">&nbsp;</a></li>
+						@endforeach
+						@endif
+					</ul>
+				</div>
+				@endif
+				@if($product->p_type == 'EYESHADOW')
+				<div>
+					<h6 class="palette-title">All Shades</h6>
+
+					<ul style="white-space:nowrap !important;">
+						<li style="display: inline;"><img src="{{ asset('storage/products/shades/'.$product->hex_code) }}" alt="{{$product->hex_code}}" height="50px"></li>
+						@if($variants->isNotEmpty())
+						@foreach($variants as $variant)
+						@if($variant->id !== $product->id)
+						<li style="display: inline;"><a href="{{ url('products',['product' => $variant->slug ]) }}" style="text-decoration: none;"><img src="{{ asset('storage/products/shades/'.$variant->hex_code) }}" alt="{{$variant->hex_code}}" height="30px"></a></li>
+						@endif
+						@endforeach
+						@endif
+					</ul>
+				</div>
+				@endif
+				<div class="product_description">
+					<!-- .c-product__atc-wra -->
+					<div class="c-product__atc-wrap">
+						<form class="cart" action="https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" method="post" enctype='multipart/form-data'>
+							<div class="c-product__quantity quantity">
+								<label class="screen-reader-text" for="quantity_611f6fb23f9e0">Midnight Musk quantity</label>
+								<input type="number" id="quantity_611f6fb23f9e0" class="h-cb c-product__quantity-value qty product-quantity" step="1" min="1" name="quantity" value="1" title="Qty" placeholder="" inputmode="numeric" />
+								<input type="text" id="productId" value="{{ $product->id }}" hidden>
+								<button class="h-cb c-product__quantity-minus js-quantity-minus" type="button">
+									<i class="ip-minus"></i>
+								</button>
+								<button class="h-cb c-product__quantity-plus js-quantity-plus" type="button">
+									<i class="ip-plus_big"></i>
+								</button>
+							</div>
+							@if($product->status == 1 && $product->flag == 0)
+							<button type="button" name="add-to-cart" value="511" class="single_add_to_cart_button button alt add-to-cart">Add to cart</button>
+							@endif
+						</form>
+					</div>
+					<div class="product_description_detail">
+						<div class="c-product__wishlist">
+							<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-511-btn h-cb c-product__wishlist-button" data-product-id="{{ $product->id }}">
+								<i class="ip-heart c-product__wishlist-icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
+								<i class="ip-heart_hover c-product__wishlist-icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
+								<span class="c-product__wishlist-text">Add to Wishlist</span>
+								<span class="c-product__wishlist-text c-wishlist__btn-text-remove">Remove from Wishlist</span>
+							</button>
+						</div>
+						<div class="product_meta">
+							<span class="sku_wrapper">SKU:
+								<span class="sku">{{ $product->sku }}</span>
 							</span>
-						</p>
+							<span class="posted_in">Category:
+								<a href="#" rel="tag">{{ isset($product->category->name) ? $product->category->name : '' }}</a>
+							</span>
+							<span class="tagged_as">Tag:
+								<a href="#" rel="tag">{{ $product->tags }}</a>
+							</span>
 						</div>
-						@if($product->p_type == 'HEX SHADE')
-						<div class="product-shades" style="background-color: #f3f3f3;">
-							<h6 class="palette-title">Colour Palette</h6>
-							<ul>
-								@if($variants->isNotEmpty())
-								@foreach($variants as $variant)
-								<li><a href="{{ url('products',['product' => $variant->slug ]) }}" style="background-color: <?php echo $variant->hex_code ?>;">&nbsp;</a></li>
-								@endforeach
-								@endif
-							</ul>
-						</div>
-						@endif
-						@if($product->p_type == 'EYESHADOW')
-						<div>
-							<h6 class="palette-title">All Shades</h6>
-
-							<ul style="white-space:nowrap !important;">
-								<li style="display: inline;"><img src="{{ asset('storage/products/shades/'.$product->hex_code) }}" alt="{{$product->hex_code}}" height="50px"></li>
-								@if($variants->isNotEmpty())
-								@foreach($variants as $variant)
-								@if($variant->id !== $product->id)
-								<li style="display: inline;"><a href="{{ url('products',['product' => $variant->slug ]) }}" style="text-decoration: none;"><img src="{{ asset('storage/products/shades/'.$variant->hex_code) }}" alt="{{$variant->hex_code}}" height="30px"></a></li>
-								@endif
-								@endforeach
-								@endif
-							</ul>
-						</div>
-						@endif
-						<div class="product_description">
-							<!-- .c-product__atc-wra -->
-							<div class="c-product__atc-wrap">
-								<form class="cart" action="https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" method="post" enctype='multipart/form-data'>
-									<div class="c-product__quantity quantity">
-										<label class="screen-reader-text" for="quantity_611f6fb23f9e0">Midnight Musk quantity</label>
-										<input type="number" id="quantity_611f6fb23f9e0" class="h-cb c-product__quantity-value qty product-quantity" step="1" min="1" name="quantity" value="1" title="Qty" placeholder="" inputmode="numeric" />
-										<input type="text" id="productId" value="{{ $product->id }}" hidden>
-										<button class="h-cb c-product__quantity-minus js-quantity-minus" type="button">
-											<i class="ip-minus"></i>
-										</button>
-										<button class="h-cb c-product__quantity-plus js-quantity-plus" type="button">
-											<i class="ip-plus_big"></i>
-										</button>
-									</div>
-									@if($product->status == 1 && $product->flag == 0)
-									<button type="button" name="add-to-cart" value="511" class="single_add_to_cart_button button alt add-to-cart">Add to cart</button>
-									@endif
-								</form>
-							</div>
-							<div class="product_description_detail">
-								<div class="c-product__wishlist">
-									<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-511-btn h-cb c-product__wishlist-button" data-product-id="{{ $product->id }}">
-										<i class="ip-heart c-product__wishlist-icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
-										<i class="ip-heart_hover c-product__wishlist-icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
-										<span class="c-product__wishlist-text">Add to Wishlist</span>
-										<span class="c-product__wishlist-text c-wishlist__btn-text-remove">Remove from Wishlist</span>
-									</button>
-								</div>
-								<div class="product_meta">
-									<span class="sku_wrapper">SKU:
-										<span class="sku">{{ $product->sku }}</span>
-									</span>
-									<span class="posted_in">Category:
-										<a href="#" rel="tag">{{ isset($product->category->name) ? $product->category->name : '' }}</a>
-									</span>
-									<span class="tagged_as">Tag:
-										<a href="#" rel="tag">{{ $product->tags }}</a>
-									</span>
-								</div>
-								<div class="c-product__share">
-									<div class="c-product__share-title">Share</div>
-										<div class="c-post-share">
-											<a class="c-post-share__link" target="_blank" href="//www.facebook.com/sharer.php?u=https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" title="Share on Facebook">
-												<i class="ip-facebook c-post-share__icon c-post-share__icon--facebook"></i>
-											</a>
-											<a class="c-post-share__link" target="_blank" href="//twitter.com/share?url=https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" title="Share on Twitter">
-												<i class="ip-twitter c-post-share__icon c-post-share__icon--twitter"></i>
-											</a>
-											<a class="c-post-share__link" target="_blank" href="//pinterest.com/pin/create/button/?url=https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/&amp;media=https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3032395463.jpg&amp;description=Midnight+Musk" title="Pin on Pinterest">
-												<i class="ip-pinterest c-post-share__icon c-post-share__icon--pinterest"></i>
-											</a>
-											<a class="c-post-share__link" target="_blank" href="whatsapp://send?text=https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" title="Share on Whatsapp" data-action="share/whatsapp/share">
-												<i class="ip-whatsapp c-post-share__icon c-post-share__icon--whatsapp"></i>
-											</a>
-										</div>
-									</div>
-								</div>
+						<div class="c-product__share">
+							<div class="c-product__share-title">Share</div>
+							<div class="c-post-share">
+								<a class="c-post-share__link" target="_blank" href="//www.facebook.com/sharer.php?u=https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" title="Share on Facebook">
+									<i class="ip-facebook c-post-share__icon c-post-share__icon--facebook"></i>
+								</a>
+								<a class="c-post-share__link" target="_blank" href="//pinterest.com/pin/create/button/?url=https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/&amp;media=https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3032395463.jpg&amp;description=Midnight+Musk" title="Pin on Pinterest">
+									<i class="ip-instagram c-post-share__icon c-post-share__icon--instagram"></i>
+								</a>
+								<a class="c-post-share__link" target="_blank" href="whatsapp://send?text=https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" title="Share on Whatsapp" data-action="share/whatsapp/share">
+									<i class="ip-whatsapp c-post-share__icon c-post-share__icon--whatsapp"></i>
+								</a>
+								<a class="c-post-share__link" target="_blank" href="whatsapp://send?text=https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" title="Share on Whatsapp" data-action="share/whatsapp/share">
+									<i class="ip-youtube c-post-share__icon c-post-share__icon--youtube"></i>
+								</a>
 							</div>
 						</div>
 					</div>
 				</div>
-				<!-- .c-product__col-2 -->
 			</div>
-
-			<div class="c-product__tabs woocommerce-tabs wc-tabs-wrapper  c-product__tabs--desktop1">
-				<div class="">
-					<div class="c-product__tabs-item description_tab" id="tab-title-description" role="tab" aria-controls="tab-description" style="text-align: center; border-bottom: 1px solid lightgrey;">
-						<a data-index="0" class="c-product__tabs-item-link js-tabs-item-link" href="#tab-description" style="font-size: 20px; font-weight: bold; color: black; letter-spacing: 0.2em;">Description</a>
-					</div>
-				</div>
-				<div class="c-product__tabs-panel woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content wc-tab current visible" id="tab-description" role="tabpanel" aria-labelledby="tab-title-description" style="text-align: justify;">
-					<p><?php echo $product->description; ?></p>
-				</div>
-			</div>
-			<!-- .js-sticky-sidebar -->
 		</div>
-		<!-- .c-product__wrap -->
+	</div>
+	<!-- .c-product__col-2 -->
+</div>
 
-		<!-- Additional Information & Reviews -->
-		<!-- <div class="row-additional-info-reviews">
+<div class="c-product__tabs woocommerce-tabs wc-tabs-wrapper  c-product__tabs--desktop1">
+	<div class="c-product__tabs-wrap">
+		<div class="c-product__tabs-item description_tab" id="tab-title-description" role="tab" aria-controls="tab-description" style="text-align: center; border-bottom: 1px solid lightgrey;">
+			<a data-index="0" class="c-product__tabs-item-link js-tabs-item-link" href="#tab-description" style="font-size: 20px; font-weight: bold; color: black; letter-spacing: 0.2em;">Description</a>
+		</div>
+	</div>
+	<div class="c-product__tabs-panel woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content wc-tab current visible" id="tab-description" role="tabpanel" aria-labelledby="tab-title-description" style="text-align: justify;">
+		<p><?php echo $product->description; ?></p>
+	</div>
+</div>
+<!-- .js-sticky-sidebar -->
+</div>
+<!-- .c-product__wrap -->
+
+<!-- Additional Information & Reviews -->
+<!-- <div class="row-additional-info-reviews">
 			<div class="column-additional-info">
 				<div class="c-product__tabs-item additional_information_tab" id="tab-title-additional_information" role="tab" aria-controls="tab-additional_information">
 					<a data-index="1" class="c-product__tabs-item-link js-tabs-item-link" href="#tab-additional_information" style="font-size: 20px; font-weight: bold; color: black; letter-spacing: 0.2em;">Additional information</a>
@@ -581,12 +668,12 @@
 						<div id="review_form_wrapper">
 							<div id="review_form">
 								<div id="respond" class="comment-respond"> -->
-		<!-- <span id="reply-title" class="comment-reply-title">Be the first to review &ldquo;{{ $product->item_shade_name }}&rdquo;
+<!-- <span id="reply-title" class="comment-reply-title">Be the first to review &ldquo;{{ $product->item_shade_name }}&rdquo;
 									<small>
 										<a rel="nofollow" id="cancel-comment-reply-link" href="/luchiana/demo/shop/midnight-musk-amber/#respond" style="display:none;">Cancel reply</a>
 									</small>
 								</span> -->
-		<!-- <form action="{{ url('review/store') }}" method="post" id="commentform" class="comment-form" novalidate="">
+<!-- <form action="{{ url('review/store') }}" method="post" id="commentform" class="comment-form" novalidate="">
 										@csrf
 										<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p>
 										<div class="comment-form-comment">
@@ -617,8 +704,8 @@
 										</p>
 									</form>
 								</div> -->
-		<!-- #respond -->
-		<!-- </div>
+<!-- #respond -->
+<!-- </div>
 						</div>
 						<div class="clear">
 						</div>
@@ -627,87 +714,87 @@
 			</div>
 		</div> -->
 
-		@if($related_products->isNotEmpty())
-		<section class="c-product__products c-product__products--related">
-			<div class="c-product__products-title" style="font-size: 25px; font-weight: bold; color: black; letter-spacing: 0.1em;">Related products</div>
-			<div class="c-product-grid__wrap c-product-grid__wrap--4-per-row ">
-				<div class="c-product-grid__list c-product-grid__list--3-per-row " style="margin : 0 50px">
-					<div class="in-main">
-						@foreach($related_products as $key => $related)
-						<div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal c-product-grid__item--hover product type-product post-459 status-publish first instock product_cat-fragrance product_tag-florals product_tag-fragrance product_tag-warm has-post-thumbnail featured shipping-taxable purchasable product-type-simple same">
-							<div class="c-product-grid__badges c-badge__list">
-							</div>
-							@if($product->discount_type == "percentage")
-							<div class="c-product-grid__badges c-badge__list">
-								@if(!empty($product->label_name))
-								<span class="c-badge-category c-badge--featured">{{ $product->label_name }}</span>
-								@endif
-								<span class="c-badge-category c-badge--sale">-{{ $product->discount }}%</span>
-							</div>
-							@endif
+@if($related_products->isNotEmpty())
+<section class="c-product__products c-product__products--related">
+	<div class="c-product__products-title" style="font-size: 25px; font-weight: bold; color: black; letter-spacing: 0.1em;">Related products</div>
+	<div class="c-product-grid__wrap c-product-grid__wrap--4-per-row">
+		<div class="c-product-grid__list c-product-grid__list--3-per-row " style="margin : 0 50px">
+			<div class="in-main">
+				@foreach($related_products as $key => $related)
+				<div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal c-product-grid__item--hover product type-product post-459 status-publish first instock product_cat-fragrance product_tag-florals product_tag-fragrance product_tag-warm has-post-thumbnail featured shipping-taxable purchasable product-type-simple same">
+					<div class="c-product-grid__badges c-badge__list">
+					</div>
+					@if($product->discount_type == "percentage")
+					<div class="c-product-grid__badges c-badge__list">
+						@if(!empty($product->label_name))
+						<span class="c-badge-category c-badge--featured">{{ $product->label_name }}</span>
+						@endif
+						<span class="c-badge-category c-badge--sale">-{{ $product->discount }}%</span>
+					</div>
+					@endif
 
-							@if($product->discount_type == "flat")
-							<div class="c-product-grid__badges c-badge__list">
-								@if(!empty($product->label_name))
-								<span class="c-badge-category c-badge--featured">{{ $product->label_name }}</span>
-								@endif
-								<span class="c-badge-category c-badge--sale">- &#8377; {{ $product->regular_price - $product->sale_price }}</span>
-							</div>
-							@endif
-							<!-- .c-product-grid__badges -->
-							<div class="c-product-grid__thumb-wrap">
-								<a href="{{ url('products',['product' => $related->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-									<img width="260" height="230" src="{{ asset('storage/products/variants/'.$related_images[$key]) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" sizes="(max-width: 260px) 100vw, 260px" />
-								</a>
-								<div class="c-product-grid__thumb-button-list">
-									<!--<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="459">-->
-									<!--	<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>-->
-									<!--	<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>-->
-									<!--</button>-->
-									<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $related->id }}-btn h-cb c-product-grid__thumb-button" data-product-id="{{ $related->id }}" data-title="Wishlist">
-										<i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
-										<i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
-									</button>
-								</div>
-							</div>
-							<!-- .c-product-grid__thumb-wrap -->
-							<button class="h-cb c-product-grid__atc button product_type_simple add-to-cart" data-product_id="{{ $related->id }}" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
-								<i class="ip-plus c-product-grid__atc-icon"></i>
-								<span class="c-product-grid__atc-text">Add to cart</span>
+					@if($product->discount_type == "flat")
+					<div class="c-product-grid__badges c-badge__list">
+						@if(!empty($product->label_name))
+						<span class="c-badge-category c-badge--featured">{{ $product->label_name }}</span>
+						@endif
+						<span class="c-badge-category c-badge--sale">- &#8377; {{ $product->regular_price - $product->sale_price }}</span>
+					</div>
+					@endif
+					<!-- .c-product-grid__badges -->
+					<div class="c-product-grid__thumb-wrap">
+						<a href="{{ url('products',['product' => $related->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+							<img width="260" height="230" src="{{ asset('storage/products/variants/'.$related_images[$key]) }}" class="c-product-grid__thumb c-product-grid__thumb--cover" alt="" loading="lazy" sizes="(max-width: 260px) 100vw, 260px" />
+						</a>
+						<div class="c-product-grid__thumb-button-list">
+							<!--<button class="h-cb c-product-grid__thumb-button js-grid-zoom" type="button" data-lang="" data-product-id="459">-->
+							<!--	<i class="ip-eye c-product-grid__icon c-product-grid__icon--normal"></i>-->
+							<!--	<i class="ip-eye_hover c-product-grid__icon c-product-grid__icon--hover"></i>-->
+							<!--</button>-->
+							<button class="js-wishlist-btn-add c-wishlist__btn c-wishlist__item-{{ $related->id }}-btn h-cb c-product-grid__thumb-button" data-product-id="{{ $related->id }}" data-title="Wishlist">
+								<i class="ip-heart c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon-normal"></i>
+								<i class="ip-heart_hover c-product-grid__icon c-wishlist__btn-icon c-wishlist__btn-icon--hover"></i>
 							</button>
-							<div class="c-product-grid__details">
-								<div class="c-product-grid__title-wrap">
-									<a href="{{ url('products',['product' => $related->slug]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-										<h2 class="woocommerce-loop-product__title">{{ $related->item_shade_name }}</h2>
-									</a>
-									<!-- <div class="c-product-grid__short-desc">
+						</div>
+					</div>
+					<!-- .c-product-grid__thumb-wrap -->
+					<button class="h-cb c-product-grid__atc button product_type_simple add-to-cart" data-product_id="{{ $related->id }}" aria-label="Add &ldquo;Airbrush Matte&rdquo; to your cart" rel="nofollow">
+						<i class="ip-plus c-product-grid__atc-icon"></i>
+						<span class="c-product-grid__atc-text">Add to cart</span>
+					</button>
+					<div class="c-product-grid__details">
+						<div class="c-product-grid__title-wrap">
+							<a href="{{ url('products',['product' => $related->slug]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+								<h2 class="woocommerce-loop-product__title">{{ $related->item_shade_name }}</h2>
+							</a>
+							<!-- <div class="c-product-grid__short-desc">
 										<p>{{ $related->short_description }}</p>
 									</div> -->
-								</div>
-								<!-- .c-product-grid__title-wrap -->
-								<div class="c-product-grid__price-wrap price-div">
-									<span class="price">
-										<span class="woocommerce-Price-amount amount">
-											@if($related_regular_prices[$key] != $related_sale_prices[$key])
-											<del><span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $related_regular_prices[$key] }}</bdi></del>
-											@endif
-											<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $related_sale_prices[$key] }}</bdi>
-										</span>
-									</span>
-								</div>
-								<!-- .c-product-grid__price-wrap -->
-							</div>
-							<!-- .c-product-grid__details -->
 						</div>
-						@endforeach
+						<!-- .c-product-grid__title-wrap -->
+						<div class="c-product-grid__price-wrap price-div">
+							<span class="price">
+								<span class="woocommerce-Price-amount amount">
+									@if($related_regular_prices[$key] != $related_sale_prices[$key])
+									<del><span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $related_regular_prices[$key] }}</bdi></del>
+									@endif
+									<span class="woocommerce-Price-currencySymbol">&#8377;</span>{{ $related_sale_prices[$key] }}</bdi>
+								</span>
+							</span>
+						</div>
+						<!-- .c-product-grid__price-wrap -->
 					</div>
-					<span class="arrows" id="forward" style="visibility: none;">&#139;</span>
-					<span class="arrows" id="backward" style="visibility: none;">&#155;</span>
+					<!-- .c-product-grid__details -->
 				</div>
+				@endforeach
 			</div>
-		</section>
-		@endif
+			<span class="arrows" id="forward" style="visibility: none;">&#139;</span>
+			<span class="arrows" id="backward" style="visibility: none;">&#155;</span>
+		</div>
 	</div>
+</section>
+@endif
+</div>
 </div>
 <!-- /.l-inner -->
 @endsection

@@ -7,8 +7,7 @@
 		text-align: center;
 	}
 
-	.elementor-column,
-	.elementor-column-wrap {
+	.elementor-column {
 		display: grid;
 	}
 
@@ -110,7 +109,7 @@
 		}
 
 		.elementor-widget-wrap-footer {
-			margin: 0 10px;
+			/* margin: 0 10px; */
 			width: 100%;
 		}
 
@@ -308,8 +307,8 @@
 					<section class="elementor-section elementor-top-section elementor-element elementor-element-720db9e8 elementor-section-full_width elementor-section-height-default" data-id="720db9e8" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 						<div class="elementor-container elementor-column-gap-no">
 							<div class="elementor-row">
-								<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-11148c13" data-id="11148c13" data-element_type="column" style="margin : 0 20px">
-									<div class="elementor-column-wrap elementor-element-populated">
+								<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-11148c13" data-id="11148c13" data-element_type="column" style="padding : 0 20px">
+									<div cla elementor-element-populated">
 										<div class="elementor-widget-wrap-footer">
 											<!-- <div class="elementor-element elementor-element-33548589 elementor-widget elementor-widget-ideapark-inline-menu" data-id="33548589" data-element_type="widget" data-widget_type="ideapark-inline-menu.default">
 												<div class="elementor-widget-container">
@@ -343,7 +342,7 @@
 												<div class="elementor-container elementor-column-gap-no">
 													<div class="elementor-row">
 														<div class="elementor-column elementor-col-33 1 elementor-inner-column elementor-element elementor-element-6e0ac925 mx-3" data-id="10793382" data-element_type="column">
-															<div class="elementor-column-wrap elementor-element-populated">
+															<div cla elementor-element-populated">
 																<div class="elementor-widget-wrap">
 																	<div class="elementor-element elementor-element-23ce4345 elementor-align-left elementor-widget-mobile__width-auto elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="23ce4345" data-element_type="widget" data-widget_type="icon-list.default">
 																		<div class="elementor-widget-container">
@@ -389,7 +388,7 @@
 															</div>
 														</div>
 														<div class="elementor-column elementor-col-33 2 elementor-inner-column elementor-element elementor-element-6e0ac925 mx-3" data-id="6e0ac925" data-element_type="column">
-															<div class="elementor-column-wrap elementor-element-populated">
+															<div cla elementor-element-populated">
 																<div class="elementor-widget-wrap">
 																	<div class="elementor-element elementor-element-7195f8fe elementor-widget elementor-widget-ideapark-heading" data-id="7195f8fe" data-element_type="widget" data-widget_type="ideapark-heading.default">
 																		<div class="elementor-widget-container">
@@ -421,7 +420,7 @@
 															</div>
 														</div>
 														<div class="elementor-column elementor-col-33 3 elementor-inner-column elementor-element elementor-element-6e0ac925 mx-3" data-id="6e0ac925" data-element_type="column">
-															<div class="elementor-column-wrap elementor-element-populated">
+															<div cla elementor-element-populated">
 																<div class="elementor-widget-wrap">
 																	<div class="elementor-element elementor-element-7195f8fe elementor-widget elementor-widget-ideapark-heading" data-id="7195f8fe" data-element_type="widget" data-widget_type="ideapark-heading.default">
 																		<div class="elementor-widget-container">
@@ -454,7 +453,7 @@
 															</div>
 														</div>
 														<div class="elementor-column elementor-col-33 4 elementor-inner-column elementor-element elementor-element-6e0ac925 mx-3" data-id="615b3b69" data-element_type="column">
-															<div class="elementor-column-wrap elementor-element-populated">
+															<div cla elementor-element-populated">
 																<div class="elementor-widget-wrap">
 																	<div class="elementor-element elementor-element-6b247977 elementor-align-center elementor-widget elementor-widget-ideapark-social" data-id="6b247977" data-element_type="widget" data-widget_type="ideapark-social.default">
 																		<div class="elementor-widget-container">
@@ -479,7 +478,7 @@
 																					</i>
 																				</a>
 																				<a href="#" class="c-ip-social__link zoom-icon">
-																					<i class="ip-twitter c-ip-social__icon c-ip-social__icon--twitter">
+																					<i class="ip-whatsapp c-ip-social__icon c-ip-social__icon--whatsapp">
 																						<!-- -->
 																					</i>
 																				</a>
@@ -501,7 +500,7 @@
 												<div class="elementor-container elementor-column-gap-no">
 													<div class="elementor-row">
 														<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-175f259a" data-id="175f259a" data-element_type="column">
-															<div class="elementor-column-wrap elementor-element-populated">
+															<div cla elementor-element-populated">
 																<div class="elementor-widget-wrap">
 																	<div class="elementor-element elementor-element-70e42022 elementor-widget elementor-widget-ideapark-heading" data-id="70e42022" data-element_type="widget" data-widget_type="ideapark-heading.default">
 																		<div class="elementor-widget-container">
@@ -514,7 +513,7 @@
 															</div>
 														</div>
 														<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-6588c572" data-id="6588c572" data-element_type="column">
-															<div class="elementor-column-wrap elementor-element-populated">
+															<div cla elementor-element-populated">
 																<div class="">
 																	<div class="elementor-element elementor-element-52168518 elementor-widget elementor-widget-ideapark-inline-menu" data-id="52168518" data-element_type="widget" data-widget_type="ideapark-inline-menu.default">
 																		<div class="elementor-widget-container">
