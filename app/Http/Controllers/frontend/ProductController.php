@@ -28,7 +28,6 @@ class ProductController extends Controller
         if ($related_products->isEmpty()) {
             $related_products = DB::table('products')->where([['parent_id', '=', $product->parent_id], ['id', '!=', $product->id]])->where(['status' => 1, 'flag' => 0, 'ecom' => 'ONLINE'])->get();
         }
-
         $data = $this->related($related_products);
         $related_variants = $data['related_variants'];
         $related_regular_prices = $data['related_regular_prices'];

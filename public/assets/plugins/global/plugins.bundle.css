@@ -68,7 +68,7 @@
   resize: none;
   height: 18px;
   vertical-align: bottom;
-  font-family: sans-serif;
+  font-family: "Roboto", sans-serif;
   overflow: hidden;
   word-break: keep-all;
 }
@@ -3046,7 +3046,8 @@ span.flatpickr-weekday {
  */
 .ql-container {
   box-sizing: border-box;
-  font-family: Helvetica, Arial, sans-serif;
+  /* font-family: Helvetica, Arial, sans-serif; */
+  font-family: "Roboto", sans-serif;
   font-size: 13px;
   height: 100%;
   margin: 0px;
@@ -3501,11 +3502,13 @@ span.flatpickr-weekday {
 }
 
 .ql-editor .ql-font-serif {
-  font-family: Georgia, Times New Roman, serif;
+  /* font-family: Georgia, Times New Roman, serif; */
+  font-family: "Roboto", sans-serif;
 }
 
 .ql-editor .ql-font-monospace {
-  font-family: Monaco, Courier New, monospace;
+  /* font-family: Monaco, Courier New, monospace; */
+  font-family: "Roboto", sans-serif;
 }
 
 .ql-editor .ql-size-small {
@@ -4036,11 +4039,13 @@ span.flatpickr-weekday {
 }
 
 .ql-snow .ql-picker.ql-font .ql-picker-item[data-value=serif]::before {
-  font-family: Georgia, Times New Roman, serif;
+  /* font-family: Georgia, Times New Roman, serif; */
+  font-family: "Roboto", sans-serif;
 }
 
 .ql-snow .ql-picker.ql-font .ql-picker-item[data-value=monospace]::before {
-  font-family: Monaco, Courier New, monospace;
+  /* font-family: Monaco, Courier New, monospace; */
+  font-family: "Roboto", sans-serif;
 }
 
 .ql-snow .ql-picker.ql-size {
@@ -4090,7 +4095,8 @@ span.flatpickr-weekday {
 .ql-toolbar.ql-snow {
   border: 1px solid #ccc;
   box-sizing: border-box;
-  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  /* font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif; */
+  font-family: "Roboto", sans-serif;
   padding: 8px;
 }
 
@@ -5061,7 +5067,8 @@ button.toast-close-button {
 }
 
 .apexcharts-text tspan {
-  font-family: inherit;
+  /* font-family: inherit; */
+  font-family: "Roboto", sans-serif;
 }
 
 .legend-mouseover-inactive {
@@ -5107,7 +5114,8 @@ button.toast-close-button {
 }
 
 .apexcharts-tooltip * {
-  font-family: inherit;
+  /* font-family: inherit; */
+  font-family: "Roboto", sans-serif;
 }
 
 .apexcharts-tooltip-title {
@@ -6024,7 +6032,8 @@ button.toast-close-button {
   border: none;
   border-radius: 5px;
   background: #fff;
-  font-family: inherit;
+  /* font-family: inherit; */
+  font-family: "Roboto", sans-serif;
   font-size: 1rem;
 }
 
@@ -6189,7 +6198,8 @@ button.toast-close-button {
   border-radius: 5px;
   background: transparent;
   color: #cccccc;
-  font-family: serif;
+  /* font-family: serif; */
+  font-family: "Roboto", sans-serif;
   font-size: 2.5em;
   line-height: 1.2;
   cursor: pointer;
@@ -6390,7 +6400,8 @@ button.toast-close-button {
   border: 0.25em solid transparent;
   border-radius: 50%;
   border-color: #000;
-  font-family: inherit;
+  /* font-family: inherit; */
+  font-family: "Roboto", sans-serif;
   line-height: 5em;
   cursor: default;
   -webkit-user-select: none;
@@ -13024,7 +13035,8 @@ readers do not read off random characters that represent icons */
 }
 
 @font-face {
-  font-family: "Line Awesome Brands";
+  /* font-family: "Line Awesome Brands"; */
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: normal;
   font-display: auto;
@@ -13032,11 +13044,14 @@ readers do not read off random characters that represent icons */
   src: url("fonts/line-awesome/la-brands-400.eot?#iefix") format("embedded-opentype"), url("fonts/line-awesome/la-brands-400.woff2") format("woff2"), url("fonts/line-awesome/la-brands-400.woff") format("woff"), url("fonts/line-awesome/la-brands-400.ttf") format("truetype"), url("fonts/line-awesome/la-brands-400.svg#lineawesome") format("svg");
 }
 .lab {
-  font-family: "Line Awesome Brands";
+  /* font-family: "Line Awesome Brands"; */
+  font-family: "Roboto", sans-serif;
 }
 
 @font-face {
-  font-family: "Line Awesome Free";
+  /*   font-family: "Roboto", sans-serif;
+ */
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-display: auto;
@@ -13044,12 +13059,15 @@ readers do not read off random characters that represent icons */
   src: url("fonts/line-awesome/la-regular-400.eot?#iefix") format("embedded-opentype"), url("fonts/line-awesome/la-regular-400.woff2") format("woff2"), url("fonts/line-awesome/la-regular-400.woff") format("woff"), url("fonts/line-awesome/la-regular-400.ttf") format("truetype"), url("fonts/line-awesome/la-regular-400.svg#lineawesome") format("svg");
 }
 .lar {
-  font-family: "Line Awesome Free";
+  /*   font-family: "Roboto", sans-serif;
+ */
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 
 @font-face {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-style: normal;
   font-weight: 900;
   font-display: auto;
@@ -13058,7 +13076,8 @@ readers do not read off random characters that represent icons */
 }
 .la,
 .las {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 900;
 }
 
@@ -13072,7 +13091,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-star-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13093,7 +13113,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-trash-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13102,7 +13123,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-file-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13111,7 +13133,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-clock-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13120,7 +13143,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-arrow-circle-o-down {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13129,7 +13153,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-arrow-circle-o-up {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13138,7 +13163,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-play-circle-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13159,7 +13185,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-list-alt {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13172,7 +13199,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-picture-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13181,7 +13209,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-photo {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13190,7 +13219,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-image {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13207,7 +13237,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-pencil-square-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13216,7 +13247,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-share-square-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13225,7 +13257,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-check-square-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13238,7 +13271,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-times-circle-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13247,7 +13281,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-check-circle-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13260,12 +13295,14 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-eye {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
 .la.la-eye-slash {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13286,7 +13323,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-bar-chart {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13295,7 +13333,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-bar-chart-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13318,7 +13357,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-thumbs-o-up {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13327,7 +13367,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-thumbs-o-down {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13336,7 +13377,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-heart-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13375,7 +13417,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-lemon-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13384,7 +13427,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-square-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13393,7 +13437,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-bookmark-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13430,7 +13475,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-credit-card {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13439,7 +13485,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-hdd-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13448,7 +13495,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-hand-o-right {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13457,7 +13505,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-hand-o-left {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13466,7 +13515,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-hand-o-up {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13475,7 +13525,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-hand-o-down {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13500,7 +13551,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-files-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13509,7 +13561,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-floppy-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13550,7 +13603,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-money {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13596,7 +13650,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-comment-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13605,7 +13660,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-comments-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13618,12 +13674,14 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-clipboard {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
 .la.la-paste {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13632,7 +13690,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-lightbulb-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13653,7 +13712,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-bell-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13666,7 +13726,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-file-text-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13675,7 +13736,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-building-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13684,7 +13746,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-hospital-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13705,7 +13768,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-circle-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13723,7 +13787,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-folder-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13732,7 +13797,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-folder-open-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13741,7 +13807,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-smile-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13750,7 +13817,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-frown-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13759,7 +13827,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-meh-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13768,7 +13837,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-keyboard-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13777,7 +13847,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-flag-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13790,7 +13861,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-star-half-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13799,7 +13871,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-star-half-empty {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13808,7 +13881,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-star-half-full {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13829,7 +13903,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-calendar-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13857,7 +13932,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-minus-square-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13882,12 +13958,14 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-compass {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
 .la.la-caret-square-o-down {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13896,7 +13974,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-toggle-down {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13905,7 +13984,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-caret-square-o-up {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13914,7 +13994,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-toggle-up {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13923,7 +14004,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-caret-square-o-right {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -13932,7 +14014,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-toggle-right {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14195,7 +14278,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-sun-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14204,7 +14288,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-moon-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14238,7 +14323,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-arrow-circle-o-right {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14247,7 +14333,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-arrow-circle-o-left {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14256,7 +14343,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-caret-square-o-left {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14265,7 +14353,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-toggle-left {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14274,7 +14363,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-dot-circle-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14296,7 +14386,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-plus-square-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14424,7 +14515,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-envelope-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14443,7 +14535,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-file-pdf-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14452,7 +14545,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-file-word-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14461,7 +14555,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-file-excel-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14470,7 +14565,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-file-powerpoint-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14479,7 +14575,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-file-image-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14488,7 +14585,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-file-photo-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14497,7 +14595,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-file-picture-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14506,7 +14605,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-file-archive-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14515,7 +14615,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-file-zip-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14524,7 +14625,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-file-audio-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14533,7 +14635,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-file-sound-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14542,7 +14645,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-file-video-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14551,7 +14655,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-file-movie-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14560,7 +14665,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-file-code-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14584,12 +14690,14 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-life-ring {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
 .la.la-life-bouy {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14598,7 +14706,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-life-buoy {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14607,7 +14716,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-life-saver {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14616,7 +14726,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-support {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14727,7 +14838,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-paper-plane-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14736,7 +14848,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-send-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14745,7 +14858,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-circle-thin {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14762,7 +14876,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-futbol-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14771,7 +14886,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-soccer-ball-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14795,7 +14911,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-newspaper-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14844,7 +14961,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-bell-slash-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14857,7 +14975,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-copyright {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14898,7 +15017,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-cc {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -14973,7 +15093,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-diamond {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15072,17 +15193,20 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-object-group {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
 .la.la-object-ungroup {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
 .la.la-sticky-note-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15101,12 +15225,14 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-clone {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
 .la.la-hourglass-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15127,7 +15253,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-hand-rock-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15136,7 +15263,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-hand-grab-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15145,7 +15273,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-hand-paper-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15154,7 +15283,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-hand-stop-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15163,7 +15293,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-hand-scissors-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15172,7 +15303,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-hand-lizard-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15181,7 +15313,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-hand-spock-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15190,7 +15323,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-hand-pointer-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15199,7 +15333,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-hand-peace-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15208,7 +15343,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-registered {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15297,7 +15433,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-calendar-plus-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15306,7 +15443,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-calendar-minus-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15315,7 +15453,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-calendar-times-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15324,7 +15463,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-calendar-check-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15333,7 +15473,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-map-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15346,7 +15487,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-commenting-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15428,7 +15570,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-pause-circle-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15437,7 +15580,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-stop-circle-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15485,7 +15629,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-question-circle-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15601,7 +15746,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-handshake-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15610,7 +15756,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-envelope-open-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15624,7 +15771,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-address-book-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15637,7 +15785,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-address-card-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15646,7 +15795,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-vcard-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15655,7 +15805,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-user-circle-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15664,7 +15815,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-user-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15673,7 +15825,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-id-badge {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15682,7 +15835,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-id-card-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15691,7 +15845,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-drivers-license-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15747,12 +15902,14 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-window-maximize {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
 .la.la-window-restore {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15761,7 +15918,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-window-close-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15770,7 +15928,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-times-rectangle-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 
@@ -15813,7 +15972,8 @@ readers do not read off random characters that represent icons */
 }
 
 .la.la-snowflake-o {
-  font-family: "Line Awesome Free";
+    font-family: "Roboto", sans-serif;
+
   font-weight: 400;
 }
 

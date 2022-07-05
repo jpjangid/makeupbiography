@@ -314,12 +314,13 @@
 		.c-product__atc-wrap .button {
 			letter-spacing: 1px;
 		}
-		.c-product__products-title{
-			font-size: 20px!important;
+
+		.c-product__products-title {
+			font-size: 20px !important;
 		}
 
-		.c-product__image-zoom{
-			top:-35px;
+		.c-product__image-zoom {
+			top: -35px;
 		}
 	}
 
@@ -338,7 +339,7 @@
 			top: -80px;
 		}
 
-		.c-product__col-2 .desc-desc{
+		.c-product__col-2 .desc-desc {
 			margin-top: -55px;
 		}
 	}
@@ -349,7 +350,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <input type="text" id="csrfToken" value="{{ csrf_token() }}" hidden>
-<div class="l-inner">
+<div class="">
 	<!-- <header class="l-section c-page-header c-page-header--header-type-1 c-page-header--default c-page-header--product-page">
 		<div class="c-page-header__wrap">
 			<div class="c-page-header__title">{{ $product->item_shade_name }}</div>
@@ -576,16 +577,16 @@
 						<div class="c-product__share">
 							<div class="c-product__share-title">Share</div>
 							<div class="c-post-share">
-								<a class="c-post-share__link" target="_blank" href="//www.facebook.com/sharer.php?u=https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" title="Share on Facebook">
+								<a class="c-post-share__link" target="_blank" href="https://m.facebook.com/makeupbiography/" title="Share on Facebook">
 									<i class="ip-facebook c-post-share__icon c-post-share__icon--facebook"></i>
 								</a>
-								<a class="c-post-share__link" target="_blank" href="//pinterest.com/pin/create/button/?url=https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/&amp;media=https://parkofideas.com/luchiana/demo/wp-content/uploads/2020/10/luchiana-3032395463.jpg&amp;description=Midnight+Musk" title="Pin on Pinterest">
+								<a class="c-post-share__link" target="_blank" href="https://instagram.com/makeupbiography?igshid=YmMyMTA2M2Y=" title="Pin on Pinterest">
 									<i class="ip-instagram c-post-share__icon c-post-share__icon--instagram"></i>
 								</a>
 								<a class="c-post-share__link" target="_blank" href="whatsapp://send?text=https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" title="Share on Whatsapp" data-action="share/whatsapp/share">
 									<i class="ip-whatsapp c-post-share__icon c-post-share__icon--whatsapp"></i>
 								</a>
-								<a class="c-post-share__link" target="_blank" href="whatsapp://send?text=https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" title="Share on Whatsapp" data-action="share/whatsapp/share">
+								<a class="c-post-share__link" target="_blank" href="https://youtube.com/channel/UCznA_nHSabfpH1zrCzgLHvQ" title="Share on Whatsapp" data-action="share/whatsapp/share">
 									<i class="ip-youtube c-post-share__icon c-post-share__icon--youtube"></i>
 								</a>
 							</div>
@@ -729,7 +730,7 @@
 						@if(!empty($product->label_name))
 						<span class="c-badge-category c-badge--featured">{{ $product->label_name }}</span>
 						@endif
-						<span class="c-badge-category c-badge--sale">-{{ $product->discount }}%</span>
+						<span class="c-badge-category c-badge--sale">{{ $product->discount }}% <br>off</span>
 					</div>
 					@endif
 
@@ -833,12 +834,13 @@
 		let product_page = Math.ceil(product / 4);
 		let l = 0;
 		let movePer = 25.34;
-		let maxMove = 203;
+		let maxMove = 25.34 * parseInt(product);
+
 		// mobile_view  
 		let mob_view = window.matchMedia("(max-width: 768px)");
 		if (mob_view.matches) {
 			movePer = 50.36;
-			maxMove = 504;
+			maxMove = movePer * parseInt(product);
 		}
 
 		let right_mover = () => {

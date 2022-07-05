@@ -659,7 +659,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control:before, table
   box-sizing: content-box;
   text-align: center;
   text-indent: 0 !important;
-  font-family: "Courier New", Courier, monospace;
+  /*   font-family: "Roboto", sans-serif;
+ */
+  font-family: "Roboto", sans-serif;
   line-height: 1em;
   content: "+";
   background-color: #0275d8;
@@ -704,7 +706,8 @@ table.dataTable.dtr-column > tbody > tr > td.dtr-control:before, table.dataTable
   box-sizing: content-box;
   text-align: center;
   text-indent: 0 !important;
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Roboto", sans-serif;
+
   line-height: 1em;
   content: "+";
   background-color: #0275d8;

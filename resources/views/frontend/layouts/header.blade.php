@@ -440,7 +440,7 @@ $mains = Category::select('id','slug','name')->where(['flag' => 0,'status' => 1]
 								<a href="{{ url('/') }}">Home</a>
 							</li>
 							<li class="c-top-menu__item c-top-menu__item--has-children menu-item-162 js-menu-item">
-								<a href="{{ url('shop/all') }}">Shop</a>
+								<a href="{{ url('shop/all?page=1') }}">Shop</a>
 							</li>
 
 							<!-- category begin -->

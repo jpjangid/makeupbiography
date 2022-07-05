@@ -308,7 +308,7 @@
 						<div class="elementor-container elementor-column-gap-no">
 							<div class="elementor-row">
 								<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-11148c13" data-id="11148c13" data-element_type="column" style="padding : 0 20px">
-									<div cla elementor-element-populated">
+									<div class="elementor-element-populated">
 										<div class="elementor-widget-wrap-footer">
 											<!-- <div class="elementor-element elementor-element-33548589 elementor-widget elementor-widget-ideapark-inline-menu" data-id="33548589" data-element_type="widget" data-widget_type="ideapark-inline-menu.default">
 												<div class="elementor-widget-container">
@@ -342,7 +342,7 @@
 												<div class="elementor-container elementor-column-gap-no">
 													<div class="elementor-row">
 														<div class="elementor-column elementor-col-33 1 elementor-inner-column elementor-element elementor-element-6e0ac925 mx-3" data-id="10793382" data-element_type="column">
-															<div cla elementor-element-populated">
+															<div class="elementor-element-populated">
 																<div class="elementor-widget-wrap">
 																	<div class="elementor-element elementor-element-23ce4345 elementor-align-left elementor-widget-mobile__width-auto elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="23ce4345" data-element_type="widget" data-widget_type="icon-list.default">
 																		<div class="elementor-widget-container">
@@ -467,12 +467,12 @@
 																				</div>
 																			</div>
 																			<div class="c-ip-social">
-																				<a href="#" class="c-ip-social__link zoom-icon">
+																				<a href="https://m.facebook.com/makeupbiography/" class="c-ip-social__link zoom-icon">
 																					<i class="ip-facebook c-ip-social__icon c-ip-social__icon--facebook">
 																						<!-- -->
 																					</i>
 																				</a>
-																				<a href="#" class="c-ip-social__link zoom-icon">
+																				<a href="https://instagram.com/makeupbiography?igshid=YmMyMTA2M2Y=" class="c-ip-social__link zoom-icon">
 																					<i class="ip-instagram c-ip-social__icon c-ip-social__icon--instagram">
 																						<!-- -->
 																					</i>
@@ -482,7 +482,7 @@
 																						<!-- -->
 																					</i>
 																				</a>
-																				<a href="#" class="c-ip-social__link zoom-icon">
+																				<a href="https://youtube.com/channel/UCznA_nHSabfpH1zrCzgLHvQ" class="c-ip-social__link zoom-icon">
 																					<i class="ip-youtube c-ip-social__icon c-ip-social__icon--youtube">
 																						<!-- -->
 																					</i>

@@ -84,6 +84,10 @@
 		position: absolute;
 		top: 9px;
 	}
+	.pagination_active{
+		background: #000;
+		color: #fff;
+	}
 </style>
 @endsection
 
@@ -443,17 +447,19 @@
 				<nav class="woocommerce-pagination">
 					<ul class='page-numbers'>
 						<li>
-							<a class="prev page-numbers" href="{{ url('shop/'.$tag.'?page=1') }}{{ !empty($cutsom_url) ? '&'.$cutsom_url : '' }}" onclick="return <?php echo $prev; ?>;">
+							<a class="prev page-numbers" href="{{ $products->previousPageUrl() }}" onclick="return <?php echo $prev; ?>;">
 								<i class="ip-menu-left page-numbers__prev-ico"></i>
 							</a>
 						</li>
+						@php $last_page = 1; @endphp 
 						@foreach($no_of_pages as $page)
 						<li>
-							<a class="page-numbers" href="{{ url('shop/'.$tag.'?page='.$page) }}{{ !empty($cutsom_url) ? '&'.$cutsom_url : '' }}">{{ $page }}</a>
+							<a class="next page-numbers {{ url()->full() == url('shop/'.$tag.'?page='.$page) ? 'pagination_active' : '' }}" href="{{ url('shop/'.$tag.'?page='.$page) }}">{{ $page }}</a>
 						</li>
+						@php $last_page = $page; @endphp
 						@endforeach
 						<li>
-							<a class="next page-numbers" href="{{ url('shop/'.$tag.'?page='.$products->lastPage()) }}{{ !empty($cutsom_url) ? '&'.$cutsom_url : '' }}" onclick="return <?php echo $next; ?>;">
+							<a class="next page-numbers" href="{{ $products->nextPageUrl() }}" onclick="return <?php echo $next; ?>;">
 								<i class="ip-menu-right page-numbers__prev-ico"></i>
 							</a>
 						</li>

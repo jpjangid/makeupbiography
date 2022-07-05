@@ -5001,10 +5001,10 @@ var requirejs, require, define;
         // console.log(ideapark_is_mobile_layout)
         if (!ideapark_is_mobile_layout) {
             // console.log("Show Zooming");
-            $(".js-product-zoom--mobile-hide.init").each(function() {
-                var $this = $(this);
-                $this.removeClass('init').trigger('zoom.destroy');
-            });
+            // $(".js-product-zoom--mobile-hide.init").each(function() {
+            //     var $this = $(this);
+            //     $this.removeClass('init').trigger('zoom.destroy');
+            // });
             $(".js-product-zoom:not(.js-product-zoom--mobile-hide):not(.init)").each(function() {
                 var $this = $(this);
                 $this.addClass('init').zoom({

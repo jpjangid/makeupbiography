@@ -34,7 +34,8 @@
 
 body {
   margin: 0;
-  font-family: var(--bs-font-sans-serif);
+  /* font-family: var(--bs-font-sans-serif); */
+  font-family: "Roboto", sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -200,7 +201,9 @@ pre,
 code,
 kbd,
 samp {
-  font-family: var(--bs-font-monospace);
+  /*  font-family: "Roboto", sans-serif
+; */
+  font-family: "Roboto", sans-serif;
   font-size: 1em;
   direction: ltr /* rtl:ignore */;
   unicode-bidi: bidi-override;
@@ -296,7 +299,8 @@ select,
 optgroup,
 textarea {
   margin: 0;
-  font-family: inherit;
+  /* font-family: inherit; */
+  font-family: "Roboto", sans-serif;
   font-size: inherit;
   line-height: inherit;
 }
@@ -5848,7 +5852,8 @@ textarea.form-control-lg {
   z-index: 1080;
   display: block;
   margin: 0;
-  font-family: var(--bs-font-sans-serif);
+  /* font-family: var(--bs-font-sans-serif); */
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -5950,7 +5955,8 @@ textarea.form-control-lg {
   z-index: 1070;
   display: block;
   max-width: 276px;
-  font-family: var(--bs-font-sans-serif);
+  /* font-family: var(--bs-font-sans-serif); */
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -9965,7 +9971,7 @@ textarea.form-control-lg {
 }
 
 .font-monospace {
-  font-family: var(--bs-font-monospace) !important;
+  font-family: "Roboto", sans-serif !important;
 }
 
 .fs-1 {
@@ -32387,7 +32393,7 @@ textarea.form-control-lg {
 }
 
 .text-inverse-muted {
-  color: !important;
+  color: #A1A5B7!important;
 }
 
 .text-hover-muted {
@@ -32420,11 +32426,11 @@ textarea.form-control-lg {
 }
 .text-hover-inverse-muted:hover {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-hover-inverse-muted:hover i {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color:#A1A5B7 !important;
 }
 .text-hover-inverse-muted:hover .svg-icon svg [fill]:not(.permanent):not(g) {
   transition: fill 0.3s ease;
@@ -32463,11 +32469,11 @@ textarea.form-control-lg {
 }
 .text-active-inverse-muted.active {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-active-inverse-muted.active i {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-active-inverse-muted.active .svg-icon svg [fill]:not(.permanent):not(g) {
   transition: fill 0.3s ease;
@@ -32481,7 +32487,7 @@ textarea.form-control-lg {
 }
 
 .text-inverse-gray-100 {
-  color: !important;
+  color: #A1A5B7!important;
 }
 
 .text-hover-gray-100 {
@@ -32514,11 +32520,11 @@ textarea.form-control-lg {
 }
 .text-hover-inverse-gray-100:hover {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-hover-inverse-gray-100:hover i {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-hover-inverse-gray-100:hover .svg-icon svg [fill]:not(.permanent):not(g) {
   transition: fill 0.3s ease;
@@ -32557,11 +32563,11 @@ textarea.form-control-lg {
 }
 .text-active-inverse-gray-100.active {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-active-inverse-gray-100.active i {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-active-inverse-gray-100.active .svg-icon svg [fill]:not(.permanent):not(g) {
   transition: fill 0.3s ease;
@@ -32575,7 +32581,7 @@ textarea.form-control-lg {
 }
 
 .text-inverse-gray-200 {
-  color: !important;
+  color: #A1A5B7!important;
 }
 
 .text-hover-gray-200 {
@@ -32608,11 +32614,11 @@ textarea.form-control-lg {
 }
 .text-hover-inverse-gray-200:hover {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-hover-inverse-gray-200:hover i {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-hover-inverse-gray-200:hover .svg-icon svg [fill]:not(.permanent):not(g) {
   transition: fill 0.3s ease;
@@ -32651,11 +32657,11 @@ textarea.form-control-lg {
 }
 .text-active-inverse-gray-200.active {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-active-inverse-gray-200.active i {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-active-inverse-gray-200.active .svg-icon svg [fill]:not(.permanent):not(g) {
   transition: fill 0.3s ease;
@@ -32669,7 +32675,7 @@ textarea.form-control-lg {
 }
 
 .text-inverse-gray-300 {
-  color: !important;
+  color: #A1A5B7!important;
 }
 
 .text-hover-gray-300 {
@@ -32702,11 +32708,11 @@ textarea.form-control-lg {
 }
 .text-hover-inverse-gray-300:hover {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-hover-inverse-gray-300:hover i {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-hover-inverse-gray-300:hover .svg-icon svg [fill]:not(.permanent):not(g) {
   transition: fill 0.3s ease;
@@ -32745,11 +32751,11 @@ textarea.form-control-lg {
 }
 .text-active-inverse-gray-300.active {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-active-inverse-gray-300.active i {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-active-inverse-gray-300.active .svg-icon svg [fill]:not(.permanent):not(g) {
   transition: fill 0.3s ease;
@@ -32763,7 +32769,7 @@ textarea.form-control-lg {
 }
 
 .text-inverse-gray-400 {
-  color: !important;
+  color: #A1A5B7!important;
 }
 
 .text-hover-gray-400 {
@@ -32796,11 +32802,11 @@ textarea.form-control-lg {
 }
 .text-hover-inverse-gray-400:hover {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-hover-inverse-gray-400:hover i {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-hover-inverse-gray-400:hover .svg-icon svg [fill]:not(.permanent):not(g) {
   transition: fill 0.3s ease;
@@ -32839,11 +32845,11 @@ textarea.form-control-lg {
 }
 .text-active-inverse-gray-400.active {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-active-inverse-gray-400.active i {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-active-inverse-gray-400.active .svg-icon svg [fill]:not(.permanent):not(g) {
   transition: fill 0.3s ease;
@@ -32857,7 +32863,7 @@ textarea.form-control-lg {
 }
 
 .text-inverse-gray-500 {
-  color: !important;
+  color: #A1A5B7!important;
 }
 
 .text-hover-gray-500 {
@@ -32890,11 +32896,11 @@ textarea.form-control-lg {
 }
 .text-hover-inverse-gray-500:hover {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color:#A1A5B7 !important;
 }
 .text-hover-inverse-gray-500:hover i {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-hover-inverse-gray-500:hover .svg-icon svg [fill]:not(.permanent):not(g) {
   transition: fill 0.3s ease;
@@ -32933,11 +32939,11 @@ textarea.form-control-lg {
 }
 .text-active-inverse-gray-500.active {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-active-inverse-gray-500.active i {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color:#A1A5B7 !important;
 }
 .text-active-inverse-gray-500.active .svg-icon svg [fill]:not(.permanent):not(g) {
   transition: fill 0.3s ease;
@@ -32951,7 +32957,7 @@ textarea.form-control-lg {
 }
 
 .text-inverse-gray-600 {
-  color: !important;
+  color:#A1A5B7 !important;
 }
 
 .text-hover-gray-600 {
@@ -32984,11 +32990,11 @@ textarea.form-control-lg {
 }
 .text-hover-inverse-gray-600:hover {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color:#A1A5B7 !important;
 }
 .text-hover-inverse-gray-600:hover i {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-hover-inverse-gray-600:hover .svg-icon svg [fill]:not(.permanent):not(g) {
   transition: fill 0.3s ease;
@@ -33027,11 +33033,11 @@ textarea.form-control-lg {
 }
 .text-active-inverse-gray-600.active {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color:#A1A5B7 !important;
 }
 .text-active-inverse-gray-600.active i {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-active-inverse-gray-600.active .svg-icon svg [fill]:not(.permanent):not(g) {
   transition: fill 0.3s ease;
@@ -33045,7 +33051,7 @@ textarea.form-control-lg {
 }
 
 .text-inverse-gray-700 {
-  color: !important;
+  color:#A1A5B7 !important;
 }
 
 .text-hover-gray-700 {
@@ -33078,11 +33084,11 @@ textarea.form-control-lg {
 }
 .text-hover-inverse-gray-700:hover {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-hover-inverse-gray-700:hover i {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-hover-inverse-gray-700:hover .svg-icon svg [fill]:not(.permanent):not(g) {
   transition: fill 0.3s ease;
@@ -33121,11 +33127,11 @@ textarea.form-control-lg {
 }
 .text-active-inverse-gray-700.active {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-active-inverse-gray-700.active i {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-active-inverse-gray-700.active .svg-icon svg [fill]:not(.permanent):not(g) {
   transition: fill 0.3s ease;
@@ -33139,7 +33145,7 @@ textarea.form-control-lg {
 }
 
 .text-inverse-gray-800 {
-  color: !important;
+  color: #A1A5B7!important;
 }
 
 .text-hover-gray-800 {
@@ -33172,11 +33178,11 @@ textarea.form-control-lg {
 }
 .text-hover-inverse-gray-800:hover {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color:#A1A5B7 !important;
 }
 .text-hover-inverse-gray-800:hover i {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-hover-inverse-gray-800:hover .svg-icon svg [fill]:not(.permanent):not(g) {
   transition: fill 0.3s ease;
@@ -33215,11 +33221,11 @@ textarea.form-control-lg {
 }
 .text-active-inverse-gray-800.active {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-active-inverse-gray-800.active i {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-active-inverse-gray-800.active .svg-icon svg [fill]:not(.permanent):not(g) {
   transition: fill 0.3s ease;
@@ -33233,7 +33239,7 @@ textarea.form-control-lg {
 }
 
 .text-inverse-gray-900 {
-  color: !important;
+  color: #A1A5B7!important;
 }
 
 .text-hover-gray-900 {
@@ -33266,11 +33272,11 @@ textarea.form-control-lg {
 }
 .text-hover-inverse-gray-900:hover {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7#A1A5B7!important;
 }
 .text-hover-inverse-gray-900:hover i {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-hover-inverse-gray-900:hover .svg-icon svg [fill]:not(.permanent):not(g) {
   transition: fill 0.3s ease;
@@ -33309,11 +33315,11 @@ textarea.form-control-lg {
 }
 .text-active-inverse-gray-900.active {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-active-inverse-gray-900.active i {
   transition: color 0.2s ease, background-color 0.2s ease;
-  color: !important;
+  color: #A1A5B7!important;
 }
 .text-active-inverse-gray-900.active .svg-icon svg [fill]:not(.permanent):not(g) {
   transition: fill 0.3s ease;
@@ -46738,7 +46744,7 @@ div:hover::-webkit-scrollbar-thumb {
 }
 
 html {
-  font-family: sans-serif;
+  font-family: "Roboto", sans-serif;
   text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);

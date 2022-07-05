@@ -56,6 +56,15 @@
 		margin-top: 0;
 		background-image: linear-gradient(to bottom, #666362, #413839);
 	}
+
+	.pagination_active{
+		background: #000;
+		color: #fff;
+	}
+
+	/* .c-product-grid__item{
+		width: fit-content!important;
+	} */
 </style>
 @endsection
 
@@ -278,7 +287,7 @@
 								<div class="c-product-grid__badges c-badge__list">
 								</div>
 								@if($product->discount_type == "percentage")
-								<div class="c-product-grid__badges c-badge__list">
+								<div class="c-product-grid__badges c-badge__list" style="width:fit-content;">
 									@if(!empty($product->label_name))
 									<span class="c-badge-category c-badge--featured">{{ $product->label_name }}</span>
 									@endif
@@ -361,7 +370,7 @@
 						</div>
 					</div>
 				</div>
-				<nav class="woocommerce-pagination">
+				<!-- <nav class="woocommerce-pagination">
 					<ul class='page-numbers'>
 						<li>
 							<a class="prev page-numbers" href="{{ url('brands/'.$slug.'?page=1') }}" onclick="return <?php echo $prev; ?>;">
@@ -375,6 +384,27 @@
 						@endforeach
 						<li>
 							<a class="next page-numbers" href="{{ url('brands/'.$slug.'?page='.$products->lastPage()) }}" onclick="return <?php echo $next; ?>;">
+								<i class="ip-menu-right page-numbers__prev-ico"></i>
+							</a>
+						</li>
+					</ul>
+				</nav> -->
+				<nav class="woocommerce-pagination">
+					<ul class='page-numbers'>
+						<li>
+							<a class="prev page-numbers" href="{{ $products->previousPageUrl() }}" onclick="return <?php echo $prev; ?>;">
+								<i class="ip-menu-left page-numbers__prev-ico"></i>
+							</a>
+						</li>
+						@php $last_page = 1; @endphp 
+						@foreach($no_of_pages as $page)
+						<li>
+							<a class="next page-numbers {{ url()->full() == url('brands/'.$slug.'?page='.$page) ? 'pagination_active' : '' }}" href="{{ url('brands/'.$slug.'?page='.$page) }}">{{ $page }}</a>
+						</li>
+						@php $last_page = $page; @endphp
+						@endforeach
+						<li>
+							<a class="next page-numbers" href="{{ $products->nextPageUrl() }}" onclick="return <?php echo $next; ?>;">
 								<i class="ip-menu-right page-numbers__prev-ico"></i>
 							</a>
 						</li>

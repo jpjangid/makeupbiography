@@ -547,7 +547,7 @@
 														<div class="c-ip-product-tabs__menu-item js-ip-tabs-menu-item active">
 															<a class="c-ip-product-tabs__menu-link js-ip-tabs-link" href="#tab-01406ee-1" data-index="0" onclick="return false;">Newest</a>
 														</div>
-														<div class="c-ip-product-tabs__menu-item js-ip-tabs-menu-item ">
+														<div class="c-ip-product-tabs__menu-item js-ip-tabs-menu-item">
 															<a class="c-ip-product-tabs__menu-link js-ip-tabs-link" href="#tab-01406ee-2" data-index="1" onclick="return false;">Popular</a>
 														</div>
 														<div class="c-ip-product-tabs__menu-item js-ip-tabs-menu-item ">
@@ -572,7 +572,7 @@
 																	<div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple" style="background-color: white;">
 
 																		@if($main_newest_product->discount_type == "percentage")
-																		<div class="c-product-grid__badges c-badge__list">
+																		<div class="c-product-grid__badges" style="width:fit-content;">
 																			@if(!empty($main_newest_product->label_name))
 																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
 																			@endif
@@ -590,7 +590,7 @@
 																		@endif
 
 																		@if($main_newest_product->discount_type == "flat")
-																		<div class="c-product-grid__badges c-badge__list">
+																		<div class="c-product-grid__badges" style="width:fit-content;">
 																			@if(!empty($main_newest_product->label_name))
 																			<span class="c-badge c-badge--featured">{{ $main_newest_product->label_name }}</span>
 																			@endif
@@ -698,7 +698,7 @@
 																	<div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple" style="background-color: white;">
 
 																		@if($main_popular_product->discount_type == "percentage" && $main_popular_product->discount > 0)
-																		<div class="c-product-grid__badges c-badge__list">
+																		<div class="c-product-grid__badges" style="width: fit-content;">
 																			@if(!empty($main_popular_product->label_name))
 																			<span class="c-badge c-badge--featured">{{ $main_popular_product->label_name }}</span>
 																			@endif
@@ -715,7 +715,7 @@
 																		@endif
 
 																		@if($main_popular_product->discount_type == "flat")
-																		<div class="c-product-grid__badges c-badge__list">
+																		<div class="c-product-grid__badges" style="width: fit-content;">
 																			@if(!empty($main_popular_product->label_name))
 																			<span class="c-badge c-badge--featured">{{ $main_popular_product->label_name }}</span>
 																			@endif
@@ -827,7 +827,7 @@
 																	<div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple" style="background-color: white;">
 
 																		@if($main_category_product->discount_type == "percentage")
-																		<div class="c-product-grid__badges c-badge__list">
+																		<div class="c-product-grid__badges" style="width: fit-content;">
 																			@if(!empty($main_category_product->label_name))
 																			<span class="c-badge c-badge--featured">{{ $main_category_product->label_name }}</span>
 																			@endif
@@ -844,7 +844,7 @@
 																		@endif
 
 																		@if($main_category_product->discount_type == "flat")
-																		<div class="c-product-grid__badges c-badge__list">
+																		<div class="c-product-grid__badges" style="width: fit-content;">
 																			@if(!empty($main_category_product->label_name))
 																			<span class="c-badge c-badge--featured">{{ $main_category_product->label_name }}</span>
 																			@endif
@@ -956,7 +956,7 @@
 																	<div class="c-product-grid__item c-product-grid__item--4-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple" style="background-color: white;">
 
 																		@if($main_brand_product->discount_type == "percentage")
-																		<div class="c-product-grid__badges c-badge__list">
+																		<div class="c-product-grid__badges" style="width: fit-content;">
 																			@if(!empty($main_brand_product->label_name))
 																			<span class="c-badge c-badge--featured">{{ $main_brand_product->label_name }}</span>
 																			@endif
@@ -972,7 +972,7 @@
 																		@endif
 
 																		@if($main_brand_product->discount_type == "flat")
-																		<div class="c-product-grid__badges c-badge__list">
+																		<div class="c-product-grid__badges" style="width: fit-content;">
 																			@if(!empty($main_brand_product->label_name))
 																			<span class="c-badge c-badge--featured">{{ $main_brand_product->label_name }}</span>
 																			@endif
