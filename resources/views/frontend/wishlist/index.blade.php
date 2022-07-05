@@ -106,11 +106,11 @@
 											<i class="ip-plus c-product-grid__atc-icon"></i>
 											<span class="c-product-grid__atc-text">Add to cart</span>
 										</button>
-									</from>
-									<div class="c-quantity js-product-grid-quantity">
-									</div>
-									<span class="added_to_cart h-hidden">
-									</span>
+										</from>
+										<div class="c-quantity js-product-grid-quantity">
+										</div>
+										<span class="added_to_cart h-hidden">
+										</span>
 								</div>
 							</td>
 						</tr>
@@ -129,20 +129,20 @@
 					</div>
 					<div class="c-wishlist__share-col-2">
 						<span class="c-wishlist__share-title">Share Wishlist:</span>
-						<span class="c-post-share">
-							<a class="c-post-share__link" target="_blank" href="//www.facebook.com/sharer.php?u=https://parkofideas.com/luchiana/demo/wishlist/?ip_wishlist_share=438,504" title="Share on Facebook">
+						<div class="c-post-share">
+							<a class="c-post-share__link" target="_blank" href="https://m.facebook.com/makeupbiography/" title="Share on Facebook">
 								<i class="ip-facebook c-post-share__icon c-post-share__icon--facebook"></i>
 							</a>
-							<a class="c-post-share__link" target="_blank" href="//twitter.com/share?url=https://parkofideas.com/luchiana/demo/wishlist/?ip_wishlist_share=438,504" title="Share on Twitter">
-								<i class="ip-twitter c-post-share__icon c-post-share__icon--twitter"></i>
+							<a class="c-post-share__link" target="_blank" href="https://instagram.com/makeupbiography?igshid=YmMyMTA2M2Y=" title="Pin on Pinterest">
+								<i class="ip-instagram c-post-share__icon c-post-share__icon--instagram"></i>
 							</a>
-							<a class="c-post-share__link" target="_blank" href="//pinterest.com/pin/create/button/?url=https://parkofideas.com/luchiana/demo/wishlist/?ip_wishlist_share=438,504&amp;description=Wishlist" title="Pin on Pinterest">
-								<i class="ip-pinterest c-post-share__icon c-post-share__icon--pinterest"></i>
-							</a>
-							<a class="c-post-share__link" target="_blank" href="whatsapp://send?text=https://parkofideas.com/luchiana/demo/wishlist/?ip_wishlist_share=438,504" title="Share on Whatsapp" data-action="share/whatsapp/share">
+							<a class="c-post-share__link" target="_blank" href="whatsapp://send?text=https://parkofideas.com/luchiana/demo/shop/midnight-musk-amber/" title="Share on Whatsapp" data-action="share/whatsapp/share">
 								<i class="ip-whatsapp c-post-share__icon c-post-share__icon--whatsapp"></i>
 							</a>
-						</span>
+							<a class="c-post-share__link" target="_blank" href="https://youtube.com/channel/UCznA_nHSabfpH1zrCzgLHvQ" title="Share on Whatsapp" data-action="share/whatsapp/share">
+								<i class="ip-youtube c-post-share__icon c-post-share__icon--youtube"></i>
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>

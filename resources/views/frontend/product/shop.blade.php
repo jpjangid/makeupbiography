@@ -340,7 +340,7 @@
 								</div>
 
 								@if($product->discount_type == "percentage")
-								<div class="c-product-grid__badges c-badge__list">
+								<div class="c-product-grid__badges" style="width:fit-content;">
 									@if(!empty($product->label_name))
 									<span class="c-badge-shop c-badge--featured">{{ $product->label_name }}</span>
 									@endif
@@ -353,7 +353,7 @@
 								@endif
 
 								@if($product->discount_type == "flat")
-								<div class="c-product-grid__badges c-badge__list">
+								<div class="c-product-grid__badges" style="width: fit-content;">
 									@if(!empty($product->label_name))
 									<span class="c-badge-shop c-badge--featured">{{ $product->label_name }}</span>
 									@endif
