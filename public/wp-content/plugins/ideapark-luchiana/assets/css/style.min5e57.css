@@ -1239,7 +1239,7 @@
     width: 90px !important;
     height: 90px !important;
     -o-object-fit: container;
-    object-fit: contain;
+    object-fit: cover;
     -o-object-position: center;
     object-position: center;
 }
