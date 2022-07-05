@@ -480,7 +480,7 @@
 				<!-- <img class="blue-left-stroke" src="{{ asset('/images/paint-stroke.png') }}"> -->
 				<div class="elementor-container elementor-column-gap-no">
 					<div class="elementor-row">
-						<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-83255c5" data-id="83255c5" data-element_type="column">
+						<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-83255c5" data-id="83255c5" data-element_type="column" style="display: flex;">
 							<div class="elementor-column-wrap elementor-element-populated">
 								<div class="elementor-widget-wrap">
 									<div class="elementor-element elementor-element-f6c8514 elementor-widget elementor-widget-ideapark-image-list-1" data-id="f6c8514" data-element_type="widget" data-widget_type="ideapark-image-list-1.default">
@@ -1201,7 +1201,7 @@
 																<!-- Big Discount list itms Begin -->
 																<div class="c-product-grid__item c-product-grid__item--3-per-row c-product-grid__item--normal product type-product post-438 status-publish first instock product_cat-makeup product_tag-airbrush product_tag-matte product_tag-skin has-post-thumbnail sale featured shipping-taxable purchasable product-type-simple" style="background-color: white;">
 
-																	<div class="c-product-grid__badges c-badge__list">
+																	<div class="c-product-grid__badges" style="width: fit-content;">
 																		@if($big_offer_product->label_name != "")
 																		<span class="c-badge c-badge--featured">{{ $big_offer_product->label_name }}</span>
 																		@endif
