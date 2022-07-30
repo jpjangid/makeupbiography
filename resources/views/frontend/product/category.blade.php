@@ -13,7 +13,59 @@
 
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+</script>
 <style>
+	#accordion a:hover {
+		color: gray;
+	}
+
+	#accordion a {
+		color: #000;
+	}
+	
+	.card-header {
+		background: #fff;
+	}
+
+	.show {
+		background: rgba(0, 0, 0, .02);
+	}
+
+	.card-link {
+		display: flex;
+		justify-content: space-between;
+		align-content: center;
+		align-items: baseline;
+		width: 100%;
+	}
+
+	.card-link i {
+		display: flex;
+		align-content: center;
+	}
+
+	header a {
+		color: #ffff;
+	}
+
+	footer a {
+		color: #ffff;
+	}
+
+	.woocommerce-pagination a {
+		color: #000;
+	}
+
+	.woocommerce-pagination a {
+		color: #000;
+	}
+
 	.short-description {
 		display: block;
 		/* or inline-block */
@@ -22,6 +74,11 @@
 		overflow: hidden;
 		max-height: 3.6em;
 		line-height: 1.8em;
+	}
+
+	.c-product-grid {
+		display: grid;
+		grid-template-columns: 30% 70%;
 	}
 
 	.price-div {
@@ -40,14 +97,14 @@
 		padding-top: 7px;
 	}
 
-	.c-badge-category{
+	.c-badge-category {
 		-webkit-box-flex: 0;
 		flex: 0 0 auto;
 		display: flex;
-		justify-content : center;
-		align-items : center;
-		width : 40px;
-		height : 40px;
+		justify-content: center;
+		align-items: center;
+		width: 40px;
+		height: 40px;
 		text-transform: uppercase;
 		color: #FFF;
 		font-style: normal;
@@ -60,6 +117,13 @@
 		text-align: center;
 		margin-bottom: 5px;
 		background-color: var(--text-color);
+	}
+
+	.l-inner {
+		background: whitesmoke;
+	}
+	.card-body-1 {
+		padding: 10px 20px;
 	}
 </style>
 @endsection
@@ -273,6 +337,104 @@
 				</div>
 
 				<div class="c-product-grid">
+				<div id="accordion" class="left-cat">
+							<div class="card">
+								<div class="card-header">
+									<a class="card-link" data-toggle="collapse" href="#description1"><span>Category</span> <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+								</div>
+								<div id="description1" class="collapse" data-parent="#accordion">
+									<div class="card-body-1">
+										<span class="d-flex" style="align-items: center;" id="description4">
+											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+											<a class="card-link" data-toggle="collapse" href="#description11"><span>Body Care</span> <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+										</span>
+										<div id="description11" class="collapse" data-parent="#description1">
+											<div class="card-body-1">
+												<div style="display: flex; align-items:center;">
+													<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+													<a class="card-link" data-toggle="collapse" href="#description14"><span>Body Care</span> <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+												</div>
+											</div>
+											<div id="description14" class="collapse" data-parent="#description11">
+												<div class="card-body-1">
+													<div style="display: flex; align-items:center; margin-left:15px;">
+														<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+														<label class="form-check-label" for="flexCheckChecked">Lotion</label><span></span>
+													</div>
+												</div>
+											</div>
+										</div>
+										<span class="d-flex" style="align-items: center;">
+											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+											<a class="card-link" data-toggle="collapse" href="#description12"><span>Skin Care</span> <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+										</span>
+										<div id="description12" class="collapse" data-parent="#description1">
+											<div class="card-body-1">
+												<div style="display: flex; align-items:center;">
+													<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+													<label class="form-check-label" for="flexCheckChecked">Oil</label><span></span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card">
+								<div class="card-header">
+									<a class="card-link" data-toggle="collapse" href="#description2"><span>Brands</span> <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+								</div>
+								<div id="description2" class="collapse" data-parent="#description2">
+									<div class="card-body-1">
+										<span class="d-flex" style="align-items: center;">
+											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+											<a class="card-link" data-toggle="collapse" href="#description21"><span>Body Care</span> <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+										</span>
+										<div id="description21" class="collapse" data-parent="#description2">
+											<div class="card-body-1">
+												<div style="display: flex; align-items:center;">
+													<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+													<label class="form-check-label" for="flexCheckChecked">Oil</label><span>
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card">
+								<div class="card-header">
+									<a class="card-link" data-toggle="collapse" href="#description3"><span>Price</span> <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+								</div>
+								<div id="description3" class="collapse" data-parent="#description3">
+									<div class="card-body-1">
+										<div style="display: flex;">
+											<span><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" /></span>
+											<span><a class="card-link" data-toggle="collapse" href="#description31">Rs. 0 - Rs. 499 32</a></span>
+										</div>
+										<div style="display: flex;">
+											<span><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" /></span>
+											<span><a class="card-link" data-toggle="collapse" href="#description31">Rs. 0 - Rs. 499 32</a></span>
+										</div>
+										<div style="display: flex;">
+											<span><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" /></span>
+											<span><a class="card-link" data-toggle="collapse" href="#description31">Rs. 0 - Rs. 499 32</a></span>
+										</div>
+										<div style="display: flex;">
+											<span><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" /></span>
+											<span><a class="card-link" data-toggle="collapse" href="#description31">Rs. 0 - Rs. 499 32</a></span>
+										</div>
+										<!-- <div id="description31" class="collapse" data-parent="#description3">
+											<div class="card-body">
+												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+												<label class="form-check-label" for="flexCheckChecked">Lotion</label><br>
+												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+												<label class="form-check-label" for="flexCheckChecked">Oil</label><br>
+											</div>
+										</div> -->
+									</div>
+								</div>
+							</div>
+						</div>
 					<div class="c-product-grid__wrap c-product-grid__wrap--3-per-row ">
 						<div class="c-product-grid__list c-product-grid__list--3-per-row ">
 							@foreach($categories as $category)
@@ -311,22 +473,22 @@
 								</div>
 
 								@if($product->discount_type == "percentage")
-									<div class="c-product-grid__badges c-badge__list">
-										@if(!empty($product->label_name))
-										<span class="c-badge-category c-badge--featured">{{ $product->label_name }}</span>
-										@endif
-										<span class="c-badge-category c-badge--sale">-{{ $product->discount }}%</span>
-									</div>
+								<div class="c-product-grid__badges c-badge__list" style="width: fit-content;">
+									@if(!empty($product->label_name))
+									<span class="c-badge-category c-badge--featured">{{ $product->label_name }}</span>
 									@endif
+									<span class="c-badge-category c-badge--sale">-{{ $product->discount }}%</span>
+								</div>
+								@endif
 
-									@if($product->discount_type == "flat")
-									<div class="c-product-grid__badges c-badge__list">
-										@if(!empty($product->label_name))
-										<span class="c-badge-category c-badge--featured">{{ $product->label_name }}</span>
-										@endif
-										<span class="c-badge-category c-badge--sale">- &#8377; {{ $product->regular_price - $product->sale_price }}</span>
-									</div>
+								@if($product->discount_type == "flat")
+								<div class="c-product-grid__badges c-badge__list">
+									@if(!empty($product->label_name))
+									<span class="c-badge-category c-badge--featured">{{ $product->label_name }}</span>
 									@endif
+									<span class="c-badge-category c-badge--sale">- &#8377; {{ $product->regular_price - $product->sale_price }}</span>
+								</div>
+								@endif
 								<!-- .c-product-grid__badges -->
 								<div class="c-product-grid__thumb-wrap">
 									<a href="{{ url('products',['product' => $product->slug ]) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
