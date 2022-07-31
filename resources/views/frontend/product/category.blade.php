@@ -23,31 +23,34 @@
 <style>
 	#accordion a:hover {
 		color: gray;
+		text-decoration: none;
 	}
 
-	#accordion a {
-		color: #000;
-	}
-	
-	.card-header {
-		background: #fff;
+	.data-class-1 {
+		padding-left: 10px;
 	}
 
-	.show {
-		background: rgba(0, 0, 0, .02);
+	.data-class-2 {
+		padding-left: 10px;
+	}
+
+	#accordion .card-body {
+		padding: 0.5rem 1.25rem;
 	}
 
 	.card-link {
 		display: flex;
 		justify-content: space-between;
-		align-content: center;
-		align-items: baseline;
-		width: 100%;
+		align-items: center;
 	}
 
-	.card-link i {
-		display: flex;
-		align-content: center;
+	#accordion a {
+		color: #000;
+	}
+
+	.c-product-grid {
+		display: grid;
+		grid-template-columns: 30% 70%;
 	}
 
 	header a {
@@ -56,10 +59,6 @@
 
 	footer a {
 		color: #ffff;
-	}
-
-	.woocommerce-pagination a {
-		color: #000;
 	}
 
 	.woocommerce-pagination a {
@@ -76,9 +75,9 @@
 		line-height: 1.8em;
 	}
 
-	.c-product-grid {
-		display: grid;
-		grid-template-columns: 30% 70%;
+	a:hover {
+		text-decoration: none;
+		color: #fff;
 	}
 
 	.price-div {
@@ -121,9 +120,6 @@
 
 	.l-inner {
 		background: whitesmoke;
-	}
-	.card-body-1 {
-		padding: 10px 20px;
 	}
 </style>
 @endsection
@@ -337,104 +333,138 @@
 				</div>
 
 				<div class="c-product-grid">
-				<div id="accordion" class="left-cat">
-							<div class="card">
-								<div class="card-header">
-									<a class="card-link" data-toggle="collapse" href="#description1"><span>Category</span> <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+					<div id="accordion">
+						<div class="card">
+							<div class="card-header">
+								<a class="card-link" data-toggle="collapse" href="#description1">
+									<span>Category</span><i class="fa fa-angle-down" aria-hidden="true"></i>
+								</a>
+							</div>
+							<div id="description1" class="collapse" data-parent="#accordion">
+								<div class="card-body">
+									<a class="card-link" data-toggle="collapse" href="#description12">
+										<span>Body Care</span> <i class="fa fa-angle-down" aria-hidden="true"></i>
+									</a>
 								</div>
-								<div id="description1" class="collapse" data-parent="#accordion">
-									<div class="card-body-1">
-										<span class="d-flex" style="align-items: center;" id="description4">
+								<div id="description12" class="collapse data-class-1" data-parent="#description1">
+									<div class="card-body">
+										<div>
 											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-											<a class="card-link" data-toggle="collapse" href="#description11"><span>Body Care</span> <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-										</span>
-										<div id="description11" class="collapse" data-parent="#description1">
-											<div class="card-body-1">
-												<div style="display: flex; align-items:center;">
-													<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-													<a class="card-link" data-toggle="collapse" href="#description14"><span>Body Care</span> <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-												</div>
-											</div>
-											<div id="description14" class="collapse" data-parent="#description11">
-												<div class="card-body-1">
-													<div style="display: flex; align-items:center; margin-left:15px;">
-														<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-														<label class="form-check-label" for="flexCheckChecked">Lotion</label><span></span>
-													</div>
-												</div>
-											</div>
+											<a data-toggle="collapse" href="#description121">
+												<span>Body Care</span>
+												<i class="fa fa-angle-down" aria-hidden="true"></i>
+											</a>
 										</div>
-										<span class="d-flex" style="align-items: center;">
+									</div>
+									<div id="description121" class="collapse data-class-2" data-parent="#description12">
+										<div class="card-body">
 											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-											<a class="card-link" data-toggle="collapse" href="#description12"><span>Skin Care</span> <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-										</span>
-										<div id="description12" class="collapse" data-parent="#description1">
-											<div class="card-body-1">
-												<div style="display: flex; align-items:center;">
-													<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-													<label class="form-check-label" for="flexCheckChecked">Oil</label><span></span>
-												</div>
-											</div>
+											<label class="form-check-label" for="flexCheckChecked">Soap</label><span></span>
+										</div>
+										<div class="card-body">
+											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+											<label class="form-check-label" for="flexCheckChecked">Data</label><span></span>
+										</div>
+										<div class="card-body">
+											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+											<label class="form-check-label" for="flexCheckChecked">Perfumes</label><span></span>
 										</div>
 									</div>
 								</div>
-							</div>
-							<div class="card">
-								<div class="card-header">
-									<a class="card-link" data-toggle="collapse" href="#description2"><span>Brands</span> <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+
+								<div class="card-body">
+									<a class="card-link" data-toggle="collapse" href="#description13">
+										<span>Skin Care</span> <i class="fa fa-angle-down" aria-hidden="true"></i>
+									</a>
 								</div>
-								<div id="description2" class="collapse" data-parent="#description2">
-									<div class="card-body-1">
-										<span class="d-flex" style="align-items: center;">
-											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-											<a class="card-link" data-toggle="collapse" href="#description21"><span>Body Care</span> <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-										</span>
-										<div id="description21" class="collapse" data-parent="#description2">
-											<div class="card-body-1">
-												<div style="display: flex; align-items:center;">
-													<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-													<label class="form-check-label" for="flexCheckChecked">Oil</label><span>
-													</span>
-												</div>
-											</div>
-										</div>
+								<div id="description13" class="collapse data-class-1" data-parent="#description1">
+									<div class="card-body">
+										<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+										<a data-toggle="collapse" href="#description131">
+											<span>Skin Care</span> <i class="fa fa-angle-down" aria-hidden="true"></i>
+										</a>
 									</div>
-								</div>
-							</div>
-							<div class="card">
-								<div class="card-header">
-									<a class="card-link" data-toggle="collapse" href="#description3"><span>Price</span> <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-								</div>
-								<div id="description3" class="collapse" data-parent="#description3">
-									<div class="card-body-1">
-										<div style="display: flex;">
-											<span><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" /></span>
-											<span><a class="card-link" data-toggle="collapse" href="#description31">Rs. 0 - Rs. 499 32</a></span>
+									<div id="description131" class="collapse data-class-2" data-parent="#description13">
+										<div class="card-body">
+											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+											<label class="form-check-label" for="flexCheckChecked">Soap</label><span></span>
 										</div>
-										<div style="display: flex;">
-											<span><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" /></span>
-											<span><a class="card-link" data-toggle="collapse" href="#description31">Rs. 0 - Rs. 499 32</a></span>
+										<div class="card-body">
+											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+											<label class="form-check-label" for="flexCheckChecked">Data</label><span></span>
 										</div>
-										<div style="display: flex;">
-											<span><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" /></span>
-											<span><a class="card-link" data-toggle="collapse" href="#description31">Rs. 0 - Rs. 499 32</a></span>
+										<div class="card-body">
+											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+											<label class="form-check-label" for="flexCheckChecked">Perfumes</label><span></span>
 										</div>
-										<div style="display: flex;">
-											<span><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" /></span>
-											<span><a class="card-link" data-toggle="collapse" href="#description31">Rs. 0 - Rs. 499 32</a></span>
-										</div>
-										<!-- <div id="description31" class="collapse" data-parent="#description3">
-											<div class="card-body">
-												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-												<label class="form-check-label" for="flexCheckChecked">Lotion</label><br>
-												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-												<label class="form-check-label" for="flexCheckChecked">Oil</label><br>
-											</div>
-										</div> -->
 									</div>
 								</div>
 							</div>
 						</div>
+						<div class="card">
+							<div class="card-header">
+								<a class="collapsed card-link" data-toggle="collapse" href="#description2">
+									<span>Brands</span><i class="fa fa-angle-down" aria-hidden="true"></i>
+								</a>
+							</div>
+							<div id="description2" class="collapse" data-parent="#accordion">
+								<div class="card-body">
+									<a class="card-link" data-toggle="collapse" href="#description22">
+										<span>Lakeme</span> <i class="fa fa-angle-down" aria-hidden="true"></i>
+									</a>
+								</div>
+								<div id="description22" class="collapse data-class-1" data-parent="#description2">
+									<div class="card-body">
+										<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+										<a data-toggle="collapse" href="#description221">
+											<span>Skin Care</span> <i class="fa fa-angle-down" aria-hidden="true"></i>
+										</a>
+									</div>
+									<div id="description221" class="collapse data-class-2" data-parent="#description22">
+										<div class="card-body">
+											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+											<label class="form-check-label" for="flexCheckChecked">Soap</label><span></span>
+										</div>
+										<div class="card-body">
+											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+											<label class="form-check-label" for="flexCheckChecked">Data</label><span></span>
+										</div>
+										<div class="card-body">
+											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+											<label class="form-check-label" for="flexCheckChecked">Perfumes</label><span></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-header">
+								<a class="collapsed card-link" data-toggle="collapse" href="#description3">
+									<span>Price</span> <i class="fa fa-angle-down" aria-hidden="true"></i>
+								</a>
+							</div>
+							<div id="description3" class="collapse" data-parent="#accordion">
+								<div class="card-body">
+									<div style="display: flex;">
+										<span><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" /></span>
+										<span><a class="card-link" data-toggle="collapse" href="#description31">Rs. 0 - Rs. 499 32</a></span>
+									</div>
+									<div style="display: flex;">
+										<span><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" /></span>
+										<span><a class="card-link" data-toggle="collapse" href="#description31">Rs. 0 - Rs. 499 32</a></span>
+									</div>
+									<div style="display: flex;">
+										<span><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" /></span>
+										<span><a class="card-link" data-toggle="collapse" href="#description31">Rs. 0 - Rs. 499 32</a></span>
+									</div>
+									<div style="display: flex;">
+										<span><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" /></span>
+										<span><a class="card-link" data-toggle="collapse" href="#description31">Rs. 0 - Rs. 499 32</a></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 					<div class="c-product-grid__wrap c-product-grid__wrap--3-per-row ">
 						<div class="c-product-grid__list c-product-grid__list--3-per-row ">
 							@foreach($categories as $category)
