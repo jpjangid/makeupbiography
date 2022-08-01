@@ -14,6 +14,7 @@ class CategoryController extends Controller
     //for category page
     public function index(Request $request, $slug)
     {
+        // dd($request->all());
         $main_category = Category::where('slug', $slug)->with('parent.parent')->first();
         $parent_id = $this->findParent($main_category->id);
         $sub_categories = Category::where('parent_id', $parent_id)->with(['subcategory' => function ($q) {
@@ -74,6 +75,9 @@ class CategoryController extends Controller
 
         //filter sorting begin
         if (!empty($request->orderby)) {
+            if ($request->orderby == "latest") {
+                $filter_sorting = "latest";
+            }
             if ($request->orderby == "lowtohigh") {
                 $filter_sorting = "lowtohigh";
             }
