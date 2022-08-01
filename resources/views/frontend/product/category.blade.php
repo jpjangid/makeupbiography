@@ -49,6 +49,7 @@
 	.sub-cat {
 		display: flex;
 		justify-content: space-between;
+		width: 100%;
 	}
 
 	#accordion a {
@@ -379,7 +380,8 @@
 									</div>
 								</div>
 
-								<div class="card-body">
+								<div class="card-body d-flex" style="align-items: center;">
+								<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
 									<a class="card-link" data-toggle="collapse" href="#description13">
 										<span>Skin Care</span> <i class="fa fa-angle-down" aria-hidden="true"></i>
 									</a>
@@ -415,12 +417,14 @@
 								</a>
 							</div>
 							<div id="description2" class="collapse" data-parent="#accordion">
-								<div class="card-body">
+								<div class="card-body d-flex" style="align-items: center;">
+								<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
 									<a class="card-link" data-toggle="collapse" href="#description22">
-										<span>Lakeme</span> <i class="fa fa-angle-down" aria-hidden="true"></i>
+										<span>Lakeme</span> 
+										<!-- <i class="fa fa-angle-down" aria-hidden="true"></i> -->
 									</a>
 								</div>
-								<div id="description22" class="collapse data-class-1" data-parent="#description2">
+								<!-- <div id="description22" class="collapse data-class-1" data-parent="#description2">
 									<div class="card-body">
 										<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
 										<a data-toggle="collapse" href="#description221">
@@ -441,7 +445,7 @@
 											<label class="form-check-label" for="flexCheckChecked">Perfumes</label><span></span>
 										</div>
 									</div>
-								</div>
+								</div> -->
 							</div>
 						</div>
 						<div class="card">
