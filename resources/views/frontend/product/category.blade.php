@@ -416,20 +416,16 @@
 									<div id="description3" class="collapse" data-parent="#accordion">
 										<div class="card-body">
 											<div style="display: flex;">
-												<span><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" /></span>
-												<span><a class="card-link" data-toggle="collapse" href="#description31">Rs. 0 - Rs. 499 32</a></span>
+												<span><input class="form-check-input" type="checkbox" name="orderby" id="orderbyFilter" value="latest" {{ !empty($filter_sorting) && $filter_sorting=='latest' ? "checked" : "" }} /></span>
+												<span><a class="card-link" data-toggle="collapse" href="#description31">Sort by latest</a></span>
 											</div>
 											<div style="display: flex;">
-												<span><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" /></span>
-												<span><a class="card-link" data-toggle="collapse" href="#description31">Rs. 0 - Rs. 499 32</a></span>
+												<span><input class="form-check-input" type="checkbox" name="orderby" id="orderbyFilter" value="lowtohigh" {{ !empty($filter_sorting) &&  $filter_sorting == 'lowtohigh' ? "checked" : "" }} /></span>
+												<span><a class="card-link" data-toggle="collapse" href="#description31">Sort by price: low to high</a></span>
 											</div>
 											<div style="display: flex;">
-												<span><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" /></span>
-												<span><a class="card-link" data-toggle="collapse" href="#description31">Rs. 0 - Rs. 499 32</a></span>
-											</div>
-											<div style="display: flex;">
-												<span><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" /></span>
-												<span><a class="card-link" data-toggle="collapse" href="#description31">Rs. 0 - Rs. 499 32</a></span>
+												<span><input class="form-check-input" type="checkbox" name="orderby" id="orderbyFilter" value="hightolow" {{ !empty($filter_sorting) && $filter_sorting == 'hightolow' ? "checked" : "" }} /></span>
+												<span><a class="card-link" data-toggle="collapse" href="#description31">Sort by price: high to low</a></span>
 											</div>
 										</div>
 									</div>
@@ -611,7 +607,7 @@
 									<div id="description3" class="collapse" data-parent="#accordion">
 										<div class="card-body">
 											<div style="display: flex;">
-												<span><input class="form-check-input" type="checkbox" name="orderby" id="orderbyFilter" value="latest" { !empty($filter_sorting) && $filter_sorting=='latest' ? "checked" : "" }} /></span>
+												<span><input class="form-check-input" type="checkbox" name="orderby" id="orderbyFilter" value="latest" {{ !empty($filter_sorting) && $filter_sorting=='latest' ? "checked" : "" }} /></span>
 												<span><a class="card-link" data-toggle="collapse" href="#description31">Sort by latest</a></span>
 											</div>
 											<div style="display: flex;">
