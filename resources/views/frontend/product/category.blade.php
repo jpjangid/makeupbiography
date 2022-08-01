@@ -333,6 +333,7 @@
 				</div>
 
 				<div class="c-product-grid">
+					<!-- Left side category filter -->
 					<div id="accordion">
 						<div class="card">
 							<div class="card-header">
@@ -342,8 +343,9 @@
 							</div>
 							<div id="description1" class="collapse" data-parent="#accordion">
 								<div class="card-body">
+								<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
 									<a class="card-link" data-toggle="collapse" href="#description12">
-										<span>Body Care</span> <i class="fa fa-angle-down" aria-hidden="true"></i>
+										<span>Body</span> <i class="fa fa-angle-down" aria-hidden="true"></i>
 									</a>
 								</div>
 								<div id="description12" class="collapse data-class-1" data-parent="#description1">
