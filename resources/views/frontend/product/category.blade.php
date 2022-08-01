@@ -41,7 +41,14 @@
 	.card-link {
 		display: flex;
 		justify-content: space-between;
-		align-items: center;
+		align-content: center;
+		align-items: baseline;
+		width: 100%;
+	}
+
+	.sub-cat {
+		display: flex;
+		justify-content: space-between;
 	}
 
 	#accordion a {
@@ -342,21 +349,19 @@
 								</a>
 							</div>
 							<div id="description1" class="collapse" data-parent="#accordion">
-								<div class="card-body">
-								<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+								<div class="card-body d-flex" style="align-items: center;">
+									<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
 									<a class="card-link" data-toggle="collapse" href="#description12">
 										<span>Body</span> <i class="fa fa-angle-down" aria-hidden="true"></i>
 									</a>
 								</div>
 								<div id="description12" class="collapse data-class-1" data-parent="#description1">
-									<div class="card-body">
-										<div>
+									<div class="card-body d-flex" style="align-items: center;">
 											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-											<a data-toggle="collapse" href="#description121">
+											<a data-toggle="collapse" href="#description121" class="sub-cat">
 												<span>Body Care</span>
 												<i class="fa fa-angle-down" aria-hidden="true"></i>
 											</a>
-										</div>
 									</div>
 									<div id="description121" class="collapse data-class-2" data-parent="#description12">
 										<div class="card-body">
