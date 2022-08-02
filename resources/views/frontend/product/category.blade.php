@@ -416,20 +416,16 @@
 									<div id="description3" class="collapse" data-parent="#accordion">
 										<div class="card-body">
 											<div style="display: flex;">
-												<span><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" /></span>
-												<span><a class="card-link" data-toggle="collapse" href="#description31">Rs. 0 - Rs. 499 32</a></span>
+												<span><input class="form-check-input" type="checkbox" name="orderby" id="orderbyFilter" value="latest" {{ !empty($filter_sorting) && $filter_sorting=='latest' ? "checked" : "" }} /></span>
+												<span><a class="card-link" data-toggle="collapse" href="#description31">Sort by latest</a></span>
 											</div>
 											<div style="display: flex;">
-												<span><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" /></span>
-												<span><a class="card-link" data-toggle="collapse" href="#description31">Rs. 0 - Rs. 499 32</a></span>
+												<span><input class="form-check-input" type="checkbox" name="orderby" id="orderbyFilter" value="lowtohigh" {{ !empty($filter_sorting) &&  $filter_sorting == 'lowtohigh' ? "checked" : "" }} /></span>
+												<span><a class="card-link" data-toggle="collapse" href="#description31">Sort by price: low to high</a></span>
 											</div>
 											<div style="display: flex;">
-												<span><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" /></span>
-												<span><a class="card-link" data-toggle="collapse" href="#description31">Rs. 0 - Rs. 499 32</a></span>
-											</div>
-											<div style="display: flex;">
-												<span><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" /></span>
-												<span><a class="card-link" data-toggle="collapse" href="#description31">Rs. 0 - Rs. 499 32</a></span>
+												<span><input class="form-check-input" type="checkbox" name="orderby" id="orderbyFilter" value="hightolow" {{ !empty($filter_sorting) && $filter_sorting == 'hightolow' ? "checked" : "" }} /></span>
+												<span><a class="card-link" data-toggle="collapse" href="#description31">Sort by price: high to low</a></span>
 											</div>
 										</div>
 									</div>
@@ -519,157 +515,118 @@
 				<!-- <div class="c-catalog-ordering  c-catalog-ordering--desktop-filter ">
 					<div class="c-catalog-ordering__col c-catalog-ordering__col--result">
 					</div>
-					<div class="c-catalog-ordering__col c-catalog-ordering__col--ordering">
+					<!-- <div class="c-catalog-ordering__col c-catalog-ordering__col--ordering">
 						<select name="orderby" class="orderby" id="orderbyFilter" aria-label="Shop order">
 							<option value="" selected='selected'>Default sorting</option>
 							<option value="latest" {{ $filter_sorting == "latest" ? "selected" : "" }}>Sort by latest</option>
 							<option value="lowtohigh" {{ $filter_sorting == "lowtohigh" ? "selected" : "" }}>Sort by price: low to high</option>
 							<option value="hightolow" {{ $filter_sorting == "hightolow" ? "selected" : "" }}>Sort by price: high to low</option>
 						</select>
-					</div>
+					</div> -->
 					</form>
 
-					<button class="h-cb c-catalog-ordering__filter-show-button js-filter-show-button" type="button">Filter
+					<!-- <button class="h-cb c-catalog-ordering__filter-show-button js-filter-show-button" type="button">Filter
 						<i class="ip-filter c-catalog-ordering__filter-ico"></i>
-					</button>
-				</div> -->
+					</button> -->
+				</div>
 				<div class="c-product-grid">
 					<!-- Left side category filter -->
 					<div class="left-side-filter">
-						<div id="accordion">
-							<div class="card">
-								<div class="card-header">
-									<a class="card-link" data-toggle="collapse" href="#description1">
-										<span>Category</span><i class="fa fa-angle-down" aria-hidden="true"></i>
-									</a>
-								</div>
-								<div id="description1" class="collapse" data-parent="#accordion">
-									<div class="card-body d-flex" style="align-items: center;">
-										<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-										<a class="card-link" data-toggle="collapse" href="#description12">
-											<span>Body</span> <i class="fa fa-angle-down" aria-hidden="true"></i>
-										</a>
-									</div>
-									<div id="description12" class="collapse data-class-1" data-parent="#description1">
-										<div class="card-body d-flex" style="align-items: center;">
-											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-											<a data-toggle="collapse" href="#description121" class="sub-cat">
-												<span>Body Care</span>
-												<i class="fa fa-angle-down" aria-hidden="true"></i>
-											</a>
-										</div>
-										<div id="description121" class="collapse data-class-2" data-parent="#description12">
-											<div class="card-body">
-												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-												<label class="form-check-label" for="flexCheckChecked">Soap</label><span></span>
-											</div>
-											<div class="card-body">
-												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-												<label class="form-check-label" for="flexCheckChecked">Data</label><span></span>
-											</div>
-											<div class="card-body">
-												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-												<label class="form-check-label" for="flexCheckChecked">Perfumes</label><span></span>
-											</div>
-										</div>
-									</div>
+						<form action="" method="get" id="categoryPageFrom">
 
-									<div class="card-body d-flex" style="align-items: center;">
-										<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-										<a class="card-link" data-toggle="collapse" href="#description13">
-											<span>Skin Care</span> <i class="fa fa-angle-down" aria-hidden="true"></i>
+							<div id="accordion">
+								@if(!empty($sub_categories) && count($sub_categories) > 0)
+								<div class="card">
+									<div class="card-header">
+										<a class="card-link" data-toggle="collapse" href="#description1">
+											<span>Category</span><i class="fa fa-angle-down" aria-hidden="true"></i>
 										</a>
 									</div>
-									<div id="description13" class="collapse data-class-1" data-parent="#description1">
-										<div class="card-body">
-											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-											<a data-toggle="collapse" href="#description131">
-												<span>Skin Care</span> <i class="fa fa-angle-down" aria-hidden="true"></i>
+									@php $i= 0; @endphp
+									@foreach($sub_categories as $pet_cat)
+									@php ++$i;$pet_cat = $pet_cat; @endphp
+									<div id="description1" class="collapse" data-parent="#accordion">
+										<div class="card-body d-flex" style="align-items: center;">
+											<input type="checkbox" name="filter_category[]" id="filterCategory" class="filter_category" value="{{$pet_cat->slug}}" {{ !empty($filter_old) && in_array($pet_cat->slug,$filter_old) ? "checked" : "" }}>
+											<a class="card-link" data-toggle="collapse" href="#pet_cat{{ $i}}">
+												<span>{{$pet_cat->name}}</span> <i class="fa fa-angle-down" aria-hidden="true"></i>
 											</a>
 										</div>
-										<div id="description131" class="collapse data-class-2" data-parent="#description13">
-											<div class="card-body">
-												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-												<label class="form-check-label" for="flexCheckChecked">Soap</label><span></span>
+										@if(!empty($pet_cat->subcategory) && count($pet_cat->subcategory) > 0)
+										@php $y=0; @endphp
+										@foreach($pet_cat->subcategory as $sub)
+										@php ++$y;$sub = $sub; @endphp
+										<div id="pet_cat{{ $i}}" class="collapse data-class-1" data-parent="#description1">
+											<div class="card-body d-flex" style="align-items: center;">
+												<input type="checkbox" name="filter_category[]" id="filterCategory" class="filter_category" value="{{$sub->slug}}" {{ !empty($filter_old) && in_array($sub->slug,$filter_old) ? "checked" : "" }}>
+												<a data-toggle="collapse" href="#sub{{ $y}}" class="sub-cat">
+													<span>{{ $sub->name }}</span>
+													<i class="fa fa-angle-down" aria-hidden="true"></i>
+												</a>
 											</div>
-											<div class="card-body">
-												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-												<label class="form-check-label" for="flexCheckChecked">Data</label><span></span>
+											@foreach($sub->subcategory as $su)
+											<div id="sub{{ $y}}" class="collapse data-class-2" data-parent="#pet_cat{{ $i}}">
+												<div class="card-body">
+													<input type="checkbox" name="filter_category[]" id="filterCategory" class="filter_category" value="{{$su->slug}}" {{ !empty($filter_old) && in_array($su->slug,$filter_old) ? "checked" : "" }}>
+													<label class="form-check-label" for="flexCheckChecked">{{ $su->name }}</label><span></span>
+												</div>
 											</div>
-											<div class="card-body">
-												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-												<label class="form-check-label" for="flexCheckChecked">Perfumes</label><span></span>
-											</div>
+											@endforeach
 										</div>
+										@endforeach
+										@endif
 									</div>
+									@endforeach
 								</div>
-							</div>
-							<div class="card">
-								<div class="card-header">
-									<a class="collapsed card-link" data-toggle="collapse" href="#description2">
-										<span>Brands</span><i class="fa fa-angle-down" aria-hidden="true"></i>
-									</a>
-								</div>
-								<div id="description2" class="collapse" data-parent="#accordion">
-									<div class="card-body d-flex" style="align-items: center;">
-										<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-										<a class="card-link" data-toggle="collapse" href="#description22">
-											<span>Lakeme</span>
-											<!-- <i class="fa fa-angle-down" aria-hidden="true"></i> -->
+								@endif
+								<div class="card">
+									<div class="card-header">
+										<a class="collapsed card-link" data-toggle="collapse" href="#description2">
+											<span>Brands</span><i class="fa fa-angle-down" aria-hidden="true"></i>
 										</a>
 									</div>
-									<!-- <div id="description22" class="collapse data-class-1" data-parent="#description2">
-										<div class="card-body">
-											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-											<a data-toggle="collapse" href="#description221">
-												<span>Skin Care</span> <i class="fa fa-angle-down" aria-hidden="true"></i>
+									@foreach($brands as $brand)
+									<div id="description2" class="collapse" data-parent="#accordion">
+										<div class="card-body d-flex" style="align-items: center;">
+											<input class="form-check-input" type="checkbox" name="filter_brand[]" id="filterBrand" value="{{ $brand->id }}" {{ !empty($filter_brands) && count($filter_brands) && in_array($brand->id,$filter_brands) ? "checked" : "" }} />
+											<a class="card-link" data-toggle="collapse" href="#description22">
+												<span>{{ $brand->name }}</span>
+												<!-- <i class="fa fa-angle-down" aria-hidden="true"></i> -->
 											</a>
 										</div>
-										<div id="description221" class="collapse data-class-2" data-parent="#description22">
-											<div class="card-body">
-												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-												<label class="form-check-label" for="flexCheckChecked">Soap</label><span></span>
-											</div>
-											<div class="card-body">
-												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-												<label class="form-check-label" for="flexCheckChecked">Data</label><span></span>
-											</div>
-											<div class="card-body">
-												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-												<label class="form-check-label" for="flexCheckChecked">Perfumes</label><span></span>
-											</div>
-										</div>
-									</div> -->
+									</div>
+									@endforeach
 								</div>
-							</div>
-							<div class="card">
-								<div class="card-header">
-									<a class="collapsed card-link" data-toggle="collapse" href="#description3">
-										<span>Price</span> <i class="fa fa-angle-down" aria-hidden="true"></i>
-									</a>
-								</div>
-								<div id="description3" class="collapse" data-parent="#accordion">
-									<div class="card-body">
-										<div style="display: flex;">
-											<span><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" /></span>
-											<span><a class="card-link" data-toggle="collapse" href="#description31">Rs. 0 - Rs. 499 32</a></span>
-										</div>
-										<div style="display: flex;">
-											<span><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" /></span>
-											<span><a class="card-link" data-toggle="collapse" href="#description31">Rs. 0 - Rs. 499 32</a></span>
-										</div>
-										<div style="display: flex;">
-											<span><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" /></span>
-											<span><a class="card-link" data-toggle="collapse" href="#description31">Rs. 0 - Rs. 499 32</a></span>
-										</div>
-										<div style="display: flex;">
-											<span><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" /></span>
-											<span><a class="card-link" data-toggle="collapse" href="#description31">Rs. 0 - Rs. 499 32</a></span>
+								<div class="card">
+									<div class="card-header">
+										<a class="collapsed card-link" data-toggle="collapse" href="#description3">
+											<span>Sort Price</span> <i class="fa fa-angle-down" aria-hidden="true"></i>
+										</a>
+									</div>
+									<div id="description3" class="collapse" data-parent="#accordion">
+										<div class="card-body">
+											<div style="display: flex;">
+												<span><input class="form-check-input" type="checkbox" name="orderby" id="orderbyFilter" value="latest" {{ !empty($filter_sorting) && $filter_sorting=='latest' ? "checked" : "" }} /></span>
+												<span><a class="card-link" data-toggle="collapse" href="#description31">Sort by latest</a></span>
+											</div>
+											<div style="display: flex;">
+												<span><input class="form-check-input" type="checkbox" name="orderby" id="orderbyFilter" value="lowtohigh" {{ !empty($filter_sorting) &&  $filter_sorting == 'lowtohigh' ? "checked" : "" }} /></span>
+												<span><a class="card-link" data-toggle="collapse" href="#description31">Sort by price: low to high</a></span>
+											</div>
+											<div style="display: flex;">
+												<span><input class="form-check-input" type="checkbox" name="orderby" id="orderbyFilter" value="hightolow" {{ !empty($filter_sorting) && $filter_sorting == 'hightolow' ? "checked" : "" }} /></span>
+												<span><a class="card-link" data-toggle="collapse" href="#description31">Sort by price: high to low</a></span>
+											</div>
+											<!-- <div style="display: flex;">
+												<span><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" /></span>
+												<span><a class="card-link" data-toggle="collapse" href="#description31">Rs. 0 - Rs. 499 32</a></span>
+											</div> -->
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
+							<!-- <button type="submit" id="filterButton" class="button" onclick="checkbox()">Filter</button> -->
+						</form>
 					</div>
 					<!-- responsive filter category -->
 					<div class="responsive-cat">
@@ -895,22 +852,31 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 
-		// $(document).on('click','#filterCategory',function(e){
-		//   e.preventDefault();
-		//   $('#categoryPageFrom').submit();
-		// });
-
-		$(document).on('change', '#orderbyFilter', function(e) {
-			e.preventDefault();
-			if ($('#orderbyFilter').val() != "") {
-				$('#categoryPageFrom').submit();
-			}
-		});
-
-		$(document).on('click', '#filterButton', function(e) {
+		$(document).on('click', '#filterCategory', function(e) {
 			e.preventDefault();
 			$('#categoryPageFrom').submit();
 		});
+
+		$(document).on('click', '#orderbyFilter', function(e) {
+			e.preventDefault();
+			$('#categoryPageFrom').submit();
+		});
+
+
+		// $(document).on('click', '#filterButton', function(e) {
+		// 	e.preventDefault();
+		// 	$('#categoryPageFrom').submit();
+		// });
+
+		$(document).on('click', '#filterBrand', function(e) {
+			checkbox();
+		});
+
+		function checkbox() {
+			// e.preventDefault();
+			$('#categoryPageFrom').submit();
+		}
+
 
 		var slider = document.getElementById('slider');
 		var max_price_filter = "{{ $max_price_filter }}";
